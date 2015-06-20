@@ -4,8 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>StayHealthy - Testflight.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>StayHealthy.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>

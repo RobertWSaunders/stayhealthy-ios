@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>workoutCategoriesImages</key>
+	<array>
+		<string>football-25.png</string>
+		<string>torso-25.png</string>
+		<string>jump_rope-25.png</string>
+		<string>literature-25.png</string>
+		<string>difficulty-27.5.png</string>
+	</array>
+	<key>workoutCategories</key>
+	<array>
+		<string>Sport Specific</string>
+		<string>Muscle Specific</string>
+		<string>Equipment Based</string>
+		<string>Type Specific</string>
+		<string>Difficulty Based</string>
+	</array>
+	<key>workoutEquipment</key>
+	<array>
+		<string>Partner</string>
+		<string>Weight Machine</string>
+		<string>Physio Ball</string>
+		<string>Bosu Ball</string>
+		<string>Pulley Cable</string>
+		<string>Dumbbell</string>
+		<string>Barbell</string>
+		<string>Chin-Up Bar</string>
+		<string>EZ - Bar</string>
+		<string>Bench</string>
+		<string>Elastic Band</string>
+		<string>Weights</string>
+		<string>Step-Up Bench</string>
+		<string>Leg Press Machine</string>
+		<string>Wall</string>
+		<string>Roman Chair</string>
+		<string>Roller</string>
+		<string>Kettle Bell</string>
+		<string>Boxing Pads</string>
+		<string>Rowing Machine</string>
+		<string>Skip Rope</string>
+		<string>Stationary Bike</string>
+		<string>Wall Climber Machine</string>
+	</array>
+	<key>muscleList</key>
+	<array>
+		<string>Abdominal</string>
+		<string>Achilles</string>
+		<string>Bicep</string>
+		<string>Calf</string>
+		<string>Deltoid</string>
+		<string>Erector Spinae</string>
+		<string>Gluteus</string>
+		<string>Groin</string>
+		<string>Hamstring</string>
+		<string>Hip Flexor</string>
+		<string>IT Band</string>
+		<string>Latissimus Dorsi</string>
+		<string>Oblique</string>
+		<string>Pectoralis Major</string>
+		<string>Quadricep</string>
+		<string>Trapezius</string>
+		<string>Tricep</string>
+	</array>
+	<key>workoutDifficulty</key>
+	<array>
+		<string>Easy</string>
+		<string>Intermediate</string>
+		<string>Hard</string>
+		<string>Very Hard</string>
+	</array>
+	<key>sports</key>
+	<array>
+		<string>All</string>
+		<string>Archery</string>
+		<string>Badminton</string>
+		<string>Baseball</string>
+		<string>Basketball</string>
+		<string>Beach Volleyball</string>
+		<string>Body Building</string>
+		<string>Bowling</string>
+		<string>Boxing</string>
+		<string>Canoeing</string>
+		<string>Cricket</string>
+		<string>Cross Country Running</string>
+		<string>Cycling</string>
+		<string>Skiing</string>
+		<string>Fencing</string>
+		<string>Figure Skating</string>
+		<string>Football</string>
+		<string>Golf</string>
+		<string>Hand Ball</string>
+		<string>High Jump</string>
+		<string>Hiking</string>
+		<string>Hockey</string>
+		<string>Kayaking</string>
+		<string>Lacrosse</string>
+		<string>Long Jump</string>
+		<string>Martial Arts</string>
+		<string>Racquetball</string>
+		<string>Rock Climbing</string>
+		<string>Roller Skating</string>
+		<string>Rowing</string>
+		<string>Rugby</string>
+		<string>Sailing</string>
+		<string>Skateboarding</string>
+		<string>Snow Boarding</string>
+		<string>Snow Shoeing</string>
+		<string>Soccer</string>
+		<string>Speed Skating</string>
+		<string>Sprint Running</string>
+		<string>Squash</string>
+		<string>Swimming</string>
+		<string>Tennis</string>
+		<string>Track and Field</string>
+		<string>Volleyball</string>
+		<string>Water Skiing</string>
+		<string>Weight Lifting</string>
+		<string>Wrestling</string>
+		<string>Yoga</string>
+	</array>
+	<key>sports2</key>
+	<array>
+		<string>Archery</string>
+		<string>Badminton</string>
+		<string>Baseball</string>
+		<string>Basketball</string>
+		<string>Beach Volleyball</string>
+		<string>Body Building</string>
+		<string>Bowling</string>
+		<string>Boxing</string>
+		<string>Canoeing</string>
+		<string>Cricket</string>
+		<string>Cross Country Running</string>
+		<string>Cycling</string>
+		<string>Skiing</string>
+		<string>Fencing</string>
+		<string>Figure Skating</string>
+		<string>Football</string>
+		<string>Golf</string>
+		<string>Hand Ball</string>
+		<string>High Jump</string>
+		<string>Hiking</string>
+		<string>Hockey</string>
+		<string>Kayaking</string>
+		<string>Lacrosse</string>
+		<string>Long Jump</string>
+		<string>Martial Arts</string>
+		<string>Racquetball</string>
+		<string>Rock Climbing</string>
+		<string>Roller Skating</string>
+		<string>Rowing</string>
+		<string>Rugby</string>
+		<string>Sailing</string>
+		<string>Skateboarding</string>
+		<string>Snow Boarding</string>
+		<string>Snow Shoeing</string>
+		<string>Soccer</string>
+		<string>Speed Skating</string>
+		<string>Sprint Running</string>
+		<string>Squash</string>
+		<string>Swimming</string>
+		<string>Tennis</string>
+		<string>Track and Field</string>
+		<string>Volleyball</string>
+		<string>Water Skiing</string>
+		<string>Weight Lifting</string>
+		<string>Wrestling</string>
+		<string>Yoga</string>
+	</array>
+	<key>workoutType</key>
+	<array>
+		<string>Build Muscle</string>
+		<string>Cardio</string>
+		<string>Core</string>
+		<string>General</string>
+		<string>Home Workout</string>
+		<string>Injury Prevention</string>
+		<string>Stretch</string>
+	</array>
+	<key>exerciseTypes</key>
+	<array>
+		<string>strengthexercises</string>
+		<string>stretchingexercises</string>
+		<string>warmup</string>
+	</array>
+	<key>titleText</key>
+	<array>
+		<string>Abdominal</string>
+		<string>Abdominal</string>
+		<string>Bicep</string>
+		<string>Bicep</string>
+		<string>Chest</string>
+		<string>Forearms</string>
+		<string>Forearms</string>
+		<string>Groin</string>
+		<string>Groin</string>
+		<string>Oblique</string>
+		<string>Neck</string>
+		<string>Neck</string>
+		<string>Quadriceps</string>
+		<string>Quadriceps</string>
+		<string>Shoulder</string>
+		<string>Shoulder</string>
+		<string>Tricep</string>
+		<string>Tricep</string>
+		<string>Wrist</string>
+		<string>Wrist</string>
+		<string>Calf</string>
+		<string>Calf</string>
+		<string>Glutes</string>
+		<string>Glutes</string>
+		<string>Hamstring</string>
+		<string>Hamstring</string>
+		<string>Lats</string>
+		<string>Lats</string>
+		<string>Lower Back</string>
+		<string>Lower Back</string>
+		<string>Warmup</string>
+	</array>
+	<key>queries</key>
+	<array>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%abdominal%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%abdominal%&apos; OR secondarymuscle  LIKE &apos;%abdominal%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%bicep%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%bicep%&apos; OR secondarymuscle  LIKE &apos;%bicep%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%pec%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%forearm%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%forearm%&apos; OR secondarymuscle  LIKE &apos;%forearm%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%groin%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%groin%&apos; OR secondarymuscle  LIKE &apos;%groin%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%oblique%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%trap%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%trap%&apos; OR secondarymuscle  LIKE &apos;%trap%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%quad%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%quad%&apos; OR secondarymuscle  LIKE &apos;%quad%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%deltoid%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%deltoid%&apos; OR secondarymuscle  LIKE &apos;%deltoid%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%tricep%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%tricep%&apos; OR secondarymuscle  LIKE &apos;%tricep%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%wrist%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%wrist%&apos; OR secondarymuscle  LIKE &apos;%wrist%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%calf%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%calf%&apos; OR secondarymuscle  LIKE &apos;%calf%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%glute%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%glute%&apos; OR secondarymuscle  LIKE &apos;%glute%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%hamstring%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%hamstring%&apos; OR secondarymuscle  LIKE &apos;%hamstring%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%lat%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%lat%&apos; OR secondarymuscle  LIKE &apos;%lat%&apos;</string>
+		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%erector%&apos;</string>
+		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%erector%&apos; OR secondarymuscle  LIKE &apos;%erector%&apos;</string>
+		<string>SELECT * FROM warmupexercises ORDER BY Name COLLATE NOCASE</string>
+	</array>
+	<key>difficultyList</key>
+	<array>
+		<string>Any</string>
+		<string>Easy</string>
+		<string>Intermediate</string>
+		<string>Hard</string>
+		<string>Very Hard</string>
+	</array>
+	<key>equipmentList</key>
+	<array>
+		<string>Any</string>
+		<string>Partner</string>
+		<string>Weight Machine</string>
+		<string>Physio Ball</string>
+		<string>Bosu Ball</string>
+		<string>Pulley Cable</string>
+		<string>Dumbbell</string>
+		<string>Barbell</string>
+		<string>Chin-Up Bar</string>
+		<string>EZ - Bar</string>
+		<string>Bench</string>
+		<string>Rubber Band</string>
+		<string>Elastic Band</string>
+		<string>Weights</string>
+		<string>TRX</string>
+		<string>Step-Up Bench</string>
+		<string>Leg Press Machine</string>
+		<string>Wall</string>
+		<string>Parallel Bar</string>
+		<string>Roman Chair</string>
+		<string>Roller</string>
+		<string>Nodule Ball</string>
+		<string>Kettle Bell</string>
+		<string>Roller</string>
+		<string>Boxing Pads</string>
+		<string>Soccer Ball</string>
+		<string>Rowing Machine</string>
+		<string>Skip Rope</string>
+		<string>Stationary Bike</string>
+		<string>Wall Climber Machine</string>
+		<string>Cones</string>
+		<string>Lines</string>
+	</array>
+	<key>primaryMuscleList</key>
+	<array>
+		<string>Any</string>
+		<string>Abdominal</string>
+		<string>Achilles</string>
+		<string>Bicep</string>
+		<string>Calf</string>
+		<string>Deltoid</string>
+		<string>Erector Spinae</string>
+		<string>Forarm</string>
+		<string>Gluteus</string>
+		<string>Groin</string>
+		<string>Hamstring</string>
+		<string>Hip Flexor</string>
+		<string>IT Band</string>
+		<string>Latissimus Dorsi</string>
+		<string>Oblique</string>
+		<string>Pectoralis Major</string>
+		<string>Quadricep</string>
+		<string>Trapezius</string>
+		<string>Tricep</string>
+	</array>
+	<key>secondaryMuscleList</key>
+	<array>
+		<string>Any</string>
+		<string>Abdominal</string>
+		<string>Achilles</string>
+		<string>Bicep</string>
+		<string>Calf</string>
+		<string>Deltoid</string>
+		<string>Erector Spinae</string>
+		<string>Forarm</string>
+		<string>Gluteus</string>
+		<string>Groin</string>
+		<string>Hamstring</string>
+		<string>Hip Flexor</string>
+		<string>IT Band</string>
+		<string>Latissimus Dorsi</string>
+		<string>Oblique</string>
+		<string>Pectoralis Major</string>
+		<string>Quadricep</string>
+		<string>Trapezius</string>
+		<string>Tricep</string>
+	</array>
+	<key>scientificMuscleNames2</key>
+	<array>
+		<string>(triceps surae)</string>
+		<string>(gluteal)</string>
+		<string>(biceps femoris)</string>
+		<string>(latissimus dorsii)</string>
+		<string>(erector spinae)</string>
+	</array>
+	<key>musclesForTableview2</key>
+	<array>
+		<string>Calf</string>
+		<string>Glutes</string>
+		<string>Hamstring</string>
+		<string>Lats</string>
+		<string>Lower Back</string>
+	</array>
+	<key>scientificMuscleNames</key>
+	<array>
+		<string>(rectus abdominis)</string>
+		<string>(biceps branchii)</string>
+		<string>(pectoralis)</string>
+		<string>(branchioradialis)</string>
+		<string>(adductor)</string>
+		<string>(internal obliques)</string>
+		<string>(trapezius)</string>
+		<string>(quadriceps femoris)</string>
+		<string>(deltoid)</string>
+		<string>(triceps branchii)</string>
+		<string>(wrist flexor)</string>
+	</array>
+	<key>musclesForTableview</key>
+	<array>
+		<string>Abdominal</string>
+		<string>Bicep</string>
+		<string>Chest</string>
+		<string>Forearms</string>
+		<string>Groin</string>
+		<string>Oblique</string>
+		<string>Neck</string>
+		<string>Quadriceps</string>
+		<string>Shoulder</string>
+		<string>Tricep</string>
+		<string>Wrist</string>
+	</array>
+</dict>
+</plist>

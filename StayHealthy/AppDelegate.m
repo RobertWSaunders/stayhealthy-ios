@@ -7,32 +7,94 @@
 //
 
 #import "AppDelegate.h"
+#import "UIColor+FlatUI.h"
+#import <FacebookSDK/FacebookSDK.h>
+#import "CommonDataOperations.h"
+#import "CommonSetUpOperations.h"
+#import <Parse/Parse.h>
 
-#import "MasterViewController.h"
 
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize listArray;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-        splitViewController.delegate = (id)navigationController.topViewController;
-        
-        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-        MasterViewController *controller = (MasterViewController *)masterNavigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
-    } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
+
+    [Parse setApplicationId:@"WV7lo14mPjcjRmuc4vgdOXuQg6aWihFO7s6oqBNy"
+                  clientKey:@"dYyFOqO28p3WcdiWAVmK7YIna1gVWQOpyEhHZnZq"];
+
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
+     UIRemoteNotificationTypeAlert|
+     UIRemoteNotificationTypeSound];
+
+
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunch"])
+    {}
+    else {
+        for (int i = 0; i < 31; i++) {
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+
+            NSString *today = [CommonSetUpOperations returnDateInString:[NSDate date]];
+            NSDate *todaysDate = [dateFormatter dateFromString:today];
+
+            int daysToAdd = -31;
+            NSDate *newDate1 = [todaysDate dateByAddingTimeInterval:60*60*24*daysToAdd];
+
+            NSArray *tempArrayOfDays = [CommonSetUpOperations arrayOfDays:newDate1 endDate:todaysDate];
+            NSArray *arrayOfDays = [[NSMutableArray alloc] init];
+            arrayOfDays = [[tempArrayOfDays reverseObjectEnumerator] allObjects];
+
+            [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO DailyActivity (completedWorkouts,workoutTime,exercisesViewed,completedGoals,date) VALUES (0,'00:00',0,0,'%@')",arrayOfDays[i]] databaseName:@"UserDB1.sqlite" database:db];
+        }
+
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunch"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    return YES;
+
+    NSString *today = [CommonSetUpOperations returnDateInString:[NSDate date]];
+
+    dailyActivityArray = [CommonDataOperations retreiveDailyActivity:[NSString stringWithFormat:@"SELECT * FROM DailyActivity WHERE date = '%@'",today] databaseName:@"UserDB1.sqlite" database:db];
+
+    if (dailyActivityArray.count == 0) {
+        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO DailyActivity (completedWorkouts,workoutTime,exercisesViewed,completedGoals,date) VALUES (0,'00:00',0,0,'%@')",today] databaseName:@"UserDB1.sqlite" database:db];
+    }
+
+    
+    // Override point for customization after application launch.
+    [FBLoginView class];
+    [FBProfilePictureView class];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                            [UIColor peterRiverColor],
+                                                            NSForegroundColorAttributeName,
+                                                            [UIFont fontWithName:@"Avenir-Light" size:20.0],
+                                                            NSFontAttributeName,
+                                                           nil]];
+    [[UITabBar appearance] setTintColor:[UIColor peterRiverColor]];
+    
+        
+    
+        return YES;
+}
+
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -41,15 +103,14 @@
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray  *oldNotification = [app scheduledLocalNotifications];
+    if ([oldNotification count] > 0) {
+        [app cancelAllLocalNotifications];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -156,6 +217,19 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
+    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    
+    // You can add your app-specific url handling code here if needed
+    
+    return wasHandled;
 }
 
 @end
