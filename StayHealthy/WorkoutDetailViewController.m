@@ -61,17 +61,18 @@
     
     self.title = self.titleText;
     self.summaryText.text = self.summary;
-    self.startWorkoutButton.backgroundColor = [UIColor peterRiverColor];
+    self.startWorkoutButton.backgroundColor = STAYHEALTHY_BLUE;
+    
     
     [[SIAlertView appearance] setTitleFont:[UIFont fontWithName:@"Avenir-Light" size:20]];
-    [[SIAlertView appearance] setTitleColor:[UIColor peterRiverColor]];
-    [[SIAlertView appearance] setMessageColor:[UIColor peterRiverColor]];
+    [[SIAlertView appearance] setTitleColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setMessageColor:STAYHEALTHY_BLUE];
     [[SIAlertView appearance] setCornerRadius:4];
     [[SIAlertView appearance] setShadowRadius:0];
-    [[SIAlertView appearance] setViewBackgroundColor:[UIColor cloudsColor]];
-    [[SIAlertView appearance] setButtonColor:[UIColor peterRiverColor]];
-    [[SIAlertView appearance] setDestructiveButtonColor:[UIColor peterRiverColor]];
-    [[SIAlertView appearance] setCancelButtonColor:[UIColor peterRiverColor]];
+    [[SIAlertView appearance] setViewBackgroundColor:STAYHEALTHY_WHITE];
+    [[SIAlertView appearance] setButtonColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setDestructiveButtonColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setCancelButtonColor:STAYHEALTHY_BLUE];
     [[SIAlertView appearance] setButtonFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [[SIAlertView appearance] setMessageFont:[UIFont fontWithName:@"Avenir-Light" size:16]];
     [[SIAlertView appearance] setMessageColor:[UIColor lightGrayColor]];
@@ -171,7 +172,7 @@
         {
             if (!indexPath.row)
             {
-                cell.textLabel.textColor = [UIColor peterRiverColor];
+                cell.textLabel.textColor = STAYHEALTHY_BLUE;
                 cell.textLabel.font = [UIFont fontWithName:@"Avenir-Light" size:18.0f];
                 
                 
@@ -280,24 +281,24 @@
     difficulty.text = exercise.Difficulty;
     
     if ([difficulty.text isEqualToString:@"Easy"]) {
-        difficulty.textColor = [UIColor emerlandColor];
+        difficulty.textColor = STAYHEALTHY_GREEN;
     }
     if ([difficulty.text isEqualToString:@"Intermediate"]) {
-        difficulty.textColor = [UIColor belizeHoleColor];
+        difficulty.textColor = STAYHEALTHY_DARKERBLUE;
         
     }
     if ([difficulty.text isEqualToString:@"Hard"]) {
-        difficulty.textColor = [UIColor alizarinColor];
+        difficulty.textColor = STAYHEALTHY_RED;
     }
     if ([difficulty.text isEqualToString:@"Very Hard"]) {
-        difficulty.textColor = [UIColor alizarinColor];
+        difficulty.textColor = STAYHEALTHY_RED;
     }
     
     UIImageView *cellImageView = (UIImageView *)[cell viewWithTag:100];
     cellImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",exercise.File]];
     
     UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = [UIColor cloudsColor];
+    bgColorView.backgroundColor = STAYHEALTHY_WHITE;
     bgColorView.layer.masksToBounds = YES;
     [cell setSelectedBackgroundView:bgColorView];
     

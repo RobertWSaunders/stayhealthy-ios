@@ -188,18 +188,18 @@
     });
     
     if ([favoritesCell.difficultyLabel.text isEqualToString:@"Easy"])
-        favoritesCell.difficultyLabel.textColor = [UIColor emerlandColor];
+        favoritesCell.difficultyLabel.textColor = STAYHEALTHY_GREEN;
     
     if ([favoritesCell.difficultyLabel.text isEqualToString:@"Intermediate"]) {
-        favoritesCell.difficultyLabel.textColor = [UIColor belizeHoleColor];
+        favoritesCell.difficultyLabel.textColor = STAYHEALTHY_DARKERBLUE;
         
         favoritesCell.difficultyLabel.text = @"Inter";
     }
     if ([favoritesCell.difficultyLabel.text isEqualToString:@"Hard"])
-        favoritesCell.difficultyLabel.textColor = [UIColor alizarinColor];
+        favoritesCell.difficultyLabel.textColor = STAYHEALTHY_RED;
     
     if ([favoritesCell.difficultyLabel.text isEqualToString:@"Very Hard"])
-        favoritesCell.difficultyLabel.textColor = [UIColor alizarinColor];
+        favoritesCell.difficultyLabel.textColor = STAYHEALTHY_RED;
     
     
     NSString *string = favoritesCell.equipmentLabel.text;
@@ -268,10 +268,10 @@ indexPath {
         });
         
         if ([favoritesCell.difficultyLabel.text isEqualToString:@"Easy"])
-            favoritesCell.difficultyLabel.textColor = [UIColor emerlandColor];
+            favoritesCell.difficultyLabel.textColor = STAYHEALTHY_GREEN;
         
         if ([favoritesCell.difficultyLabel.text isEqualToString:@"Intermediate"]) {
-            favoritesCell.difficultyLabel.textColor = [UIColor belizeHoleColor];
+            favoritesCell.difficultyLabel.textColor = STAYHEALTHY_DARKERBLUE;
             if (IS_IPHONE_4_OR_LESS || IS_IPHONE_5) {
                 favoritesCell.difficultyLabel.text = @"Inter.";
             }
@@ -281,10 +281,10 @@ indexPath {
             
         }
         if ([favoritesCell.difficultyLabel.text isEqualToString:@"Hard"])
-            favoritesCell.difficultyLabel.textColor = [UIColor alizarinColor];
+            favoritesCell.difficultyLabel.textColor = STAYHEALTHY_RED;
         
         if ([favoritesCell.difficultyLabel.text isEqualToString:@"Very Hard"])
-            favoritesCell.difficultyLabel.textColor = [UIColor alizarinColor];
+            favoritesCell.difficultyLabel.textColor = STAYHEALTHY_RED;
         
         
         NSString *string = favoritesCell.equipmentLabel.text;
@@ -333,10 +333,10 @@ indexPath {
         });
         
         if ([favoritesCell.difficultyLabel.text isEqualToString:@"Easy"])
-            favoritesCell.difficultyLabel.textColor = [UIColor emerlandColor];
+            favoritesCell.difficultyLabel.textColor = STAYHEALTHY_GREEN;
         
         if ([favoritesCell.difficultyLabel.text isEqualToString:@"Intermediate"]) {
-            favoritesCell.difficultyLabel.textColor = [UIColor belizeHoleColor];
+            favoritesCell.difficultyLabel.textColor = STAYHEALTHY_DARKERBLUE;
             if (IS_IPHONE_4_OR_LESS || IS_IPHONE_5) {
                 favoritesCell.difficultyLabel.text = @"Inter.";
             }
@@ -345,10 +345,10 @@ indexPath {
             }
         }
         if ([favoritesCell.difficultyLabel.text isEqualToString:@"Hard"])
-            favoritesCell.difficultyLabel.textColor = [UIColor alizarinColor];
+            favoritesCell.difficultyLabel.textColor = STAYHEALTHY_RED;
         
         if ([favoritesCell.difficultyLabel.text isEqualToString:@"Very Hard"])
-            favoritesCell.difficultyLabel.textColor = [UIColor alizarinColor];
+            favoritesCell.difficultyLabel.textColor = STAYHEALTHY_RED;
         
         
         NSString *string = favoritesCell.equipmentLabel.text;
@@ -398,10 +398,10 @@ indexPath {
         });
         
         if ([favoritesCell.difficultyLabel.text isEqualToString:@"Easy"])
-            favoritesCell.difficultyLabel.textColor = [UIColor emerlandColor];
+            favoritesCell.difficultyLabel.textColor = STAYHEALTHY_GREEN;
         
         if ([favoritesCell.difficultyLabel.text isEqualToString:@"Intermediate"]) {
-            favoritesCell.difficultyLabel.textColor = [UIColor belizeHoleColor];
+            favoritesCell.difficultyLabel.textColor = STAYHEALTHY_DARKERBLUE;
             if (IS_IPHONE_4_OR_LESS || IS_IPHONE_5) {
                 favoritesCell.difficultyLabel.text = @"Inter.";
             }
@@ -410,10 +410,10 @@ indexPath {
             }
         }
         if ([favoritesCell.difficultyLabel.text isEqualToString:@"Hard"])
-            favoritesCell.difficultyLabel.textColor = [UIColor alizarinColor];
+            favoritesCell.difficultyLabel.textColor = STAYHEALTHY_RED;
         
         if ([favoritesCell.difficultyLabel.text isEqualToString:@"Very Hard"])
-            favoritesCell.difficultyLabel.textColor = [UIColor alizarinColor];
+            favoritesCell.difficultyLabel.textColor = STAYHEALTHY_RED;
         
         
         NSString *string = favoritesCell.equipmentLabel.text;
@@ -454,12 +454,12 @@ indexPath {
         if ([workoutsCell.difficulty.text isEqualToString:@"Easy"]) {
             UIImageView *cellImageView = (UIImageView *)[workoutsCell viewWithTag:100];
             cellImageView.image = [UIImage imageNamed:@"easy.png"];
-            workoutsCell.difficulty.textColor = [UIColor emerlandColor];
+            workoutsCell.difficulty.textColor = STAYHEALTHY_GREEN;
         }
         else if ([workoutsCell.difficulty.text isEqualToString:@"Intermediate"]) {
             UIImageView *cellImageView = (UIImageView *)[workoutsCell viewWithTag:100];
             cellImageView.image = [UIImage imageNamed:@"inter.png"];
-            workoutsCell.difficulty.textColor = [UIColor peterRiverColor];
+            workoutsCell.difficulty.textColor = STAYHEALTHY_DARKERBLUE;
             if (IS_IPHONE_4_OR_LESS || IS_IPHONE_5) {
                 workoutsCell.difficulty.text = @"Inter.";
             }
@@ -470,7 +470,7 @@ indexPath {
         else if ([workoutsCell.difficulty.text isEqualToString:@"Hard"]) {
             UIImageView *cellImageView = (UIImageView *)[workoutsCell viewWithTag:100];
             cellImageView.image = [UIImage imageNamed:@"hard.png"];
-            workoutsCell.difficulty.textColor = [UIColor alizarinColor];
+            workoutsCell.difficulty.textColor = STAYHEALTHY_RED;
         }
         else {
             UIImageView *cellImageView = (UIImageView *)[workoutsCell viewWithTag:100];

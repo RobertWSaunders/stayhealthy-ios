@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 //^^^^^^^^^^^^Standard UIKit.
-#import "UIColor+FlatUI.h"
+
 //^^^^^^^^^^^^Our FlatUI colors.
 //^^^^^^^^^^^^DropDown List view for the advanced search.
 #import "TSMessage.h"

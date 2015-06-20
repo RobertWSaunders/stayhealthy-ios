@@ -15,7 +15,7 @@
 //^^^^^^^^^^The cell for the collection view.
 #import "favoriteColumns.h"
 //^^^^^^^^^^Our database objects.
-#import "UIColor+FlatUI.h"
+
 //^^^^^^^^^^Our FlatUI colors.
 #import "ExerciseDetailViewController.h"
 //^^^^^^^^^^The detail view controller so we can push to it.

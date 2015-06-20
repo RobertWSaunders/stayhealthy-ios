@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "UIColor+FlatUI.h"
+
 #import <FacebookSDK/FacebookSDK.h>
 #import "CommonDataOperations.h"
 #import "CommonSetUpOperations.h"
@@ -70,12 +70,12 @@
     [FBProfilePictureView class];
     
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                                            [UIColor peterRiverColor],
+                                                            STAYHEALTHY_BLUE,
                                                             NSForegroundColorAttributeName,
                                                             [UIFont fontWithName:@"Avenir-Light" size:20.0],
                                                             NSFontAttributeName,
                                                            nil]];
-    [[UITabBar appearance] setTintColor:[UIColor peterRiverColor]];
+    [[UITabBar appearance] setTintColor:STAYHEALTHY_BLUE];
     
         
     

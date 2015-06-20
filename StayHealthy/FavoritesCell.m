@@ -21,7 +21,7 @@
     [super setSelected:selected];
     
     if (selected) {
-        self.contentView.layer.borderColor = [UIColor peterRiverColor].CGColor;
+        self.contentView.layer.borderColor = STAYHEALTHY_BLUE.CGColor;
         self.contentView.layer.borderWidth = 1;
     } else {
         self.contentView.layer.borderWidth = 0;

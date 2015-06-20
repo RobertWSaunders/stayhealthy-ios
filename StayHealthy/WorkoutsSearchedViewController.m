@@ -108,12 +108,12 @@
     if ([workoutcell.difficulty.text isEqualToString:@"Easy"]) {
         UIImageView *cellImageView = (UIImageView *)[workoutcell viewWithTag:100];
         cellImageView.image = [UIImage imageNamed:@"easy.png"];
-        workoutcell.difficulty.textColor = [UIColor emerlandColor];
+        workoutcell.difficulty.textColor = STAYHEALTHY_GREEN;
     }
     else if ([workoutcell.difficulty.text isEqualToString:@"Intermediate"]) {
         UIImageView *cellImageView = (UIImageView *)[workoutcell viewWithTag:100];
         cellImageView.image = [UIImage imageNamed:@"inter.png"];
-        workoutcell.difficulty.textColor = [UIColor peterRiverColor];
+        workoutcell.difficulty.textColor = STAYHEALTHY_BLUE;
         if (IS_IPHONE_4_OR_LESS || IS_IPHONE_5) {
             workoutcell.difficulty.text = @"Inter.";
         }
@@ -124,7 +124,7 @@
     else if ([workoutcell.difficulty.text isEqualToString:@"Hard"]) {
         UIImageView *cellImageView = (UIImageView *)[workoutcell viewWithTag:100];
         cellImageView.image = [UIImage imageNamed:@"hard.png"];
-        workoutcell.difficulty.textColor = [UIColor alizarinColor];
+        workoutcell.difficulty.textColor = STAYHEALTHY_RED;
     }
     else {
         UIImageView *cellImageView = (UIImageView *)[workoutcell viewWithTag:100];
@@ -188,18 +188,18 @@
     
     
     if ([workoutDataInfo.Difficulty isEqualToString:@"Easy"])
-        difficultyView.backgroundColor = [UIColor emerlandColor];
+        difficultyView.backgroundColor = STAYHEALTHY_GREEN;
     else if ([workoutDataInfo.Difficulty isEqualToString:@"Intermediate"]) {
-        difficultyView.backgroundColor = [UIColor peterRiverColor];
+        difficultyView.backgroundColor = STAYHEALTHY_BLUE;
     }
     else if ([workoutDataInfo.Difficulty isEqualToString:@"Hard"])
-        difficultyView.backgroundColor = [UIColor alizarinColor];
+        difficultyView.backgroundColor = STAYHEALTHY_RED;
     else
         difficultyView.backgroundColor = [UIColor blackColor];
     
     
     UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = [UIColor cloudsColor];
+    bgColorView.backgroundColor = STAYHEALTHY_WHITE;
     bgColorView.layer.masksToBounds = YES;
     [cell setSelectedBackgroundView:bgColorView];
     

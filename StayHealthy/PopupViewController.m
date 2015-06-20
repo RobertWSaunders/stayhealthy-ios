@@ -44,20 +44,20 @@
         [favoriteButton setImage:[UIImage imageNamed:@"Star Filled-50C.png"] forState:UIControlStateNormal];
     
     if ([difficultyText.text isEqualToString:@"Easy"]) {
-        difficultyText.textColor = [UIColor emerlandColor];
+        difficultyText.textColor = STAYHEALTHY_GREEN;
     }
     if ([difficultyText.text isEqualToString:@"Intermediate"]) {
-        difficultyText.textColor = [UIColor belizeHoleColor];
+        difficultyText.textColor = STAYHEALTHY_DARKERBLUE;
     }
     if ([difficultyText.text isEqualToString:@"Hard"]) {
-        difficultyText.textColor = [UIColor alizarinColor];
+        difficultyText.textColor = STAYHEALTHY_RED;
     }
     if ([difficultyText.text isEqualToString:@"Very Hard"]) {
-        difficultyText.textColor = [UIColor alizarinColor];
+        difficultyText.textColor = STAYHEALTHY_RED;
     }
     
     if ([materialsText.text isEqualToString:@"Very Hard"]) {
-        difficultyText.textColor = [UIColor alizarinColor];
+        difficultyText.textColor = STAYHEALTHY_RED;
     }
     
     NSString *string = materialsText.text;
@@ -158,7 +158,7 @@
     }
     
     cell.textLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16.0f];
-    cell.textLabel.textColor = [UIColor peterRiverColor];
+    cell.textLabel.textColor = STAYHEALTHY_BLUE;
     cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     cell.detailTextLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16.0f];
     cell.textLabel.text = [tableViewTitles objectAtIndex:indexPath.row];
@@ -198,11 +198,11 @@
     if (indexPath.row == 5) {
         cell.detailTextLabel.text = self.difficulty;
         if ([self.difficulty isEqualToString:@"Easy"])
-            cell.detailTextLabel.textColor = [UIColor emerlandColor];
+            cell.detailTextLabel.textColor = STAYHEALTHY_GREEN;
         if ([self.difficulty isEqualToString:@"Intermediate"])
-            cell.detailTextLabel.textColor = [UIColor belizeHoleColor];
+            cell.detailTextLabel.textColor = STAYHEALTHY_DARKERBLUE;
         if ([self.difficulty isEqualToString:@"Hard"])
-            cell.detailTextLabel.textColor = [UIColor alizarinColor];
+            cell.detailTextLabel.textColor = STAYHEALTHY_RED;
         if ([self.difficulty isEqualToString:@"Very Hard"])
             cell.detailTextLabel.textColor = [UIColor blackColor];
     }

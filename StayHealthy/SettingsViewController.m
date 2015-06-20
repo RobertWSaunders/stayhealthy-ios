@@ -7,7 +7,6 @@
 //
 
 #import "SettingsViewController.h"
-#import "UIColor+FlatUI.h"
 
 @interface SettingsViewController ()
 
@@ -24,14 +23,14 @@
     [super viewDidLoad];
     
     [[SIAlertView appearance] setTitleFont:[UIFont fontWithName:@"Avenir-Light" size:20]];
-    [[SIAlertView appearance] setTitleColor:[UIColor peterRiverColor]];
-    [[SIAlertView appearance] setMessageColor:[UIColor peterRiverColor]];
+    [[SIAlertView appearance] setTitleColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setMessageColor:STAYHEALTHY_BLUE];
     [[SIAlertView appearance] setCornerRadius:4];
     [[SIAlertView appearance] setShadowRadius:0];
-    [[SIAlertView appearance] setViewBackgroundColor:[UIColor cloudsColor]];
-    [[SIAlertView appearance] setButtonColor:[UIColor peterRiverColor]];
-    [[SIAlertView appearance] setDestructiveButtonColor:[UIColor peterRiverColor]];
-    [[SIAlertView appearance] setCancelButtonColor:[UIColor peterRiverColor]];
+    [[SIAlertView appearance] setViewBackgroundColor:STAYHEALTHY_WHITE];
+    [[SIAlertView appearance] setButtonColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setDestructiveButtonColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setCancelButtonColor:STAYHEALTHY_BLUE];
     [[SIAlertView appearance] setButtonFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [[SIAlertView appearance] setMessageFont:[UIFont fontWithName:@"Avenir-Light" size:16]];
     [[SIAlertView appearance] setMessageColor:[UIColor lightGrayColor]];
@@ -125,12 +124,12 @@
         cell.textLabel.text = [aboutUs objectAtIndex:indexPath.row];
     }
    */
-    cell.textLabel.textColor = [UIColor peterRiverColor];
+    cell.textLabel.textColor = STAYHEALTHY_BLUE;
     cell.textLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16];
     
     
     UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = [UIColor cloudsColor];
+    bgColorView.backgroundColor = STAYHEALTHY_WHITE;
     bgColorView.layer.masksToBounds = YES;
     [cell setSelectedBackgroundView:bgColorView];
     

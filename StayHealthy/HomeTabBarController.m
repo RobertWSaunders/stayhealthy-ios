@@ -7,7 +7,7 @@
 //
 
 #import "HomeTabBarController.h"
-#import "FlatUIKit.h"
+
 
 @implementation HomeTabBarController
 
@@ -32,8 +32,8 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     */
-    self.navigationController.view.window.tintColor = [UIColor peterRiverColor];
-    self.tabBarController.tabBar.tintColor = [UIColor peterRiverColor];
+    self.navigationController.view.window.tintColor = STAYHEALTHY_BLUE;
+    self.tabBarController.tabBar.tintColor = STAYHEALTHY_BLUE;
 
 }
 

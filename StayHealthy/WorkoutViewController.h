@@ -10,7 +10,7 @@
 #import "MZTimerLabel.h"
 #import <sqlite3.h>
 #import "sqlColumns.h"
-#import "FlatUIKit.h"
+
 #import "ExerciseDetailViewController.h"
 #import "SIAlertView.h"
 #import "CommonDataOperations.h"

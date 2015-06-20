@@ -14,7 +14,7 @@
 //^^^^^^^The workoutObjects in database.
 #import <sqlite3.h>
 //^^^^^^^Mandatory database implementation.
-#import "FlatUIKit.h"
+
 //^^^^^^^The Flat UI kit that is used for ui.
 #import "workoutCell.h"
 //^^^^^^^The custom workoutCell for the collectionview.

@@ -13,7 +13,7 @@
 //^^^^^^^^Standard UIKit
 #import <sqlite3.h>
 //^^^^^^^^The sqlite import.
-#import "FlatUIKit.h"
+
 //^^^^^^^^Our FlatUI Colors.
 //^^^^^^^^The swipe out menu.
 #define IPHONE5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )

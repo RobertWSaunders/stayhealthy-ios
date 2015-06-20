@@ -15,7 +15,7 @@
 //^^^^^^^^^^^^Standard UIKit.
 #import <sqlite3.h>
 //^^^^^^^^^^^^^^^^Handles the sqlite, required.
-#import "UIColor+FlatUI.h"
+
 //^^^^^^^^^^Our colors.
 #import "ExerciseDetailViewController.h"
 //^^^^^^^^^^Landing page.

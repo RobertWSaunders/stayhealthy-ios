@@ -19,7 +19,7 @@
 #import "workoutCell.h"
 //^^^^^^The collectionview cell requirments/class
 //^^^^^^Slide out menu.
-#import "UIColor+FlatUI.h"
+
 //^^^^^^Our colors.
 #import "TSMessage.h"
 //^^^^^^The alerts.

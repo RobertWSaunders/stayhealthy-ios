@@ -157,10 +157,10 @@
         exerciseCell.equipment.text = @"None";
     }
     if ([exerciseCell.difficulty.text isEqualToString:@"Easy"]) {
-        exerciseCell.difficulty.textColor = [UIColor emerlandColor];
+        exerciseCell.difficulty.textColor = STAYHEALTHY_GREEN;
     }
     if ([exerciseCell.difficulty.text isEqualToString:@"Intermediate"]) {
-        exerciseCell.difficulty.textColor = [UIColor belizeHoleColor];
+        exerciseCell.difficulty.textColor = STAYHEALTHY_DARKERBLUE;
         if (IS_IPHONE_6P || IS_IPHONE_6) {
               exerciseCell.difficulty.text = @"Intermediate";
         }
@@ -170,7 +170,7 @@
       
     }
     if ([exerciseCell.difficulty.text isEqualToString:@"Hard"]) {
-        exerciseCell.difficulty.textColor = [UIColor alizarinColor];
+        exerciseCell.difficulty.textColor = STAYHEALTHY_RED;
     }
     if ([exerciseCell.difficulty.text isEqualToString:@"Very Hard"]) {
         exerciseCell.difficulty.textColor = [UIColor blackColor];
@@ -215,14 +215,14 @@
     difficulty.text = exercise.Difficulty;
     
     if ([difficulty.text isEqualToString:@"Easy"]) {
-        difficulty.textColor = [UIColor emerlandColor];
+        difficulty.textColor = STAYHEALTHY_GREEN;
     }
     if ([difficulty.text isEqualToString:@"Intermediate"]) {
-        difficulty.textColor = [UIColor belizeHoleColor];
+        difficulty.textColor = STAYHEALTHY_DARKERBLUE;
         
     }
     if ([difficulty.text isEqualToString:@"Hard"]) {
-        difficulty.textColor = [UIColor alizarinColor];
+        difficulty.textColor = STAYHEALTHY_RED;
     }
     if ([difficulty.text isEqualToString:@"Very Hard"]) {
         difficulty.textColor = [UIColor blackColor];
@@ -244,7 +244,7 @@
     
     
     UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = [UIColor cloudsColor];
+    bgColorView.backgroundColor = STAYHEALTHY_WHITE;
     bgColorView.layer.masksToBounds = YES;
     [cell setSelectedBackgroundView:bgColorView];
 

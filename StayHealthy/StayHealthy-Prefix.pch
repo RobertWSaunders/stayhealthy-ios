@@ -6,6 +6,8 @@
 
 #import <Availability.h>
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Common Imports
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
@@ -14,9 +16,13 @@
     #import "CommonSetUpOperations.h"
 #endif
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Application Standards
 #define APPNAME                                 @"StayHealthy"
 #define APPDELEGATE                             (ZalioAppDelegate *)[[UIApplication sharedApplication] delegate]
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Screen Sizes
 #define IS_IPAD                                 (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define IS_IPHONE                               (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define IS_RETINA                               ([[UIScreen mainScreen] scale] >= 2.0)
@@ -30,3 +36,16 @@
 #define IS_IPHONE_5                             (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
 #define IS_IPHONE_6                             (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 #define IS_IPHONE_6P                            (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//StayHealthy Colors
+#define STAYHEALTHY_BLUE                        [UIColor colorWithRed:0.52 green:0.152 blue:0.219 alpha:1.0]
+#define STAYHEALTHY_DARKERBLUE                  [UIColor colorWithRed:0.41 green:0.128 blue:0.185 alpha:1.0]
+#define STAYHEALTHY_GREEN                       [UIColor colorWithRed:0.46 green:0.204 blue:0.113 alpha:1.0]
+#define STAYHEALTHY_RED                         [UIColor colorWithRed:0.231 green:0.76 blue:0.60 alpha:1.0]
+#define STAYHEALTHY_WHITE                       [UIColor colorWithRed:0.236 green:0.240 blue:0.241 alpha:1.0]
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//StayHealthy Fonts
+
+

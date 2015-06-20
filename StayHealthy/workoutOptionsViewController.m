@@ -7,7 +7,6 @@
 //
 
 #import "workoutOptionsViewController.h"
-#import "FlatUIKit.h"
 
 @implementation workoutOptionsViewController
 
@@ -44,12 +43,12 @@
     
     //Stlying the cells.
     cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:17];
-    cell.textLabel.textColor = [UIColor peterRiverColor];
+    cell.textLabel.textColor = STAYHEALTHY_BLUE;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     //Then the background color view.
     UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = [UIColor cloudsColor];
+    bgColorView.backgroundColor = STAYHEALTHY_WHITE;
     bgColorView.layer.masksToBounds = YES;
     [cell setSelectedBackgroundView:bgColorView];
     

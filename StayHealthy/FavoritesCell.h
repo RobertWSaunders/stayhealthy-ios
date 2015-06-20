@@ -13,7 +13,7 @@
 //Our imports.
 #import <UIKit/UIKit.h>
 //^^^^^^^^The standard UIKit
-#import "UIColor+FlatUI.h"
+
 //^^^^^^^^Our colors.
 
 //@interface implementation.

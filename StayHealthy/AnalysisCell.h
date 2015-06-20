@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIColor+FlatUI.h"
+
 
 @interface AnalysisCell : UICollectionViewCell
 

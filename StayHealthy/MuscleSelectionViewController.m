@@ -41,15 +41,17 @@
     
     //Style the SIAlertView asking what exercise type.
     [[SIAlertView appearance] setTitleFont:[UIFont fontWithName:@"Avenir-Light" size:20]];
-    [[SIAlertView appearance] setTitleColor:[UIColor peterRiverColor]];
-    [[SIAlertView appearance] setMessageColor:[UIColor peterRiverColor]];
+    [[SIAlertView appearance] setTitleColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setMessageColor:STAYHEALTHY_BLUE];
     [[SIAlertView appearance] setCornerRadius:4];
     [[SIAlertView appearance] setShadowRadius:0];
-    [[SIAlertView appearance] setViewBackgroundColor:[UIColor cloudsColor]];
-    [[SIAlertView appearance] setButtonColor:[UIColor peterRiverColor]];
-    [[SIAlertView appearance] setDestructiveButtonColor:[UIColor peterRiverColor]];
-    [[SIAlertView appearance] setCancelButtonColor:[UIColor peterRiverColor]];
+    [[SIAlertView appearance] setViewBackgroundColor:STAYHEALTHY_WHITE];
+    [[SIAlertView appearance] setButtonColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setDestructiveButtonColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setCancelButtonColor:STAYHEALTHY_BLUE];
     [[SIAlertView appearance] setButtonFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
+    [[SIAlertView appearance] setMessageFont:[UIFont fontWithName:@"Avenir-Light" size:16]];
+    [[SIAlertView appearance] setMessageColor:[UIColor lightGrayColor]];
 
     
     // Set the gesture for the sidebar toggle.
@@ -94,7 +96,7 @@
     _nameSearch.delegate = self;
     
     //Styling the search button.
-    self.searchButton.backgroundColor = [UIColor peterRiverColor];
+    self.searchButton.backgroundColor = STAYHEALTHY_BLUE;
     /*
     //If iPhone 5 then position and size the search button this way.
     if (IPHONE5) {
@@ -199,7 +201,7 @@
     //Now customize that view.
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 4, tableView.frame.size.width, 18)];
     [label setFont:[UIFont fontWithName:@"Avenir-Light" size:15]];
-    label.textColor = [UIColor peterRiverColor];
+    label.textColor = STAYHEALTHY_BLUE;
     
     // Section header is in 0th index
     if (tableView == selectMuscleTableView && section == 0) {
@@ -214,7 +216,7 @@
     else
     label.text = nil;
     [view addSubview:label];
-    [view setBackgroundColor:[UIColor cloudsColor]];
+    [view setBackgroundColor:STAYHEALTHY_WHITE];
     
     return view;
 
@@ -246,12 +248,12 @@
         //Stlying the cells.
         cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:17];
         cell.detailTextLabel.font = [UIFont fontWithName:@"Avenir-Light" size:14];
-        cell.textLabel.textColor = [UIColor peterRiverColor];
-        cell.detailTextLabel.textColor = [UIColor peterRiverColor];
+        cell.textLabel.textColor = STAYHEALTHY_BLUE;
+        cell.detailTextLabel.textColor = STAYHEALTHY_BLUE;
         
         //Then the background color view.
         UIView *bgColorView = [[UIView alloc] init];
-        bgColorView.backgroundColor = [UIColor cloudsColor];
+        bgColorView.backgroundColor = STAYHEALTHY_WHITE;
         bgColorView.layer.masksToBounds = YES;
         [cell setSelectedBackgroundView:bgColorView];
         //Then return the cell.
@@ -274,12 +276,12 @@
         //Stlying the cells.
         cell2.textLabel.font = [UIFont fontWithName:@"Avenir" size:17];
         cell2.detailTextLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16];
-        cell2.textLabel.textColor = [UIColor peterRiverColor];
+        cell2.textLabel.textColor = STAYHEALTHY_BLUE;
         cell2.detailTextLabel.textColor = [UIColor lightGrayColor];
         
         //Then the background color view.
         UIView *bgColorView = [[UIView alloc] init];
-        bgColorView.backgroundColor = [UIColor cloudsColor];
+        bgColorView.backgroundColor = STAYHEALTHY_WHITE;
         bgColorView.layer.masksToBounds = YES;
         [cell2 setSelectedBackgroundView:bgColorView];
         

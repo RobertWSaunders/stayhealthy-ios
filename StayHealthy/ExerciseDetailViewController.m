@@ -162,13 +162,13 @@
 //This method formats the data in the View Controller.
 -(void)formatData:(NSString*)difficultyTextCheck second:(NSString*)trimMaterialString third:(NSString*)trimString2{
     if ([difficultyTextCheck isEqualToString:@"Easy"])
-        difficultyText.textColor = [UIColor emerlandColor];
+        difficultyText.textColor = STAYHEALTHY_GREEN;
     if ([difficultyTextCheck isEqualToString:@"Intermediate"])
-        difficultyText.textColor = [UIColor belizeHoleColor];
+        difficultyText.textColor = STAYHEALTHY_DARKERBLUE;
     if ([difficultyTextCheck isEqualToString:@"Hard"])
-        difficultyText.textColor = [UIColor alizarinColor];
+        difficultyText.textColor = STAYHEALTHY_RED;
     if ([difficultyTextCheck isEqualToString:@"Very Hard"])
-        difficultyText.textColor = [UIColor alizarinColor];
+        difficultyText.textColor = STAYHEALTHY_RED;
    
     NSString *trimmedString = [trimMaterialString stringByTrimmingCharactersInSet:
                                [NSCharacterSet whitespaceCharacterSet]];
@@ -288,11 +288,11 @@
     if (indexPath.row == 5) {
         cell.detailTextLabel.text = self.difficulty;
         if ([self.difficulty isEqualToString:@"Easy"])
-            cell.detailTextLabel.textColor = [UIColor emerlandColor];
+            cell.detailTextLabel.textColor = STAYHEALTHY_GREEN;
         if ([self.difficulty isEqualToString:@"Intermediate"])
-            cell.detailTextLabel.textColor = [UIColor belizeHoleColor];
+            cell.detailTextLabel.textColor = STAYHEALTHY_DARKERBLUE;
         if ([self.difficulty isEqualToString:@"Hard"])
-            cell.detailTextLabel.textColor = [UIColor alizarinColor];
+            cell.detailTextLabel.textColor = STAYHEALTHY_RED;
         if ([self.difficulty isEqualToString:@"Very Hard"])
             cell.detailTextLabel.textColor = [UIColor blackColor];
     }
