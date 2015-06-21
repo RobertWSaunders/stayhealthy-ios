@@ -12,7 +12,7 @@
 @implementation advancedOptionsSelect
 
 -(void)viewDidLoad {
-      NSDictionary *attrDict = [NSDictionary dictionaryWithObject: [UIFont fontWithName:@"Avenir" size:17.0] forKey:NSFontAttributeName];
+      NSDictionary *attrDict = [NSDictionary dictionaryWithObject:STAYHEALTHY_NAVBARBUTTONFONT forKey:NSFontAttributeName];
     [[UIBarButtonItem appearance] setTitleTextAttributes: attrDict
                                                 forState: UIControlStateDisabled];
     [[UIBarButtonItem appearance] setTitleTextAttributes: attrDict
@@ -52,14 +52,10 @@
     cell.textLabel.text = [_arrayForTableView objectAtIndex:indexPath.row];
     
     //Stlying the cells.
-    cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:17];
+    cell.textLabel.font = tableViewTitleTextFont;
     cell.textLabel.textColor = STAYHEALTHY_BLUE;
     
-    //Then the background color view.
-    UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = STAYHEALTHY_WHITE;
-    bgColorView.layer.masksToBounds = YES;
-    [cell setSelectedBackgroundView:bgColorView];
+    [CommonSetUpOperations tableViewSelectionColorSet:cell];
     
     return cell;
 }

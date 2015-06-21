@@ -28,25 +28,11 @@
 {
     [super viewDidLoad];
 
-
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-
-
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunchOfPage"])
     {
-        [TSMessage showNotificationInViewController:self
-                                              title:@"Now that you have chosen a muscle and a exercise type you can view all the exercises. You can toggle between grid and list view with the button in the top right. Tap this message to dismiss."
-                                           subtitle:nil
-                                              image:nil
-                                               type:TSMessageNotificationTypeMessage
-                                           duration:TSMessageNotificationDurationEndless
-                                           callback:nil
-                                        buttonTitle:nil
-                                     buttonCallback:nil
-                                         atPosition:TSMessageNotificationPositionTop
-                                canBeDismisedByUser:YES];
-
+        [CommonSetUpOperations performTSMessage:@"Now that you have chosen a muscle and a exercise type you can view all the exercises. You can toggle between grid and list view with the button in the top right. Tap this message to dismiss." message:nil viewController:self canBeDismissedByUser:YES duration:60];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunchOfPage"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
@@ -76,35 +62,37 @@
     self.tableViewList.hidden = YES;
     
     if (exerciseData.count == 0) {
-        [TSMessage showNotificationInViewController:self
-                                              title:@"No Exercises Were Found"
-                                           subtitle:nil
-                                              image:nil
-                                               type:TSMessageNotificationTypeMessage
-                                           duration:TSMessageNotificationDurationEndless
-                                           callback:nil
-                                        buttonTitle:nil
-                                     buttonCallback:nil
-                                         atPosition:TSMessageNotificationPositionTop
-                                canBeDismisedByUser:YES];
+        [CommonSetUpOperations performTSMessage:@"No Exercises Were Found" message:nil viewController:self canBeDismissedByUser:YES duration:60];
     }
 
 }
 
-/******************************************COLLECTION VIEW METHODS*****************************************/
-//Start of GRID VIEW
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (IS_IPHONE_6P) {
-        return CGSizeMake(180.f, 246.f);
-    }
-    if (IS_IPHONE_6) {
-        return CGSizeMake(160.f, 215.f);
-    }
-    return CGSizeMake(137.0f, 200.0f);
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (IS_IPHONE_6P)
+        return LARGECELL;
+    if (IS_IPHONE_6)
+        return MEDIUMCELL;
+    else
+        return SMALLCELL;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    if (IS_IPHONE_6 || IS_IPHONE_6P)
+        return LARGEINSETS;
+    else
+        return SMALLINSETS;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    if (IS_IPHONE_4_OR_LESS || IS_IPHONE_5)
+        return 0.0;
+    else if (IS_IPHONE_6)
+        return 5.0;
+    else
+        return 10.0;
 }
 
 
@@ -120,15 +108,9 @@
     
     ExerciseCollectionCell *exerciseCell;
     
-    if (IS_IPHONE_5 || IS_IPHONE_4_OR_LESS) {
+    
         exerciseCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"exerciseCollectionCell" forIndexPath:indexPath];
-    }
-    else if (IS_IPHONE_6P) {
-        exerciseCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"exerciseCollectionCell6P" forIndexPath:indexPath];
-    }
-    else if (IS_IPHONE_6) {
-        exerciseCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"exerciseCollectionCell6" forIndexPath:indexPath];
-    }
+    
 
     sqlColumns *exercise = [self.exerciseData objectAtIndex:indexPath.row];
     

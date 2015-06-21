@@ -8,10 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import <FacebookSDK/FacebookSDK.h>
-#import "CommonDataOperations.h"
-#import "CommonSetUpOperations.h"
-#import <Parse/Parse.h>
+
 
 
 @implementation AppDelegate
@@ -23,9 +20,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
-    [Parse setApplicationId:@"WV7lo14mPjcjRmuc4vgdOXuQg6aWihFO7s6oqBNy"
-                  clientKey:@"dYyFOqO28p3WcdiWAVmK7YIna1gVWQOpyEhHZnZq"];
 
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
      UIRemoteNotificationTypeAlert|
@@ -65,20 +59,17 @@
     }
 
     
-    // Override point for customization after application launch.
-    [FBLoginView class];
-    [FBProfilePictureView class];
     
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                             STAYHEALTHY_BLUE,
                                                             NSForegroundColorAttributeName,
-                                                            [UIFont fontWithName:@"Avenir-Light" size:20.0],
+                                                            STAYHEALTHY_NAVBARFONT,
                                                             NSFontAttributeName,
                                                            nil]];
+    
     [[UITabBar appearance] setTintColor:STAYHEALTHY_BLUE];
-    
-        
-    
+    [[UISegmentedControl appearance] setTintColor:STAYHEALTHY_BLUE];
+    [[UINavigationBar appearance] setTintColor:STAYHEALTHY_BLUE];
         return YES;
 }
 
@@ -86,15 +77,12 @@
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    // Store the deviceToken in the current installation and save it to Parse.
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    [currentInstallation setDeviceTokenFromData:deviceToken];
-    [currentInstallation saveInBackground];
+   
 }
 
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
+  
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -219,17 +207,6 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-    
-    // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
-    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
-    
-    // You can add your app-specific url handling code here if needed
-    
-    return wasHandled;
-}
+
 
 @end

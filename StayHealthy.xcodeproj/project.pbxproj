@@ -73,10 +73,11 @@
 		3FC466971B3501080062EBDB /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FC4667F1B3501080062EBDB /* TSMessagesDefaultDesign.json */; };
 		3FC466981B3501080062EBDB /* TSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC466821B3501080062EBDB /* TSBlurView.m */; };
 		3FC466991B3501080062EBDB /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC466841B3501080062EBDB /* TSMessageView.m */; };
-		3FC4669B1B35013D0062EBDB /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC4669A1B35013D0062EBDB /* FacebookSDK.framework */; };
-		3FC4669D1B3501440062EBDB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC4669C1B3501440062EBDB /* Parse.framework */; };
 		3FC4669F1B3501540062EBDB /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3FC4669E1B3501540062EBDB /* SIAlertView.bundle */; };
 		3FC466A31B3501AE0062EBDB /* ALCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC466A21B3501AE0062EBDB /* ALCustomColoredAccessory.m */; };
+		3FC466A61B35AA480062EBDB /* Arista2.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FC466A51B35AA480062EBDB /* Arista2.0.ttf */; };
+		3FC466B21B3621970062EBDB /* CommonRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC466B11B3621970062EBDB /* CommonRequests.m */; };
+		3FC466B51B3628510062EBDB /* TableViewContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC466B41B3628510062EBDB /* TableViewContainerViewController.m */; };
 		3FD56BA31985585F0020B23C /* workoutFavoriteObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD56BA21985585F0020B23C /* workoutFavoriteObjects.m */; };
 		3FD5E1A11853A8D00063E10C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD5E1A01853A8D00063E10C /* Foundation.framework */; };
 		3FD5E1A31853A8D00063E10C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD5E1A21853A8D00063E10C /* CoreGraphics.framework */; };
@@ -211,11 +212,14 @@
 		3FC466821B3501080062EBDB /* TSBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSBlurView.m; sourceTree = "<group>"; };
 		3FC466831B3501080062EBDB /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageView.h; sourceTree = "<group>"; };
 		3FC466841B3501080062EBDB /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
-		3FC4669A1B35013D0062EBDB /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = "../../Project Resources/StayHealthy/Bundles/FacebookSDK.framework"; sourceTree = "<group>"; };
-		3FC4669C1B3501440062EBDB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Project Resources/StayHealthy/Bundles/Parse.framework"; sourceTree = "<group>"; };
 		3FC4669E1B3501540062EBDB /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SIAlertView.bundle; path = "../../Project Resources/StayHealthy/Bundles/SIAlertView.bundle"; sourceTree = "<group>"; };
 		3FC466A11B3501AE0062EBDB /* ALCustomColoredAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALCustomColoredAccessory.h; sourceTree = "<group>"; };
 		3FC466A21B3501AE0062EBDB /* ALCustomColoredAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALCustomColoredAccessory.m; sourceTree = "<group>"; };
+		3FC466A51B35AA480062EBDB /* Arista2.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Arista2.0.ttf; path = "../../../Project Resources/StayHealthy/Fonts/Arista2.0.ttf"; sourceTree = "<group>"; };
+		3FC466B01B3621970062EBDB /* CommonRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonRequests.h; sourceTree = "<group>"; };
+		3FC466B11B3621970062EBDB /* CommonRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonRequests.m; sourceTree = "<group>"; };
+		3FC466B31B3628510062EBDB /* TableViewContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewContainerViewController.h; sourceTree = "<group>"; };
+		3FC466B41B3628510062EBDB /* TableViewContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewContainerViewController.m; sourceTree = "<group>"; };
 		3FD56BA11985585F0020B23C /* workoutFavoriteObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = workoutFavoriteObjects.h; sourceTree = "<group>"; };
 		3FD56BA21985585F0020B23C /* workoutFavoriteObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = workoutFavoriteObjects.m; sourceTree = "<group>"; };
 		3FD5E19D1853A8D00063E10C /* StayHealthy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StayHealthy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,9 +271,7 @@
 				3F7D77B419A3086200E00065 /* StoreKit.framework in Frameworks */,
 				3F7D77B519A3086200E00065 /* SystemConfiguration.framework in Frameworks */,
 				3FD5E1A31853A8D00063E10C /* CoreGraphics.framework in Frameworks */,
-				3FC4669B1B35013D0062EBDB /* FacebookSDK.framework in Frameworks */,
 				3FE100931863CC0100C53D76 /* QuartzCore.framework in Frameworks */,
-				3FC4669D1B3501440062EBDB /* Parse.framework in Frameworks */,
 				3F7D77A719A3081300E00065 /* AudioToolbox.framework in Frameworks */,
 				3F7D779F19A2DFEA00E00065 /* MessageUI.framework in Frameworks */,
 				3FE103C518654BC500C53D76 /* libsqlite3.0.dylib in Frameworks */,
@@ -336,8 +338,6 @@
 		3F2E5A8E18E11B8600EE4734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3FC4669C1B3501440062EBDB /* Parse.framework */,
-				3FC4669A1B35013D0062EBDB /* FacebookSDK.framework */,
 				3F7D77A619A3081300E00065 /* AudioToolbox.framework */,
 				3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */,
 				3F7D77AD19A3086200E00065 /* StoreKit.framework */,
@@ -481,6 +481,7 @@
 		3FC465E41B33A7F70062EBDB /* Global Declarations */ = {
 			isa = PBXGroup;
 			children = (
+				3FC466AF1B3620FF0062EBDB /* Common Requests */,
 				3F8BB35C198C6D810098E1A7 /* Common Database Operations */,
 				3F8BB360198D4AD50098E1A7 /* Common Set Up Operations */,
 			);
@@ -490,6 +491,7 @@
 		3FC465E51B33A8200062EBDB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3FC466A41B35AA3C0062EBDB /* Fonts */,
 				3FD5E1E11853A99C0063E10C /* Exercise Images */,
 				3FDA2D5B19C26699003C2FF4 /* Images.xcassets */,
 			);
@@ -826,6 +828,32 @@
 			path = "../../../Project Resources/StayHealthy/Frameworks/ALCustomColoredAccessory";
 			sourceTree = "<group>";
 		};
+		3FC466A41B35AA3C0062EBDB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3FC466A51B35AA480062EBDB /* Arista2.0.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		3FC466AF1B3620FF0062EBDB /* Common Requests */ = {
+			isa = PBXGroup;
+			children = (
+				3FC466B01B3621970062EBDB /* CommonRequests.h */,
+				3FC466B11B3621970062EBDB /* CommonRequests.m */,
+			);
+			name = "Common Requests";
+			sourceTree = "<group>";
+		};
+		3FC466B61B3628580062EBDB /* Container TableView */ = {
+			isa = PBXGroup;
+			children = (
+				3FC466B31B3628510062EBDB /* TableViewContainerViewController.h */,
+				3FC466B41B3628510062EBDB /* TableViewContainerViewController.m */,
+			);
+			name = "Container TableView";
+			sourceTree = "<group>";
+		};
 		3FD5E1941853A8D00063E10C = {
 			isa = PBXGroup;
 			children = (
@@ -919,6 +947,7 @@
 		3FE95E25187A5DB7005DD13D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				3FC466B61B3628580062EBDB /* Container TableView */,
 				3FC465FA1B33B25F0062EBDB /* Settings Page */,
 				3F7D77A019A300C000E00065 /* Facebook + Twitter */,
 				3F7D779719A2DA1900E00065 /* Privacy Policy */,
@@ -1066,6 +1095,7 @@
 				3FC466361B34FE390062EBDB /* Rehab in Resources */,
 				3FD5E1AD1853A8D00063E10C /* InfoPlist.strings in Resources */,
 				3FC466971B3501080062EBDB /* TSMessagesDefaultDesign.json in Resources */,
+				3FC466A61B35AA480062EBDB /* Arista2.0.ttf in Resources */,
 				3FC4668E1B3501080062EBDB /* NotificationBackgroundSuccess@2x.png in Resources */,
 				3FC466951B3501080062EBDB /* NotificationButtonBackground.png in Resources */,
 				3FC466381B34FE390062EBDB /* Stretching in Resources */,
@@ -1106,8 +1136,10 @@
 				3FC4665A1B34FFBF0062EBDB /* MZTimerLabel.m in Sources */,
 				3F2E5A8318DF388300EE4734 /* ImprovedExerciseController.m in Sources */,
 				3F82E18D188E189A005DE38F /* FavoritesViewController.m in Sources */,
+				3FC466B21B3621970062EBDB /* CommonRequests.m in Sources */,
 				3F8BB363198D4AF70098E1A7 /* CommonSetUpOperations.m in Sources */,
 				3FD5E1B31853A8D00063E10C /* AppDelegate.m in Sources */,
+				3FC466B51B3628510062EBDB /* TableViewContainerViewController.m in Sources */,
 				3FE806A318F35F96006A0993 /* AnalysisCell.m in Sources */,
 				3F7D779A19A2DA3C00E00065 /* PrivacyPolicyViewController.m in Sources */,
 				3FF9DDA71853C7710083A499 /* MuscleSelectionViewController.m in Sources */,
@@ -1273,6 +1305,10 @@
 					"$(PROJECT_DIR)",
 					/Users/student/Development/Project,
 					Resources/StayHealthy/Bundles,
+					/Users/student/Development/Project,
+					"Resources/StayHealthy/Frameworks/parse-library-1.7.4",
+					/Users/student/Development/Project,
+					Resources/StayHealthy/Frameworks/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
@@ -1302,6 +1338,10 @@
 					"$(PROJECT_DIR)",
 					/Users/student/Development/Project,
 					Resources/StayHealthy/Bundles,
+					/Users/student/Development/Project,
+					"Resources/StayHealthy/Frameworks/parse-library-1.7.4",
+					/Users/student/Development/Project,
+					Resources/StayHealthy/Frameworks/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";

@@ -6,21 +6,14 @@
 //  Copyright (c) 2013 Mark Saunders. All rights reserved.
 //
 
-/*************************************************IMPLEMENTATION FILE************************************/
-/*************************************************REVISIT FOR VERSION 2.0.0************************************/
-//Incorporate better and more effective code, especially for passing the queryies to the next view controller.
 
 #import "MuscleSelectionViewController.h"
-//^^^^^^^^^^Import the header file.
 
 @interface MuscleSelectionViewController ()
 
 @end
 
 @implementation MuscleSelectionViewController
-
-@synthesize sidebarButton, warmup, strengthCheck, stretchingCheck, warmUpCheck;
-
 
 - (void)viewDidLoad
 {
@@ -31,33 +24,11 @@
     advancedSearchTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     advancedSearchTableView.scrollEnabled = NO;
     
-    UIColor *barColor = [UIColor colorWithRed:244.0f/255.0f green:244.0f/255.0f blue:244.0f/255.0f alpha:1.0f];
-    searchBar.barTintColor = barColor;
-    searchBar.tintColor = barColor;
-    
     //Give the ViewController a title.
     self.navigationController.title = @"Find Exercise";
 
-    
-    //Style the SIAlertView asking what exercise type.
-    [[SIAlertView appearance] setTitleFont:[UIFont fontWithName:@"Avenir-Light" size:20]];
-    [[SIAlertView appearance] setTitleColor:STAYHEALTHY_BLUE];
-    [[SIAlertView appearance] setMessageColor:STAYHEALTHY_BLUE];
-    [[SIAlertView appearance] setCornerRadius:4];
-    [[SIAlertView appearance] setShadowRadius:0];
-    [[SIAlertView appearance] setViewBackgroundColor:STAYHEALTHY_WHITE];
-    [[SIAlertView appearance] setButtonColor:STAYHEALTHY_BLUE];
-    [[SIAlertView appearance] setDestructiveButtonColor:STAYHEALTHY_BLUE];
-    [[SIAlertView appearance] setCancelButtonColor:STAYHEALTHY_BLUE];
-    [[SIAlertView appearance] setButtonFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
-    [[SIAlertView appearance] setMessageFont:[UIFont fontWithName:@"Avenir-Light" size:16]];
-    [[SIAlertView appearance] setMessageColor:[UIColor lightGrayColor]];
+    [CommonSetUpOperations styleAlertView];
 
-    
-    // Set the gesture for the sidebar toggle.
-    //[self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
-    //Check to see if its the users first time on this page. If so launch a TSMessage welcoming them and providing info.
 
     //Our SIAlertview string values.
     strength = @"Strength";
@@ -73,8 +44,6 @@
     queries = findExerciseData[@"queries"];
     //Title text.
     titleText = findExerciseData[@"titleText"];
-    
-  
     
     //Tableview/Muscle List view arrays
     musclesForTableview = findExerciseData[@"musclesForTableview"];
@@ -92,39 +61,14 @@
   
     advancedOptionsSelections = [NSArray arrayWithObjects:@"Any",@"Any", @"Any", @"Any", @"Strength", nil];
     
-    //Advanced Search Setup and its arrays.
-    _nameSearch.delegate = self;
-    
     //Styling the search button.
     self.searchButton.backgroundColor = STAYHEALTHY_BLUE;
-    /*
-    //If iPhone 5 then position and size the search button this way.
-    if (IPHONE5) {
-        self.searchButton.frame = CGRectMake(0,417,320,59);//x,y,w,h
-    } else
-        self.searchButton.frame = CGRectMake(0,330,320,59);//x,y,w,h
-*/
-    
-    //If iPhone 5 then position and size the tableview this way.
-    if (IPHONE5) {
-        selectMuscleTableView.frame = CGRectMake(0,46,320,427);//x,y,w,h
-    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunch1"])
     {
-        
-              [TSMessage showNotificationInViewController:self
-                                              title:@"Welcome to the exercise selection page! Here you can change between the muscle list and advanced search. Simply choose the muscle you'd like to exercise or you can use the advanced search to choose specifics, like the type of equipment, difficulty, muscle groups, if you want a more specific result. Looking for a warm-up? Press the running icon in the top right. Tap this message to dismiss."
-                                           subtitle:nil
-                                              image:nil
-                                               type:TSMessageNotificationTypeMessage
-                                           duration:TSMessageNotificationDurationEndless
-                                           callback:nil                                        buttonTitle:nil
-                                     buttonCallback:nil
-                                         atPosition:TSMessageNotificationPositionTop
-                                canBeDismisedByUser:YES];
+        [CommonSetUpOperations performTSMessage:@"Welcome to the exercise selection page! Here you can change between the muscle list and advanced search. Simply choose the muscle you'd like to exercise or you can use the advanced search to choose specifics, like the type of equipment, difficulty, muscle groups, if you want a more specific result. Looking for a warm-up? Press the running icon in the top right. Tap this message to dismiss." message:nil viewController:self canBeDismissedByUser:YES duration:60];
 
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunch1"];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -137,8 +81,6 @@
     [self performSegueWithIdentifier:@"30" sender:self];
 }
 
-//MUSCLE LIST STUFF - THE TABLEVIEW STUFF
-/*****************************************************************/
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (IS_IPHONE_4_OR_LESS) {
@@ -184,46 +126,34 @@
         return 0;
     }
     else {
-    
         return 25;
     }
-    
-
 }
 
-//The view for the header in the tableview.
+
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    
-    //Create a view for the header.
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
+    UIView *headerView = [CommonSetUpOperations drawViewForTableViewHeader:tableView];
     
     //Now customize that view.
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 4, tableView.frame.size.width, 18)];
-    [label setFont:[UIFont fontWithName:@"Avenir-Light" size:15]];
-    label.textColor = STAYHEALTHY_BLUE;
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 4, tableView.frame.size.width, 18)];
+    [titleLabel setFont:tableViewHeaderFont];
+    titleLabel.textColor = STAYHEALTHY_BLUE;
     
-    // Section header is in 0th index
+    [headerView addSubview:titleLabel];
+    
     if (tableView == selectMuscleTableView && section == 0) {
-        label.text = @"Front Muscles";
+        titleLabel.text = @"Front Muscles";
     }
     else if (tableView == selectMuscleTableView &&  section == 1) {
-        label.text = @"Back Muscles";
+        titleLabel.text = @"Back Muscles";
     }
-    else if (tableView == advancedSearchTableView &&  section == 0) {
-        label.text = @"Configure Specifications";
-    }
-    else
-    label.text = nil;
-    [view addSubview:label];
-    [view setBackgroundColor:STAYHEALTHY_WHITE];
     
-    return view;
-
+    return headerView;
 }
 
 
-//Design and fill the tableview cells.
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == selectMuscleTableView) {
@@ -246,18 +176,12 @@
     }
         
         //Stlying the cells.
-        cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:17];
-        cell.detailTextLabel.font = [UIFont fontWithName:@"Avenir-Light" size:14];
+        cell.textLabel.font = tableViewTitleTextFont;
+        cell.detailTextLabel.font = tableViewUnderTitleTextFont;
         cell.textLabel.textColor = STAYHEALTHY_BLUE;
         cell.detailTextLabel.textColor = STAYHEALTHY_BLUE;
         
-        //Then the background color view.
-        UIView *bgColorView = [[UIView alloc] init];
-        bgColorView.backgroundColor = STAYHEALTHY_WHITE;
-        bgColorView.layer.masksToBounds = YES;
-        [cell setSelectedBackgroundView:bgColorView];
-        //Then return the cell.
-
+        [CommonSetUpOperations tableViewSelectionColorSet:cell];
     
        return cell;
     }
@@ -274,23 +198,15 @@
         cell2.detailTextLabel.text = [advancedOptionsSelections objectAtIndex:indexPath.row];
         
         //Stlying the cells.
-        cell2.textLabel.font = [UIFont fontWithName:@"Avenir" size:17];
-        cell2.detailTextLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16];
+        cell2.textLabel.font = tableViewTitleTextFont;
+        cell2.detailTextLabel.font = tableViewDetailTextFont;
         cell2.textLabel.textColor = STAYHEALTHY_BLUE;
-        cell2.detailTextLabel.textColor = [UIColor lightGrayColor];
+        cell2.detailTextLabel.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
         
-        //Then the background color view.
-        UIView *bgColorView = [[UIView alloc] init];
-        bgColorView.backgroundColor = STAYHEALTHY_WHITE;
-        bgColorView.layer.masksToBounds = YES;
-        [cell2 setSelectedBackgroundView:bgColorView];
-        
-        //Then return the cell.
+       [CommonSetUpOperations tableViewSelectionColorSet:cell2];
+
         return cell2;
     }
-    
-    
-    
 }
 
 //Controls what happens when a user presses a cell, i.e. a SIAlertview pops up.
@@ -329,7 +245,6 @@
             [self selectRow:indexPathNum second:indexPathNumAdd];
         }
     }
-
     //Then deselect the row once complete touch/select.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -369,33 +284,14 @@
     alertView.title = title;
 }
 
-/*****************************************************************/
-//END OF TABLEVIEW - MUSCLE LIST
 
-/*****************************************************************/
-//ADVANCED SEARCH
 
 //The button that actually performs the search.
 - (IBAction)searchButton:(id)sender {
     [self performSelector:@selector(search) withObject:nil];
 }
 
-/*
-- (void)DropDownListView:(DropDownListView *)dropdownListView didSelectedIndex:(NSInteger)anIndex{
-    if (self.primaryPressed) {
-        _primaryLabel.text=[primaryMuscleList objectAtIndex:anIndex];
-    }
-    else if (self.secondaryPressed) {
-        _secondaryLabel.text=[secondaryMuscleList objectAtIndex:anIndex];
-    }
-    else if (self.equipmentPressed) {
-        _equipmentLabel.text=[equipmentList objectAtIndex:anIndex];
-    }
-    else if (self.difficultyPressed) {
-        _difficultLabel.text=[difficultyList objectAtIndex:anIndex];
-    }
-}
-*/
+
 -(void)search {
     
     //Reset the array for another search.
@@ -438,14 +334,6 @@
                     searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat:@"AND "]];
                 }
             }
-            /*
-            if (selectedValues.count > 0) {
-                searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"AND Name LIKE '%%%@%%'",searchName]];
-            }
-            else {
-                searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"Name LIKE '%%%@%%'",searchName]];
-            }
-            */
             if (i != selectedTypes.count-1) {
                 searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:@"UNION ALL"];
             }
@@ -515,97 +403,12 @@
 //This checks to see if the search is valid. If it is then perform the search.
 -(void)checkSearch:(NSArray*)typesSelected second:(NSString*)messageText {
     if (typesSelected.count == 0)
-        [TSMessage showNotificationInViewController:self
-                                              title:messageText
-                                           subtitle:nil
-                                              image:nil
-                                               type:TSMessageNotificationTypeMessage
-                                           duration:6
-                                           callback:nil
-                                        buttonTitle:nil
-                                     buttonCallback:nil
-                                         atPosition:TSMessageNotificationPositionTop
-                                canBeDismisedByUser:YES];
-        
+        [CommonSetUpOperations performTSMessage:messageText message:nil viewController:self canBeDismissedByUser:YES duration:6];
     else
         [self performSegueWithIdentifier:@"search" sender:nil];
 }
-/*
-//The method that shows the pop up, dependant on a few parameters.
--(void)showPopUpWithTitle:(NSString*)popupTitle withOption:(NSArray*)arrOptions xy:(CGPoint)point size:(CGSize)size isMultiple:(BOOL)isMultiple{
-    
-    exerciseType = [[DropDownListView alloc] initWithTitle:popupTitle options:arrOptions xy:point size:size isMultiple:isMultiple];
-    exerciseType.delegate = self;
-    [exerciseType showInView:self.view animated:YES];
-    
-    [exerciseType SetBackGroundDropDwon_R:52.0 G:152.0 B:219.0 alpha:0.95];
-    
-}
-
-//What happens when the primary muscle button is pressed.
-- (IBAction)PrimaryMuscle:(id)sender {
-    [self checkBools:NO second:YES third:NO fourth:NO fith:NO];
-    [self showPopUpWithTitle:@"Select Primary Muscle" withOption:primaryMuscleList xy:CGPointMake(16, 106) size:CGSizeMake(287, 370) isMultiple:NO];
-}
-
-//What happens when the secondary muscle button is pressed.
-- (IBAction)SecondaryMuscle:(id)sender {
-    [self checkBools:NO second:NO third:NO fourth:NO fith:YES];
-    [self showPopUpWithTitle:@"Select Secondary Muscle" withOption:primaryMuscleList xy:CGPointMake(16, 106) size:CGSizeMake(287, 370) isMultiple:NO];
-}
-
-//What happens when the difficulty button is pressed.
-- (IBAction)Difficulty:(id)sender {
-    [self checkBools:NO second:NO third:YES fourth:NO fith:NO];
-    [self showPopUpWithTitle:@"Select Difficulty" withOption:difficultyList xy:CGPointMake(16, 106) size:CGSizeMake(287, 226) isMultiple:NO];
-}
-
-//What happens when the equipment button is pressed.
-- (IBAction)Equipment:(id)sender {
-    [self checkBools:NO second:NO third:NO fourth:YES fith:NO];
-    [self showPopUpWithTitle:@"Select Equipment" withOption:equipmentList xy:CGPointMake(16, 106) size:CGSizeMake(287, 370) isMultiple:NO];
-}
 
 
--(void)checkBools:(BOOL)exerciseTypePressed second:(BOOL)primaryPressed third:(BOOL)difficultyPressed fourth:(BOOL)equipmentPressed fith:(BOOL) secondaryPressed{
-    self.exerciseTypePressed = exerciseTypePressed;
-    self.primaryPressed = primaryPressed;
-    self.difficultyPressed = difficultyPressed;
-    self.equipmentPressed = equipmentPressed;
-    self.secondaryPressed = secondaryPressed;
-    [exerciseType fadeOut];
-}
-
-*/
-//This is for the text field, it resignFirstResponder.
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [_nameSearch resignFirstResponder];
-    return YES;
-}
-
-/*****************************************************************/
-//END OF ADVANCED SEARCH
-
-/*****************************************************************/
-//START OF BODY VIEW
-//Switching the views one way.
-- (IBAction)switchViews:(id)sender {
-    [self switchViewsHide:YES second:NO];
-}
-
-//Switching the views another way, back.
-- (IBAction)switchViewBack:(id)sender {
-    [self switchViewsHide:NO second:YES];
-}
-
-//Checks which views to hide.
--(void)switchViewsHide:(BOOL)front second:(BOOL)back {
-    self.frontBodyView.hidden = front;
-    self.backBodyView.hidden = back;
-}
-
-//END OF BODY VIEW
-/*****************************************************************/
 
 - (void)done:(NSString*)selectedValue num:(NSInteger *)cell {
     primaryText = selectedValue;
@@ -633,9 +436,6 @@
     
 }
 
-
-//PREPARE FOR SEGUE, PASSES THE QUERIES
-/*****************************************************************/
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
@@ -689,85 +489,26 @@
     }
 }
 
-/*****************************************************************/
-//END OF PREPARE FOR SEGUE
-
-//If the user leaves the page then dismiss the all TSMessages.
 -(void)viewWillDisappear:(BOOL)animated {
     [TSMessage dismissActiveNotification];
 }
 
-//Segment Value changed. Toggles between the views.
+
 - (IBAction)segmentValueChanged:(UISegmentedControl*)sender {
     switch (sender.selectedSegmentIndex) {
         case 0:
-            [self setHidden:NO second:YES third:YES];
+            [self setHidden:NO second:YES];
             break;
         case 1:
-            [self setHidden:YES second:YES third:NO];
+            [self setHidden:YES second:NO];
         default:
             break;
     }
 }
 
-//Set the views hidden or not.
--(void)setHidden:(BOOL)muscleListHide second:(BOOL)bodyViewHide third:(BOOL)advancedSearchHide {
+-(void)setHidden:(BOOL)muscleListHide second:(BOOL)advancedSearchHide {
     self.muscleList.hidden = muscleListHide;
-    self.bodyView.hidden = bodyViewHide;
     self.advancedSearch.hidden = advancedSearchHide;
 }
 
-//BODYVIEW BUTTONS
-
-- (IBAction)abdominalButton:(id)sender {
-    [self selectRow:@"0" second:@"1"];
-}
-- (IBAction)pectoralisButton:(id)sender {
-    [self strengthOnly:@"4"];
-}
-- (IBAction)quadriceps:(id)sender {
-    [self selectRow:@"12" second:@"13"];
-}
-- (IBAction)traps:(id)sender {
-    [self selectRow:@"10" second:@"11"];
-}
-- (IBAction)biceps:(id)sender {
-    [self selectRow:@"2" second:@"3"];
-}
-- (IBAction)forearms:(id)sender {
-    [self selectRow:@"5" second:@"6"];
-}
-- (IBAction)groin:(id)sender {
-    [self selectRow:@"7" second:@"8"];
-}
-- (IBAction)oblique:(id)sender {
-    [self strengthOnly:@"9"];
-}
-- (IBAction)shoulder:(id)sender {
-    [self selectRow:@"14" second:@"15"];
-}
-- (IBAction)tricep:(id)sender {
-    [self selectRow:@"16" second:@"17"];
-}
-- (IBAction)wrist:(id)sender {
-    [self selectRow:@"18" second:@"19"];
-}
-- (IBAction)calf:(id)sender {
-    [self selectRow:@"20" second:@"21"];
-}
-- (IBAction)glutes:(id)sender {
-    [self selectRow:@"22" second:@"23"];
-}
-- (IBAction)hamstring:(id)sender {
-    [self selectRow:@"24" second:@"25"];
-}
-- (IBAction)lats:(id)sender {
-    [self selectRow:@"26" second:@"27"];
-}
-- (IBAction)lowerback:(id)sender {
-    [self selectRow:@"28" second:@"29"];
-}
-
 @end
-
-/***********************************************END OF CLASS*****************************************/

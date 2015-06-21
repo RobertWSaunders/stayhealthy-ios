@@ -7,14 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TSMessage.h"
 
 @interface CommonSetUpOperations : NSObject
 
 //Styles a collectionview cell to the desired appearance.
 + (void)styleCollectionViewCell:(UICollectionViewCell*)collectionViewCell;
 
-+ (void)performTSMessage:(NSString*)titleText message:(NSString*)message viewController:(UIViewController*)controllerForDisplay;
++ (void)performTSMessage:(NSString*)titleText message:(NSString*)message viewController:(UIViewController*)controllerForDisplay canBeDismissedByUser:(BOOL)canDismiss duration:(int)duration;
+
++ (void)styleAlertView;
+
++ (UIView *)tableViewSelectionColorSet:(UITableViewCell*)cell;
+
++ (UIView *)drawViewForTableViewHeader:(UITableView*)tableView;
 
 + (NSDate *)dateWithOutTime:(NSDate *)Date;
 

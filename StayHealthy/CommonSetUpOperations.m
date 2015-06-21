@@ -21,18 +21,50 @@
      collectionViewCell.layer.cornerRadius = 4.0f;
 }
 
-+ (void)performTSMessage:(NSString*)titleText message:(NSString*)message viewController:(UIViewController*)controllerForDisplay {
++ (void)performTSMessage:(NSString*)titleText message:(NSString*)message viewController:(UIViewController*)controllerForDisplay canBeDismissedByUser:(BOOL)canDismiss duration:(int)duration; {
         [TSMessage showNotificationInViewController:controllerForDisplay
                                               title:titleText
                                            subtitle:message
                                               image:nil
                                                type:TSMessageNotificationTypeMessage
-                                           duration:5
+                                           duration:duration
                                            callback:nil
                                         buttonTitle:nil
                                      buttonCallback:nil
                                          atPosition:TSMessageNotificationPositionTop
-                                canBeDismisedByUser:YES];
+                                canBeDismisedByUser:canDismiss];
+}
+
++ (UIView*)tableViewSelectionColorSet:(UITableViewCell *)cell {
+
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = STAYHEALTHY_WHITE;
+    bgColorView.layer.masksToBounds = YES;
+    [cell setSelectedBackgroundView:bgColorView];
+    return bgColorView;
+}
+
++ (UIView *)drawViewForTableViewHeader:(UITableView*)tableView {
+    //Create a view for the header.
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
+    [view setBackgroundColor:STAYHEALTHY_WHITE];
+    return view;
+}
+
++ (void)styleAlertView {
+    //Style the SIAlertView asking what exercise type.
+    [[SIAlertView appearance] setTitleFont:alertViewTitleFont];
+    [[SIAlertView appearance] setTitleColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setMessageColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setCornerRadius:4];
+    [[SIAlertView appearance] setShadowRadius:0];
+    [[SIAlertView appearance] setViewBackgroundColor:STAYHEALTHY_WHITE];
+    [[SIAlertView appearance] setButtonColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setDestructiveButtonColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setCancelButtonColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setButtonFont:alertViewButtonFont];
+    [[SIAlertView appearance] setMessageFont:alertViewMessageFont];
+    [[SIAlertView appearance] setMessageColor:STAYHEALTHY_LIGHTGRAYCOLOR];
 }
 
 //Return the date without time.

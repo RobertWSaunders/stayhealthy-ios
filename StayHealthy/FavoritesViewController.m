@@ -42,24 +42,13 @@
     
     //If there are no favorites then perform a message telling the user.
     if ( favoriteStrengthExercises.count == 0 &&  favoriteStretchExercises.count == 0 &&  favoriteWarmupExercises.count == 0 &&  favoriteWorkouts.count == 0)
-        [CommonSetUpOperations performTSMessage:@"You have no favorites. To add one, on an exercise page simply press the star in the top right corner. If it is favorited then the star will be filled." message:nil viewController:self];
+        [CommonSetUpOperations performTSMessage:@"You have no favorites. To add one, on an exercise page simply press the star in the top right corner. If it is favorited then the star will be filled." message:nil viewController:self canBeDismissedByUser:YES duration:6];
     
-    //[CommonSetUpOperations setUpSidebarMenu:sidebarIcon viewController:self];
     [self setSegmentedControlText];
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"Fav"])
     {
-        [TSMessage showNotificationInViewController:self
-                                              title:@"Welcome to the favorites page. Here you can view all your favorited exercises and workouts. To favorite a workout or exercise just tap the star on any workout or exercise detail page. You can toggle between the different types of exercises with the control at the top. Tap this message to dismiss."
-                                           subtitle:nil
-                                              image:nil
-                                               type:TSMessageNotificationTypeMessage
-                                           duration:TSMessageNotificationDurationEndless
-                                           callback:nil
-                                        buttonTitle:nil
-                                     buttonCallback:nil
-                                         atPosition:TSMessageNotificationPositionTop
-                                canBeDismisedByUser:YES];
+        [CommonSetUpOperations performTSMessage:@"Welcome to the favorites page. Here you can view all your favorited exercises and workouts. To favorite a workout or exercise just tap the star on any workout or exercise detail page. You can toggle between the different types of exercises with the control at the top. Tap this message to dismiss." message:nil viewController:self canBeDismissedByUser:YES duration:60];
         
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"Fav"];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -647,39 +636,14 @@ indexPath {
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     //If there are no favorites then perform a message telling the user.
     if ( favoriteStrengthExercises.count == 0 &&  favoriteStretchExercises.count == 0 &&  favoriteWarmupExercises.count == 0 &&  favoriteWorkouts.count == 0)
-        [CommonSetUpOperations performTSMessage:@"You have no favorites. To add one, on an exercise page simply press the star in the top right corner. If it is favorited then the star will be filled." message:nil viewController:self];
-
+        [CommonSetUpOperations performTSMessage:@"You have no favorites. To add one, on an exercise page simply press the star in the top right corner. If it is favorited then the star will be filled." message:nil viewController:self canBeDismissedByUser:YES duration:6];
 }
 
 //If the user leaves the page then dismiss the all TSMessages.
 -(void)viewWillDisappear:(BOOL)animated {
     [TSMessage dismissActiveNotification];
 }
-/*
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
-    if (scrollView == scroller) {
-        [scroller setContentOffset: CGPointMake(scroller.contentOffset.x, 0)];
-        CGFloat pageWidth = scrollView.bounds.size.width;
-        NSInteger pageNumber = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-        segmentedControl.selectedSegmentIndex = pageNumber;
-    }
-  
-}
-
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if (scrollView == scroller) {
-        [scroller setScrollEnabled:NO];
-    }
-    else if (scrollView == strengthCollectionView || scrollView == stretchingCollectionView || scrollView == warmupCollectionView || scrollView == workoutsCollectionView) {
-        [scroller setScrollEnabled:YES];
-    }
-}
-
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-     NSLog(@"H");
-}
-*/
 
 
 @end

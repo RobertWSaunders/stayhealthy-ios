@@ -219,7 +219,8 @@
                              completion: nil];
         }
         else{
-            [CommonSetUpOperations performTSMessage:@"Unable to send email." message:@"Cannot send email because you haven't set up your information in the mail app." viewController:self];
+            [CommonSetUpOperations performTSMessage:@"Unable to send email." message:@"Cannot send email because you haven't set up your information in the mail app." viewController:self canBeDismissedByUser:YES duration:6];
+            
         }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -230,22 +231,22 @@
     switch (result) {
         case MFMailComposeResultCancelled:
         {
-            [CommonSetUpOperations performTSMessage:@"Email Cancelled" message:nil viewController:self];
+            [CommonSetUpOperations performTSMessage:@"Email Cancelled" message:nil viewController:self canBeDismissedByUser:YES duration:6];
         }
             break;
         case MFMailComposeResultSent:
         {
-            [CommonSetUpOperations performTSMessage:@"Email Sent" message:nil viewController:self];
+            [CommonSetUpOperations performTSMessage:@"Email Sent" message:nil viewController:self canBeDismissedByUser:YES duration:6];
         }
             break;
         case MFMailComposeResultFailed:
         {
-            [CommonSetUpOperations performTSMessage:@"Email Failed" message:nil viewController:self];
+            [CommonSetUpOperations performTSMessage:@"Email Failed" message:nil viewController:self canBeDismissedByUser:YES duration:6];
         }
             break;
         case MFMailComposeResultSaved:
         {
-            [CommonSetUpOperations performTSMessage:@"Email Saved" message:nil viewController:self];
+            [CommonSetUpOperations performTSMessage:@"Email Saved" message:nil viewController:self canBeDismissedByUser:YES duration:6];
         }
             break;
         default:

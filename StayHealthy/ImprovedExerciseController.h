@@ -14,25 +14,11 @@
 #import <UIKit/UIKit.h>
 //^^^^^^^^^^^^Standard UIKit.
 #import <sqlite3.h>
-//^^^^^^^^^^^^^^^^Handles the sqlite, required.
-
-//^^^^^^^^^^Our colors.
 #import "ExerciseDetailViewController.h"
-//^^^^^^^^^^Landing page.
-
-//^^^^^^^^^The slide menu, used just for accessability.
-#import "TSMessage.h"
-//^^^^^^^^^The alerts.
 #import "sqlColumns.h"
-//^^^^^^^^^The database objects.
 #import "ExerciseCollectionCell.h"
-//^^^^^^^^^This is the collectionview cell.
-#import "CommonDataOperations.h"
-#import "CommonSetUpOperations.h"
 #import "MGSwipeTableCell.h"
 #import "MGSwipeButton.h"
-
-
 
 
 //Incorporate all delegates.
