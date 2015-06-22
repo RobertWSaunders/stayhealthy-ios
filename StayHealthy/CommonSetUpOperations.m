@@ -10,6 +10,7 @@
 
 @implementation CommonSetUpOperations
 
+//Styles a UICollectionViewCell
 + (void)styleCollectionViewCell:(UICollectionViewCell*)collectionViewCell {
      collectionViewCell.layer.masksToBounds = NO;
      collectionViewCell.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -21,36 +22,34 @@
      collectionViewCell.layer.cornerRadius = 4.0f;
 }
 
+//Performs a TSMessage, specified message, and other parameters.
 + (void)performTSMessage:(NSString*)titleText message:(NSString*)message viewController:(UIViewController*)controllerForDisplay canBeDismissedByUser:(BOOL)canDismiss duration:(int)duration; {
-        [TSMessage showNotificationInViewController:controllerForDisplay
-                                              title:titleText
-                                           subtitle:message
-                                              image:nil
-                                               type:TSMessageNotificationTypeMessage
-                                           duration:duration
-                                           callback:nil
-                                        buttonTitle:nil
-                                     buttonCallback:nil
-                                         atPosition:TSMessageNotificationPositionTop
-                                canBeDismisedByUser:canDismiss];
+    [TSMessage showNotificationInViewController:controllerForDisplay
+                                          title:titleText
+                                       subtitle:message
+                                          image:nil
+                                           type:TSMessageNotificationTypeMessage
+                                       duration:duration
+                                       callback:nil
+                                    buttonTitle:nil
+                                 buttonCallback:nil
+                                     atPosition:TSMessageNotificationPositionTop
+                            canBeDismisedByUser:canDismiss];
 }
 
-+ (UIView*)tableViewSelectionColorSet:(UITableViewCell *)cell {
-
-    UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = STAYHEALTHY_WHITE;
-    bgColorView.layer.masksToBounds = YES;
-    [cell setSelectedBackgroundView:bgColorView];
-    return bgColorView;
+//Sets the initial tutorial TSMessage.
++ (void)setFirstViewTSMessage:(NSString *)key viewController:(UIViewController *)view message:(NSString *)message
+{
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:key])
+    {
+        [self performTSMessage:message message:nil viewController:view
+          canBeDismissedByUser:YES duration:60];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:key];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
-+ (UIView *)drawViewForTableViewHeader:(UITableView*)tableView {
-    //Create a view for the header.
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
-    [view setBackgroundColor:STAYHEALTHY_WHITE];
-    return view;
-}
-
+//Styles SIAlertViews.
 + (void)styleAlertView {
     //Style the SIAlertView asking what exercise type.
     [[SIAlertView appearance] setTitleFont:alertViewTitleFont];
@@ -67,109 +66,48 @@
     [[SIAlertView appearance] setMessageColor:STAYHEALTHY_LIGHTGRAYCOLOR];
 }
 
-//Return the date without time.
-+ (NSDate *)dateWithOutTime:(NSDate *)Date {
-    if(Date == nil )
-        Date = [NSDate date];
-    NSDateComponents* comps = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:Date];
-    return [[NSCalendar currentCalendar] dateFromComponents:comps];
+//Loads images in the background.
++ (void)loadImageOnBackgroundThread:(UIImageView *)imageView image:(UIImage *)image {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+        dispatch_sync(dispatch_get_main_queue(), ^(void) {
+            imageView.image = image;
+            imageView.alpha = 0.0;
+            [UIView animateWithDuration:0.8 animations:^{
+                imageView.alpha = 1.0;
+            }];
+        });
+    });
 }
 
-+ (NSString *)returnDateInString:(NSDate *)date {
-    NSString *dateString;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    dateString = [dateFormatter stringFromDate:date];
-    return dateString;
-}
-
-+ (NSString *)returnPrettyDate:(NSString*)stringDate format:(NSString*)format {
-    // Convert date object to desired output format
-    NSDateFormatter *dateFormatNormal = [[NSDateFormatter alloc] init];
-    [dateFormatNormal setDateFormat:@"yyyy-MM-dd"];
+//Sets the selected background color for UITableViews.
++ (UIView*)tableViewSelectionColorSet:(UITableViewCell *)cell {
     
-    // Convert date object to desired output format
-    NSDateFormatter *dateFormatDesired = [[NSDateFormatter alloc] init];
-    [dateFormatDesired setDateFormat:format];
-    
-    NSDate *originalDate = [dateFormatNormal dateFromString:stringDate];
-    
-    NSString *desiredDate = [dateFormatDesired stringFromDate:originalDate];
-    
-    return desiredDate;
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = STAYHEALTHY_WHITE;
+    bgColorView.layer.masksToBounds = YES;
+    [cell setSelectedBackgroundView:bgColorView];
+    return bgColorView;
 }
 
-//This method returns an array of days between two days.
-+ (NSMutableArray*)arrayOfDays:(NSDate*)startDate endDate:(NSDate*)endDate {
-
-    NSMutableArray *arrayOfDaysFill = [[NSMutableArray alloc] init];
-    [arrayOfDaysFill removeAllObjects];
-    // [arrayOfDays addObject:[self dateWithOutTime:startDate]];
-
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-
-    NSString *startDateString = [dateFormatter stringFromDate:startDate];
-
-    [arrayOfDaysFill addObject:startDateString];
-
-    NSDate *nextDate;
-    nextDate = startDate;
-
-    for (int i = 0; i < [self daysBetweenDate:startDate andDate:endDate]-1; i++) {
-
-        // start by retrieving day, weekday, month and year components for yourDate
-        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        NSDateComponents *todayComponents = [gregorian components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:nextDate];
-        NSInteger theDay = [todayComponents day];
-        NSInteger theMonth = [todayComponents month];
-        NSInteger theYear = [todayComponents year];
-
-        NSInteger theHour = [todayComponents hour];
-        NSInteger theMinute = [todayComponents minute];
-        NSInteger theSecond = [todayComponents second];
-
-        // now build a NSDate object for yourDate using these components
-        NSDateComponents *components = [[NSDateComponents alloc] init];
-        [components setDay:theDay];
-        [components setMonth:theMonth];
-        [components setYear:theYear];
-        [components setHour:theHour];
-        [components setMinute:theMinute];
-        [components setSecond:theSecond];
-
-        NSDate *thisDate = [gregorian dateFromComponents:components];
-
-        // now build a NSDate object for the next day
-        NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-        [offsetComponents setDay:1];
-        nextDate = [gregorian dateByAddingComponents:offsetComponents toDate:thisDate options:0];
-
-        NSString *nextDateString = [dateFormatter stringFromDate:nextDate];
-
-        [arrayOfDaysFill addObject:nextDateString];
-    }
-    return arrayOfDaysFill;
+//Draws the view for the TableView header.
++ (UIView *)drawViewForTableViewHeader:(UITableView*)tableView {
+    //Create a view for the header.
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
+    [view setBackgroundColor:STAYHEALTHY_WHITE];
+    return view;
 }
 
-
-+ (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
-{
-    NSDate *fromDate;
-    NSDate *toDate;
-
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-
-    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate
-                 interval:NULL forDate:fromDateTime];
-    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate
-                 interval:NULL forDate:toDateTime];
-
-    NSDateComponents *difference = [calendar components:NSDayCalendarUnit
-                                               fromDate:fromDate toDate:toDate options:0];
-
-    return [difference day];
+//Returns the color based off of the difficulty passed to it.
++ (UIColor*)determineDifficultyColor:(NSString *)difficulty {
+    if ([difficulty isEqualToString:@"Easy"])
+        return STAYHEALTHY_GREEN;
+    else if ([difficulty isEqualToString:@"Intermediate"])
+        return STAYHEALTHY_DARKERBLUE;
+    else if ([difficulty isEqualToString:@"Hard"])
+        return STAYHEALTHY_RED;
+    else if ([difficulty isEqualToString:@"Very Hard"])
+        return [UIColor blackColor];
+    return [UIColor blackColor];
 }
-
 
 @end

@@ -42,8 +42,6 @@
 		3FC466361B34FE390062EBDB /* Rehab in Resources */ = {isa = PBXBuildFile; fileRef = 3FC466331B34FE390062EBDB /* Rehab */; };
 		3FC466371B34FE390062EBDB /* Strength in Resources */ = {isa = PBXBuildFile; fileRef = 3FC466341B34FE390062EBDB /* Strength */; };
 		3FC466381B34FE390062EBDB /* Stretching in Resources */ = {isa = PBXBuildFile; fileRef = 3FC466351B34FE390062EBDB /* Stretching */; };
-		3FC4663A1B34FEA60062EBDB /* Stayhealthyexercises.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 3FC466391B34FEA60062EBDB /* Stayhealthyexercises.sqlite */; };
-		3FC4663C1B34FEAE0062EBDB /* UserDB1.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 3FC4663B1B34FEAE0062EBDB /* UserDB1.sqlite */; };
 		3FC4664E1B34FF800062EBDB /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4664B1B34FF800062EBDB /* MGSwipeButton.m */; };
 		3FC4664F1B34FF800062EBDB /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4664D1B34FF800062EBDB /* MGSwipeTableCell.m */; };
 		3FC466551B34FFA10062EBDB /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC466521B34FFA10062EBDB /* MJPopupBackgroundView.m */; };
@@ -78,6 +76,8 @@
 		3FC466A61B35AA480062EBDB /* Arista2.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FC466A51B35AA480062EBDB /* Arista2.0.ttf */; };
 		3FC466B21B3621970062EBDB /* CommonRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC466B11B3621970062EBDB /* CommonRequests.m */; };
 		3FC466B51B3628510062EBDB /* TableViewContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC466B41B3628510062EBDB /* TableViewContainerViewController.m */; };
+		3FC466B81B371C370062EBDB /* StayHealthyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 3FC466B71B371C370062EBDB /* StayHealthyDatabase.sqlite */; };
+		3FC466BA1B371C3F0062EBDB /* UserDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 3FC466B91B371C3F0062EBDB /* UserDatabase.sqlite */; };
 		3FD56BA31985585F0020B23C /* workoutFavoriteObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD56BA21985585F0020B23C /* workoutFavoriteObjects.m */; };
 		3FD5E1A11853A8D00063E10C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD5E1A01853A8D00063E10C /* Foundation.framework */; };
 		3FD5E1A31853A8D00063E10C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD5E1A21853A8D00063E10C /* CoreGraphics.framework */; };
@@ -169,8 +169,6 @@
 		3FC466331B34FE390062EBDB /* Rehab */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Rehab; path = "../../../Project Resources/StayHealthy/Exercise Images/Rehab"; sourceTree = "<group>"; };
 		3FC466341B34FE390062EBDB /* Strength */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Strength; path = "../../../Project Resources/StayHealthy/Exercise Images/Strength"; sourceTree = "<group>"; };
 		3FC466351B34FE390062EBDB /* Stretching */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Stretching; path = "../../../Project Resources/StayHealthy/Exercise Images/Stretching"; sourceTree = "<group>"; };
-		3FC466391B34FEA60062EBDB /* Stayhealthyexercises.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = Stayhealthyexercises.sqlite; path = "../../../Project Resources/StayHealthy/Databases/Stayhealthyexercises.sqlite"; sourceTree = "<group>"; };
-		3FC4663B1B34FEAE0062EBDB /* UserDB1.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = UserDB1.sqlite; path = "../../../Project Resources/StayHealthy/Databases/UserDB1.sqlite"; sourceTree = "<group>"; };
 		3FC4664A1B34FF800062EBDB /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
 		3FC4664B1B34FF800062EBDB /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
 		3FC4664C1B34FF800062EBDB /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
@@ -220,6 +218,8 @@
 		3FC466B11B3621970062EBDB /* CommonRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonRequests.m; sourceTree = "<group>"; };
 		3FC466B31B3628510062EBDB /* TableViewContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewContainerViewController.h; sourceTree = "<group>"; };
 		3FC466B41B3628510062EBDB /* TableViewContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewContainerViewController.m; sourceTree = "<group>"; };
+		3FC466B71B371C370062EBDB /* StayHealthyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = StayHealthyDatabase.sqlite; path = "../../../Project Resources/StayHealthy/Databases/StayHealthyDatabase.sqlite"; sourceTree = "<group>"; };
+		3FC466B91B371C3F0062EBDB /* UserDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = UserDatabase.sqlite; path = "../../../Project Resources/StayHealthy/Databases/UserDatabase.sqlite"; sourceTree = "<group>"; };
 		3FD56BA11985585F0020B23C /* workoutFavoriteObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = workoutFavoriteObjects.h; sourceTree = "<group>"; };
 		3FD56BA21985585F0020B23C /* workoutFavoriteObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = workoutFavoriteObjects.m; sourceTree = "<group>"; };
 		3FD5E19D1853A8D00063E10C /* StayHealthy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StayHealthy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -460,8 +460,8 @@
 		3FC465E21B33A79B0062EBDB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3F18B151187F841A00EC852A /* Workouts */,
 				3FF735BB185ABA9900FECDF2 /* Find Exercise */,
+				3F18B151187F841A00EC852A /* Workouts */,
 				3F82E18A188E1878005DE38F /* Favorites */,
 				3FE95E25187A5DB7005DD13D /* Settings */,
 				3FC465E31B33A7A50062EBDB /* Tab Controller */,
@@ -501,7 +501,7 @@
 		3FC465E61B33A9BD0062EBDB /* Information Database */ = {
 			isa = PBXGroup;
 			children = (
-				3FC466391B34FEA60062EBDB /* Stayhealthyexercises.sqlite */,
+				3FC466B71B371C370062EBDB /* StayHealthyDatabase.sqlite */,
 			);
 			name = "Information Database";
 			sourceTree = "<group>";
@@ -509,7 +509,7 @@
 		3FC465E71B33A9C50062EBDB /* User Database */ = {
 			isa = PBXGroup;
 			children = (
-				3FC4663B1B34FEAE0062EBDB /* UserDB1.sqlite */,
+				3FC466B91B371C3F0062EBDB /* UserDatabase.sqlite */,
 			);
 			name = "User Database";
 			sourceTree = "<group>";
@@ -969,10 +969,10 @@
 		3FF735BB185ABA9900FECDF2 /* Find Exercise */ = {
 			isa = PBXGroup;
 			children = (
+				3F19EBBE18669D9800B9B011 /* Exercise Selection Page */,
 				3FC465F71B33B2150062EBDB /* Exercise Options */,
 				3FC465F61B33B2010062EBDB /* Exercise Searched Page */,
 				3FC465F51B33B1E30062EBDB /* Exercise Detail Page */,
-				3F19EBBE18669D9800B9B011 /* Exercise Selection Page */,
 				3F2E5A8418DF4E1400EE4734 /* Exercise Collection Cell */,
 				3FC465F81B33B2270062EBDB /* Exercise Plist */,
 			);
@@ -1075,10 +1075,9 @@
 				3FC4668B1B3501080062EBDB /* NotificationBackgroundMessage.png in Resources */,
 				3FC4669F1B3501540062EBDB /* SIAlertView.bundle in Resources */,
 				3FC466911B3501080062EBDB /* NotificationBackgroundWarning.png in Resources */,
-				3FC4663C1B34FEAE0062EBDB /* UserDB1.sqlite in Resources */,
 				3FC466921B3501080062EBDB /* NotificationBackgroundWarning@2x.png in Resources */,
+				3FC466BA1B371C3F0062EBDB /* UserDatabase.sqlite in Resources */,
 				3FC466901B3501080062EBDB /* NotificationBackgroundSuccessIcon@2x.png in Resources */,
-				3FC4663A1B34FEA60062EBDB /* Stayhealthyexercises.sqlite in Resources */,
 				3FC466931B3501080062EBDB /* NotificationBackgroundWarningIcon.png in Resources */,
 				3F7E12491A05699700941C81 /* Main_iPhone.storyboard in Resources */,
 				3FC4668A1B3501080062EBDB /* NotificationBackgroundErrorIcon@2x.png in Resources */,
@@ -1101,6 +1100,7 @@
 				3FC466381B34FE390062EBDB /* Stretching in Resources */,
 				3FC466891B3501080062EBDB /* NotificationBackgroundErrorIcon.png in Resources */,
 				3F949C1F195A56D800EB4BED /* findExercise.plist in Resources */,
+				3FC466B81B371C370062EBDB /* StayHealthyDatabase.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

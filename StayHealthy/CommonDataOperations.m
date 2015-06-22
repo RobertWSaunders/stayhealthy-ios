@@ -10,7 +10,9 @@
 
 @implementation CommonDataOperations
 
-#pragma mark Class Utilitie Methods
+/***************************/
+#pragma mark Utility Methods
+/***************************/
 
 //Returns the path to the database.
 +(NSString *)returnDatabasePath:(NSString*)databaseName {
@@ -24,12 +26,12 @@
         [[NSFileManager defaultManager] copyItemAtPath:dbSourcePath toPath:dbPath error:nil];
         NSLog(@"Couldn't Not Find Database!");
     }
-    
     return dbPath;
 }
 
-
-#pragma mark Global Methods/Useful Methods For SQL Operations
+/**************************/
+#pragma mark SQL Operations
+/**************************/
 
 //Connects to the user database and performs the query, passed as an argument.
 + (void)performInsertQuery:(NSString*)query databaseName:(NSString*)databaseName database:(sqlite3*)db {
@@ -55,7 +57,7 @@
 }
 
 + (void) addDailyActivity:(NSString *)query database:(sqlite3*)db {
-    [self performInsertQuery:query databaseName:@"UserDB1.sqlite" database:db];
+    [self performInsertQuery:query databaseName:USER_DATABASE database:db];
 }
 
 //Returns an array of exercises dependant on the query passed to it.
@@ -199,74 +201,5 @@
     }
 }
 
-//Returns the daily activity information.
-+ (NSMutableArray *) retreiveDailyActivity:(NSString*)query databaseName:(NSString*)databaseName database:(sqlite3*)db {
-    NSMutableArray *dailyActivityArray = [[NSMutableArray alloc] init];
-    @try {
-        if(!(sqlite3_open([[self returnDatabasePath:databaseName] UTF8String], &db) == SQLITE_OK))
-            NSLog(@"An error has occured: %s", sqlite3_errmsg(db));
-        const char *sql = [query cStringUsingEncoding:NSASCIIStringEncoding];
-        sqlite3_stmt *sqlStatement;
-        if(sqlite3_prepare(db, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
-            NSLog(@"Problem with prepare statement:  %s", sqlite3_errmsg(db));
-        else{
-            while (sqlite3_step(sqlStatement)==SQLITE_ROW) {
-                dailyActivity * dailyActivityItem = [[dailyActivity alloc] init];
-                dailyActivityItem.ID = sqlite3_column_int(sqlStatement,0);
-                dailyActivityItem.completedWorkouts = sqlite3_column_int(sqlStatement,1);
-                dailyActivityItem.workoutTime = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,2)];
-                dailyActivityItem.exercisesViewed = sqlite3_column_int(sqlStatement,3);
-                dailyActivityItem.completedGoals = sqlite3_column_int(sqlStatement,4);
-                dailyActivityItem.date = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,5)];
-                [dailyActivityArray addObject:dailyActivityItem];
-            }
-        }
-        sqlite3_finalize(sqlStatement);
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Problem with prepare statement:  %s", sqlite3_errmsg(db));
-    }
-    @finally {
-        sqlite3_close(db);
-        return dailyActivityArray;
-    }
-
-}
-
-+ (NSMutableArray *) retrieveProfileInformation:(NSString*)query databaseName:(NSString*)databaseName database:(sqlite3*)db {
-    NSMutableArray *userInfoArray = [[NSMutableArray alloc] init];
-    @try {
-        if(!(sqlite3_open([[self returnDatabasePath:databaseName] UTF8String], &db) == SQLITE_OK))
-            NSLog(@"An error has occured: %s", sqlite3_errmsg(db));
-        const char *sql = [query cStringUsingEncoding:NSASCIIStringEncoding];
-        sqlite3_stmt *sqlStatement;
-        if(sqlite3_prepare(db, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
-            NSLog(@"Problem with prepare statement:  %s", sqlite3_errmsg(db));
-        else{
-            while (sqlite3_step(sqlStatement)==SQLITE_ROW) {
-                profileInfo * user = [[profileInfo alloc] init];
-                user.ID = sqlite3_column_int(sqlStatement,0);
-                user.Name = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,1)];
-                user.Height = sqlite3_column_int(sqlStatement,2);
-                user.Weight = sqlite3_column_int(sqlStatement,3);
-                user.Birthday= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 4)];
-                user.Gender = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 5)];
-                user.Bio = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 6)];
-                user.UserFacebookID= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 7)];
-                user.sport = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 8)];
-                user.focus = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 9)];
-                [userInfoArray addObject:user];
-            }
-        }
-        sqlite3_finalize(sqlStatement);
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Problem with prepare statement:  %s", sqlite3_errmsg(db));
-    }
-    @finally {    NSLog(@"%@",userInfoArray);
-        sqlite3_close(db);
-        return userInfoArray;
-    }
-}
 
 @end

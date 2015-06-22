@@ -35,10 +35,10 @@
     
     
     //Load the data into the arrays.
-    favoriteStretchExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'stretchingexercises'" databaseName:@"UserDB1.sqlite" database:db];
-    favoriteStrengthExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'strengthexercises'" databaseName:@"UserDB1.sqlite" database:db];
-    favoriteWarmupExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'warmup'" databaseName:@"UserDB1.sqlite" database:db];
-    favoriteWorkouts = [CommonDataOperations retreiveWorkoutInfo:@"SELECT * FROM PrebuiltWorkoutData WHERE isFavorite = 'TRUE'" databaseName:@"UserDB1.sqlite" database:db];
+    favoriteStretchExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'stretchingexercises'" databaseName:USER_DATABASE database:db];
+    favoriteStrengthExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'strengthexercises'" databaseName:USER_DATABASE database:db];
+    favoriteWarmupExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'warmup'" databaseName:USER_DATABASE database:db];
+    favoriteWorkouts = [CommonDataOperations retreiveWorkoutInfo:@"SELECT * FROM PrebuiltWorkoutData WHERE isFavorite = 'TRUE'" databaseName:USER_DATABASE database:db];
     
     //If there are no favorites then perform a message telling the user.
     if ( favoriteStrengthExercises.count == 0 &&  favoriteStretchExercises.count == 0 &&  favoriteWarmupExercises.count == 0 &&  favoriteWorkouts.count == 0)
@@ -235,7 +235,7 @@ indexPath {
         
         FavoritesCell *favoritesCell = [strengthCollectionView dequeueReusableCellWithReuseIdentifier:idetifier1 forIndexPath:indexPath];
         
-        favoriteStrengthExercisesData = [CommonDataOperations returnExerciseData:[self generateQuery:favoriteStrengthExercises] databaseName:@"Stayhealthyexercises.sqlite" database:db];
+        favoriteStrengthExercisesData = [CommonDataOperations returnExerciseData:[self generateQuery:favoriteStrengthExercises] databaseName:STAYHEALTHY_DATABASE database:db];
         
         sqlColumns *favorite = [favoriteStrengthExercisesData objectAtIndex:indexPath.row];
         
@@ -300,7 +300,7 @@ indexPath {
         
         FavoritesCell *favoritesCell = [ warmupCollectionView dequeueReusableCellWithReuseIdentifier:idetifier2 forIndexPath:indexPath];
         
-        favoriteWarmupExercisesData = [CommonDataOperations returnExerciseData:[self generateQuery:favoriteWarmupExercises] databaseName:@"Stayhealthyexercises.sqlite" database:db];
+        favoriteWarmupExercisesData = [CommonDataOperations returnExerciseData:[self generateQuery:favoriteWarmupExercises] databaseName:STAYHEALTHY_DATABASE database:db];
         
         sqlColumns *favorite = [favoriteWarmupExercisesData objectAtIndex:indexPath.row];
         
@@ -365,7 +365,7 @@ indexPath {
         
         FavoritesCell *favoritesCell = [ stretchingCollectionView dequeueReusableCellWithReuseIdentifier:idetifier3 forIndexPath:indexPath];
         
-        favoriteStretchExercisesData = [CommonDataOperations returnExerciseData:[self generateQuery:favoriteStretchExercises] databaseName:@"Stayhealthyexercises.sqlite" database:db];
+        favoriteStretchExercisesData = [CommonDataOperations returnExerciseData:[self generateQuery:favoriteStretchExercises] databaseName:STAYHEALTHY_DATABASE database:db];
         
         sqlColumns *favorite = [favoriteStretchExercisesData objectAtIndex:indexPath.row];
         
@@ -430,7 +430,7 @@ indexPath {
         
         workoutCell *workoutsCell = [ workoutsCollectionView dequeueReusableCellWithReuseIdentifier:idetifier4 forIndexPath:indexPath];
         
-        favoriteWorkoutsData = [CommonDataOperations returnWorkoutData:[self buildWorkoutQuery] databaseName:@"Stayhealthyexercises.sqlite" database:db];
+        favoriteWorkoutsData = [CommonDataOperations returnWorkoutData:[self buildWorkoutQuery] databaseName:STAYHEALTHY_DATABASE database:db];
         
         workoutsDataObjects *workoutDataInfo = [favoriteWorkoutsData objectAtIndex:indexPath.row];
         
@@ -468,7 +468,7 @@ indexPath {
         }
 
         //Get the workout exercises data, but more importantly focused on retreiving the images.
-        workoutImages = [CommonDataOperations returnExerciseData:[self buildQuery: workoutsCollectionView tableView:nil indexPath:indexPath isFavoriteCollectionView:YES] databaseName:@"Stayhealthyexercises.sqlite" database:db];
+        workoutImages = [CommonDataOperations returnExerciseData:[self buildQuery: workoutsCollectionView tableView:nil indexPath:indexPath isFavoriteCollectionView:YES] databaseName:STAYHEALTHY_DATABASE database:db];
         
         sqlColumns *workoutImageInfo = [workoutImages objectAtIndex:1];
         workoutImageView.image = [UIImage imageNamed:workoutImageInfo.File];
@@ -621,10 +621,10 @@ indexPath {
 {
     
     //Load the data into the arrays.
-    favoriteStretchExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'stretchingexercises'" databaseName:@"UserDB1.sqlite" database:db];
-    favoriteStrengthExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'strengthexercises'" databaseName:@"UserDB1.sqlite" database:db];
-    favoriteWarmupExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'warmup'" databaseName:@"UserDB1.sqlite" database:db];
-    favoriteWorkouts = [CommonDataOperations retreiveWorkoutInfo:@"SELECT * FROM PrebuiltWorkoutData WHERE isFavorite = 'TRUE'" databaseName:@"UserDB1.sqlite" database:db];
+    favoriteStretchExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'stretchingexercises'" databaseName:USER_DATABASE database:db];
+    favoriteStrengthExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'strengthexercises'" databaseName:USER_DATABASE database:db];
+    favoriteWarmupExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'warmup'" databaseName:USER_DATABASE database:db];
+    favoriteWorkouts = [CommonDataOperations retreiveWorkoutInfo:@"SELECT * FROM PrebuiltWorkoutData WHERE isFavorite = 'TRUE'" databaseName:USER_DATABASE database:db];
     
     [strengthCollectionView reloadData];
     [stretchingCollectionView reloadData];

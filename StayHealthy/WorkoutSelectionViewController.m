@@ -79,9 +79,9 @@ self.automaticallyAdjustsScrollViewInsets = NO;
 
 
     //Loading the data into the arrays.
-    workoutData = [CommonDataOperations returnWorkoutData:@"SELECT * FROM PrebuiltWorkouts" databaseName:@"Stayhealthyexercises.sqlite" database:db];
-    favoritesWorkoutData = [CommonDataOperations returnWorkoutData:@"SELECT * FROM PrebuiltWorkouts WHERE ID = '1' OR ID = '49' OR ID = '3' OR ID = '7' OR ID = '11' OR ID = '42' OR ID = '36' OR ID = '6' OR ID = '15' OR ID = '16'" databaseName:@"Stayhealthyexercises.sqlite" database:db];
-    popularWorkoutData = [CommonDataOperations returnWorkoutData:@"SELECT * FROM PrebuiltWorkouts WHERE ID = '1' OR ID = '4' OR ID = '53' OR ID = '7' OR ID = '11' OR ID = '42' OR ID = '36' OR ID = '6' OR ID = '2' OR ID = '16'" databaseName:@"Stayhealthyexercises.sqlite" database:db];
+    workoutData = [CommonDataOperations returnWorkoutData:@"SELECT * FROM PrebuiltWorkouts" databaseName:STAYHEALTHY_DATABASE database:db];
+    favoritesWorkoutData = [CommonDataOperations returnWorkoutData:@"SELECT * FROM PrebuiltWorkouts WHERE ID = '1' OR ID = '49' OR ID = '3' OR ID = '7' OR ID = '11' OR ID = '42' OR ID = '36' OR ID = '6' OR ID = '15' OR ID = '16'" databaseName:STAYHEALTHY_DATABASE database:db];
+    popularWorkoutData = [CommonDataOperations returnWorkoutData:@"SELECT * FROM PrebuiltWorkouts WHERE ID = '1' OR ID = '4' OR ID = '53' OR ID = '7' OR ID = '11' OR ID = '42' OR ID = '36' OR ID = '6' OR ID = '2' OR ID = '16'" databaseName:STAYHEALTHY_DATABASE database:db];
 
 }
 
@@ -136,7 +136,7 @@ self.automaticallyAdjustsScrollViewInsets = NO;
         
         //Get the workout exercises data, but more importantly focused on retreiving the images.
 
-         workoutImagesForCollection = [CommonDataOperations returnExerciseData:[self buildQuery:self.ourFavoritesView tableView:nil indexPath:indexPath isFavoriteCollectionView:YES] databaseName:@"Stayhealthyexercises.sqlite" database:db];
+         workoutImagesForCollection = [CommonDataOperations returnExerciseData:[self buildQuery:self.ourFavoritesView tableView:nil indexPath:indexPath isFavoriteCollectionView:YES] databaseName:STAYHEALTHY_DATABASE database:db];
         
         sqlColumns *workoutImageInfo = [workoutImagesForCollection objectAtIndex:1];
         workoutImageView.image = [UIImage imageNamed:workoutImageInfo.File];
@@ -180,7 +180,7 @@ self.automaticallyAdjustsScrollViewInsets = NO;
         
         //Get the workout exercises data, but more importantly focused on retreiving the images.
         
-        workoutImagesForCollection = [CommonDataOperations returnExerciseData:[self buildQuery:self.ourFavoritesView tableView:nil indexPath:indexPath isFavoriteCollectionView:YES] databaseName:@"Stayhealthyexercises.sqlite" database:db];
+        workoutImagesForCollection = [CommonDataOperations returnExerciseData:[self buildQuery:self.ourFavoritesView tableView:nil indexPath:indexPath isFavoriteCollectionView:YES] databaseName:STAYHEALTHY_DATABASE database:db];
         
         sqlColumns *workoutImageInfo = [workoutImagesForCollection objectAtIndex:1];
         workoutImageView.image = [UIImage imageNamed:workoutImageInfo.File];
@@ -265,7 +265,7 @@ self.automaticallyAdjustsScrollViewInsets = NO;
         bgColorView.layer.masksToBounds = YES;
         [cell setSelectedBackgroundView:bgColorView];
     
-    workoutImagesForTableView = [CommonDataOperations returnExerciseData:[self buildQuery:nil tableView:self.allWorkoutsTableView indexPath:indexPath isFavoriteCollectionView:NO] databaseName:@"Stayhealthyexercises.sqlite" database:db];
+    workoutImagesForTableView = [CommonDataOperations returnExerciseData:[self buildQuery:nil tableView:self.allWorkoutsTableView indexPath:indexPath isFavoriteCollectionView:NO] databaseName:STAYHEALTHY_DATABASE database:db];
         
         sqlColumns *workoutImageInfo = [ workoutImagesForTableView objectAtIndex:0];
         /*

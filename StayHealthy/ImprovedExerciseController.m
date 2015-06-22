@@ -6,86 +6,84 @@
 //  Copyright (c) 2014 Robert Saunders. All rights reserved.
 //
 
-/*************************************************IMPLEMENTATION FILE************************************/
-/*************************************************REVISIT FOR VERSION 2.0.0************************************/
-//Incorporate better and more effective code. When bored. Think abput looking into lazy laoding.
-//Also look at the updating problem, that dose not allow the user to keep their data, or favorites.
-
-//Handle all imports in header file.
 #import "ImprovedExerciseController.h"
 
 @interface ImprovedExerciseController ()
-
+{
+    //Boolean used to see if there are any exercises to display
+    Boolean noResultsToDisplay;
+    //Database
+    sqlite3 * db;
+}
 @end
 
 @implementation ImprovedExerciseController
 
-//Synthesize.
-@synthesize tableViewList,collectionViewGroup, exerciseData, list, groupCollection;
+@synthesize exerciseData;
 
-//Start of viewDidLoad, any thing that needs to be initiated.
+/***********************/
+#pragma mark ViewDidLoad
+/***********************/
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunchOfPage"])
-    {
-        [CommonSetUpOperations performTSMessage:@"Now that you have chosen a muscle and a exercise type you can view all the exercises. You can toggle between grid and list view with the button in the top right. Tap this message to dismiss." message:nil viewController:self canBeDismissedByUser:YES duration:60];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunchOfPage"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-
-    
-    /*The UIBarButtons that toggle list or grid view*/
-    //Note: Have to incorporate the save, and active stage.
-    UIBarButtonItem *tableview = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"TableviewIcon.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(tableViewUpdate:)];
-        NSArray *actionButtonItems = @[tableview];
-        self.navigationItem.rightBarButtonItems = actionButtonItems;
-    
-    //Loading arrays.And counting them for debugging.
-    exerciseData = [CommonDataOperations returnExerciseData:self.query databaseName:@"Stayhealthyexercises.sqlite" database:db];
-    
-    //Checking if we have anything in the array, can let users know if we found anything.
-    if (exerciseData.count == 0)
-        _noResultsToDisplay = YES;
-    
-    for (int i=0; i < self.exerciseData.count; i++) {
-        [self.groupCollection deselectItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] animated:YES];
-    }
-    
-    //Setting title text and logging query for search in database.
+    //Set the title for the page to the muscle.
     self.title = self.titleText;
-        
-    //Have to set the tableview list to hidden or else the collectionview select dosen't work.
+    //Hide the tableView to hidden onload.
     self.tableViewList.hidden = YES;
+    //Shows the navigation buttons.
+    [self setUINavBarButtons];
     
-    if (exerciseData.count == 0) {
+    //Sets the NSUserDefault and displays the TSMessage when page is loaded for the first time.
+    [CommonSetUpOperations setFirstViewTSMessage:@"FirstViewForPage" viewController:self message:@"Now that you have chosen a muscle and a exercise type you can view all the exercises. You can toggle between grid and list view with the button in the top right. Tap this message to dismiss."];
+    
+    //Get the exercise data.
+    self.exerciseData = [CommonDataOperations returnExerciseData:self.query databaseName:STAYHEALTHY_DATABASE database:db];
+    
+    //If no data set BOOL to yes.
+    if (self.exerciseData.count == 0)
+        noResultsToDisplay = YES;
+    
+    //If the exercise data is nothing then show the message declaring that.
+    if (self.exerciseData.count == 0)
         [CommonSetUpOperations performTSMessage:@"No Exercises Were Found" message:nil viewController:self canBeDismissedByUser:YES duration:60];
-    }
-
+    
+    //Gets rid of the weird fact that the tableview starts 60px down.
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
+/*********************************************/
+#pragma mark UICollectionView Delegate Methods
+/*********************************************/
 
+//Sets the cell size for the collectionview cell.
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    //If iPhone 6 Plus use the large cell for the collectionview.
     if (IS_IPHONE_6P)
         return LARGECELL;
+    //If iPhone 6 use the medium cell for the collectionview.
     if (IS_IPHONE_6)
         return MEDIUMCELL;
+    //If iPhone 5/4 Plus use the small cell for the collectionview.
     else
         return SMALLCELL;
 }
 
+//Set the cell insets for the collectionview cell.
 - (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    //Use the large insets if its a iPhone 6/6P/
     if (IS_IPHONE_6 || IS_IPHONE_6P)
         return LARGEINSETS;
+    //Else use the small insets.
     else
         return SMALLINSETS;
 }
 
+//Set the minimum item spacing for the cells.
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     if (IS_IPHONE_4_OR_LESS || IS_IPHONE_5)
         return 0.0;
@@ -95,186 +93,146 @@
         return 10.0;
 }
 
-
+//Set the number of items in the collectionview.
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-        //Show the amount of items that are in the array.
-        return [exerciseData count];
+        //equal to the number of exercises.
+        return [self.exerciseData count];
 }
 
-
+//determine everything for each cell, at each indexPath
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    //Our ExerciseCollectionViewCell, subclass of UICollectionViewCell.
     ExerciseCollectionCell *exerciseCell;
     
+    //Set the identifier for the cell.
+    exerciseCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"exerciseCollectionCell" forIndexPath:indexPath];
     
-        exerciseCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"exerciseCollectionCell" forIndexPath:indexPath];
-    
-
+    //Get the exercise objects.
     sqlColumns *exercise = [self.exerciseData objectAtIndex:indexPath.row];
     
+    //Set the exercise name and style the label.
     exerciseCell.exerciseName.text = exercise.Name;
-    exerciseCell.difficulty.text = exercise.Difficulty;
-    exerciseCell.equipment.text = exercise.Equipment;
+    exerciseCell.exerciseName.font = tableViewTitleTextFont;
+    exerciseCell.exerciseName.textColor = STAYHEALTHY_BLUE;
     
-    //Load the exercise images in the background.
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
-        UIImage *image = [UIImage imageNamed:exercise.File];
-        
-        dispatch_sync(dispatch_get_main_queue(), ^(void) {
-            UIImageView* cellImageView = exerciseCell.exerciseImage;
-            cellImageView.image = image;
-            cellImageView.alpha = 0.0;
-            [UIView animateWithDuration:0.8 animations:^{
-                cellImageView.alpha = 1.0;
-            }];
-        });
-    });
+    //Set the difficulty and style the label.
+    if (IS_IPHONE_6P || IS_IPHONE_6)
+        exerciseCell.difficulty.text = exercise.Difficulty;
+    else if ([exercise.Difficulty isEqualToString:@"Intermediate"])
+        exerciseCell.difficulty.text = @"Inter.";
+    exerciseCell.difficulty.font = tableViewUnderTitleTextFont;
+    exerciseCell.difficulty.textColor = [CommonSetUpOperations determineDifficultyColor:exercise.Difficulty];
     
-    NSString *string = exercise.Equipment;
-    NSString *trimmedString = [string stringByTrimmingCharactersInSet:
+    //Set the difficulty default label style.
+    exerciseCell.difficultyStandards.font = tableViewUnderTitleTextFont;
+    exerciseCell.difficultyStandards.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
+    
+    //Set the equipment label text and style it.
+    NSString *trimmedString = [exercise.Equipment stringByTrimmingCharactersInSet:
                                [NSCharacterSet whitespaceCharacterSet]];
-    if ([trimmedString isEqualToString:@"null"]) {
+    if ([trimmedString isEqualToString:@"null"])
         exerciseCell.equipment.text = @"None";
-    }
-    if ([exerciseCell.difficulty.text isEqualToString:@"Easy"]) {
-        exerciseCell.difficulty.textColor = STAYHEALTHY_GREEN;
-    }
-    if ([exerciseCell.difficulty.text isEqualToString:@"Intermediate"]) {
-        exerciseCell.difficulty.textColor = STAYHEALTHY_DARKERBLUE;
-        if (IS_IPHONE_6P || IS_IPHONE_6) {
-              exerciseCell.difficulty.text = @"Intermediate";
-        }
-        else {
-              exerciseCell.difficulty.text = @"Inter.";
-        }
-      
-    }
-    if ([exerciseCell.difficulty.text isEqualToString:@"Hard"]) {
-        exerciseCell.difficulty.textColor = STAYHEALTHY_RED;
-    }
-    if ([exerciseCell.difficulty.text isEqualToString:@"Very Hard"]) {
-        exerciseCell.difficulty.textColor = [UIColor blackColor];
-    }
+    else
+        exerciseCell.equipment.text = exercise.Equipment;
+    exerciseCell.equipment.font = tableViewUnderTitleTextFont;
+    exerciseCell.equipment.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
     
+    //Set the equipment default label style.
+    exerciseCell.equipmentStandards.font = tableViewUnderTitleTextFont;
+    exerciseCell.equipmentStandards.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
+    
+    //Load the exercise image on the background thread.
+    [CommonSetUpOperations loadImageOnBackgroundThread:exerciseCell.exerciseImage image:[UIImage imageNamed:exercise.File]];
+    
+    //Style the cell, adding shadows and rounding corners.
     [CommonSetUpOperations styleCollectionViewCell:exerciseCell];
-    
 
     return exerciseCell;
 }
 
-/******************************************TABLE VIEW METHODS*****************************************/
-//Start of LIST VIEW
+/****************************************/
+#pragma mark UITableView Delegate Methods
+/****************************************/
+
+//Sets the number of rows in the tableview.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //Show the amount of items that are in the array.
-    return [exerciseData count];
+    //equal to the number of exercises for this search.
+    return [self.exerciseData count];
 }
 
-
+//determine everything for each cell, at each indexPath
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //write the cell identifier.
     static NSString *simpleTableIdentifier = @"exerciseTableCell";
-    
+
+    //Set the cell identifier.
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
+    //Get the exercise objects.
     sqlColumns *exercise = [self.exerciseData objectAtIndex:indexPath.row];
     
+    //Set the exercise name and style the label.
     UILabel *exerciseName = (UILabel *)[cell viewWithTag:101];
+    exerciseName.font = tableViewTitleTextFont;
     exerciseName.text = exercise.Name;
+    exerciseName.textColor = STAYHEALTHY_BLUE;
     
+    //Set the equipment names and style the label.
     UILabel *equipment = (UILabel *)[cell viewWithTag:102];
     equipment.text = exercise.Equipment;
-    NSString *string = exercise.Equipment;
-    NSString *trimmedString = [string stringByTrimmingCharactersInSet:
-                               [NSCharacterSet whitespaceCharacterSet]];
-    if ([trimmedString isEqualToString:@"null"]) {
-        equipment.text = @"No Equipment";
-    }
+    equipment.font = tableViewUnderTitleTextFont;
+    equipment.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
     
+    //Set the equipment default and set the style.
+    UILabel *equipmentStandard = (UILabel *)[cell viewWithTag:10];
+    equipmentStandard.font = tableViewUnderTitleTextFont;
+    equipmentStandard.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
+    NSString *trimmedString = [exercise.Equipment stringByTrimmingCharactersInSet:
+                               [NSCharacterSet whitespaceCharacterSet]];
+    if ([trimmedString isEqualToString:@"null"])
+        equipment.text = @"No Equipment";
+    else
+        equipment.text = exercise.Equipment;
+    
+    //Set the difficulty and set the style.
     UILabel *difficulty = (UILabel *)[cell viewWithTag:103];
     difficulty.text = exercise.Difficulty;
+    difficulty.font = tableViewUnderTitleTextFont;
+    difficulty.textColor = [CommonSetUpOperations determineDifficultyColor:exercise.Difficulty];
     
-    if ([difficulty.text isEqualToString:@"Easy"]) {
-        difficulty.textColor = STAYHEALTHY_GREEN;
-    }
-    if ([difficulty.text isEqualToString:@"Intermediate"]) {
-        difficulty.textColor = STAYHEALTHY_DARKERBLUE;
-        
-    }
-    if ([difficulty.text isEqualToString:@"Hard"]) {
-        difficulty.textColor = STAYHEALTHY_RED;
-    }
-    if ([difficulty.text isEqualToString:@"Very Hard"]) {
-        difficulty.textColor = [UIColor blackColor];
-    }
+    //Set the difficulty default and set the style.
+    UILabel *difficultyStandard = (UILabel *)[cell viewWithTag:11];
+    difficultyStandard.font = tableViewUnderTitleTextFont;
+    difficultyStandard.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
 
-    //Load the exercise images in the background, then fade them in.
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
-        UIImage *image = [UIImage imageNamed:exercise.File];
-        
-        dispatch_sync(dispatch_get_main_queue(), ^(void) {
-            UIImageView* cellImageView = (UIImageView*)[cell viewWithTag:100];
-            cellImageView.image = image;
-            cellImageView.alpha = 0.0;
-            [UIView animateWithDuration:0.5 animations:^{
-                cellImageView.alpha = 1.0;
-            }];
-        });
-    });
+    //Load the exercise image on the background thread.
+    [CommonSetUpOperations loadImageOnBackgroundThread:(UIImageView*)[cell viewWithTag:100] image:[UIImage imageNamed:exercise.File]];
     
-    
-    UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = STAYHEALTHY_WHITE;
-    bgColorView.layer.masksToBounds = YES;
-    [cell setSelectedBackgroundView:bgColorView];
+    //Set the selected cell background.
+    [CommonSetUpOperations tableViewSelectionColorSet:cell];
 
     return cell;
 }
 
--(void)performFavoriteSearch:(NSString*)exerciseType1 exerciseID:(NSString*)ID {
-    NSString *query;
-    NSString *type;
-    if ([exerciseType1 isEqualToString:@"strength"])
-        type = @"strengthexercises";
-    else if ([exerciseType1 isEqualToString:@"warmup"])
-        type = @"warmup";
-    else if ([exerciseType1 isEqualToString:@"stretching"])
-        type = @"stretchingexercises";
-    query = [NSString stringWithFormat:@"SELECT * FROM FavoriteExercises WHERE ExerciseID = '%@' AND ExerciseType = '%@'",ID,type];
-    checkIfFavorite = [CommonDataOperations checkIfExerciseIsFavorite:query databaseName:@"UserDB1.sqlite" database:db];
-}
-
-//Change the exercise type to something that is readable.
--(void)changeToReadable:(sqlColumns*)exercise {
-    //Fetching all the arrays data from the findExercise.plist
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"findExercise" ofType:@"plist"];
-    NSDictionary *findExerciseData = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-
-    NSArray *exerciseTypes = findExerciseData[@"exerciseTypes"];
-
-    if ([exercise.ExerciseType isEqualToString:@"strength"])
-        exerciseType = exerciseTypes[0];
-    else if ([exercise.ExerciseType isEqualToString:@"stretching"])
-        exerciseType = exerciseTypes[1];
-    else if ([exercise.ExerciseType isEqualToString:@"warmup"])
-        exerciseType = exerciseTypes[2];
-}
-
-//DESELECT THE CELL, IF YOU DON"T CALL THIS METHOD THEN IT WON'T DESELECT.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //deselect the cell when you select it, makes selected background view disappear.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+/*****************************/
+#pragma mark Prepare For Segue
+/*****************************/
 
-/***************************************SENDING DATA TO THE DETAIL VIEW******************************************/
-//Here we handle the selection and movement to the next detail.
+//What happens just before a segue is performed.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    //Handling it for the collectionview, the reason their differetn is the nsindexpath.
-    if (tableViewList.hidden == YES) {
+    //What happens when you press a cell in the collectionviewcell.
+    if (self.tableViewList.hidden == YES) {
         if ([segue.identifier isEqualToString:@"detail"]) {
             NSArray *arrayOfIndexPaths = [self.groupCollection indexPathsForSelectedItems];
             NSIndexPath *indexPath = [arrayOfIndexPaths firstObject];
@@ -291,14 +249,12 @@
             destViewController.sec = exercise.SecondaryMuscle;
             destViewController.ident = exercise.ID;
             destViewController.exerciseType = exercise.ExerciseType;
-            
-            //Somehow have to check if its a favorite or not.
             destViewController.favorite = exercise.isFavorite;
             destViewController.hidesBottomBarWhenPushed = YES;
         }
     }
-    //Handling for the tableview.
     else {
+        //What happens when you press a cell in the tableview.
         if ([segue.identifier isEqualToString:@"detail"]) {
             NSIndexPath *indexPath = [self.list indexPathForSelectedRow];
             sqlColumns *exercise = [self.exerciseData objectAtIndex:indexPath.row];
@@ -320,9 +276,11 @@
      }
    }
 
-/*These two methods/buttons control the hidding of the views.*/
-//Note: In future look for better way to do this, so I don't load data twice, maybe lazy loading.
-//Have now added so the UIBarButtons change instead of having two.
+/*********************************************************/
+#pragma mark Change Display Methods/Set Navigation Buttons
+/*********************************************************/
+
+//called when the nav items are pressed.
 -(IBAction)collectionViewUpdate:(id)sender {
     self.tableViewList.hidden = YES;
     self.collectionViewGroup.hidden = NO;
@@ -337,11 +295,20 @@
     NSArray *actionButtonItems = @[collectionview];
     self.navigationItem.rightBarButtonItems = actionButtonItems;
 }
+//sets the navigation buttons.
+-(void)setUINavBarButtons {
+    UIBarButtonItem *tableview = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"TableviewIcon.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(tableViewUpdate:)];
+    NSArray *actionButtonItems = @[tableview];
+    self.navigationItem.rightBarButtonItems = actionButtonItems;
+}
 
-//If the user leaves the page then dismiss the all TSMessages.
+/*************************************/
+#pragma mark ViewWillDisappear Methods
+/*************************************/
+
+//Dismiss all TSMessages when the view disappears.
 -(void)viewWillDisappear:(BOOL)animated {
     [TSMessage dismissActiveNotification];
 }
-
 
 @end

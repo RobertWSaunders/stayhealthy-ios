@@ -97,7 +97,7 @@
     detailInformation = @[numberOfExercises,type,difficulty,gender,timescompleted];
     
     
-    workoutExercises = [CommonDataOperations returnExerciseData:self.queryText databaseName:@"Stayhealthyexercises.sqlite" database:db];
+    workoutExercises = [CommonDataOperations returnExerciseData:self.queryText databaseName:STAYHEALTHY_DATABASE database:db];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -451,11 +451,11 @@
 -(void)performFavoriteSearch:(NSString*)ID {
     NSString *workoutFavoriteQuery;
     workoutFavoriteQuery = [NSString stringWithFormat:@"SELECT * FROM PrebuiltWorkoutData WHERE WorkoutID = '%@'",ID];
-    checkIfFavorite = [CommonDataOperations retreiveWorkoutInfo:workoutFavoriteQuery databaseName:@"UserDB1.sqlite" database:db];
+    checkIfFavorite = [CommonDataOperations retreiveWorkoutInfo:workoutFavoriteQuery databaseName:USER_DATABASE database:db];
 
     if (checkIfFavorite.count == 0) {
-        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO PrebuiltWorkoutData ('WorkoutID','TimesCompleted','isFavorite') VALUES ('%@','0','FALSE')",self.workoutID] databaseName:@"UserDB1.sqlite" database:db];
-         checkIfFavorite = [CommonDataOperations retreiveWorkoutInfo:workoutFavoriteQuery databaseName:@"UserDB1.sqlite" database:db];
+        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO PrebuiltWorkoutData ('WorkoutID','TimesCompleted','isFavorite') VALUES ('%@','0','FALSE')",self.workoutID] databaseName:USER_DATABASE database:db];
+         checkIfFavorite = [CommonDataOperations retreiveWorkoutInfo:workoutFavoriteQuery databaseName:USER_DATABASE database:db];
     }
     
 }
@@ -481,9 +481,9 @@
     [self.backDelegate backButtonPressed];
     NSInteger workoutID = [self.workoutID intValue];
     if ([self.favoriteButton.image isEqual:[UIImage imageNamed:@"Star Filled-50.png"]])
-        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"UPDATE PrebuiltWorkoutData SET isFavorite = 'TRUE' WHERE WorkoutID = '%ld'",(long)workoutID] databaseName:@"UserDB1.sqlite" database:db];
+        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"UPDATE PrebuiltWorkoutData SET isFavorite = 'TRUE' WHERE WorkoutID = '%ld'",(long)workoutID] databaseName:USER_DATABASE database:db];
     else if ([self.favoriteButton.image isEqual:[UIImage imageNamed:@"Star-50.png"]])
-         [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"UPDATE PrebuiltWorkoutData SET isFavorite = 'FALSE' WHERE WorkoutID = '%ld'",(long)workoutID] databaseName:@"UserDB1.sqlite" database:db];
+         [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"UPDATE PrebuiltWorkoutData SET isFavorite = 'FALSE' WHERE WorkoutID = '%ld'",(long)workoutID] databaseName:USER_DATABASE database:db];
     
 }
 

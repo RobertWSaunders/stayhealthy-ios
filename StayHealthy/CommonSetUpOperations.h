@@ -10,26 +10,29 @@
 
 @interface CommonSetUpOperations : NSObject
 
-//Styles a collectionview cell to the desired appearance.
+//Styles a UICollectionViewCell
 + (void)styleCollectionViewCell:(UICollectionViewCell*)collectionViewCell;
 
+//Performs a TSMessage, specified message, and other parameters.
 + (void)performTSMessage:(NSString*)titleText message:(NSString*)message viewController:(UIViewController*)controllerForDisplay canBeDismissedByUser:(BOOL)canDismiss duration:(int)duration;
 
+//Sets the initial tutorial TSMessage.
++ (void)setFirstViewTSMessage:(NSString*)key viewController:(UIViewController*)view message:(NSString*)message;
+
+//Styles SIAlertViews.
 + (void)styleAlertView;
 
+//Loads images in the background.
++ (void)loadImageOnBackgroundThread:(UIImageView*)imageView image:(UIImage*)image;
+
+//Sets the selected background color for UITableViews.
 + (UIView *)tableViewSelectionColorSet:(UITableViewCell*)cell;
 
+//Draws the view for the TableView header.
 + (UIView *)drawViewForTableViewHeader:(UITableView*)tableView;
 
-+ (NSDate *)dateWithOutTime:(NSDate *)Date;
-
-+ (NSString *)returnDateInString:(NSDate *)date;
-
-+ (NSString *)returnPrettyDate:(NSString*)stringDate format:(NSString*)format;
-
-+ (NSMutableArray*)arrayOfDays:(NSDate*)startDate endDate:(NSDate*)endDate;
-
-+ (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
+//Returns the color based off of the difficulty passed to it. 
++ (UIColor*)determineDifficultyColor:(NSString*)difficulty;
 
 
 

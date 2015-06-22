@@ -22,25 +22,10 @@
 {
     [super viewDidLoad];
     
-    [[SIAlertView appearance] setTitleFont:[UIFont fontWithName:@"Avenir-Light" size:20]];
-    [[SIAlertView appearance] setTitleColor:STAYHEALTHY_BLUE];
-    [[SIAlertView appearance] setMessageColor:STAYHEALTHY_BLUE];
-    [[SIAlertView appearance] setCornerRadius:4];
-    [[SIAlertView appearance] setShadowRadius:0];
-    [[SIAlertView appearance] setViewBackgroundColor:STAYHEALTHY_WHITE];
-    [[SIAlertView appearance] setButtonColor:STAYHEALTHY_BLUE];
-    [[SIAlertView appearance] setDestructiveButtonColor:STAYHEALTHY_BLUE];
-    [[SIAlertView appearance] setCancelButtonColor:STAYHEALTHY_BLUE];
-    [[SIAlertView appearance] setButtonFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
-    [[SIAlertView appearance] setMessageFont:[UIFont fontWithName:@"Avenir-Light" size:16]];
-    [[SIAlertView appearance] setMessageColor:[UIColor lightGrayColor]];
-
+    [CommonSetUpOperations styleAlertView];
     
     self.title = @"Settings";
    
-    // Set the gesture
-    //[self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
     // Initialize table data
     //generalSettings = [NSArray arrayWithObjects:@"Push Notifications", nil];
     // Initialize table data
@@ -48,8 +33,12 @@
     // Initialize table data
     legalTerms = [NSArray arrayWithObjects:@"Privacy Policy", @"Terms of Service", nil];
     // Initialize table data
-    aboutUs = [NSArray arrayWithObjects:@"Acknowledgments",@"Like Us on Facebook", @"Follow Us on Twitter", nil];
+    aboutUs = [NSArray arrayWithObjects:@"Acknowledgments", nil];
     
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50.0f;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -77,17 +66,6 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    /*
-    // creat uiswitch
-	UISwitch *switchController = [[UISwitch alloc] initWithFrame:CGRectZero];
-	[switchController setOn:YES animated:YES];
-	
-	NSInteger row;
-	row = [indexPath row];
-	switchController.tag = row;
-	*/
-	//[switchController addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
-
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -96,12 +74,6 @@
     if (indexPath.section == 0) {
         cell.textLabel.text = [questionsFeedback objectAtIndex:indexPath.row];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        /*
-        if (indexPath.row == 0) {
-           // cell.accessoryView = switchController;
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        }
-         */
     }
     
     if (indexPath.section == 1) {
@@ -119,40 +91,17 @@
         }
     }
     
-    /*
-    if (indexPath.section == 3) {
-        cell.textLabel.text = [aboutUs objectAtIndex:indexPath.row];
-    }
-   */
+
     cell.textLabel.textColor = STAYHEALTHY_BLUE;
-    cell.textLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16];
+    cell.textLabel.font = tableViewTitleTextFont;
     
-    
-    UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = STAYHEALTHY_WHITE;
-    bgColorView.layer.masksToBounds = YES;
-    [cell setSelectedBackgroundView:bgColorView];
-    
-    if ([cell.textLabel.text isEqualToString:@"Follow Us on Twitter"]) {
-        cell.accessoryView = nil;
-    }
+    [CommonSetUpOperations tableViewSelectionColorSet:cell];
+
     
     return cell;
 }
 
-/*
--(void) switchChanged:(id)sender{
-	UISwitch *switchController = sender;
-	
-	if (switchController.on) {
-		NSLog(@"Switch is ON");
-	}
-	else {
-		NSLog(@"Switch is OFF");
-	}
-    
-}
- */
+
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {

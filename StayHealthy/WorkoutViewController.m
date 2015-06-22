@@ -59,7 +59,7 @@
     timerLabel.timeFormat = @"mm:ss";
     self.title = self.titleText;
     
-    workoutExercisesArray = [CommonDataOperations returnExerciseData:query databaseName:@"Stayhealthyexercises.sqlite" database:db];
+    workoutExercisesArray = [CommonDataOperations returnExerciseData:query databaseName:STAYHEALTHY_DATABASE database:db];
     
     [_resetButton setTintColor:STAYHEALTHY_BLUE];
     
@@ -166,7 +166,7 @@
 }
 
 -(void)recordWorkoutData {
-    dailyActivityForToday = [CommonDataOperations retreiveDailyActivity:[NSString stringWithFormat:@"SELECT * FROM DailyActivity WHERE date  = '%@'",[CommonSetUpOperations returnDateInString:[NSDate date]]] databaseName:@"UserDB1.sqlite" database:db];
+    dailyActivityForToday = [CommonDataOperations retreiveDailyActivity:[NSString stringWithFormat:@"SELECT * FROM DailyActivity WHERE date  = '%@'",[CommonSetUpOperations returnDateInString:[NSDate date]]] databaseName:USER_DATABASE database:db];
     
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
     
@@ -215,9 +215,8 @@
     NSString *finalTime = [dateFormatter stringFromDate:combinedDate];
     
     
-    [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"UPDATE PrebuiltWorkoutData SET TimesCompleted = TimesCompleted + 1 WHERE WorkoutID = '%@'",self.workoutID] databaseName:@"UserDB1.sqlite" database:db];
-    [CommonDataOperations addDailyActivity:[NSString stringWithFormat:@"UPDATE DailyActivity SET completedWorkouts = completedWorkouts + 1 WHERE date = '%@'",[CommonSetUpOperations returnDateInString:[NSDate date]]] database:db];
-    [CommonDataOperations addDailyActivity:[NSString stringWithFormat:@"UPDATE DailyActivity SET workoutTime = '%@' WHERE date = '%@'",finalTime,[CommonSetUpOperations returnDateInString:[NSDate date]]] database:db];
+    [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"UPDATE PrebuiltWorkoutData SET TimesCompleted = TimesCompleted + 1 WHERE WorkoutID = '%@'",self.workoutID] databaseName:USER_DATABASE database:db];
+
      }
 
 - (IBAction)finishWorkout:(id)sender {

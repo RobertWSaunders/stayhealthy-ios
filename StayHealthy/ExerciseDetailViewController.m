@@ -6,13 +6,27 @@
 //  Copyright (c) 2013 Mark Saunders. All rights reserved.
 //
 
-/*************************************************IMPLEMENTATION FILE************************************/
-//The detail view for the exercises.
-
 #import "ExerciseDetailViewController.h"
-//^^^^^^^^^Import the header fie.
 
-@interface ExerciseDetailViewController ()
+@interface ExerciseDetailViewController () {
+    
+    IBOutlet UIScrollView *scroller;
+    //^^^^^^^^^^The scroller for the page, allows us to see more information.
+    IBOutlet UITableView *detailTableView;
+    
+    __weak IBOutlet UILabel *instructionLabel;
+    sqlite3 * db;
+    //^^^^^^^^^^The database.
+    
+    NSArray *exerciseTypes;
+    //^^^^^^^^^^Exercise types array, from plist.
+    
+    NSArray *tableViewTitles;
+    
+    NSArray *dailyActivityArray;
+    
+    NSMutableArray *checkIfFavorites;
+}
 
 @end
 
@@ -88,7 +102,7 @@
     else if ([exerciseType1 isEqualToString:@"stretching"])
         type = @"stretchingexercises";
     query = [NSString stringWithFormat:@"SELECT * FROM FavoriteExercises WHERE ExerciseID = '%@' AND ExerciseType = '%@'",ID,type];
-    checkIfFavorites = [CommonDataOperations checkIfExerciseIsFavorite:query databaseName:@"UserDB1.sqlite" database:db];
+    checkIfFavorites = [CommonDataOperations checkIfExerciseIsFavorite:query databaseName:USER_DATABASE database:db];
 }
 
 //This method fills the data from the database into their respective placeholders.
@@ -105,52 +119,7 @@
     isFavorite.text = self.favorite;
 }
 
-/*
- //This method sets up the datasource for the tableview, i.e. fills the dictionary with the correct key-value pairs.
- - (void)setupDataSource:(NSArray*)sortedDateArray {
- //The tableView sections.
- self.tableViewSections = [NSMutableArray arrayWithCapacity:0];
- //The dictionary for all the tableview cells. Note:NSMutableDictionary.
- self.tableViewCells = [NSMutableDictionary dictionaryWithCapacity:0];
 
- //The num gets 1+ every iteration, it is sent to the arrayOfEvents method.
- int num = 0;
-
- //Perform loop for all the TKCalendarEvents in sortedDateArray.
- for (CalendarObject* calendarEvents in sortedDateArray)
- {
- NSDate *startDateWithoutTime = [self dateWithOutTime:calendarEvents.startDate];
- NSDate *endDateWithoutTime = [self dateWithOutTime:calendarEvents.endDate];
- NSString* dateInString;
-
- //If the start date and end date is equal then it is a single date event and just add the value to the section and cell
- if([startDateWithoutTime isEqualToDate:endDateWithoutTime])
- {
- dateInString = [self returnDateAsString:calendarEvents.startDate];
- //If the header is already added in Section object then add only cell value otherwise add both
- if (![self.tableViewSections containsObject:dateInString])
- [self.tableViewSections addObject:dateInString];
- [self addValueToDictionary:self.tableViewCells keyName:dateInString value:calendarEvents];
- }
- //For multi day events
- else
- {
- NSMutableArray *noOfDaysEvent = [self arrayOfDays:calendarEvents.startDate endDate:calendarEvents.endDate];
- NSMutableArray *arrayEvents = [self arrayOfEvents:calendarEvents.startDate endDate:calendarEvents.endDate array:sortedArrayofEvents int:num];
- for (int i = 0; i < noOfDaysEvent.count; i++) {
- dateInString = [self returnDateAsString:noOfDaysEvent[i]];
- //If the header is already added in Section object then add only cell value otherwise add both
- if (![self.tableViewSections containsObject:dateInString])
- [self.tableViewSections addObject:dateInString];
- [self addValueToDictionary:self.tableViewCells keyName:dateInString value:arrayEvents[i]];
- }
- }
- num++;
- }
- [self sortSections];
- [self sortDictionaryValues];
- }
- */
 
 //This method creates the uibarbuttons dependant on a few arguments.
 -(void)createUIBarButtons:(NSString*)favoriteImageName second:(NSString*)watchImageName {
@@ -207,10 +176,10 @@
     NSInteger exerciseID = [ident intValue];
     
     if ([favoriteButton.image isEqual:[UIImage imageNamed:@"Star Filled-50.png"]]) {
-        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO FavoriteExercises ('ExerciseID','ExerciseType') VALUES ('%ld','%@')",(long)exerciseID,self.stretchingRefined] databaseName:@"UserDB1.sqlite" database:db];
+        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO FavoriteExercises ('ExerciseID','ExerciseType') VALUES ('%ld','%@')",(long)exerciseID,self.stretchingRefined] databaseName:USER_DATABASE database:db];
         }
     else {
-        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"DELETE FROM FavoriteExercises WHERE ExerciseID = '%ld' AND ExerciseType = '%@'",(long)exerciseID,self.stretchingRefined] databaseName:@"UserDB1.sqlite" database:db];
+        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"DELETE FROM FavoriteExercises WHERE ExerciseID = '%ld' AND ExerciseType = '%@'",(long)exerciseID,self.stretchingRefined] databaseName:USER_DATABASE database:db];
         }
     }
 
@@ -234,7 +203,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 55.0f;
+    return 64.0f;
 }
 
 //Design and fill the tableview cells.
@@ -251,6 +220,12 @@
     
     cell.textLabel.text = [tableViewTitles objectAtIndex:indexPath.row];
     [cell setUserInteractionEnabled:NO];
+    
+    cell.textLabel.font = tableViewTitleTextFont;
+    cell.detailTextLabel.font = tableViewDetailTextFont;
+    
+    cell.textLabel.textColor = STAYHEALTHY_BLUE;
+    cell.detailTextLabel.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
     
     //Sets
     if (indexPath.row == 0) {

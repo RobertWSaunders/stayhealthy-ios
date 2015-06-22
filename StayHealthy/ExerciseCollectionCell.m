@@ -6,10 +6,8 @@
 //  Copyright (c) 2014 Robert Saunders. All rights reserved.
 //
 
-
 #import "ExerciseCollectionCell.h"
 
 @implementation ExerciseCollectionCell 
-
 
 @end

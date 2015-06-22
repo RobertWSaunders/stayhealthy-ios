@@ -8,9 +8,6 @@
 
 #import "AppDelegate.h"
 
-
-
-
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -21,9 +18,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
-     UIRemoteNotificationTypeAlert|
-     UIRemoteNotificationTypeSound];
 
 
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunch"])
@@ -43,7 +37,7 @@
             NSArray *arrayOfDays = [[NSMutableArray alloc] init];
             arrayOfDays = [[tempArrayOfDays reverseObjectEnumerator] allObjects];
 
-            [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO DailyActivity (completedWorkouts,workoutTime,exercisesViewed,completedGoals,date) VALUES (0,'00:00',0,0,'%@')",arrayOfDays[i]] databaseName:@"UserDB1.sqlite" database:db];
+            [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO DailyActivity (completedWorkouts,workoutTime,exercisesViewed,completedGoals,date) VALUES (0,'00:00',0,0,'%@')",arrayOfDays[i]] databaseName:USER_DATABASE database:db];
         }
 
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunch"];
@@ -52,10 +46,10 @@
 
     NSString *today = [CommonSetUpOperations returnDateInString:[NSDate date]];
 
-    dailyActivityArray = [CommonDataOperations retreiveDailyActivity:[NSString stringWithFormat:@"SELECT * FROM DailyActivity WHERE date = '%@'",today] databaseName:@"UserDB1.sqlite" database:db];
+    dailyActivityArray = [CommonDataOperations retreiveDailyActivity:[NSString stringWithFormat:@"SELECT * FROM DailyActivity WHERE date = '%@'",today] databaseName:USER_DATABASE database:db];
 
     if (dailyActivityArray.count == 0) {
-        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO DailyActivity (completedWorkouts,workoutTime,exercisesViewed,completedGoals,date) VALUES (0,'00:00',0,0,'%@')",today] databaseName:@"UserDB1.sqlite" database:db];
+        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO DailyActivity (completedWorkouts,workoutTime,exercisesViewed,completedGoals,date) VALUES (0,'00:00',0,0,'%@')",today] databaseName:USER_DATABASE database:db];
     }
 
     

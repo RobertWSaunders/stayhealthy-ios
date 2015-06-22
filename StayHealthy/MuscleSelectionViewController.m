@@ -451,28 +451,26 @@
         if (indexPath.row == 0) {
             triv.arrayForTableView = primaryMuscleList;
             triv.titleText = @"Select Muscle";
-            triv.isExerciseType = NO; 
+
         }
         else if (indexPath.row == 1) {
             triv.arrayForTableView = secondaryMuscleList;
             triv.titleText = @"Select Muscle";
-            triv.isExerciseType = NO;
         }
         else if (indexPath.row == 2) {
             triv.arrayForTableView = equipmentList;
             triv.titleText = @"Select Equipment";
-            triv.isExerciseType = NO;
+
         }
         else if (indexPath.row == 3) {
             triv.arrayForTableView = difficultyList;
             triv.titleText = @"Select Difficulty";
-            triv.isExerciseType = NO;
+
         }
         else if (indexPath.row == 4) {
             NSArray *exerciseTypes = @[@"Strength",@"Stretching",@"Warmup"];
             triv.arrayForTableView = exerciseTypes;
             triv.titleText = @"Select Exercise Type";
-            triv.isExerciseType = NO;
         }
     }
     else {

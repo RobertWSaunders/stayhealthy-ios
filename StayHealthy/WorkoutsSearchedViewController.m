@@ -57,7 +57,7 @@
     
 
     //Loading the data into the arrays.
-    workoutData = [CommonDataOperations returnWorkoutData:self.query databaseName:@"Stayhealthyexercises.sqlite" database:db];
+    workoutData = [CommonDataOperations returnWorkoutData:self.query databaseName:STAYHEALTHY_DATABASE database:db];
    
 }
 
@@ -133,7 +133,7 @@
     }
 
     //Loading the data into the arrays.
-    workoutImages = [CommonDataOperations returnExerciseData:[self buildQuery:workoutsCollectionView tableView:nil indexPath:indexPath] databaseName:@"Stayhealthyexercises.sqlite" database:db];
+    workoutImages = [CommonDataOperations returnExerciseData:[self buildQuery:workoutsCollectionView tableView:nil indexPath:indexPath] databaseName:STAYHEALTHY_DATABASE database:db];
     
     sqlColumns *workoutImageInfo = [workoutImages objectAtIndex:1];
     workoutImageView.image = [UIImage imageNamed:workoutImageInfo.File];
@@ -203,7 +203,7 @@
     bgColorView.layer.masksToBounds = YES;
     [cell setSelectedBackgroundView:bgColorView];
     
-    workoutImages = [CommonDataOperations returnExerciseData:[self buildQuery:nil tableView:workoutsTableview indexPath:indexPath] databaseName:@"Stayhealthyexercises.sqlite" database:db];
+    workoutImages = [CommonDataOperations returnExerciseData:[self buildQuery:nil tableView:workoutsTableview indexPath:indexPath] databaseName:STAYHEALTHY_DATABASE database:db];
     
     sqlColumns *workoutImageInfo = [workoutImages objectAtIndex:0];
 

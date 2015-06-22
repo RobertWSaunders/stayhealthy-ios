@@ -6,53 +6,28 @@
 //  Copyright (c) 2014 Robert Saunders. All rights reserved.
 //
 
-/***************************************************HEADER FILE***************************************/
-//Make sure to always have all imports in here.
-//Link both delegates and datasources of the collectionview and tableview.
-//Might need to create outlets to change CGRECT options.
-
 #import <UIKit/UIKit.h>
-//^^^^^^^^^^^^Standard UIKit.
-#import <sqlite3.h>
 #import "ExerciseDetailViewController.h"
-#import "sqlColumns.h"
 #import "ExerciseCollectionCell.h"
-#import "MGSwipeTableCell.h"
-#import "MGSwipeButton.h"
 
+@interface ImprovedExerciseController : UIViewController < UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate> 
 
-//Incorporate all delegates.
-@interface ImprovedExerciseController : UIViewController < UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate> {
-    NSMutableArray *exerciseData;
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^The array that will hold all the exercise data.
-    sqlite3 * db;
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^The database declaration./the database.
-    NSString *exerciseType;
-    NSArray *checkIfFavorite;
-}
-
-//The views, toggle, new!
-//Try to keep propeties together.
+//TableView View
 @property (weak, nonatomic) IBOutlet UIView *tableViewList;
+//CollectionView View
 @property (weak, nonatomic) IBOutlet UIView *collectionViewGroup;
 
+//Query which is passed to the view.
 @property (strong, nonatomic) NSString *query;
+//Title which is passed to the view.
 @property (strong, nonatomic) NSString *titleText;
-//We receive this string from muscle selection viewcontroller, to then print to the viewcontroller.
 
+//Exercise Data array.
 @property(nonatomic,retain) NSMutableArray *exerciseData;
 
-@property (nonatomic) BOOL noResultsToDisplay;
-//The boolean value that checks if any results show up for the advanced search.
-
+//Exercise CollectionView
 @property (weak, nonatomic) IBOutlet UICollectionView *groupCollection;
-//Our collection view, this is used for the NSIndexPath, when we send data to detail.
-
+//Exercise TableView
 @property (weak, nonatomic) IBOutlet UITableView *list;
-//Our table view, this is used for the NSIndexPath, when we send data to detail.
-
-//The mutable array.
--(NSMutableArray *) exerciseData;
-
 
 @end

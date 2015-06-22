@@ -14,11 +14,24 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+
+    //Database Declaration and Objects
+    #import <sqlite3.h>
+    #import "sqlColumns.h"
+    #import "favoriteColumns.h"
+    #import "workoutFavoriteObjects.h"
+    #import "workoutsDataObjects.h"
+    #import "dailyActivity.h"
+    #import "profileInfo.h"
+
+    //Alerts
+    #import "TSMessage.h"
+    #import "SIAlertView.h"
+
+    //Common Methods
     #import "CommonDataOperations.h"
     #import "CommonSetUpOperations.h"
     #import "CommonRequests.h"
-    #import "TSMessage.h"
-    #import "SIAlertView.h"
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,6 +48,13 @@
 //ANDROID DEVELOPER
 #define APPDELEGATE                (ZalioAppDelegate *)[[UIApplication sharedApplication] delegate]
 //APP DELEGATE
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//Database Constants
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#define STAYHEALTHY_DATABASE       @"StayHealthyDatabase.sqlite"
+#define USER_DATABASE              @"UserDatabase.sqlite"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //Screen Sizes
