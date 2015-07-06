@@ -12,7 +12,7 @@
 @implementation HomeTabBarController
 
 - (void)viewDidLoad {
-    
+    /*
     UITabBarItem *tabBarItem1 = [[self.tabBar items] objectAtIndex:1];
     [tabBarItem1 setSelectedImage:[UIImage imageNamed:@"Barbell Filled-25.png"]];
     
@@ -24,7 +24,7 @@
     
     UITabBarItem *tabBarItem4 = [[self.tabBar items] objectAtIndex:3];
     [tabBarItem4 setSelectedImage:[UIImage imageNamed:@"Settings Filled-50.png"]];
-    
+    */
   /*
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunchOfProfile"]) {
         [self performSegueWithIdentifier:@"walkThrough" sender:nil];
@@ -32,8 +32,8 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     */
-    self.navigationController.view.window.tintColor = STAYHEALTHY_BLUE;
-    self.tabBarController.tabBar.tintColor = STAYHEALTHY_BLUE;
+    //self.navigationController.view.window.tintColor = STAYHEALTHY_BLUE;
+   // self.tabBarController.tabBar.tintColor = STAYHEALTHY_BLUE;
 
 }
 

@@ -10,22 +10,33 @@
 
 @interface CommonDataOperations : NSObject 
 
-//Returns the path to the database.
-+ (NSString*)returnDatabasePath:(NSString*)databaseName;
+/*************************************/
+#pragma mark - Globally Usable Methods
+/*************************************/
 
-//Performs an Insert/Delete/Update query in the database.
-+ (void)performInsertQuery:(NSString*)query databaseName:(NSString*)databaseName database:(sqlite3*)db;
+//Returns the path to the database as sting.
++ (NSString*) returnDatabasePath:(NSString*)databaseName;
 
-//Returns an array of exercises, dependant on the query passed to it.
-+ (NSMutableArray *)returnExerciseData:(NSString*)query databaseName:(NSString*)databaseName database:(sqlite3*)db;
+//Data returning methods, object returned in array.
+//Methods used only for StayHealthy Database
+//Returns array of workout objects dependant on query.
++ (NSMutableArray *) performWorkoutStatement:(NSString*)SQLQuery;
+//Returns array of exercise objects dependant on query.
++ (NSMutableArray *) performExerciseStatement:(NSString*)SQLQuery;
 
-//Checks to see if an exercise is a favorite.
-+ (NSMutableArray *) checkIfExerciseIsFavorite:(NSString*)query databaseName:(NSString*)databaseName database:(sqlite3*)db;
 
-//Return an array of workout data.
-+ (NSMutableArray *) returnWorkoutData:(NSString*)query databaseName:(NSString*)databaseName database:(sqlite3*)db;
+//Standard database operations.
+//Performs an Insert/Delete/Update query in the user database.
++ (void)performQuery:(NSString*)SQLQuery;
 
-//Returns the workout information for a specific workout.
-+ (NSMutableArray *) retreiveWorkoutInfo:(NSString*)query databaseName:(NSString*)databaseName database:(sqlite3*)db;
+/***************************/
+#pragma mark - Class Methods
+/***************************/
+
+
+
+
+
+
 
 @end

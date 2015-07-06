@@ -9,114 +9,80 @@
 #import "ExerciseDetailViewController.h"
 
 @interface ExerciseDetailViewController () {
-    
+    //ScrollView
     IBOutlet UIScrollView *scroller;
-    //^^^^^^^^^^The scroller for the page, allows us to see more information.
+    //Exercise Information TableView
     IBOutlet UITableView *detailTableView;
-    
-    __weak IBOutlet UILabel *instructionLabel;
+    //Instruction Label
+    IBOutlet UILabel *instructionLabel;
+    //Database
     sqlite3 * db;
-    //^^^^^^^^^^The database.
-    
+    //Exercise Types
     NSArray *exerciseTypes;
-    //^^^^^^^^^^Exercise types array, from plist.
-    
+    //Array contains titles for exercise tableview information.
     NSArray *tableViewTitles;
-    
-    NSArray *dailyActivityArray;
-    
-    NSMutableArray *checkIfFavorites;
+
+    //Stores a temporary exercise type for the update.
+    NSString *tempExerciseType;
 }
 
 @end
 
 @implementation ExerciseDetailViewController
 
-//Synthesize labels and strings.
-@synthesize exerciseImage,descriptionLabel,repsText,setsText,materialsText,difficultyText,priText,secText, ident, isFavorite, detailView, favoriteButton, stretchingRefined, exerciseType;
+/***********************/
+#pragma mark ViewDidLoad
+/***********************/
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    //Allows user to scroll the UIScrollView
     [scroller setScrollEnabled:YES];
-
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    //Sets the NSUserDefault and displays the TSMessage when page is loaded for the first time.
+    [CommonSetUpOperations setFirstViewTSMessage:@"FirstViewForPageTwo" viewController:self message:@"So you have selected an exercise, if you want to see more details about it you can scroll down. Also favorite an exercise by pressing the star in the top right. Tap this message to dismiss."];
 
-
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunchOfPage1"])
-    {
-        [TSMessage showNotificationInViewController:self
-                                              title:@"So you have selected an exercise, if you want to see more details about it you can scroll down. Also favorite an exercise by pressing the star in the top right. Tap this message to dismiss."
-                                           subtitle:nil
-                                              image:nil
-                                               type:TSMessageNotificationTypeMessage
-                                           duration:TSMessageNotificationDurationEndless
-                                           callback:nil
-                                        buttonTitle:nil
-                                     buttonCallback:nil
-                                         atPosition:TSMessageNotificationPositionTop
-                                canBeDismisedByUser:YES];
-
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunchOfPage1"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-
-    detailTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    [self performFavoriteSearch:exerciseType exerciseID:ident];
-    
-    [CommonDataOperations addDailyActivity:[NSString stringWithFormat:@"UPDATE DailyActivity SET exercisesViewed = exercisesViewed + 1 WHERE date = '%@'",[CommonSetUpOperations returnDateInString:[NSDate date]]] database:db];
-    
     //Fill the data from the database into the textholders.
     [self fillData];
 
-    if (checkIfFavorites.count > 0)
+    //Setting the images dependant on whether the exercise is a favorite or not.
+    /*
+    if ([CommonDataOperations isExerciseFavorited:self.exerciseIdentifier exerciseType:self.exerciseType])
         [self createUIBarButtons:@"Star Filled-50.png" second:@"watch-25.png"];
     else
         [self createUIBarButtons:@"Star-50.png" second:@"watch-25.png"];
+    */
     
-    [self formatData:difficultyText.text second:materialsText.text third:secText.text];
-    
-    //Fetching all the arrays data from the findExercise.plist
+    //Find the path to the plist containing all the nessescary information.
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"findExercise" ofType:@"plist"];
     NSDictionary *findExerciseData = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
 
+    //Fill exercise types with information from the plist.
     exerciseTypes = findExerciseData[@"exerciseTypes"];
-
-    // Set the gesture to toggle the side menu.
-    //[self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
+    //Fill the tableview titles array with the correct titles.
     tableViewTitles = @[@"Sets",@"Reps",@"Primary Muscle",@"Secondary Muscle",@"Equipment",@"Difficulty"];
+    
+    //Gets rid of the weird fact that the tableview starts 60px down.
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    //Gets rid on needed TableView seperator lines.
+    detailTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
--(void)performFavoriteSearch:(NSString*)exerciseType1 exerciseID:(NSString*)ID {
-    NSString *query;
-    NSString *type;
-    if ([exerciseType1 isEqualToString:@"strength"])
-        type = @"strengthexercises";
-    else if ([exerciseType1 isEqualToString:@"warmup"])
-        type = @"warmup";
-    else if ([exerciseType1 isEqualToString:@"stretching"])
-        type = @"stretchingexercises";
-    query = [NSString stringWithFormat:@"SELECT * FROM FavoriteExercises WHERE ExerciseID = '%@' AND ExerciseType = '%@'",ID,type];
-    checkIfFavorites = [CommonDataOperations checkIfExerciseIsFavorite:query databaseName:USER_DATABASE database:db];
-}
+/***************************/
+#pragma mark Utility Methods
+/***************************/
+
+
 
 //This method fills the data from the database into their respective placeholders.
 -(void)fillData {
+    /*
     self.title = self.title1;
-    exerciseImage.image = self.image;
-    descriptionLabel.text = self.text;
-    repsText.text = self.reps;
-    setsText.text = self.sets;
-    materialsText.text = self.material;
-    difficultyText.text = self.difficulty;
-    priText.text = self.pri;
-    secText.text = self.sec;
-    isFavorite.text = self.favorite;
+    self.exerciseImage.image = self.image;
+    self.descriptionLabel.text = self.text;
+     */
 }
 
 
@@ -124,47 +90,26 @@
 //This method creates the uibarbuttons dependant on a few arguments.
 -(void)createUIBarButtons:(NSString*)favoriteImageName second:(NSString*)watchImageName {
     self.favoriteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:favoriteImageName] style:UIBarButtonItemStyleBordered target:self action:@selector(update:)];
-    NSArray *actionButtonItems = @[favoriteButton];
+    NSArray *actionButtonItems = @[self.favoriteButton];
     self.navigationItem.rightBarButtonItems = actionButtonItems;
 }
 
-//This method formats the data in the View Controller.
--(void)formatData:(NSString*)difficultyTextCheck second:(NSString*)trimMaterialString third:(NSString*)trimString2{
-    if ([difficultyTextCheck isEqualToString:@"Easy"])
-        difficultyText.textColor = STAYHEALTHY_GREEN;
-    if ([difficultyTextCheck isEqualToString:@"Intermediate"])
-        difficultyText.textColor = STAYHEALTHY_DARKERBLUE;
-    if ([difficultyTextCheck isEqualToString:@"Hard"])
-        difficultyText.textColor = STAYHEALTHY_RED;
-    if ([difficultyTextCheck isEqualToString:@"Very Hard"])
-        difficultyText.textColor = STAYHEALTHY_RED;
-   
-    NSString *trimmedString = [trimMaterialString stringByTrimmingCharactersInSet:
-                               [NSCharacterSet whitespaceCharacterSet]];
-    if ([trimmedString isEqualToString:@"null"])
-        materialsText.text = @"No Equipment";
-    
-    NSString *trimmedStrings2 = [trimString2 stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    if ([trimmedStrings2 isEqualToString:@"null"])
-        secText.text = @"No Secondary Muscle";
-}
-
-//Changes the favorites image dependant on if its a favorite or not.
+//Changes the images for the favorite button when the user presses it.
 -(void)changeImage {
-    if ([favoriteButton.image isEqual:[UIImage imageNamed:@"Star-50.png"]])
-        [favoriteButton setImage:[UIImage imageNamed:@"Star Filled-50.png"]];
+    if ([self.favoriteButton.image isEqual:[UIImage imageNamed:@"Star-50.png"]])
+        [self.favoriteButton setImage:[UIImage imageNamed:@"Star Filled-50.png"]];
     else
-        [favoriteButton setImage:[UIImage imageNamed:@"Star-50.png"]];
+        [self.favoriteButton setImage:[UIImage imageNamed:@"Star-50.png"]];
 }
 
 //Change the exercise type to something that is readable.
 -(void)changeToReadable {
     if ([self.exerciseType isEqualToString:@"strength"])
-        self.stretchingRefined = exerciseTypes[0];
+        tempExerciseType = exerciseTypes[0];
     else if ([self.exerciseType isEqualToString:@"stretching"])
-        self.stretchingRefined = exerciseTypes[1];
+        tempExerciseType = exerciseTypes[1];
     else if ([self.exerciseType isEqualToString:@"warmup"])
-        self.stretchingRefined = exerciseTypes[2];
+        tempExerciseType = exerciseTypes[2];
 }
 
 //The mehtod that saves the favorite or takes it away.
@@ -172,15 +117,16 @@
     
     [self changeImage];
     [self changeToReadable];
+    /*
+    NSInteger exerciseID = [self.ident intValue];
     
-    NSInteger exerciseID = [ident intValue];
-    
-    if ([favoriteButton.image isEqual:[UIImage imageNamed:@"Star Filled-50.png"]]) {
-        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO FavoriteExercises ('ExerciseID','ExerciseType') VALUES ('%ld','%@')",(long)exerciseID,self.stretchingRefined] databaseName:USER_DATABASE database:db];
+    if ([self.favoriteButton.image isEqual:[UIImage imageNamed:@"Star Filled-50.png"]]) {
+        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO FavoriteExercises ('ExerciseID','ExerciseType') VALUES ('%ld','%@')",(long)exerciseID,tempExerciseType] databaseName:USER_DATABASE database:db];
         }
     else {
-        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"DELETE FROM FavoriteExercises WHERE ExerciseID = '%ld' AND ExerciseType = '%@'",(long)exerciseID,self.stretchingRefined] databaseName:USER_DATABASE database:db];
+        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"DELETE FROM FavoriteExercises WHERE ExerciseID = '%ld' AND ExerciseType = '%@'",(long)exerciseID,tempExerciseType] databaseName:USER_DATABASE database:db];
         }
+     */
     }
 
 //If the user leaves the page then dismiss the all TSMessages.
@@ -189,13 +135,10 @@
 }
 
 
-//MUSCLE LIST STUFF - THE TABLEVIEW STUFF
-/*****************************************************************/
+/**************************************/
+#pragma mark TableView Delegate Methods
+/**************************************/
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -217,7 +160,7 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:muscleItem];
         }
-    
+    /*
     cell.textLabel.text = [tableViewTitles objectAtIndex:indexPath.row];
     [cell setUserInteractionEnabled:NO];
     
@@ -271,7 +214,7 @@
         if ([self.difficulty isEqualToString:@"Very Hard"])
             cell.detailTextLabel.textColor = [UIColor blackColor];
     }
-    
+    */
         return cell;
     
 }

@@ -59,7 +59,7 @@
     timerLabel.timeFormat = @"mm:ss";
     self.title = self.titleText;
     
-    workoutExercisesArray = [CommonDataOperations returnExerciseData:query databaseName:STAYHEALTHY_DATABASE database:db];
+   // workoutExercisesArray = [CommonDataOperations returnExerciseData:query databaseName:STAYHEALTHY_DATABASE database:db];
     
     [_resetButton setTintColor:STAYHEALTHY_BLUE];
     
@@ -82,7 +82,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-    
+    /*
     sqlColumns *exercise = [workoutExercisesArray objectAtIndex:indexPath.row];
     
     UILabel *exerciseName = (UILabel *)[cell viewWithTag:101];
@@ -120,7 +120,7 @@
     bgColorView.backgroundColor = STAYHEALTHY_WHITE;
     bgColorView.layer.masksToBounds = YES;
     [cell setSelectedBackgroundView:bgColorView];
-    
+    */
     return cell;
 }
 
@@ -146,6 +146,7 @@
     [timerLabel reset];
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    /*
     if ([segue.identifier isEqualToString:@"exerciseDetail"]) {
          NSIndexPath *indexPath = [_exerciseTableView indexPathForSelectedRow];
         sqlColumns *exercise = [workoutExercisesArray objectAtIndex:indexPath.row];
@@ -163,32 +164,34 @@
         destViewController.favorite = exercise.isFavorite;
         destViewController.exerciseType = exercise.ExerciseType;
     }
+     */
 }
 
 -(void)recordWorkoutData {
-    dailyActivityForToday = [CommonDataOperations retreiveDailyActivity:[NSString stringWithFormat:@"SELECT * FROM DailyActivity WHERE date  = '%@'",[CommonSetUpOperations returnDateInString:[NSDate date]]] databaseName:USER_DATABASE database:db];
+   
     
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"mm:ss"];
     
-    dailyActivity *dailyActivityObject = [dailyActivityForToday objectAtIndex:0];
+   // dailyActivity *dailyActivityObject = [dailyActivityForToday objectAtIndex:0];
     
     
-    NSDate *currentWorkoutTime = [dateFormatter dateFromString:dailyActivityObject.workoutTime];
+   // NSDate *currentWorkoutTime = [dateFormatter dateFromString:dailyActivityObject.workoutTime];
     NSDate *thisWorkoutTime = [dateFormatter dateFromString:timerLabel.text];
     
     // Extract date components into components1
+    /*
     NSDateComponents *components1 = [calendar components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit
                                                 fromDate:currentWorkoutTime];
-    
+    */
     // Extract time components into components2
     NSDateComponents *components2 = [calendar components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit
                                                 fromDate:thisWorkoutTime];
     NSInteger currentMin;
     NSInteger currentSec;
-    
+    /*
     if ([dailyActivityObject.workoutTime isEqualToString:@"00:00"]) {
         currentMin = 0;
         currentSec = 0;
@@ -197,7 +200,7 @@
         currentMin = [components1 minute];
         currentSec = [components1 second];
     }
-
+*/
     NSInteger thisWorkoutMin = [components2 minute];
     NSInteger thisWorkoutSec = [components2 second];
     
@@ -215,7 +218,7 @@
     NSString *finalTime = [dateFormatter stringFromDate:combinedDate];
     
     
-    [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"UPDATE PrebuiltWorkoutData SET TimesCompleted = TimesCompleted + 1 WHERE WorkoutID = '%@'",self.workoutID] databaseName:USER_DATABASE database:db];
+    //[CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"UPDATE PrebuiltWorkoutData SET TimesCompleted = TimesCompleted + 1 WHERE WorkoutID = '%@'",self.workoutID] databaseName:USER_DATABASE database:db];
 
      }
 

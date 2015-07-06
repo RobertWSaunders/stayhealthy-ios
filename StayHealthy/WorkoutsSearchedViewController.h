@@ -9,16 +9,14 @@
 /***************************************************HEADER FILE***************************************/
 
 #import <UIKit/UIKit.h>
-//^^^^^^^The standard UIKit
-#import "workoutsDataObjects.h"
+
 //^^^^^^^The workoutObjects in database.
 #import <sqlite3.h>
 //^^^^^^^Mandatory database implementation.
 
 //^^^^^^^The Flat UI kit that is used for ui.
 #import "workoutCell.h"
-//^^^^^^^The custom workoutCell for the collectionview.
-#import "sqlColumns.h"
+
 //^^^^^^^Our exercise database objects.
 #import "WorkoutDetailViewController.h"
 //^^^^^^^The detailViewController for the workouts.

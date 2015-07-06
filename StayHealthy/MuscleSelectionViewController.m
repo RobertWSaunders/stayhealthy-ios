@@ -15,498 +15,287 @@
 
 @implementation MuscleSelectionViewController
 
-- (void)viewDidLoad
-{
+/*********************************/
+#pragma mark - View Loading Methods
+/*********************************/
+
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.automaticallyAdjustsScrollViewInsets = NO;
-
-    advancedSearchTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    advancedSearchTableView.scrollEnabled = NO;
-    
-    //Give the ViewController a title.
-    self.navigationController.title = @"Find Exercise";
-
+    //Style the SIAlertViews to look good.
     [CommonSetUpOperations styleAlertView];
-
-
-    //Our SIAlertview string values.
-    strength = @"Strength";
-    stretching = @"Stretching";
-    cancel = @"Cancel";
-    title = @"Exercise Type";
-
-    //Fetching all the arrays data from the findExercise.plist
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"findExercise" ofType:@"plist"];
-    NSDictionary *findExerciseData = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     
-    //Queries List
-    queries = findExerciseData[@"queries"];
-    //Title text.
-    titleText = findExerciseData[@"titleText"];
+    //Set the scrollviews to not adjust to the insets, this adds a 60point gap between tableview and navigation bar.
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    //Tableview/Muscle List view arrays
-    musclesForTableview = findExerciseData[@"musclesForTableview"];
-    scientificMuscleNames = findExerciseData[@"scientificMuscleNames"];
-    musclesForTableview2 = findExerciseData[@"musclesForTableview2"];
-    scientificMuscleNames2 = findExerciseData[@"scientificMuscleNames2"];
-    
-    //Advanced search arrays.
-    primaryMuscleList = findExerciseData[@"primaryMuscleList"];
-    secondaryMuscleList = findExerciseData[@"secondaryMuscleList"];
-    equipmentList = findExerciseData[@"equipmentList"];
-    difficultyList = findExerciseData[@"difficultyList"];
-    
-    advancedOptions = [NSArray arrayWithObjects:@"Primary Muscle",@"Secondary Muscle", @"Equipment", @"Difficulty", @"Exercise Type", nil];
-  
-    advancedOptionsSelections = [NSArray arrayWithObjects:@"Any",@"Any", @"Any", @"Any", @"Strength", nil];
-    
-    //Styling the search button.
-    self.searchButton.backgroundColor = STAYHEALTHY_BLUE;
+    //Arrays for 'selectMuscleTableView'
+    //List of front muscles.
+    frontBodyMuscles = [CommonRequests returnGeneralPlist][@"frontBodyMuscles"];
+    //List of front muscles with their scientific names.
+    frontBodyMusclesScientificNames = [CommonRequests returnGeneralPlist][@"frontBodyMusclesScientificNames"];
+    //List of back muscles.
+    backBodyMuscles = [CommonRequests returnGeneralPlist][@"backBodyMuscles"];
+    //List of back muscles with their scientific names.
+    backBodyMusclesScientificNames = [CommonRequests returnGeneralPlist][@"backBodyMusclesScientificNames"];
 }
 
+//View Will Appear, loaded just before the view appears.
 -(void)viewWillAppear:(BOOL)animated {
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunch1"])
-    {
-        [CommonSetUpOperations performTSMessage:@"Welcome to the exercise selection page! Here you can change between the muscle list and advanced search. Simply choose the muscle you'd like to exercise or you can use the advanced search to choose specifics, like the type of equipment, difficulty, muscle groups, if you want a more specific result. Looking for a warm-up? Press the running icon in the top right. Tap this message to dismiss." message:nil viewController:self canBeDismissedByUser:YES duration:60];
-
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunch1"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-
+    //Set the message for the first time on the view controller.
+    //NSUser defaults, bool for key, just returns YES or NO is the key exists in the user defaults database.
+    [CommonSetUpOperations setFirstViewTSMessage:@"MuscleSelectionViewController-FirstView" viewController:self message:@"Welcome to the exercise selection page! Here you can change between the muscle list and advanced search. Simply choose the muscle you'd like to exercise or you can use the advanced search to choose specifics, like the type of equipment, difficulty, muscle groups, if you want a more specific result. Looking for a warm-up? Press the running icon in the top right. Tap this message to dismiss."];
 }
 
-//What happens if the Warmup UIBarButton is pressed.
--(void)warmup:(id)sender{
-    [self performSegueWithIdentifier:@"30" sender:self];
-}
+/*****************************************************/
+#pragma mark - UITableView Delegate/Datasource Methods
+/*****************************************************/
 
-
+//Returns the height of the TableView.
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (IS_IPHONE_4_OR_LESS) {
-        return 58;
-    }
-    else {
-        return 60;
-    }
+    //Set the height of the tableview cells to be the constant.
+    return UITABLEVIEWCELL_HEIGHT;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    if (tableView == advancedSearchTableView)
+//Returns the number of sections of a TableView.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    //Return 2 (Front and Back) sections if the table view is the muscle list.
+    if (tableView == self.selectMuscleTableView) {
+        return 3;
+    }
+    //Return the number of sections recently viewed tableview.
+    else if (tableView == self.recentlyViewedTableView) {
         return 1;
-    else
-        return 2;
-    // Return the number of sections.
-    //2 because front and back muscles.
+    }
+    //Always return an else just for clarity.
+    else {
+        return 1;
+    }
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (tableView == selectMuscleTableView) {
-        //Number of rows in each section, just counts the array.
+//Returns the number of rows in the section of a TableView.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    //If the tableView is the selection muscles tableview set the number of rows to respective number of muscles.
+    if (tableView == self.selectMuscleTableView) {
+        //Using a switch statement instead of an if-else ladder.
         switch (section) {
             case 0:
-                return [musclesForTableview count];
+                return 1;
                 break;
             case 1:
-                return [musclesForTableview2 count];
+                //Count of front muscle array.
+                return [frontBodyMuscles count];
+                break;
+            case 2:
+                //Count of back muscle array
+                return [backBodyMuscles count];
                 break;
             default:
+                return 0;
                 break;
         }
     }
-       //As a precaution then return something.
-    return 5;
+    //Return recently viewed one section.
+    else if (tableView == self.recentlyViewedTableView) {
+        return 1;
+    }
+    //Always return an else just for clarity.
+    else {
+        return 1;
+    }
 }
 
 //Returns the height of the header in the tableview.
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (tableView == advancedSearchTableView) {
+    //Return no header for the recently viewed tableview search table view.
+    if (tableView == self.recentlyViewedTableView) {
         return 0;
     }
-    else {
+    //Return 25 for the select muscle tableview.
+    else if ((tableView == self.selectMuscleTableView) && (section == 1 || section == 2)) {
         return 25;
+    }
+    //Always return an else just for clarity.
+    else {
+        return 0;
     }
 }
 
-
+//Returns the view for the header in each section of the TableViews.
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    //Create the view for the header in the TableView.
     UIView *headerView = [CommonSetUpOperations drawViewForTableViewHeader:tableView];
     
     //Now customize that view.
+    //Create the label inside of the view.
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 4, tableView.frame.size.width, 18)];
     [titleLabel setFont:tableViewHeaderFont];
+    //Set the text color.
     titleLabel.textColor = STAYHEALTHY_BLUE;
     
+    //Add the label to the headerView.
     [headerView addSubview:titleLabel];
     
-    if (tableView == selectMuscleTableView && section == 0) {
+    //Set the label text for the headers in the select TableView.
+    if (tableView == self.selectMuscleTableView && section == 1) {
+        //First section is the front muscles.
         titleLabel.text = @"Front Muscles";
     }
-    else if (tableView == selectMuscleTableView &&  section == 1) {
+    else if (tableView == self.selectMuscleTableView &&  section == 2) {
+        //Second section is the back muscles.
         titleLabel.text = @"Back Muscles";
     }
-    
+    //Finally return the header view.
     return headerView;
 }
 
 
-
+//Cell for row at index path for the TableViews.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == selectMuscleTableView) {
-    //Define the identifier.
-    static NSString *muscleItem = @"muscleItem";
+    if (tableView == self.selectMuscleTableView) {
+        //Define the identifier.
+        static NSString *muscleItem = @"muscleItem";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:muscleItem];
+        //Create reference to the cell.
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:muscleItem];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:muscleItem];
-    }
-    
-    if (indexPath.section == 0) {
-        cell.textLabel.text = [musclesForTableview objectAtIndex:indexPath.row];
-        cell.detailTextLabel.text = [scientificMuscleNames objectAtIndex:indexPath.row];
-    }
-    if (indexPath.section == 1) {
-        cell.textLabel.text = [musclesForTableview2 objectAtIndex:indexPath.row];
-        cell.detailTextLabel.text = [scientificMuscleNames2 objectAtIndex:indexPath.row];
-    }
+        //If the cell can't be found then just create one.
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:muscleItem];
+        }
+        
+        if (indexPath.section == 0) {
+            cell.textLabel.text  =  @"Warmup Exercises";
+            cell.detailTextLabel.text = @"View Warmup Exercises";
+        }
+        //If the section equals one just set the text accordingly.
+        else if (indexPath.section == 1) {
+            //Set the text equal to the front body muscles.
+            cell.textLabel.text = [frontBodyMuscles objectAtIndex:indexPath.row];
+            cell.detailTextLabel.text = [frontBodyMusclesScientificNames objectAtIndex:indexPath.row];
+        }
+        //If the section equals two just set the text accordingly.
+        else if (indexPath.section == 2) {
+            //Set the text equal to the back body muscles.
+            cell.textLabel.text = [backBodyMuscles objectAtIndex:indexPath.row];
+            cell.detailTextLabel.text = [backBodyMusclesScientificNames objectAtIndex:indexPath.row];
+        }
         
         //Stlying the cells.
+        //Using the contants referenced from the definitions file.
         cell.textLabel.font = tableViewTitleTextFont;
         cell.detailTextLabel.font = tableViewUnderTitleTextFont;
         cell.textLabel.textColor = STAYHEALTHY_BLUE;
         cell.detailTextLabel.textColor = STAYHEALTHY_BLUE;
         
+        //Set the selection color.
         [CommonSetUpOperations tableViewSelectionColorSet:cell];
     
-       return cell;
+        //Return the cell.
+        return cell;
+    
     }
+    //This else is really for the recently viewed TableView.
     else {
-        static NSString *advancedItem = @"advancedItem";
+        //Set the identifier.
+        static NSString *recentlyViewedItem = @"recentlyViewedItem";
         
-        UITableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:advancedItem];
+        //Create the reference for the cell.
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:recentlyViewedItem];
         
-        if (cell2 == nil) {
-            cell2 = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:advancedItem];
+        //If the cell can't be found then just create one.
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:recentlyViewedItem];
         }
         
-        cell2.textLabel.text = [advancedOptions objectAtIndex:indexPath.row];
-        cell2.detailTextLabel.text = [advancedOptionsSelections objectAtIndex:indexPath.row];
-        
-        //Stlying the cells.
-        cell2.textLabel.font = tableViewTitleTextFont;
-        cell2.detailTextLabel.font = tableViewDetailTextFont;
-        cell2.textLabel.textColor = STAYHEALTHY_BLUE;
-        cell2.detailTextLabel.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
-        
-       [CommonSetUpOperations tableViewSelectionColorSet:cell2];
-
-        return cell2;
+        //Return the cell.
+        return cell;
     }
 }
 
-//Controls what happens when a user presses a cell, i.e. a SIAlertview pops up.
+//Controls what happens when a user presses a cell,
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    
-    if (tableView == selectMuscleTableView) {
-    if (indexPath.section == 0) {
-        if (indexPath.row < 2) {
-            NSString *indexPathNum = [NSString stringWithFormat: @"%ld", (long)indexPath.row*2];
-            NSString *indexPathNumAdd = [NSString stringWithFormat: @"%ld", ((long)indexPath.row*2)+1];
-            [self selectRow:indexPathNum second:indexPathNumAdd];
-        }
-        if (indexPath.row > 2 && indexPath.row < 5) {
-            NSString *indexPathNum = [NSString stringWithFormat: @"%ld", ((long)indexPath.row*2)-1];
-            NSString *indexPathNumAdd = [NSString stringWithFormat: @"%ld", ((long)indexPath.row*2)];
-            [self selectRow:indexPathNum second:indexPathNumAdd];
-        }
-        if (indexPath.row > 5){
-            NSString *indexPathNum = [NSString stringWithFormat: @"%ld", ((long)indexPath.row*2)-2];
-            NSString *indexPathNumAdd = [NSString stringWithFormat: @"%ld", ((long)indexPath.row*2)-1];
-            [self selectRow:indexPathNum second:indexPathNumAdd];
-        }
-        //For Chest and Oblique, they don't have stretching, so have to make special SIAlertview.
-        if (indexPath.row == 2) {
-            NSString *indexPathNum = [NSString stringWithFormat: @"%d", 4];
-            [self strengthOnly:indexPathNum];
-        }
-        if (indexPath.row == 5) {
-            NSString *indexPathNum = [NSString stringWithFormat: @"%d", 9];
-            [self strengthOnly:indexPathNum];
-        }
+    //What happens when a user pressed on a cell on the select muscle cell.
+    if (tableView == self.selectMuscleTableView) {
+
     }
-        else if (indexPath.section == 1) {
-            NSString *indexPathNum = [NSString stringWithFormat: @"%ld", (((long)indexPath.row+11)*2)-2];
-            NSString *indexPathNumAdd = [NSString stringWithFormat: @"%ld", (((long)indexPath.row+11)*2)-1];
-            [self selectRow:indexPathNum second:indexPathNumAdd];
-        }
+    //What happens when a user pressed on a cell on the recently viewed TableView.
+    else if (tableView == self.recentlyViewedTableView) {
+        
     }
     //Then deselect the row once complete touch/select.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-//Creates the SIAlertview, and has the parameters for the segue to perform.
--(void)selectRow:(NSString*)indexPathNum second:(NSString*)indexPathNumAdd {    
-    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"title" andMessage:nil];
-    [alertView addButtonWithTitle:strength
-                             type:SIAlertViewButtonTypeCancel
-                          handler:^(SIAlertView *alertView) {
-                              [self performSegueWithIdentifier:indexPathNum sender:nil];
-                          }];
-    [alertView addButtonWithTitle:stretching
-                             type:SIAlertViewButtonTypeCancel
-                          handler:^(SIAlertView *alertView) {
-                              [self performSegueWithIdentifier:indexPathNumAdd sender:nil];
-                          }];
-    [alertView addButtonWithTitle:cancel
-                             type:SIAlertViewButtonTypeCancel
-                          handler:nil];
-    [alertView show];
-    alertView.title = title;
-}
+/********************************/
+#pragma mark - Prepare For Segue
+/*******************************/
 
-//The special SIAlertView for chest and oblique.
--(void)strengthOnly:(NSString*)indexPathNum {
-    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"title" andMessage:nil];
-    [alertView addButtonWithTitle:strength
-                             type:SIAlertViewButtonTypeCancel
-                          handler:^(SIAlertView *alertView) {
-                              [self performSegueWithIdentifier:indexPathNum sender:nil];
-                          }];
-    [alertView addButtonWithTitle:cancel
-                             type:SIAlertViewButtonTypeCancel
-                          handler:nil];
-    [alertView show];
-    alertView.title = title;
-}
-
-
-
-//The button that actually performs the search.
-- (IBAction)searchButton:(id)sender {
-    [self performSelector:@selector(search) withObject:nil];
-}
-
-
--(void)search {
-    
-    //Reset the array for another search.
-    [selectedTypes removeAllObjects];
-    
-    //Starting with blank query, and getting name from uitextfield.
-    searchQuery = [NSString stringWithFormat:@""];
-    //searchName = self.nameSearch.text;
-    
-    UITableViewCell *Cell = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    UITableViewCell *Cell2 = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    UITableViewCell *Cell3 = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-    UITableViewCell *Cell4 = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-    
-    //Receiving data values.
-    primaryText = Cell.detailTextLabel.text;
-    secondaryText = Cell2.detailTextLabel.text;
-    difficultyText = Cell4.detailTextLabel.text;
-    equipmentText = Cell3.detailTextLabel.text;
-    
-    //Fills the selected values into their arrays.
-    [self fillStoreData];
-    
-    //Checks what switches are on, and then adds the exercise types into the array if it is on.
-    [self selectedTypes];
-    
-      //Start of query building
-    if ([Cell.detailTextLabel.text isEqualToString:@"Any"] && [Cell2.detailTextLabel.text isEqualToString:@"Any"] && [Cell3.detailTextLabel.text isEqualToString:@"Any"] && [Cell4.detailTextLabel.text isEqualToString:@"Any"]) {
-         searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY Name COLLATE NOCASE",selectedTypes[0]]];
-        NSLog(@"%@", searchQuery);
-    }
-    else {
-        for (int i=0; i<selectedTypes.count; i++) {
-            searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE",selectedTypes[i]]];
-            
-            for (int k=0; k<selectedValues.count; k++) {
-                searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"%@ LIKE '%%%@%%'",selectedColumns[k],selectedValues[k]]];
-                
-                if (k != selectedValues.count-1) {
-                    searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat:@"AND "]];
-                }
-            }
-            if (i != selectedTypes.count-1) {
-                searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:@"UNION ALL"];
-            }
-            else {
-                searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:@"ORDER BY Name COLLATE NOCASE"];
-            }
-            NSLog(@"%@", searchQuery);
-        }
-    }
-    
-    //Then check the search with the check search method.
-    [self checkSearch:selectedTypes second:@"Please select an exercise type to complete a search."];
-}
-
-//Checks what switches are on, and then adds the exercise types into the array if it is on.
--(NSMutableArray*) selectedTypes{
-    selectedTypes = [[NSMutableArray alloc] init];
-    
-    @try {
-        UITableViewCell *Cell5 = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
-        NSString *type = Cell5.detailTextLabel.text;
-        if ([type isEqualToString:@"Strength"]) {
-            [selectedTypes addObject:@"strengthexercises"];
-        }
-        else if ([type isEqualToString:@"Stretching"]) {
-             [selectedTypes addObject:@"stretchingexercises"];
-        }
-        else {
-             [selectedTypes addObject:@"warmupexercises"];
-        }
-    }
-    @finally {
-        return selectedTypes;
-    }
-}
-
-//Filling and storing data into arrays.rgb(46, 204, 113)
--(void) fillStoreData {
-    selectedValues = [[NSMutableArray alloc] init];
-    selectedColumns = [[NSMutableArray alloc] init];
-    
-    UITableViewCell *Cell = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    UITableViewCell *Cell2 = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    UITableViewCell *Cell3 = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-    UITableViewCell *Cell4 = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-
-    
-    if (![Cell.detailTextLabel.text isEqualToString:@"Any"]) {
-        [selectedColumns addObject:@"primarymuscle"];
-        [selectedValues addObject:primaryText];
-    }
-    NSLog(@"%@",Cell2.detailTextLabel.text);
-    if (![Cell2.detailTextLabel.text isEqualToString:@"Any"]) {
-        [selectedColumns addObject:@"secondarymuscle"];
-        [selectedValues addObject:secondaryText];
-    }
-    if (![Cell4.detailTextLabel.text isEqualToString:@"Any"]) {
-        [selectedColumns addObject:@"difficulty"];
-        [selectedValues addObject:difficultyText];
-    }
-    if (![Cell3.detailTextLabel.text isEqualToString:@"Any"]) {
-        [selectedColumns addObject:@"equipment"];
-        [selectedValues addObject:equipmentText];
-    }
-}
-
-//This checks to see if the search is valid. If it is then perform the search.
--(void)checkSearch:(NSArray*)typesSelected second:(NSString*)messageText {
-    if (typesSelected.count == 0)
-        [CommonSetUpOperations performTSMessage:messageText message:nil viewController:self canBeDismissedByUser:YES duration:6];
-    else
-        [self performSegueWithIdentifier:@"search" sender:nil];
-}
-
-
-
-- (void)done:(NSString*)selectedValue num:(NSInteger *)cell {
-    primaryText = selectedValue;
-    UITableViewCell *Cell = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    UITableViewCell *Cell2 = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    UITableViewCell *Cell3 = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-    UITableViewCell *Cell4 = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-    UITableViewCell *Cell5 = [advancedSearchTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
-    
-    if (*cell == 0) {
-        Cell.detailTextLabel.text = selectedValue;
-    }
-    else if (*cell == 1) {
-        Cell2.detailTextLabel.text = selectedValue;
-    }
-    else if (*cell == 2) {
-        Cell3.detailTextLabel.text = selectedValue;
-    }
-    else if (*cell == 3) {
-        Cell4.detailTextLabel.text = selectedValue;
-    }
-    else if (*cell == 4) {
-        Cell5.detailTextLabel.text = selectedValue;
-    }
-    
-}
-
-
+//Handels what happens when a user performs a segue.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-     NSInteger segueInt = [segue.identifier intValue];
     
-    if ([segue.identifier isEqualToString:@"advancedOptions"]) {
-        NSIndexPath *indexPath = [advancedSearchTableView indexPathForSelectedRow];
-        UINavigationController *nav = segue.destinationViewController;
-        advancedOptionsSelect *triv = [[advancedOptionsSelect alloc]init];
-        triv = nav.viewControllers[0];
-        triv.num = indexPath.row;
-        triv.delegate = self;
-        if (indexPath.row == 0) {
-            triv.arrayForTableView = primaryMuscleList;
-            triv.titleText = @"Select Muscle";
-
-        }
-        else if (indexPath.row == 1) {
-            triv.arrayForTableView = secondaryMuscleList;
-            triv.titleText = @"Select Muscle";
-        }
-        else if (indexPath.row == 2) {
-            triv.arrayForTableView = equipmentList;
-            triv.titleText = @"Select Equipment";
-
-        }
-        else if (indexPath.row == 3) {
-            triv.arrayForTableView = difficultyList;
-            triv.titleText = @"Select Difficulty";
-
-        }
-        else if (indexPath.row == 4) {
-            NSArray *exerciseTypes = @[@"Strength",@"Stretching",@"Warmup"];
-            triv.arrayForTableView = exerciseTypes;
-            triv.titleText = @"Select Exercise Type";
-        }
-    }
-    else {
-        if (segueInt < queries.count) {
-            ImprovedExerciseController *parentViewController = segue.destinationViewController;
-            parentViewController.query = queries[segueInt];
-            parentViewController.titleText = titleText[segueInt];
-        }
-        if ([segue.identifier isEqualToString:@"search"]) {
-            ImprovedExerciseController *destViewController = segue.destinationViewController;
-            destViewController.query = searchQuery;
-            destViewController.titleText = @"Custom Search";
-        }
-    }
+   
 }
 
--(void)viewWillDisappear:(BOOL)animated {
-    [TSMessage dismissActiveNotification];
-}
+/*****************************/
+#pragma mark - Action Methods
+/*****************************/
 
-
+//What is fired when the user changes the value of the segment.
 - (IBAction)segmentValueChanged:(UISegmentedControl*)sender {
     switch (sender.selectedSegmentIndex) {
         case 0:
-            [self setHidden:NO second:YES];
+            //Set the views hidden correctly.
+            [self setViewsHidden:NO second:YES];
             break;
         case 1:
-            [self setHidden:YES second:NO];
+            [self setViewsHidden:YES second:NO];
         default:
             break;
     }
 }
 
--(void)setHidden:(BOOL)muscleListHide second:(BOOL)advancedSearchHide {
-    self.muscleList.hidden = muscleListHide;
-    self.advancedSearch.hidden = advancedSearchHide;
+
+/*****************************/
+#pragma mark - Utility Methods
+/*****************************/
+
+//Creates the alet popup and handles the action when a user presses on the alert buttons.
+-(void)selectRow:(NSIndexPath*)indexPath alertTitle:(NSString*)alertTitle{
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"title" andMessage:nil];
+    [alertView addButtonWithTitle:@"Strength"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alertView) {
+                             
+                          }];
+    [alertView addButtonWithTitle:@"Stretching"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alertView) {
+                              
+                          }];
+    [alertView addButtonWithTitle:@"Cancel"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:nil];
+    [alertView show];
+    //Set the alert title to the passed parameter.
+    alertView.title = alertTitle;
+}
+
+//Sets the view hidden dependant on the boolean values passed to it.
+-(void)setViewsHidden:(BOOL)muscleListHide second:(BOOL)recentlyViewed {
+    self.muscleListView.hidden = muscleListHide;
+    self.recentlyViewedExercisesView.hidden = recentlyViewed;
+}
+
+/**************************************/
+#pragma mark - View Terminating Methods
+/**************************************/
+
+//View Will Disappear
+-(void)viewWillDisappear:(BOOL)animated {
+    //Dismiss any outstaning notifications.
+    [TSMessage dismissActiveNotification];
 }
 
 @end

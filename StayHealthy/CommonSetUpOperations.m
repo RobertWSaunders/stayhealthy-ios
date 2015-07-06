@@ -38,14 +38,16 @@
 }
 
 //Sets the initial tutorial TSMessage.
-+ (void)setFirstViewTSMessage:(NSString *)key viewController:(UIViewController *)view message:(NSString *)message
-{
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:key])
-    {
-        [self performTSMessage:message message:nil viewController:view
-          canBeDismissedByUser:YES duration:60];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:key];
-        [[NSUserDefaults standardUserDefaults] synchronize];
++ (void)setFirstViewTSMessage:(NSString *)key viewController:(UIViewController *)view message:(NSString *)message {
+    //If the user has allowed tutorial messages from the settings page, perform the tutorial message. By default the key is NO, which is actually YES.
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:TUTORIAL_MESSAGES]) {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:key])
+            {
+                [self performTSMessage:message message:nil viewController:view
+                  canBeDismissedByUser:YES duration:60];
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:key];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+        }
     }
 }
 

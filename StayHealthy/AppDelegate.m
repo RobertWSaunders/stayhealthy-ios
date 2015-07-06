@@ -10,117 +10,55 @@
 
 @implementation AppDelegate
 
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize listArray;
+//Our managed object context, manages our managed objects (objects in our object graph)
+@synthesize stayHealthyManagedObjectContext = _managedObjectContext;
+//Generic class that implements all the basic behaivours required for core data.
+@synthesize stayHealthyManagedObjectModel = _managedObjectModel;
+//Persists the store, looks through our objects and finds the one that we need.
+@synthesize stayHealthyPersistentStoreCoordinator = _persistentStoreCoordinator;
+
+#pragma mark - App Delegate Methods
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
-
-
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunch"])
-    {}
-    else {
-        for (int i = 0; i < 31; i++) {
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-
-            NSString *today = [CommonSetUpOperations returnDateInString:[NSDate date]];
-            NSDate *todaysDate = [dateFormatter dateFromString:today];
-
-            int daysToAdd = -31;
-            NSDate *newDate1 = [todaysDate dateByAddingTimeInterval:60*60*24*daysToAdd];
-
-            NSArray *tempArrayOfDays = [CommonSetUpOperations arrayOfDays:newDate1 endDate:todaysDate];
-            NSArray *arrayOfDays = [[NSMutableArray alloc] init];
-            arrayOfDays = [[tempArrayOfDays reverseObjectEnumerator] allObjects];
-
-            [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO DailyActivity (completedWorkouts,workoutTime,exercisesViewed,completedGoals,date) VALUES (0,'00:00',0,0,'%@')",arrayOfDays[i]] databaseName:USER_DATABASE database:db];
-        }
-
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunch"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-
-    NSString *today = [CommonSetUpOperations returnDateInString:[NSDate date]];
-
-    dailyActivityArray = [CommonDataOperations retreiveDailyActivity:[NSString stringWithFormat:@"SELECT * FROM DailyActivity WHERE date = '%@'",today] databaseName:USER_DATABASE database:db];
-
-    if (dailyActivityArray.count == 0) {
-        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO DailyActivity (completedWorkouts,workoutTime,exercisesViewed,completedGoals,date) VALUES (0,'00:00',0,0,'%@')",today] databaseName:USER_DATABASE database:db];
-    }
-
-    
-    
+    //Set the appearance of the navigation bar. Set the text color to STAYHEALTHY_BLUE constant.
+    //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                             STAYHEALTHY_BLUE,
                                                             NSForegroundColorAttributeName,
                                                             STAYHEALTHY_NAVBARFONT,
                                                             NSFontAttributeName,
                                                            nil]];
-    
+    //Set the tint color of all tab bars.
     [[UITabBar appearance] setTintColor:STAYHEALTHY_BLUE];
+    //Set the tint color of all segmented controls.
     [[UISegmentedControl appearance] setTintColor:STAYHEALTHY_BLUE];
+    //Set the tint color for all the navigation bars.
     [[UINavigationBar appearance] setTintColor:STAYHEALTHY_BLUE];
-        return YES;
+    
+    return YES;
 }
 
 
 - (void)application:(UIApplication *)application
-didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
-   
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
-
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
-  
 }
-							
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+- (void)applicationWillResignActive:(UIApplication *)application {
 }
-
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    UIApplication *app = [UIApplication sharedApplication];
-    NSArray  *oldNotification = [app scheduledLocalNotifications];
-    if ([oldNotification count] > 0) {
-        [app cancelAllLocalNotifications];
-    }
+- (void)applicationWillEnterForeground:(UIApplication *)application {
 }
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+- (void)applicationDidBecomeActive:(UIApplication *)application {
 }
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
+- (void)applicationWillTerminate:(UIApplication *)application {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
 
-- (void)saveContext
-{
-    NSError *error = nil;
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-    if (managedObjectContext != nil) {
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
-             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        } 
-    }
-}
-
-#pragma mark - Core Data stack
+//All of the core data methods.
+#pragma mark - Core Data Stack
 
 // Returns the managed object context for the application.
 // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
@@ -129,7 +67,6 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
     }
-    
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
         _managedObjectContext = [[NSManagedObjectContext alloc] init];
@@ -163,32 +100,9 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-         @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
-    }    
+    }
     
     return _persistentStoreCoordinator;
 }
@@ -199,6 +113,19 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+//Saves objects into the context.
+- (void)saveContext
+{
+    NSError *error = nil;
+    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    if (managedObjectContext != nil) {
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        } 
+    }
 }
 
 

@@ -57,7 +57,7 @@
     muscleArray = [self.muscleText componentsSeparatedByString:@","];
     equipmentArray = [self.equipText componentsSeparatedByString:@","];
 	
-    [self performFavoriteSearch:self.workoutID];
+   // [self performFavoriteSearch:self.workoutID];
     
     self.title = self.titleText;
     self.summaryText.text = self.summary;
@@ -78,11 +78,13 @@
     [[SIAlertView appearance] setMessageColor:[UIColor lightGrayColor]];
     
     if (checkIfFavorite.count > 0) {
+        /*
         workoutFavoriteObjects *favoriteObject = [checkIfFavorite objectAtIndex:0];
         if ([favoriteObject.isFavorite isEqualToString:@"TRUE"])
             [self createUIBarButtons:@"Star Filled-50.png"];
         else
             [self createUIBarButtons:@"Star-50.png"];
+         */
     }
     
     detail = @[@"Exercises:",@"Type:",@"Difficulty:",@"Gender:",@"Times Completed:"];
@@ -91,13 +93,13 @@
     NSString *gender = self.genderText;
     NSString *difficulty = self.difficultyText;
     
-    workoutFavoriteObjects *favoriteObject = [checkIfFavorite objectAtIndex:0];
-    NSString *timescompleted = [NSString stringWithFormat:@"%ld",(long)favoriteObject.TimesCompleted];
-    NSString *type = [self.typeArray objectAtIndex:0];
-    detailInformation = @[numberOfExercises,type,difficulty,gender,timescompleted];
+    //workoutFavoriteObjects *favoriteObject = [checkIfFavorite objectAtIndex:0];
+  //  NSString *timescompleted = [NSString stringWithFormat:@"%ld",(long)favoriteObject.TimesCompleted];
+   // NSString *type = [self.typeArray objectAtIndex:0];
+  //  detailInformation = @[numberOfExercises,type,difficulty,gender,timescompleted];
     
     
-    workoutExercises = [CommonDataOperations returnExerciseData:self.queryText databaseName:STAYHEALTHY_DATABASE database:db];
+   // workoutExercises = [CommonDataOperations returnExerciseData:self.queryText databaseName:STAYHEALTHY_DATABASE database:db];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -262,7 +264,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-    
+    /*
     sqlColumns *exercise = [self.workoutExercises objectAtIndex:indexPath.row];
     
     UILabel *exerciseName = (UILabel *)[cell viewWithTag:101];
@@ -301,7 +303,7 @@
     bgColorView.backgroundColor = STAYHEALTHY_WHITE;
     bgColorView.layer.masksToBounds = YES;
     [cell setSelectedBackgroundView:bgColorView];
-    
+    */
     return cell;
 
       }
@@ -367,6 +369,7 @@
     }
     }
     else {
+        /*
     PopupViewController *secondDetailViewController = [[PopupViewController alloc] initWithNibName:@"PopupViewController" bundle:nil];
     secondDetailViewController.delegate = self;
     //self.workoutExercisesTable = (UITableView *)[self.workoutDetails viewWithTag:10];
@@ -386,8 +389,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
     }
+         */
 }
-
+}
 
 - (IBAction)segmentValueChanged:(UISegmentedControl*)sender {
     switch (sender.selectedSegmentIndex) {
@@ -416,6 +420,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"workoutExDetails"]) {
+        /*
         NSIndexPath *indexPath = [self.workoutExercisesTable indexPathForSelectedRow];
         sqlColumns *exercise = [self.workoutExercises objectAtIndex:indexPath.row];
         ExerciseDetailViewController *destViewController = segue.destinationViewController;
@@ -431,6 +436,7 @@
         destViewController.ident = exercise.ID;
         destViewController.favorite = exercise.isFavorite;
         destViewController.exerciseType = exercise.ExerciseType;
+         */
     }
     if ([segue.identifier isEqualToString:@"workoutPage"]) {
         WorkoutViewController *destViewController = segue.destinationViewController;
@@ -451,11 +457,12 @@
 -(void)performFavoriteSearch:(NSString*)ID {
     NSString *workoutFavoriteQuery;
     workoutFavoriteQuery = [NSString stringWithFormat:@"SELECT * FROM PrebuiltWorkoutData WHERE WorkoutID = '%@'",ID];
-    checkIfFavorite = [CommonDataOperations retreiveWorkoutInfo:workoutFavoriteQuery databaseName:USER_DATABASE database:db];
+  //  checkIfFavorite = [CommonDataOperations retreiveWorkoutInfo:workoutFavoriteQuery databaseName:USER_DATABASE database:db];
 
     if (checkIfFavorite.count == 0) {
-        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO PrebuiltWorkoutData ('WorkoutID','TimesCompleted','isFavorite') VALUES ('%@','0','FALSE')",self.workoutID] databaseName:USER_DATABASE database:db];
+     /*   [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO PrebuiltWorkoutData ('WorkoutID','TimesCompleted','isFavorite') VALUES ('%@','0','FALSE')",self.workoutID] databaseName:USER_DATABASE database:db];
          checkIfFavorite = [CommonDataOperations retreiveWorkoutInfo:workoutFavoriteQuery databaseName:USER_DATABASE database:db];
+      */
     }
     
 }
@@ -480,10 +487,10 @@
     [self changeImage];
     [self.backDelegate backButtonPressed];
     NSInteger workoutID = [self.workoutID intValue];
-    if ([self.favoriteButton.image isEqual:[UIImage imageNamed:@"Star Filled-50.png"]])
-        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"UPDATE PrebuiltWorkoutData SET isFavorite = 'TRUE' WHERE WorkoutID = '%ld'",(long)workoutID] databaseName:USER_DATABASE database:db];
-    else if ([self.favoriteButton.image isEqual:[UIImage imageNamed:@"Star-50.png"]])
-         [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"UPDATE PrebuiltWorkoutData SET isFavorite = 'FALSE' WHERE WorkoutID = '%ld'",(long)workoutID] databaseName:USER_DATABASE database:db];
+   // if ([self.favoriteButton.image isEqual:[UIImage imageNamed:@"Star Filled-50.png"]])
+      //  [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"UPDATE PrebuiltWorkoutData SET isFavorite = 'TRUE' WHERE WorkoutID = '%ld'",(long)workoutID] databaseName:USER_DATABASE database:db];
+   // else if ([self.favoriteButton.image isEqual:[UIImage imageNamed:@"Star-50.png"]])
+         //[CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"UPDATE PrebuiltWorkoutData SET isFavorite = 'FALSE' WHERE WorkoutID = '%ld'",(long)workoutID] databaseName:USER_DATABASE database:db];
     
 }
 

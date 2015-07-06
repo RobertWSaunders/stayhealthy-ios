@@ -123,4 +123,19 @@
     return [difference day];
 }
 
+//Converts the exercise type to the table name for queries.
++ (NSString*)convertExerciseTypeToTableName:(NSString*)exerciseType {
+    if ([exerciseType isEqualToString:@"Strength"])
+        return STRENGTH;
+    else if ([exerciseType isEqualToString:@"Warmup"])
+        return WARMUP;
+    else
+        return STRETCHING;
+}
+
++ (NSDictionary*)returnGeneralPlist {
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"StayHealthyGeneral" ofType:@"plist"];
+    return [[NSDictionary alloc] initWithContentsOfFile:plistPath];;
+}
+
 @end

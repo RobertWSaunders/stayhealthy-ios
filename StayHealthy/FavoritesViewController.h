@@ -12,9 +12,7 @@
 #import <UIKit/UIKit.h>
 //^^^^^^^^^^The standard UIKit.
 #import "FavoritesCell.h"
-//^^^^^^^^^^The cell for the collection view.
-#import "favoriteColumns.h"
-//^^^^^^^^^^Our database objects.
+
 
 //^^^^^^^^^^Our FlatUI colors.
 #import "ExerciseDetailViewController.h"
@@ -24,11 +22,8 @@
 #import "UIViewController+MJPopupViewController.h"
 #import "PopupViewController.h"
 #import "workoutCell.h"
-#import "workoutFavoriteObjects.h"
-#import "workoutsDataObjects.h"
+
 #import "WorkoutDetailViewController.h"
-#import "CommonDataOperations.h"
-#import "CommonSetUpOperations.h"
 
 //Have to inherit the UICollectionview Delegates and Datasource.
 @interface FavoritesViewController : UIViewController <UICollectionViewDelegate,UICollectionViewDataSource,MJSecondPopupDelegate, backDelegate> {

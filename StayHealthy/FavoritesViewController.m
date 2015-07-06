@@ -32,7 +32,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     
-    
+    /*
     
     //Load the data into the arrays.
     favoriteStretchExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'stretchingexercises'" databaseName:USER_DATABASE database:db];
@@ -69,7 +69,7 @@
     scroller.layer.shadowOffset = CGSizeZero;
     scroller.layer.shadowPath = [UIBezierPath bezierPathWithRect:scroller.bounds].CGPath;
 
-
+*/
 }
 
 -(void)setSegmentedControlText {
@@ -96,9 +96,11 @@
     NSMutableArray *arrayOfIds = [[NSMutableArray alloc] init];
     
     for (int i = 0; i <  favoriteWorkouts.count; i++) {
+        /*
         workoutFavoriteObjects *favoriteObject;
         favoriteObject = [ favoriteWorkouts objectAtIndex:i];
         [arrayOfIds addObject:favoriteObject.WorkoutID];
+         */
     }
     
     for (int i = 0; i < arrayOfIds.count; i++) {
@@ -130,7 +132,7 @@
 //Generates the query to search for the favorited exercises, then returns it.
 -(NSString*)generateQuery:(NSMutableArray*)countArray{
     favoriteQuery = @"";
-    NSString *exerciseTypes;
+    NSString *exerciseTypes;/*
     for (int i = 0; i < countArray.count; i++) {
         favoriteColumns *favorites = [countArray objectAtIndex:i];
         if ([favorites.exerciseType isEqualToString:@"warmup"])
@@ -148,6 +150,7 @@
             favoriteQuery = [[favoriteQuery stringByAppendingString:@" "]stringByAppendingString:@"ORDER BY Name COLLATE NOCASE"];
         }
     }
+                             */
     return favoriteQuery;
 }
 
@@ -156,7 +159,7 @@
 -(UICollectionViewCell*)formatCells:(NSIndexPath *)indexPath second:(FavoritesCell*)favoritesCell third:(NSString*)identifier collectionview:(UICollectionView*)collectionView array:(NSMutableArray*)arrayData{
 
     favoritesCell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    
+    /*
     sqlColumns *favorite = [arrayData objectAtIndex:indexPath.row];
 
     favoritesCell.nameLabel.text = favorite.Name;
@@ -197,6 +200,7 @@
     if ([trimmedString isEqualToString:@"null"]) {
         favoritesCell.equipmentLabel.text = @"No Equip";
     }
+     */
     return favoritesCell;
 }
 
@@ -234,7 +238,7 @@ indexPath {
         }
         
         FavoritesCell *favoritesCell = [strengthCollectionView dequeueReusableCellWithReuseIdentifier:idetifier1 forIndexPath:indexPath];
-        
+        /*
         favoriteStrengthExercisesData = [CommonDataOperations returnExerciseData:[self generateQuery:favoriteStrengthExercises] databaseName:STAYHEALTHY_DATABASE database:db];
         
         sqlColumns *favorite = [favoriteStrengthExercisesData objectAtIndex:indexPath.row];
@@ -282,7 +286,7 @@ indexPath {
         if ([trimmedString isEqualToString:@"null"]) {
             favoritesCell.equipmentLabel.text = @"No Equip";
         }
-        
+        */
         [CommonSetUpOperations styleCollectionViewCell:favoritesCell];
         return favoritesCell;
     }
@@ -299,7 +303,7 @@ indexPath {
         }
         
         FavoritesCell *favoritesCell = [ warmupCollectionView dequeueReusableCellWithReuseIdentifier:idetifier2 forIndexPath:indexPath];
-        
+        /*
         favoriteWarmupExercisesData = [CommonDataOperations returnExerciseData:[self generateQuery:favoriteWarmupExercises] databaseName:STAYHEALTHY_DATABASE database:db];
         
         sqlColumns *favorite = [favoriteWarmupExercisesData objectAtIndex:indexPath.row];
@@ -348,7 +352,7 @@ indexPath {
         }
         
         [CommonSetUpOperations styleCollectionViewCell:favoritesCell];
-        
+        */
         return favoritesCell;
     }
     else if ( stretchingCollectionView == collectionView) {
@@ -364,7 +368,7 @@ indexPath {
         }
         
         FavoritesCell *favoritesCell = [ stretchingCollectionView dequeueReusableCellWithReuseIdentifier:idetifier3 forIndexPath:indexPath];
-        
+        /*
         favoriteStretchExercisesData = [CommonDataOperations returnExerciseData:[self generateQuery:favoriteStretchExercises] databaseName:STAYHEALTHY_DATABASE database:db];
         
         sqlColumns *favorite = [favoriteStretchExercisesData objectAtIndex:indexPath.row];
@@ -413,7 +417,7 @@ indexPath {
         }
         
         [CommonSetUpOperations styleCollectionViewCell:favoritesCell];
-        
+        */
         return favoritesCell;
         }
 
@@ -429,7 +433,7 @@ indexPath {
         }
         
         workoutCell *workoutsCell = [ workoutsCollectionView dequeueReusableCellWithReuseIdentifier:idetifier4 forIndexPath:indexPath];
-        
+        /*
         favoriteWorkoutsData = [CommonDataOperations returnWorkoutData:[self buildWorkoutQuery] databaseName:STAYHEALTHY_DATABASE database:db];
         
         workoutsDataObjects *workoutDataInfo = [favoriteWorkoutsData objectAtIndex:indexPath.row];
@@ -473,14 +477,16 @@ indexPath {
         sqlColumns *workoutImageInfo = [workoutImages objectAtIndex:1];
         workoutImageView.image = [UIImage imageNamed:workoutImageInfo.File];
         [CommonSetUpOperations styleCollectionViewCell:workoutsCell];
+         */
         return workoutsCell;
     }
     return nil;
 }
 -(NSString*)buildQuery:(UICollectionView*)collectionView tableView:(UITableView*)tableView indexPath:(NSIndexPath*)indexPath isFavoriteCollectionView:(BOOL)favoriteCollectionView{
-    workoutsDataObjects *workoutDataInfo;
-    NSString* exerciseQuery = @"";
     
+   // workoutsDataObjects *workoutDataInfo;
+    NSString* exerciseQuery = @"";
+    /*
     workoutDataInfo = [favoriteWorkoutsData objectAtIndex:indexPath.row];
     
     exerciseIdentifiers = [workoutDataInfo.exerciseIDs componentsSeparatedByString:@","];
@@ -495,6 +501,7 @@ indexPath {
         else
             exerciseQuery = [[exerciseQuery stringByAppendingString:@" "]stringByAppendingString:@"ORDER BY Name COLLATE NOCASE"];
     }
+     */
     return exerciseQuery;
 }
 
@@ -512,6 +519,7 @@ indexPath {
 
 
 -(void)sendData:(NSIndexPath*)indexPath dataArray:(NSArray*)dataArray segue:(UIStoryboardSegue*)segue query:(NSString*)builtQuery {
+    /*
     workoutsDataObjects *objects = [dataArray objectAtIndex:indexPath.row];
     NSArray* typeArrayData = [objects.workoutType componentsSeparatedByString:@","];
     WorkoutDetailViewController *destViewController = segue.destinationViewController;
@@ -525,11 +533,12 @@ indexPath {
     destViewController.muscleText = objects.targetMuscles;
     destViewController.equipText = objects.equipment;
     destViewController.workoutID = objects.ID;
-
+*/
     }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    /*
     if ([segue.identifier isEqualToString:@"toWorkoutDetail"]) {
         NSArray *arrayOfIndexPaths = [workoutsCollectionView indexPathsForSelectedItems];
         NSIndexPath *indexPath = [arrayOfIndexPaths firstObject];
@@ -550,10 +559,12 @@ indexPath {
         destViewController.workoutID = objects.ID;
 
     }
+     */
 }
 
 
 -(void)displayPopup:(UICollectionView*)collectionview array:(NSMutableArray*)arrayData {
+    /*
     PopupViewController *secondDetailViewController = [[PopupViewController alloc] initWithNibName:@"PopupViewController" bundle:nil];
     secondDetailViewController.delegate = self;
     NSArray *arrayOfIndexPaths = [collectionview indexPathsForSelectedItems];
@@ -571,6 +582,7 @@ indexPath {
     secondDetailViewController.ident = exercise.ID;
     secondDetailViewController.exerciseType = exercise.ExerciseType;
     [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
+     */
 }
 
 
@@ -619,7 +631,7 @@ indexPath {
 
 - (void)cancelButtonClicked:(PopupViewController *)aSecondDetailViewController
 {
-    
+    /*
     //Load the data into the arrays.
     favoriteStretchExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'stretchingexercises'" databaseName:USER_DATABASE database:db];
     favoriteStrengthExercises = [CommonDataOperations checkIfExerciseIsFavorite:@"SELECT * FROM FavoriteExercises WHERE ExerciseType = 'strengthexercises'" databaseName:USER_DATABASE database:db];
@@ -637,6 +649,7 @@ indexPath {
     //If there are no favorites then perform a message telling the user.
     if ( favoriteStrengthExercises.count == 0 &&  favoriteStretchExercises.count == 0 &&  favoriteWarmupExercises.count == 0 &&  favoriteWorkouts.count == 0)
         [CommonSetUpOperations performTSMessage:@"You have no favorites. To add one, on an exercise page simply press the star in the top right corner. If it is favorited then the star will be filled." message:nil viewController:self canBeDismissedByUser:YES duration:6];
+     */
 }
 
 //If the user leaves the page then dismiss the all TSMessages.

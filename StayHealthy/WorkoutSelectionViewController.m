@@ -77,12 +77,12 @@ self.automaticallyAdjustsScrollViewInsets = NO;
     equip = findData[@"workoutEquipment"];
     muscles = findData[@"muscleList"];
 
-
+/*
     //Loading the data into the arrays.
     workoutData = [CommonDataOperations returnWorkoutData:@"SELECT * FROM PrebuiltWorkouts" databaseName:STAYHEALTHY_DATABASE database:db];
     favoritesWorkoutData = [CommonDataOperations returnWorkoutData:@"SELECT * FROM PrebuiltWorkouts WHERE ID = '1' OR ID = '49' OR ID = '3' OR ID = '7' OR ID = '11' OR ID = '42' OR ID = '36' OR ID = '6' OR ID = '15' OR ID = '16'" databaseName:STAYHEALTHY_DATABASE database:db];
     popularWorkoutData = [CommonDataOperations returnWorkoutData:@"SELECT * FROM PrebuiltWorkouts WHERE ID = '1' OR ID = '4' OR ID = '53' OR ID = '7' OR ID = '11' OR ID = '42' OR ID = '36' OR ID = '6' OR ID = '2' OR ID = '16'" databaseName:STAYHEALTHY_DATABASE database:db];
-
+*/
 }
 
 #pragma mark CollectionView Datasource Methods
@@ -97,6 +97,7 @@ self.automaticallyAdjustsScrollViewInsets = NO;
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     //Our identifiers.
     //static NSString *categoriesIdentifier = @"catergoriesCell";
     static NSString *ourFavoritesIdentifier = @"favoritesCell";
@@ -104,6 +105,7 @@ self.automaticallyAdjustsScrollViewInsets = NO;
  
     if (collectionView == self.ourFavoritesView){
         workoutCell *workoutcell = [collectionView dequeueReusableCellWithReuseIdentifier:ourFavoritesIdentifier forIndexPath:indexPath];
+        /*
         workoutsDataObjects *workoutDataInfo = [favoritesWorkoutData objectAtIndex:indexPath.row];
 
         workoutcell.workoutName.text = workoutDataInfo.name;
@@ -142,12 +144,12 @@ self.automaticallyAdjustsScrollViewInsets = NO;
         workoutImageView.image = [UIImage imageNamed:workoutImageInfo.File];
         
         [CommonSetUpOperations styleCollectionViewCell:workoutcell];
-        
+        */
         return workoutcell;
     }
     else {
         workoutCell *workoutcell3 = [collectionView dequeueReusableCellWithReuseIdentifier:popularIdentifier forIndexPath:indexPath];
-        
+        /*
         workoutsDataObjects *workoutDataInfo = [popularWorkoutData objectAtIndex:indexPath.row];
         
         workoutcell3.workoutName.text = workoutDataInfo.name;
@@ -186,9 +188,10 @@ self.automaticallyAdjustsScrollViewInsets = NO;
         workoutImageView.image = [UIImage imageNamed:workoutImageInfo.File];
         
         [CommonSetUpOperations styleCollectionViewCell:workoutcell3];
-        
+        */
         return workoutcell3;
     }
+     
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -228,12 +231,12 @@ self.automaticallyAdjustsScrollViewInsets = NO;
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-    
+    /*
         workoutsDataObjects *workoutDataInfo = [workoutData objectAtIndex:indexPath.row];
         workoutsDataObjects *objects = [workoutData objectAtIndex:indexPath.row];
         typeArrayDisplay = [objects.workoutType componentsSeparatedByString:@","];
         arrayCountExercises = [objects.exerciseIDs componentsSeparatedByString:@","];
-    
+    */
         UILabel *name = (UILabel *)[cell viewWithTag:700];
 
         UILabel *type = (UILabel *)[cell viewWithTag:702];
@@ -241,7 +244,7 @@ self.automaticallyAdjustsScrollViewInsets = NO;
     
         UIImageView *workoutImageView1 = (UIImageView *)[cell viewWithTag:22];
         UIView *difficultyView = (UIView *)[cell viewWithTag:21];
-    
+    /*
         type.text = [NSString stringWithFormat:@"%@",typeArrayDisplay[0]];
         name.text = workoutDataInfo.name;
         numExercises.text = [NSString stringWithFormat:@"%ld",(long)arrayCountExercises.count];
@@ -268,7 +271,7 @@ self.automaticallyAdjustsScrollViewInsets = NO;
     workoutImagesForTableView = [CommonDataOperations returnExerciseData:[self buildQuery:nil tableView:self.allWorkoutsTableView indexPath:indexPath isFavoriteCollectionView:NO] databaseName:STAYHEALTHY_DATABASE database:db];
         
         sqlColumns *workoutImageInfo = [ workoutImagesForTableView objectAtIndex:0];
-        /*
+        *//*
         NSMutableArray *arrayOfImages = [[NSMutableArray alloc]init];
         
         for (int i = 0; i < workoutImagesForTableView.count; i++) {
@@ -283,7 +286,7 @@ self.automaticallyAdjustsScrollViewInsets = NO;
         
         [workoutImageView1 startAnimating];
 */
-        workoutImageView1.image = [UIImage imageNamed:workoutImageInfo.File];
+      //  workoutImageView1.image = [UIImage imageNamed:workoutImageInfo.File];
  
     return cell;
         
@@ -346,7 +349,8 @@ self.automaticallyAdjustsScrollViewInsets = NO;
 #pragma mark Query Building
 
 -(NSString*)buildQuery:(UICollectionView*)collectionView tableView:(UITableView*)tableView indexPath:(NSIndexPath*)indexPath isFavoriteCollectionView:(BOOL)favoriteCollectionView{
-    workoutsDataObjects *workoutDataInfo;
+    exerciseQuery = @"";
+   /* workoutsDataObjects *workoutDataInfo;
     exerciseQuery = @"";
     
     if (favoriteCollectionView)
@@ -366,6 +370,7 @@ self.automaticallyAdjustsScrollViewInsets = NO;
         else
             exerciseQuery = [[exerciseQuery stringByAppendingString:@" "]stringByAppendingString:@"ORDER BY Name COLLATE NOCASE"];
     }
+    */
     return exerciseQuery;
 }
 
@@ -393,7 +398,7 @@ self.automaticallyAdjustsScrollViewInsets = NO;
 
 #pragma mark Prepare For Segue
 
--(void)sendData:(NSIndexPath*)indexPath dataArray:(NSArray*)dataArray segue:(UIStoryboardSegue*)segue query:(NSString*)builtQuery {
+-(void)sendData:(NSIndexPath*)indexPath dataArray:(NSArray*)dataArray segue:(UIStoryboardSegue*)segue query:(NSString*)builtQuery {/*
     workoutsDataObjects *objects = [dataArray objectAtIndex:indexPath.row];
     typeArray1 = [objects.workoutType componentsSeparatedByString:@","];
     WorkoutDetailViewController *destViewController = segue.destinationViewController;
@@ -407,6 +412,7 @@ self.automaticallyAdjustsScrollViewInsets = NO;
     destViewController.muscleText = objects.targetMuscles;
     destViewController.equipText = objects.equipment;
     destViewController.workoutID = objects.ID;
+                                                                                                                                    */
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -186,40 +186,6 @@
 		<string>stretchingexercises</string>
 		<string>warmup</string>
 	</array>
-	<key>titleText</key>
-	<array>
-		<string>Abdominal</string>
-		<string>Abdominal</string>
-		<string>Bicep</string>
-		<string>Bicep</string>
-		<string>Chest</string>
-		<string>Forearms</string>
-		<string>Forearms</string>
-		<string>Groin</string>
-		<string>Groin</string>
-		<string>Oblique</string>
-		<string>Neck</string>
-		<string>Neck</string>
-		<string>Quadriceps</string>
-		<string>Quadriceps</string>
-		<string>Shoulder</string>
-		<string>Shoulder</string>
-		<string>Tricep</string>
-		<string>Tricep</string>
-		<string>Wrist</string>
-		<string>Wrist</string>
-		<string>Calf</string>
-		<string>Calf</string>
-		<string>Glutes</string>
-		<string>Glutes</string>
-		<string>Hamstring</string>
-		<string>Hamstring</string>
-		<string>Lats</string>
-		<string>Lats</string>
-		<string>Lower Back</string>
-		<string>Lower Back</string>
-		<string>Warmup</string>
-	</array>
 	<key>queries</key>
 	<array>
 		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%abdominal%&apos;</string>
@@ -256,7 +222,6 @@
 	</array>
 	<key>difficultyList</key>
 	<array>
-		<string>Any</string>
 		<string>Easy</string>
 		<string>Intermediate</string>
 		<string>Hard</string>
@@ -264,7 +229,6 @@
 	</array>
 	<key>equipmentList</key>
 	<array>
-		<string>Any</string>
 		<string>Partner</string>
 		<string>Weight Machine</string>
 		<string>Physio Ball</string>
@@ -297,9 +261,8 @@
 		<string>Cones</string>
 		<string>Lines</string>
 	</array>
-	<key>primaryMuscleList</key>
+	<key>primaryMuscles</key>
 	<array>
-		<string>Any</string>
 		<string>Abdominal</string>
 		<string>Achilles</string>
 		<string>Bicep</string>
@@ -319,9 +282,8 @@
 		<string>Trapezius</string>
 		<string>Tricep</string>
 	</array>
-	<key>secondaryMuscleList</key>
+	<key>secondaryMuscles</key>
 	<array>
-		<string>Any</string>
 		<string>Abdominal</string>
 		<string>Achilles</string>
 		<string>Bicep</string>
@@ -341,7 +303,7 @@
 		<string>Trapezius</string>
 		<string>Tricep</string>
 	</array>
-	<key>scientificMuscleNames2</key>
+	<key>backBodyMusclesScientificNames</key>
 	<array>
 		<string>(triceps surae)</string>
 		<string>(gluteal)</string>
@@ -349,7 +311,7 @@
 		<string>(latissimus dorsii)</string>
 		<string>(erector spinae)</string>
 	</array>
-	<key>musclesForTableview2</key>
+	<key>backBodyMuscles</key>
 	<array>
 		<string>Calf</string>
 		<string>Glutes</string>
@@ -357,7 +319,7 @@
 		<string>Lats</string>
 		<string>Lower Back</string>
 	</array>
-	<key>scientificMuscleNames</key>
+	<key>frontBodyMusclesScientificNames</key>
 	<array>
 		<string>(rectus abdominis)</string>
 		<string>(biceps branchii)</string>
@@ -371,7 +333,7 @@
 		<string>(triceps branchii)</string>
 		<string>(wrist flexor)</string>
 	</array>
-	<key>musclesForTableview</key>
+	<key>frontBodyMuscles</key>
 	<array>
 		<string>Abdominal</string>
 		<string>Bicep</string>

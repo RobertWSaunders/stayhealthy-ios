@@ -20,23 +20,12 @@
 //^^^^^^The collectionview cell requirments/class
 //^^^^^^Slide out menu.
 
-//^^^^^^Our colors.
-#import "TSMessage.h"
-//^^^^^^The alerts.
-#import "workoutsDataObjects.h"
-//^^^^^^^The workoutObjects in database.
-#import <sqlite3.h>
-//Mandatory database implementation.
 #import "WorkoutDetailViewController.h"
 //The next page for a workout, this is the page that actually outlines the workouts.
-#import "sqlColumns.h"
-//The objects to retreive the exercises in a workout.
 
 //The view controller for the popup when you select.
 #import "WorkoutsSearchedViewController.h"
-//The workouts searched viewcontroller, shows the list of workouts that result of what you selected.
-#import "CommonDataOperations.h"
-#import "CommonSetUpOperations.h"
+
 #import "workoutOptionsViewController.h"
 
 

@@ -24,10 +24,8 @@
     
     [CommonSetUpOperations styleAlertView];
     
-    self.title = @"Settings";
-   
     // Initialize table data
-    //generalSettings = [NSArray arrayWithObjects:@"Push Notifications", nil];
+    generalSettings = [NSArray arrayWithObjects:@"Preferences", nil];
     // Initialize table data
     questionsFeedback = [NSArray arrayWithObjects:@"Send Feedback", nil];
     // Initialize table data
@@ -43,18 +41,21 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return [questionsFeedback count];
+        return [generalSettings count];
     }
     if (section == 1) {
-        return [legalTerms count];
+        return [questionsFeedback count];
     }
     if (section == 2) {
+        return [legalTerms count];
+    }
+    if (section == 3) {
         return [aboutUs count];
     }
     return 0;
@@ -72,18 +73,23 @@
     }
     
     if (indexPath.section == 0) {
-        cell.textLabel.text = [questionsFeedback objectAtIndex:indexPath.row];
+        cell.textLabel.text = [generalSettings objectAtIndex:indexPath.row];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     if (indexPath.section == 1) {
+        cell.textLabel.text = [questionsFeedback objectAtIndex:indexPath.row];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    if (indexPath.section == 2) {
         cell.textLabel.text = [legalTerms objectAtIndex:indexPath.row];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     }
     
     
-    if (indexPath.section == 2) {
+    if (indexPath.section == 3) {
         cell.textLabel.text = [aboutUs objectAtIndex:indexPath.row];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         if (indexPath.row == 0) {
@@ -109,13 +115,17 @@
     {
         if (section == 0)
         {
-            return @"Questions/Feedback";
+            return @"";
         }
         if (section == 1)
         {
-            return @"Legal";
+            return @"Questions/Feedback";
         }
         if (section == 2)
+        {
+            return @"Legal";
+        }
+        if (section == 3)
         {
             return @"About Us";
         }

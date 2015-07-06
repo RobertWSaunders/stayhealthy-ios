@@ -8,17 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "SIAlertView.h"
-#import <sqlite3.h>
-#import "sqlColumns.h"
+
 #import "ExerciseDetailViewController.h"
 #import "WorkoutViewController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "PopupViewController.h"
-#import "workoutFavoriteObjects.h"
-//^^^^^^^The workoutObjects in database.
-#import "CommonDataOperations.h"
-#import "CommonSetUpOperations.h"
+
 #import "WorkoutDetailUTableViewCell.h"
 #import "ALCustomColoredAccessory.h"
 

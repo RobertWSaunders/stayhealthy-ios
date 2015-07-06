@@ -103,10 +103,12 @@
     [self changeImage];
     [self changeToReadable];
      NSInteger exerciseID = [ident intValue];
+    /*
     if ([favoriteButton.imageView.image isEqual:[UIImage imageNamed:@"starColoredline"]])
         [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"DELETE FROM FavoriteExercises WHERE ExerciseID = '%ld' AND ExerciseType = '%@'",(long)exerciseID,self.stretchingRefined] databaseName:USER_DATABASE database:db];
     else
         [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO FavoriteExercises ('ExerciseID','ExerciseType') VALUES ('%ld','%@')",(long)exerciseID,self.stretchingRefined] databaseName:USER_DATABASE database:db];
+     */
 }
 
 //Changes the favorites image dependant on if its a favorite or not.
@@ -127,7 +129,7 @@
     else if ([exerciseType1 isEqualToString:@"stretching"])
         type = @"stretchingexercises";
     query = [NSString stringWithFormat:@"SELECT * FROM FavoriteExercises WHERE ExerciseID = '%@' AND ExerciseType = '%@'",ID,type];
-    checkIfFavorite = [CommonDataOperations checkIfExerciseIsFavorite:query databaseName:USER_DATABASE database:db];
+   // checkIfFavorite = [CommonDataOperations checkIfExerciseIsFavorite:query databaseName:USER_DATABASE database:db];
 }
 
 

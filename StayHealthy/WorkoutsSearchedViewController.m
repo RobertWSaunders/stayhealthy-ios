@@ -57,7 +57,7 @@
     
 
     //Loading the data into the arrays.
-    workoutData = [CommonDataOperations returnWorkoutData:self.query databaseName:STAYHEALTHY_DATABASE database:db];
+ //   workoutData = [CommonDataOperations returnWorkoutData:self.query databaseName:STAYHEALTHY_DATABASE database:db];
    
 }
 
@@ -96,6 +96,7 @@
         simpleTableIdentifier1 = @"cell6P";
     }
     workoutCell *workoutcell = [collectionView dequeueReusableCellWithReuseIdentifier:simpleTableIdentifier1 forIndexPath:indexPath];
+    /*
     workoutsDataObjects *workoutDataInfo = [workoutData objectAtIndex:indexPath.row];
     
     //Setting the UI elements.
@@ -139,7 +140,7 @@
     workoutImageView.image = [UIImage imageNamed:workoutImageInfo.File];
     
     [CommonSetUpOperations styleCollectionViewCell:workoutcell];
-    
+    */
     return workoutcell;
 }
 
@@ -168,7 +169,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-    
+    /*
     workoutsDataObjects *workoutDataInfo = [workoutData objectAtIndex:indexPath.row];
     workoutsDataObjects *objects = [workoutData objectAtIndex:indexPath.row];
     typeArrayDisplay = [objects.workoutType componentsSeparatedByString:@","];
@@ -208,6 +209,7 @@
     sqlColumns *workoutImageInfo = [workoutImages objectAtIndex:0];
 
     workoutImageView1.image = [UIImage imageNamed:workoutImageInfo.File];
+     */
     return cell;
 }
 
@@ -228,7 +230,7 @@
 -(NSString*)buildQuery:(UICollectionView*)collectionView tableView:(UITableView*)tableView indexPath:(NSIndexPath*)indexPath {
     
     exerciseQuery = @"";
-
+/*
     workoutsDataObjects *workoutDataInfo = [workoutData objectAtIndex:indexPath.row];
     exerciseIdentifiers = [workoutDataInfo.exerciseIDs componentsSeparatedByString:@","];
     exerciseType = [workoutDataInfo.exerciseTypes componentsSeparatedByString:@","];
@@ -242,12 +244,14 @@
         else
             exerciseQuery = [[exerciseQuery stringByAppendingString:@" "]stringByAppendingString:@"ORDER BY Name COLLATE NOCASE"];
     }
+ */
     return exerciseQuery;
 }
 
 #pragma mark Prepare For Segue
 
 -(void)sendData:(NSIndexPath*)indexPath dataArray:(NSArray*)dataArray segue:(UIStoryboardSegue*)segue query:(NSString*)builtQuery {
+    /*
     workoutsDataObjects *objects = [dataArray objectAtIndex:indexPath.row];
     typeArrayData = [objects.workoutType componentsSeparatedByString:@","];
     WorkoutDetailViewController *destViewController = segue.destinationViewController;
@@ -261,6 +265,7 @@
     destViewController.muscleText = objects.targetMuscles;
     destViewController.equipText = objects.equipment;
     destViewController.workoutID = objects.ID;
+     */
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

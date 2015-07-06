@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "UIViewController+MJPopupViewController.h"
 
-#import "favoriteColumns.h"
-#import <sqlite3.h>
-#import "CommonDataOperations.h"
 
 @protocol MJSecondPopupDelegate;
 

@@ -8,38 +8,40 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ExerciseDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> 
-//The favorites uibarbutton item.
+@interface ExerciseDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+//Favorites UIBarButton
 @property (strong, nonatomic) UIBarButtonItem *favoriteButton;
-
-//The exercise image.
-@property (weak, nonatomic) IBOutlet UIImageView *exerciseImage;
-
-//The labels in the view, represent the data.
+//Exercise Image
+@property (weak, nonatomic) IBOutlet UIImageView *exerciseImageView;
+//Instructions Label
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
-
-//The strings for the labels.
-@property (strong, nonatomic) NSString *text;
-@property (strong, nonatomic) NSString *title1;
-@property (strong, nonatomic) NSString *reps;
-@property (strong, nonatomic) NSString *sets;
-@property (strong, nonatomic) NSString *material;
-@property (strong, nonatomic) NSString *difficulty;
-@property (strong, nonatomic) NSString *pri;
-@property (strong, nonatomic) NSString *sec;
-@property (strong, nonatomic) NSString *ident;
-@property (strong, nonatomic) NSString *favorite;
+//Passed Values
+//Exercise Instructions
+@property (strong, nonatomic) NSString *exerciseInstructions;
+//Exercise Name
+@property (strong, nonatomic) NSString *exerciseTitle;
+//Exercise Reps
+@property (strong, nonatomic) NSString *exerciseReps;
+//Exercise Sets
+@property (strong, nonatomic) NSString *exerciseSets;
+//Exericse Equipment
+@property (strong, nonatomic) NSString *exerciseEquipment;
+//Exercise Difficulty
+@property (strong, nonatomic) NSString *exerciseDifficulty;
+//Exercise Primary Muslce
+@property (strong, nonatomic) NSString *exercisePrimaryMuscle;
+//Exercise Secondary Muslce
+@property (strong, nonatomic) NSString *exerciseSecondaryMuscle;
+//Exercise ID
+@property (strong, nonatomic) NSString *exerciseIdentifier;
+//Exercise Type
 @property (strong, nonatomic) NSString *exerciseType;
+//Exercise Image
+@property (strong, nonatomic) UIImage *exerciseImage;
 
-
-//The image for the imageview.
-@property (strong, nonatomic) UIImage *image;
-
-
-
-
-//The update method is called when the favorite star is pressed.
+//Action called when favorite button pressed.
 - (IBAction)update:(id)sender;
 
 
