@@ -12,157 +12,129 @@
 
 @end
 
-@implementation SettingsViewController {
-    NSArray *generalSettings;
-    NSArray *questionsFeedback;
-    NSArray *legalTerms;
-    NSArray *aboutUs;
-}
+@implementation SettingsViewController 
+
+/**********************************/
+#pragma mark - View Loading Methods
+/**********************************/
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    //Style the alerts.
     [CommonSetUpOperations styleAlertView];
     
-    // Initialize table data
-    generalSettings = [NSArray arrayWithObjects:@"Preferences", nil];
-    // Initialize table data
-    questionsFeedback = [NSArray arrayWithObjects:@"Send Feedback", nil];
-    // Initialize table data
+    //Fill the arrays.
+    //Fill the general settings array with the strings.
+    generalSettings = [NSArray arrayWithObjects:@"Preferences",@"Backup/Restore Data", nil];
+    //Fill the questions and feedback array with strings.
+    questionsFeedback = [NSArray arrayWithObjects:@"Support", @"Send Feedback",nil];
+    //Fill the legal array with strings.
     legalTerms = [NSArray arrayWithObjects:@"Privacy Policy", @"Terms of Service", nil];
-    // Initialize table data
-    aboutUs = [NSArray arrayWithObjects:@"Acknowledgments", nil];
     
 }
 
+/*******************************************************/
+#pragma mark - TableView Delegate and Datasource Methods
+/*******************************************************/
+
+//Returns the height for the tableViews cells.
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50.0f;
+    return 44.0f;
+}
+//Returns the number of sections for the tableView.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 4;
+//Returns the height of the section headers.
+- (CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section {
+    return 40;
 }
 
+//Returns the height of the footers.
+- (CGFloat)tableView:(UITableView*)tableView heightForFooterInSection:(NSInteger)section {
+    return 5;
+}
+
+//Returns the number of rows in each section.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
         return [generalSettings count];
     }
-    if (section == 1) {
+    else if (section == 1) {
         return [questionsFeedback count];
     }
-    if (section == 2) {
+    else if (section == 2) {
         return [legalTerms count];
     }
-    if (section == 3) {
-        return [aboutUs count];
+    else {
+        return 0;
     }
-    return 0;
 }
 
-
+//Cell for row at index path for the tableViews.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    //The cell identifier for the cells in the tableView.
+    static NSString *CellIdentifier = @"settingsCell";
+    
+    //Create reference to the cell.
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    
+    //If the cell is equal to nil than create one.
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    //Now set the text for the cells dependant on the section.
     if (indexPath.section == 0) {
         cell.textLabel.text = [generalSettings objectAtIndex:indexPath.row];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    
-    if (indexPath.section == 1) {
+    else if (indexPath.section == 1) {
         cell.textLabel.text = [questionsFeedback objectAtIndex:indexPath.row];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    
-    if (indexPath.section == 2) {
+    else if (indexPath.section == 2) {
         cell.textLabel.text = [legalTerms objectAtIndex:indexPath.row];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     }
     
-    
-    if (indexPath.section == 3) {
-        cell.textLabel.text = [aboutUs objectAtIndex:indexPath.row];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        if (indexPath.row == 0) {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
-    }
-    
-
+    //Set the text color and the font for the cell textLabels.
     cell.textLabel.textColor = STAYHEALTHY_BLUE;
     cell.textLabel.font = tableViewTitleTextFont;
     
+    //Set the tableView selection color.
     [CommonSetUpOperations tableViewSelectionColorSet:cell];
 
-    
+    //Finally return the cell.
     return cell;
 }
 
-
-
+//Returns the title for the header in the tableView.
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (tableView.tag==2)
-    {
-        if (section == 0)
-        {
-            return @"";
-        }
-        if (section == 1)
-        {
-            return @"Questions/Feedback";
-        }
-        if (section == 2)
-        {
-            return @"Legal";
-        }
-        if (section == 3)
-        {
-            return @"About Us";
-        }
+    if (section == 0) {
+        return @"General Settings";
     }
-    return @"";
-}
-
--(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if (tableView.tag==2) {
-        if (section == 4) {
-            return @"fitnessillustrated.co.uk";
-        }
+    else if (section == 1) {
+        return @"Support/Feedback";
     }
-    return @"";
+    else {
+        return @"Legal";
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 2 && indexPath.row == 0) {
-        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"title" andMessage:@"Images provided by: fitnessillustrated.co.uk\rIcons provided by: icons8.com"];
-        [alertView addButtonWithTitle:@"Done"
-                                 type:SIAlertViewButtonTypeCancel
-                              handler:nil];
-        [alertView show];
-        alertView.title = @"Acknowledgments";
+
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        [self performSegueWithIdentifier:@"preferences" sender:nil];
     }
-    if (indexPath.section == 2 && indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"facebook" sender:nil];
-    }
-        if (indexPath.section == 2 && indexPath.row == 2) {
-        [self performSegueWithIdentifier:@"twitter" sender:nil];
-    }
-    if (indexPath.section == 1 && indexPath.row == 0) {
-        [self performSegueWithIdentifier:@"privacyPolicy" sender:nil];
-    }
-    if (indexPath.section == 1 && indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"terms" sender:nil];
-    }
+    /*
     if (indexPath.section == 0 && indexPath.row == 0) {
         if ([MFMailComposeViewController canSendMail]){
             NSArray *recipient = [[NSArray alloc]initWithObjects:[NSString stringWithFormat:@"stayhealthyapp@gmail.com"], nil];
@@ -182,6 +154,8 @@
             
         }
     }
+     */
+    //Deselect the tableView cell once the user has selected.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -216,6 +190,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    /*
     if ([segue.identifier isEqualToString:@"facebook"]) {
         WebviewViewController *dest = segue.destinationViewController;
         dest.url = @"https://www.facebook.com/pages/StayHealthy/216493755204288?ref=hl";
@@ -226,6 +201,7 @@
         dest.url = @"https://twitter.com/stayhealthyapp";
         dest.titleText = @"Twitter";
     }
+     */
 }
 
 

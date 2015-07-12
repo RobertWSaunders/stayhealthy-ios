@@ -11,24 +11,40 @@
 //Advanced Options Delegate
 @protocol AdvancedOptionsDelegate;
 
-@interface advancedOptionsSelect : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+//Specifies the different types of exercise attributes.
+typedef enum {
+    primaryMuscle,
+    secondaryMuscle,
+    equipment,
+    difficulty,
+    exerciseType
+} exerciseAttributes;
 
-//Action when cancel is pressed.
-- (IBAction)cancelPressed:(id)sender;
+@interface advancedOptionsSelect : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 //Array that is passed to the view controller to display.
 @property(nonatomic,retain) NSArray *arrayForTableView;
+//Array that holds the information regarding which cells the user selected.
+@property(nonatomic,retain) NSMutableArray *selectedCells;
 //Title text which is passed to the view controller to display.
 @property (strong, nonatomic) NSString *titleText;
-//number of the cell, used to correspond to the parent viewcontroller, to display correct detail text.
-@property (nonatomic, assign) NSInteger num;
+//The passed exercise attribute, i.e what the user is searching for.
+@property (nonatomic, assign) exerciseAttributes typeOfExerciseAttribute;
+
+//Index path of cell pressed to get to this view controller.
+@property (nonatomic, assign) NSIndexPath *indexPathPassed;
+
 
 //Advanced Options Delegate
 @property (assign, nonatomic) id <AdvancedOptionsDelegate>delegate;
 @end
+
 @protocol AdvancedOptionsDelegate<NSObject>
+
+//Optional Methods (not neccesary to be implemented unless needed.
 @optional
-//Delegate methods.
-- (void)done:(NSString*)selectedValue num:(NSInteger*)cell;
+
+//When the user pressed done at the top right.
+- (void)userHasSelected:(NSMutableArray*)selectedValues indexPath:(NSIndexPath*)indexPath passedArrayCount:(NSInteger)passedArrayCount;
 
 @end

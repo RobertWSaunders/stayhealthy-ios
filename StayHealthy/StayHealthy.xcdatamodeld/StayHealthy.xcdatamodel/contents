@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="UserHistory">
-        <attribute name="timeStamp" optional="YES" attributeType="Date">
-            <userInfo/>
-        </attribute>
-        <userInfo/>
-    </entity>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="15A215h" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="UserInformation" representedClassName="UserInformation" syncable="YES">
-        <attribute name="userBio" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userBirthday" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="userGender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userHeight" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,12 +8,7 @@
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userWeight" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="UserWorkoutInformation" syncable="YES"/>
-    <entity name="UserWorkouts" syncable="YES"/>
     <elements>
-        <element name="UserHistory" positionX="261" positionY="189" width="128" height="60"/>
-        <element name="UserWorkoutInformation" positionX="261" positionY="198" width="128" height="45"/>
-        <element name="UserInformation" positionX="259" positionY="300" width="128" height="150"/>
-        <element name="UserWorkouts" positionX="288" positionY="216" width="128" height="45"/>
+        <element name="UserInformation" positionX="259" positionY="300" width="128" height="135"/>
     </elements>
 </model>

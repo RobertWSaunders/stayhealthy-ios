@@ -24,6 +24,8 @@
     //Style the SIAlertViews to look good.
     [CommonSetUpOperations styleAlertView];
     
+    [self addNavigationButtons];
+    
     //Set the scrollviews to not adjust to the insets, this adds a 60point gap between tableview and navigation bar.
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -166,7 +168,7 @@
         
         if (indexPath.section == 0) {
             cell.textLabel.text  =  @"Warmup Exercises";
-            cell.detailTextLabel.text = @"View Warmup Exercises";
+            cell.detailTextLabel.text =  nil;
         }
         //If the section equals one just set the text accordingly.
         else if (indexPath.section == 1) {
@@ -207,7 +209,6 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:recentlyViewedItem];
         }
-        
         //Return the cell.
         return cell;
     }
@@ -256,6 +257,14 @@
     }
 }
 
+- (IBAction)warmupPressed:(id)sender {
+    
+}
+
+- (IBAction)addExercisePressed:(id)sender {
+    
+}
+
 
 /*****************************/
 #pragma mark - Utility Methods
@@ -286,6 +295,20 @@
 -(void)setViewsHidden:(BOOL)muscleListHide second:(BOOL)recentlyViewed {
     self.muscleListView.hidden = muscleListHide;
     self.recentlyViewedExercisesView.hidden = recentlyViewed;
+}
+
+//Adds the navigation buttons to the navigation controller.
+-(void)addNavigationButtons {
+    
+    //Add the 'addExercise' navigation button and assign a selector.
+    UIBarButtonItem *addExercise = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addExercisePressed:)];
+    
+    //Put each into the same array.
+    NSArray *rightBarButtonItems = @[addExercise];
+    
+    //Make the right navigation items equal to what is in the array.
+    self.navigationItem.rightBarButtonItems = rightBarButtonItems;
+
 }
 
 /**************************************/

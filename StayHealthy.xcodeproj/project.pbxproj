@@ -93,6 +93,8 @@
 		EB63EF941B4B425200EF35A3 /* Rehab in Resources */ = {isa = PBXBuildFile; fileRef = EB63EF901B4B425200EF35A3 /* Rehab */; };
 		EB63EF951B4B425200EF35A3 /* Strength in Resources */ = {isa = PBXBuildFile; fileRef = EB63EF911B4B425200EF35A3 /* Strength */; };
 		EB63EF961B4B425200EF35A3 /* Stretching in Resources */ = {isa = PBXBuildFile; fileRef = EB63EF921B4B425200EF35A3 /* Stretching */; };
+		EB63EF9C1B4B5FA400EF35A3 /* TextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF9B1B4B5FA400EF35A3 /* TextFieldTableViewCell.m */; };
+		EB9CF7011B52AA00006E2984 /* PreferencesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9CF7001B52AA00006E2984 /* PreferencesTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -226,6 +228,10 @@
 		EB63EF911B4B425200EF35A3 /* Strength */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Strength; path = "../../../iOS App Project Resources/StayHealthy/User Interface/Exercise Images/Strength"; sourceTree = "<group>"; };
 		EB63EF921B4B425200EF35A3 /* Stretching */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Stretching; path = "../../../iOS App Project Resources/StayHealthy/User Interface/Exercise Images/Stretching"; sourceTree = "<group>"; };
 		EB63EF981B4B442B00EF35A3 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
+		EB63EF9A1B4B5FA400EF35A3 /* TextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldTableViewCell.h; sourceTree = "<group>"; };
+		EB63EF9B1B4B5FA400EF35A3 /* TextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldTableViewCell.m; sourceTree = "<group>"; };
+		EB9CF6FF1B52AA00006E2984 /* PreferencesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesTableViewController.h; sourceTree = "<group>"; };
+		EB9CF7001B52AA00006E2984 /* PreferencesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -594,6 +600,7 @@
 		3FC465F71B33B2150062EBDB /* Exercise Adanced Options */ = {
 			isa = PBXGroup;
 			children = (
+				EB63EF991B4B5F6A00EF35A3 /* Custom UITextfield TableViewCell */,
 				EB63EF391B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.h */,
 				EB63EF3A1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m */,
 				3FE41E411ABE0644007522AB /* advancedOptionsSelect.h */,
@@ -739,6 +746,7 @@
 		3FE95E25187A5DB7005DD13D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				EB76703B1B52A96000A188B4 /* Preferences */,
 				3FC466B61B3628580062EBDB /* Container TableView */,
 				3FC465FA1B33B25F0062EBDB /* Settings Page */,
 				3F7D77A019A300C000E00065 /* Facebook + Twitter */,
@@ -909,6 +917,24 @@
 			path = "../../../iOS App Project Resources/StayHealthy/Frameworks/ALCustomColoredAccessory";
 			sourceTree = "<group>";
 		};
+		EB63EF991B4B5F6A00EF35A3 /* Custom UITextfield TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EB63EF9A1B4B5FA400EF35A3 /* TextFieldTableViewCell.h */,
+				EB63EF9B1B4B5FA400EF35A3 /* TextFieldTableViewCell.m */,
+			);
+			name = "Custom UITextfield TableViewCell";
+			sourceTree = "<group>";
+		};
+		EB76703B1B52A96000A188B4 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				EB9CF6FF1B52AA00006E2984 /* PreferencesTableViewController.h */,
+				EB9CF7001B52AA00006E2984 /* PreferencesTableViewController.m */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1021,6 +1047,7 @@
 				3FD5E1B31853A8D00063E10C /* AppDelegate.m in Sources */,
 				3FC466B51B3628510062EBDB /* TableViewContainerViewController.m in Sources */,
 				EB63EF861B4B421C00EF35A3 /* UIViewController+MJPopupViewController.m in Sources */,
+				EB63EF9C1B4B5FA400EF35A3 /* TextFieldTableViewCell.m in Sources */,
 				3FE806A318F35F96006A0993 /* AnalysisCell.m in Sources */,
 				3F7D779A19A2DA3C00E00065 /* PrivacyPolicyViewController.m in Sources */,
 				3FF9DDA71853C7710083A499 /* MuscleSelectionViewController.m in Sources */,
@@ -1039,6 +1066,7 @@
 				3F8BB35F198C6DA80098E1A7 /* CommonDataOperations.m in Sources */,
 				EB63EF681B4B41C300EF35A3 /* HexColor.m in Sources */,
 				3FD5E1BC1853A8D00063E10C /* StayHealthy.xcdatamodeld in Sources */,
+				EB9CF7011B52AA00006E2984 /* PreferencesTableViewController.m in Sources */,
 				EB63EF671B4B41C300EF35A3 /* TSMessage.m in Sources */,
 				3F18B154187F843D00EC852A /* WorkoutSelectionViewController.m in Sources */,
 				EB63EF8A1B4B422800EF35A3 /* ALCustomColoredAccessory.m in Sources */,

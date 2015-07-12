@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
-#import "CommonSetUpOperations.h"
 #import "WebviewViewController.h"
-#import "SIAlertView.h"
 
-@interface SettingsViewController : UITableViewController <MFMailComposeViewControllerDelegate>
+@interface SettingsViewController : UITableViewController <MFMailComposeViewControllerDelegate> {
+    //Array for the general settings section in the tableView.
+    NSArray *generalSettings;
+    //
+    NSArray *questionsFeedback;
+    //Array for the legal section in the tableView.
+    NSArray *legalTerms;
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+}
 
 @end

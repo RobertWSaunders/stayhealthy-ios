@@ -36,6 +36,9 @@
     //Set the tint color for all the navigation bars.
     [[UINavigationBar appearance] setTintColor:STAYHEALTHY_BLUE];
     
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"advancedOptionsSelect-FirstSelection"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     return YES;
 }
 

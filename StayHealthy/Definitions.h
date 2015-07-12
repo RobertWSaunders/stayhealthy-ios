@@ -92,7 +92,7 @@
 //FONT FOR NAVIGATION BAR BUTTONS
 
 //TableView Fonts
-#define tableViewTitleTextFont       [UIFont fontWithName:regularFontName size:17]
+#define tableViewTitleTextFont       [UIFont fontWithName:regularFontName size:16]
 //FONT FOR TABLEVIEW TITLES
 #define tableViewUnderTitleTextFont  [UIFont fontWithName:regularLightFontName size:14]
 //FONT FOR TABLEVIEW TITLES UNDER TITLE
@@ -148,6 +148,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define TUTORIAL_MESSAGES           @"userOptionTutorialMessages"
+#define LIST_ORIENTATION            @"userPreferredListOrientation"
 
 
 #endif

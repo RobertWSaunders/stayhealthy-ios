@@ -27,6 +27,8 @@
 //View for the recently viewed exercises.
 @property (weak, nonatomic) IBOutlet UIView *recentlyViewedExercisesView;
 
+@property (weak, nonatomic) IBOutlet UITableView *browseTableView;
+
 //TableView for the muscle list.
 @property (weak, nonatomic) IBOutlet UITableView *selectMuscleTableView;
 //TableView for the recently viewed list.
@@ -38,12 +40,14 @@
 //Search navigation button.
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *search;
 //Add exercise button.
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *addExercise;
+//@property (retain, nonatomic) IBOutlet UIBarButtonItem *addExercise;
 //Add exercise button.
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *warmup;
+//@property (retain, nonatomic) IBOutlet UIBarButtonItem *warmup;
 
 //Action that gets fired when the user changes the segmented control.
 - (IBAction)segmentValueChanged:(id)sender;
+- (IBAction)warmupPressed:(id)sender;
+- (IBAction)addExercisePressed:(id)sender;
 
 
 @end
