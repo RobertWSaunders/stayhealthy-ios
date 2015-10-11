@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Mark Saunders. All rights reserved.
 //
 
-/***************************************************HEADER FILE***************************************/
 
 #import <UIKit/UIKit.h>
 

@@ -14,23 +14,21 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
-
-    //Database Declaration and Objects
     #import <sqlite3.h>
-    #import "exerciseObject.h"
-    #import "workoutObject.h"
+
+    #import "GlobalDefinitions.h"
+
+    #import "SHDataHandler.h"
+
+    #import "AppDelegate.h"
 
     //Alerts
     #import "TSMessage.h"
     #import "SIAlertView.h"
 
-    //Common Methods
-    #import "CommonDataOperations.h"
     #import "CommonSetUpOperations.h"
-    #import "CommonRequests.h"
+    #import "CommonUtilities.h"
 
-    //Our Global Constants
-    #import "Definitions.h"
 #endif
 
 

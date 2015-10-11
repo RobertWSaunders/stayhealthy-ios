@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ExerciseDataManager.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ExerciseDataManager</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ExerciseDataManager.h</DeclaredIn>
+            
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ExerciseDataManager/saveItem:</TokenIdentifier>
+			<Abstract type="html">Saves a business object to the Core Data persistent store. Handles the mapping from business object to Core Data object.</Abstract>
+			<DeclaredIn>ExerciseDataManager.m</DeclaredIn>
+			
+			<Declaration>- (void)saveItem:(id)object</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>object</Name>
+					<Abstract type="html">Business object to be saved to the Core Data persistent store.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/saveItem:</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ExerciseDataManager/updateItem:</TokenIdentifier>
+			<Abstract type="html">Updates a business object to the Core Data persistent store. Handles the mapping from business object to Core Data object.</Abstract>
+			<DeclaredIn>ExerciseDataManager.m</DeclaredIn>
+			
+			<Declaration>- (void)updateItem:(id)object</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>object</Name>
+					<Abstract type="html">Business object to be updated in the Core Data persistent store.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/updateItem:</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ExerciseDataManager/fetchItemByIdentifier:</TokenIdentifier>
+			<Abstract type="html">Fetches a business object from the Core Data persistent store by it&apos;s identifier.</Abstract>
+			<DeclaredIn>ExerciseDataManager.m</DeclaredIn>
+			
+			<Declaration>- (id)fetchItemByIdentifier:(NSString *)objectIdentifier</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>objectIdentifier</Name>
+					<Abstract type="html">The identifier to look for.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">A business object with the identifier equal to objectIdentifier, only if can be found.</Abstract></ReturnValue>
+			<Anchor>//api/name/fetchItemByIdentifier:</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ExerciseDataManager/returnEntityName</TokenIdentifier>
+			<Abstract type="html">Returns the entity name for the given data manager.</Abstract>
+			<DeclaredIn>ExerciseDataManager.m</DeclaredIn>
+			
+			<Declaration>- (NSString *)returnEntityName</Declaration>
+			
+			<ReturnValue><Abstract type="html">The entity name.</Abstract></ReturnValue>
+			<Anchor>//api/name/returnEntityName</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

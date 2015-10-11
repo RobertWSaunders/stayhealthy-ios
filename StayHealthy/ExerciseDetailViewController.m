@@ -47,13 +47,21 @@
     //Fill the data from the database into the textholders.
     [self fillData];
 
-    //Setting the images dependant on whether the exercise is a favorite or not.
     /*
-    if ([CommonDataOperations isExerciseFavorited:self.exerciseIdentifier exerciseType:self.exerciseType])
-        [self createUIBarButtons:@"Star Filled-50.png" second:@"watch-25.png"];
-    else
-        [self createUIBarButtons:@"Star-50.png" second:@"watch-25.png"];
-    */
+    if (![CommonDataOperations checkExerciseIsInUserDatabase:self.exerciseIdentifier]) {
+         [CommonDataOperations insertExerciseEntry:NO exerciseID:self.exerciseIdentifier];
+        [self createUIBarButtons:@"like.png"];
+    }
+    else {
+        if ([CommonDataOperations isExerciseFavorite:self.exerciseIdentifier]) {
+            [self createUIBarButtons:@"likeSelected.png"];
+        }
+        else {
+            [self createUIBarButtons:@"like.png"];
+        }
+
+    }*/
+   
     
     //Find the path to the plist containing all the nessescary information.
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"findExercise" ofType:@"plist"];
@@ -78,17 +86,17 @@
 
 //This method fills the data from the database into their respective placeholders.
 -(void)fillData {
-    /*
-    self.title = self.title1;
-    self.exerciseImage.image = self.image;
-    self.descriptionLabel.text = self.text;
-     */
+    
+    self.title = self.exerciseTitle;
+    self.exerciseImageView.image = self.exerciseImage;
+    self.descriptionLabel.text = self.exerciseInstructions;
+     
 }
 
 
 
 //This method creates the uibarbuttons dependant on a few arguments.
--(void)createUIBarButtons:(NSString*)favoriteImageName second:(NSString*)watchImageName {
+-(void)createUIBarButtons:(NSString*)favoriteImageName {
     self.favoriteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:favoriteImageName] style:UIBarButtonItemStyleBordered target:self action:@selector(update:)];
     NSArray *actionButtonItems = @[self.favoriteButton];
     self.navigationItem.rightBarButtonItems = actionButtonItems;
@@ -96,38 +104,28 @@
 
 //Changes the images for the favorite button when the user presses it.
 -(void)changeImage {
-    if ([self.favoriteButton.image isEqual:[UIImage imageNamed:@"Star-50.png"]])
-        [self.favoriteButton setImage:[UIImage imageNamed:@"Star Filled-50.png"]];
+    if ([self.favoriteButton.image isEqual:[UIImage imageNamed:@"like.png"]])
+        [self.favoriteButton setImage:[UIImage imageNamed:@"likeSelected.png"]];
     else
-        [self.favoriteButton setImage:[UIImage imageNamed:@"Star-50.png"]];
+        [self.favoriteButton setImage:[UIImage imageNamed:@"like.png"]];
 }
 
-//Change the exercise type to something that is readable.
--(void)changeToReadable {
-    if ([self.exerciseType isEqualToString:@"strength"])
-        tempExerciseType = exerciseTypes[0];
-    else if ([self.exerciseType isEqualToString:@"stretching"])
-        tempExerciseType = exerciseTypes[1];
-    else if ([self.exerciseType isEqualToString:@"warmup"])
-        tempExerciseType = exerciseTypes[2];
-}
+
 
 //The mehtod that saves the favorite or takes it away.
 - (IBAction)update:(id)sender {
     
     [self changeImage];
-    [self changeToReadable];
     /*
-    NSInteger exerciseID = [self.ident intValue];
-    
-    if ([self.favoriteButton.image isEqual:[UIImage imageNamed:@"Star Filled-50.png"]]) {
-        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"INSERT INTO FavoriteExercises ('ExerciseID','ExerciseType') VALUES ('%ld','%@')",(long)exerciseID,tempExerciseType] databaseName:USER_DATABASE database:db];
+    if ([self.favoriteButton.image isEqual:[UIImage imageNamed:@"likeSelected.png"]]) {
+        [CommonDataOperations insertExerciseEntry:YES exerciseID:self.exerciseIdentifier];
         }
     else {
-        [CommonDataOperations performInsertQuery:[NSString stringWithFormat:@"DELETE FROM FavoriteExercises WHERE ExerciseID = '%ld' AND ExerciseType = '%@'",(long)exerciseID,tempExerciseType] databaseName:USER_DATABASE database:db];
+        [CommonDataOperations insertExerciseEntry:NO exerciseID:self.exerciseIdentifier];
         }
      */
     }
+     
 
 //If the user leaves the page then dismiss the all TSMessages.
 -(void)viewWillDisappear:(BOOL)animated {
@@ -160,7 +158,7 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:muscleItem];
         }
-    /*
+    
     cell.textLabel.text = [tableViewTitles objectAtIndex:indexPath.row];
     [cell setUserInteractionEnabled:NO];
     
@@ -172,49 +170,49 @@
     
     //Sets
     if (indexPath.row == 0) {
-        cell.detailTextLabel.text = self.sets;
+        cell.detailTextLabel.text = self.exerciseSets;
     }
     //Reps
     if (indexPath.row == 1) {
-        cell.detailTextLabel.text = self.reps;
+        cell.detailTextLabel.text = self.exerciseReps;
     }
     //Primary Muscle
     if (indexPath.row == 2) {
-        cell.detailTextLabel.text = self.pri;
+        cell.detailTextLabel.text = self.exercisePrimaryMuscle;
     }
     //Secondary Muscle
     if (indexPath.row == 3) {
-        NSString *trimmedStrings2 = [self.sec stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSString *trimmedStrings2 = [self.exerciseSecondaryMuscle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         if ([trimmedStrings2 isEqualToString:@"null"]) {
          
-                 self.sec = @"No Secondary Muscle";
+                 self.exerciseSecondaryMuscle = @"No Secondary Muscle";
             
            
         }
-        cell.detailTextLabel.text = self.sec;
+        cell.detailTextLabel.text = self.exerciseSecondaryMuscle;
     }
     //Equipment
     if (indexPath.row == 4) {
-        NSString *trimmedString = [self.material stringByTrimmingCharactersInSet:
+        NSString *trimmedString = [self.exerciseEquipment stringByTrimmingCharactersInSet:
                                    [NSCharacterSet whitespaceCharacterSet]];
         if ([trimmedString isEqualToString:@"null"]) {
-            self.material = @"No Equipment";
+            self.exerciseEquipment = @"No Equipment";
         }
-        cell.detailTextLabel.text = self.material;
+        cell.detailTextLabel.text = self.exerciseEquipment;
     }
     //Difficulty
     if (indexPath.row == 5) {
-        cell.detailTextLabel.text = self.difficulty;
-        if ([self.difficulty isEqualToString:@"Easy"])
+        cell.detailTextLabel.text = self.exerciseDifficulty;
+        if ([self.exerciseDifficulty isEqualToString:@"Easy"])
             cell.detailTextLabel.textColor = STAYHEALTHY_GREEN;
-        if ([self.difficulty isEqualToString:@"Intermediate"])
+        if ([self.exerciseDifficulty isEqualToString:@"Intermediate"])
             cell.detailTextLabel.textColor = STAYHEALTHY_DARKERBLUE;
-        if ([self.difficulty isEqualToString:@"Hard"])
+        if ([self.exerciseDifficulty isEqualToString:@"Hard"])
             cell.detailTextLabel.textColor = STAYHEALTHY_RED;
-        if ([self.difficulty isEqualToString:@"Very Hard"])
+        if ([self.exerciseDifficulty isEqualToString:@"Very Hard"])
             cell.detailTextLabel.textColor = [UIColor blackColor];
     }
-    */
+    
         return cell;
     
 }

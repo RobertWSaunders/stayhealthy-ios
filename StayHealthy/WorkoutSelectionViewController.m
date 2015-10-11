@@ -6,8 +6,7 @@
 //  Copyright (c) 2014 Robert Saunders. All rights reserved.
 //
 
-/*************************************************IMPLEMENTATION FILE************************************/
-/*************************************************REVISIT FOR VERSION 2.0.0************************************/
+
 /*NOTES: For the future, i.e. version 2.0.0, make it so you can update the content collection views remotly
  from the internet, and also make it so that the arrays are stowed in the database, so it allows for easier updating.
  */

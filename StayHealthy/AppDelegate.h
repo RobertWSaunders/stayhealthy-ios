@@ -14,11 +14,11 @@
 @property (strong, nonatomic) UIWindow *window;
 
 //Our managed object context, manages our managed objects (objects in our object graph).
-@property (readonly, strong, nonatomic) NSManagedObjectContext *stayHealthyManagedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 //Generic class that implements all the basic behaivours required for core data.
-@property (readonly, strong, nonatomic) NSManagedObjectModel *stayHealthyManagedObjectModel;
+@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 //Persists the store, looks through our objects and finds the one that we need.
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *stayHealthyPersistentStoreCoordinator;
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 //Saves the objects into the context.
 - (void)saveContext;

@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="15A215h" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="UserInformation" representedClassName="UserInformation" syncable="YES">
-        <attribute name="userBirthday" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="userGender" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userHeight" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userIdentifier" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userWeight" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="CustomWorkout" representedClassName="CustomWorkout" syncable="YES">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateModified" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="exerciseTypes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastDateCompleted" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastViewed" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="liked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="timesCompleted" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="workoutDifficulty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutExerciseIDs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutSummary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutTargetMuscles" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutTargetSports" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Exercise" representedClassName="Exercise" syncable="YES">
+        <attribute name="exerciseID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastViewed" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="liked" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Workout" representedClassName="Workout" syncable="YES">
+        <attribute name="lastDateCompleted" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastViewed" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="liked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="timesCompleted" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="workoutID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="UserInformation" positionX="259" positionY="300" width="128" height="135"/>
+        <element name="CustomWorkout" positionX="-63" positionY="9" width="128" height="270"/>
+        <element name="Exercise" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Workout" positionX="-54" positionY="108" width="128" height="120"/>
     </elements>
 </model>

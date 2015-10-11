@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/robertsaunders/Library/Developer/Shared/Documentation/DocSets/com.redCode.StayHealthy.docset
+Time: 2015-08-30 20:20:10 +0000

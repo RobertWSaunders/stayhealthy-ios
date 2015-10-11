@@ -174,7 +174,7 @@
     //This performs a search for the StayHealthy exercises.
     if (self.segmentedControl.selectedSegmentIndex == 0) {
         //Starting with blank query.
-        searchQuery = [NSString stringWithFormat:@""];
+        searchQuery = @"";
     
         //Fill the arrays with their information.
         [self fillSelectedData];
@@ -234,7 +234,7 @@
                             //Now input the column and the value for the column into the query.
                             searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"%@ LIKE '%@'",selectedColumns[k],arrayForSelection[m]]];
                             if (m != arrayForSelection.count-1) {
-                                searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat:@"AND"]];
+                                searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat:@"OR"]];
                             }
                         }
                     }
@@ -253,9 +253,9 @@
                 NSLog(@"*****************************************");
                 NSLog(@"ADVANCED SEARCH QUERY: %@", searchQuery);
                 NSLog(@"*****************************************");
-            //Perform the search and go to view exercises view controller.
-            //[self performSegueWithIdentifier:@"search" sender:nil];
         }
+        //Perform the search and go to view exercises view controller.
+        [self performSegueWithIdentifier:@"search" sender:nil];
     }
     else {
         //Put the core data search methods here.
@@ -283,6 +283,12 @@
     //Initialize the selected types array
     selectedExerciseTypes = [[NSMutableArray alloc] init];
     
+    //Empty the arrays.
+    selectedDifficulty = nil;
+    selectedPrimaryMuscles = nil;
+    selectedSecondaryMuscles = nil;
+    selectedEquipment =  nil;
+    
     //Put the data into the arrays, only if the user has selected 
     //Selected primary muscles array.
     if (![primaryMuscleCell.detailTextLabel.text isEqualToString:@"Any"]) {
@@ -302,7 +308,7 @@
     }
     //Selected exercise types array.
     if ([exerciseTypeCell.detailTextLabel.text isEqualToString:@"Any"]) {
-        NSArray *allTableNames = @[@"StayHealthyStrengthExercises",@"StayHealthyStretchingExercises",@"StayHealthyWarmupExercises"];
+        NSArray *allTableNames = @[STRENGTH_EXERCISES_TABLE_NAME,STRETCHING_EXERCISES_TABLE_NAME,WARMUP_EXERCISES_TABLE_NAME];
         [selectedExerciseTypes addObjectsFromArray:allTableNames];
     }
     else {
@@ -310,13 +316,13 @@
         convertExerciseTypesToTableNames = [exerciseTypeCell.detailTextLabel.text componentsSeparatedByString:@", "];
         for (int i = 0; i < convertExerciseTypesToTableNames.count; i++) {
             if ([[convertExerciseTypesToTableNames objectAtIndex:i] isEqualToString:@"Strength"]) {
-                [selectedExerciseTypes addObject:@"StayHealthyStrengthExercises"];
+                [selectedExerciseTypes addObject:STRENGTH_EXERCISES_TABLE_NAME];
             }
             else if ([[convertExerciseTypesToTableNames objectAtIndex:i] isEqualToString:@"Stretching"]) {
-                [selectedExerciseTypes addObject:@"StayHealthyStretchingExercises"];
+                [selectedExerciseTypes addObject:STRETCHING_EXERCISES_TABLE_NAME];
             }
             else {
-                [selectedExerciseTypes addObject:@"StayHealthyWarmupExercises"];
+                [selectedExerciseTypes addObject:WARMUP_EXERCISES_TABLE_NAME];
             }
         }
     }
@@ -387,6 +393,12 @@
             }
         }
     }
+    else if ([segue.identifier isEqualToString:@"search"]) {
+        ExerciseListController *exerciseSearchViewController = [[ExerciseListController alloc] init];
+        exerciseSearchViewController = segue.destinationViewController;
+        exerciseSearchViewController.exerciseQuery = searchQuery;
+        exerciseSearchViewController.viewTitle =  @"Custom Search";
+    }
 }
 
 /********************************************/
@@ -433,13 +445,13 @@
 - (void)fetchAndLoadInformation {
     
     //List of all the primary muscles.
-    primaryMuscles = [CommonRequests returnGeneralPlist][@"primaryMuscles"];
+    primaryMuscles = [CommonUtilities returnGeneralPlist][@"primaryMuscles"];
     //List of all the secondary muscles.
-    secondaryMuscles = [CommonRequests returnGeneralPlist][@"secondaryMuscles"];
+    secondaryMuscles = [CommonUtilities returnGeneralPlist][@"secondaryMuscles"];
     //List of all the types of equipment.
-    equipmentList = [CommonRequests returnGeneralPlist][@"equipmentList"];
+    equipmentList = [CommonUtilities returnGeneralPlist][@"equipmentList"];
     //List of all the types of difficulty.
-    difficultyList = [CommonRequests returnGeneralPlist][@"difficultyList"];
+    difficultyList = [CommonUtilities returnGeneralPlist][@"difficultyList"];
     
     //The values of the advanced search titles in the TableView.
     exerciseAdvancedSearchOptions = @[@"Primary Muscle",@"Secondary Muscle",@"Equipment",@"Difficulty",@"Exercise Type"];

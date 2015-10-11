@@ -41,7 +41,7 @@
 
 //Returns the height for the tableViews cells.
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44.0f;
+    return 44;
 }
 //Returns the number of sections for the tableView.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

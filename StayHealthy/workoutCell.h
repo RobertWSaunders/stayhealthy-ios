@@ -6,9 +6,6 @@
 //  Copyright (c) 2014 Mark Saunders. All rights reserved.
 //
 
-/***************************************************HEADER FILE***************************************/
-//This file handles the collectionviewcell in the collection view for find a exercise feature.
-//Note: Could play around with UI in this, for future versions.
 
 //Our imports.
 #import <UIKit/UIKit.h>

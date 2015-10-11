@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Robert Saunders. All rights reserved.
 //
 
-/***************************************************HEADER FILE***************************************/
-/*************************************************REVISIT FOR VERSION 2.0.0************************************/
 //Make sure to always have all imports in here.
 //Link both delegates and datasources of the collectionview and tableview.
 //Might need to create outlets to change CGRECT options.

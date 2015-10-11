@@ -20,7 +20,7 @@
     self.websiteLabel.text = WEBSITE;
     self.copyrightOneLabel.text = [NSString stringWithFormat:@"© %@",IOSDEVELOPER];
     self.copyrightTwoLabel.text = [NSString stringWithFormat:@"© %@",ANDROIDDEVELOPER];
-    self.versionLabel.text = [NSString stringWithFormat:@"version %@",[CommonRequests shortAppVersion]];
+    self.versionLabel.text = [NSString stringWithFormat:@"version %@",[CommonUtilities shortAppVersionNumber]];
     self.websiteLabel.font = subtleFont;
     self.copyrightOneLabel.font = subtleFont;
     self.copyrightTwoLabel.font = subtleFont;

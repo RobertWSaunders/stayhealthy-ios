@@ -21,5 +21,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *equipmentStandards;
 //Difficulty Label
 @property (nonatomic, weak) IBOutlet UILabel *difficultyStandards;
+//Like Exercise ImageView
+@property (nonatomic, weak) IBOutlet UIImageView *likeExerciseImage;
 
 @end

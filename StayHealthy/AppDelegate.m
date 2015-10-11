@@ -11,16 +11,18 @@
 @implementation AppDelegate
 
 //Our managed object context, manages our managed objects (objects in our object graph)
-@synthesize stayHealthyManagedObjectContext = _managedObjectContext;
+@synthesize managedObjectContext = _managedObjectContext;
 //Generic class that implements all the basic behaivours required for core data.
-@synthesize stayHealthyManagedObjectModel = _managedObjectModel;
+@synthesize managedObjectModel = _managedObjectModel;
 //Persists the store, looks through our objects and finds the one that we need.
-@synthesize stayHealthyPersistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 #pragma mark - App Delegate Methods
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    setenv("XcodeColors", "YES", 0);
+    
     //Set the appearance of the navigation bar. Set the text color to STAYHEALTHY_BLUE constant.
     //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
@@ -38,6 +40,7 @@
     
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"advancedOptionsSelect-FirstSelection"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
     
     return YES;
 }
