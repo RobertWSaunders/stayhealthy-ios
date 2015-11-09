@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 
+
 @implementation AppDelegate
 
 //Our managed object context, manages our managed objects (objects in our object graph)
@@ -31,12 +32,30 @@
                                                             STAYHEALTHY_NAVBARFONT,
                                                             NSFontAttributeName,
                                                            nil]];
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+                                         NSFontAttributeName: [UIFont fontWithName:@"Avenir" size:18.0],
+                                         NSForegroundColorAttributeName: STAYHEALTHY_BLUE
+                                         } forState:UIControlStateNormal];
+    
     //Set the tint color of all tab bars.
     [[UITabBar appearance] setTintColor:STAYHEALTHY_BLUE];
     //Set the tint color of all segmented controls.
     [[UISegmentedControl appearance] setTintColor:STAYHEALTHY_BLUE];
     //Set the tint color for all the navigation bars.
     [[UINavigationBar appearance] setTintColor:STAYHEALTHY_BLUE];
+    
+    [Parse setApplicationId:@"WV7lo14mPjcjRmuc4vgdOXuQg6aWihFO7s6oqBNy"
+                  clientKey:@"dYyFOqO28p3WcdiWAVmK7YIna1gVWQOpyEhHZnZq"];
+    
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+    
     
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"advancedOptionsSelect-FirstSelection"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -45,12 +64,30 @@
     return YES;
 }
 
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
+    if ([shortcutItem.type isEqualToString:@"findExercise"]) {
+        UITabBarController *tabBar = (UITabBarController *)self.window.rootViewController;
+        tabBar.selectedIndex = 0;
+    }
+    else  {
+        UITabBarController *tabBar = (UITabBarController *)self.window.rootViewController;
+        tabBar.selectedIndex = 1;
+    }
+}
+
 
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    currentInstallation.channels = @[ @"global" ];
+    [currentInstallation saveInBackground];
 }
+
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
+     [PFPush handlePush:userInfo];
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
 }

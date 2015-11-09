@@ -30,15 +30,26 @@
 
 - (NSMutableArray *)performExerciseStatement:(NSString*)SQLQuery;
 
+- (SHExercise *)convertExerciseToSHExercise:(Exercise*)exercise;
+
 #pragma mark - Exercise Data Manager Methods
 
 - (void)saveExerciseRecord:(SHExercise *)exercise;
 
 - (void)updateExerciseRecord:(SHExercise *)exercise;
 
+- (Exercise*)fetchExerciseByIdentifier:(NSString *)exerciseIdentifier;
+
 - (BOOL)exerciseHasBeenSaved:(NSString *)workoutIdentifier;
 
 - (NSMutableArray *)getRecentlyViewedExercises;
+
+- (NSMutableArray *)getAllLikedExercises;
+
+- (NSMutableArray *)getStrengthLikedExercises;
+- (NSMutableArray *)getStretchLikedExercises;
+- (NSMutableArray *)getWarmupLikedExercises;
+
 
 #pragma mark - Workout Data Manager Methods
 

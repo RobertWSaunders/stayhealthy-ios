@@ -9,8 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @interface PreferencesTableViewController : UITableViewController {
-    NSArray *userPreferences;
-    NSArray *userPreferencesUserInterface;
+    
+    //Array filled with overall application preferences.
+    NSArray *generalPreferences;
+    
+    //Array filled with 'Find Exercise' preferences.
+    NSArray *findExercisePreferences;
+    
+    //Array filled with 'Workout' preferences.
+    NSArray *workoutPreferences;
+    
+    //Array filled with 'Favorites' preferences.
+    NSArray *favouritesPreferences;
 }
+
 
 @end

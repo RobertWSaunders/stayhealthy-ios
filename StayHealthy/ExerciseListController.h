@@ -10,8 +10,13 @@
 #import "ExerciseDetailViewController.h"
 #import "ExerciseCollectionCell.h"
 #import "SHDataHandler.h"
+#import "SHExercise.h"
+#import "QuickFilterViewController.h"
+#import "ExerciseTableViewCell.h"
 
-@interface ExerciseListController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+
+
+@interface ExerciseListController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate> {
     NSMutableArray *exerciseData;
 }
 

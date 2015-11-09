@@ -12,7 +12,9 @@
 @implementation Exercise
 
 @dynamic exerciseID;
+@dynamic exerciseType;
 @dynamic liked;
 @dynamic lastViewed;
+@dynamic timesViewed;
 
 @end

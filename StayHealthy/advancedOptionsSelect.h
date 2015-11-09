@@ -23,16 +23,16 @@ typedef enum {
 @interface advancedOptionsSelect : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 //Array that is passed to the view controller to display.
-@property(nonatomic,retain) NSArray *arrayForTableView;
+@property(strong,retain) NSArray *arrayForTableView;
 //Array that holds the information regarding which cells the user selected.
-@property(nonatomic,retain) NSMutableArray *selectedCells;
+@property(strong,retain) NSMutableArray *selectedCells;
 //Title text which is passed to the view controller to display.
 @property (strong, nonatomic) NSString *titleText;
 //The passed exercise attribute, i.e what the user is searching for.
 @property (nonatomic, assign) exerciseAttributes typeOfExerciseAttribute;
 
 //Index path of cell pressed to get to this view controller.
-@property (nonatomic, assign) NSIndexPath *indexPathPassed;
+@property (retain,strong) NSIndexPath *indexPathPassed;
 
 
 //Advanced Options Delegate

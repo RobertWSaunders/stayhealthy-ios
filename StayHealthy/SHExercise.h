@@ -35,8 +35,10 @@
 //Exercise Type
 @property(nonatomic,copy) NSString *exerciseType;
 
-@property (nonatomic, retain) NSNumber * liked;
+@property (nonatomic, retain) NSNumber *liked;
 
-@property (nonatomic, retain) NSDate * lastViewed;
+@property (nonatomic, retain) NSDate *lastViewed;
+
+@property (nonatomic, retain) NSNumber *timesViewed;
 
 @end

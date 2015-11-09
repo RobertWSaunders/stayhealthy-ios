@@ -7,11 +7,38 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SHExercise.h"
+#import "SHDataHandler.h"
 
-@interface ExerciseDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ExerciseDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate> {
+    //ScrollView
+    IBOutlet UIScrollView *scroller;
+    //Exercise Information TableView
+    IBOutlet UITableView *detailTableView;
+    //Instruction Label
+    IBOutlet UILabel *instructionLabel;
+    //Database
+    IBOutlet UIImageView *favouriteImageView;
+    sqlite3 * db;
+    //Exercise Types
+    NSArray *exerciseTypesNames;
+    //Array contains titles for exercise tableview information.
+    NSArray *tableViewTitles;
+    
+    //Stores a temporary exercise type for the update.
+    NSString *tempExerciseType;
+    
+    SHExercise *coreDataExercise;
+
+}
+
+- (IBAction)actionSheetPressed:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *closeButton;
+- (IBAction)closeButtonTapped:(id)sender;
 
 //Favorites UIBarButton
-@property (strong, nonatomic) UIBarButtonItem *favoriteButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *likeButton;
 //Exercise Image
 @property (weak, nonatomic) IBOutlet UIImageView *exerciseImageView;
 //Instructions Label
@@ -19,27 +46,11 @@
 
 //Passed Values
 //Exercise Instructions
-@property (strong, nonatomic) NSString *exerciseInstructions;
-//Exercise Name
-@property (strong, nonatomic) NSString *exerciseTitle;
-//Exercise Reps
-@property (strong, nonatomic) NSString *exerciseReps;
-//Exercise Sets
-@property (strong, nonatomic) NSString *exerciseSets;
-//Exericse Equipment
-@property (strong, nonatomic) NSString *exerciseEquipment;
-//Exercise Difficulty
-@property (strong, nonatomic) NSString *exerciseDifficulty;
-//Exercise Primary Muslce
-@property (strong, nonatomic) NSString *exercisePrimaryMuscle;
-//Exercise Secondary Muslce
-@property (strong, nonatomic) NSString *exerciseSecondaryMuscle;
-//Exercise ID
-@property (strong, nonatomic) NSString *exerciseIdentifier;
-//Exercise Type
-@property (strong, nonatomic) NSString *exerciseType;
-//Exercise Image
+@property (strong, nonatomic) SHExercise *exerciseToDisplay;
+@property (nonatomic, assign) BOOL modalView;
 @property (strong, nonatomic) UIImage *exerciseImage;
+@property (strong, nonatomic) NSString *viewTitle;
+
 
 //Action called when favorite button pressed.
 - (IBAction)update:(id)sender;

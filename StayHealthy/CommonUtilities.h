@@ -67,10 +67,10 @@
 
 /*!
  *  Calculates the time from a passed date, in format 'just now'.
- *  @param date Date that calculated time gets calculated from. 
+ *  @param createdDate Date that calculated time gets calculated from.
  *  @return String saying the time from the passed date, in format 'just now'.
  */
-+ (NSString *)calculateTime:(NSDate*)date;
++ (NSString *)calculateTime:(NSDate *)createdDate;
 
 /*!
  *  Resets date to midnight.
@@ -144,7 +144,7 @@
  */
 + (NSString *)concatenateArrayItems:(NSArray *)arrayItems separator:(NSString *)separator;
 
-+(BOOL) dateExistsYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
++ (BOOL) dateExistsYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
 
 
 /** @name StayHealthy Specific Tools */
@@ -163,6 +163,12 @@
  */
 + (NSString *)createExerciseQuery:(NSString *)table muscle:(NSString *)muscle;
 
-+ (NSString*)returnDatabasePath:(NSString*)databaseName;
++ (NSString *)createExerciseQueryFromExerciseIds:(NSMutableArray *)exerciseIDs table:(NSString*)table;
+
++ (NSString *)convertMuscleNameToDatabaseStandard:(NSString*)muscle;
+
++ (NSString *)returnDatabasePath:(NSString*)databaseName;
+
++ (SHExercise *)getRandomExercise:(exerciseTypes)exerciseType muscle:(NSString*)muscle;
 
 @end

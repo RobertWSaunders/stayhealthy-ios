@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MGSwipeTableCell.h"
+#import "MGSwipeButton.h"
 
-@interface ExerciseTableViewCell : UITableViewCell
+@interface ExerciseTableViewCell : MGSwipeTableCell
 
 
 //Exercise Name

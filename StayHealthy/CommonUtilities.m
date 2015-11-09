@@ -161,19 +161,21 @@
     return timeText;
 }
 
-+ (NSString *)calculateTime:(NSDate *)date {
++ (NSString *)calculateTime:(NSDate *)createdDate
+{
     NSString *value;
-    if (date != nil)
+    
+    if (createdDate != nil)
     {
-        date                     = [self resetTime:date];
+        createdDate                     = [self resetTime:createdDate];
         NSDate *currentDate             = [[NSDate alloc] init];
         currentDate                     = [self resetTime:currentDate];
         NSCalendar *gregorian           = [NSCalendar currentCalendar];
         NSUInteger unitFlags            = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit;
-        NSDateComponents *components    = [gregorian components:unitFlags fromDate:date toDate:currentDate options:0];
+        NSDateComponents *components    = [gregorian components:unitFlags fromDate:createdDate toDate:currentDate options:0];
         
         NSInteger months                = [components month];
-        NSInteger weeks                 = [components weekOfYear];
+        NSInteger weeks                 = [components week];
         NSInteger days                  = [components day];
         NSInteger year                  = [components year];
         
@@ -207,9 +209,9 @@
         }
         else
         {
-            NSDateComponents *dateComponentsNow = [gregorian components:unitFlags fromDate:currentDate];
-            NSDateComponents *dateComponentsBirth = [gregorian components:unitFlags fromDate:date];
-            days = [dateComponentsNow day] - [dateComponentsBirth day];
+            NSDateComponents *dateComponentsNow     = [gregorian components:unitFlags fromDate:currentDate];
+            NSDateComponents *dateComponentsBirth   = [gregorian components:unitFlags fromDate:createdDate];
+            days                                    = [dateComponentsNow day] - [dateComponentsBirth day];
             if(days > 0)
                 return @"Yesterday";
             else
@@ -219,9 +221,10 @@
     return value;
 }
 
-+ (NSDate *)resetTime:(NSDate *)date {
-    NSCalendar *gregorian = [NSCalendar currentCalendar];
-    NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: date];
++ (NSDate *) resetTime:(NSDate *)date
+{
+    NSCalendar *gregorian           = [NSCalendar currentCalendar];
+    NSDateComponents *components    = [gregorian components: NSUIntegerMax fromDate: date];
     
     [components setHour: 0];
     [components setMinute: 0];
@@ -229,7 +232,7 @@
     
     //NSDate *newDate = [gregorian dateFromComponents: components];
     //return newDate;
-    date = [gregorian dateFromComponents: components];
+    date                            = [gregorian dateFromComponents: components];
     return date;
 }
 
@@ -368,6 +371,9 @@
 }
 
 + (NSString *)createExerciseQuery:(NSString *)table muscle:(NSString *)muscle {
+
+    muscle = [self convertMuscleNameToDatabaseStandard:muscle];
+    
     NSString *query = @"";
     if (muscle != nil) {
         query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exercisePrimaryMuscle LIKE '%@' ORDER BY exerciseName COLLATE NOCASE",table,muscle];
@@ -377,6 +383,52 @@
         
     }
     return query;
+}
+
++ (NSString *)createExerciseQueryFromExerciseIds:(NSMutableArray *)exerciseIDs table:(NSString*)table {
+    
+    NSString *exerciseIdentifiers = [exerciseIDs componentsJoinedByString:@","];
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exerciseIdentifier IN (%@)",table,exerciseIdentifiers];
+    
+    return query;
+}
+
+
++(NSString*)convertMuscleNameToDatabaseStandard:(NSString*)muscle {
+    if ([muscle isEqualToString:@"Abdominal"]) {
+        muscle = @"Abdominals";
+    }
+    else if ([muscle isEqualToString:@"Chest"]) {
+        muscle = @"Pectoralis Major";
+    }
+    else if ([muscle isEqualToString:@"Forearms"]) {
+        muscle = @"Brachioradialis";
+    }
+    else if ([muscle isEqualToString:@"Neck"]) {
+        muscle = @"Trapezius";
+    }
+    else if ([muscle isEqualToString:@"Quadriceps"]) {
+        muscle = @"Quadricep";
+    }
+    else if ([muscle isEqualToString:@"Shoulder"]) {
+        muscle = @"Deltoid";
+    }
+    else if ([muscle isEqualToString:@"Wrist"]) {
+        muscle = @"Wrist Flexor";
+    }
+    else if ([muscle isEqualToString:@"Glutes"]) {
+        muscle = @"Gluteus";
+    }
+    else if ([muscle isEqualToString:@"Lats"]) {
+        muscle = @"Latissimus Dorsii";
+    }
+    
+    else if ([muscle isEqualToString:@"Lower Back"]) {
+        muscle = @"Erector Spinae";
+    }
+    
+    return muscle;
 }
 
 +(BOOL) dateExistsYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day
@@ -409,6 +461,28 @@
         NSLog(@"Couldn't Not Find Database!");
     }
     return dbPath;
+}
+
++ (SHExercise *)getRandomExercise:(exerciseTypes)exerciseType muscle:(NSString*)muscle {
+    
+    NSString *query;
+    
+    muscle = [self convertMuscleNameToDatabaseStandard:muscle];
+    
+    if (exerciseType == strength) {
+        query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exercisePrimaryMuscle LIKE '%@' ORDER BY RANDOM() LIMIT 1",STRENGTH_DB_TABLENAME,muscle];
+    }
+    
+    else {
+        query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exercisePrimaryMuscle LIKE '%@' ORDER BY RANDOM() LIMIT 1",STRETCHING_DB_TABLENAME,muscle];
+    }
+    
+    NSMutableArray *array = [[SHDataHandler getInstance] performExerciseStatement:query];
+    
+    if (array.count > 0)
+        return [array objectAtIndex:0];
+    
+    return nil;
 }
 
 @end

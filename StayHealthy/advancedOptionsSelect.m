@@ -92,10 +92,10 @@
     if (self.selectedCells.count > 1) {
         if (![[NSUserDefaults standardUserDefaults] boolForKey:@"advancedOptionsSelect-FirstSelection"]) {
             if (self.typeOfExerciseAttribute == primaryMuscle) {
-                [CommonSetUpOperations performTSMessage:@"It's very rare for an exercise to have multiple primary muscles, just saying! But give it a try if you want!" message:nil viewController:self canBeDismissedByUser:YES duration:7];
+                //[CommonSetUpOperations performTSMessage:@"It's very rare for an exercise to have multiple primary muscles, just saying! But give it a try if you want!" message:nil viewController:self canBeDismissedByUser:YES duration:7];
             }
             else if (self.typeOfExerciseAttribute ==  secondaryMuscle) {
-                [CommonSetUpOperations performTSMessage:@"It's very rare for an exercise to have multiple secondary muscle, just saying! But give it a try if you want!" message:nil viewController:self canBeDismissedByUser:YES duration:7];
+               // [CommonSetUpOperations performTSMessage:@"It's very rare for an exercise to have multiple secondary muscle, just saying! But give it a try if you want!" message:nil viewController:self canBeDismissedByUser:YES duration:7];
             }
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"advancedOptionsSelect-FirstSelection"];
             [[NSUserDefaults standardUserDefaults] synchronize];

@@ -18,4 +18,14 @@
 
 - (NSFetchRequest *) getFetchRequest;
 
+- (id) fetchRecentlyViewedExercises;
+
+- (id) fetchAllLikedExercises;
+
+- (id) fetchStretchLikedExercises;
+
+- (id) fetchStrengthLikedExercises;
+
+- (id) fetchWarmupLikedExercises;
+
 @end

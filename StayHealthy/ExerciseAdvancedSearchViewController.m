@@ -21,8 +21,13 @@
     
     //Set the scrollviews to not adjust to the insets, this adds a 60point gap between tableview and navigation bar.
     self.automaticallyAdjustsScrollViewInsets = NO;
-    //Disable the ability for the users to scroll.
-    self.exerciseSpecificationTableView.scrollEnabled = NO;
+    if (IS_IPHONE_4_OR_LESS) {
+        self.exerciseSpecificationTableView.scrollEnabled = YES;
+    }
+    else {
+        //Disable the ability for the users to scroll.
+        self.exerciseSpecificationTableView.scrollEnabled = NO;
+    }
     
     //Style the search button.
     //Set the background color of the button.
@@ -31,6 +36,9 @@
     self.searchButton.titleLabel.textColor = [UIColor whiteColor];
     //Set the text for the button.
     self.searchButton.titleLabel.text = @"Search";
+    
+    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_ADVANCED_SEARCH  viewController:self message:@"Here you can choose the things you want in an exercise and I'll try my best to find it for you! Sometimes I can't find anything though, I'm really sorry about that, but I promise I'll look harder next time!"];
+    
 }
 
 /*****************************************************/

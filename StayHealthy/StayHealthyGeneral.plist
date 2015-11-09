@@ -186,40 +186,6 @@
 		<string>stretchingexercises</string>
 		<string>warmup</string>
 	</array>
-	<key>queries</key>
-	<array>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%abdominal%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%abdominal%&apos; OR secondarymuscle  LIKE &apos;%abdominal%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%bicep%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%bicep%&apos; OR secondarymuscle  LIKE &apos;%bicep%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%pec%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%forearm%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%forearm%&apos; OR secondarymuscle  LIKE &apos;%forearm%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%groin%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%groin%&apos; OR secondarymuscle  LIKE &apos;%groin%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%oblique%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%trap%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%trap%&apos; OR secondarymuscle  LIKE &apos;%trap%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%quad%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%quad%&apos; OR secondarymuscle  LIKE &apos;%quad%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%deltoid%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%deltoid%&apos; OR secondarymuscle  LIKE &apos;%deltoid%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%tricep%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%tricep%&apos; OR secondarymuscle  LIKE &apos;%tricep%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%wrist%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%wrist%&apos; OR secondarymuscle  LIKE &apos;%wrist%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%calf%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%calf%&apos; OR secondarymuscle  LIKE &apos;%calf%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%glute%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%glute%&apos; OR secondarymuscle  LIKE &apos;%glute%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%hamstring%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%hamstring%&apos; OR secondarymuscle  LIKE &apos;%hamstring%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%lat%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%lat%&apos; OR secondarymuscle  LIKE &apos;%lat%&apos;</string>
-		<string>SELECT * FROM strengthexercises WHERE primarymuscle LIKE &apos;%erector%&apos;</string>
-		<string>SELECT * FROM stretchingexercises WHERE primarymuscle LIKE &apos;%erector%&apos; OR secondarymuscle  LIKE &apos;%erector%&apos;</string>
-		<string>SELECT * FROM warmupexercises ORDER BY Name COLLATE NOCASE</string>
-	</array>
 	<key>difficultyList</key>
 	<array>
 		<string>Easy</string>
@@ -303,15 +269,15 @@
 		<string>Trapezius</string>
 		<string>Tricep</string>
 	</array>
-	<key>backBodyMusclesScientificNames</key>
+	<key>posteriorMusclesScientificNames</key>
 	<array>
 		<string>(triceps surae)</string>
 		<string>(gluteal)</string>
 		<string>(biceps femoris)</string>
-		<string>(latissimus dorsii)</string>
+		<string>(latissimus dorsi)</string>
 		<string>(erector spinae)</string>
 	</array>
-	<key>backBodyMuscles</key>
+	<key>posteriorMuscles</key>
 	<array>
 		<string>Calf</string>
 		<string>Glutes</string>
@@ -319,21 +285,21 @@
 		<string>Lats</string>
 		<string>Lower Back</string>
 	</array>
-	<key>frontBodyMusclesScientificNames</key>
+	<key>anteriorMusclesScientificNames</key>
 	<array>
 		<string>(rectus abdominis)</string>
-		<string>(biceps branchii)</string>
-		<string>(pectoralis)</string>
+		<string>(biceps brachii)</string>
+		<string>(pectoralis major/minor)</string>
 		<string>(branchioradialis)</string>
 		<string>(adductor)</string>
 		<string>(internal obliques)</string>
 		<string>(trapezius)</string>
 		<string>(quadriceps femoris)</string>
 		<string>(deltoid)</string>
-		<string>(triceps branchii)</string>
+		<string>(triceps brachii)</string>
 		<string>(wrist flexor)</string>
 	</array>
-	<key>frontBodyMuscles</key>
+	<key>anteriorMuscles</key>
 	<array>
 		<string>Abdominal</string>
 		<string>Bicep</string>

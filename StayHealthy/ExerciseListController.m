@@ -28,7 +28,7 @@
 
     
     //Sets the NSUserDefault and displays the TSMessage when page is loaded for the first time.
-    [CommonSetUpOperations setFirstViewTSMessage:@"FirstViewForPage" viewController:self message:@"Now that you have chosen a muscle and a exercise type you can view all the exercises. You can toggle between grid and list view with the button in the top right. Tap this message to dismiss."];
+    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_FIND_EXERCISE_SEARCHED  viewController:self message:@"I found these exercises for you! Here you can just choose an exercise you like the look of and I'll show you more about it."];
     
     //Get the exercise data.
     exerciseData = [[SHDataHandler getInstance] performExerciseStatement:self.exerciseQuery];;
@@ -39,6 +39,13 @@
     
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
 }
 
 /***************************************************/
@@ -56,51 +63,59 @@
     //write the cell identifier.
     static NSString *simpleTableIdentifier = @"exerciseTableCell";
 
-    //Set the cell identifier.
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    /*
-    //Get the exercise objects.
-    exerciseObject *exercise = [self.exerciseData objectAtIndex:indexPath.row];
+    //Create the reference for the cell.
+    ExerciseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
-    //Set the exercise name and style the label.
-    UILabel *exerciseName = (UILabel *)[cell viewWithTag:101];
-    exerciseName.font = tableViewTitleTextFont;
-    exerciseName.text = exercise.exerciseName;
-    exerciseName.textColor = STAYHEALTHY_BLUE;
+    //If the cell can't be found then just create one.
+    if (cell == nil) {
+        cell = [[ExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
     
-    //Set the equipment names and style the label.
-    UILabel *equipment = (UILabel *)[cell viewWithTag:102];
-    equipment.text = exercise.exerciseEquipment;
-    equipment.font = tableViewUnderTitleTextFont;
-    equipment.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
+    SHExercise *exercise = [exerciseData objectAtIndex:indexPath.row];
     
-    //Set the equipment default and set the style.
-    UILabel *equipmentStandard = (UILabel *)[cell viewWithTag:10];
-    equipmentStandard.font = tableViewUnderTitleTextFont;
-    equipmentStandard.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
+    cell.exerciseName.text = exercise.exerciseName;
+    cell.difficulty.text = exercise.exerciseDifficulty;
+    cell.difficulty.textColor = [CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty];
+    
+    cell.equipment.text = exercise.exerciseEquipment;
     NSString *trimmedString = [exercise.exerciseEquipment stringByTrimmingCharactersInSet:
                                [NSCharacterSet whitespaceCharacterSet]];
+    
     if ([trimmedString isEqualToString:@"null"])
-        equipment.text = @"No Equipment";
+        cell.equipment.text = @"No Equipment";
     else
-        equipment.text = exercise.exerciseEquipment;
+        cell.equipment.text = exercise.exerciseEquipment;
     
-    //Set the difficulty and set the style.
-    UILabel *difficulty = (UILabel *)[cell viewWithTag:103];
-    difficulty.text = exercise.exerciseDifficulty;
-    difficulty.font = tableViewUnderTitleTextFont;
-    difficulty.textColor = [CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty];
-    
-    //Set the difficulty default and set the style.
-    UILabel *difficultyStandard = (UILabel *)[cell viewWithTag:11];
-    difficultyStandard.font = tableViewUnderTitleTextFont;
-    difficultyStandard.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
-
     //Load the exercise image on the background thread.
-    [CommonSetUpOperations loadImageOnBackgroundThread:(UIImageView*)[cell viewWithTag:100] image:[UIImage imageNamed:exercise.exerciseImageFile]];
-    */
+    [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
+    
+    if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        cell.likeExerciseImage.hidden = NO;
+        [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
+        cell.likeExerciseImage.tintColor = STAYHEALTHY_BLUE;
+    }
+    else {
+        cell.likeExerciseImage.hidden = YES;
+    }
+    
+    UILabel *timeLabel = (UILabel*)[cell viewWithTag:14];
+    timeLabel.text = [CommonUtilities calculateTime:exercise.lastViewed];
+    
     //Set the selected cell background.
     [CommonSetUpOperations tableViewSelectionColorSet:cell];
+    
+    /*
+    //configure right buttons
+    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"workout.png"] backgroundColor:STAYHEALTHY_DARKERBLUE callback:^BOOL(MGSwipeTableCell *sender) {
+        LogInfo(@"Add to workout");
+        //[self performSegueWithIdentifier:@"detailModal" sender:nil];
+        return YES;
+    }]];
+    cell.rightExpansion.fillOnTrigger = YES;
+    cell.rightExpansion.threshold = 2.0f;
+    cell.rightExpansion.buttonIndex = 0;
+    cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
+*/
 
     return cell;
 }
@@ -118,15 +133,41 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
         if ([segue.identifier isEqualToString:@"detail"]) {
-            /*
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-            exerciseObject *exercise = [self.exerciseData objectAtIndex:indexPath.row];
+            SHExercise *exercise = [exerciseData objectAtIndex:indexPath.row];
             ExerciseDetailViewController *destViewController = segue.destinationViewController;
-             */
+            destViewController.exerciseToDisplay = exercise;
+            destViewController.viewTitle = exercise.exerciseName;
+            destViewController.modalView = NO;
         }
+    
+    if ([segue.identifier isEqualToString:@"showQuickFilter"]) {
+
+        QuickFilterViewController *destinationViewController = segue.destinationViewController;
+        
+        // This is the important part
+        UIPopoverPresentationController *popOverPresentationViewController = destinationViewController.popoverPresentationController;
+        
+        popOverPresentationViewController.delegate = self;
+    }
+    
     
    }
 
+
+
+- (SHExercise *)updateExerciseWithUserData:(SHExercise*)exercise {
+    SHDataHandler *dataHandler = [SHDataHandler getInstance];
+    
+    Exercise *dataExercise = [dataHandler fetchExerciseByIdentifier:exercise.exerciseIdentifier];
+    
+    if (dataExercise != nil) {
+        exercise.lastViewed = dataExercise.lastViewed;
+        exercise.liked = dataExercise.liked;
+    }
+
+    return exercise;
+}
 
 /*************************************/
 #pragma mark ViewWillDisappear Methods

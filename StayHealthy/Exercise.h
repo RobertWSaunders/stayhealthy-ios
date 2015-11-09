@@ -13,7 +13,9 @@
 @interface Exercise : NSManagedObject
 
 @property (nonatomic, retain) NSString * exerciseID;
+@property (nonatomic, retain) NSString * exerciseType;
 @property (nonatomic, retain) NSNumber * liked;
 @property (nonatomic, retain) NSDate * lastViewed;
+@property (nonatomic, retain) NSNumber *timesViewed;
 
 @end

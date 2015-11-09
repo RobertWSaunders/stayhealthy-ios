@@ -15,6 +15,8 @@
     [exercise setValue:SHexercise.exerciseIdentifier forKey:@"exerciseID"];
     [exercise setValue:SHexercise.liked forKey:@"liked"];
     [exercise setValue:SHexercise.lastViewed forKey:@"lastViewed"];
+    [exercise setValue:SHexercise.exerciseType forKey:@"exerciseType"];
+    [exercise setValue:SHexercise.timesViewed forKey:@"timesViewed"];
 }
 
 - (void)bind:(Exercise *)exercise {
@@ -22,6 +24,8 @@
     SHexercise.exerciseIdentifier = exercise.exerciseID;
     SHexercise.liked = exercise.liked;
     SHexercise.lastViewed = exercise.lastViewed;
+    SHexercise.exerciseType = exercise.exerciseType;
+    SHexercise.timesViewed = exercise.timesViewed;
 }
 
 @end

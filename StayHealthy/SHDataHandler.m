@@ -132,6 +132,34 @@
     }
 }
 
+- (SHExercise *)convertExerciseToSHExercise:(Exercise*)exercise {
+    
+    SHExercise *shExercise = [[SHExercise alloc] init];
+    
+    NSMutableArray *exerciseID = [[NSMutableArray alloc] initWithObjects:exercise.exerciseID, nil];
+    
+    NSString*table;
+    
+    if ([exercise.exerciseType isEqualToString:@"strength"]) {
+        table = STRENGTH_DB_TABLENAME;
+    }
+    else if ([exercise.exerciseType isEqualToString:@"stretching"]) {
+        table = STRETCHING_DB_TABLENAME;
+    }
+    else {
+        table = WARMUP_DB_TABLENAME;
+    }
+    
+    NSArray *shExerciseData = [[SHDataHandler getInstance] performExerciseStatement:[CommonUtilities createExerciseQueryFromExerciseIds:exerciseID table:table]];
+    
+    shExercise = [shExerciseData objectAtIndex:0];
+    
+    shExercise.lastViewed = exercise.lastViewed;
+    shExercise.liked = exercise.liked;
+    
+    return shExercise;
+}
+
 #pragma mark - Exercise Data Manager Methods
 
 - (void)saveExerciseRecord:(SHExercise *)exercise {
@@ -142,6 +170,10 @@
     [exerciseManager updateItem:exercise];
 }
 
+- (NSArray*)fetchExerciseByIdentifier:(NSString *)exerciseIdentifier {
+    return [exerciseManager fetchItemByIdentifier:exerciseIdentifier];
+}
+
 - (BOOL)exerciseHasBeenSaved:(NSString *)exerciseIdentifier {
     Exercise *exercise = [exerciseManager fetchItemByIdentifier:exerciseIdentifier];
     if (exercise != nil)
@@ -150,7 +182,23 @@
 }
 
 - (NSMutableArray *)getRecentlyViewedExercises {
-    return nil;
+    return [[exerciseManager fetchRecentlyViewedExercises] mutableCopy];
+}
+
+- (NSMutableArray *)getAllLikedExercises {
+    return [[exerciseManager fetchAllLikedExercises] mutableCopy];
+}
+
+- (NSMutableArray *)getStrengthLikedExercises {
+     return [[exerciseManager fetchStrengthLikedExercises] mutableCopy];
+}
+
+- (NSMutableArray *)getStretchLikedExercises {
+     return [[exerciseManager fetchStretchLikedExercises] mutableCopy];
+}
+
+- (NSMutableArray *)getWarmupLikedExercises {
+     return [[exerciseManager fetchWarmupLikedExercises] mutableCopy];
 }
 
 #pragma mark - Workout Data Manager Methods
