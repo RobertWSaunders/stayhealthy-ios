@@ -10,6 +10,7 @@
 #import "ExerciseDataManager.h"
 #import "WorkoutDataManager.h"
 #import "CustomWorkoutDataManager.h"
+#import "UserDataManager.h"
 
 @interface SHDataHandler : NSObject {
     
@@ -18,6 +19,7 @@
     ExerciseDataManager *exerciseManager;
     WorkoutDataManager *workoutManager;
     CustomWorkoutDataManager *customWorkoutManager;
+    UserDataManager *userDataManager;
 }
 
 + (id) getInstance;
@@ -64,5 +66,26 @@
 - (void)saveCustomWorkoutRecord:(SHCustomWorkout *)customWorkout;
 
 - (void)updateCustomWorkoutRecord:(SHCustomWorkout *)customWorkout;
+
+#pragma mark - User Data Manager Methods
+
+- (void)saveUser:(SHUser *)user;
+- (void)updateUser:(SHUser*)user;
+- (NSString*)getUserIdentifier;
+- (BOOL)userIsCreated;
+
+
+//---------------------------------------
+#pragma mark Auto Database Update Methods
+//---------------------------------------
+
+//Checks to see if the user wants auto database updates then compares current installed database to online database and installs if nescessary.
+- (void)performDatabaseUpdate;
+
+//Checks if there is a update that can be made to the database.
+- (BOOL)isDatabaseUpdate;
+
+//Returns the database version that is store on the web.
+- (NSString *)onlineDatabaseVersion;
 
 @end

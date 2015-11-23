@@ -17,4 +17,5 @@
 @dynamic lastViewed;
 @dynamic timesViewed;
 
+
 @end

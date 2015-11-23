@@ -17,6 +17,7 @@
         exerciseManager = [[ExerciseDataManager alloc] init];
         workoutManager = [[WorkoutDataManager alloc] init];
         customWorkoutManager = [[CustomWorkoutDataManager alloc] init];
+        userDataManager = [[UserDataManager alloc] init];
     }
     return self;
 }
@@ -232,5 +233,100 @@
 - (SHCustomWorkout *)returnCustomWorkoutByIdentifier:(NSString*)identifier {
     return [customWorkoutManager fetchItemByIdentifier:identifier];
 }
+
+#pragma mark - User Data Manager Methods
+
+- (void)saveUser:(SHUser *)user {
+    [userDataManager saveItem:user];
+}
+
+- (void)updateUser:(SHUser*)user {
+    [userDataManager updateItem:user];
+}
+
+- (NSString*)getUserIdentifier {
+    return [userDataManager getUserID];
+}
+
+- (BOOL)userIsCreated {
+    return [userDataManager userIsCreated];
+}
+
+//---------------------------------------
+#pragma mark Auto Database Update Methods
+//---------------------------------------
+
+//Checks to see if the user wants auto database updates then compares current installed database to online database and installs if nescessary.
+- (void)performDatabaseUpdate {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:PREFERENCE_AUTO_DATABASE_UPDATES]) {
+        //Check if a newer database is actually online to download.
+        if ([self isDatabaseUpdate]) {
+            
+            //Reference the path to the documents directory.
+            NSString *documentDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+            //Get the path of the database.
+            NSString *filePath = [documentDir stringByAppendingPathComponent:@"StayHealthyDatabase.sqlite"];
+            
+            //Set the URL request to download from.
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:DATABASE_URL]];
+            
+            //Download file and overwrite the previous database version.
+            [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                if (error) {
+                    //Downloading error.
+                    LogDataError(@"Error downloading updated StayHealthy database: %@", error.description);
+                }
+                if (data) {
+                    //Overwrite current database.
+                    [data writeToFile:filePath atomically:YES];
+                    //Download success.
+                    LogDataSuccess(@"Successfully downloaded and replaced database. Saved to %@", filePath);
+                }
+            }];
+        }
+    }
+}
+
+//Checks if there is a update that can be made to the database.
+- (BOOL)isDatabaseUpdate {
+    //Make sure that the string from the web is not empty.
+    if ([self onlineDatabaseVersion] != nil) {
+        //Compare to the installed version on the phone to the version online.
+        if (![[self onlineDatabaseVersion] isEqualToString:[[NSUserDefaults standardUserDefaults] valueForKey:USER_INSTALLED_DATABASE_VERSION]]) {
+            //If there is a update required, set the new user database version to be the online one.
+            [[NSUserDefaults standardUserDefaults] setValue:[self onlineDatabaseVersion] forKey:USER_INSTALLED_DATABASE_VERSION];
+            //Save the changes.
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            return TRUE;
+        }
+        else {
+            return FALSE;
+        }
+    }
+    return FALSE;
+}
+
+//Returns the database version that is store on the web.
+- (NSString *)onlineDatabaseVersion {
+    //Set the NSURL for where the database version is stored.
+    NSURL *URL = [NSURL URLWithString:DATABASE_VERSION_URL];
+    
+    NSError *error;
+    
+    //Get the string from the text file online.
+    NSString *stringFromFileAtURL = [[NSString alloc]
+                                     initWithContentsOfURL:URL
+                                     encoding:NSUTF8StringEncoding
+                                     error:&error];
+    
+    //If the string is nil then log the error.
+    if (stringFromFileAtURL == nil) {
+        LogDataError(@"Could not find database version online.");
+    }
+    
+    //Return the string.
+    return stringFromFileAtURL;
+}
+
 
 @end

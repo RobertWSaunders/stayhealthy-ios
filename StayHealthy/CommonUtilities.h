@@ -26,6 +26,15 @@
  */
 + (NSString *)appBuildNumber;
 
+
+/**
+ *  To access the apps global build number as string.
+ *  @return The apps build number in the format (1.0).
+ */
++ (NSString *)installedDatabaseVersion;
+
++ (NSString *)hexBuildNumber;
+
 /** @name Date Formatting Tools/Calculations*/
 
 /*!

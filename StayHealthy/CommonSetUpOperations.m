@@ -73,10 +73,11 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
         dispatch_sync(dispatch_get_main_queue(), ^(void) {
             imageView.image = image;
-            imageView.alpha = 0.0;
+            /*imageView.alpha = 0.0;
             [UIView animateWithDuration:0.8 animations:^{
                 imageView.alpha = 1.0;
             }];
+             */
         });
     });
 }

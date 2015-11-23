@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3F2E5A8318DF388300EE4734 /* ExerciseListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E5A8218DF388300EE4734 /* ExerciseListController.m */; };
 		3F2E5A8718DF4E4E00EE4734 /* ExerciseCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E5A8618DF4E4E00EE4734 /* ExerciseCollectionCell.m */; };
-		3F2E5A8B18E0D90900EE4734 /* workoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E5A8A18E0D90900EE4734 /* workoutCell.m */; };
 		3F63B1AA1ABB9F24000CDE06 /* HomeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F63B1A91ABB9F24000CDE06 /* HomeTabBarController.m */; };
 		3F7D779F19A2DFEA00E00065 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7D779E19A2DFEA00E00065 /* MessageUI.framework */; };
 		3F7D77A319A300D600E00065 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7D77A219A300D600E00065 /* WebViewViewController.m */; };
@@ -47,7 +46,6 @@
 		EB2C4A6A1B89F798005D183A /* CustomWorkoutDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A691B89F798005D183A /* CustomWorkoutDataManager.m */; };
 		EB2C4A6D1B89F8DC005D183A /* SHWorkout+Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A6C1B89F8DC005D183A /* SHWorkout+Workout.m */; };
 		EB2C4A701B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A6F1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m */; };
-		EB3ABB381BF00325004AF091 /* WelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3ABB371BF00325004AF091 /* WelcomePage.swift */; };
 		EB3B9E231BE8022500BCEF28 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E221BE8022500BCEF28 /* StoreKit.framework */; };
 		EB3B9E251BE8023600BCEF28 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E241BE8023600BCEF28 /* libz.tbd */; };
 		EB3B9E271BE8024300BCEF28 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E261BE8024300BCEF28 /* libsqlite3.tbd */; };
@@ -83,8 +81,6 @@
 		EB52EFF51BCAEFDF00F5D7CA /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFF41BCAEFDF00F5D7CA /* SIAlertView.bundle */; };
 		EB575AD51BEC38EC00A1C798 /* VersionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB575AD41BEC38EC00A1C798 /* VersionHistoryViewController.m */; };
 		EB575AD81BEC391000A1C798 /* AcknowledgmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB575AD71BEC391000A1C798 /* AcknowledgmentsViewController.m */; };
-		EB575B5E1BED47F000A1C798 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB575B5C1BED47F000A1C798 /* Bolts.framework */; };
-		EB575B5F1BED47F000A1C798 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB575B5D1BED47F000A1C798 /* Parse.framework */; };
 		EB63EF381B4B3FE200EF35A3 /* Main_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB63EF361B4B3FE200EF35A3 /* Main_Storyboard.storyboard */; };
 		EB63EF3B1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF3A1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m */; };
 		EB63EF9C1B4B5FA400EF35A3 /* TextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF9B1B4B5FA400EF35A3 /* TextFieldTableViewCell.m */; };
@@ -94,12 +90,36 @@
 		EB737F5F1B7F8B2200EBBDA4 /* ExerciseDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F5E1B7F8B2200EBBDA4 /* ExerciseDataManager.m */; };
 		EB737F691B7F908F00EBBDA4 /* SHExercise+Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F681B7F908F00EBBDA4 /* SHExercise+Exercise.m */; };
 		EB737F711B8015E100EBBDA4 /* SHDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F701B8015E100EBBDA4 /* SHDataHandler.m */; };
-		EB737F761B8133D400EBBDA4 /* ExerciseSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F751B8133D400EBBDA4 /* ExerciseSelectionViewController.m */; };
 		EB89979E1B7C3DE100904984 /* GlobalDefinitions.h in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF981B4B442B00EF35A3 /* GlobalDefinitions.h */; };
 		EB8ACF8A1B76DAD0003E91A6 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8ACF891B76DAD0003E91A6 /* Exercise.m */; };
 		EB9CF7011B52AA00006E2984 /* PreferencesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9CF7001B52AA00006E2984 /* PreferencesTableViewController.m */; };
 		EBB432DA1B549FEC001B2D40 /* ExerciseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB432D91B549FEC001B2D40 /* ExerciseTableViewCell.m */; };
+		EBB8C9701BF90ECA00347B24 /* ExerciseSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C96F1BF90ECA00347B24 /* ExerciseSelectionViewController.m */; };
+		EBB8C97C1BFA827400347B24 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C97B1BFA827400347B24 /* AboutTableViewController.m */; };
+		EBB8C9811BFA855300347B24 /* FeedbackCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C9801BFA855300347B24 /* FeedbackCenterViewController.m */; };
+		EBB8C9841BFA856000347B24 /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C9831BFA856000347B24 /* HelpCenterViewController.m */; };
+		EBB8C9871BFA85FF00347B24 /* DatabaseUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C9861BFA85FF00347B24 /* DatabaseUpdateViewController.m */; };
+		EBBD42EB1C00F2670033F226 /* iPad_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */; };
+		EBC64C551C02A58700B33ECA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC64C531C02A58700B33ECA /* Bolts.framework */; };
+		EBC64C561C02A58700B33ECA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC64C541C02A58700B33ECA /* Parse.framework */; };
+		EBC64C591C02B2C900B33ECA /* WorkoutSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */; };
+		EBC64C5D1C02C3CD00B33ECA /* WorkoutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC64C5C1C02C3CD00B33ECA /* WorkoutTableViewCell.m */; };
 		EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCE12511BD2F62C000370CC /* FavoritesViewController.m */; };
+		EBE540931BFD07180018DB7F /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = EBE5407A1BFD07180018DB7F /* .gitkeep */; };
+		EBE540941BFD07180018DB7F /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = EBE5407C1BFD07180018DB7F /* .gitkeep */; };
+		EBE540951BFD07180018DB7F /* LKAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE540801BFD07180018DB7F /* LKAnalytics.m */; };
+		EBE540961BFD07180018DB7F /* LKAppUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE540821BFD07180018DB7F /* LKAppUser.m */; };
+		EBE540971BFD07180018DB7F /* LKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE540851BFD07180018DB7F /* LKConfig.m */; };
+		EBE540981BFD07180018DB7F /* LaunchKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE540871BFD07180018DB7F /* LaunchKit.m */; };
+		EBE540991BFD07180018DB7F /* LKAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE5408A1BFD07180018DB7F /* LKAPIClient.m */; };
+		EBE5409A1BFD07180018DB7F /* LKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE5408C1BFD07180018DB7F /* LKLog.m */; };
+		EBE5409B1BFD07180018DB7F /* LKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE5408E1BFD07180018DB7F /* LKUtils.m */; };
+		EBE5409C1BFD07180018DB7F /* NSDictionary+LKFormEncoded.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE540901BFD07180018DB7F /* NSDictionary+LKFormEncoded.m */; };
+		EBE5409D1BFD07180018DB7F /* NSString+LKURLEncoded.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE540921BFD07180018DB7F /* NSString+LKURLEncoded.m */; };
+		EBFC030E1BFD42A60096178B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC030C1BFD42A60096178B /* User.m */; };
+		EBFC03151BFD49E20096178B /* SHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC03141BFD49E20096178B /* SHUser.m */; };
+		EBFC03181BFD4A230096178B /* UserDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC03171BFD4A230096178B /* UserDataManager.m */; };
+		EBFC031B1BFD4A850096178B /* SHUser+User.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC031A1BFD4A850096178B /* SHUser+User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -120,8 +140,6 @@
 		3F2E5A8218DF388300EE4734 /* ExerciseListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseListController.m; sourceTree = "<group>"; };
 		3F2E5A8518DF4E4E00EE4734 /* ExerciseCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCollectionCell.h; sourceTree = "<group>"; };
 		3F2E5A8618DF4E4E00EE4734 /* ExerciseCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCollectionCell.m; sourceTree = "<group>"; };
-		3F2E5A8918E0D90900EE4734 /* workoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = workoutCell.h; sourceTree = "<group>"; };
-		3F2E5A8A18E0D90900EE4734 /* workoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = workoutCell.m; sourceTree = "<group>"; };
 		3F63B1A81ABB9F24000CDE06 /* HomeTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTabBarController.h; sourceTree = "<group>"; };
 		3F63B1A91ABB9F24000CDE06 /* HomeTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTabBarController.m; sourceTree = "<group>"; };
 		3F7D779E19A2DFEA00E00065 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -161,6 +179,7 @@
 		3FE95E22187A5DB0005DD13D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		3FE95E23187A5DB0005DD13D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		3FF9DDA01853BAEC0083A499 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		EB0836F11BF13C7000F38817 /* StayHealthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = StayHealthy.entitlements; sourceTree = "<group>"; };
 		EB215A301BD895DB00A0765A /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
 		EB215A311BD895DB00A0765A /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
 		EB215A321BD895DB00A0765A /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
@@ -182,7 +201,6 @@
 		EB2C4A6E1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHCustomWorkout+CustomWorkout.h"; sourceTree = "<group>"; };
 		EB2C4A6F1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHCustomWorkout+CustomWorkout.m"; sourceTree = "<group>"; };
 		EB3ABB341BF00244004AF091 /* StayHealthy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StayHealthy-Bridging-Header.h"; sourceTree = "<group>"; };
-		EB3ABB371BF00325004AF091 /* WelcomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePage.swift; sourceTree = "<group>"; };
 		EB3B9E221BE8022500BCEF28 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		EB3B9E241BE8023600BCEF28 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		EB3B9E261BE8024300BCEF28 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -230,8 +248,6 @@
 		EB575AD41BEC38EC00A1C798 /* VersionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionHistoryViewController.m; sourceTree = "<group>"; };
 		EB575AD61BEC391000A1C798 /* AcknowledgmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgmentsViewController.h; sourceTree = "<group>"; };
 		EB575AD71BEC391000A1C798 /* AcknowledgmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgmentsViewController.m; sourceTree = "<group>"; };
-		EB575B5C1BED47F000A1C798 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Project Resources/Frameworks/Parse/Bolts.framework"; sourceTree = "<group>"; };
-		EB575B5D1BED47F000A1C798 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Project Resources/Frameworks/Parse/Parse.framework"; sourceTree = "<group>"; };
 		EB63EF371B4B3FE200EF35A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_Storyboard.storyboard; sourceTree = "<group>"; };
 		EB63EF391B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseAdvancedSearchViewController.h; sourceTree = "<group>"; };
 		EB63EF3A1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseAdvancedSearchViewController.m; sourceTree = "<group>"; };
@@ -252,15 +268,60 @@
 		EB737F6F1B8015E100EBBDA4 /* SHDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDataHandler.h; sourceTree = "<group>"; };
 		EB737F701B8015E100EBBDA4 /* SHDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDataHandler.m; sourceTree = "<group>"; };
 		EB737F741B8133D400EBBDA4 /* ExerciseSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseSelectionViewController.h; sourceTree = "<group>"; };
-		EB737F751B8133D400EBBDA4 /* ExerciseSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseSelectionViewController.m; sourceTree = "<group>"; };
 		EB8ACF881B76DAD0003E91A6 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
 		EB8ACF891B76DAD0003E91A6 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		EB9CF6FF1B52AA00006E2984 /* PreferencesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesTableViewController.h; sourceTree = "<group>"; };
 		EB9CF7001B52AA00006E2984 /* PreferencesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesTableViewController.m; sourceTree = "<group>"; };
 		EBB432D81B549FEC001B2D40 /* ExerciseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseTableViewCell.h; sourceTree = "<group>"; };
 		EBB432D91B549FEC001B2D40 /* ExerciseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseTableViewCell.m; sourceTree = "<group>"; };
+		EBB8C96F1BF90ECA00347B24 /* ExerciseSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseSelectionViewController.m; sourceTree = "<group>"; };
+		EBB8C97A1BFA827400347B24 /* AboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTableViewController.h; sourceTree = "<group>"; };
+		EBB8C97B1BFA827400347B24 /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
+		EBB8C97F1BFA855300347B24 /* FeedbackCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackCenterViewController.h; sourceTree = "<group>"; };
+		EBB8C9801BFA855300347B24 /* FeedbackCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackCenterViewController.m; sourceTree = "<group>"; };
+		EBB8C9821BFA856000347B24 /* HelpCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCenterViewController.h; sourceTree = "<group>"; };
+		EBB8C9831BFA856000347B24 /* HelpCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpCenterViewController.m; sourceTree = "<group>"; };
+		EBB8C9851BFA85FF00347B24 /* DatabaseUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseUpdateViewController.h; sourceTree = "<group>"; };
+		EBB8C9861BFA85FF00347B24 /* DatabaseUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseUpdateViewController.m; sourceTree = "<group>"; };
+		EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad_Storyboard.storyboard; sourceTree = "<group>"; };
+		EBC64C531C02A58700B33ECA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../Parse/Bolts.framework; sourceTree = "<group>"; };
+		EBC64C541C02A58700B33ECA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../Parse/Parse.framework; sourceTree = "<group>"; };
+		EBC64C571C02B2C900B33ECA /* WorkoutSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutSelectionViewController.h; sourceTree = "<group>"; };
+		EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutSelectionViewController.m; sourceTree = "<group>"; };
+		EBC64C5B1C02C3CD00B33ECA /* WorkoutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutTableViewCell.h; sourceTree = "<group>"; };
+		EBC64C5C1C02C3CD00B33ECA /* WorkoutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutTableViewCell.m; sourceTree = "<group>"; };
 		EBCE12501BD2F62C000370CC /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		EBCE12511BD2F62C000370CC /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		EBE5407A1BFD07180018DB7F /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		EBE5407C1BFD07180018DB7F /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		EBE5407F1BFD07180018DB7F /* LKAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAnalytics.h; sourceTree = "<group>"; };
+		EBE540801BFD07180018DB7F /* LKAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAnalytics.m; sourceTree = "<group>"; };
+		EBE540811BFD07180018DB7F /* LKAppUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAppUser.h; sourceTree = "<group>"; };
+		EBE540821BFD07180018DB7F /* LKAppUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAppUser.m; sourceTree = "<group>"; };
+		EBE540841BFD07180018DB7F /* LKConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKConfig.h; sourceTree = "<group>"; };
+		EBE540851BFD07180018DB7F /* LKConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKConfig.m; sourceTree = "<group>"; };
+		EBE540861BFD07180018DB7F /* LaunchKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchKit.h; sourceTree = "<group>"; };
+		EBE540871BFD07180018DB7F /* LaunchKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchKit.m; sourceTree = "<group>"; };
+		EBE540881BFD07180018DB7F /* LaunchKitShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchKitShared.h; sourceTree = "<group>"; };
+		EBE540891BFD07180018DB7F /* LKAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAPIClient.h; sourceTree = "<group>"; };
+		EBE5408A1BFD07180018DB7F /* LKAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAPIClient.m; sourceTree = "<group>"; };
+		EBE5408B1BFD07180018DB7F /* LKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLog.h; sourceTree = "<group>"; };
+		EBE5408C1BFD07180018DB7F /* LKLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLog.m; sourceTree = "<group>"; };
+		EBE5408D1BFD07180018DB7F /* LKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKUtils.h; sourceTree = "<group>"; };
+		EBE5408E1BFD07180018DB7F /* LKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKUtils.m; sourceTree = "<group>"; };
+		EBE5408F1BFD07180018DB7F /* NSDictionary+LKFormEncoded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LKFormEncoded.h"; sourceTree = "<group>"; };
+		EBE540901BFD07180018DB7F /* NSDictionary+LKFormEncoded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LKFormEncoded.m"; sourceTree = "<group>"; };
+		EBE540911BFD07180018DB7F /* NSString+LKURLEncoded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LKURLEncoded.h"; sourceTree = "<group>"; };
+		EBE540921BFD07180018DB7F /* NSString+LKURLEncoded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LKURLEncoded.m"; sourceTree = "<group>"; };
+		EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StayHealthy2.xcdatamodel; sourceTree = "<group>"; };
+		EBFC030B1BFD42A60096178B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		EBFC030C1BFD42A60096178B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		EBFC03131BFD49E20096178B /* SHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHUser.h; sourceTree = "<group>"; };
+		EBFC03141BFD49E20096178B /* SHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHUser.m; sourceTree = "<group>"; };
+		EBFC03161BFD4A230096178B /* UserDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataManager.h; sourceTree = "<group>"; };
+		EBFC03171BFD4A230096178B /* UserDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataManager.m; sourceTree = "<group>"; };
+		EBFC03191BFD4A850096178B /* SHUser+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHUser+User.h"; sourceTree = "<group>"; };
+		EBFC031A1BFD4A850096178B /* SHUser+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHUser+User.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,10 +339,10 @@
 				3F7D77B519A3086200E00065 /* SystemConfiguration.framework in Frameworks */,
 				3FD5E1A31853A8D00063E10C /* CoreGraphics.framework in Frameworks */,
 				3FE100931863CC0100C53D76 /* QuartzCore.framework in Frameworks */,
-				EB575B5F1BED47F000A1C798 /* Parse.framework in Frameworks */,
+				EBC64C561C02A58700B33ECA /* Parse.framework in Frameworks */,
 				3F7D77A719A3081300E00065 /* AudioToolbox.framework in Frameworks */,
 				3F7D779F19A2DFEA00E00065 /* MessageUI.framework in Frameworks */,
-				EB575B5E1BED47F000A1C798 /* Bolts.framework in Frameworks */,
+				EBC64C551C02A58700B33ECA /* Bolts.framework in Frameworks */,
 				3FF9DDA11853BAEC0083A499 /* CoreText.framework in Frameworks */,
 				3FD5E1A71853A8D00063E10C /* CoreData.framework in Frameworks */,
 				3FD5E1A51853A8D00063E10C /* UIKit.framework in Frameworks */,
@@ -295,8 +356,10 @@
 		3F18B151187F841A00EC852A /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
+				EBC64C5A1C02C24400B33ECA /* Workout TableView Cell */,
+				EBC64C571C02B2C900B33ECA /* WorkoutSelectionViewController.h */,
+				EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */,
 				3FE8069C18F24262006A0993 /* Workout Page */,
-				3F2E5A8818E0D8BA00EE4734 /* Workout Collection Cell */,
 			);
 			name = Workouts;
 			sourceTree = "<group>";
@@ -318,20 +381,11 @@
 			name = "Exercise Collection Cell";
 			sourceTree = "<group>";
 		};
-		3F2E5A8818E0D8BA00EE4734 /* Workout Collection Cell */ = {
-			isa = PBXGroup;
-			children = (
-				3F2E5A8918E0D90900EE4734 /* workoutCell.h */,
-				3F2E5A8A18E0D90900EE4734 /* workoutCell.m */,
-			);
-			name = "Workout Collection Cell";
-			sourceTree = "<group>";
-		};
 		3F2E5A8E18E11B8600EE4734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EB575B5C1BED47F000A1C798 /* Bolts.framework */,
-				EB575B5D1BED47F000A1C798 /* Parse.framework */,
+				EBC64C531C02A58700B33ECA /* Bolts.framework */,
+				EBC64C541C02A58700B33ECA /* Parse.framework */,
 				EB3B9E221BE8022500BCEF28 /* StoreKit.framework */,
 				3F7D77A619A3081300E00065 /* AudioToolbox.framework */,
 				3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */,
@@ -515,6 +569,7 @@
 		3FD5E19F1853A8D00063E10C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EBE540791BFD07180018DB7F /* LaunchKit */,
 				3F2E5A8F18E11BB500EE4734 /* Bundles */,
 				3F2E5A8E18E11B8600EE4734 /* Frameworks */,
 			);
@@ -524,6 +579,7 @@
 		3FD5E1A81853A8D00063E10C /* StayHealthy */ = {
 			isa = PBXGroup;
 			children = (
+				3FC465EF1B33ACDA0062EBDB /* App Delegate */,
 				3FC465E41B33A7F70062EBDB /* Platform */,
 				3FC465E21B33A79B0062EBDB /* View Controllers */,
 				3FD5E20A1853AE920063E10C /* Storyboard */,
@@ -537,8 +593,8 @@
 		3FD5E1A91853A8D00063E10C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EB0836F11BF13C7000F38817 /* StayHealthy.entitlements */,
 				EB3ABB341BF00244004AF091 /* StayHealthy-Bridging-Header.h */,
-				3FC465EF1B33ACDA0062EBDB /* App Delegate */,
 				3FC465EE1B33ACCC0062EBDB /* Prefix File */,
 				3FD5E1AA1853A8D00063E10C /* StayHealthy-Info.plist */,
 				3FD5E1AB1853A8D00063E10C /* InfoPlist.strings */,
@@ -559,7 +615,8 @@
 		3FD5E20A1853AE920063E10C /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				EB63EF361B4B3FE200EF35A3 /* Main_Storyboard.storyboard */,
+				EBFC03271BFF6BDC0096178B /* iPad */,
+				EBFC03261BFF6BCF0096178B /* iPhone */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -576,15 +633,16 @@
 		3FE95E25187A5DB7005DD13D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				EB575AD21BEC38AC00A1C798 /* Version History */,
-				EB575AD11BEC389F00A1C798 /* Acknowledgments */,
 				3FE95E22187A5DB0005DD13D /* SettingsViewController.h */,
 				3FE95E23187A5DB0005DD13D /* SettingsViewController.m */,
+				EBB8C9881BFA860A00347B24 /* Database Update */,
+				EBB8C97E1BFA853A00347B24 /* Feedback Center */,
+				EBB8C97D1BFA853200347B24 /* Help Center */,
+				EBB8C9791BFA826000347B24 /* About */,
+				EB575AD21BEC38AC00A1C798 /* Version History */,
+				EB575AD11BEC389F00A1C798 /* Acknowledgments */,
 				EB76703B1B52A96000A188B4 /* Preferences */,
-				EB215A2A1BD7E88E00A0765A /* Acknowledgements */,
-				EB215A2B1BD7E8A700A0765A /* Version History */,
 				3F7D77A019A300C000E00065 /* WebViewViewController */,
-				EB215A2C1BD7E8BE00A0765A /* Privacy and Terms */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -593,7 +651,7 @@
 			isa = PBXGroup;
 			children = (
 				EB737F741B8133D400EBBDA4 /* ExerciseSelectionViewController.h */,
-				EB737F751B8133D400EBBDA4 /* ExerciseSelectionViewController.m */,
+				EBB8C96F1BF90ECA00347B24 /* ExerciseSelectionViewController.m */,
 				3FC465F71B33B2150062EBDB /* Exercise Adanced Search */,
 				3FC465F61B33B2010062EBDB /* Exercise Searched Page */,
 				3FC465F51B33B1E30062EBDB /* Exercise Detail Page */,
@@ -612,27 +670,6 @@
 				EB52EFE91BCAEFC800F5D7CA /* SIAlertView */,
 			);
 			name = Libraries;
-			sourceTree = "<group>";
-		};
-		EB215A2A1BD7E88E00A0765A /* Acknowledgements */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Acknowledgements;
-			sourceTree = "<group>";
-		};
-		EB215A2B1BD7E8A700A0765A /* Version History */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Version History";
-			sourceTree = "<group>";
-		};
-		EB215A2C1BD7E8BE00A0765A /* Privacy and Terms */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Privacy and Terms";
 			sourceTree = "<group>";
 		};
 		EB215A2D1BD8902600A0765A /* Exercise Quick Filter */ = {
@@ -803,7 +840,6 @@
 			children = (
 				EB701E7D1BE7EA54005003B1 /* WalkThoughOneViewController.h */,
 				EB701E7E1BE7EA54005003B1 /* WalkThoughOneViewController.m */,
-				EB3ABB371BF00325004AF091 /* WelcomePage.swift */,
 			);
 			name = "Welcome Page";
 			sourceTree = "<group>";
@@ -818,6 +854,8 @@
 				EB2C4A661B89F773005D183A /* WorkoutDataManager.m */,
 				EB2C4A681B89F798005D183A /* CustomWorkoutDataManager.h */,
 				EB2C4A691B89F798005D183A /* CustomWorkoutDataManager.m */,
+				EBFC03161BFD4A230096178B /* UserDataManager.h */,
+				EBFC03171BFD4A230096178B /* UserDataManager.m */,
 				EB737F601B7F8D2C00EBBDA4 /* Categories */,
 			);
 			name = "Data Managers";
@@ -832,6 +870,8 @@
 				EB2C4A601B89F556005D183A /* SHWorkout.m */,
 				EB2C4A621B89F56A005D183A /* SHCustomWorkout.h */,
 				EB2C4A631B89F56A005D183A /* SHCustomWorkout.m */,
+				EBFC03131BFD49E20096178B /* SHUser.h */,
+				EBFC03141BFD49E20096178B /* SHUser.m */,
 			);
 			name = "Business Objects";
 			sourceTree = "<group>";
@@ -845,6 +885,8 @@
 				EB2C4A5D1B89F53F005D183A /* Workout.m */,
 				EB2C4A591B89F531005D183A /* CustomWorkout.h */,
 				EB2C4A5A1B89F531005D183A /* CustomWorkout.m */,
+				EBFC030B1BFD42A60096178B /* User.h */,
+				EBFC030C1BFD42A60096178B /* User.m */,
 			);
 			name = "Core Data Managed Objects";
 			sourceTree = "<group>";
@@ -858,6 +900,8 @@
 				EB2C4A6C1B89F8DC005D183A /* SHWorkout+Workout.m */,
 				EB2C4A6E1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.h */,
 				EB2C4A6F1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m */,
+				EBFC03191BFD4A850096178B /* SHUser+User.h */,
+				EBFC031A1BFD4A850096178B /* SHUser+User.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -880,6 +924,51 @@
 			name = Preferences;
 			sourceTree = "<group>";
 		};
+		EBB8C9791BFA826000347B24 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				EBB8C97A1BFA827400347B24 /* AboutTableViewController.h */,
+				EBB8C97B1BFA827400347B24 /* AboutTableViewController.m */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		EBB8C97D1BFA853200347B24 /* Help Center */ = {
+			isa = PBXGroup;
+			children = (
+				EBB8C9821BFA856000347B24 /* HelpCenterViewController.h */,
+				EBB8C9831BFA856000347B24 /* HelpCenterViewController.m */,
+			);
+			name = "Help Center";
+			sourceTree = "<group>";
+		};
+		EBB8C97E1BFA853A00347B24 /* Feedback Center */ = {
+			isa = PBXGroup;
+			children = (
+				EBB8C97F1BFA855300347B24 /* FeedbackCenterViewController.h */,
+				EBB8C9801BFA855300347B24 /* FeedbackCenterViewController.m */,
+			);
+			name = "Feedback Center";
+			sourceTree = "<group>";
+		};
+		EBB8C9881BFA860A00347B24 /* Database Update */ = {
+			isa = PBXGroup;
+			children = (
+				EBB8C9851BFA85FF00347B24 /* DatabaseUpdateViewController.h */,
+				EBB8C9861BFA85FF00347B24 /* DatabaseUpdateViewController.m */,
+			);
+			name = "Database Update";
+			sourceTree = "<group>";
+		};
+		EBC64C5A1C02C24400B33ECA /* Workout TableView Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EBC64C5B1C02C3CD00B33ECA /* WorkoutTableViewCell.h */,
+				EBC64C5C1C02C3CD00B33ECA /* WorkoutTableViewCell.m */,
+			);
+			name = "Workout TableView Cell";
+			sourceTree = "<group>";
+		};
 		EBCE12531BD2F632000370CC /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -898,6 +987,83 @@
 			name = "Exercise TableView Cell";
 			sourceTree = "<group>";
 		};
+		EBE540791BFD07180018DB7F /* LaunchKit */ = {
+			isa = PBXGroup;
+			children = (
+				EBE5407A1BFD07180018DB7F /* .gitkeep */,
+				EBE5407B1BFD07180018DB7F /* Assets */,
+				EBE5407D1BFD07180018DB7F /* Classes */,
+			);
+			name = LaunchKit;
+			path = "../../../../../../Downloads/launchkit-ios-master/LaunchKit";
+			sourceTree = "<group>";
+		};
+		EBE5407B1BFD07180018DB7F /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EBE5407C1BFD07180018DB7F /* .gitkeep */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		EBE5407D1BFD07180018DB7F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EBE5407E1BFD07180018DB7F /* Analytics */,
+				EBE540831BFD07180018DB7F /* Config */,
+				EBE540861BFD07180018DB7F /* LaunchKit.h */,
+				EBE540871BFD07180018DB7F /* LaunchKit.m */,
+				EBE540881BFD07180018DB7F /* LaunchKitShared.h */,
+				EBE540891BFD07180018DB7F /* LKAPIClient.h */,
+				EBE5408A1BFD07180018DB7F /* LKAPIClient.m */,
+				EBE5408B1BFD07180018DB7F /* LKLog.h */,
+				EBE5408C1BFD07180018DB7F /* LKLog.m */,
+				EBE5408D1BFD07180018DB7F /* LKUtils.h */,
+				EBE5408E1BFD07180018DB7F /* LKUtils.m */,
+				EBE5408F1BFD07180018DB7F /* NSDictionary+LKFormEncoded.h */,
+				EBE540901BFD07180018DB7F /* NSDictionary+LKFormEncoded.m */,
+				EBE540911BFD07180018DB7F /* NSString+LKURLEncoded.h */,
+				EBE540921BFD07180018DB7F /* NSString+LKURLEncoded.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		EBE5407E1BFD07180018DB7F /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				EBE5407F1BFD07180018DB7F /* LKAnalytics.h */,
+				EBE540801BFD07180018DB7F /* LKAnalytics.m */,
+				EBE540811BFD07180018DB7F /* LKAppUser.h */,
+				EBE540821BFD07180018DB7F /* LKAppUser.m */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		EBE540831BFD07180018DB7F /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				EBE540841BFD07180018DB7F /* LKConfig.h */,
+				EBE540851BFD07180018DB7F /* LKConfig.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		EBFC03261BFF6BCF0096178B /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				EB63EF361B4B3FE200EF35A3 /* Main_Storyboard.storyboard */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		EBFC03271BFF6BDC0096178B /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -910,6 +1076,7 @@
 				3FD5E19B1853A8D00063E10C /* Resources */,
 				EB5DBC9D1B794B5F00794300 /* Run Documentation Creation Script */,
 				EB575B141BECFC9F00A1C798 /* Embed Watch Content */,
+				EBB8C9921BFAFA3500347B24 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -927,14 +1094,23 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Mark Saunders";
 				TargetAttributes = {
 					3FD5E19C1853A8D00063E10C = {
 						DevelopmentTeam = MHRF3243WF;
 						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 0;
+							};
 							com.apple.InAppPurchase = {
 								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
 							};
 						};
 					};
@@ -966,6 +1142,7 @@
 				EB52EFD91BCAEFBA00F5D7CA /* NotificationBackgroundErrorIcon@2x.png in Resources */,
 				EB52EFE41BCAEFBA00F5D7CA /* NotificationButtonBackground.png in Resources */,
 				EB52EFE11BCAEFBA00F5D7CA /* NotificationBackgroundWarning@2x.png in Resources */,
+				EBE540941BFD07180018DB7F /* .gitkeep in Resources */,
 				EB52EFE31BCAEFBA00F5D7CA /* NotificationBackgroundWarningIcon@2x.png in Resources */,
 				EB52EFDC1BCAEFBA00F5D7CA /* NotificationBackgroundSuccess.png in Resources */,
 				3FDA2D5C19C26699003C2FF4 /* Images.xcassets in Resources */,
@@ -981,9 +1158,11 @@
 				EB52EFA41BCAEF5800F5D7CA /* Strength in Resources */,
 				EB63EF381B4B3FE200EF35A3 /* Main_Storyboard.storyboard in Resources */,
 				EB52EFD61BCAEFBA00F5D7CA /* NotificationBackgroundError.png in Resources */,
+				EBBD42EB1C00F2670033F226 /* iPad_Storyboard.storyboard in Resources */,
 				EB52EFDF1BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon@2x.png in Resources */,
 				EB52EFA51BCAEF5800F5D7CA /* Stretching in Resources */,
 				EB52EFDB1BCAEFBA00F5D7CA /* NotificationBackgroundMessage@2x.png in Resources */,
+				EBE540931BFD07180018DB7F /* .gitkeep in Resources */,
 				3F949C1F195A56D800EB4BED /* StayHealthyGeneral.plist in Resources */,
 				EB52EF9F1BCAEF0B00F5D7CA /* StayHealthyDatabase.sqlite in Resources */,
 				EB52EFDE1BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon.png in Resources */,
@@ -1008,6 +1187,19 @@
 			shellPath = /bin/sh;
 			shellScript = "#if [ ${CONFIGURATION} == \"Release\" ]; then\nAPPLEDOC_PATH=`which appledoc`\nif [ $APPLEDOC_PATH ]; then\n$APPLEDOC_PATH \\\n--project-name ${PRODUCT_NAME} \\\n--project-company \"Robert Saunders\" \\\n--company-id \"com.redCode\" \\\n--output ${PRODUCT_NAME}Documentation \\\n--keep-intermediate-files \\\n--install-docset \\\n--preprocess-headerdoc \\\n--templates ${PROJECT_DIR}/StayHealthyDocumentationResources/Templates \\\n--index-desc ${PROJECT_DIR}/StayHealthyDocumentationResources/StayHealthyDocumentationIndex.markdown \\\n--no-repeat-first-par \\\n--exit-threshold 2 \\\n${PROJECT_DIR}/${PRODUCT_NAME}\nfi;\n#fi;";
 		};
+		EBB8C9921BFAFA3500347B24 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1015,27 +1207,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBFC030E1BFD42A60096178B /* User.m in Sources */,
+				EBFC03181BFD4A230096178B /* UserDataManager.m in Sources */,
 				EB575AD51BEC38EC00A1C798 /* VersionHistoryViewController.m in Sources */,
 				EB737F5C1B7F8A9F00EBBDA4 /* SHExercise.m in Sources */,
 				EB2C4A701B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m in Sources */,
+				EBE540951BFD07180018DB7F /* LKAnalytics.m in Sources */,
 				EB215A341BD895DB00A0765A /* MGSwipeButton.m in Sources */,
 				EBB432DA1B549FEC001B2D40 /* ExerciseTableViewCell.m in Sources */,
 				EB701E7B1BE2DC78005003B1 /* QuickFilterViewController.m in Sources */,
+				EBE540981BFD07180018DB7F /* LaunchKit.m in Sources */,
 				3F2E5A8718DF4E4E00EE4734 /* ExerciseCollectionCell.m in Sources */,
 				EB52EFE71BCAEFBA00F5D7CA /* TSBlurView.m in Sources */,
+				EBE5409C1BFD07180018DB7F /* NSDictionary+LKFormEncoded.m in Sources */,
+				EBE540991BFD07180018DB7F /* LKAPIClient.m in Sources */,
+				EBC64C591C02B2C900B33ECA /* WorkoutSelectionViewController.m in Sources */,
 				3FE8069F18F24442006A0993 /* WorkoutViewController.m in Sources */,
 				EB63EF3B1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m in Sources */,
+				EBE540961BFD07180018DB7F /* LKAppUser.m in Sources */,
+				EBB8C9871BFA85FF00347B24 /* DatabaseUpdateViewController.m in Sources */,
 				EB2C4A671B89F773005D183A /* WorkoutDataManager.m in Sources */,
 				EB52EFEE1BCAEFC800F5D7CA /* SIAlertView.m in Sources */,
 				EB2C4A6A1B89F798005D183A /* CustomWorkoutDataManager.m in Sources */,
 				3FE95E24187A5DB0005DD13D /* SettingsViewController.m in Sources */,
 				EB737F5F1B7F8B2200EBBDA4 /* ExerciseDataManager.m in Sources */,
+				EBE540971BFD07180018DB7F /* LKConfig.m in Sources */,
 				3FE103D3186618F200C53D76 /* ExerciseDetailViewController.m in Sources */,
 				3F2E5A8318DF388300EE4734 /* ExerciseListController.m in Sources */,
+				EBB8C97C1BFA827400347B24 /* AboutTableViewController.m in Sources */,
+				EBE5409D1BFD07180018DB7F /* NSString+LKURLEncoded.m in Sources */,
 				3FC466B21B3621970062EBDB /* CommonUtilities.m in Sources */,
 				EB52EFAD1BCAEF9700F5D7CA /* ALCustomColoredAccessory.m in Sources */,
+				EBFC03151BFD49E20096178B /* SHUser.m in Sources */,
 				3F8BB363198D4AF70098E1A7 /* CommonSetUpOperations.m in Sources */,
 				EB52EFD41BCAEFBA00F5D7CA /* TSMessage.m in Sources */,
+				EBE5409B1BFD07180018DB7F /* LKUtils.m in Sources */,
 				EB575AD81BEC391000A1C798 /* AcknowledgmentsViewController.m in Sources */,
 				EB8ACF8A1B76DAD0003E91A6 /* Exercise.m in Sources */,
 				EB52EFE81BCAEFBA00F5D7CA /* TSMessageView.m in Sources */,
@@ -1046,11 +1252,10 @@
 				EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */,
 				EB2C4A5E1B89F53F005D183A /* Workout.m in Sources */,
 				3F63B1AA1ABB9F24000CDE06 /* HomeTabBarController.m in Sources */,
-				3F2E5A8B18E0D90900EE4734 /* workoutCell.m in Sources */,
 				EB52EFEF1BCAEFC800F5D7CA /* UIWindow+SIUtils.m in Sources */,
+				EBB8C9841BFA856000347B24 /* HelpCenterViewController.m in Sources */,
 				EB2C4A641B89F56A005D183A /* SHCustomWorkout.m in Sources */,
 				3FE41E431ABE0644007522AB /* advancedOptionsSelect.m in Sources */,
-				EB3ABB381BF00325004AF091 /* WelcomePage.swift in Sources */,
 				EB52EFD51BCAEFBA00F5D7CA /* HexColor.m in Sources */,
 				EB2C4A5B1B89F531005D183A /* CustomWorkout.m in Sources */,
 				EB215A351BD895DB00A0765A /* MGSwipeTableCell.m in Sources */,
@@ -1058,13 +1263,17 @@
 				EB2C4A611B89F556005D183A /* SHWorkout.m in Sources */,
 				3FD5E1BC1853A8D00063E10C /* StayHealthy.xcdatamodeld in Sources */,
 				EB9CF7011B52AA00006E2984 /* PreferencesTableViewController.m in Sources */,
-				EB737F761B8133D400EBBDA4 /* ExerciseSelectionViewController.m in Sources */,
 				3FD5E1AF1853A8D00063E10C /* main.m in Sources */,
 				EB52EFA91BCAEF8900F5D7CA /* MZTimerLabel.m in Sources */,
+				EBFC031B1BFD4A850096178B /* SHUser+User.m in Sources */,
+				EBC64C5D1C02C3CD00B33ECA /* WorkoutTableViewCell.m in Sources */,
+				EBB8C9811BFA855300347B24 /* FeedbackCenterViewController.m in Sources */,
+				EBB8C9701BF90ECA00347B24 /* ExerciseSelectionViewController.m in Sources */,
 				3F7D77A319A300D600E00065 /* WebViewViewController.m in Sources */,
 				EB89979E1B7C3DE100904984 /* GlobalDefinitions.h in Sources */,
 				EB737F711B8015E100EBBDA4 /* SHDataHandler.m in Sources */,
 				EB52EFF31BCAEFCF00F5D7CA /* Reachability.m in Sources */,
+				EBE5409A1BFD07180018DB7F /* LKLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1094,7 +1303,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1111,6 +1319,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1140,7 +1349,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1183,7 +1391,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Saunders (MHRF3243WF)";
+				CODE_SIGN_ENTITLEMENTS = StayHealthy/StayHealthy.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1234,6 +1443,62 @@
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/Project",
 					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
@@ -1241,8 +1506,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6dfb8995-dfcc-4b9a-8b8e-d0f7f9eb2e89";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1257,7 +1523,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Saunders (MHRF3243WF)";
+				CODE_SIGN_ENTITLEMENTS = StayHealthy/StayHealthy.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1308,6 +1575,62 @@
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/Project",
 					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
@@ -1315,8 +1638,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6dfb8995-dfcc-4b9a-8b8e-d0f7f9eb2e89";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1350,9 +1674,10 @@
 		3FD5E1BA1853A8D00063E10C /* StayHealthy.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */,
 				3FD5E1BB1853A8D00063E10C /* StayHealthy.xcdatamodel */,
 			);
-			currentVersion = 3FD5E1BB1853A8D00063E10C /* StayHealthy.xcdatamodel */;
+			currentVersion = EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */;
 			path = StayHealthy.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

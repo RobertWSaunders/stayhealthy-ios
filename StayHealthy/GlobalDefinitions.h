@@ -48,9 +48,19 @@
 
 #define TUMBLR_URL                  @"http://stayhealthyapp.tumblr.com"
 
-#define PRIVACY_URL                  @"http://mail.rsgc.on.ca/~rsaunders/privacy.html"
+#define PRIVACY_URL                 @"http://mail.rsgc.on.ca/~rsaunders/privacy.html"
 
-#define TERMS_URL                  @"http://mail.rsgc.on.ca/~rsaunders/terms.html"
+#define TERMS_URL                   @"http://mail.rsgc.on.ca/~rsaunders/terms.html"
+
+#define DATABASE_VERSION_URL        @"http://webservice.stayhealthyapp.com/StayHealthyDatabaseVersion.txt"
+#define DATABASE_URL                @"http://mail.rsgc.on.ca/~rsaunders/StayHealthyDatabase.sqlite"
+//@"http://webservice.stayhealthyapp.com/StayHealthyDatabase.sqlite"
+
+#define StayHealthyCloudUpdate     @"StayHealthyCloudUpdate"
+#define exerciseNotification       @"userExerciseNotification"
+#define exerciseFavNotification       @"userExerciseFavNotification"
+
+#define PRELOADED_DATABASE_VERSION       @"1.0.0"
 
 /*********************************/
 #pragma mark - Database Constants
@@ -204,6 +214,8 @@
 #define USER_FIRST_VIEW_FIND_EXERCISE_DETAIL        @"userFirstViewFindExerciseDetail"
 
 #define USER_FIRST_VIEW_FAVORITES                   @"userFirstViewFavorites"
+
+#define USER_INSTALLED_DATABASE_VERSION             @"userInstalledDatabaseVersion"
 
 
 

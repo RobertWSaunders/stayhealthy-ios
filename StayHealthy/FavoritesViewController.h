@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ExerciseDetailViewController.h"
+#import "ExerciseTableViewCell.h"
 
 @interface FavoritesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     NSMutableArray *favoritesData;

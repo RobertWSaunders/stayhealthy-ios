@@ -34,6 +34,14 @@
         segmentedControl.selectedSegmentIndex = 1;
     }
     
+    //Fetches and reloads the recentlyViewedExercises.
+    [self fetchRecentlyViewedExercises];
+    
+    //Observe for changes. 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchRecentlyViewedExercises) name:StayHealthyCloudUpdate object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchRecentlyViewedExercises) name:exerciseNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchRecentlyViewedExercises) name:exerciseFavNotification object:nil];
+    
     //By default warmup has not been pressed.
     warmupPressed = NO;
 }
@@ -42,9 +50,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     
       [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_FIND_EXERICSE viewController:self message:@"Ok, so from here you can select a muscle you would like to find an exercise for, view your recently viewed exercises, press the magnifying glass in the top left to perform an advanced search, or press the dude running in the top right to find some awesome warmup exercises! You can also switch over to the other parts of the app with the bottom tab bar."];
-    
-    //Fetches and reloads the recentlyViewedExercises.
-    [self fetchRecentlyViewedExercises];
+
 }
 
 /*******************************************************/
@@ -57,7 +63,7 @@
         return 57.0f;
     }
     else {
-        return 85.0f;
+        return 76.0f;
     }
 }
 
@@ -116,7 +122,7 @@
         cell.textLabel.font = tableViewTitleTextFont;
         cell.detailTextLabel.font = tableViewUnderTitleTextFont;
         
-
+/*
         cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"Yoga.png"] backgroundColor:STAYHEALTHY_DARKERBLUE callback:^BOOL(MGSwipeTableCell *sender){
             self.selectedTableViewIndex = indexPath;
             typeSwiped = stretching;
@@ -140,7 +146,7 @@
         cell.rightExpansion.threshold = 2.0f;
         cell.rightExpansion.buttonIndex = 0;
         cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
-    
+    */
         
         //Return the cell.
         return cell;
@@ -183,8 +189,8 @@
              cell.likeExerciseImage.hidden = YES;
         }
         
-        UILabel *timeLabel = (UILabel*)[cell viewWithTag:14];
-        timeLabel.text = [CommonUtilities calculateTime:exercise.lastViewed];
+        //UILabel *timeLabel = (UILabel*)[cell viewWithTag:14];
+        //timeLabel.text = [CommonUtilities calculateTime:exercise.lastViewed];
         
         //Set the selected cell background.
         [CommonSetUpOperations tableViewSelectionColorSet:cell];
@@ -329,6 +335,8 @@
 
 //Fetched the recently viewed exercises.
 - (void)fetchRecentlyViewedExercises {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
     //Fetches the recently viewed exercises, in Exercise object.
@@ -340,9 +348,11 @@
         for (int i = 0; i < recenltyViewedExercisesData.count; i++) {
             [recenltyViewedExercises addObject:[dataHandler convertExerciseToSHExercise:[recenltyViewedExercisesData objectAtIndex:i]]];
         }
-    
+        
     //Reload the recenltyviewed tableview to display the new exercises.
     [self.recentlyViewedTableView reloadData];
+    });
+    
 }
 
 //Checks to see if there are any recently viewed exercises to show.

@@ -106,6 +106,16 @@
 - (IBAction)doneTapped:(id)sender {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_FIRST_LAUNCH];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 @end

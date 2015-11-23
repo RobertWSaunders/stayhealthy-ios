@@ -26,22 +26,11 @@
      //self.favoritesTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
      [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_FAVORITES  viewController:self message:@"Here you can view all of your favorite exercises, you can toggle between the different types of exercises with the control just under the top bar!"];
-}
-
-//Perform any set up for the view once it has loaded.
-- (void)viewWillAppear:(BOOL)animated {
-    if (self.segmentedControl.selectedSegmentIndex == 0) {
-        [self fetchLikedExercises:strength];
-    }
-    else if (self.segmentedControl.selectedSegmentIndex == 1) {
-        [self fetchLikedExercises:stretching];
-    }
-    else if (self.segmentedControl.selectedSegmentIndex == 2) {
-        [self fetchLikedExercises:warmup];
-    }
-    else {
-        [self fetchLikedExercises:strength];
-    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchLikedExercises) name:StayHealthyCloudUpdate object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchLikedExercises) name:exerciseFavNotification object:nil];
+    
+    [self fetchLikedExercises];
     
 }
 
@@ -52,7 +41,7 @@
 //Returns the height of the cells inside the tableView.
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
  
-    return 85.0f;
+    return 76.0f;
     
 }
 
@@ -74,72 +63,63 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
         static NSString *recentlyViewedCellIdentifier = @"exerciseTableCell";
+    
+    //Create the reference for the cell.
+    ExerciseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:recentlyViewedCellIdentifier];
+    
+    //If the cell can't be found then just create one.
+    if (cell == nil) {
+        cell = [[ExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:recentlyViewedCellIdentifier];
+    }
+    
+    SHExercise *exercise = [favoritesData objectAtIndex:indexPath.row];
+    
+    cell.exerciseName.text = exercise.exerciseName;
+    cell.difficulty.text = exercise.exerciseDifficulty;
+    cell.difficulty.textColor = [CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty];
+    
+    cell.equipment.text = exercise.exerciseEquipment;
+    NSString *trimmedString = [exercise.exerciseEquipment stringByTrimmingCharactersInSet:
+                               [NSCharacterSet whitespaceCharacterSet]];
+    
+    if ([trimmedString isEqualToString:@"null"])
+        cell.equipment.text = @"No Equipment";
+    else
+        cell.equipment.text = exercise.exerciseEquipment;
+    
+    //Load the exercise image on the background thread.
+    [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
+    
+    if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        cell.likeExerciseImage.hidden = NO;
+        [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
+        cell.likeExerciseImage.tintColor = STAYHEALTHY_BLUE;
+    }
+    else {
+        cell.likeExerciseImage.hidden = YES;
+    }
+    
         
-        //Create the reference for the cell.
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:recentlyViewedCellIdentifier];
-        
-        //If the cell can't be found then just create one.
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:recentlyViewedCellIdentifier];
-        }
-        
-        SHExercise *exercise = [favoritesData objectAtIndex:indexPath.row];
-        
-        //Set the exercise name and style the label.
-        UILabel *exerciseName = (UILabel *)[cell viewWithTag:101];
-        exerciseName.font = tableViewTitleTextFont;
-        exerciseName.text = exercise.exerciseName;
-        exerciseName.textColor = STAYHEALTHY_BLUE;
-        
-        //Set the equipment names and style the label.
-        UILabel *equipment = (UILabel *)[cell viewWithTag:102];
-        equipment.text = exercise.exerciseEquipment;
-        equipment.font = tableViewUnderTitleTextFont;
-        equipment.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
-        
-        //Set the equipment default and set the style.
-        UILabel *equipmentStandard = (UILabel *)[cell viewWithTag:10];
-        equipmentStandard.font = tableViewUnderTitleTextFont;
-        equipmentStandard.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
-        NSString *trimmedString = [exercise.exerciseEquipment stringByTrimmingCharactersInSet:
-                                   [NSCharacterSet whitespaceCharacterSet]];
-        if ([trimmedString isEqualToString:@"null"])
-            equipment.text = @"No Equipment";
-        else
-            equipment.text = exercise.exerciseEquipment;
-        
-        //Set the difficulty and set the style.
-        UILabel *difficulty = (UILabel *)[cell viewWithTag:103];
-        difficulty.text = exercise.exerciseDifficulty;
-        difficulty.font = tableViewUnderTitleTextFont;
-        difficulty.textColor = [CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty];
-        
-        //Set the difficulty default and set the style.
-        UILabel *difficultyStandard = (UILabel *)[cell viewWithTag:11];
-        difficultyStandard.font = tableViewUnderTitleTextFont;
-        difficultyStandard.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
-        
-        //Load the exercise image on the background thread.
-        [CommonSetUpOperations loadImageOnBackgroundThread:(UIImageView*)[cell viewWithTag:100] image:[UIImage imageNamed:exercise.exerciseImageFile]];
-        
-        UIImageView *likedImage = (UIImageView*)[cell viewWithTag:27];
-        if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-            likedImage.hidden = NO;
-            [likedImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-            likedImage.tintColor = STAYHEALTHY_BLUE;
-        }
-        else {
-            likedImage.hidden = YES;
-        }
-        
-        UILabel *timeLabel = (UILabel*)[cell viewWithTag:14];
-        timeLabel.text = [CommonUtilities calculateTime:exercise.lastViewed];
-        
-        //Set the selected cell background.
-        [CommonSetUpOperations tableViewSelectionColorSet:cell];
-        
-        //Return the cell.
-        return cell;
+    //Set the selected cell background.
+    [CommonSetUpOperations tableViewSelectionColorSet:cell];
+    /*
+     //configure right buttons
+     cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"workout.png"] backgroundColor:STAYHEALTHY_DARKERBLUE callback:^BOOL(MGSwipeTableCell *sender) {
+     self.selectedTableViewIndex = indexPath;
+     
+     LogInfo(@"Add to workout");
+     //[self performSegueWithIdentifier:@"detailModal" sender:nil];
+     return YES;
+     }]];
+     cell.rightExpansion.fillOnTrigger = YES;
+     cell.rightExpansion.threshold = 2.0f;
+     cell.rightExpansion.buttonIndex = 0;
+     cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
+     */
+    
+    
+    //Return the cell.
+    return cell;
 }
 
 //----------------------------------
@@ -159,34 +139,36 @@
 /*****************************/
 
 //Fetched the recently viewed exercises.
-- (void)fetchLikedExercises:(exerciseTypes)exerciseType {
+- (void)fetchLikedExercises {
+    //Fetch and update the UI on the background thread to not corrupt the autolayout engine.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
-    SHDataHandler *dataHandler = [SHDataHandler getInstance];
+        //Fetches the recently viewed exercises, in Exercise object.
+        NSArray *favoriteExercise;
     
-    //Fetches the recently viewed exercises, in Exercise object.
-    NSArray *favoriteExercise;
+        if (self.segmentedControl.selectedSegmentIndex == 0) {
+            favoriteExercise = [[SHDataHandler getInstance] getStrengthLikedExercises];
+        }
+        else if (self.segmentedControl.selectedSegmentIndex == 1) {
+            favoriteExercise = [[SHDataHandler getInstance] getStretchLikedExercises];
+        }
+        else {
+            favoriteExercise = [[SHDataHandler getInstance] getWarmupLikedExercises];
+        }
     
-    if (exerciseType == strength) {
-        favoriteExercise = [[SHDataHandler getInstance] getStrengthLikedExercises];
-    }
-    else if (exerciseType == stretching) {
-        favoriteExercise = [[SHDataHandler getInstance] getStretchLikedExercises];
-    }
-    else {
-        favoriteExercise = [[SHDataHandler getInstance] getWarmupLikedExercises];
-    }
+        favoritesData = [[NSMutableArray alloc] init];
     
-    favoritesData = [[NSMutableArray alloc] init];
+        //Converts Exercise object to usable SHExercise object.
+        for (int i = 0; i < favoriteExercise.count; i++) {
+            [favoritesData addObject:[dataHandler convertExerciseToSHExercise:[favoriteExercise objectAtIndex:i]]];
+        }
     
-    //Converts Exercise object to usable SHExercise object.
-    for (int i = 0; i < favoriteExercise.count; i++) {
-        [favoritesData addObject:[dataHandler convertExerciseToSHExercise:[favoriteExercise objectAtIndex:i]]];
-    }
+        //[self showMessage:exerciseType];
     
-    [self showMessage:exerciseType];
-    
-    //Reload the recenltyviewed tableview to display the new exercises.
-    [self.favoritesTableView reloadData];
+        //Reload the recenltyviewed tableview to display the new exercises.
+        [self.favoritesTableView reloadData];
+    });
 }
 
 //Shows a TSMessage if there is no favorites.
@@ -215,18 +197,7 @@
 
 //What happens when the segmented control value changes.
 - (IBAction)segmentValueChanged:(UISegmentedControl*)sender {
-    if (sender.selectedSegmentIndex == 0) {
-        [self fetchLikedExercises:strength];
-    }
-    else if (sender.selectedSegmentIndex == 1) {
-        [self fetchLikedExercises:stretching];
-    }
-    else if (sender.selectedSegmentIndex == 2) {
-        [self fetchLikedExercises:warmup];
-    }
-    else {
-        [self fetchLikedExercises:strength];
-    }
+    [self fetchLikedExercises];
     
 }
 

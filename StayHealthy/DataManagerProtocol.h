@@ -11,6 +11,8 @@
 //Custom Workout Entity Name
 #define CUSTOM_WORKOUT_ENTITY_NAME       @"CustomWorkout"
 
+#define USER_ENTITY_NAME                 @"User"
+
 @protocol DataManagerProtocol <NSObject>
 
 /**

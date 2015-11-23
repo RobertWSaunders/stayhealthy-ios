@@ -6,6 +6,8 @@
 	<dict>
 		<key>StayHealthy.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
@@ -28,6 +30,11 @@
 			<true/>
 		</dict>
 		<key>EB575AEA1BECFC9F00A1C798</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EBFC03291C00EE490096178B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

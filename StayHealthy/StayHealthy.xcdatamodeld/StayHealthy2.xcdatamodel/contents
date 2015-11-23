@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15C27e" minimumToolsVersion="Automatic">
+    <entity name="CustomWorkout" representedClassName="CustomWorkout" syncable="YES">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateModified" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="exerciseTypes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastDateCompleted" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastViewed" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="liked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="timesCompleted" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="workoutDifficulty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutExerciseIDs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutSummary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutTargetMuscles" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutTargetSports" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Exercise" representedClassName="Exercise" syncable="YES">
+        <attribute name="exerciseID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastViewed" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="liked" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
+        <attribute name="timesViewed" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Workout" representedClassName="Workout" syncable="YES">
+        <attribute name="lastDateCompleted" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastViewed" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="liked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="timesCompleted" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="workoutID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CustomWorkout" positionX="-63" positionY="9" width="128" height="270"/>
+        <element name="Exercise" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Workout" positionX="-54" positionY="108" width="128" height="120"/>
+        <element name="User" positionX="-54" positionY="108" width="128" height="105"/>
+    </elements>
+</model>

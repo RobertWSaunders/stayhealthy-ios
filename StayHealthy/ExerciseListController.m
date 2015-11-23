@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.view.backgroundColor = [UIColor whiteColor];
     
     //Set the title for the page to the muscle.
     self.title = self.viewTitle;
@@ -31,26 +32,28 @@
     [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_FIND_EXERCISE_SEARCHED  viewController:self message:@"I found these exercises for you! Here you can just choose an exercise you like the look of and I'll show you more about it."];
     
     //Get the exercise data.
-    exerciseData = [[SHDataHandler getInstance] performExerciseStatement:self.exerciseQuery];;
+    exerciseData = [[SHDataHandler getInstance] performExerciseStatement:self.exerciseQuery];
     
     //If the exercise data is nothing then show the message declaring that.
     if (exerciseData.count == 0)
         [CommonSetUpOperations performTSMessage:@"No Exercises Were Found" message:nil viewController:self canBeDismissedByUser:YES duration:60];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:exerciseFavNotification object:nil];
+    
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-
-
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [self.tableView reloadData];
-}
+
 
 /***************************************************/
 #pragma mark UITableView Delegate/Datasource Methods
 /***************************************************/
+
+//Returns the height of the cells inside the tableView.
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 76.0f;
+}
 
 //Sets the number of rows in the tableview.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -71,7 +74,7 @@
         cell = [[ExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    SHExercise *exercise = [exerciseData objectAtIndex:indexPath.row];
+    SHExercise *exercise = [self updateExerciseWithUserData:[exerciseData objectAtIndex:indexPath.row]];
     
     cell.exerciseName.text = exercise.exerciseName;
     cell.difficulty.text = exercise.exerciseDifficulty;
@@ -154,7 +157,9 @@
     
    }
 
-
+- (void)updateTableView {
+     [self.tableView reloadData];
+}
 
 - (SHExercise *)updateExerciseWithUserData:(SHExercise*)exercise {
     SHDataHandler *dataHandler = [SHDataHandler getInstance];

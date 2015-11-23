@@ -13,7 +13,13 @@
 
 @interface ExerciseSelectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MGSwipeTableCellDelegate> {
     
+    
     __weak IBOutlet UISegmentedControl *segmentedControl;
+    
+    NSMutableDictionary *dataSource;
+    
+    NSArray *sections;
+    
     //Array filled with all the front body muscles.
     NSArray *frontBodyMuscles;
     //Array filled with all the front body muscle scientific names.
@@ -44,6 +50,7 @@
  @name Properties
  -------------
  */
+
 
 @property (strong, nonatomic) NSIndexPath *selectedTableViewIndex;
 

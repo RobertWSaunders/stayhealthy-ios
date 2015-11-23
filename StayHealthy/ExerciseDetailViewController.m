@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
     if (self.modalView) {
         UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped:)];
         self.navigationItem.leftBarButtonItem = backButton;
@@ -50,6 +52,8 @@
         self.exerciseToDisplay.lastViewed = [NSDate date];
         [dataHandler saveExerciseRecord:self.exerciseToDisplay];
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:exerciseNotification object:nil];
     
     
     if ([self.exerciseToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
@@ -137,6 +141,9 @@
     else {
         [dataHandler saveExerciseRecord:self.exerciseToDisplay];
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:exerciseFavNotification object:nil];
+    
 }
 
 // handle method

@@ -25,6 +25,8 @@
 {
     [super viewDidLoad];
     
+     self.automaticallyAdjustsScrollViewInsets = NO;
+    
     if (!self.showClose) {
         self.navigationItem.rightBarButtonItems = nil;
     }
@@ -100,7 +102,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 didFailLoadWithError:(NSError *)error {
     [self.spinnerImage stopAnimating];
     self.spinnerImage.hidden =YES;
-    [CommonSetUpOperations performTSMessage:@"Oop, there must have been an error!" message:nil viewController:self canBeDismissedByUser:YES duration:6];
+    [CommonSetUpOperations performTSMessage:@"Oops, there must have been an error!" message:nil viewController:self canBeDismissedByUser:YES duration:6];
 }
 
 

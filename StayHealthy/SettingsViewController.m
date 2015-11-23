@@ -26,6 +26,12 @@
     //Fills the arrays for the sections in the tableView.
     [self setTableViewData];
     
+    //Set the background for both the navigation controller so that we don't get the weird dark tinges sometimes.
+    //Set navigation controller background to white.
+    self.navigationController.view.backgroundColor = [UIColor whiteColor];
+    //Set tabBar controller background to white.
+    self.tabBarController.view.backgroundColor = [UIColor whiteColor];
+    
 }
 
 /*******************************************************/
@@ -39,21 +45,18 @@
 
 //Returns the number of sections for the tableView.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 //Returns the number of rows in each section.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-   /* if (section == 0) {
-        return [generalSettings count];
-    }*/
     if (section == 0) {
+        return [generalSettings count];
+    }
+    else if (section == 1) {
         return [feedbackSettings count];
     }
-    /*else if (section == 1) {
-        return [aboutSettings count];
-    }*/
-    else if (section == 1) {
+    else if (section == 2) {
         return [connectSettings count];
     }
     else {
@@ -75,25 +78,24 @@
     }
     
     //Now set the text for the cells dependant on the section.
-   /* if (indexPath.section == 0) {
+   if (indexPath.section == 0) {
         cell.textLabel.text = [generalSettings objectAtIndex:indexPath.row];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }*/
-    else if (indexPath.section == 0) {
-        cell.textLabel.text = [feedbackSettings objectAtIndex:indexPath.row];
+       cell.imageView.image = [UIImage imageNamed:[generalSettingsImages objectAtIndex:indexPath.row]];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    /*else if (indexPath.section == 1) {
-        cell.textLabel.text = [aboutSettings objectAtIndex:indexPath.row];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }*/
     else if (indexPath.section == 1) {
+        cell.textLabel.text = [feedbackSettings objectAtIndex:indexPath.row];
+        cell.imageView.image = [UIImage imageNamed:[feedbackSettingsImages objectAtIndex:indexPath.row]];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    else if (indexPath.section == 2) {
         cell.textLabel.text = [connectSettings objectAtIndex:indexPath.row];
         cell.imageView.image = [UIImage imageNamed:[connectSettingsImages objectAtIndex:indexPath.row]];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    else if (indexPath.section == 2) {
+    else if (indexPath.section == 3) {
         cell.textLabel.text = [legalSettings objectAtIndex:indexPath.row];
+        cell.imageView.image = [UIImage imageNamed:[legalSettingsImages objectAtIndex:indexPath.row]];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
@@ -119,26 +121,21 @@
 
 //Returns the height of the footers.
 - (CGFloat)tableView:(UITableView*)tableView heightForFooterInSection:(NSInteger)section {
-    if (section == 2) {
-        return 30;
+    if (section == 3) {
+        return 20;
     }
-    else {
         return 5;
-    }
 }
 
 //Returns the title for the header in the tableView.
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    /*if (section == 0) {
-        return @"General";
-    }*/
     if (section == 0) {
+        return @"General";
+    }
+    else if (section == 1) {
         return @"Support";
     }
-    /*else if (section == 1) {
-        return @"About";
-    }*/
-    else if (section == 1) {
+    else if (section == 2) {
         return @"Connect";
     }
     else {
@@ -146,15 +143,6 @@
     }
 
     return nil;
-}
-
-- (NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if (section == 2) {
-        return [CommonUtilities shortAppVersionNumber];
-    }
-    else {
-        return nil;
-    }
 }
 
 //----------------------------------
@@ -166,27 +154,27 @@
 
     selectedIndexPath = indexPath;
     
-    /*if (indexPath.section == 0 && indexPath.row == 0) {
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        [self performSegueWithIdentifier:@"about" sender:nil];
+    }
+    else if (indexPath.section == 0 && indexPath.row == 1) {
+        [self performSegueWithIdentifier:@"database" sender:nil];
+    }
+    else if (indexPath.section == 0 && indexPath.row == 2) {
         [self performSegueWithIdentifier:@"preferences" sender:nil];
     }
-    */
-    if (indexPath.section == 0 && indexPath.row == 1) {
-        [self showEmailScreen:@"StayHealthy Feedback" email:@"feedback@stayhealthyapp.com"];
+    else if (indexPath.section == 1 && indexPath.row == 0) {
+        [self performSegueWithIdentifier:@"helpcenter" sender:nil];
     }
-    else if (indexPath.section == 0 && indexPath.row == 0) {
-        [self showEmailScreen:@"StayHealthy Support" email:@"support@stayhealthyapp.com"];
-
+    else if (indexPath.section == 1 && indexPath.row == 1) {
+        [self performSegueWithIdentifier:@"feedbackcenter" sender:nil];
     }
-    else if (indexPath.section == 2 || indexPath.section == 3) {
+    else if (indexPath.section == 2 || (indexPath.section == 3 && indexPath.row != 2)) {
         [self performSegueWithIdentifier:@"toWebView" sender:nil];
     }
-    /*else if (indexPath.section == 1 || indexPath.row == 0) {
-        [self performSegueWithIdentifier:@"acknowledgements" sender:nil];
+    else if (indexPath.section == 3 && indexPath.row == 2) {
+        [self performSegueWithIdentifier:@"acknowledgments" sender:nil];
     }
-    else if (indexPath.section == 1 || indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"versionHistory" sender:nil];
-    }
-    */
     
     //Deselect the tableView cell once the user has selected.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -232,12 +220,17 @@
 
 //Fills the arrays for the sections in the tableView.
 -(void)setTableViewData {
-    generalSettings = [NSArray arrayWithObjects:@"Preferences", nil];
-    feedbackSettings = [NSArray arrayWithObjects:@"Email Support", @"Send Feedback", nil];
-    aboutSettings = [NSArray arrayWithObjects:@"Acknowledgements", @"Version History", nil];
+    generalSettings = [NSArray arrayWithObjects:@"About", @"Database Update", @"Preferences", nil];
+    generalSettingsImages = [NSArray arrayWithObjects:@"About.png", @"DatabaseUpdate.png", @"Preferences.png", nil];
+    
+    feedbackSettings = [NSArray arrayWithObjects:@"Help Center", @"Feedback Center", nil];
+    feedbackSettingsImages = [NSArray arrayWithObjects:@"HelpCenter.png", @"FeedbackCenter.png", nil];
+    
     connectSettings = [NSArray arrayWithObjects:@"Facebook",@"Twitter",@"Tumblr", nil];
     connectSettingsImages = [NSArray arrayWithObjects:@"Facebook.png",@"Twitter.png",@"Tumblr.png", nil];
-    legalSettings = [NSArray arrayWithObjects:@"Terms of Use", @"Privacy Policy", nil];
+    
+    legalSettings = [NSArray arrayWithObjects:@"Terms of Use", @"Privacy Policy", @"Acknowledgments", nil];
+    legalSettingsImages = [NSArray arrayWithObjects:@"TermsUse.png", @"PrivacyPolicy.png", @"Acknowledgments.png", nil];
 }
 
 //Creates an email and presents it on the screen, used to email feedback.
@@ -299,7 +292,6 @@
             webViewViewController.url = PRIVACY_URL;
             webViewViewController.showClose = NO;
         }
-        
     }
 }
 

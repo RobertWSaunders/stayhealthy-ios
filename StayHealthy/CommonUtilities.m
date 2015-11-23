@@ -22,6 +22,14 @@
     return [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
 }
 
++ (NSString *)installedDatabaseVersion {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:USER_INSTALLED_DATABASE_VERSION];
+}
+
++ (NSString *)hexBuildNumber {
+    return [NSString stringWithFormat:@"%lX", (unsigned long)[[self appBuildNumber] integerValue]];
+}
+
 /************************************************/
 #pragma mark - Date Formatting Tools/Calculations
 /************************************************/
@@ -450,15 +458,16 @@
 
 //Returns the path to the database.
 +(NSString *)returnDatabasePath:(NSString*)databaseName {
-    NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     NSString* dbPath = [documentsPath stringByAppendingPathComponent:databaseName];
     
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
     
     if (!fileExists) {
+        LogDataError(@"Database was not found in documents directory...");
         NSString *dbSourcePath = [[[NSBundle mainBundle] resourcePath  ]stringByAppendingPathComponent:databaseName];
         [[NSFileManager defaultManager] copyItemAtPath:dbSourcePath toPath:dbPath error:nil];
-        NSLog(@"Couldn't Not Find Database!");
+        LogDataSuccess(@"Database was succesfully copied to documents directory...");
     }
     return dbPath;
 }
