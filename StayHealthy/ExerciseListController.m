@@ -101,8 +101,6 @@
         cell.likeExerciseImage.hidden = YES;
     }
     
-    UILabel *timeLabel = (UILabel*)[cell viewWithTag:14];
-    timeLabel.text = [CommonUtilities calculateTime:exercise.lastViewed];
     
     //Set the selected cell background.
     [CommonSetUpOperations tableViewSelectionColorSet:cell];
@@ -124,6 +122,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"detail" sender:nil];
     //deselect the cell when you select it, makes selected background view disappear.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -138,10 +137,11 @@
         if ([segue.identifier isEqualToString:@"detail"]) {
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
             SHExercise *exercise = [exerciseData objectAtIndex:indexPath.row];
-            ExerciseDetailViewController *destViewController = segue.destinationViewController;
-            destViewController.exerciseToDisplay = exercise;
-            destViewController.viewTitle = exercise.exerciseName;
-            destViewController.modalView = NO;
+            ExerciseDetailViewController *detailView = [[ExerciseDetailViewController alloc] init];
+            detailView = segue.destinationViewController;
+            detailView.exerciseToDisplay = exercise;
+            detailView.viewTitle = exercise.exerciseName;
+            detailView.modalView = NO;
         }
     
     if ([segue.identifier isEqualToString:@"showQuickFilter"]) {

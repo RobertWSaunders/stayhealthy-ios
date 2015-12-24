@@ -16,4 +16,8 @@
 
 @property (nonatomic, strong) NSManagedObjectContext  *appContext;
 
+- (id) fetchRecentlyViewedWorkouts;
+
+- (id) fetchAllLikedWorkouts;
+
 @end

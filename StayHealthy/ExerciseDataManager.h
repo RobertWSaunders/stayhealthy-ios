@@ -16,7 +16,6 @@
 
 @property (nonatomic, strong) NSManagedObjectContext  *appContext;
 
-- (NSFetchRequest *) getFetchRequest;
 
 - (id) fetchRecentlyViewedExercises;
 

@@ -180,40 +180,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-/*************************************************************************/
-#pragma mark - MFMailComposeViewController Delegate and Datasource Methods
-/*************************************************************************/
-
-//Give the user feedback as to what happened with their email they sent using the MFMailComposeViewController.
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
-    switch (result) {
-        case MFMailComposeResultCancelled:
-        {
-            [CommonSetUpOperations performTSMessage:@"Email Cancelled" message:nil viewController:self canBeDismissedByUser:YES duration:4];
-        }
-            break;
-        case MFMailComposeResultSent:
-        {
-            [CommonSetUpOperations performTSMessage:@"Email Sent" message:nil viewController:self canBeDismissedByUser:YES duration:4];
-        }
-            break;
-        case MFMailComposeResultFailed:
-        {
-            [CommonSetUpOperations performTSMessage:@"Email Failed" message:nil viewController:self canBeDismissedByUser:YES duration:4];
-        }
-            break;
-        case MFMailComposeResultSaved:
-        {
-            [CommonSetUpOperations performTSMessage:@"Email Saved" message:nil viewController:self canBeDismissedByUser:YES duration:4];
-        }
-            break;
-        default:
-            break;
-    }
-
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 /****************************/
 #pragma mark - Helper Methods
 /****************************/
@@ -233,27 +199,6 @@
     legalSettingsImages = [NSArray arrayWithObjects:@"TermsUse.png", @"PrivacyPolicy.png", @"Acknowledgments.png", nil];
 }
 
-//Creates an email and presents it on the screen, used to email feedback.
--(void)showEmailScreen:(NSString*)emailSubject email:(NSString*)email {
-    
-    if ([MFMailComposeViewController canSendMail]){
-        NSArray *recipient = [[NSArray alloc]initWithObjects:email, nil];
-        MFMailComposeViewController* mailViewController = [[MFMailComposeViewController alloc] init];
-        [mailViewController setMailComposeDelegate: self];
-        [mailViewController setSubject:emailSubject];
-        [mailViewController setMessageBody:[NSString stringWithFormat:@"\n\n\n\n StayHealthy Version: %@ (%@)",[CommonUtilities shortAppVersionNumber], [CommonUtilities appBuildNumber]] isHTML:NO];
-        [mailViewController setToRecipients:recipient];
-        
-        [self presentViewController: mailViewController
-                           animated: YES
-                         completion: nil];
-    }
-    else{
-        [CommonSetUpOperations performTSMessage:@"Unable to send email." message:@"Cannot send email because you haven't set up your information in the mail app." viewController:self canBeDismissedByUser:YES duration:6];
-        
-    }
-
-}
 
 /********************************/
 #pragma mark - Prepare For Segue

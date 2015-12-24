@@ -180,4 +180,12 @@
 
 + (SHExercise *)getRandomExercise:(exerciseTypes)exerciseType muscle:(NSString*)muscle;
 
+//Returns an array of SHExercises that are in the workout that is passed.
++ (NSMutableArray*)getWorkoutExercises:(SHWorkout*)workout;
+
+//Returns the count of exercises in a workout.
++ (NSUInteger)numExercisesInWorkout:(SHWorkout*)workout;
+
++ (NSString *)generateWorkoutExerciseQuery:(exerciseTypes)exerciseType exerciseIdentifier:(NSString*)exerciseIdentifier;
++ (NSString *)createWorkoutQueryFromWorkoutIds:(NSMutableArray *)workoutIDs table:(NSString*)table;
 @end

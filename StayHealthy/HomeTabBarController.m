@@ -8,6 +8,7 @@
 
 #import "HomeTabBarController.h"
 
+
 @implementation HomeTabBarController
 
 /**********************************/
@@ -62,6 +63,13 @@
         //Save the changes.
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    
+    [[LaunchKit sharedInstance] presentAppReleaseNotesFromViewController:self completion:^(BOOL didPresent) {
+        if (didPresent) {
+            NSLog(@"Woohoo, we showed the release notes card!");
+        }
+    }];
+    
 }
 
 

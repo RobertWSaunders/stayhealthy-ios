@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+//Import "MessageUI.h" for email.
 
-@interface FeedbackCenterViewController : UIViewController
+@interface FeedbackCenterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate> {
+    
+    NSArray *feedbackItems;
+    NSArray *feedbackItemsImages;
+}
+@property (weak, nonatomic) IBOutlet UITableView *feedbackCenterTableView;
 
 @end

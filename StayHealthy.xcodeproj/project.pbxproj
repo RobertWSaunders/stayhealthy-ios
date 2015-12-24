@@ -33,7 +33,7 @@
 		3FE100931863CC0100C53D76 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE100921863CC0100C53D76 /* QuartzCore.framework */; };
 		3FE103D3186618F200C53D76 /* ExerciseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE103D2186618F200C53D76 /* ExerciseDetailViewController.m */; };
 		3FE41E431ABE0644007522AB /* advancedOptionsSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE41E421ABE0644007522AB /* advancedOptionsSelect.m */; };
-		3FE8069F18F24442006A0993 /* WorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE8069E18F24442006A0993 /* WorkoutViewController.m */; };
+		3FE8069F18F24442006A0993 /* WorkoutViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE8069E18F24442006A0993 /* WorkoutViewController1.m */; };
 		3FE95E24187A5DB0005DD13D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE95E23187A5DB0005DD13D /* SettingsViewController.m */; };
 		3FF9DDA11853BAEC0083A499 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF9DDA01853BAEC0083A499 /* CoreText.framework */; };
 		EB215A341BD895DB00A0765A /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EB215A311BD895DB00A0765A /* MGSwipeButton.m */; };
@@ -49,7 +49,11 @@
 		EB3B9E231BE8022500BCEF28 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E221BE8022500BCEF28 /* StoreKit.framework */; };
 		EB3B9E251BE8023600BCEF28 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E241BE8023600BCEF28 /* libz.tbd */; };
 		EB3B9E271BE8024300BCEF28 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E261BE8024300BCEF28 /* libsqlite3.tbd */; };
-		EB52EF9F1BCAEF0B00F5D7CA /* StayHealthyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EB52EF9E1BCAEF0B00F5D7CA /* StayHealthyDatabase.sqlite */; };
+		EB4702921C063DD800732BC9 /* WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4702911C063DD800732BC9 /* WorkoutListViewController.m */; };
+		EB4702951C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4702941C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.m */; };
+		EB4702991C063E3100732BC9 /* WorkoutDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4702981C063E3100732BC9 /* WorkoutDetailViewController.m */; };
+		EB47029C1C063E5E00732BC9 /* WorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB47029B1C063E5E00732BC9 /* WorkoutViewController.m */; };
+		EB4702A11C063EBD00732BC9 /* WorkoutCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4702A01C063EBD00732BC9 /* WorkoutCreateViewController.m */; };
 		EB52EFA41BCAEF5800F5D7CA /* Strength in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFA11BCAEF5800F5D7CA /* Strength */; };
 		EB52EFA51BCAEF5800F5D7CA /* Stretching in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFA21BCAEF5800F5D7CA /* Stretching */; };
 		EB52EFA91BCAEF8900F5D7CA /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52EFA81BCAEF8900F5D7CA /* MZTimerLabel.m */; };
@@ -92,6 +96,7 @@
 		EB737F711B8015E100EBBDA4 /* SHDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F701B8015E100EBBDA4 /* SHDataHandler.m */; };
 		EB89979E1B7C3DE100904984 /* GlobalDefinitions.h in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF981B4B442B00EF35A3 /* GlobalDefinitions.h */; };
 		EB8ACF8A1B76DAD0003E91A6 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8ACF891B76DAD0003E91A6 /* Exercise.m */; };
+		EB8AF5551C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8AF5541C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m */; };
 		EB9CF7011B52AA00006E2984 /* PreferencesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9CF7001B52AA00006E2984 /* PreferencesTableViewController.m */; };
 		EBB432DA1B549FEC001B2D40 /* ExerciseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB432D91B549FEC001B2D40 /* ExerciseTableViewCell.m */; };
 		EBB8C9701BF90ECA00347B24 /* ExerciseSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C96F1BF90ECA00347B24 /* ExerciseSelectionViewController.m */; };
@@ -100,22 +105,41 @@
 		EBB8C9841BFA856000347B24 /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C9831BFA856000347B24 /* HelpCenterViewController.m */; };
 		EBB8C9871BFA85FF00347B24 /* DatabaseUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C9861BFA85FF00347B24 /* DatabaseUpdateViewController.m */; };
 		EBBD42EB1C00F2670033F226 /* iPad_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */; };
-		EBC64C551C02A58700B33ECA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC64C531C02A58700B33ECA /* Bolts.framework */; };
-		EBC64C561C02A58700B33ECA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC64C541C02A58700B33ECA /* Parse.framework */; };
 		EBC64C591C02B2C900B33ECA /* WorkoutSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */; };
 		EBC64C5D1C02C3CD00B33ECA /* WorkoutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC64C5C1C02C3CD00B33ECA /* WorkoutTableViewCell.m */; };
+		EBCA207F1C10D6DF00DD9D3C /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = EBCA20351C10D6DF00DD9D3C /* .gitkeep */; };
+		EBCA20801C10D6DF00DD9D3C /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = EBCA20371C10D6DF00DD9D3C /* .gitkeep */; };
+		EBCA20811C10D6DF00DD9D3C /* LKAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA203B1C10D6DF00DD9D3C /* LKAnalytics.m */; };
+		EBCA20821C10D6DF00DD9D3C /* LKAppUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA203D1C10D6DF00DD9D3C /* LKAppUser.m */; };
+		EBCA20831C10D6DF00DD9D3C /* LKBundleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20401C10D6DF00DD9D3C /* LKBundleInfo.m */; };
+		EBCA20841C10D6DF00DD9D3C /* LKBundlesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20421C10D6DF00DD9D3C /* LKBundlesManager.m */; };
+		EBCA20851C10D6DF00DD9D3C /* LKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20451C10D6DF00DD9D3C /* LKConfig.m */; };
+		EBCA20861C10D6DF00DD9D3C /* LaunchKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20471C10D6DF00DD9D3C /* LaunchKit.m */; };
+		EBCA20871C10D6DF00DD9D3C /* LKAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA204A1C10D6DF00DD9D3C /* LKAPIClient.m */; };
+		EBCA20881C10D6DF00DD9D3C /* LKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA204C1C10D6DF00DD9D3C /* LKLog.m */; };
+		EBCA20891C10D6DF00DD9D3C /* LKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA204E1C10D6DF00DD9D3C /* LKUtils.m */; };
+		EBCA208A1C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20501C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.m */; };
+		EBCA208B1C10D6DF00DD9D3C /* NSString+LKURLEncoded.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20521C10D6DF00DD9D3C /* NSString+LKURLEncoded.m */; };
+		EBCA208C1C10D6DF00DD9D3C /* LK_SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20561C10D6DF00DD9D3C /* LK_SSZipArchive.m */; };
+		EBCA208D1C10D6DF00DD9D3C /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20591C10D6DF00DD9D3C /* ioapi.c */; };
+		EBCA208E1C10D6DF00DD9D3C /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = EBCA205B1C10D6DF00DD9D3C /* mztools.c */; };
+		EBCA208F1C10D6DF00DD9D3C /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = EBCA205D1C10D6DF00DD9D3C /* unzip.c */; };
+		EBCA20901C10D6DF00DD9D3C /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = EBCA205F1C10D6DF00DD9D3C /* zip.c */; };
+		EBCA20911C10D6DF00DD9D3C /* LKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20641C10D6DF00DD9D3C /* LKButton.m */; };
+		EBCA20921C10D6DF00DD9D3C /* LKFadeCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20661C10D6DF00DD9D3C /* LKFadeCustomSegue.m */; };
+		EBCA20931C10D6DF00DD9D3C /* LKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20681C10D6DF00DD9D3C /* LKImageView.m */; };
+		EBCA20941C10D6DF00DD9D3C /* LKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA206A1C10D6DF00DD9D3C /* LKNavigationController.m */; };
+		EBCA20951C10D6DF00DD9D3C /* LKPopCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA206C1C10D6DF00DD9D3C /* LKPopCustomSegue.m */; };
+		EBCA20961C10D6DF00DD9D3C /* LKPushCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA206E1C10D6DF00DD9D3C /* LKPushCustomSegue.m */; };
+		EBCA20971C10D6DF00DD9D3C /* LKSimpleStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20701C10D6DF00DD9D3C /* LKSimpleStackView.m */; };
+		EBCA20981C10D6DF00DD9D3C /* LKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20721C10D6DF00DD9D3C /* LKViewController.m */; };
+		EBCA20991C10D6DF00DD9D3C /* UIView+LKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20771C10D6DF00DD9D3C /* UIView+LKAdditions.m */; };
+		EBCA209A1C10D6DF00DD9D3C /* LKUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20791C10D6DF00DD9D3C /* LKUIManager.m */; };
+		EBCA209B1C10D6DF00DD9D3C /* LKCardPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA207C1C10D6DF00DD9D3C /* LKCardPresentationController.m */; };
+		EBCA209E1C110B1600DD9D3C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBCA209C1C110B1600DD9D3C /* Bolts.framework */; };
+		EBCA209F1C110B1600DD9D3C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBCA209D1C110B1600DD9D3C /* Parse.framework */; };
 		EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCE12511BD2F62C000370CC /* FavoritesViewController.m */; };
-		EBE540931BFD07180018DB7F /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = EBE5407A1BFD07180018DB7F /* .gitkeep */; };
-		EBE540941BFD07180018DB7F /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = EBE5407C1BFD07180018DB7F /* .gitkeep */; };
-		EBE540951BFD07180018DB7F /* LKAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE540801BFD07180018DB7F /* LKAnalytics.m */; };
-		EBE540961BFD07180018DB7F /* LKAppUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE540821BFD07180018DB7F /* LKAppUser.m */; };
-		EBE540971BFD07180018DB7F /* LKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE540851BFD07180018DB7F /* LKConfig.m */; };
-		EBE540981BFD07180018DB7F /* LaunchKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE540871BFD07180018DB7F /* LaunchKit.m */; };
-		EBE540991BFD07180018DB7F /* LKAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE5408A1BFD07180018DB7F /* LKAPIClient.m */; };
-		EBE5409A1BFD07180018DB7F /* LKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE5408C1BFD07180018DB7F /* LKLog.m */; };
-		EBE5409B1BFD07180018DB7F /* LKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE5408E1BFD07180018DB7F /* LKUtils.m */; };
-		EBE5409C1BFD07180018DB7F /* NSDictionary+LKFormEncoded.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE540901BFD07180018DB7F /* NSDictionary+LKFormEncoded.m */; };
-		EBE5409D1BFD07180018DB7F /* NSString+LKURLEncoded.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE540921BFD07180018DB7F /* NSString+LKURLEncoded.m */; };
+		EBF7EEEE1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EBF7EEED1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite */; };
 		EBFC030E1BFD42A60096178B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC030C1BFD42A60096178B /* User.m */; };
 		EBFC03151BFD49E20096178B /* SHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC03141BFD49E20096178B /* SHUser.m */; };
 		EBFC03181BFD4A230096178B /* UserDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC03171BFD4A230096178B /* UserDataManager.m */; };
@@ -174,8 +198,8 @@
 		3FE103D2186618F200C53D76 /* ExerciseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailViewController.m; sourceTree = "<group>"; };
 		3FE41E411ABE0644007522AB /* advancedOptionsSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = advancedOptionsSelect.h; sourceTree = "<group>"; };
 		3FE41E421ABE0644007522AB /* advancedOptionsSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = advancedOptionsSelect.m; sourceTree = "<group>"; };
-		3FE8069D18F24442006A0993 /* WorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutViewController.h; sourceTree = "<group>"; };
-		3FE8069E18F24442006A0993 /* WorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutViewController.m; sourceTree = "<group>"; };
+		3FE8069D18F24442006A0993 /* WorkoutViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutViewController1.h; sourceTree = "<group>"; };
+		3FE8069E18F24442006A0993 /* WorkoutViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutViewController1.m; sourceTree = "<group>"; };
 		3FE95E22187A5DB0005DD13D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		3FE95E23187A5DB0005DD13D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		3FF9DDA01853BAEC0083A499 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -204,7 +228,16 @@
 		EB3B9E221BE8022500BCEF28 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		EB3B9E241BE8023600BCEF28 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		EB3B9E261BE8024300BCEF28 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		EB52EF9E1BCAEF0B00F5D7CA /* StayHealthyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = StayHealthyDatabase.sqlite; sourceTree = "<group>"; };
+		EB4702901C063DD800732BC9 /* WorkoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutListViewController.h; sourceTree = "<group>"; };
+		EB4702911C063DD800732BC9 /* WorkoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutListViewController.m; sourceTree = "<group>"; };
+		EB4702931C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutsAdvancedSearchViewController.h; sourceTree = "<group>"; };
+		EB4702941C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutsAdvancedSearchViewController.m; sourceTree = "<group>"; };
+		EB4702971C063E3100732BC9 /* WorkoutDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailViewController.h; sourceTree = "<group>"; };
+		EB4702981C063E3100732BC9 /* WorkoutDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailViewController.m; sourceTree = "<group>"; };
+		EB47029A1C063E5E00732BC9 /* WorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutViewController.h; sourceTree = "<group>"; };
+		EB47029B1C063E5E00732BC9 /* WorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutViewController.m; sourceTree = "<group>"; };
+		EB47029F1C063EBD00732BC9 /* WorkoutCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutCreateViewController.h; sourceTree = "<group>"; };
+		EB4702A01C063EBD00732BC9 /* WorkoutCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutCreateViewController.m; sourceTree = "<group>"; };
 		EB52EFA11BCAEF5800F5D7CA /* Strength */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Strength; path = "../../../Project Resources/StayHealthy/User Interface/Exercise Images/Strength"; sourceTree = "<group>"; };
 		EB52EFA21BCAEF5800F5D7CA /* Stretching */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Stretching; path = "../../../Project Resources/StayHealthy/User Interface/Exercise Images/Stretching"; sourceTree = "<group>"; };
 		EB52EFA71BCAEF8900F5D7CA /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
@@ -270,6 +303,8 @@
 		EB737F741B8133D400EBBDA4 /* ExerciseSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseSelectionViewController.h; sourceTree = "<group>"; };
 		EB8ACF881B76DAD0003E91A6 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
 		EB8ACF891B76DAD0003E91A6 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
+		EB8AF5531C064B5000F53B90 /* WorkoutBrowseOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutBrowseOptionsViewController.h; sourceTree = "<group>"; };
+		EB8AF5541C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutBrowseOptionsViewController.m; sourceTree = "<group>"; };
 		EB9CF6FF1B52AA00006E2984 /* PreferencesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesTableViewController.h; sourceTree = "<group>"; };
 		EB9CF7001B52AA00006E2984 /* PreferencesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesTableViewController.m; sourceTree = "<group>"; };
 		EBB432D81B549FEC001B2D40 /* ExerciseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseTableViewCell.h; sourceTree = "<group>"; };
@@ -284,35 +319,75 @@
 		EBB8C9851BFA85FF00347B24 /* DatabaseUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseUpdateViewController.h; sourceTree = "<group>"; };
 		EBB8C9861BFA85FF00347B24 /* DatabaseUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseUpdateViewController.m; sourceTree = "<group>"; };
 		EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad_Storyboard.storyboard; sourceTree = "<group>"; };
-		EBC64C531C02A58700B33ECA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../Parse/Bolts.framework; sourceTree = "<group>"; };
-		EBC64C541C02A58700B33ECA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../Parse/Parse.framework; sourceTree = "<group>"; };
 		EBC64C571C02B2C900B33ECA /* WorkoutSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutSelectionViewController.h; sourceTree = "<group>"; };
 		EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutSelectionViewController.m; sourceTree = "<group>"; };
 		EBC64C5B1C02C3CD00B33ECA /* WorkoutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutTableViewCell.h; sourceTree = "<group>"; };
 		EBC64C5C1C02C3CD00B33ECA /* WorkoutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutTableViewCell.m; sourceTree = "<group>"; };
+		EBCA20351C10D6DF00DD9D3C /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		EBCA20371C10D6DF00DD9D3C /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		EBCA203A1C10D6DF00DD9D3C /* LKAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAnalytics.h; sourceTree = "<group>"; };
+		EBCA203B1C10D6DF00DD9D3C /* LKAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAnalytics.m; sourceTree = "<group>"; };
+		EBCA203C1C10D6DF00DD9D3C /* LKAppUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAppUser.h; sourceTree = "<group>"; };
+		EBCA203D1C10D6DF00DD9D3C /* LKAppUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAppUser.m; sourceTree = "<group>"; };
+		EBCA203F1C10D6DF00DD9D3C /* LKBundleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBundleInfo.h; sourceTree = "<group>"; };
+		EBCA20401C10D6DF00DD9D3C /* LKBundleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBundleInfo.m; sourceTree = "<group>"; };
+		EBCA20411C10D6DF00DD9D3C /* LKBundlesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBundlesManager.h; sourceTree = "<group>"; };
+		EBCA20421C10D6DF00DD9D3C /* LKBundlesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBundlesManager.m; sourceTree = "<group>"; };
+		EBCA20441C10D6DF00DD9D3C /* LKConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKConfig.h; sourceTree = "<group>"; };
+		EBCA20451C10D6DF00DD9D3C /* LKConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKConfig.m; sourceTree = "<group>"; };
+		EBCA20461C10D6DF00DD9D3C /* LaunchKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchKit.h; sourceTree = "<group>"; };
+		EBCA20471C10D6DF00DD9D3C /* LaunchKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchKit.m; sourceTree = "<group>"; };
+		EBCA20481C10D6DF00DD9D3C /* LaunchKitShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchKitShared.h; sourceTree = "<group>"; };
+		EBCA20491C10D6DF00DD9D3C /* LKAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAPIClient.h; sourceTree = "<group>"; };
+		EBCA204A1C10D6DF00DD9D3C /* LKAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAPIClient.m; sourceTree = "<group>"; };
+		EBCA204B1C10D6DF00DD9D3C /* LKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLog.h; sourceTree = "<group>"; };
+		EBCA204C1C10D6DF00DD9D3C /* LKLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLog.m; sourceTree = "<group>"; };
+		EBCA204D1C10D6DF00DD9D3C /* LKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKUtils.h; sourceTree = "<group>"; };
+		EBCA204E1C10D6DF00DD9D3C /* LKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKUtils.m; sourceTree = "<group>"; };
+		EBCA204F1C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LKFormEncoded.h"; sourceTree = "<group>"; };
+		EBCA20501C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LKFormEncoded.m"; sourceTree = "<group>"; };
+		EBCA20511C10D6DF00DD9D3C /* NSString+LKURLEncoded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LKURLEncoded.h"; sourceTree = "<group>"; };
+		EBCA20521C10D6DF00DD9D3C /* NSString+LKURLEncoded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LKURLEncoded.m"; sourceTree = "<group>"; };
+		EBCA20551C10D6DF00DD9D3C /* LK_SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LK_SSZipArchive.h; sourceTree = "<group>"; };
+		EBCA20561C10D6DF00DD9D3C /* LK_SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LK_SSZipArchive.m; sourceTree = "<group>"; };
+		EBCA20581C10D6DF00DD9D3C /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		EBCA20591C10D6DF00DD9D3C /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		EBCA205A1C10D6DF00DD9D3C /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		EBCA205B1C10D6DF00DD9D3C /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		EBCA205C1C10D6DF00DD9D3C /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		EBCA205D1C10D6DF00DD9D3C /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		EBCA205E1C10D6DF00DD9D3C /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		EBCA205F1C10D6DF00DD9D3C /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		EBCA20601C10D6DF00DD9D3C /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		EBCA20631C10D6DF00DD9D3C /* LKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKButton.h; sourceTree = "<group>"; };
+		EBCA20641C10D6DF00DD9D3C /* LKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKButton.m; sourceTree = "<group>"; };
+		EBCA20651C10D6DF00DD9D3C /* LKFadeCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKFadeCustomSegue.h; sourceTree = "<group>"; };
+		EBCA20661C10D6DF00DD9D3C /* LKFadeCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKFadeCustomSegue.m; sourceTree = "<group>"; };
+		EBCA20671C10D6DF00DD9D3C /* LKImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKImageView.h; sourceTree = "<group>"; };
+		EBCA20681C10D6DF00DD9D3C /* LKImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKImageView.m; sourceTree = "<group>"; };
+		EBCA20691C10D6DF00DD9D3C /* LKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKNavigationController.h; sourceTree = "<group>"; };
+		EBCA206A1C10D6DF00DD9D3C /* LKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKNavigationController.m; sourceTree = "<group>"; };
+		EBCA206B1C10D6DF00DD9D3C /* LKPopCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKPopCustomSegue.h; sourceTree = "<group>"; };
+		EBCA206C1C10D6DF00DD9D3C /* LKPopCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKPopCustomSegue.m; sourceTree = "<group>"; };
+		EBCA206D1C10D6DF00DD9D3C /* LKPushCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKPushCustomSegue.h; sourceTree = "<group>"; };
+		EBCA206E1C10D6DF00DD9D3C /* LKPushCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKPushCustomSegue.m; sourceTree = "<group>"; };
+		EBCA206F1C10D6DF00DD9D3C /* LKSimpleStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKSimpleStackView.h; sourceTree = "<group>"; };
+		EBCA20701C10D6DF00DD9D3C /* LKSimpleStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKSimpleStackView.m; sourceTree = "<group>"; };
+		EBCA20711C10D6DF00DD9D3C /* LKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKViewController.h; sourceTree = "<group>"; };
+		EBCA20721C10D6DF00DD9D3C /* LKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKViewController.m; sourceTree = "<group>"; };
+		EBCA20741C10D6DF00DD9D3C /* UIView+LKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LKAdditions.h"; sourceTree = "<group>"; };
+		EBCA20761C10D6DF00DD9D3C /* UIView+LKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LKAdditions.h"; sourceTree = "<group>"; };
+		EBCA20771C10D6DF00DD9D3C /* UIView+LKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LKAdditions.m"; sourceTree = "<group>"; };
+		EBCA20781C10D6DF00DD9D3C /* LKUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKUIManager.h; sourceTree = "<group>"; };
+		EBCA20791C10D6DF00DD9D3C /* LKUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKUIManager.m; sourceTree = "<group>"; };
+		EBCA207B1C10D6DF00DD9D3C /* LKCardPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKCardPresentationController.h; sourceTree = "<group>"; };
+		EBCA207C1C10D6DF00DD9D3C /* LKCardPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKCardPresentationController.m; sourceTree = "<group>"; };
+		EBCA207E1C10D6DF00DD9D3C /* LaunchKitRemoteBundlesScript.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LaunchKitRemoteBundlesScript.playground; sourceTree = "<group>"; };
+		EBCA209C1C110B1600DD9D3C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../Parse/Bolts.framework; sourceTree = "<group>"; };
+		EBCA209D1C110B1600DD9D3C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../Parse/Parse.framework; sourceTree = "<group>"; };
 		EBCE12501BD2F62C000370CC /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		EBCE12511BD2F62C000370CC /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
-		EBE5407A1BFD07180018DB7F /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		EBE5407C1BFD07180018DB7F /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		EBE5407F1BFD07180018DB7F /* LKAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAnalytics.h; sourceTree = "<group>"; };
-		EBE540801BFD07180018DB7F /* LKAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAnalytics.m; sourceTree = "<group>"; };
-		EBE540811BFD07180018DB7F /* LKAppUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAppUser.h; sourceTree = "<group>"; };
-		EBE540821BFD07180018DB7F /* LKAppUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAppUser.m; sourceTree = "<group>"; };
-		EBE540841BFD07180018DB7F /* LKConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKConfig.h; sourceTree = "<group>"; };
-		EBE540851BFD07180018DB7F /* LKConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKConfig.m; sourceTree = "<group>"; };
-		EBE540861BFD07180018DB7F /* LaunchKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchKit.h; sourceTree = "<group>"; };
-		EBE540871BFD07180018DB7F /* LaunchKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchKit.m; sourceTree = "<group>"; };
-		EBE540881BFD07180018DB7F /* LaunchKitShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchKitShared.h; sourceTree = "<group>"; };
-		EBE540891BFD07180018DB7F /* LKAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAPIClient.h; sourceTree = "<group>"; };
-		EBE5408A1BFD07180018DB7F /* LKAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAPIClient.m; sourceTree = "<group>"; };
-		EBE5408B1BFD07180018DB7F /* LKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLog.h; sourceTree = "<group>"; };
-		EBE5408C1BFD07180018DB7F /* LKLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLog.m; sourceTree = "<group>"; };
-		EBE5408D1BFD07180018DB7F /* LKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKUtils.h; sourceTree = "<group>"; };
-		EBE5408E1BFD07180018DB7F /* LKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKUtils.m; sourceTree = "<group>"; };
-		EBE5408F1BFD07180018DB7F /* NSDictionary+LKFormEncoded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LKFormEncoded.h"; sourceTree = "<group>"; };
-		EBE540901BFD07180018DB7F /* NSDictionary+LKFormEncoded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LKFormEncoded.m"; sourceTree = "<group>"; };
-		EBE540911BFD07180018DB7F /* NSString+LKURLEncoded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LKURLEncoded.h"; sourceTree = "<group>"; };
-		EBE540921BFD07180018DB7F /* NSString+LKURLEncoded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LKURLEncoded.m"; sourceTree = "<group>"; };
+		EBF7EEED1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = StayHealthyDatabase.sqlite; sourceTree = "<group>"; };
 		EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StayHealthy2.xcdatamodel; sourceTree = "<group>"; };
 		EBFC030B1BFD42A60096178B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		EBFC030C1BFD42A60096178B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -339,10 +414,10 @@
 				3F7D77B519A3086200E00065 /* SystemConfiguration.framework in Frameworks */,
 				3FD5E1A31853A8D00063E10C /* CoreGraphics.framework in Frameworks */,
 				3FE100931863CC0100C53D76 /* QuartzCore.framework in Frameworks */,
-				EBC64C561C02A58700B33ECA /* Parse.framework in Frameworks */,
+				EBCA209F1C110B1600DD9D3C /* Parse.framework in Frameworks */,
 				3F7D77A719A3081300E00065 /* AudioToolbox.framework in Frameworks */,
 				3F7D779F19A2DFEA00E00065 /* MessageUI.framework in Frameworks */,
-				EBC64C551C02A58700B33ECA /* Bolts.framework in Frameworks */,
+				EBCA209E1C110B1600DD9D3C /* Bolts.framework in Frameworks */,
 				3FF9DDA11853BAEC0083A499 /* CoreText.framework in Frameworks */,
 				3FD5E1A71853A8D00063E10C /* CoreData.framework in Frameworks */,
 				3FD5E1A51853A8D00063E10C /* UIKit.framework in Frameworks */,
@@ -356,9 +431,14 @@
 		3F18B151187F841A00EC852A /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
-				EBC64C5A1C02C24400B33ECA /* Workout TableView Cell */,
 				EBC64C571C02B2C900B33ECA /* WorkoutSelectionViewController.h */,
 				EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */,
+				EB47028C1C063CEE00732BC9 /* Workouts Advanced Search */,
+				EB8AF5521C064B1E00F53B90 /* Workout Browse Selection Options */,
+				EB47028D1C063D6200732BC9 /* Workouts Searched Page */,
+				EB47028E1C063D7300732BC9 /* Workout Detail Page */,
+				EB47028F1C063D9000732BC9 /* Workout Perform Page */,
+				EB47029D1C063E8B00732BC9 /* Custom Workouts */,
 				3FE8069C18F24262006A0993 /* Workout Page */,
 			);
 			name = Workouts;
@@ -384,8 +464,8 @@
 		3F2E5A8E18E11B8600EE4734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EBC64C531C02A58700B33ECA /* Bolts.framework */,
-				EBC64C541C02A58700B33ECA /* Parse.framework */,
+				EBCA209C1C110B1600DD9D3C /* Bolts.framework */,
+				EBCA209D1C110B1600DD9D3C /* Parse.framework */,
 				EB3B9E221BE8022500BCEF28 /* StoreKit.framework */,
 				3F7D77A619A3081300E00065 /* AudioToolbox.framework */,
 				3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */,
@@ -484,7 +564,7 @@
 		3FC465E61B33A9BD0062EBDB /* StayHealthy Database */ = {
 			isa = PBXGroup;
 			children = (
-				EB52EF9E1BCAEF0B00F5D7CA /* StayHealthyDatabase.sqlite */,
+				EBF7EEED1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite */,
 			);
 			name = "StayHealthy Database";
 			path = "../../../Project Resources/StayHealthy/Databases";
@@ -519,11 +599,11 @@
 		3FC465F61B33B2010062EBDB /* Exercise Searched Page */ = {
 			isa = PBXGroup;
 			children = (
+				3F2E5A8118DF388300EE4734 /* ExerciseListController.h */,
+				3F2E5A8218DF388300EE4734 /* ExerciseListController.m */,
 				EB215A2D1BD8902600A0765A /* Exercise Quick Filter */,
 				EBDC50E91B549F7400E731FB /* Exercise TableView Cell */,
 				3F2E5A8418DF4E1400EE4734 /* Exercise Collection Cell */,
-				3F2E5A8118DF388300EE4734 /* ExerciseListController.h */,
-				3F2E5A8218DF388300EE4734 /* ExerciseListController.m */,
 			);
 			name = "Exercise Searched Page";
 			sourceTree = "<group>";
@@ -569,7 +649,7 @@
 		3FD5E19F1853A8D00063E10C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EBE540791BFD07180018DB7F /* LaunchKit */,
+				EBCA20341C10D6DF00DD9D3C /* LaunchKit */,
 				3F2E5A8F18E11BB500EE4734 /* Bundles */,
 				3F2E5A8E18E11B8600EE4734 /* Frameworks */,
 			);
@@ -624,8 +704,8 @@
 		3FE8069C18F24262006A0993 /* Workout Page */ = {
 			isa = PBXGroup;
 			children = (
-				3FE8069D18F24442006A0993 /* WorkoutViewController.h */,
-				3FE8069E18F24442006A0993 /* WorkoutViewController.m */,
+				3FE8069D18F24442006A0993 /* WorkoutViewController1.h */,
+				3FE8069E18F24442006A0993 /* WorkoutViewController1.m */,
 			);
 			name = "Workout Page";
 			sourceTree = "<group>";
@@ -691,6 +771,52 @@
 			);
 			name = MGSwipeTableCell;
 			path = "../../../Project Resources/StayHealthy/Frameworks/MGSwipeTableCell";
+			sourceTree = "<group>";
+		};
+		EB47028C1C063CEE00732BC9 /* Workouts Advanced Search */ = {
+			isa = PBXGroup;
+			children = (
+				EB4702931C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.h */,
+				EB4702941C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.m */,
+			);
+			name = "Workouts Advanced Search";
+			sourceTree = "<group>";
+		};
+		EB47028D1C063D6200732BC9 /* Workouts Searched Page */ = {
+			isa = PBXGroup;
+			children = (
+				EB4702901C063DD800732BC9 /* WorkoutListViewController.h */,
+				EB4702911C063DD800732BC9 /* WorkoutListViewController.m */,
+				EBC64C5A1C02C24400B33ECA /* Workout TableView Cell */,
+			);
+			name = "Workouts Searched Page";
+			sourceTree = "<group>";
+		};
+		EB47028E1C063D7300732BC9 /* Workout Detail Page */ = {
+			isa = PBXGroup;
+			children = (
+				EB4702971C063E3100732BC9 /* WorkoutDetailViewController.h */,
+				EB4702981C063E3100732BC9 /* WorkoutDetailViewController.m */,
+			);
+			name = "Workout Detail Page";
+			sourceTree = "<group>";
+		};
+		EB47028F1C063D9000732BC9 /* Workout Perform Page */ = {
+			isa = PBXGroup;
+			children = (
+				EB47029A1C063E5E00732BC9 /* WorkoutViewController.h */,
+				EB47029B1C063E5E00732BC9 /* WorkoutViewController.m */,
+			);
+			name = "Workout Perform Page";
+			sourceTree = "<group>";
+		};
+		EB47029D1C063E8B00732BC9 /* Custom Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				EB47029F1C063EBD00732BC9 /* WorkoutCreateViewController.h */,
+				EB4702A01C063EBD00732BC9 /* WorkoutCreateViewController.m */,
+			);
+			name = "Custom Workouts";
 			sourceTree = "<group>";
 		};
 		EB52EFA61BCAEF8900F5D7CA /* MZTimerLabel */ = {
@@ -924,6 +1050,15 @@
 			name = Preferences;
 			sourceTree = "<group>";
 		};
+		EB8AF5521C064B1E00F53B90 /* Workout Browse Selection Options */ = {
+			isa = PBXGroup;
+			children = (
+				EB8AF5531C064B5000F53B90 /* WorkoutBrowseOptionsViewController.h */,
+				EB8AF5541C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m */,
+			);
+			name = "Workout Browse Selection Options";
+			sourceTree = "<group>";
+		};
 		EBB8C9791BFA826000347B24 /* About */ = {
 			isa = PBXGroup;
 			children = (
@@ -969,6 +1104,186 @@
 			name = "Workout TableView Cell";
 			sourceTree = "<group>";
 		};
+		EBCA20341C10D6DF00DD9D3C /* LaunchKit */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA20351C10D6DF00DD9D3C /* .gitkeep */,
+				EBCA20361C10D6DF00DD9D3C /* Assets */,
+				EBCA20381C10D6DF00DD9D3C /* Classes */,
+				EBCA207D1C10D6DF00DD9D3C /* Scripts */,
+			);
+			name = LaunchKit;
+			path = "../../Project Resources/StayHealthy/Frameworks/launchkit-ios-master-2/LaunchKit";
+			sourceTree = "<group>";
+		};
+		EBCA20361C10D6DF00DD9D3C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA20371C10D6DF00DD9D3C /* .gitkeep */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		EBCA20381C10D6DF00DD9D3C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA20391C10D6DF00DD9D3C /* Analytics */,
+				EBCA203E1C10D6DF00DD9D3C /* Bundles */,
+				EBCA20431C10D6DF00DD9D3C /* Config */,
+				EBCA20461C10D6DF00DD9D3C /* LaunchKit.h */,
+				EBCA20471C10D6DF00DD9D3C /* LaunchKit.m */,
+				EBCA20481C10D6DF00DD9D3C /* LaunchKitShared.h */,
+				EBCA20491C10D6DF00DD9D3C /* LKAPIClient.h */,
+				EBCA204A1C10D6DF00DD9D3C /* LKAPIClient.m */,
+				EBCA204B1C10D6DF00DD9D3C /* LKLog.h */,
+				EBCA204C1C10D6DF00DD9D3C /* LKLog.m */,
+				EBCA204D1C10D6DF00DD9D3C /* LKUtils.h */,
+				EBCA204E1C10D6DF00DD9D3C /* LKUtils.m */,
+				EBCA204F1C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.h */,
+				EBCA20501C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.m */,
+				EBCA20511C10D6DF00DD9D3C /* NSString+LKURLEncoded.h */,
+				EBCA20521C10D6DF00DD9D3C /* NSString+LKURLEncoded.m */,
+				EBCA20531C10D6DF00DD9D3C /* ThirdParty */,
+				EBCA20611C10D6DF00DD9D3C /* UI */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		EBCA20391C10D6DF00DD9D3C /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA203A1C10D6DF00DD9D3C /* LKAnalytics.h */,
+				EBCA203B1C10D6DF00DD9D3C /* LKAnalytics.m */,
+				EBCA203C1C10D6DF00DD9D3C /* LKAppUser.h */,
+				EBCA203D1C10D6DF00DD9D3C /* LKAppUser.m */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		EBCA203E1C10D6DF00DD9D3C /* Bundles */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA203F1C10D6DF00DD9D3C /* LKBundleInfo.h */,
+				EBCA20401C10D6DF00DD9D3C /* LKBundleInfo.m */,
+				EBCA20411C10D6DF00DD9D3C /* LKBundlesManager.h */,
+				EBCA20421C10D6DF00DD9D3C /* LKBundlesManager.m */,
+			);
+			path = Bundles;
+			sourceTree = "<group>";
+		};
+		EBCA20431C10D6DF00DD9D3C /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA20441C10D6DF00DD9D3C /* LKConfig.h */,
+				EBCA20451C10D6DF00DD9D3C /* LKConfig.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		EBCA20531C10D6DF00DD9D3C /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA20541C10D6DF00DD9D3C /* ZipArchive */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		EBCA20541C10D6DF00DD9D3C /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA20551C10D6DF00DD9D3C /* LK_SSZipArchive.h */,
+				EBCA20561C10D6DF00DD9D3C /* LK_SSZipArchive.m */,
+				EBCA20571C10D6DF00DD9D3C /* minizip */,
+			);
+			path = ZipArchive;
+			sourceTree = "<group>";
+		};
+		EBCA20571C10D6DF00DD9D3C /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA20581C10D6DF00DD9D3C /* crypt.h */,
+				EBCA20591C10D6DF00DD9D3C /* ioapi.c */,
+				EBCA205A1C10D6DF00DD9D3C /* ioapi.h */,
+				EBCA205B1C10D6DF00DD9D3C /* mztools.c */,
+				EBCA205C1C10D6DF00DD9D3C /* mztools.h */,
+				EBCA205D1C10D6DF00DD9D3C /* unzip.c */,
+				EBCA205E1C10D6DF00DD9D3C /* unzip.h */,
+				EBCA205F1C10D6DF00DD9D3C /* zip.c */,
+				EBCA20601C10D6DF00DD9D3C /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
+		EBCA20611C10D6DF00DD9D3C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA20621C10D6DF00DD9D3C /* Components */,
+				EBCA20781C10D6DF00DD9D3C /* LKUIManager.h */,
+				EBCA20791C10D6DF00DD9D3C /* LKUIManager.m */,
+				EBCA207A1C10D6DF00DD9D3C /* Presentation */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		EBCA20621C10D6DF00DD9D3C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA20631C10D6DF00DD9D3C /* LKButton.h */,
+				EBCA20641C10D6DF00DD9D3C /* LKButton.m */,
+				EBCA20651C10D6DF00DD9D3C /* LKFadeCustomSegue.h */,
+				EBCA20661C10D6DF00DD9D3C /* LKFadeCustomSegue.m */,
+				EBCA20671C10D6DF00DD9D3C /* LKImageView.h */,
+				EBCA20681C10D6DF00DD9D3C /* LKImageView.m */,
+				EBCA20691C10D6DF00DD9D3C /* LKNavigationController.h */,
+				EBCA206A1C10D6DF00DD9D3C /* LKNavigationController.m */,
+				EBCA206B1C10D6DF00DD9D3C /* LKPopCustomSegue.h */,
+				EBCA206C1C10D6DF00DD9D3C /* LKPopCustomSegue.m */,
+				EBCA206D1C10D6DF00DD9D3C /* LKPushCustomSegue.h */,
+				EBCA206E1C10D6DF00DD9D3C /* LKPushCustomSegue.m */,
+				EBCA206F1C10D6DF00DD9D3C /* LKSimpleStackView.h */,
+				EBCA20701C10D6DF00DD9D3C /* LKSimpleStackView.m */,
+				EBCA20711C10D6DF00DD9D3C /* LKViewController.h */,
+				EBCA20721C10D6DF00DD9D3C /* LKViewController.m */,
+				EBCA20731C10D6DF00DD9D3C /* Private */,
+				EBCA20751C10D6DF00DD9D3C /* Public */,
+				EBCA20771C10D6DF00DD9D3C /* UIView+LKAdditions.m */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EBCA20731C10D6DF00DD9D3C /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA20741C10D6DF00DD9D3C /* UIView+LKAdditions.h */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		EBCA20751C10D6DF00DD9D3C /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA20761C10D6DF00DD9D3C /* UIView+LKAdditions.h */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		EBCA207A1C10D6DF00DD9D3C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA207B1C10D6DF00DD9D3C /* LKCardPresentationController.h */,
+				EBCA207C1C10D6DF00DD9D3C /* LKCardPresentationController.m */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		EBCA207D1C10D6DF00DD9D3C /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA207E1C10D6DF00DD9D3C /* LaunchKitRemoteBundlesScript.playground */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		EBCE12531BD2F632000370CC /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -985,67 +1300,6 @@
 				EBB432D91B549FEC001B2D40 /* ExerciseTableViewCell.m */,
 			);
 			name = "Exercise TableView Cell";
-			sourceTree = "<group>";
-		};
-		EBE540791BFD07180018DB7F /* LaunchKit */ = {
-			isa = PBXGroup;
-			children = (
-				EBE5407A1BFD07180018DB7F /* .gitkeep */,
-				EBE5407B1BFD07180018DB7F /* Assets */,
-				EBE5407D1BFD07180018DB7F /* Classes */,
-			);
-			name = LaunchKit;
-			path = "../../../../../../Downloads/launchkit-ios-master/LaunchKit";
-			sourceTree = "<group>";
-		};
-		EBE5407B1BFD07180018DB7F /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				EBE5407C1BFD07180018DB7F /* .gitkeep */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		EBE5407D1BFD07180018DB7F /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				EBE5407E1BFD07180018DB7F /* Analytics */,
-				EBE540831BFD07180018DB7F /* Config */,
-				EBE540861BFD07180018DB7F /* LaunchKit.h */,
-				EBE540871BFD07180018DB7F /* LaunchKit.m */,
-				EBE540881BFD07180018DB7F /* LaunchKitShared.h */,
-				EBE540891BFD07180018DB7F /* LKAPIClient.h */,
-				EBE5408A1BFD07180018DB7F /* LKAPIClient.m */,
-				EBE5408B1BFD07180018DB7F /* LKLog.h */,
-				EBE5408C1BFD07180018DB7F /* LKLog.m */,
-				EBE5408D1BFD07180018DB7F /* LKUtils.h */,
-				EBE5408E1BFD07180018DB7F /* LKUtils.m */,
-				EBE5408F1BFD07180018DB7F /* NSDictionary+LKFormEncoded.h */,
-				EBE540901BFD07180018DB7F /* NSDictionary+LKFormEncoded.m */,
-				EBE540911BFD07180018DB7F /* NSString+LKURLEncoded.h */,
-				EBE540921BFD07180018DB7F /* NSString+LKURLEncoded.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		EBE5407E1BFD07180018DB7F /* Analytics */ = {
-			isa = PBXGroup;
-			children = (
-				EBE5407F1BFD07180018DB7F /* LKAnalytics.h */,
-				EBE540801BFD07180018DB7F /* LKAnalytics.m */,
-				EBE540811BFD07180018DB7F /* LKAppUser.h */,
-				EBE540821BFD07180018DB7F /* LKAppUser.m */,
-			);
-			path = Analytics;
-			sourceTree = "<group>";
-		};
-		EBE540831BFD07180018DB7F /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				EBE540841BFD07180018DB7F /* LKConfig.h */,
-				EBE540851BFD07180018DB7F /* LKConfig.m */,
-			);
-			path = Config;
 			sourceTree = "<group>";
 		};
 		EBFC03261BFF6BCF0096178B /* iPhone */ = {
@@ -1142,7 +1396,7 @@
 				EB52EFD91BCAEFBA00F5D7CA /* NotificationBackgroundErrorIcon@2x.png in Resources */,
 				EB52EFE41BCAEFBA00F5D7CA /* NotificationButtonBackground.png in Resources */,
 				EB52EFE11BCAEFBA00F5D7CA /* NotificationBackgroundWarning@2x.png in Resources */,
-				EBE540941BFD07180018DB7F /* .gitkeep in Resources */,
+				EBCA207F1C10D6DF00DD9D3C /* .gitkeep in Resources */,
 				EB52EFE31BCAEFBA00F5D7CA /* NotificationBackgroundWarningIcon@2x.png in Resources */,
 				EB52EFDC1BCAEFBA00F5D7CA /* NotificationBackgroundSuccess.png in Resources */,
 				3FDA2D5C19C26699003C2FF4 /* Images.xcassets in Resources */,
@@ -1162,11 +1416,11 @@
 				EB52EFDF1BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon@2x.png in Resources */,
 				EB52EFA51BCAEF5800F5D7CA /* Stretching in Resources */,
 				EB52EFDB1BCAEFBA00F5D7CA /* NotificationBackgroundMessage@2x.png in Resources */,
-				EBE540931BFD07180018DB7F /* .gitkeep in Resources */,
 				3F949C1F195A56D800EB4BED /* StayHealthyGeneral.plist in Resources */,
-				EB52EF9F1BCAEF0B00F5D7CA /* StayHealthyDatabase.sqlite in Resources */,
 				EB52EFDE1BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon.png in Resources */,
 				EB52EFE01BCAEFBA00F5D7CA /* NotificationBackgroundWarning.png in Resources */,
+				EBF7EEEE1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite in Resources */,
+				EBCA20801C10D6DF00DD9D3C /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1209,45 +1463,59 @@
 			files = (
 				EBFC030E1BFD42A60096178B /* User.m in Sources */,
 				EBFC03181BFD4A230096178B /* UserDataManager.m in Sources */,
+				EBCA20951C10D6DF00DD9D3C /* LKPopCustomSegue.m in Sources */,
 				EB575AD51BEC38EC00A1C798 /* VersionHistoryViewController.m in Sources */,
 				EB737F5C1B7F8A9F00EBBDA4 /* SHExercise.m in Sources */,
+				EBCA20831C10D6DF00DD9D3C /* LKBundleInfo.m in Sources */,
 				EB2C4A701B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m in Sources */,
-				EBE540951BFD07180018DB7F /* LKAnalytics.m in Sources */,
+				EBCA20961C10D6DF00DD9D3C /* LKPushCustomSegue.m in Sources */,
 				EB215A341BD895DB00A0765A /* MGSwipeButton.m in Sources */,
 				EBB432DA1B549FEC001B2D40 /* ExerciseTableViewCell.m in Sources */,
 				EB701E7B1BE2DC78005003B1 /* QuickFilterViewController.m in Sources */,
-				EBE540981BFD07180018DB7F /* LaunchKit.m in Sources */,
 				3F2E5A8718DF4E4E00EE4734 /* ExerciseCollectionCell.m in Sources */,
+				EB4702951C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.m in Sources */,
 				EB52EFE71BCAEFBA00F5D7CA /* TSBlurView.m in Sources */,
-				EBE5409C1BFD07180018DB7F /* NSDictionary+LKFormEncoded.m in Sources */,
-				EBE540991BFD07180018DB7F /* LKAPIClient.m in Sources */,
 				EBC64C591C02B2C900B33ECA /* WorkoutSelectionViewController.m in Sources */,
-				3FE8069F18F24442006A0993 /* WorkoutViewController.m in Sources */,
+				EBCA20891C10D6DF00DD9D3C /* LKUtils.m in Sources */,
+				3FE8069F18F24442006A0993 /* WorkoutViewController1.m in Sources */,
 				EB63EF3B1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m in Sources */,
-				EBE540961BFD07180018DB7F /* LKAppUser.m in Sources */,
 				EBB8C9871BFA85FF00347B24 /* DatabaseUpdateViewController.m in Sources */,
 				EB2C4A671B89F773005D183A /* WorkoutDataManager.m in Sources */,
 				EB52EFEE1BCAEFC800F5D7CA /* SIAlertView.m in Sources */,
+				EB4702A11C063EBD00732BC9 /* WorkoutCreateViewController.m in Sources */,
+				EBCA20911C10D6DF00DD9D3C /* LKButton.m in Sources */,
 				EB2C4A6A1B89F798005D183A /* CustomWorkoutDataManager.m in Sources */,
+				EBCA209A1C10D6DF00DD9D3C /* LKUIManager.m in Sources */,
+				EBCA208C1C10D6DF00DD9D3C /* LK_SSZipArchive.m in Sources */,
+				EBCA20841C10D6DF00DD9D3C /* LKBundlesManager.m in Sources */,
 				3FE95E24187A5DB0005DD13D /* SettingsViewController.m in Sources */,
 				EB737F5F1B7F8B2200EBBDA4 /* ExerciseDataManager.m in Sources */,
-				EBE540971BFD07180018DB7F /* LKConfig.m in Sources */,
 				3FE103D3186618F200C53D76 /* ExerciseDetailViewController.m in Sources */,
 				3F2E5A8318DF388300EE4734 /* ExerciseListController.m in Sources */,
 				EBB8C97C1BFA827400347B24 /* AboutTableViewController.m in Sources */,
-				EBE5409D1BFD07180018DB7F /* NSString+LKURLEncoded.m in Sources */,
 				3FC466B21B3621970062EBDB /* CommonUtilities.m in Sources */,
+				EBCA20881C10D6DF00DD9D3C /* LKLog.m in Sources */,
+				EBCA209B1C10D6DF00DD9D3C /* LKCardPresentationController.m in Sources */,
+				EB8AF5551C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m in Sources */,
 				EB52EFAD1BCAEF9700F5D7CA /* ALCustomColoredAccessory.m in Sources */,
+				EBCA20981C10D6DF00DD9D3C /* LKViewController.m in Sources */,
 				EBFC03151BFD49E20096178B /* SHUser.m in Sources */,
 				3F8BB363198D4AF70098E1A7 /* CommonSetUpOperations.m in Sources */,
 				EB52EFD41BCAEFBA00F5D7CA /* TSMessage.m in Sources */,
-				EBE5409B1BFD07180018DB7F /* LKUtils.m in Sources */,
+				EBCA20971C10D6DF00DD9D3C /* LKSimpleStackView.m in Sources */,
 				EB575AD81BEC391000A1C798 /* AcknowledgmentsViewController.m in Sources */,
+				EBCA20861C10D6DF00DD9D3C /* LaunchKit.m in Sources */,
 				EB8ACF8A1B76DAD0003E91A6 /* Exercise.m in Sources */,
+				EBCA20991C10D6DF00DD9D3C /* UIView+LKAdditions.m in Sources */,
+				EBCA208E1C10D6DF00DD9D3C /* mztools.c in Sources */,
 				EB52EFE81BCAEFBA00F5D7CA /* TSMessageView.m in Sources */,
 				3FD5E1B31853A8D00063E10C /* AppDelegate.m in Sources */,
 				EB2C4A6D1B89F8DC005D183A /* SHWorkout+Workout.m in Sources */,
+				EBCA208D1C10D6DF00DD9D3C /* ioapi.c in Sources */,
+				EB4702921C063DD800732BC9 /* WorkoutListViewController.m in Sources */,
+				EBCA20851C10D6DF00DD9D3C /* LKConfig.m in Sources */,
 				EB63EF9C1B4B5FA400EF35A3 /* TextFieldTableViewCell.m in Sources */,
+				EBCA20811C10D6DF00DD9D3C /* LKAnalytics.m in Sources */,
 				EB737F691B7F908F00EBBDA4 /* SHExercise+Exercise.m in Sources */,
 				EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */,
 				EB2C4A5E1B89F53F005D183A /* Workout.m in Sources */,
@@ -1260,20 +1528,30 @@
 				EB2C4A5B1B89F531005D183A /* CustomWorkout.m in Sources */,
 				EB215A351BD895DB00A0765A /* MGSwipeTableCell.m in Sources */,
 				EB701E7F1BE7EA54005003B1 /* WalkThoughOneViewController.m in Sources */,
+				EBCA208A1C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.m in Sources */,
 				EB2C4A611B89F556005D183A /* SHWorkout.m in Sources */,
+				EB47029C1C063E5E00732BC9 /* WorkoutViewController.m in Sources */,
 				3FD5E1BC1853A8D00063E10C /* StayHealthy.xcdatamodeld in Sources */,
+				EBCA20871C10D6DF00DD9D3C /* LKAPIClient.m in Sources */,
 				EB9CF7011B52AA00006E2984 /* PreferencesTableViewController.m in Sources */,
+				EBCA208F1C10D6DF00DD9D3C /* unzip.c in Sources */,
+				EBCA20931C10D6DF00DD9D3C /* LKImageView.m in Sources */,
 				3FD5E1AF1853A8D00063E10C /* main.m in Sources */,
+				EBCA20821C10D6DF00DD9D3C /* LKAppUser.m in Sources */,
+				EB4702991C063E3100732BC9 /* WorkoutDetailViewController.m in Sources */,
 				EB52EFA91BCAEF8900F5D7CA /* MZTimerLabel.m in Sources */,
 				EBFC031B1BFD4A850096178B /* SHUser+User.m in Sources */,
 				EBC64C5D1C02C3CD00B33ECA /* WorkoutTableViewCell.m in Sources */,
+				EBCA208B1C10D6DF00DD9D3C /* NSString+LKURLEncoded.m in Sources */,
+				EBCA20901C10D6DF00DD9D3C /* zip.c in Sources */,
 				EBB8C9811BFA855300347B24 /* FeedbackCenterViewController.m in Sources */,
 				EBB8C9701BF90ECA00347B24 /* ExerciseSelectionViewController.m in Sources */,
 				3F7D77A319A300D600E00065 /* WebViewViewController.m in Sources */,
 				EB89979E1B7C3DE100904984 /* GlobalDefinitions.h in Sources */,
+				EBCA20921C10D6DF00DD9D3C /* LKFadeCustomSegue.m in Sources */,
 				EB737F711B8015E100EBBDA4 /* SHDataHandler.m in Sources */,
+				EBCA20941C10D6DF00DD9D3C /* LKNavigationController.m in Sources */,
 				EB52EFF31BCAEFCF00F5D7CA /* Reachability.m in Sources */,
-				EBE5409A1BFD07180018DB7F /* LKLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1499,6 +1777,38 @@
 					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
@@ -1611,6 +1921,38 @@
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/Project",
 					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
 					"$(USER_LIBRARY_DIR)/Mobile",

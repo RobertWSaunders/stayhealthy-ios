@@ -26,6 +26,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     setenv("XcodeColors", "YES", 0);
     
+    
+
     //Set the appearance of the navigation bar. Set the text color to STAYHEALTHY_BLUE constant.
     //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
@@ -61,16 +63,10 @@
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     [dataHandler performDatabaseUpdate];
     
-   /* if (![dataHandler userIsCreated]) {
-        [dataHandler saveUser:[[SHUser alloc] initWithDefaults]];
-    }
-    */
-    
     //Connect to LaunchKit
     [LaunchKit launchWithToken:@"W6MwOqvoV5kdEJzA-Qe1sINeC61khPcPKtEhna_qdRV-"];
     
-    //Set the user identifier to LaunchKit - for Super Users.
-    //[[LaunchKit sharedInstance] setUserIdentifier:[dataHandler getUserIdentifier] email:nil name:nil];
+
     
     return YES;
 }

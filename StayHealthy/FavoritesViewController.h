@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ExerciseDetailViewController.h"
 #import "ExerciseTableViewCell.h"
+#import "WorkoutTableViewCell.h"
+#import "WorkoutDetailViewController.h"
 
 @interface FavoritesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     NSMutableArray *favoritesData;
+    BOOL workoutData;
+    
 }
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 

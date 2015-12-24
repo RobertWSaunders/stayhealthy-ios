@@ -56,9 +56,14 @@
 #define DATABASE_URL                @"http://mail.rsgc.on.ca/~rsaunders/StayHealthyDatabase.sqlite"
 //@"http://webservice.stayhealthyapp.com/StayHealthyDatabase.sqlite"
 
+#define STAYHEALTHY_FAQ_URL         @"http://mail.rsgc.on.ca/~rsaunders/privacy.html"
+#define STAYHEALTHY_SUPPORT_EMAIL   @""
+#define STAYHEALTHY_FEEDBACK_EMAIL @""
+
 #define StayHealthyCloudUpdate     @"StayHealthyCloudUpdate"
 #define exerciseNotification       @"userExerciseNotification"
 #define exerciseFavNotification       @"userExerciseFavNotification"
+#define workoutFavNotification       @"userWorkoutFavNotification"
 
 #define PRELOADED_DATABASE_VERSION       @"1.0.0"
 
@@ -230,4 +235,12 @@ typedef enum : NSUInteger {
     stretching,
     warmup,
 } exerciseTypes;
+
+typedef enum : NSUInteger {
+    targetSports,
+    targetMuscles,
+    workoutEquipment,
+    workoutType,
+    workoutDifficulty,
+} workoutBrowseOptions;
 

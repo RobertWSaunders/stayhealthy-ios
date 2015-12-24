@@ -117,8 +117,8 @@
                 workout.workoutExerciseIdentifiers = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 5)];
                 workout.workoutExerciseTypes = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 6)];
                 workout.workoutType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 7)];
-                workout.workoutDifficulty= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 9)];
-                workout.workoutEquipment= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 10)];
+                workout.workoutDifficulty= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 8)];
+                workout.workoutEquipment= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 9)];
                 [workoutData  addObject:workout];
             }
         }
@@ -212,13 +212,37 @@
     [workoutManager updateItem:workout];
 }
 
+- (id)fetchWorkoutByIdentifier:(NSString *)workoutIdentifier {
+    return [workoutManager fetchItemByIdentifier:workoutIdentifier];
+}
+
 - (BOOL)workoutHasBeenSaved:(NSString *)workoutIdentifier {
     Workout *workout = [workoutManager fetchItemByIdentifier:workoutIdentifier];
     if (workout != nil)
         return YES;
     return NO;
-
 }
+
+- (NSMutableArray*)getLikedWorkouts {
+    return [[workoutManager fetchAllLikedWorkouts] mutableCopy];
+}
+
+- (SHWorkout *)convertWorkoutToSHWorkout:(Workout*)workout {
+    
+    SHWorkout *shWorkout = [[SHWorkout alloc] init];
+    
+    NSMutableArray *workoutID = [[NSMutableArray alloc] initWithObjects:workout.workoutID, nil];
+    
+    NSArray *shWorkoutData = [[SHDataHandler getInstance] performWorkoutStatement:[CommonUtilities createWorkoutQueryFromWorkoutIds:workoutID table:WORKOUTS_DB_TABLENAME]];
+    
+    shWorkout = [shWorkoutData objectAtIndex:0];
+    
+    shWorkout.lastViewed = workout.lastViewed;
+    shWorkout.liked = workout.liked;
+    
+    return shWorkout;
+}
+
 
 #pragma mark - Custom Workout Data Manager Methods
 

@@ -144,6 +144,7 @@
         cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:STAYHEALTHY_LIGHTGRAYCOLOR}];
         //Set the textfiled delegate to self.
         cell.textField.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         //Stlying the cells.
         cell.cellLabel.font = tableViewTitleTextFont;
@@ -248,11 +249,10 @@
                     }
                 //Now we have completed the SELECT statment from this table, add a UNION ALL for the next table.
                 if (i != selectedExerciseTypes.count-1) {
+                    if (![selectedName isEqualToString:@""]) {
+                        searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"AND exerciseName LIKE '%%%@%%'",selectedName]];
+                    }
                     searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:@"UNION ALL"];
-                }
-                //Or if it is the last table then just order the resulting exercises by name.
-                else if (![selectedName isEqualToString:@""]) {
-                    searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"AND exerciseName LIKE '%%%@%%' ORDER BY exerciseName COLLATE NOCASE",selectedName]];
                 }
                 else {
                     searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:@"ORDER BY exerciseName COLLATE NOCASE"];

@@ -60,6 +60,9 @@
 - (void)updateWorkoutRecord:(SHWorkout *)workout;
 
 - (BOOL)workoutHasBeenSaved:(NSString *)exerciseIdentifier;
+- (id)fetchWorkoutByIdentifier:(NSString *)workoutIdentifier;
+- (NSMutableArray*)getLikedWorkouts;
+- (SHWorkout *)convertWorkoutToSHWorkout:(Workout*)workout;
 
 #pragma mark - Custom Workout Data Manager Methods
 

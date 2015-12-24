@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Database Updates";
+    self.title = @"Database Update";
     
     // Do any additional setup after loading the view.
 }

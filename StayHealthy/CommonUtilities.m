@@ -402,6 +402,16 @@
     return query;
 }
 
++ (NSString *)createWorkoutQueryFromWorkoutIds:(NSMutableArray *)workoutIDs table:(NSString*)table {
+    
+    NSString *workoutIdentifiers = [workoutIDs componentsJoinedByString:@","];
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE workoutIdentifier IN (%@)",table,workoutIdentifiers];
+    
+    return query;
+}
+
+
 
 +(NSString*)convertMuscleNameToDatabaseStandard:(NSString*)muscle {
     if ([muscle isEqualToString:@"Abdominal"]) {
@@ -491,6 +501,74 @@
     if (array.count > 0)
         return [array objectAtIndex:0];
     
+    return nil;
+}
+
+//Returns an array of SHExercises that are in the workout that is passed.
++ (NSMutableArray*)getWorkoutExercises:(SHWorkout*)workout {
+    
+    //Get the exercises in the workout identifiers.
+    NSArray *exerciseIdentifiers = [workout.workoutExerciseIdentifiers componentsSeparatedByString:@","];
+    
+    NSString *exerciseTypesWithoutSpaces = [workout.workoutExerciseTypes stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    //Get the exercises in the workouts type.
+    NSArray *exerciseTypes = [exerciseTypesWithoutSpaces componentsSeparatedByString:@","];
+    
+    //Reference the platform.
+    SHDataHandler *dataHandler = [SHDataHandler getInstance];
+    
+    //Initialize a array that will be retured.
+    NSMutableArray *exercises = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < exerciseIdentifiers.count; i++) {
+        //Create a new exercise.
+        SHExercise *exercise = [[SHExercise alloc] init];
+        NSArray *tempExerciseArray = [[NSArray alloc] init];
+        
+        if ([[exerciseTypes objectAtIndex:i] isEqualToString:@"stretching"]) {
+            tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:stretching exerciseIdentifier:exerciseIdentifiers[i]]];
+        }
+        else if ([[exerciseTypes objectAtIndex:i] isEqualToString:@"strength"]) {
+            tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:strength exerciseIdentifier:exerciseIdentifiers[i]]];
+        }
+        else {
+            tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:warmup exerciseIdentifier:exerciseIdentifiers[i]]];
+        }
+        
+        if (tempExerciseArray.count > 0) {
+            //Get the exercise from the searched statement.
+            exercise = [tempExerciseArray objectAtIndex:0];
+            //Add the exercises to the array.
+            [exercises addObject:exercise];
+        }
+    }
+    
+    return exercises;
+}
+
+//Returns the count of exercises in a workout.
++ (NSUInteger)numExercisesInWorkout:(SHWorkout*)workout {
+    //Get the exercises in the workout identifiers.
+    NSArray *exerciseIdentifiers = [workout.workoutExerciseIdentifiers componentsSeparatedByString:@","];
+    //Count the list which is equal to the number of exercises.
+    return [exerciseIdentifiers count];
+}
+
++ (NSString *)generateWorkoutExerciseQuery:(exerciseTypes)exerciseType exerciseIdentifier:(NSString*)exerciseIdentifier {
+    switch (exerciseType) {
+        case strength:
+            return [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exerciseIdentifier LIKE '%@'",STRENGTH_DB_TABLENAME,exerciseIdentifier];
+            break;
+        case stretching:
+            return [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exerciseIdentifier LIKE '%@'",STRETCHING_DB_TABLENAME,exerciseIdentifier];
+            break;
+        case warmup:
+            return [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exerciseIdentifier LIKE '%@'",WARMUP_DB_TABLENAME,exerciseIdentifier];
+            break;
+        default:
+            break;
+    }
     return nil;
 }
 

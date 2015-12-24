@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import "WebViewViewController.h"
 
-@interface HelpCenterViewController : UIViewController
+@interface HelpCenterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate> {
+    NSArray *helpCenterItems;
+    NSArray *helpCenterItemsImages;
+}
+@property (weak, nonatomic) IBOutlet UITableView *helpCenterTableView;
 
 @end

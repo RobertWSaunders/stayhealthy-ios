@@ -19,6 +19,8 @@
     
     self.title = @"About";
     
+    self.tableView.userInteractionEnabled = NO;
+    
     aboutArray = @[@"App Version",@"App Build",@"Database Version"];
     aboutArrayDetail = @[[CommonUtilities shortAppVersionNumber], [CommonUtilities hexBuildNumber], [CommonUtilities installedDatabaseVersion]];
     
@@ -65,6 +67,11 @@
     
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    return @"© 2015 Robert Saunders. All rights reserved.";
 }
 
 /*

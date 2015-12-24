@@ -53,7 +53,7 @@
     
     if (SHworkout != nil)
     {
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat: @"workoutIdentifier = %@", SHworkout.workoutIdentifier]];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat: @"workoutID = %@", SHworkout.workoutIdentifier]];
         
         NSArray *workouts = [_appContext executeFetchRequest:fetchRequest error:&requestError];
         
@@ -75,27 +75,76 @@
     }
 }
 
+
 - (id)fetchItemByIdentifier:(NSString *)objectIdentifier {
+    
     if (objectIdentifier != nil) {
         
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
         
         NSError *requestError = nil;
         
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"workoutIdentifier = %@", objectIdentifier]];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"workoutID = %@", objectIdentifier]];
         
         NSArray *workouts = [_appContext executeFetchRequest:fetchRequest error:&requestError];
         
-        if ([workouts count] > 0)
-            LogDataSuccess(@"A workout has been found in the database with the identifier: %@ --> fetchItemByIdentifier @ WorkoutDataManager", objectIdentifier);
-        return [workouts objectAtIndex:0];
+        
+        if (workouts.count > 0) {
+            LogDataSuccess(@"A workout has been found in the database with the identifier: %@ --> fetchItemByIdentifier @ WorkoutManager", objectIdentifier);
+            return [workouts objectAtIndex:0];
+        }
+        
+        else {
+            LogDataError(@"Could not find any workout with the identifier: %@ --> fetchItemByIdentifier @ WorkoutManager", objectIdentifier);
+            return nil;
+        }
     }
-    LogDataError(@"Could not find any workouts with the identifier: %@ --> fetchItemByIdentifier @ WorkoutDataManager", objectIdentifier);
     return nil;
 }
 
 - (NSString *)returnEntityName {
     return WORKOUT_ENTITY_NAME;
+}
+
+- (id) fetchRecentlyViewedWorkouts {
+    
+    NSFetchRequest *fetchRequest = [self getRecentlyViewedFetchRequest];
+    
+    NSError *requestError = nil;
+    
+    NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
+    
+    return exercises;
+}
+
+- (id) fetchAllLikedWorkouts {
+    
+    NSFetchRequest *fetchRequest = [self getLikedFetchRequest:nil];
+    
+    NSError *requestError = nil;
+    
+    NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
+    
+    return exercises;
+    
+}
+
+#pragma mark - Helper Methods
+
+- (NSFetchRequest *) getRecentlyViewedFetchRequest {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
+    NSSortDescriptor *sortByRecentlyViewed = [NSSortDescriptor sortDescriptorWithKey:@"lastViewed" ascending:NO];
+    fetchRequest.sortDescriptors = [[NSArray alloc] initWithObjects:sortByRecentlyViewed, nil];
+    return fetchRequest;
+}
+
+- (NSFetchRequest *) getLikedFetchRequest:(NSString*)type {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"liked", [NSNumber numberWithBool:YES]];
+    [fetchRequest setPredicate:predicate];
+
+    return fetchRequest;
 }
 
 

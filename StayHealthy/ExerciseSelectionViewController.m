@@ -438,7 +438,7 @@
         
         if (warmupPressed) {
             viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:WARMUP_DB_TABLENAME muscle:nil];
-            viewExercisesViewController.viewTitle = @"Warmup";
+            viewExercisesViewController.viewTitle = @"Warmup Exercises";
             warmupPressed = NO;
         }
         else if (alertIndex == 0) {

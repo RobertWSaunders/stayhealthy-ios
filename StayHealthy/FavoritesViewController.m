@@ -30,6 +30,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchLikedExercises) name:StayHealthyCloudUpdate object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchLikedExercises) name:exerciseFavNotification object:nil];
     
+    self.navigationController.view.backgroundColor = [UIColor whiteColor];
+    
     [self fetchLikedExercises];
     
 }
@@ -40,8 +42,15 @@
 
 //Returns the height of the cells inside the tableView.
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
- 
-    return 76.0f;
+    
+    if (workoutData) {
+            return 95.0f;
+    }
+    else {
+            return 76.0f;
+    }
+    
+
     
 }
 
@@ -62,64 +71,108 @@
 //Configures the cells at a specific indexPath.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-        static NSString *recentlyViewedCellIdentifier = @"exerciseTableCell";
+    static NSString *exerciseTableCell = @"exerciseTableCell";
+    static NSString *workoutTableCell = @"workoutCell";
     
-    //Create the reference for the cell.
-    ExerciseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:recentlyViewedCellIdentifier];
-    
-    //If the cell can't be found then just create one.
-    if (cell == nil) {
-        cell = [[ExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:recentlyViewedCellIdentifier];
-    }
-    
-    SHExercise *exercise = [favoritesData objectAtIndex:indexPath.row];
-    
-    cell.exerciseName.text = exercise.exerciseName;
-    cell.difficulty.text = exercise.exerciseDifficulty;
-    cell.difficulty.textColor = [CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty];
-    
-    cell.equipment.text = exercise.exerciseEquipment;
-    NSString *trimmedString = [exercise.exerciseEquipment stringByTrimmingCharactersInSet:
-                               [NSCharacterSet whitespaceCharacterSet]];
-    
-    if ([trimmedString isEqualToString:@"null"])
-        cell.equipment.text = @"No Equipment";
-    else
-        cell.equipment.text = exercise.exerciseEquipment;
-    
-    //Load the exercise image on the background thread.
-    [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
-    
-    if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-        cell.likeExerciseImage.hidden = NO;
-        [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-        cell.likeExerciseImage.tintColor = STAYHEALTHY_BLUE;
-    }
-    else {
-        cell.likeExerciseImage.hidden = YES;
-    }
-    
+    if (self.segmentedControl.selectedSegmentIndex != 3) {
         
-    //Set the selected cell background.
-    [CommonSetUpOperations tableViewSelectionColorSet:cell];
-    /*
-     //configure right buttons
-     cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"workout.png"] backgroundColor:STAYHEALTHY_DARKERBLUE callback:^BOOL(MGSwipeTableCell *sender) {
-     self.selectedTableViewIndex = indexPath;
-     
-     LogInfo(@"Add to workout");
-     //[self performSegueWithIdentifier:@"detailModal" sender:nil];
-     return YES;
-     }]];
-     cell.rightExpansion.fillOnTrigger = YES;
-     cell.rightExpansion.threshold = 2.0f;
-     cell.rightExpansion.buttonIndex = 0;
-     cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
-     */
-    
-    
-    //Return the cell.
-    return cell;
+        //Create the reference for the cell.
+        ExerciseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:exerciseTableCell];
+        
+        //If the cell can't be found then just create one.
+        if (cell == nil) {
+            cell = [[ExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:exerciseTableCell];
+        }
+        
+        SHExercise *exercise = [favoritesData objectAtIndex:indexPath.row];
+        
+        cell.exerciseName.text = exercise.exerciseName;
+        cell.difficulty.text = exercise.exerciseDifficulty;
+        cell.difficulty.textColor = [CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty];
+        
+        cell.equipment.text = exercise.exerciseEquipment;
+        NSString *trimmedString = [exercise.exerciseEquipment stringByTrimmingCharactersInSet:
+                                   [NSCharacterSet whitespaceCharacterSet]];
+        
+        if ([trimmedString isEqualToString:@"null"])
+            cell.equipment.text = @"No Equipment";
+        else
+            cell.equipment.text = exercise.exerciseEquipment;
+        
+        //Load the exercise image on the background thread.
+        [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
+        
+        if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+            cell.likeExerciseImage.hidden = NO;
+            [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
+            cell.likeExerciseImage.tintColor = STAYHEALTHY_BLUE;
+        }
+        else {
+            cell.likeExerciseImage.hidden = YES;
+        }
+        
+        
+        //Set the selected cell background.
+        [CommonSetUpOperations tableViewSelectionColorSet:cell];
+        /*
+         //configure right buttons
+         cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"workout.png"] backgroundColor:STAYHEALTHY_DARKERBLUE callback:^BOOL(MGSwipeTableCell *sender) {
+         self.selectedTableViewIndex = indexPath;
+         
+         LogInfo(@"Add to workout");
+         //[self performSegueWithIdentifier:@"detailModal" sender:nil];
+         return YES;
+         }]];
+         cell.rightExpansion.fillOnTrigger = YES;
+         cell.rightExpansion.threshold = 2.0f;
+         cell.rightExpansion.buttonIndex = 0;
+         cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
+         */
+        
+        
+        //Return the cell.
+        return cell;
+
+   }
+    else {
+        //Create the reference for the cell.
+        WorkoutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:workoutTableCell];
+        
+        //If the cell can't be found then just create one.
+        if (cell == nil) {
+            cell = [[WorkoutTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:workoutTableCell];
+        }
+        
+        SHWorkout *workout = [favoritesData objectAtIndex:indexPath.row];
+        
+        cell.workoutName.text = workout.workoutName;
+        cell.workoutDifficulty.text = workout.workoutDifficulty;
+        cell.workoutType.text = workout.workoutType;
+        cell.workoutExercises.text = [NSString stringWithFormat:@"%ld",[CommonUtilities numExercisesInWorkout:workout]];
+        
+        cell.workoutDifficulty.textColor = [CommonSetUpOperations determineDifficultyColor:workout.workoutDifficulty];
+        
+        NSMutableArray *workoutExercises = [CommonUtilities getWorkoutExercises:workout];
+        
+        SHExercise *imageExercise = [workoutExercises objectAtIndex:[CommonUtilities numExercisesInWorkout:workout]-2];
+        
+        [CommonSetUpOperations loadImageOnBackgroundThread:cell.workoutImage image:[UIImage imageNamed:imageExercise.exerciseImageFile]];
+        
+        if ([workout.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+            cell.likeWorkoutImage.hidden = NO;
+            [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
+            cell.likeWorkoutImage.tintColor = STAYHEALTHY_BLUE;
+        }
+        else {
+            cell.likeWorkoutImage.hidden = YES;
+        }
+        
+        
+        //Set the selected cell background.
+        [CommonSetUpOperations tableViewSelectionColorSet:cell];
+   
+        return cell;
+}
 }
 
 //----------------------------------
@@ -129,7 +182,13 @@
 //What happens when the user selects a cell in the tableView.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    
-    [self performSegueWithIdentifier:@"exerciseDetail" sender:nil];
+    if (workoutData) {
+        [self performSegueWithIdentifier:@"workoutDetail" sender:nil];
+    }
+    else {
+       [self performSegueWithIdentifier:@"exerciseDetail" sender:nil];
+    }
+    
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -138,7 +197,7 @@
 #pragma mark - Helper Methods
 /*****************************/
 
-//Fetched the recently viewed exercises.
+//Fetches the exercises the user has liked.
 - (void)fetchLikedExercises {
     //Fetch and update the UI on the background thread to not corrupt the autolayout engine.
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -166,10 +225,41 @@
     
         //[self showMessage:exerciseType];
     
+        workoutData = NO;
+        //Reload the recenltyviewed tableview to display the new exercises.
+        [self.favoritesTableView reloadData];
+        
+    });
+}
+
+//Fetches the workouts the user has liked.
+- (void)fetchLikedWorkouts {
+    
+    //Fetch and update the UI on the background thread to not corrupt the autolayout engine.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        SHDataHandler *dataHandler = [SHDataHandler getInstance];
+        
+
+        NSArray *favoriteWorkout;
+        
+        favoriteWorkout = [[SHDataHandler getInstance] getLikedWorkouts];
+
+        favoritesData = [[NSMutableArray alloc] init];
+        
+        //Converts Exercise object to usable SHExercise object.
+        for (int i = 0; i < favoriteWorkout.count; i++) {
+            [favoritesData addObject:[dataHandler convertWorkoutToSHWorkout:[favoriteWorkout objectAtIndex:i]]];
+        }
+        
+        //[self showMessage:exerciseType];
+        
+        workoutData = YES;
+        
         //Reload the recenltyviewed tableview to display the new exercises.
         [self.favoritesTableView reloadData];
     });
 }
+
 
 //Shows a TSMessage if there is no favorites.
 - (void)showMessage:(exerciseTypes)exerciseType {
@@ -197,8 +287,12 @@
 
 //What happens when the segmented control value changes.
 - (IBAction)segmentValueChanged:(UISegmentedControl*)sender {
-    [self fetchLikedExercises];
-    
+    if (sender.selectedSegmentIndex != 3) {
+        [self fetchLikedExercises];
+    }
+    else {
+        [self fetchLikedWorkouts];
+    }
 }
 
 /********************************/
@@ -207,13 +301,23 @@
 
 //Notifies the view controller that a segue is about to be performed.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    NSIndexPath *indexPath = [self.favoritesTableView indexPathForSelectedRow];
-    SHExercise *exercise = [favoritesData objectAtIndex:indexPath.row];
-    ExerciseDetailViewController *destViewController = segue.destinationViewController;
-    destViewController.exerciseToDisplay = exercise;
-    destViewController.viewTitle = exercise.exerciseName;
+    if ([segue.identifier isEqualToString:@"workoutDetail"]) {
+        NSIndexPath *indexPath = [self.favoritesTableView indexPathForSelectedRow];
+        SHWorkout *workout = [favoritesData objectAtIndex:indexPath.row];
+        WorkoutDetailViewController *detailView = [[WorkoutDetailViewController alloc] init];
+        detailView = segue.destinationViewController;
+        detailView.workoutToDisplay = workout;
+
+    }
+    else {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        NSIndexPath *indexPath = [self.favoritesTableView indexPathForSelectedRow];
+        SHExercise *exercise = [favoritesData objectAtIndex:indexPath.row];
+        ExerciseDetailViewController *destViewController = segue.destinationViewController;
+        destViewController.exerciseToDisplay = exercise;
+        destViewController.viewTitle = exercise.exerciseName;
+    }
 }
 
 @end
