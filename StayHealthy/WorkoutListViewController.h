@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-25.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -16,6 +16,7 @@
 }
 
 //PASSED PROPERTIES
+@property (strong, nonatomic) NSMutableArray *workoutDataSent;
 //Query which is passed to the view.
 @property (strong, nonatomic) NSString *workoutQuery;
 //Title which is passed to the view.

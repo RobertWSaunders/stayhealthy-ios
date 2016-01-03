@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Student on 8/2/2014.
-//  Copyright (c) 2014 Mark Saunders. All rights reserved.
+//  Copyright (c) 2014 Robert Saunders. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -12,6 +12,10 @@
 
 //Styles a UICollectionViewCell
 + (void)styleCollectionViewCell:(UICollectionViewCell*)collectionViewCell;
+
++ (void)styleCollectionViewCellBodyZone:(UICollectionViewCell*)collectionViewCell;
+
++ (void)styleCollectionViewCellBodyZoneSelected:(UICollectionViewCell*)collectionViewCell;
 
 //Performs a TSMessage, specified message, and other parameters.
 + (void)performTSMessage:(NSString*)titleText message:(NSString*)message viewController:(UIViewController*)controllerForDisplay canBeDismissedByUser:(BOOL)canDismiss duration:(int)duration;

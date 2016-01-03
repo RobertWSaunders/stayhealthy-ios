@@ -23,6 +23,8 @@
 @property (nonatomic, weak) IBOutlet UIImageView *exerciseImage;
 //Like Exercise ImageView
 @property (nonatomic, weak) IBOutlet UIImageView *likeExerciseImage;
+//Like Exercise ImageView
+@property (nonatomic, weak) IBOutlet UIImageView *likeExerciseImageSelection;
 
 //Constant Labels
 //Equipment Label

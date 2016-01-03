@@ -3,16 +3,20 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-25.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "TextFieldTableViewCell.h"
 #import "ExerciseTableViewCell.h"
+#import "TextFieldTableViewCell.h"
+#import "TextViewTableViewCell.h"
+#import "advancedOptionsSelect.h"
+#import "ExerciseSelectionViewController.h"
 
-@interface WorkoutCreateViewController : UIViewController <UITableViewDataSource, UITableViewDataSource, UITextFieldDelegate> {
+@interface WorkoutCreateViewController : UIViewController <UITableViewDataSource, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, AdvancedOptionsDelegate, ExerciseSelectionDelegate, UIScrollViewDelegate> {
+    
     //Array filled with the advanced search options.
-    NSArray *workoutAdvancedSearchOptions;
+    NSArray *workoutOptions;
     //Array filled with the TableViews sections headers.
     NSArray *tableViewSectionHeaders;
     //Array filled with the advanced search selections by the user, defaults are 'Any'.
@@ -38,14 +42,21 @@
     NSArray *selectedEquipment;
     NSArray *selectedDifficulty;
     NSArray *selectedSports;
+    
     //The selected workout types.
     NSArray *selectedWorkoutTypes;
     
     //The selected workout name.
     NSString *selectedName;
+    
+    UITextView *workoutSummaryTextView;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *createWorkoutTableView;
+
+@property (nonatomic, assign) BOOL editMode;
+@property (strong, nonatomic) SHCustomWorkout *workoutToEdit;
+@property (strong, nonatomic) NSMutableArray *workoutToEditExercises;
 
 - (IBAction)doneButtonPressed:(id)sender;
 - (IBAction)cancelButtonPressed:(id)sender;

@@ -14,12 +14,14 @@
 #import "QuickFilterViewController.h"
 #import "ExerciseTableViewCell.h"
 
-
-
+//Exercise Seletion Delegate
+@protocol ExerciseSelectionSearchedDelegate;
 
 @interface ExerciseListController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate> {
     NSMutableArray *exerciseData;
+    NSIndexPath *selectedIndex;
 }
+
 
 //PASSED PROPERTIES
 //Query which is passed to the view.
@@ -33,5 +35,24 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectonView;
 //Exercise TableView
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
+@property (nonatomic, assign) BOOL exerciseSelectionMode;
+
+//Array that holds the information regarding which exercises the user selected.
+@property(strong, retain) NSMutableArray *selectedExercises;
+
+//Exercise Seletion Delegate
+@property (assign, nonatomic) id <ExerciseSelectionSearchedDelegate> delegate;
+
+@end
+
+@protocol ExerciseSelectionSearchedDelegate <NSObject>
+
+- (void)selectedExercises:(NSMutableArray*)selectedExercises;
+
+//Optional Methods (not neccesary to be implemented unless needed.
+@optional
+
 
 @end

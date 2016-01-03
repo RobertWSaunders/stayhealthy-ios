@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-08-15.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import "SHDataHandler.h"
@@ -165,10 +165,12 @@
 
 - (void)saveExerciseRecord:(SHExercise *)exercise {
     [exerciseManager saveItem:exercise];
+    
 }
 
 - (void)updateExerciseRecord:(SHExercise *)exercise {
     [exerciseManager updateItem:exercise];
+    
 }
 
 - (NSArray*)fetchExerciseByIdentifier:(NSString *)exerciseIdentifier {
@@ -244,6 +246,10 @@
 }
 
 
+- (NSMutableArray *)getRecentlyViewedWorkouts {
+    return [[workoutManager fetchRecentlyViewedWorkouts] mutableCopy];
+}
+
 #pragma mark - Custom Workout Data Manager Methods
 
 - (void)saveCustomWorkoutRecord:(SHCustomWorkout *)customWorkout {
@@ -257,6 +263,51 @@
 - (SHCustomWorkout *)returnCustomWorkoutByIdentifier:(NSString*)identifier {
     return [customWorkoutManager fetchItemByIdentifier:identifier];
 }
+
+- (void)deleteCustomWorkoutRecord:(SHCustomWorkout *)customWorkout {
+    [customWorkoutManager deleteItemById:customWorkout.workoutID];
+}
+
+- (void)addExerciseToCustomWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise {
+    //if ([self canAddExerciseToWorkout:customWorkout exercise:exercise]) {
+        NSMutableArray *workoutExerciseIDs = [[customWorkout.workoutExerciseIDs componentsSeparatedByString:@","] mutableCopy];
+        NSMutableArray *workoutExerciseTypes = [[customWorkout.exerciseTypes componentsSeparatedByString:@","]     mutableCopy];
+    
+        [workoutExerciseIDs addObject:exercise.exerciseIdentifier];
+        [workoutExerciseTypes addObject:exercise.exerciseType];
+    
+        NSString *newExerciseIdentifiers = [workoutExerciseIDs componentsJoinedByString:@","];
+        NSString *newExerciseTypes = [workoutExerciseTypes componentsJoinedByString:@","];
+    
+        customWorkout.workoutExerciseIDs = newExerciseIdentifiers;
+        customWorkout.exerciseTypes = newExerciseTypes;
+    
+        [self updateCustomWorkoutRecord:customWorkout];
+   // }
+}
+
+- (BOOL)canAddExerciseToWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise {
+    NSMutableArray *workoutExerciseIDs = [[customWorkout.workoutExerciseIDs componentsSeparatedByString:@","] mutableCopy];
+    NSMutableArray *workoutExerciseTypes = [[customWorkout.exerciseTypes componentsSeparatedByString:@","]     mutableCopy];
+    
+    if ([workoutExerciseIDs containsObject:exercise.exerciseIdentifier] && [workoutExerciseTypes containsObject:exercise.exerciseType]) {
+        return NO;
+    }
+    else {
+      return YES;
+    }
+    
+    
+}
+
+- (NSMutableArray*)getLikedCustomWorkouts {
+    return [[customWorkoutManager fetchAllLikedWorkouts] mutableCopy];
+}
+
+- (NSArray*)fetchAllCustomWorkouts {
+    return [customWorkoutManager fetchAllRecords];
+}
+
 
 #pragma mark - User Data Manager Methods
 

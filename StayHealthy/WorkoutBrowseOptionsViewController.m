@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-25.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import "WorkoutBrowseOptionsViewController.h"
@@ -55,7 +55,7 @@
 
 //Returns the height of the cells inside the tableView.
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44.0f;
+    return 50.0f;
 }
 
 //Returns the number of rows that should be displayed in the tableView.
@@ -80,7 +80,7 @@
     
     cell.textLabel.text = [tableViewArray objectAtIndex:indexPath.row];
     cell.textLabel.font = tableViewTitleTextFont;
-    cell.textLabel.textColor = STAYHEALTHY_BLUE;
+    cell.textLabel.textColor = BLUE_COLOR;
     
      [CommonSetUpOperations tableViewSelectionColorSet:cell];
     

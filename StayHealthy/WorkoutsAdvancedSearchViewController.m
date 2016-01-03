@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-25.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import "WorkoutsAdvancedSearchViewController.h"
@@ -25,7 +25,7 @@
     
     //Style the search button.
     //Set the background color of the button.
-    self.searchButton.backgroundColor = STAYHEALTHY_BLUE;
+    self.searchButton.backgroundColor = BLUE_COLOR;
     //Set the text color for the button.
     self.searchButton.titleLabel.textColor = [UIColor whiteColor];
     //Set the text for the button.
@@ -40,8 +40,6 @@
         //Disable the ability for the users to scroll.
         self.workoutSpecificationTableView.scrollEnabled = NO;
     }
-
-    
 }
 
 /*****************************************************/
@@ -125,8 +123,8 @@
         //Stlying the cells.
         cell.textLabel.font = tableViewTitleTextFont;
         cell.detailTextLabel.font = tableViewDetailTextFont;
-        cell.textLabel.textColor = STAYHEALTHY_BLUE;
-        cell.detailTextLabel.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
+        cell.textLabel.textColor = BLUE_COLOR;
+        cell.detailTextLabel.textColor = LIGHT_GRAY_COLOR;
         
         //Set the selection cell.
         [CommonSetUpOperations tableViewSelectionColorSet:cell];
@@ -149,16 +147,16 @@
         
         //Set the cell label.
         cell.cellLabel.text = @"Workout Name";
-        cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:STAYHEALTHY_LIGHTGRAYCOLOR}];
+        cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:LIGHT_GRAY_COLOR}];
         //Set the textfiled delegate to self.
         cell.textField.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         //Stlying the cells.
         cell.cellLabel.font = tableViewTitleTextFont;
-        cell.cellLabel.textColor = STAYHEALTHY_BLUE;
+        cell.cellLabel.textColor = BLUE_COLOR;
         cell.textField.font = tableViewDetailTextFont;
-        cell.textField.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
+        cell.textField.textColor = LIGHT_GRAY_COLOR;
         
         //Return the cell.
         return cell;
@@ -385,7 +383,7 @@
                     //Now create a for loop for the values in the columns.
                     for (int m=0; m<arrayForSelection.count; m++) {
                         //Now input the column and the value for the column into the query.
-                        searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"%@ LIKE '%@'",selectedColumns[k],arrayForSelection[m]]];
+                        searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"%@ LIKE '%%%@%%'",selectedColumns[k],arrayForSelection[m]]];
                         if (m != arrayForSelection.count-1) {
                             searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat:@"OR"]];
                         }
@@ -393,7 +391,12 @@
                 }
                 //Or if it is the last table then just order the resulting exercises by name.
                 if (![selectedName isEqualToString:@""]) {
-                    searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"AND workoutName LIKE '%%%@%%' ORDER BY workoutName COLLATE NOCASE",selectedName]];
+                    if (selectedColumns.count > 0) {
+                        searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"AND workoutName LIKE '%%%@%%' ORDER BY workoutName COLLATE NOCASE",selectedName]];
+                    }
+                    else {
+                        searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"workoutName LIKE '%%%@%%' ORDER BY workoutName COLLATE NOCASE",selectedName]];
+                    }
                 }
                 else {
                     searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:@"ORDER BY workoutName COLLATE NOCASE"];

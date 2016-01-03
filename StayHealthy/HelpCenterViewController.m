@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-16.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import "HelpCenterViewController.h"
@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tabBarController.tabBar.hidden=YES;
     
     self.title = @"Help Center";
     
@@ -77,7 +79,7 @@
      [CommonSetUpOperations tableViewSelectionColorSet:cell];
     
     cell.textLabel.font = tableViewTitleTextFont;
-    cell.textLabel.textColor = STAYHEALTHY_BLUE;
+    cell.textLabel.textColor = BLUE_COLOR;
     
         //Return the cell.
         return cell;
@@ -93,7 +95,7 @@
 //What happens when the user selects a cell in the tableView.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0 && indexPath.section == 1) {
-        [self showEmailScreen:@"StayHealthy Support" email:STAYHEALTHY_SUPPORT_EMAIL];
+        [self showEmailScreen:@"StayHealthy Support" email:SUPPORT_EMAIL];
     }
     else {
         [self performSegueWithIdentifier:@"helpWeb" sender:nil];
@@ -181,7 +183,7 @@
         WebViewViewController *webViewViewController = [[WebViewViewController alloc] init];
         webViewViewController = segue.destinationViewController;
         webViewViewController.titleText = @"FAQ";
-        webViewViewController.url = STAYHEALTHY_FAQ_URL;
+        webViewViewController.url = FAQ_URL;
         webViewViewController.showClose = NO;
     }
 }

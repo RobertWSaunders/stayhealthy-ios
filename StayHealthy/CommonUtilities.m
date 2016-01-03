@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-06-20.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import "CommonUtilities.h"
@@ -369,28 +369,78 @@
     return keyList;
 }
 
++ (void)showCustomActivityIndicator:(UIImageView*)spinnerImage {
+    //Create the first status image and the indicator view
+    spinnerImage.image = [UIImage imageNamed:@"Spinner1.png"];
+    
+    //Add more images which will be used for the animation
+    spinnerImage.animationImages = [NSArray arrayWithObjects:
+                                         [UIImage imageNamed:@"Spinner1.png"],
+                                         [UIImage imageNamed:@"Spinner2.png"],
+                                         [UIImage imageNamed:@"Spinner3.png"],
+                                         [UIImage imageNamed:@"Spinner4.png"],
+                                         [UIImage imageNamed:@"Spinner5.png"],
+                                         [UIImage imageNamed:@"Spinner6.png"],
+                                         [UIImage imageNamed:@"Spinner7.png"],
+                                         [UIImage imageNamed:@"Spinner8.png"],
+                                         nil];
+    
+    spinnerImage.animationDuration = 0.8;
+    
+    //Start the animation
+    [spinnerImage startAnimating];
+    
+    spinnerImage.hidden = NO;
+}
+
 /****************************************/
 #pragma mark - StayHealthy Specific Tools
 /****************************************/
 
 + (NSDictionary *)returnGeneralPlist {
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"StayHealthyGeneral" ofType:@"plist"];
-    return [[NSDictionary alloc] initWithContentsOfFile:plistPath];;
+    return [[NSDictionary alloc] initWithContentsOfFile:plistPath];
 }
 
-+ (NSString *)createExerciseQuery:(NSString *)table muscle:(NSString *)muscle {
-
-    muscle = [self convertMuscleNameToDatabaseStandard:muscle];
-    
-    NSString *query = @"";
-    if (muscle != nil) {
-        query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exercisePrimaryMuscle LIKE '%@' ORDER BY exerciseName COLLATE NOCASE",table,muscle];
++ (NSString *)createExerciseQuery:(NSUInteger)index muscles:(NSArray *)muscleArray {
+    NSString *table;
+     NSString *query = @"";
+    if (index == 0) {
+        table = STRENGTH_DB_TABLENAME;
+    }
+    else if (index == 1){
+        table = STRETCHING_DB_TABLENAME;
     }
     else {
-        query = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY exerciseName COLLATE NOCASE",table];
-        
+        table = WARMUP_DB_TABLENAME;
     }
-    return query;
+    
+    int i = 0;
+    if (muscleArray == nil) {
+            query = [NSString stringWithFormat:@"SELECT * FROM %@",table];
+    }
+    else {
+        
+    for (NSString *muscle in muscleArray) {
+        NSString *mucleInArray = muscle;
+        mucleInArray = [self convertMuscleNameToDatabaseStandard:muscle];
+        if (mucleInArray != nil) {
+            if (i == 0) {
+                 query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exercisePrimaryMuscle LIKE '%@'",table,mucleInArray];
+            }
+            else {
+                query = [query stringByAppendingString:[NSString stringWithFormat:@" UNION ALL SELECT * FROM %@ WHERE exercisePrimaryMuscle LIKE '%@'",table,mucleInArray]];
+            }
+           
+        }
+        i++;
+    }
+    }
+    
+    query = [query stringByAppendingString:@" ORDER BY exerciseName COLLATE NOCASE"];
+    NSLog(@"%@",query);
+    
+   return query;
 }
 
 + (NSString *)createExerciseQueryFromExerciseIds:(NSMutableArray *)exerciseIDs table:(NSString*)table {
@@ -547,10 +597,62 @@
     return exercises;
 }
 
+//Returns an array of SHExercises that are in the workout that is passed.
++ (NSMutableArray*)getCustomWorkoutExercises:(SHCustomWorkout*)workout {
+    
+    //Get the exercises in the workout identifiers.
+    NSArray *exerciseIdentifiers = [workout.workoutExerciseIDs componentsSeparatedByString:@","];
+    
+    NSString *exerciseTypesWithoutSpaces = [workout.exerciseTypes stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    //Get the exercises in the workouts type.
+    NSArray *exerciseTypes = [exerciseTypesWithoutSpaces componentsSeparatedByString:@","];
+    
+    //Reference the platform.
+    SHDataHandler *dataHandler = [SHDataHandler getInstance];
+    
+    //Initialize a array that will be retured.
+    NSMutableArray *exercises = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < exerciseIdentifiers.count; i++) {
+        //Create a new exercise.
+        SHExercise *exercise = [[SHExercise alloc] init];
+        NSArray *tempExerciseArray = [[NSArray alloc] init];
+        
+        if ([[exerciseTypes objectAtIndex:i] isEqualToString:@"stretching"]) {
+            tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:stretching exerciseIdentifier:exerciseIdentifiers[i]]];
+        }
+        else if ([[exerciseTypes objectAtIndex:i] isEqualToString:@"strength"]) {
+            tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:strength exerciseIdentifier:exerciseIdentifiers[i]]];
+        }
+        else {
+            tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:warmup exerciseIdentifier:exerciseIdentifiers[i]]];
+        }
+        
+        if (tempExerciseArray.count > 0) {
+            //Get the exercise from the searched statement.
+            exercise = [tempExerciseArray objectAtIndex:0];
+            //Add the exercises to the array.
+            [exercises addObject:exercise];
+        }
+    }
+    
+    return exercises;
+}
+
+
 //Returns the count of exercises in a workout.
 + (NSUInteger)numExercisesInWorkout:(SHWorkout*)workout {
     //Get the exercises in the workout identifiers.
     NSArray *exerciseIdentifiers = [workout.workoutExerciseIdentifiers componentsSeparatedByString:@","];
+    //Count the list which is equal to the number of exercises.
+    return [exerciseIdentifiers count];
+}
+
+//Returns the count of exercises in a workout.
++ (NSUInteger)numExercisesInCustomWorkout:(SHCustomWorkout*)workout {
+    //Get the exercises in the workout identifiers.
+    NSArray *exerciseIdentifiers = [workout.workoutExerciseIDs componentsSeparatedByString:@","];
     //Count the list which is equal to the number of exercises.
     return [exerciseIdentifiers count];
 }
@@ -570,6 +672,25 @@
             break;
     }
     return nil;
+}
+
++ (BOOL)exerciseInArray:(NSMutableArray*)exerciseArray exercise:(SHExercise*)exercise {
+    for (SHExercise *exerciseInArray in exerciseArray) {
+        if ([exerciseInArray.exerciseType isEqualToString:exercise.exerciseType] && [exerciseInArray.exerciseIdentifier isEqualToString:exercise.exerciseIdentifier]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
++ (NSMutableArray*)deleteSelectedExercise:(NSMutableArray*)exerciseArray exercise:(SHExercise*)exercise {
+    for (SHExercise *exerciseInArray in exerciseArray) {
+        if ([exerciseInArray.exerciseType isEqualToString:exercise.exerciseType] && [exerciseInArray.exerciseIdentifier isEqualToString:exercise.exerciseIdentifier]) {
+            [exerciseArray removeObject:exerciseInArray];
+            return exerciseArray;
+        }
+    }
+    return exerciseArray;
 }
 
 @end

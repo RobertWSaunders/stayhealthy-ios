@@ -25,6 +25,7 @@
     //Alerts
     #import "TSMessage.h"
     #import "SIAlertView.h"
+#import "LGAlertView.h"
 
     #import "CommonSetUpOperations.h"
     #import "CommonUtilities.h"

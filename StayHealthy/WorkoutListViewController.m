@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-25.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import "WorkoutListViewController.h"
@@ -25,14 +25,19 @@
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];
     
     //Get the exercise data.
-    workoutData = [[SHDataHandler getInstance] performWorkoutStatement:self.workoutQuery];
+    if (self.workoutDataSent == nil) {
+         workoutData = [[SHDataHandler getInstance] performWorkoutStatement:self.workoutQuery];
+    }
+    else {
+        workoutData = self.workoutDataSent;
+    }
+   
     
     //If the exercise data is nothing then show the message declaring that.
     if (workoutData.count == 0)
         [CommonSetUpOperations performTSMessage:@"No Workouts Were Found" message:nil viewController:self canBeDismissedByUser:YES duration:60];
     
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:workoutFavNotification object:nil];
+    [self setNotificationObservers];
     
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -90,7 +95,7 @@
     if ([workout.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         cell.likeWorkoutImage.hidden = NO;
         [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-        cell.likeWorkoutImage.tintColor = STAYHEALTHY_BLUE;
+        cell.likeWorkoutImage.tintColor = BLUE_COLOR;
     }
     else {
         cell.likeWorkoutImage.hidden = YES;
@@ -154,6 +159,24 @@
 -(void)viewWillDisappear:(BOOL)animated {
     [TSMessage dismissActiveNotification];
 }
+
+//Sets the observers for the notifications that need to be observed for.
+- (void)setNotificationObservers {
+    //Observe for changes. All just reload the recently
+    //iCloud update notification.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:CLOUD_UPDATE_NOTIFICATION object:nil];
+    //Changes in a exercise record, i.e. changes in lastViewed.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:CUSTOM_WORKOUT_DELETE_NOTIFICATION object:nil];
+    //Changes in a exercise favorite.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:CUSTOM_WORKOUT_SAVE_NOTIFICATION object:nil];
+    //Changes in a exercise favorite.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:CUSTOM_WORKOUT_UPDATE_NOTIFICATION object:nil];
+    //Changes in a exercise record, i.e. changes in lastViewed.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:WORKOUT_SAVE_NOTIFICATION object:nil];
+    //Changes in a exercise favorite.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:WORKOUT_UPDATE_NOTIFICATION object:nil];
+}
+
 
 
 @end

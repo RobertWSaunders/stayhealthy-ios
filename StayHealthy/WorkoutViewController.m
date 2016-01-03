@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-25.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import "WorkoutViewController.h"
@@ -25,14 +25,9 @@
     
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:exerciseFavNotification object:nil];
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /*******************************************************/
 #pragma mark - TableView Delegate and Datasource Methods
@@ -87,7 +82,7 @@
         if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
             cell.likeExerciseImage.hidden = NO;
             [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-            cell.likeExerciseImage.tintColor = STAYHEALTHY_BLUE;
+            cell.likeExerciseImage.tintColor = BLUE_COLOR;
         }
         else {
             cell.likeExerciseImage.hidden = YES;
@@ -137,6 +132,7 @@ if ([segue.identifier isEqualToString:@"exerciseDetail"]) {
         destViewController.exerciseToDisplay = exercise;
         destViewController.viewTitle = exercise.exerciseName;
         destViewController.modalView = NO;
+        destViewController.showActionIcon = YES;
     }
 }
 
@@ -188,13 +184,12 @@ if ([segue.identifier isEqualToString:@"exerciseDetail"]) {
                               }
                              
                               
-                              [self.navigationController popToRootViewControllerAnimated:NO];
+                              [self.navigationController popViewControllerAnimated:YES];
                           }];
     [alertView addButtonWithTitle:@"Done and don't record."
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alertView) {
-                              [self.navigationController popToRootViewControllerAnimated:NO];
-                              //[self performSegueWithIdentifier:@"finish" sender:nil];
+                              [self.navigationController popViewControllerAnimated:YES];
                           }];
     [alertView addButtonWithTitle:@"Cancel"
                              type:SIAlertViewButtonTypeCancel

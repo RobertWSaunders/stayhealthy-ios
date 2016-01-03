@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-07-05.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import "ExerciseAdvancedSearchViewController.h"
@@ -31,13 +31,13 @@
     
     //Style the search button.
     //Set the background color of the button.
-    self.searchButton.backgroundColor = STAYHEALTHY_BLUE;
+    self.searchButton.backgroundColor = BLUE_COLOR;
     //Set the text color for the button.
     self.searchButton.titleLabel.textColor = [UIColor whiteColor];
     //Set the text for the button.
     self.searchButton.titleLabel.text = @"Search";
     
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_ADVANCED_SEARCH  viewController:self message:@"Here you can choose the things you want in an exercise and I'll try my best to find it for you! Sometimes I can't find anything though, I'm really sorry about that, but I promise I'll look harder next time!"];
+    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_FIND_EXERCISE_ADVANCED_SEARCH  viewController:self message:@"Here you can choose the things you want in an exercise and I'll try my best to find it for you! Sometimes I can't find anything though, I'm really sorry about that, but I promise I'll look harder next time!"];
     
 }
 
@@ -117,8 +117,8 @@
         //Stlying the cells.
         cell.textLabel.font = tableViewTitleTextFont;
         cell.detailTextLabel.font = tableViewDetailTextFont;
-        cell.textLabel.textColor = STAYHEALTHY_BLUE;
-        cell.detailTextLabel.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
+        cell.textLabel.textColor = BLUE_COLOR;
+        cell.detailTextLabel.textColor = LIGHT_GRAY_COLOR;
         
         //Set the selection cell.
         [CommonSetUpOperations tableViewSelectionColorSet:cell];
@@ -141,16 +141,16 @@
         
         //Set the cell label.
         cell.cellLabel.text = @"Exercise Name";
-        cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:STAYHEALTHY_LIGHTGRAYCOLOR}];
+        cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:LIGHT_GRAY_COLOR}];
         //Set the textfiled delegate to self.
         cell.textField.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         //Stlying the cells.
         cell.cellLabel.font = tableViewTitleTextFont;
-        cell.cellLabel.textColor = STAYHEALTHY_BLUE;
+        cell.cellLabel.textColor = BLUE_COLOR;
         cell.textField.font = tableViewDetailTextFont;
-        cell.textField.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
+        cell.textField.textColor = LIGHT_GRAY_COLOR;
         
         //Return the cell.
         return cell;
@@ -241,21 +241,28 @@
                         //Now create a for loop for the values in the columns.
                         for (int m=0; m<arrayForSelection.count; m++) {
                             //Now input the column and the value for the column into the query.
-                            searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"%@ LIKE '%@'",selectedColumns[k],arrayForSelection[m]]];
+                            searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"%@ LIKE '%%%@%%'",selectedColumns[k],arrayForSelection[m]]];
                             if (m != arrayForSelection.count-1) {
                                 searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat:@"OR"]];
                             }
                         }
                     }
                 //Now we have completed the SELECT statment from this table, add a UNION ALL for the next table.
-                if (i != selectedExerciseTypes.count-1) {
+                if (i != selectedExerciseTypes.count) {
                     if (![selectedName isEqualToString:@""]) {
-                        searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"AND exerciseName LIKE '%%%@%%'",selectedName]];
+                        if (selectedColumns.count > 0) {
+                            searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"AND exerciseName LIKE '%%%@%%'",selectedName]];
+                        }
+                        else {
+                            searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@" exerciseName LIKE '%%%@%%'",selectedName]];
+                        }
                     }
-                    searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:@"UNION ALL"];
-                }
-                else {
-                    searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:@"ORDER BY exerciseName COLLATE NOCASE"];
+                    if (i != selectedExerciseTypes.count-1) {
+                        searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:@"UNION ALL"];
+                    }
+                    else {
+                        searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:@"ORDER BY exerciseName COLLATE NOCASE"];
+                    }
                 }
             }
                 NSLog(@"*****************************************");
@@ -316,7 +323,7 @@
     }
     //Selected exercise types array.
     if ([exerciseTypeCell.detailTextLabel.text isEqualToString:@"Any"]) {
-        NSArray *allTableNames = @[STRENGTH_EXERCISES_TABLE_NAME,STRETCHING_EXERCISES_TABLE_NAME,WARMUP_EXERCISES_TABLE_NAME];
+        NSArray *allTableNames = @[STRENGTH_DB_TABLENAME,STRETCHING_DB_TABLENAME,WARMUP_DB_TABLENAME];
         [selectedExerciseTypes addObjectsFromArray:allTableNames];
     }
     else {
@@ -324,13 +331,13 @@
         convertExerciseTypesToTableNames = [exerciseTypeCell.detailTextLabel.text componentsSeparatedByString:@", "];
         for (int i = 0; i < convertExerciseTypesToTableNames.count; i++) {
             if ([[convertExerciseTypesToTableNames objectAtIndex:i] isEqualToString:@"Strength"]) {
-                [selectedExerciseTypes addObject:STRENGTH_EXERCISES_TABLE_NAME];
+                [selectedExerciseTypes addObject:STRENGTH_DB_TABLENAME];
             }
             else if ([[convertExerciseTypesToTableNames objectAtIndex:i] isEqualToString:@"Stretching"]) {
-                [selectedExerciseTypes addObject:STRETCHING_EXERCISES_TABLE_NAME];
+                [selectedExerciseTypes addObject:STRETCHING_DB_TABLENAME];
             }
             else {
-                [selectedExerciseTypes addObject:WARMUP_EXERCISES_TABLE_NAME];
+                [selectedExerciseTypes addObject:WARMUP_DB_TABLENAME];
             }
         }
     }
@@ -406,6 +413,10 @@
         exerciseSearchViewController = segue.destinationViewController;
         exerciseSearchViewController.exerciseQuery = searchQuery;
         exerciseSearchViewController.viewTitle =  @"Custom Search";
+        if (self.exerciseSelectionMode) {
+            exerciseSearchViewController.exerciseSelectionMode = YES;
+            exerciseSearchViewController.selectedExercises = self.selectedExercises;
+        }
     }
 }
 
@@ -442,6 +453,9 @@
 
 //Dismiss the view controller.
 - (IBAction)dismissButtonPressed:(id)sender {
+    if (self.exerciseSelectionMode) {
+        [self.delegate advancedSelectedExercises:self.selectedExercises];
+    }
     //Dismiss the modal popup with an animation.
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -495,6 +509,10 @@
 - (NSString*)convertSelectionsToStringWithSpace:(NSMutableArray*)convertSelectionsToString {
     //Creates a string with the objects of the array seperated by a comma.
     return [convertSelectionsToString componentsJoinedByString:@", "];
+}
+
+- (void)selectedExercises:(NSMutableArray*)selectedExercises {
+    self.selectedExercises = selectedExercises;
 }
 
 @end

@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-02.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import "WalkThoughOneViewController.h"
@@ -17,8 +17,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.navigationBarHidden = YES;
     tableViewItems = @[@"Terms of Use",@"Privacy Policy"];
     self.tableView.scrollEnabled = NO;
+    
+    if (IS_IPHONE_6) {
+        self.topDistanceConstraint.constant = 100;
+    }
+    else if (IS_IPHONE_6P) {
+        self.topDistanceConstraint.constant = 140;
+    }
+    else if (IS_IPHONE_5) {
+         self.topDistanceConstraint.constant = 62;
+    }
+    else {
+        self.topDistanceConstraint.constant = 31;
+    }
 }
 
 
@@ -55,7 +69,7 @@
 
 //What happens when the user selects a cell in the tableView.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    selectedIndexPath = indexPath;
         [self performSegueWithIdentifier:@"toWebView" sender:nil];
 
     
@@ -78,14 +92,12 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    
     UINavigationController *navController = segue.destinationViewController;
     
     WebViewViewController *webViewViewController = [[WebViewViewController alloc] init];
     webViewViewController = navController.viewControllers[0];
     
-    if (indexPath.row == 0) {
+    if (selectedIndexPath.row == 0) {
         webViewViewController.titleText = @"Terms of Use";
         webViewViewController.url = TERMS_URL;
         webViewViewController.showClose = YES;
@@ -106,7 +118,7 @@
 - (IBAction)doneTapped:(id)sender {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_FIRST_LAUNCH];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
+    /*
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
                                                     UIUserNotificationTypeBadge |
                                                     UIUserNotificationTypeSound);
@@ -114,8 +126,9 @@
                                                                              categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
-    
+    */
     [self dismissViewControllerAnimated:YES completion:nil];
+
     
 }
 @end

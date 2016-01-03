@@ -1,25 +1,31 @@
-/**
- `ExerciseSelectionViewController` is responsible for allowing the user to find exercises. Users are able to select exercises by specific muscles, recently viewed, or they can be directed to the advanced search view controller to perform an advanced search. Users can select exercises of three types, warmup, strength or stretching.
- */
+//
+//  ExerciseSelectionViewController.h
+//  StayHealthy
+//
+//  Created by Robert Saunders on 2015-07-05.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
+//
 
-// Robert Saunders
-// 23/08/15
-// 1.0.0
+@protocol ExerciseSelectionDelegate;
 
 #import <UIKit/UIKit.h>
 #import "ExerciseListController.h"
-#import "MGSwipeButton.h"
 #import "ExerciseTableViewCell.h"
+#import "CustomWorkoutSelectionViewController.h"
+#import "ExerciseAdvancedSearchViewController.h"
+#import "BodyViewCollectionViewCell.h"
+#import "FavoritesViewController.h"
 
-@interface ExerciseSelectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MGSwipeTableCellDelegate> {
+@interface ExerciseSelectionViewController : UIViewController <FavoritesExerciseSelection, UITableViewDataSource, UITableViewDelegate, ExerciseSelectionSearchedDelegate, MGSwipeTableCellDelegate, AdvancedExerciseSelectionDelegate, UICollectionViewDataSource, UICollectionViewDelegate> {
     
+    NSArray *collectionViewBodyZones;
+    NSArray *collectionViewBodyZonesMuscles;
+    NSArray *collectionViewBodyZonesImages;
     
-    __weak IBOutlet UISegmentedControl *segmentedControl;
+    IBOutlet UISegmentedControl *segmentedControl;
     
     NSMutableDictionary *dataSource;
-    
     NSArray *sections;
-    
     //Array filled with all the front body muscles.
     NSArray *frontBodyMuscles;
     //Array filled with all the front body muscle scientific names.
@@ -28,65 +34,47 @@
     NSArray *backBodyMuscles;
     //Array filled with all the back body muscle scientific names.
     NSArray *backBodyMusclesScientificNames;
-    
     //Array filled with all the recenlty viewed exercises.
     NSMutableArray *recenltyViewedExercises;
-    
     //Keeps track of the index the user selected in the alert.
     NSUInteger alertIndex;
     //Keeps track of the indexPath of the cell the user selected in the muscleSelectionTableView.
    // NSIndexPath *selectedTableViewIndex;
-    
     //Boolean to track whether the user pressed on the warmup icon or not.
     BOOL warmupPressed;
-    
+    BOOL bodyZonePressed;
     BOOL checkIndex;
-    
     exerciseTypes typeSwiped;
+    NSMutableArray *selectedWorkoutExercises;
+    NSIndexPath *selectedIndex;
+    NSIndexPath *selectedCollectionViewIndex;
 }
-
-/**
- -------------
- @name Properties
- -------------
- */
-
-
+- (IBAction)favListPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UICollectionView *bodyZoneCollectionView;
+@property (weak, nonatomic) IBOutlet UIView *bodyZoneView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarTopRecentlyViewed;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarTopMuscleSelection;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (strong, nonatomic) NSIndexPath *selectedTableViewIndex;
-
-/**
- View that holds `recentlyViewedTableView`.
- */
 @property (weak, nonatomic) IBOutlet UIView *recentlyViewedView;
-/**
- View that holds `muscleSelectionTableView`.
- */
 @property (weak, nonatomic) IBOutlet UIView *muscleSelectionView;
-/**
- TableView that holds the recenlty viewed exercises.
- */
 @property (weak, nonatomic) IBOutlet UITableView *recentlyViewedTableView;
-/**
- TableView that holds the muscles the user can choose from to find exercises.
- */
 @property (weak, nonatomic) IBOutlet UITableView *muscleSelectionTableView;
+@property (nonatomic, assign) BOOL exerciseSelectionMode;
+@property(strong, retain) NSMutableArray *selectedExercises;
 
-/**
- ----------
-@name Actions
- ----------
- */
+- (IBAction)searchToolbarPressed:(id)sender;
 
-/**
- Gets called when the user changes the selected segement in the segemented control. This segmented control hides the `muscleSelectionView` and `recentlyViewedView`.
- @param sender Object which sent the message to that selector.
- */
 - (IBAction)segmentValueChanged:(id)sender;
-
-/**
- Gets called when the user presses the warmup icon in the navigation bar.
- @param sender Object which sent the message to that selector.
- */
 - (IBAction)warmupButtonPressed:(id)sender;
+
+//Exercise Seletion Delegate
+@property (assign, nonatomic) id <ExerciseSelectionDelegate> delegate;
+
+@end
+
+@protocol ExerciseSelectionDelegate <NSObject>
+
+- (void)selectedExercises:(NSMutableArray*)selectedExercises;
 
 @end

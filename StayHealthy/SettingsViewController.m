@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Student on 1/5/2014.
-//  Copyright (c) 2014 Mark Saunders. All rights reserved.
+//  Copyright (c) 2014 Robert Saunders. All rights reserved.
 //
 
 #import "SettingsViewController.h"
@@ -22,7 +22,7 @@
 //What happens right before the view loads.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+   
     //Fills the arrays for the sections in the tableView.
     [self setTableViewData];
     
@@ -100,7 +100,7 @@
     }
     
     //Set the text color and the font for the cell textLabels.
-    cell.textLabel.textColor = STAYHEALTHY_BLUE;
+    cell.textLabel.textColor = BLUE_COLOR;
     cell.textLabel.font = tableViewTitleTextFont;
     
     //Set the tableView selection color.
@@ -172,9 +172,6 @@
     else if (indexPath.section == 2 || (indexPath.section == 3 && indexPath.row != 2)) {
         [self performSegueWithIdentifier:@"toWebView" sender:nil];
     }
-    else if (indexPath.section == 3 && indexPath.row == 2) {
-        [self performSegueWithIdentifier:@"acknowledgments" sender:nil];
-    }
     
     //Deselect the tableView cell once the user has selected.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -195,8 +192,8 @@
     connectSettings = [NSArray arrayWithObjects:@"Facebook",@"Twitter",@"Tumblr", nil];
     connectSettingsImages = [NSArray arrayWithObjects:@"Facebook.png",@"Twitter.png",@"Tumblr.png", nil];
     
-    legalSettings = [NSArray arrayWithObjects:@"Terms of Use", @"Privacy Policy", @"Acknowledgments", nil];
-    legalSettingsImages = [NSArray arrayWithObjects:@"TermsUse.png", @"PrivacyPolicy.png", @"Acknowledgments.png", nil];
+    legalSettings = [NSArray arrayWithObjects:@"Terms of Use", @"Privacy Policy", nil];
+    legalSettingsImages = [NSArray arrayWithObjects:@"TermsUse.png", @"PrivacyPolicy.png", nil];
 }
 
 

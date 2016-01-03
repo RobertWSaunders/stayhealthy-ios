@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-25.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -15,6 +15,9 @@
     
 }
 @property (strong, nonatomic) SHWorkout *workoutShown;
+@property (strong, nonatomic) SHCustomWorkout *customWorkoutToDisplay;
+@property (nonatomic, assign) BOOL customWorkoutMode;
+
 @property (strong, nonatomic) NSString *viewTitle;
 @property (strong, nonatomic) NSArray *workoutExercises;
 @property (weak, nonatomic) IBOutlet MZTimerLabel *timerLabel;

@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-22.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -11,11 +11,15 @@
 #import "WorkoutsAdvancedSearchViewController.h"
 #import "WorkoutCreateViewController.h"
 #import "WorkoutBrowseOptionsViewController.h"
+#import "WorkoutDetailViewController.h"
 
 @interface WorkoutSelectionViewController : UIViewController <UITableViewDataSource,UITableViewDelegate> {
     NSArray *browseOptions;
     NSArray *browseOptionsImages;
-    NSArray *customWorkouts;
+    NSMutableArray *customWorkouts;
+    NSIndexPath *selectedIndexPath;
+    NSIndexPath *browseIndexPath;
+    
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *yourWorkoutsTableView;

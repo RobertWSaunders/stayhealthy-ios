@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-08-23.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import "SHCustomWorkout+CustomWorkout.h"
@@ -27,6 +27,7 @@
     [customWorkout setValue:SHcustomWorkout.lastDateCompleted forKey:@"lastDateCompleted"];
     [customWorkout setValue:SHcustomWorkout.dateModified forKey:@"dateModified"];
     [customWorkout setValue:SHcustomWorkout.dateCreated forKey:@"dateCreated"];
+    [customWorkout setValue:SHcustomWorkout.workoutEquipment forKey:@"workoutEquipment"];
 }
 
 
@@ -47,6 +48,7 @@
     SHcustomWorkout.dateCreated = customWorkout.dateCreated;
     SHcustomWorkout.dateModified = customWorkout.dateModified;
     SHcustomWorkout.exerciseTypes = customWorkout.exerciseTypes;
+    SHcustomWorkout.workoutEquipment = customWorkout.workoutEquipment;
 }
 
 @end

@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-16.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import "FeedbackCenterViewController.h"
@@ -17,10 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tabBarController.tabBar.hidden=YES;
+    
     self.title = @"Feedback Center";
     
-    feedbackItems = @[@"Email Feedback"];
-    feedbackItemsImages = @[@"EmailFeedback.png"];
+    feedbackItems = @[@"Email Feedback",@"Rate StayHealthy"];
+    feedbackItemsImages = @[@"EmailFeedback.png",@"Rate.png"];
     
     self.feedbackCenterTableView.scrollEnabled = NO;
     
@@ -45,12 +47,12 @@
 
 //Returns the number of rows that should be displayed in the tableView.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [feedbackItems count];
+    return 1;
 }
 
 //Returns the number of sections that should be displayed in the tableView.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 //Configures the cells at a specific indexPath.
@@ -62,10 +64,17 @@
     //Create reference to the cell.
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:muscleSelectionCellIdentifier];
     
-    cell.textLabel.text = [feedbackItems objectAtIndex:indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:[feedbackItemsImages objectAtIndex:indexPath.row]];
+    if (indexPath.section == 0) {
+        cell.textLabel.text = [feedbackItems objectAtIndex:indexPath.row];
+        cell.imageView.image = [UIImage imageNamed:[feedbackItemsImages objectAtIndex:indexPath.row]];
+    }
+    else {
+        cell.textLabel.text = [feedbackItems objectAtIndex:indexPath.row+1];
+        cell.imageView.image = [UIImage imageNamed:[feedbackItemsImages objectAtIndex:indexPath.row+1]];
+    }
+    
     cell.textLabel.font = tableViewTitleTextFont;
-    cell.textLabel.textColor = STAYHEALTHY_BLUE;
+    cell.textLabel.textColor = BLUE_COLOR;
     
      [CommonSetUpOperations tableViewSelectionColorSet:cell];
     
@@ -81,7 +90,13 @@
 
 //What happens when the user selects a cell in the tableView.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self showEmailScreen:@"StayHealthy Feedback" email:STAYHEALTHY_FEEDBACK_EMAIL];
+    if (indexPath.section == 0) {
+        [self showEmailScreen:@"StayHealthy Feedback" email:FEEDBACK_EMAIL];
+    }
+    else {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:
+                                                    @"itms-apps://geo.itunes.apple.com/ca/app/stayhealthy-fitness/id806400769?mt=8"]];
+    }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -89,7 +104,13 @@
 //Returns the title for footers in the tableView.
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
 
-        return @"Your feedback is what makes StayHealthy better. Get in contact with us to tell us about your experience using our app. Feel free to tell us about problems, features you think would be cool, design thoughts and pretty much anything else. We really love connecting with our users and learning their needs to make the user experience better. Thank you so much in advance and we will be sure to respond back to you as soon as we possibly can!";
+    if (section == 0) {
+         return @"Your feedback is what makes StayHealthy better. Get in contact with us to tell us about your experience using our app. Feel free to tell us about problems, features you think would be cool, design thoughts and pretty much anything else. We really love connecting with our users and learning their needs to make the user experience better. Thank you so much in advance and we will be sure to respond back to you as soon as we possibly can!";
+    }
+    else {
+        return @"Giving us ratings helps us grow and motivates us to be better. We would love for you to take a second to give us a review.";
+    }
+    
 }
 
 

@@ -33,9 +33,18 @@
 		3FE100931863CC0100C53D76 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE100921863CC0100C53D76 /* QuartzCore.framework */; };
 		3FE103D3186618F200C53D76 /* ExerciseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE103D2186618F200C53D76 /* ExerciseDetailViewController.m */; };
 		3FE41E431ABE0644007522AB /* advancedOptionsSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE41E421ABE0644007522AB /* advancedOptionsSelect.m */; };
-		3FE8069F18F24442006A0993 /* WorkoutViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE8069E18F24442006A0993 /* WorkoutViewController1.m */; };
 		3FE95E24187A5DB0005DD13D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE95E23187A5DB0005DD13D /* SettingsViewController.m */; };
 		3FF9DDA11853BAEC0083A499 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF9DDA01853BAEC0083A499 /* CoreText.framework */; };
+		EB14B86A1C336314009FF44D /* LGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB14B85C1C336314009FF44D /* LGAlertView.m */; };
+		EB14B86B1C336314009FF44D /* LGAlertViewButtonProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EB14B85E1C336314009FF44D /* LGAlertViewButtonProperties.m */; };
+		EB14B86C1C336314009FF44D /* LGAlertViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB14B8601C336314009FF44D /* LGAlertViewCell.m */; };
+		EB14B86D1C336314009FF44D /* LGAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB14B8621C336314009FF44D /* LGAlertViewController.m */; };
+		EB14B86E1C336314009FF44D /* LGAlertViewTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EB14B8651C336314009FF44D /* LGAlertViewTextField.m */; };
+		EB14B86F1C336314009FF44D /* LGAlertViewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = EB14B8671C336314009FF44D /* LGAlertViewWindow.m */; };
+		EB14B8701C336314009FF44D /* UIWindow+LGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB14B8691C336314009FF44D /* UIWindow+LGAlertView.m */; };
+		EB18FDD91C35712E0057D8B0 /* BodyViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB18FDD81C35712E0057D8B0 /* BodyViewCollectionViewCell.m */; };
+		EB18FDDC1C37025D0057D8B0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB18FDDA1C37025C0057D8B0 /* Bolts.framework */; };
+		EB18FDDD1C37025D0057D8B0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB18FDDB1C37025D0057D8B0 /* Parse.framework */; };
 		EB215A341BD895DB00A0765A /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EB215A311BD895DB00A0765A /* MGSwipeButton.m */; };
 		EB215A351BD895DB00A0765A /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB215A331BD895DB00A0765A /* MGSwipeTableCell.m */; };
 		EB2C4A5B1B89F531005D183A /* CustomWorkout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A5A1B89F531005D183A /* CustomWorkout.m */; };
@@ -46,7 +55,6 @@
 		EB2C4A6A1B89F798005D183A /* CustomWorkoutDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A691B89F798005D183A /* CustomWorkoutDataManager.m */; };
 		EB2C4A6D1B89F8DC005D183A /* SHWorkout+Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A6C1B89F8DC005D183A /* SHWorkout+Workout.m */; };
 		EB2C4A701B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A6F1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m */; };
-		EB3B9E231BE8022500BCEF28 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E221BE8022500BCEF28 /* StoreKit.framework */; };
 		EB3B9E251BE8023600BCEF28 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E241BE8023600BCEF28 /* libz.tbd */; };
 		EB3B9E271BE8024300BCEF28 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E261BE8024300BCEF28 /* libsqlite3.tbd */; };
 		EB4702921C063DD800732BC9 /* WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4702911C063DD800732BC9 /* WorkoutListViewController.m */; };
@@ -84,7 +92,6 @@
 		EB52EFF31BCAEFCF00F5D7CA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52EFF21BCAEFCF00F5D7CA /* Reachability.m */; };
 		EB52EFF51BCAEFDF00F5D7CA /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFF41BCAEFDF00F5D7CA /* SIAlertView.bundle */; };
 		EB575AD51BEC38EC00A1C798 /* VersionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB575AD41BEC38EC00A1C798 /* VersionHistoryViewController.m */; };
-		EB575AD81BEC391000A1C798 /* AcknowledgmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB575AD71BEC391000A1C798 /* AcknowledgmentsViewController.m */; };
 		EB63EF381B4B3FE200EF35A3 /* Main_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB63EF361B4B3FE200EF35A3 /* Main_Storyboard.storyboard */; };
 		EB63EF3B1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF3A1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m */; };
 		EB63EF9C1B4B5FA400EF35A3 /* TextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF9B1B4B5FA400EF35A3 /* TextFieldTableViewCell.m */; };
@@ -97,7 +104,37 @@
 		EB89979E1B7C3DE100904984 /* GlobalDefinitions.h in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF981B4B442B00EF35A3 /* GlobalDefinitions.h */; };
 		EB8ACF8A1B76DAD0003E91A6 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8ACF891B76DAD0003E91A6 /* Exercise.m */; };
 		EB8AF5551C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8AF5541C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m */; };
-		EB9CF7011B52AA00006E2984 /* PreferencesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9CF7001B52AA00006E2984 /* PreferencesTableViewController.m */; };
+		EB9CF7011B52AA00006E2984 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9CF7001B52AA00006E2984 /* PreferencesViewController.m */; };
+		EBA9B93C1C2C3DB7002C33B0 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = EBA9B8F01C2C3DB7002C33B0 /* .gitkeep */; };
+		EBA9B93D1C2C3DB7002C33B0 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = EBA9B8F21C2C3DB7002C33B0 /* .gitkeep */; };
+		EBA9B93E1C2C3DB7002C33B0 /* LKAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B8F61C2C3DB7002C33B0 /* LKAnalytics.m */; };
+		EBA9B93F1C2C3DB7002C33B0 /* LKAppUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B8F81C2C3DB7002C33B0 /* LKAppUser.m */; };
+		EBA9B9401C2C3DB7002C33B0 /* LKBundleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B8FB1C2C3DB7002C33B0 /* LKBundleInfo.m */; };
+		EBA9B9411C2C3DB7002C33B0 /* LKBundlesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B8FD1C2C3DB7002C33B0 /* LKBundlesManager.m */; };
+		EBA9B9421C2C3DB7002C33B0 /* LKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9001C2C3DB7002C33B0 /* LKConfig.m */; };
+		EBA9B9431C2C3DB7002C33B0 /* LaunchKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9021C2C3DB7002C33B0 /* LaunchKit.m */; };
+		EBA9B9441C2C3DB7002C33B0 /* LKAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9051C2C3DB7002C33B0 /* LKAPIClient.m */; };
+		EBA9B9451C2C3DB7002C33B0 /* LKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9071C2C3DB7002C33B0 /* LKLog.m */; };
+		EBA9B9461C2C3DB7002C33B0 /* LKTrackOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9091C2C3DB7002C33B0 /* LKTrackOperation.m */; };
+		EBA9B9471C2C3DB7002C33B0 /* LKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B90B1C2C3DB7002C33B0 /* LKUtils.m */; };
+		EBA9B9481C2C3DB7002C33B0 /* NSDictionary+LKFormEncoded.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B90D1C2C3DB7002C33B0 /* NSDictionary+LKFormEncoded.m */; };
+		EBA9B9491C2C3DB7002C33B0 /* NSString+LKURLEncoded.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B90F1C2C3DB7002C33B0 /* NSString+LKURLEncoded.m */; };
+		EBA9B94A1C2C3DB7002C33B0 /* LK_SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9131C2C3DB7002C33B0 /* LK_SSZipArchive.m */; };
+		EBA9B94B1C2C3DB7002C33B0 /* lk_ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9161C2C3DB7002C33B0 /* lk_ioapi.c */; };
+		EBA9B94C1C2C3DB7002C33B0 /* lk_mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9181C2C3DB7002C33B0 /* lk_mztools.c */; };
+		EBA9B94D1C2C3DB7002C33B0 /* lk_unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B91A1C2C3DB7002C33B0 /* lk_unzip.c */; };
+		EBA9B94E1C2C3DB7002C33B0 /* lk_zip.c in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B91C1C2C3DB7002C33B0 /* lk_zip.c */; };
+		EBA9B94F1C2C3DB7002C33B0 /* LKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9211C2C3DB7002C33B0 /* LKButton.m */; };
+		EBA9B9501C2C3DB7002C33B0 /* LKFadeCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9231C2C3DB7002C33B0 /* LKFadeCustomSegue.m */; };
+		EBA9B9511C2C3DB7002C33B0 /* LKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9251C2C3DB7002C33B0 /* LKImageView.m */; };
+		EBA9B9521C2C3DB7002C33B0 /* LKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9271C2C3DB7002C33B0 /* LKNavigationController.m */; };
+		EBA9B9531C2C3DB7002C33B0 /* LKPopCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9291C2C3DB7002C33B0 /* LKPopCustomSegue.m */; };
+		EBA9B9541C2C3DB7002C33B0 /* LKPushCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B92B1C2C3DB7002C33B0 /* LKPushCustomSegue.m */; };
+		EBA9B9551C2C3DB7002C33B0 /* LKSimpleStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B92D1C2C3DB7002C33B0 /* LKSimpleStackView.m */; };
+		EBA9B9561C2C3DB7002C33B0 /* LKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B92F1C2C3DB7002C33B0 /* LKViewController.m */; };
+		EBA9B9571C2C3DB7002C33B0 /* UIView+LKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9341C2C3DB7002C33B0 /* UIView+LKAdditions.m */; };
+		EBA9B9581C2C3DB7002C33B0 /* LKUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9361C2C3DB7002C33B0 /* LKUIManager.m */; };
+		EBA9B9591C2C3DB7002C33B0 /* LKCardPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9B9391C2C3DB7002C33B0 /* LKCardPresentationController.m */; };
 		EBB432DA1B549FEC001B2D40 /* ExerciseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB432D91B549FEC001B2D40 /* ExerciseTableViewCell.m */; };
 		EBB8C9701BF90ECA00347B24 /* ExerciseSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C96F1BF90ECA00347B24 /* ExerciseSelectionViewController.m */; };
 		EBB8C97C1BFA827400347B24 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C97B1BFA827400347B24 /* AboutTableViewController.m */; };
@@ -107,38 +144,9 @@
 		EBBD42EB1C00F2670033F226 /* iPad_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */; };
 		EBC64C591C02B2C900B33ECA /* WorkoutSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */; };
 		EBC64C5D1C02C3CD00B33ECA /* WorkoutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC64C5C1C02C3CD00B33ECA /* WorkoutTableViewCell.m */; };
-		EBCA207F1C10D6DF00DD9D3C /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = EBCA20351C10D6DF00DD9D3C /* .gitkeep */; };
-		EBCA20801C10D6DF00DD9D3C /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = EBCA20371C10D6DF00DD9D3C /* .gitkeep */; };
-		EBCA20811C10D6DF00DD9D3C /* LKAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA203B1C10D6DF00DD9D3C /* LKAnalytics.m */; };
-		EBCA20821C10D6DF00DD9D3C /* LKAppUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA203D1C10D6DF00DD9D3C /* LKAppUser.m */; };
-		EBCA20831C10D6DF00DD9D3C /* LKBundleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20401C10D6DF00DD9D3C /* LKBundleInfo.m */; };
-		EBCA20841C10D6DF00DD9D3C /* LKBundlesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20421C10D6DF00DD9D3C /* LKBundlesManager.m */; };
-		EBCA20851C10D6DF00DD9D3C /* LKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20451C10D6DF00DD9D3C /* LKConfig.m */; };
-		EBCA20861C10D6DF00DD9D3C /* LaunchKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20471C10D6DF00DD9D3C /* LaunchKit.m */; };
-		EBCA20871C10D6DF00DD9D3C /* LKAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA204A1C10D6DF00DD9D3C /* LKAPIClient.m */; };
-		EBCA20881C10D6DF00DD9D3C /* LKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA204C1C10D6DF00DD9D3C /* LKLog.m */; };
-		EBCA20891C10D6DF00DD9D3C /* LKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA204E1C10D6DF00DD9D3C /* LKUtils.m */; };
-		EBCA208A1C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20501C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.m */; };
-		EBCA208B1C10D6DF00DD9D3C /* NSString+LKURLEncoded.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20521C10D6DF00DD9D3C /* NSString+LKURLEncoded.m */; };
-		EBCA208C1C10D6DF00DD9D3C /* LK_SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20561C10D6DF00DD9D3C /* LK_SSZipArchive.m */; };
-		EBCA208D1C10D6DF00DD9D3C /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20591C10D6DF00DD9D3C /* ioapi.c */; };
-		EBCA208E1C10D6DF00DD9D3C /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = EBCA205B1C10D6DF00DD9D3C /* mztools.c */; };
-		EBCA208F1C10D6DF00DD9D3C /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = EBCA205D1C10D6DF00DD9D3C /* unzip.c */; };
-		EBCA20901C10D6DF00DD9D3C /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = EBCA205F1C10D6DF00DD9D3C /* zip.c */; };
-		EBCA20911C10D6DF00DD9D3C /* LKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20641C10D6DF00DD9D3C /* LKButton.m */; };
-		EBCA20921C10D6DF00DD9D3C /* LKFadeCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20661C10D6DF00DD9D3C /* LKFadeCustomSegue.m */; };
-		EBCA20931C10D6DF00DD9D3C /* LKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20681C10D6DF00DD9D3C /* LKImageView.m */; };
-		EBCA20941C10D6DF00DD9D3C /* LKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA206A1C10D6DF00DD9D3C /* LKNavigationController.m */; };
-		EBCA20951C10D6DF00DD9D3C /* LKPopCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA206C1C10D6DF00DD9D3C /* LKPopCustomSegue.m */; };
-		EBCA20961C10D6DF00DD9D3C /* LKPushCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA206E1C10D6DF00DD9D3C /* LKPushCustomSegue.m */; };
-		EBCA20971C10D6DF00DD9D3C /* LKSimpleStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20701C10D6DF00DD9D3C /* LKSimpleStackView.m */; };
-		EBCA20981C10D6DF00DD9D3C /* LKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20721C10D6DF00DD9D3C /* LKViewController.m */; };
-		EBCA20991C10D6DF00DD9D3C /* UIView+LKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20771C10D6DF00DD9D3C /* UIView+LKAdditions.m */; };
-		EBCA209A1C10D6DF00DD9D3C /* LKUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA20791C10D6DF00DD9D3C /* LKUIManager.m */; };
-		EBCA209B1C10D6DF00DD9D3C /* LKCardPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCA207C1C10D6DF00DD9D3C /* LKCardPresentationController.m */; };
-		EBCA209E1C110B1600DD9D3C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBCA209C1C110B1600DD9D3C /* Bolts.framework */; };
-		EBCA209F1C110B1600DD9D3C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBCA209D1C110B1600DD9D3C /* Parse.framework */; };
 		EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCE12511BD2F62C000370CC /* FavoritesViewController.m */; };
+		EBD1EBC91C2F062B003F005F /* TextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */; };
+		EBD1EBCD1C2F1179003F005F /* CustomWorkoutSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */; };
 		EBF7EEEE1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EBF7EEED1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite */; };
 		EBFC030E1BFD42A60096178B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC030C1BFD42A60096178B /* User.m */; };
 		EBFC03151BFD49E20096178B /* SHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC03141BFD49E20096178B /* SHUser.m */; };
@@ -198,12 +206,28 @@
 		3FE103D2186618F200C53D76 /* ExerciseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailViewController.m; sourceTree = "<group>"; };
 		3FE41E411ABE0644007522AB /* advancedOptionsSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = advancedOptionsSelect.h; sourceTree = "<group>"; };
 		3FE41E421ABE0644007522AB /* advancedOptionsSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = advancedOptionsSelect.m; sourceTree = "<group>"; };
-		3FE8069D18F24442006A0993 /* WorkoutViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutViewController1.h; sourceTree = "<group>"; };
-		3FE8069E18F24442006A0993 /* WorkoutViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutViewController1.m; sourceTree = "<group>"; };
 		3FE95E22187A5DB0005DD13D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		3FE95E23187A5DB0005DD13D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		3FF9DDA01853BAEC0083A499 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		EB0836F11BF13C7000F38817 /* StayHealthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = StayHealthy.entitlements; sourceTree = "<group>"; };
+		EB14B85B1C336314009FF44D /* LGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertView.h; sourceTree = "<group>"; };
+		EB14B85C1C336314009FF44D /* LGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertView.m; sourceTree = "<group>"; };
+		EB14B85D1C336314009FF44D /* LGAlertViewButtonProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewButtonProperties.h; sourceTree = "<group>"; };
+		EB14B85E1C336314009FF44D /* LGAlertViewButtonProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewButtonProperties.m; sourceTree = "<group>"; };
+		EB14B85F1C336314009FF44D /* LGAlertViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewCell.h; sourceTree = "<group>"; };
+		EB14B8601C336314009FF44D /* LGAlertViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewCell.m; sourceTree = "<group>"; };
+		EB14B8611C336314009FF44D /* LGAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewController.h; sourceTree = "<group>"; };
+		EB14B8621C336314009FF44D /* LGAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewController.m; sourceTree = "<group>"; };
+		EB14B8631C336314009FF44D /* LGAlertViewShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewShared.h; sourceTree = "<group>"; };
+		EB14B8641C336314009FF44D /* LGAlertViewTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewTextField.h; sourceTree = "<group>"; };
+		EB14B8651C336314009FF44D /* LGAlertViewTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewTextField.m; sourceTree = "<group>"; };
+		EB14B8661C336314009FF44D /* LGAlertViewWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewWindow.h; sourceTree = "<group>"; };
+		EB14B8671C336314009FF44D /* LGAlertViewWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewWindow.m; sourceTree = "<group>"; };
+		EB14B8681C336314009FF44D /* UIWindow+LGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+LGAlertView.h"; sourceTree = "<group>"; };
+		EB14B8691C336314009FF44D /* UIWindow+LGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+LGAlertView.m"; sourceTree = "<group>"; };
+		EB18FDD71C35712E0057D8B0 /* BodyViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyViewCollectionViewCell.h; sourceTree = "<group>"; };
+		EB18FDD81C35712E0057D8B0 /* BodyViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyViewCollectionViewCell.m; sourceTree = "<group>"; };
+		EB18FDDA1C37025C0057D8B0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Project Resources/Frameworks/Parse/Bolts.framework"; sourceTree = "<group>"; };
+		EB18FDDB1C37025D0057D8B0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Project Resources/Frameworks/Parse/Parse.framework"; sourceTree = "<group>"; };
 		EB215A301BD895DB00A0765A /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
 		EB215A311BD895DB00A0765A /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
 		EB215A321BD895DB00A0765A /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
@@ -225,7 +249,6 @@
 		EB2C4A6E1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHCustomWorkout+CustomWorkout.h"; sourceTree = "<group>"; };
 		EB2C4A6F1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHCustomWorkout+CustomWorkout.m"; sourceTree = "<group>"; };
 		EB3ABB341BF00244004AF091 /* StayHealthy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StayHealthy-Bridging-Header.h"; sourceTree = "<group>"; };
-		EB3B9E221BE8022500BCEF28 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		EB3B9E241BE8023600BCEF28 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		EB3B9E261BE8024300BCEF28 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		EB4702901C063DD800732BC9 /* WorkoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutListViewController.h; sourceTree = "<group>"; };
@@ -279,8 +302,6 @@
 		EB52EFF61BCAF05C00F5D7CA /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		EB575AD31BEC38EC00A1C798 /* VersionHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionHistoryViewController.h; sourceTree = "<group>"; };
 		EB575AD41BEC38EC00A1C798 /* VersionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionHistoryViewController.m; sourceTree = "<group>"; };
-		EB575AD61BEC391000A1C798 /* AcknowledgmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgmentsViewController.h; sourceTree = "<group>"; };
-		EB575AD71BEC391000A1C798 /* AcknowledgmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgmentsViewController.m; sourceTree = "<group>"; };
 		EB63EF371B4B3FE200EF35A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_Storyboard.storyboard; sourceTree = "<group>"; };
 		EB63EF391B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseAdvancedSearchViewController.h; sourceTree = "<group>"; };
 		EB63EF3A1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseAdvancedSearchViewController.m; sourceTree = "<group>"; };
@@ -301,12 +322,75 @@
 		EB737F6F1B8015E100EBBDA4 /* SHDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDataHandler.h; sourceTree = "<group>"; };
 		EB737F701B8015E100EBBDA4 /* SHDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDataHandler.m; sourceTree = "<group>"; };
 		EB737F741B8133D400EBBDA4 /* ExerciseSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseSelectionViewController.h; sourceTree = "<group>"; };
+		EB8864B61C305ED600B98050 /* StayHealthy 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StayHealthy 3.xcdatamodel"; sourceTree = "<group>"; };
 		EB8ACF881B76DAD0003E91A6 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
 		EB8ACF891B76DAD0003E91A6 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		EB8AF5531C064B5000F53B90 /* WorkoutBrowseOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutBrowseOptionsViewController.h; sourceTree = "<group>"; };
 		EB8AF5541C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutBrowseOptionsViewController.m; sourceTree = "<group>"; };
-		EB9CF6FF1B52AA00006E2984 /* PreferencesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesTableViewController.h; sourceTree = "<group>"; };
-		EB9CF7001B52AA00006E2984 /* PreferencesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesTableViewController.m; sourceTree = "<group>"; };
+		EB9CF6FF1B52AA00006E2984 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
+		EB9CF7001B52AA00006E2984 /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
+		EBA9B8F01C2C3DB7002C33B0 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		EBA9B8F21C2C3DB7002C33B0 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		EBA9B8F51C2C3DB7002C33B0 /* LKAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAnalytics.h; sourceTree = "<group>"; };
+		EBA9B8F61C2C3DB7002C33B0 /* LKAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAnalytics.m; sourceTree = "<group>"; };
+		EBA9B8F71C2C3DB7002C33B0 /* LKAppUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAppUser.h; sourceTree = "<group>"; };
+		EBA9B8F81C2C3DB7002C33B0 /* LKAppUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAppUser.m; sourceTree = "<group>"; };
+		EBA9B8FA1C2C3DB7002C33B0 /* LKBundleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBundleInfo.h; sourceTree = "<group>"; };
+		EBA9B8FB1C2C3DB7002C33B0 /* LKBundleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBundleInfo.m; sourceTree = "<group>"; };
+		EBA9B8FC1C2C3DB7002C33B0 /* LKBundlesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBundlesManager.h; sourceTree = "<group>"; };
+		EBA9B8FD1C2C3DB7002C33B0 /* LKBundlesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBundlesManager.m; sourceTree = "<group>"; };
+		EBA9B8FF1C2C3DB7002C33B0 /* LKConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKConfig.h; sourceTree = "<group>"; };
+		EBA9B9001C2C3DB7002C33B0 /* LKConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKConfig.m; sourceTree = "<group>"; };
+		EBA9B9011C2C3DB7002C33B0 /* LaunchKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchKit.h; sourceTree = "<group>"; };
+		EBA9B9021C2C3DB7002C33B0 /* LaunchKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchKit.m; sourceTree = "<group>"; };
+		EBA9B9031C2C3DB7002C33B0 /* LaunchKitShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchKitShared.h; sourceTree = "<group>"; };
+		EBA9B9041C2C3DB7002C33B0 /* LKAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAPIClient.h; sourceTree = "<group>"; };
+		EBA9B9051C2C3DB7002C33B0 /* LKAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAPIClient.m; sourceTree = "<group>"; };
+		EBA9B9061C2C3DB7002C33B0 /* LKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLog.h; sourceTree = "<group>"; };
+		EBA9B9071C2C3DB7002C33B0 /* LKLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLog.m; sourceTree = "<group>"; };
+		EBA9B9081C2C3DB7002C33B0 /* LKTrackOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTrackOperation.h; sourceTree = "<group>"; };
+		EBA9B9091C2C3DB7002C33B0 /* LKTrackOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKTrackOperation.m; sourceTree = "<group>"; };
+		EBA9B90A1C2C3DB7002C33B0 /* LKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKUtils.h; sourceTree = "<group>"; };
+		EBA9B90B1C2C3DB7002C33B0 /* LKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKUtils.m; sourceTree = "<group>"; };
+		EBA9B90C1C2C3DB7002C33B0 /* NSDictionary+LKFormEncoded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LKFormEncoded.h"; sourceTree = "<group>"; };
+		EBA9B90D1C2C3DB7002C33B0 /* NSDictionary+LKFormEncoded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LKFormEncoded.m"; sourceTree = "<group>"; };
+		EBA9B90E1C2C3DB7002C33B0 /* NSString+LKURLEncoded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LKURLEncoded.h"; sourceTree = "<group>"; };
+		EBA9B90F1C2C3DB7002C33B0 /* NSString+LKURLEncoded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LKURLEncoded.m"; sourceTree = "<group>"; };
+		EBA9B9121C2C3DB7002C33B0 /* LK_SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LK_SSZipArchive.h; sourceTree = "<group>"; };
+		EBA9B9131C2C3DB7002C33B0 /* LK_SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LK_SSZipArchive.m; sourceTree = "<group>"; };
+		EBA9B9151C2C3DB7002C33B0 /* lk_crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lk_crypt.h; sourceTree = "<group>"; };
+		EBA9B9161C2C3DB7002C33B0 /* lk_ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lk_ioapi.c; sourceTree = "<group>"; };
+		EBA9B9171C2C3DB7002C33B0 /* lk_ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lk_ioapi.h; sourceTree = "<group>"; };
+		EBA9B9181C2C3DB7002C33B0 /* lk_mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lk_mztools.c; sourceTree = "<group>"; };
+		EBA9B9191C2C3DB7002C33B0 /* lk_mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lk_mztools.h; sourceTree = "<group>"; };
+		EBA9B91A1C2C3DB7002C33B0 /* lk_unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lk_unzip.c; sourceTree = "<group>"; };
+		EBA9B91B1C2C3DB7002C33B0 /* lk_unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lk_unzip.h; sourceTree = "<group>"; };
+		EBA9B91C1C2C3DB7002C33B0 /* lk_zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lk_zip.c; sourceTree = "<group>"; };
+		EBA9B91D1C2C3DB7002C33B0 /* lk_zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lk_zip.h; sourceTree = "<group>"; };
+		EBA9B9201C2C3DB7002C33B0 /* LKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKButton.h; sourceTree = "<group>"; };
+		EBA9B9211C2C3DB7002C33B0 /* LKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKButton.m; sourceTree = "<group>"; };
+		EBA9B9221C2C3DB7002C33B0 /* LKFadeCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKFadeCustomSegue.h; sourceTree = "<group>"; };
+		EBA9B9231C2C3DB7002C33B0 /* LKFadeCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKFadeCustomSegue.m; sourceTree = "<group>"; };
+		EBA9B9241C2C3DB7002C33B0 /* LKImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKImageView.h; sourceTree = "<group>"; };
+		EBA9B9251C2C3DB7002C33B0 /* LKImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKImageView.m; sourceTree = "<group>"; };
+		EBA9B9261C2C3DB7002C33B0 /* LKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKNavigationController.h; sourceTree = "<group>"; };
+		EBA9B9271C2C3DB7002C33B0 /* LKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKNavigationController.m; sourceTree = "<group>"; };
+		EBA9B9281C2C3DB7002C33B0 /* LKPopCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKPopCustomSegue.h; sourceTree = "<group>"; };
+		EBA9B9291C2C3DB7002C33B0 /* LKPopCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKPopCustomSegue.m; sourceTree = "<group>"; };
+		EBA9B92A1C2C3DB7002C33B0 /* LKPushCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKPushCustomSegue.h; sourceTree = "<group>"; };
+		EBA9B92B1C2C3DB7002C33B0 /* LKPushCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKPushCustomSegue.m; sourceTree = "<group>"; };
+		EBA9B92C1C2C3DB7002C33B0 /* LKSimpleStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKSimpleStackView.h; sourceTree = "<group>"; };
+		EBA9B92D1C2C3DB7002C33B0 /* LKSimpleStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKSimpleStackView.m; sourceTree = "<group>"; };
+		EBA9B92E1C2C3DB7002C33B0 /* LKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKViewController.h; sourceTree = "<group>"; };
+		EBA9B92F1C2C3DB7002C33B0 /* LKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKViewController.m; sourceTree = "<group>"; };
+		EBA9B9311C2C3DB7002C33B0 /* UIView+LKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LKAdditions.h"; sourceTree = "<group>"; };
+		EBA9B9331C2C3DB7002C33B0 /* UIView+LKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LKAdditions.h"; sourceTree = "<group>"; };
+		EBA9B9341C2C3DB7002C33B0 /* UIView+LKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LKAdditions.m"; sourceTree = "<group>"; };
+		EBA9B9351C2C3DB7002C33B0 /* LKUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKUIManager.h; sourceTree = "<group>"; };
+		EBA9B9361C2C3DB7002C33B0 /* LKUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKUIManager.m; sourceTree = "<group>"; };
+		EBA9B9381C2C3DB7002C33B0 /* LKCardPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKCardPresentationController.h; sourceTree = "<group>"; };
+		EBA9B9391C2C3DB7002C33B0 /* LKCardPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKCardPresentationController.m; sourceTree = "<group>"; };
+		EBA9B93B1C2C3DB7002C33B0 /* LaunchKitRemoteBundlesScript.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LaunchKitRemoteBundlesScript.playground; sourceTree = "<group>"; };
 		EBB432D81B549FEC001B2D40 /* ExerciseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseTableViewCell.h; sourceTree = "<group>"; };
 		EBB432D91B549FEC001B2D40 /* ExerciseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseTableViewCell.m; sourceTree = "<group>"; };
 		EBB8C96F1BF90ECA00347B24 /* ExerciseSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseSelectionViewController.m; sourceTree = "<group>"; };
@@ -323,70 +407,13 @@
 		EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutSelectionViewController.m; sourceTree = "<group>"; };
 		EBC64C5B1C02C3CD00B33ECA /* WorkoutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutTableViewCell.h; sourceTree = "<group>"; };
 		EBC64C5C1C02C3CD00B33ECA /* WorkoutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutTableViewCell.m; sourceTree = "<group>"; };
-		EBCA20351C10D6DF00DD9D3C /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		EBCA20371C10D6DF00DD9D3C /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		EBCA203A1C10D6DF00DD9D3C /* LKAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAnalytics.h; sourceTree = "<group>"; };
-		EBCA203B1C10D6DF00DD9D3C /* LKAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAnalytics.m; sourceTree = "<group>"; };
-		EBCA203C1C10D6DF00DD9D3C /* LKAppUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAppUser.h; sourceTree = "<group>"; };
-		EBCA203D1C10D6DF00DD9D3C /* LKAppUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAppUser.m; sourceTree = "<group>"; };
-		EBCA203F1C10D6DF00DD9D3C /* LKBundleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBundleInfo.h; sourceTree = "<group>"; };
-		EBCA20401C10D6DF00DD9D3C /* LKBundleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBundleInfo.m; sourceTree = "<group>"; };
-		EBCA20411C10D6DF00DD9D3C /* LKBundlesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBundlesManager.h; sourceTree = "<group>"; };
-		EBCA20421C10D6DF00DD9D3C /* LKBundlesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBundlesManager.m; sourceTree = "<group>"; };
-		EBCA20441C10D6DF00DD9D3C /* LKConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKConfig.h; sourceTree = "<group>"; };
-		EBCA20451C10D6DF00DD9D3C /* LKConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKConfig.m; sourceTree = "<group>"; };
-		EBCA20461C10D6DF00DD9D3C /* LaunchKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchKit.h; sourceTree = "<group>"; };
-		EBCA20471C10D6DF00DD9D3C /* LaunchKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchKit.m; sourceTree = "<group>"; };
-		EBCA20481C10D6DF00DD9D3C /* LaunchKitShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchKitShared.h; sourceTree = "<group>"; };
-		EBCA20491C10D6DF00DD9D3C /* LKAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAPIClient.h; sourceTree = "<group>"; };
-		EBCA204A1C10D6DF00DD9D3C /* LKAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAPIClient.m; sourceTree = "<group>"; };
-		EBCA204B1C10D6DF00DD9D3C /* LKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLog.h; sourceTree = "<group>"; };
-		EBCA204C1C10D6DF00DD9D3C /* LKLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLog.m; sourceTree = "<group>"; };
-		EBCA204D1C10D6DF00DD9D3C /* LKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKUtils.h; sourceTree = "<group>"; };
-		EBCA204E1C10D6DF00DD9D3C /* LKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKUtils.m; sourceTree = "<group>"; };
-		EBCA204F1C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LKFormEncoded.h"; sourceTree = "<group>"; };
-		EBCA20501C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LKFormEncoded.m"; sourceTree = "<group>"; };
-		EBCA20511C10D6DF00DD9D3C /* NSString+LKURLEncoded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LKURLEncoded.h"; sourceTree = "<group>"; };
-		EBCA20521C10D6DF00DD9D3C /* NSString+LKURLEncoded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LKURLEncoded.m"; sourceTree = "<group>"; };
-		EBCA20551C10D6DF00DD9D3C /* LK_SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LK_SSZipArchive.h; sourceTree = "<group>"; };
-		EBCA20561C10D6DF00DD9D3C /* LK_SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LK_SSZipArchive.m; sourceTree = "<group>"; };
-		EBCA20581C10D6DF00DD9D3C /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		EBCA20591C10D6DF00DD9D3C /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		EBCA205A1C10D6DF00DD9D3C /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		EBCA205B1C10D6DF00DD9D3C /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
-		EBCA205C1C10D6DF00DD9D3C /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
-		EBCA205D1C10D6DF00DD9D3C /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		EBCA205E1C10D6DF00DD9D3C /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		EBCA205F1C10D6DF00DD9D3C /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		EBCA20601C10D6DF00DD9D3C /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		EBCA20631C10D6DF00DD9D3C /* LKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKButton.h; sourceTree = "<group>"; };
-		EBCA20641C10D6DF00DD9D3C /* LKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKButton.m; sourceTree = "<group>"; };
-		EBCA20651C10D6DF00DD9D3C /* LKFadeCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKFadeCustomSegue.h; sourceTree = "<group>"; };
-		EBCA20661C10D6DF00DD9D3C /* LKFadeCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKFadeCustomSegue.m; sourceTree = "<group>"; };
-		EBCA20671C10D6DF00DD9D3C /* LKImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKImageView.h; sourceTree = "<group>"; };
-		EBCA20681C10D6DF00DD9D3C /* LKImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKImageView.m; sourceTree = "<group>"; };
-		EBCA20691C10D6DF00DD9D3C /* LKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKNavigationController.h; sourceTree = "<group>"; };
-		EBCA206A1C10D6DF00DD9D3C /* LKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKNavigationController.m; sourceTree = "<group>"; };
-		EBCA206B1C10D6DF00DD9D3C /* LKPopCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKPopCustomSegue.h; sourceTree = "<group>"; };
-		EBCA206C1C10D6DF00DD9D3C /* LKPopCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKPopCustomSegue.m; sourceTree = "<group>"; };
-		EBCA206D1C10D6DF00DD9D3C /* LKPushCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKPushCustomSegue.h; sourceTree = "<group>"; };
-		EBCA206E1C10D6DF00DD9D3C /* LKPushCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKPushCustomSegue.m; sourceTree = "<group>"; };
-		EBCA206F1C10D6DF00DD9D3C /* LKSimpleStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKSimpleStackView.h; sourceTree = "<group>"; };
-		EBCA20701C10D6DF00DD9D3C /* LKSimpleStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKSimpleStackView.m; sourceTree = "<group>"; };
-		EBCA20711C10D6DF00DD9D3C /* LKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKViewController.h; sourceTree = "<group>"; };
-		EBCA20721C10D6DF00DD9D3C /* LKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKViewController.m; sourceTree = "<group>"; };
-		EBCA20741C10D6DF00DD9D3C /* UIView+LKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LKAdditions.h"; sourceTree = "<group>"; };
-		EBCA20761C10D6DF00DD9D3C /* UIView+LKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LKAdditions.h"; sourceTree = "<group>"; };
-		EBCA20771C10D6DF00DD9D3C /* UIView+LKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LKAdditions.m"; sourceTree = "<group>"; };
-		EBCA20781C10D6DF00DD9D3C /* LKUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKUIManager.h; sourceTree = "<group>"; };
-		EBCA20791C10D6DF00DD9D3C /* LKUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKUIManager.m; sourceTree = "<group>"; };
-		EBCA207B1C10D6DF00DD9D3C /* LKCardPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKCardPresentationController.h; sourceTree = "<group>"; };
-		EBCA207C1C10D6DF00DD9D3C /* LKCardPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKCardPresentationController.m; sourceTree = "<group>"; };
-		EBCA207E1C10D6DF00DD9D3C /* LaunchKitRemoteBundlesScript.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LaunchKitRemoteBundlesScript.playground; sourceTree = "<group>"; };
-		EBCA209C1C110B1600DD9D3C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../Parse/Bolts.framework; sourceTree = "<group>"; };
-		EBCA209D1C110B1600DD9D3C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../Parse/Parse.framework; sourceTree = "<group>"; };
 		EBCE12501BD2F62C000370CC /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		EBCE12511BD2F62C000370CC /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		EBD1EBB81C2C7CFB003F005F /* StayHealthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = StayHealthy.entitlements; sourceTree = "<group>"; };
+		EBD1EBC71C2F062B003F005F /* TextViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewTableViewCell.h; sourceTree = "<group>"; };
+		EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewTableViewCell.m; sourceTree = "<group>"; };
+		EBD1EBCB1C2F1179003F005F /* CustomWorkoutSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWorkoutSelectionViewController.h; sourceTree = "<group>"; };
+		EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWorkoutSelectionViewController.m; sourceTree = "<group>"; };
 		EBF7EEED1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = StayHealthyDatabase.sqlite; sourceTree = "<group>"; };
 		EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StayHealthy2.xcdatamodel; sourceTree = "<group>"; };
 		EBFC030B1BFD42A60096178B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -406,22 +433,21 @@
 			files = (
 				EB3B9E271BE8024300BCEF28 /* libsqlite3.tbd in Frameworks */,
 				EB3B9E251BE8023600BCEF28 /* libz.tbd in Frameworks */,
-				EB3B9E231BE8022500BCEF28 /* StoreKit.framework in Frameworks */,
 				3F7D77AF19A3086200E00065 /* CFNetwork.framework in Frameworks */,
 				3F7D77B019A3086200E00065 /* CoreLocation.framework in Frameworks */,
 				3F7D77B219A3086200E00065 /* MobileCoreServices.framework in Frameworks */,
 				3F7D77B319A3086200E00065 /* Security.framework in Frameworks */,
+				EB18FDDD1C37025D0057D8B0 /* Parse.framework in Frameworks */,
 				3F7D77B519A3086200E00065 /* SystemConfiguration.framework in Frameworks */,
 				3FD5E1A31853A8D00063E10C /* CoreGraphics.framework in Frameworks */,
 				3FE100931863CC0100C53D76 /* QuartzCore.framework in Frameworks */,
-				EBCA209F1C110B1600DD9D3C /* Parse.framework in Frameworks */,
 				3F7D77A719A3081300E00065 /* AudioToolbox.framework in Frameworks */,
 				3F7D779F19A2DFEA00E00065 /* MessageUI.framework in Frameworks */,
-				EBCA209E1C110B1600DD9D3C /* Bolts.framework in Frameworks */,
 				3FF9DDA11853BAEC0083A499 /* CoreText.framework in Frameworks */,
 				3FD5E1A71853A8D00063E10C /* CoreData.framework in Frameworks */,
 				3FD5E1A51853A8D00063E10C /* UIKit.framework in Frameworks */,
 				3FD5E1A11853A8D00063E10C /* Foundation.framework in Frameworks */,
+				EB18FDDC1C37025D0057D8B0 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,7 +465,6 @@
 				EB47028E1C063D7300732BC9 /* Workout Detail Page */,
 				EB47028F1C063D9000732BC9 /* Workout Perform Page */,
 				EB47029D1C063E8B00732BC9 /* Custom Workouts */,
-				3FE8069C18F24262006A0993 /* Workout Page */,
 			);
 			name = Workouts;
 			sourceTree = "<group>";
@@ -464,9 +489,8 @@
 		3F2E5A8E18E11B8600EE4734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EBCA209C1C110B1600DD9D3C /* Bolts.framework */,
-				EBCA209D1C110B1600DD9D3C /* Parse.framework */,
-				EB3B9E221BE8022500BCEF28 /* StoreKit.framework */,
+				EB18FDDA1C37025C0057D8B0 /* Bolts.framework */,
+				EB18FDDB1C37025D0057D8B0 /* Parse.framework */,
 				3F7D77A619A3081300E00065 /* AudioToolbox.framework */,
 				3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */,
 				3F7D77AC19A3086200E00065 /* Security.framework */,
@@ -495,13 +519,13 @@
 			name = Bundles;
 			sourceTree = "<group>";
 		};
-		3F7D77A019A300C000E00065 /* WebViewViewController */ = {
+		3F7D77A019A300C000E00065 /* Web View ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				3F7D77A119A300D600E00065 /* WebViewViewController.h */,
 				3F7D77A219A300D600E00065 /* WebViewViewController.m */,
 			);
-			name = WebViewViewController;
+			name = "Web View ViewController";
 			sourceTree = "<group>";
 		};
 		3F8BB360198D4AD50098E1A7 /* Common Set Up Operations */ = {
@@ -599,6 +623,7 @@
 		3FC465F61B33B2010062EBDB /* Exercise Searched Page */ = {
 			isa = PBXGroup;
 			children = (
+				EB18FDD61C3570FC0057D8B0 /* Body Zone Collection View Cell */,
 				3F2E5A8118DF388300EE4734 /* ExerciseListController.h */,
 				3F2E5A8218DF388300EE4734 /* ExerciseListController.m */,
 				EB215A2D1BD8902600A0765A /* Exercise Quick Filter */,
@@ -649,7 +674,7 @@
 		3FD5E19F1853A8D00063E10C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EBCA20341C10D6DF00DD9D3C /* LaunchKit */,
+				EBA9B8EF1C2C3DB7002C33B0 /* LaunchKit */,
 				3F2E5A8F18E11BB500EE4734 /* Bundles */,
 				3F2E5A8E18E11B8600EE4734 /* Frameworks */,
 			);
@@ -673,7 +698,7 @@
 		3FD5E1A91853A8D00063E10C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EB0836F11BF13C7000F38817 /* StayHealthy.entitlements */,
+				EBD1EBB81C2C7CFB003F005F /* StayHealthy.entitlements */,
 				EB3ABB341BF00244004AF091 /* StayHealthy-Bridging-Header.h */,
 				3FC465EE1B33ACCC0062EBDB /* Prefix File */,
 				3FD5E1AA1853A8D00063E10C /* StayHealthy-Info.plist */,
@@ -701,28 +726,18 @@
 			name = Storyboard;
 			sourceTree = "<group>";
 		};
-		3FE8069C18F24262006A0993 /* Workout Page */ = {
-			isa = PBXGroup;
-			children = (
-				3FE8069D18F24442006A0993 /* WorkoutViewController1.h */,
-				3FE8069E18F24442006A0993 /* WorkoutViewController1.m */,
-			);
-			name = "Workout Page";
-			sourceTree = "<group>";
-		};
 		3FE95E25187A5DB7005DD13D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				3FE95E22187A5DB0005DD13D /* SettingsViewController.h */,
 				3FE95E23187A5DB0005DD13D /* SettingsViewController.m */,
+				EBB8C9791BFA826000347B24 /* About */,
 				EBB8C9881BFA860A00347B24 /* Database Update */,
+				EB76703B1B52A96000A188B4 /* Preferences */,
 				EBB8C97E1BFA853A00347B24 /* Feedback Center */,
 				EBB8C97D1BFA853200347B24 /* Help Center */,
-				EBB8C9791BFA826000347B24 /* About */,
 				EB575AD21BEC38AC00A1C798 /* Version History */,
-				EB575AD11BEC389F00A1C798 /* Acknowledgments */,
-				EB76703B1B52A96000A188B4 /* Preferences */,
-				3F7D77A019A300C000E00065 /* WebViewViewController */,
+				3F7D77A019A300C000E00065 /* Web View ViewController */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -742,6 +757,7 @@
 		3FF9DD641853BA610083A499 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				EB14B85A1C336314009FF44D /* LGAlertView */,
 				EB215A2F1BD895DB00A0765A /* MGSwipeTableCell */,
 				EB52EFA61BCAEF8900F5D7CA /* MZTimerLabel */,
 				EB52EFAA1BCAEF9700F5D7CA /* ALCustomColoredAccessory */,
@@ -750,6 +766,38 @@
 				EB52EFE91BCAEFC800F5D7CA /* SIAlertView */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		EB14B85A1C336314009FF44D /* LGAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				EB14B85B1C336314009FF44D /* LGAlertView.h */,
+				EB14B85C1C336314009FF44D /* LGAlertView.m */,
+				EB14B85D1C336314009FF44D /* LGAlertViewButtonProperties.h */,
+				EB14B85E1C336314009FF44D /* LGAlertViewButtonProperties.m */,
+				EB14B85F1C336314009FF44D /* LGAlertViewCell.h */,
+				EB14B8601C336314009FF44D /* LGAlertViewCell.m */,
+				EB14B8611C336314009FF44D /* LGAlertViewController.h */,
+				EB14B8621C336314009FF44D /* LGAlertViewController.m */,
+				EB14B8631C336314009FF44D /* LGAlertViewShared.h */,
+				EB14B8641C336314009FF44D /* LGAlertViewTextField.h */,
+				EB14B8651C336314009FF44D /* LGAlertViewTextField.m */,
+				EB14B8661C336314009FF44D /* LGAlertViewWindow.h */,
+				EB14B8671C336314009FF44D /* LGAlertViewWindow.m */,
+				EB14B8681C336314009FF44D /* UIWindow+LGAlertView.h */,
+				EB14B8691C336314009FF44D /* UIWindow+LGAlertView.m */,
+			);
+			name = LGAlertView;
+			path = "../../../Project Resources/Frameworks/LGAlertView-master/LGAlertView";
+			sourceTree = "<group>";
+		};
+		EB18FDD61C3570FC0057D8B0 /* Body Zone Collection View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EB18FDD71C35712E0057D8B0 /* BodyViewCollectionViewCell.h */,
+				EB18FDD81C35712E0057D8B0 /* BodyViewCollectionViewCell.m */,
+			);
+			name = "Body Zone Collection View Cell";
 			sourceTree = "<group>";
 		};
 		EB215A2D1BD8902600A0765A /* Exercise Quick Filter */ = {
@@ -813,6 +861,7 @@
 		EB47029D1C063E8B00732BC9 /* Custom Workouts */ = {
 			isa = PBXGroup;
 			children = (
+				EBD1EBCA1C2F114F003F005F /* Custom Workout Selection Page */,
 				EB47029F1C063EBD00732BC9 /* WorkoutCreateViewController.h */,
 				EB4702A01C063EBD00732BC9 /* WorkoutCreateViewController.m */,
 			);
@@ -934,15 +983,6 @@
 			path = "../../../Project Resources/StayHealthy/Frameworks/Reachability";
 			sourceTree = "<group>";
 		};
-		EB575AD11BEC389F00A1C798 /* Acknowledgments */ = {
-			isa = PBXGroup;
-			children = (
-				EB575AD61BEC391000A1C798 /* AcknowledgmentsViewController.h */,
-				EB575AD71BEC391000A1C798 /* AcknowledgmentsViewController.m */,
-			);
-			name = Acknowledgments;
-			sourceTree = "<group>";
-		};
 		EB575AD21BEC38AC00A1C798 /* Version History */ = {
 			isa = PBXGroup;
 			children = (
@@ -957,6 +997,8 @@
 			children = (
 				EB63EF9A1B4B5FA400EF35A3 /* TextFieldTableViewCell.h */,
 				EB63EF9B1B4B5FA400EF35A3 /* TextFieldTableViewCell.m */,
+				EBD1EBC71C2F062B003F005F /* TextViewTableViewCell.h */,
+				EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */,
 			);
 			name = "Custom UITextfield TableViewCell";
 			sourceTree = "<group>";
@@ -1044,8 +1086,8 @@
 		EB76703B1B52A96000A188B4 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				EB9CF6FF1B52AA00006E2984 /* PreferencesTableViewController.h */,
-				EB9CF7001B52AA00006E2984 /* PreferencesTableViewController.m */,
+				EB9CF6FF1B52AA00006E2984 /* PreferencesViewController.h */,
+				EB9CF7001B52AA00006E2984 /* PreferencesViewController.m */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -1057,6 +1099,188 @@
 				EB8AF5541C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m */,
 			);
 			name = "Workout Browse Selection Options";
+			sourceTree = "<group>";
+		};
+		EBA9B8EF1C2C3DB7002C33B0 /* LaunchKit */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B8F01C2C3DB7002C33B0 /* .gitkeep */,
+				EBA9B8F11C2C3DB7002C33B0 /* Assets */,
+				EBA9B8F31C2C3DB7002C33B0 /* Classes */,
+				EBA9B93A1C2C3DB7002C33B0 /* Scripts */,
+			);
+			name = LaunchKit;
+			path = ../LaunchKit/LaunchKit;
+			sourceTree = "<group>";
+		};
+		EBA9B8F11C2C3DB7002C33B0 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B8F21C2C3DB7002C33B0 /* .gitkeep */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		EBA9B8F31C2C3DB7002C33B0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B8F41C2C3DB7002C33B0 /* Analytics */,
+				EBA9B8F91C2C3DB7002C33B0 /* Bundles */,
+				EBA9B8FE1C2C3DB7002C33B0 /* Config */,
+				EBA9B9011C2C3DB7002C33B0 /* LaunchKit.h */,
+				EBA9B9021C2C3DB7002C33B0 /* LaunchKit.m */,
+				EBA9B9031C2C3DB7002C33B0 /* LaunchKitShared.h */,
+				EBA9B9041C2C3DB7002C33B0 /* LKAPIClient.h */,
+				EBA9B9051C2C3DB7002C33B0 /* LKAPIClient.m */,
+				EBA9B9061C2C3DB7002C33B0 /* LKLog.h */,
+				EBA9B9071C2C3DB7002C33B0 /* LKLog.m */,
+				EBA9B9081C2C3DB7002C33B0 /* LKTrackOperation.h */,
+				EBA9B9091C2C3DB7002C33B0 /* LKTrackOperation.m */,
+				EBA9B90A1C2C3DB7002C33B0 /* LKUtils.h */,
+				EBA9B90B1C2C3DB7002C33B0 /* LKUtils.m */,
+				EBA9B90C1C2C3DB7002C33B0 /* NSDictionary+LKFormEncoded.h */,
+				EBA9B90D1C2C3DB7002C33B0 /* NSDictionary+LKFormEncoded.m */,
+				EBA9B90E1C2C3DB7002C33B0 /* NSString+LKURLEncoded.h */,
+				EBA9B90F1C2C3DB7002C33B0 /* NSString+LKURLEncoded.m */,
+				EBA9B9101C2C3DB7002C33B0 /* ThirdParty */,
+				EBA9B91E1C2C3DB7002C33B0 /* UI */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		EBA9B8F41C2C3DB7002C33B0 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B8F51C2C3DB7002C33B0 /* LKAnalytics.h */,
+				EBA9B8F61C2C3DB7002C33B0 /* LKAnalytics.m */,
+				EBA9B8F71C2C3DB7002C33B0 /* LKAppUser.h */,
+				EBA9B8F81C2C3DB7002C33B0 /* LKAppUser.m */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		EBA9B8F91C2C3DB7002C33B0 /* Bundles */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B8FA1C2C3DB7002C33B0 /* LKBundleInfo.h */,
+				EBA9B8FB1C2C3DB7002C33B0 /* LKBundleInfo.m */,
+				EBA9B8FC1C2C3DB7002C33B0 /* LKBundlesManager.h */,
+				EBA9B8FD1C2C3DB7002C33B0 /* LKBundlesManager.m */,
+			);
+			path = Bundles;
+			sourceTree = "<group>";
+		};
+		EBA9B8FE1C2C3DB7002C33B0 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B8FF1C2C3DB7002C33B0 /* LKConfig.h */,
+				EBA9B9001C2C3DB7002C33B0 /* LKConfig.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		EBA9B9101C2C3DB7002C33B0 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B9111C2C3DB7002C33B0 /* ZipArchive */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		EBA9B9111C2C3DB7002C33B0 /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B9121C2C3DB7002C33B0 /* LK_SSZipArchive.h */,
+				EBA9B9131C2C3DB7002C33B0 /* LK_SSZipArchive.m */,
+				EBA9B9141C2C3DB7002C33B0 /* minizip */,
+			);
+			path = ZipArchive;
+			sourceTree = "<group>";
+		};
+		EBA9B9141C2C3DB7002C33B0 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B9151C2C3DB7002C33B0 /* lk_crypt.h */,
+				EBA9B9161C2C3DB7002C33B0 /* lk_ioapi.c */,
+				EBA9B9171C2C3DB7002C33B0 /* lk_ioapi.h */,
+				EBA9B9181C2C3DB7002C33B0 /* lk_mztools.c */,
+				EBA9B9191C2C3DB7002C33B0 /* lk_mztools.h */,
+				EBA9B91A1C2C3DB7002C33B0 /* lk_unzip.c */,
+				EBA9B91B1C2C3DB7002C33B0 /* lk_unzip.h */,
+				EBA9B91C1C2C3DB7002C33B0 /* lk_zip.c */,
+				EBA9B91D1C2C3DB7002C33B0 /* lk_zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
+		EBA9B91E1C2C3DB7002C33B0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B91F1C2C3DB7002C33B0 /* Components */,
+				EBA9B9351C2C3DB7002C33B0 /* LKUIManager.h */,
+				EBA9B9361C2C3DB7002C33B0 /* LKUIManager.m */,
+				EBA9B9371C2C3DB7002C33B0 /* Presentation */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		EBA9B91F1C2C3DB7002C33B0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B9201C2C3DB7002C33B0 /* LKButton.h */,
+				EBA9B9211C2C3DB7002C33B0 /* LKButton.m */,
+				EBA9B9221C2C3DB7002C33B0 /* LKFadeCustomSegue.h */,
+				EBA9B9231C2C3DB7002C33B0 /* LKFadeCustomSegue.m */,
+				EBA9B9241C2C3DB7002C33B0 /* LKImageView.h */,
+				EBA9B9251C2C3DB7002C33B0 /* LKImageView.m */,
+				EBA9B9261C2C3DB7002C33B0 /* LKNavigationController.h */,
+				EBA9B9271C2C3DB7002C33B0 /* LKNavigationController.m */,
+				EBA9B9281C2C3DB7002C33B0 /* LKPopCustomSegue.h */,
+				EBA9B9291C2C3DB7002C33B0 /* LKPopCustomSegue.m */,
+				EBA9B92A1C2C3DB7002C33B0 /* LKPushCustomSegue.h */,
+				EBA9B92B1C2C3DB7002C33B0 /* LKPushCustomSegue.m */,
+				EBA9B92C1C2C3DB7002C33B0 /* LKSimpleStackView.h */,
+				EBA9B92D1C2C3DB7002C33B0 /* LKSimpleStackView.m */,
+				EBA9B92E1C2C3DB7002C33B0 /* LKViewController.h */,
+				EBA9B92F1C2C3DB7002C33B0 /* LKViewController.m */,
+				EBA9B9301C2C3DB7002C33B0 /* Private */,
+				EBA9B9321C2C3DB7002C33B0 /* Public */,
+				EBA9B9341C2C3DB7002C33B0 /* UIView+LKAdditions.m */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EBA9B9301C2C3DB7002C33B0 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B9311C2C3DB7002C33B0 /* UIView+LKAdditions.h */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		EBA9B9321C2C3DB7002C33B0 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B9331C2C3DB7002C33B0 /* UIView+LKAdditions.h */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		EBA9B9371C2C3DB7002C33B0 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B9381C2C3DB7002C33B0 /* LKCardPresentationController.h */,
+				EBA9B9391C2C3DB7002C33B0 /* LKCardPresentationController.m */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		EBA9B93A1C2C3DB7002C33B0 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				EBA9B93B1C2C3DB7002C33B0 /* LaunchKitRemoteBundlesScript.playground */,
+			);
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 		EBB8C9791BFA826000347B24 /* About */ = {
@@ -1104,186 +1328,6 @@
 			name = "Workout TableView Cell";
 			sourceTree = "<group>";
 		};
-		EBCA20341C10D6DF00DD9D3C /* LaunchKit */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA20351C10D6DF00DD9D3C /* .gitkeep */,
-				EBCA20361C10D6DF00DD9D3C /* Assets */,
-				EBCA20381C10D6DF00DD9D3C /* Classes */,
-				EBCA207D1C10D6DF00DD9D3C /* Scripts */,
-			);
-			name = LaunchKit;
-			path = "../../Project Resources/StayHealthy/Frameworks/launchkit-ios-master-2/LaunchKit";
-			sourceTree = "<group>";
-		};
-		EBCA20361C10D6DF00DD9D3C /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA20371C10D6DF00DD9D3C /* .gitkeep */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		EBCA20381C10D6DF00DD9D3C /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA20391C10D6DF00DD9D3C /* Analytics */,
-				EBCA203E1C10D6DF00DD9D3C /* Bundles */,
-				EBCA20431C10D6DF00DD9D3C /* Config */,
-				EBCA20461C10D6DF00DD9D3C /* LaunchKit.h */,
-				EBCA20471C10D6DF00DD9D3C /* LaunchKit.m */,
-				EBCA20481C10D6DF00DD9D3C /* LaunchKitShared.h */,
-				EBCA20491C10D6DF00DD9D3C /* LKAPIClient.h */,
-				EBCA204A1C10D6DF00DD9D3C /* LKAPIClient.m */,
-				EBCA204B1C10D6DF00DD9D3C /* LKLog.h */,
-				EBCA204C1C10D6DF00DD9D3C /* LKLog.m */,
-				EBCA204D1C10D6DF00DD9D3C /* LKUtils.h */,
-				EBCA204E1C10D6DF00DD9D3C /* LKUtils.m */,
-				EBCA204F1C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.h */,
-				EBCA20501C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.m */,
-				EBCA20511C10D6DF00DD9D3C /* NSString+LKURLEncoded.h */,
-				EBCA20521C10D6DF00DD9D3C /* NSString+LKURLEncoded.m */,
-				EBCA20531C10D6DF00DD9D3C /* ThirdParty */,
-				EBCA20611C10D6DF00DD9D3C /* UI */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		EBCA20391C10D6DF00DD9D3C /* Analytics */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA203A1C10D6DF00DD9D3C /* LKAnalytics.h */,
-				EBCA203B1C10D6DF00DD9D3C /* LKAnalytics.m */,
-				EBCA203C1C10D6DF00DD9D3C /* LKAppUser.h */,
-				EBCA203D1C10D6DF00DD9D3C /* LKAppUser.m */,
-			);
-			path = Analytics;
-			sourceTree = "<group>";
-		};
-		EBCA203E1C10D6DF00DD9D3C /* Bundles */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA203F1C10D6DF00DD9D3C /* LKBundleInfo.h */,
-				EBCA20401C10D6DF00DD9D3C /* LKBundleInfo.m */,
-				EBCA20411C10D6DF00DD9D3C /* LKBundlesManager.h */,
-				EBCA20421C10D6DF00DD9D3C /* LKBundlesManager.m */,
-			);
-			path = Bundles;
-			sourceTree = "<group>";
-		};
-		EBCA20431C10D6DF00DD9D3C /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA20441C10D6DF00DD9D3C /* LKConfig.h */,
-				EBCA20451C10D6DF00DD9D3C /* LKConfig.m */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
-		EBCA20531C10D6DF00DD9D3C /* ThirdParty */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA20541C10D6DF00DD9D3C /* ZipArchive */,
-			);
-			path = ThirdParty;
-			sourceTree = "<group>";
-		};
-		EBCA20541C10D6DF00DD9D3C /* ZipArchive */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA20551C10D6DF00DD9D3C /* LK_SSZipArchive.h */,
-				EBCA20561C10D6DF00DD9D3C /* LK_SSZipArchive.m */,
-				EBCA20571C10D6DF00DD9D3C /* minizip */,
-			);
-			path = ZipArchive;
-			sourceTree = "<group>";
-		};
-		EBCA20571C10D6DF00DD9D3C /* minizip */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA20581C10D6DF00DD9D3C /* crypt.h */,
-				EBCA20591C10D6DF00DD9D3C /* ioapi.c */,
-				EBCA205A1C10D6DF00DD9D3C /* ioapi.h */,
-				EBCA205B1C10D6DF00DD9D3C /* mztools.c */,
-				EBCA205C1C10D6DF00DD9D3C /* mztools.h */,
-				EBCA205D1C10D6DF00DD9D3C /* unzip.c */,
-				EBCA205E1C10D6DF00DD9D3C /* unzip.h */,
-				EBCA205F1C10D6DF00DD9D3C /* zip.c */,
-				EBCA20601C10D6DF00DD9D3C /* zip.h */,
-			);
-			path = minizip;
-			sourceTree = "<group>";
-		};
-		EBCA20611C10D6DF00DD9D3C /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA20621C10D6DF00DD9D3C /* Components */,
-				EBCA20781C10D6DF00DD9D3C /* LKUIManager.h */,
-				EBCA20791C10D6DF00DD9D3C /* LKUIManager.m */,
-				EBCA207A1C10D6DF00DD9D3C /* Presentation */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		EBCA20621C10D6DF00DD9D3C /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA20631C10D6DF00DD9D3C /* LKButton.h */,
-				EBCA20641C10D6DF00DD9D3C /* LKButton.m */,
-				EBCA20651C10D6DF00DD9D3C /* LKFadeCustomSegue.h */,
-				EBCA20661C10D6DF00DD9D3C /* LKFadeCustomSegue.m */,
-				EBCA20671C10D6DF00DD9D3C /* LKImageView.h */,
-				EBCA20681C10D6DF00DD9D3C /* LKImageView.m */,
-				EBCA20691C10D6DF00DD9D3C /* LKNavigationController.h */,
-				EBCA206A1C10D6DF00DD9D3C /* LKNavigationController.m */,
-				EBCA206B1C10D6DF00DD9D3C /* LKPopCustomSegue.h */,
-				EBCA206C1C10D6DF00DD9D3C /* LKPopCustomSegue.m */,
-				EBCA206D1C10D6DF00DD9D3C /* LKPushCustomSegue.h */,
-				EBCA206E1C10D6DF00DD9D3C /* LKPushCustomSegue.m */,
-				EBCA206F1C10D6DF00DD9D3C /* LKSimpleStackView.h */,
-				EBCA20701C10D6DF00DD9D3C /* LKSimpleStackView.m */,
-				EBCA20711C10D6DF00DD9D3C /* LKViewController.h */,
-				EBCA20721C10D6DF00DD9D3C /* LKViewController.m */,
-				EBCA20731C10D6DF00DD9D3C /* Private */,
-				EBCA20751C10D6DF00DD9D3C /* Public */,
-				EBCA20771C10D6DF00DD9D3C /* UIView+LKAdditions.m */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		EBCA20731C10D6DF00DD9D3C /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA20741C10D6DF00DD9D3C /* UIView+LKAdditions.h */,
-			);
-			path = Private;
-			sourceTree = "<group>";
-		};
-		EBCA20751C10D6DF00DD9D3C /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA20761C10D6DF00DD9D3C /* UIView+LKAdditions.h */,
-			);
-			path = Public;
-			sourceTree = "<group>";
-		};
-		EBCA207A1C10D6DF00DD9D3C /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA207B1C10D6DF00DD9D3C /* LKCardPresentationController.h */,
-				EBCA207C1C10D6DF00DD9D3C /* LKCardPresentationController.m */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		EBCA207D1C10D6DF00DD9D3C /* Scripts */ = {
-			isa = PBXGroup;
-			children = (
-				EBCA207E1C10D6DF00DD9D3C /* LaunchKitRemoteBundlesScript.playground */,
-			);
-			path = Scripts;
-			sourceTree = "<group>";
-		};
 		EBCE12531BD2F632000370CC /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -1291,6 +1335,15 @@
 				EBCE12511BD2F62C000370CC /* FavoritesViewController.m */,
 			);
 			name = Favorites;
+			sourceTree = "<group>";
+		};
+		EBD1EBCA1C2F114F003F005F /* Custom Workout Selection Page */ = {
+			isa = PBXGroup;
+			children = (
+				EBD1EBCB1C2F1179003F005F /* CustomWorkoutSelectionViewController.h */,
+				EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */,
+			);
+			name = "Custom Workout Selection Page";
 			sourceTree = "<group>";
 		};
 		EBDC50E91B549F7400E731FB /* Exercise TableView Cell */ = {
@@ -1352,8 +1405,11 @@
 				ORGANIZATIONNAME = "Mark Saunders";
 				TargetAttributes = {
 					3FD5E19C1853A8D00063E10C = {
-						DevelopmentTeam = MHRF3243WF;
+						DevelopmentTeam = 4Z75KMV7DK;
 						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 0;
+							};
 							com.apple.HealthKit = {
 								enabled = 0;
 							};
@@ -1396,7 +1452,7 @@
 				EB52EFD91BCAEFBA00F5D7CA /* NotificationBackgroundErrorIcon@2x.png in Resources */,
 				EB52EFE41BCAEFBA00F5D7CA /* NotificationButtonBackground.png in Resources */,
 				EB52EFE11BCAEFBA00F5D7CA /* NotificationBackgroundWarning@2x.png in Resources */,
-				EBCA207F1C10D6DF00DD9D3C /* .gitkeep in Resources */,
+				EBA9B93C1C2C3DB7002C33B0 /* .gitkeep in Resources */,
 				EB52EFE31BCAEFBA00F5D7CA /* NotificationBackgroundWarningIcon@2x.png in Resources */,
 				EB52EFDC1BCAEFBA00F5D7CA /* NotificationBackgroundSuccess.png in Resources */,
 				3FDA2D5C19C26699003C2FF4 /* Images.xcassets in Resources */,
@@ -1420,7 +1476,7 @@
 				EB52EFDE1BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon.png in Resources */,
 				EB52EFE01BCAEFBA00F5D7CA /* NotificationBackgroundWarning.png in Resources */,
 				EBF7EEEE1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite in Resources */,
-				EBCA20801C10D6DF00DD9D3C /* .gitkeep in Resources */,
+				EBA9B93D1C2C3DB7002C33B0 /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1461,96 +1517,105 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB14B86F1C336314009FF44D /* LGAlertViewWindow.m in Sources */,
+				EBA9B9541C2C3DB7002C33B0 /* LKPushCustomSegue.m in Sources */,
+				EBA9B94C1C2C3DB7002C33B0 /* lk_mztools.c in Sources */,
 				EBFC030E1BFD42A60096178B /* User.m in Sources */,
 				EBFC03181BFD4A230096178B /* UserDataManager.m in Sources */,
-				EBCA20951C10D6DF00DD9D3C /* LKPopCustomSegue.m in Sources */,
 				EB575AD51BEC38EC00A1C798 /* VersionHistoryViewController.m in Sources */,
 				EB737F5C1B7F8A9F00EBBDA4 /* SHExercise.m in Sources */,
-				EBCA20831C10D6DF00DD9D3C /* LKBundleInfo.m in Sources */,
+				EB14B86E1C336314009FF44D /* LGAlertViewTextField.m in Sources */,
+				EBA9B9401C2C3DB7002C33B0 /* LKBundleInfo.m in Sources */,
 				EB2C4A701B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m in Sources */,
-				EBCA20961C10D6DF00DD9D3C /* LKPushCustomSegue.m in Sources */,
 				EB215A341BD895DB00A0765A /* MGSwipeButton.m in Sources */,
+				EBA9B94B1C2C3DB7002C33B0 /* lk_ioapi.c in Sources */,
 				EBB432DA1B549FEC001B2D40 /* ExerciseTableViewCell.m in Sources */,
 				EB701E7B1BE2DC78005003B1 /* QuickFilterViewController.m in Sources */,
+				EB14B86D1C336314009FF44D /* LGAlertViewController.m in Sources */,
 				3F2E5A8718DF4E4E00EE4734 /* ExerciseCollectionCell.m in Sources */,
 				EB4702951C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.m in Sources */,
 				EB52EFE71BCAEFBA00F5D7CA /* TSBlurView.m in Sources */,
 				EBC64C591C02B2C900B33ECA /* WorkoutSelectionViewController.m in Sources */,
-				EBCA20891C10D6DF00DD9D3C /* LKUtils.m in Sources */,
-				3FE8069F18F24442006A0993 /* WorkoutViewController1.m in Sources */,
+				EBA9B94F1C2C3DB7002C33B0 /* LKButton.m in Sources */,
 				EB63EF3B1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m in Sources */,
 				EBB8C9871BFA85FF00347B24 /* DatabaseUpdateViewController.m in Sources */,
+				EBA9B9531C2C3DB7002C33B0 /* LKPopCustomSegue.m in Sources */,
+				EBA9B9461C2C3DB7002C33B0 /* LKTrackOperation.m in Sources */,
+				EB14B86B1C336314009FF44D /* LGAlertViewButtonProperties.m in Sources */,
 				EB2C4A671B89F773005D183A /* WorkoutDataManager.m in Sources */,
 				EB52EFEE1BCAEFC800F5D7CA /* SIAlertView.m in Sources */,
 				EB4702A11C063EBD00732BC9 /* WorkoutCreateViewController.m in Sources */,
-				EBCA20911C10D6DF00DD9D3C /* LKButton.m in Sources */,
+				EBA9B9481C2C3DB7002C33B0 /* NSDictionary+LKFormEncoded.m in Sources */,
+				EBA9B94D1C2C3DB7002C33B0 /* lk_unzip.c in Sources */,
+				EBA9B94A1C2C3DB7002C33B0 /* LK_SSZipArchive.m in Sources */,
 				EB2C4A6A1B89F798005D183A /* CustomWorkoutDataManager.m in Sources */,
-				EBCA209A1C10D6DF00DD9D3C /* LKUIManager.m in Sources */,
-				EBCA208C1C10D6DF00DD9D3C /* LK_SSZipArchive.m in Sources */,
-				EBCA20841C10D6DF00DD9D3C /* LKBundlesManager.m in Sources */,
+				EBA9B9411C2C3DB7002C33B0 /* LKBundlesManager.m in Sources */,
+				EBA9B9561C2C3DB7002C33B0 /* LKViewController.m in Sources */,
 				3FE95E24187A5DB0005DD13D /* SettingsViewController.m in Sources */,
 				EB737F5F1B7F8B2200EBBDA4 /* ExerciseDataManager.m in Sources */,
 				3FE103D3186618F200C53D76 /* ExerciseDetailViewController.m in Sources */,
 				3F2E5A8318DF388300EE4734 /* ExerciseListController.m in Sources */,
 				EBB8C97C1BFA827400347B24 /* AboutTableViewController.m in Sources */,
 				3FC466B21B3621970062EBDB /* CommonUtilities.m in Sources */,
-				EBCA20881C10D6DF00DD9D3C /* LKLog.m in Sources */,
-				EBCA209B1C10D6DF00DD9D3C /* LKCardPresentationController.m in Sources */,
+				EBA9B9451C2C3DB7002C33B0 /* LKLog.m in Sources */,
 				EB8AF5551C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m in Sources */,
+				EBA9B9571C2C3DB7002C33B0 /* UIView+LKAdditions.m in Sources */,
 				EB52EFAD1BCAEF9700F5D7CA /* ALCustomColoredAccessory.m in Sources */,
-				EBCA20981C10D6DF00DD9D3C /* LKViewController.m in Sources */,
 				EBFC03151BFD49E20096178B /* SHUser.m in Sources */,
+				EBA9B9591C2C3DB7002C33B0 /* LKCardPresentationController.m in Sources */,
+				EBA9B9551C2C3DB7002C33B0 /* LKSimpleStackView.m in Sources */,
 				3F8BB363198D4AF70098E1A7 /* CommonSetUpOperations.m in Sources */,
 				EB52EFD41BCAEFBA00F5D7CA /* TSMessage.m in Sources */,
-				EBCA20971C10D6DF00DD9D3C /* LKSimpleStackView.m in Sources */,
-				EB575AD81BEC391000A1C798 /* AcknowledgmentsViewController.m in Sources */,
-				EBCA20861C10D6DF00DD9D3C /* LaunchKit.m in Sources */,
+				EBA9B94E1C2C3DB7002C33B0 /* lk_zip.c in Sources */,
+				EBA9B9581C2C3DB7002C33B0 /* LKUIManager.m in Sources */,
+				EBA9B9431C2C3DB7002C33B0 /* LaunchKit.m in Sources */,
+				EB14B86C1C336314009FF44D /* LGAlertViewCell.m in Sources */,
+				EBD1EBC91C2F062B003F005F /* TextViewTableViewCell.m in Sources */,
 				EB8ACF8A1B76DAD0003E91A6 /* Exercise.m in Sources */,
-				EBCA20991C10D6DF00DD9D3C /* UIView+LKAdditions.m in Sources */,
-				EBCA208E1C10D6DF00DD9D3C /* mztools.c in Sources */,
+				EB14B8701C336314009FF44D /* UIWindow+LGAlertView.m in Sources */,
 				EB52EFE81BCAEFBA00F5D7CA /* TSMessageView.m in Sources */,
 				3FD5E1B31853A8D00063E10C /* AppDelegate.m in Sources */,
 				EB2C4A6D1B89F8DC005D183A /* SHWorkout+Workout.m in Sources */,
-				EBCA208D1C10D6DF00DD9D3C /* ioapi.c in Sources */,
+				EB14B86A1C336314009FF44D /* LGAlertView.m in Sources */,
 				EB4702921C063DD800732BC9 /* WorkoutListViewController.m in Sources */,
-				EBCA20851C10D6DF00DD9D3C /* LKConfig.m in Sources */,
+				EBA9B9501C2C3DB7002C33B0 /* LKFadeCustomSegue.m in Sources */,
+				EBA9B9421C2C3DB7002C33B0 /* LKConfig.m in Sources */,
 				EB63EF9C1B4B5FA400EF35A3 /* TextFieldTableViewCell.m in Sources */,
-				EBCA20811C10D6DF00DD9D3C /* LKAnalytics.m in Sources */,
+				EBA9B93E1C2C3DB7002C33B0 /* LKAnalytics.m in Sources */,
 				EB737F691B7F908F00EBBDA4 /* SHExercise+Exercise.m in Sources */,
 				EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */,
 				EB2C4A5E1B89F53F005D183A /* Workout.m in Sources */,
 				3F63B1AA1ABB9F24000CDE06 /* HomeTabBarController.m in Sources */,
+				EBA9B9491C2C3DB7002C33B0 /* NSString+LKURLEncoded.m in Sources */,
 				EB52EFEF1BCAEFC800F5D7CA /* UIWindow+SIUtils.m in Sources */,
 				EBB8C9841BFA856000347B24 /* HelpCenterViewController.m in Sources */,
+				EBA9B9471C2C3DB7002C33B0 /* LKUtils.m in Sources */,
 				EB2C4A641B89F56A005D183A /* SHCustomWorkout.m in Sources */,
 				3FE41E431ABE0644007522AB /* advancedOptionsSelect.m in Sources */,
 				EB52EFD51BCAEFBA00F5D7CA /* HexColor.m in Sources */,
 				EB2C4A5B1B89F531005D183A /* CustomWorkout.m in Sources */,
 				EB215A351BD895DB00A0765A /* MGSwipeTableCell.m in Sources */,
 				EB701E7F1BE7EA54005003B1 /* WalkThoughOneViewController.m in Sources */,
-				EBCA208A1C10D6DF00DD9D3C /* NSDictionary+LKFormEncoded.m in Sources */,
 				EB2C4A611B89F556005D183A /* SHWorkout.m in Sources */,
 				EB47029C1C063E5E00732BC9 /* WorkoutViewController.m in Sources */,
 				3FD5E1BC1853A8D00063E10C /* StayHealthy.xcdatamodeld in Sources */,
-				EBCA20871C10D6DF00DD9D3C /* LKAPIClient.m in Sources */,
-				EB9CF7011B52AA00006E2984 /* PreferencesTableViewController.m in Sources */,
-				EBCA208F1C10D6DF00DD9D3C /* unzip.c in Sources */,
-				EBCA20931C10D6DF00DD9D3C /* LKImageView.m in Sources */,
+				EB18FDD91C35712E0057D8B0 /* BodyViewCollectionViewCell.m in Sources */,
+				EBA9B9441C2C3DB7002C33B0 /* LKAPIClient.m in Sources */,
+				EBD1EBCD1C2F1179003F005F /* CustomWorkoutSelectionViewController.m in Sources */,
+				EB9CF7011B52AA00006E2984 /* PreferencesViewController.m in Sources */,
 				3FD5E1AF1853A8D00063E10C /* main.m in Sources */,
-				EBCA20821C10D6DF00DD9D3C /* LKAppUser.m in Sources */,
+				EBA9B93F1C2C3DB7002C33B0 /* LKAppUser.m in Sources */,
+				EBA9B9511C2C3DB7002C33B0 /* LKImageView.m in Sources */,
 				EB4702991C063E3100732BC9 /* WorkoutDetailViewController.m in Sources */,
 				EB52EFA91BCAEF8900F5D7CA /* MZTimerLabel.m in Sources */,
 				EBFC031B1BFD4A850096178B /* SHUser+User.m in Sources */,
 				EBC64C5D1C02C3CD00B33ECA /* WorkoutTableViewCell.m in Sources */,
-				EBCA208B1C10D6DF00DD9D3C /* NSString+LKURLEncoded.m in Sources */,
-				EBCA20901C10D6DF00DD9D3C /* zip.c in Sources */,
+				EBA9B9521C2C3DB7002C33B0 /* LKNavigationController.m in Sources */,
 				EBB8C9811BFA855300347B24 /* FeedbackCenterViewController.m in Sources */,
 				EBB8C9701BF90ECA00347B24 /* ExerciseSelectionViewController.m in Sources */,
 				3F7D77A319A300D600E00065 /* WebViewViewController.m in Sources */,
 				EB89979E1B7C3DE100904984 /* GlobalDefinitions.h in Sources */,
-				EBCA20921C10D6DF00DD9D3C /* LKFadeCustomSegue.m in Sources */,
 				EB737F711B8015E100EBBDA4 /* SHDataHandler.m in Sources */,
-				EBCA20941C10D6DF00DD9D3C /* LKNavigationController.m in Sources */,
 				EB52EFF31BCAEFCF00F5D7CA /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1593,7 +1658,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mark Saunders (QXM5Q354M5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Robert Saunders (9D29V34H8Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
@@ -1639,7 +1704,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mark Saunders (QXM5Q354M5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Robert Saunders (9D29V34H8Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
@@ -1671,6 +1736,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = StayHealthy/StayHealthy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1809,6 +1875,43 @@
 					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
@@ -1973,6 +2076,43 @@
 					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
@@ -2016,6 +2156,7 @@
 		3FD5E1BA1853A8D00063E10C /* StayHealthy.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				EB8864B61C305ED600B98050 /* StayHealthy 3.xcdatamodel */,
 				EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */,
 				3FD5E1BB1853A8D00063E10C /* StayHealthy.xcdatamodel */,
 			);

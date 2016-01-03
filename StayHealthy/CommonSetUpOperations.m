@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Student on 8/2/2014.
-//  Copyright (c) 2014 Mark Saunders. All rights reserved.
+//  Copyright (c) 2014 Robert Saunders. All rights reserved.
 //
 
 #import "CommonSetUpOperations.h"
@@ -13,13 +13,25 @@
 //Styles a UICollectionViewCell
 + (void)styleCollectionViewCell:(UICollectionViewCell*)collectionViewCell {
      collectionViewCell.layer.masksToBounds = NO;
-     collectionViewCell.layer.borderColor = [UIColor whiteColor].CGColor;
+     collectionViewCell.layer.borderColor = [UIColor blackColor].CGColor;
      collectionViewCell.layer.borderWidth = 2.0f;
      collectionViewCell.layer.shadowOpacity = 0.10f;
      collectionViewCell.layer.shadowRadius = 4.0f;
      collectionViewCell.layer.shadowOffset = CGSizeZero;
      collectionViewCell.layer.shadowPath = [UIBezierPath bezierPathWithRect: collectionViewCell.bounds].CGPath;
      collectionViewCell.layer.cornerRadius = 4.0f;
+}
+
++ (void)styleCollectionViewCellBodyZone:(UICollectionViewCell*)collectionViewCell {
+    collectionViewCell.layer.masksToBounds = NO;
+    collectionViewCell.layer.borderColor = LIGHT_GRAY_COLOR.CGColor;
+    collectionViewCell.layer.borderWidth = 0.25f;
+}
+
++ (void)styleCollectionViewCellBodyZoneSelected:(UICollectionViewCell*)collectionViewCell {
+    collectionViewCell.layer.masksToBounds = NO;
+    collectionViewCell.layer.borderColor = BLUE_COLOR.CGColor;
+    collectionViewCell.layer.borderWidth = 2.0f;
 }
 
 //Performs a TSMessage, specified message, and other parameters.
@@ -55,17 +67,17 @@
 + (void)styleAlertView {
     //Style the SIAlertView asking what exercise type.
     [[SIAlertView appearance] setTitleFont:alertViewTitleFont];
-    [[SIAlertView appearance] setTitleColor:STAYHEALTHY_BLUE];
-    [[SIAlertView appearance] setMessageColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setTitleColor:BLUE_COLOR];
+    [[SIAlertView appearance] setMessageColor:BLUE_COLOR];
     [[SIAlertView appearance] setCornerRadius:4];
     [[SIAlertView appearance] setShadowRadius:0];
-    [[SIAlertView appearance] setViewBackgroundColor:STAYHEALTHY_WHITE];
-    [[SIAlertView appearance] setButtonColor:STAYHEALTHY_BLUE];
-    [[SIAlertView appearance] setDestructiveButtonColor:STAYHEALTHY_BLUE];
-    [[SIAlertView appearance] setCancelButtonColor:STAYHEALTHY_BLUE];
+    [[SIAlertView appearance] setViewBackgroundColor:WHITE_COLOR];
+    [[SIAlertView appearance] setButtonColor:BLUE_COLOR];
+    [[SIAlertView appearance] setDestructiveButtonColor:BLUE_COLOR];
+    [[SIAlertView appearance] setCancelButtonColor:BLUE_COLOR];
     [[SIAlertView appearance] setButtonFont:alertViewButtonFont];
     [[SIAlertView appearance] setMessageFont:alertViewMessageFont];
-    [[SIAlertView appearance] setMessageColor:STAYHEALTHY_LIGHTGRAYCOLOR];
+    [[SIAlertView appearance] setMessageColor:LIGHT_GRAY_COLOR];
 }
 
 //Loads images in the background.
@@ -86,7 +98,7 @@
 + (UIView*)tableViewSelectionColorSet:(UITableViewCell *)cell {
     
     UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = STAYHEALTHY_WHITE;
+    bgColorView.backgroundColor = WHITE_COLOR;
     bgColorView.layer.masksToBounds = YES;
     [cell setSelectedBackgroundView:bgColorView];
     return bgColorView;
@@ -96,21 +108,21 @@
 + (UIView *)drawViewForTableViewHeader:(UITableView*)tableView {
     //Create a view for the header.
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
-    [view setBackgroundColor:STAYHEALTHY_WHITE];
+    [view setBackgroundColor:WHITE_COLOR];
     return view;
 }
 
 //Returns the color based off of the difficulty passed to it.
 + (UIColor*)determineDifficultyColor:(NSString *)difficulty {
     if ([difficulty isEqualToString:@"Easy"])
-        return STAYHEALTHY_GREEN;
+        return GREEN_COLOR;
     else if ([difficulty isEqualToString:@"Intermediate"])
-        return STAYHEALTHY_DARKERBLUE;
+        return DARK_BLUE_COLOR;
     else if ([difficulty isEqualToString:@"Hard"])
-        return STAYHEALTHY_RED;
+        return RED_COLOR;
     else if ([difficulty isEqualToString:@"Very Hard"])
         return [UIColor blackColor];
-    return [UIColor blackColor];
+    return LIGHT_GRAY_COLOR;
 }
 
 @end

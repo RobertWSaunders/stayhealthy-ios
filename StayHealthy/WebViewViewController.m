@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Student on 2014-08-18.
-//  Copyright (c) 2014 Mark Saunders. All rights reserved.
+//  Copyright (c) 2014 Robert Saunders. All rights reserved.
 //
 
 #import "WebViewViewController.h"
@@ -24,6 +24,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.tabBarController.tabBar.hidden=YES;
     
      self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -52,27 +54,8 @@
     //Load the NSURLRequest in the WebView.
     [self.webView loadRequest:requestObj];
     
-    //Create the first status image and the indicator view
-    self.spinnerImage.image = [UIImage imageNamed:@"Spinner1.png"];
+    [CommonUtilities showCustomActivityIndicator:self.spinnerImage];
     
-    //Add more images which will be used for the animation
-    self.spinnerImage.animationImages = [NSArray arrayWithObjects:
-                                         [UIImage imageNamed:@"Spinner1.png"],
-                                         [UIImage imageNamed:@"Spinner2.png"],
-                                         [UIImage imageNamed:@"Spinner3.png"],
-                                         [UIImage imageNamed:@"Spinner4.png"],
-                                         [UIImage imageNamed:@"Spinner5.png"],
-                                         [UIImage imageNamed:@"Spinner6.png"],
-                                         [UIImage imageNamed:@"Spinner7.png"],
-                                         [UIImage imageNamed:@"Spinner8.png"],
-                                         nil];
-    
-    self.spinnerImage.animationDuration = 0.8;
-
-    //Start the animation
-    [self.spinnerImage startAnimating];
-    
-    self.spinnerImage.hidden = NO;
 }
 
 /*****************************************/

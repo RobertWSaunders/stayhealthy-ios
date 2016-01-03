@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-08-15.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -64,11 +64,24 @@
 - (NSMutableArray*)getLikedWorkouts;
 - (SHWorkout *)convertWorkoutToSHWorkout:(Workout*)workout;
 
+- (NSMutableArray *)getRecentlyViewedWorkouts;
+
 #pragma mark - Custom Workout Data Manager Methods
 
 - (void)saveCustomWorkoutRecord:(SHCustomWorkout *)customWorkout;
 
 - (void)updateCustomWorkoutRecord:(SHCustomWorkout *)customWorkout;
+
+- (void)deleteCustomWorkoutRecord:(SHCustomWorkout *)customWorkout;
+
+- (void)addExerciseToCustomWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise;
+
+- (SHCustomWorkout *)returnCustomWorkoutByIdentifier:(NSString*)identifier;
+- (NSMutableArray*)fetchAllCustomWorkouts;
+- (BOOL)canAddExerciseToWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise;
+- (NSMutableArray*)getLikedCustomWorkouts;
+
+- (BOOL)customWorkoutHasBeenSaved:(NSString *)workoutIdentifier;
 
 #pragma mark - User Data Manager Methods
 

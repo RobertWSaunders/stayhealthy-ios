@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-25.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import "WorkoutDetailViewController.h"
@@ -14,64 +14,31 @@
 
 @implementation WorkoutDetailViewController
 
+/***********************************/
+#pragma mark - View Loading Methods
+/***********************************/
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    workoutExercises = [CommonUtilities getWorkoutExercises:self.workoutToDisplay];
-    workoutAnalysis = @[@"Exercises",@"Exercises Liked",@"Times Completed",@"Difficulty",@"Workout Type",@"Target Sports",@"Target Muscles",@"Equipment"];
+    self.tabBarController.tabBar.hidden=YES;
     
-    NSUInteger numExercises = [CommonUtilities numExercisesInWorkout:self.workoutToDisplay];
-    NSString *numE = [NSString stringWithFormat:@"%lu",(unsigned long)numExercises];
-    
-    NSMutableArray *likedExercises = [[NSMutableArray alloc] init];
-    for (SHExercise *exercise in workoutExercises) {
-        SHExercise *update = [self updateExerciseWithUserData:exercise];
-        if ([update.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-            [likedExercises addObject:exercise];
+    if (self.customWorkoutMode) {
+        [self loadViewForCustomWorkout];
+        if ([self.customWorkoutToDisplay.workoutSummary isEqualToString:@""] || self.customWorkoutToDisplay.workoutSummary == nil) {
+            self.segmentTopSpaceConstraint.constant = 0;
+            self.summaryButton.hidden = YES;
+            self.summaryLabel.hidden = YES;
+            self.summaryNameLabel.hidden = YES;
         }
     }
-    NSString *likeNum = [NSString stringWithFormat:@"%lu",(unsigned long)[likedExercises count]];
-    
-    NSString *timesCompleted;
-    
-    if (self.workoutToDisplay.timesCompleted == nil) {
-        timesCompleted = @"0";
-    }
     else {
-         timesCompleted = [NSString stringWithFormat:@"%@",self.workoutToDisplay.timesCompleted];
-    }
-   
-    
-    workoutAnalysisContent = @[numE,likeNum,timesCompleted,self.workoutToDisplay.workoutDifficulty,self.workoutToDisplay.workoutType,self.workoutToDisplay.workoutTargetSports,self.workoutToDisplay.workoutTargetMuscles,self.workoutToDisplay.workoutEquipment];
-    
-    self.title =  self.workoutToDisplay.workoutName;
-    
-    self.summaryLabel.text = self.workoutToDisplay.workoutSummary;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:exerciseFavNotification object:nil];
-    
-    SHDataHandler *dataHandler = [SHDataHandler getInstance];
-    
-    
-    //Save or Update the exercise information.
-    if ([dataHandler workoutHasBeenSaved:self.workoutToDisplay.workoutIdentifier]) {
-        self.workoutToDisplay.lastViewed = [NSDate date];
-        [dataHandler updateWorkoutRecord:self.workoutToDisplay];
-    }
-    else {
-        self.workoutToDisplay.lastViewed = [NSDate date];
-        [dataHandler saveWorkoutRecord:self.workoutToDisplay];
+        [self loadViewForDefault];
+        self.navigationItem.rightBarButtonItems = @[self.likeButton];
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:exerciseNotification object:nil];
-    
-    
-    if ([self.workoutToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-        [self.likeButton setImage:[UIImage imageNamed:@"likeSelected.png"]];
-    }
-    else {
-        [self.likeButton setImage:[UIImage imageNamed:@"like.png"]];
-    }
+    workoutAnalysis = @[@"Exercises",@"Exercises Liked",@"Times Completed",@"Difficulty",@"Workout Type",@"Target Sports",@"Target Muscles",@"Equipment"];
+
     
     if (IS_IPHONE_4_OR_LESS || IS_IPHONE_5) {
         self.workoutAnalysisTableView.scrollEnabled = YES;
@@ -81,11 +48,45 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+- (void)loadViewForCustomWorkout {
+    self.title = self.customWorkoutToDisplay.workoutName;
+    self.summaryLabel.text = self.customWorkoutToDisplay.workoutSummary;
+     workoutExercises = [CommonUtilities getCustomWorkoutExercises:self.customWorkoutToDisplay];
+    [self getWorkoutAnalysisContent];
+ 
+    if ([self.customWorkoutToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        [self.likeButton setImage:[UIImage imageNamed:@"likeSelected.png"]];
+    }
+    else {
+        [self.likeButton setImage:[UIImage imageNamed:@"like.png"]];
+    }
+    
+   }
 
+- (void)loadViewForDefault {
+    self.title = self.workoutToDisplay.workoutName;
+    self.summaryLabel.text = self.workoutToDisplay.workoutSummary;
+     workoutExercises = [CommonUtilities getWorkoutExercises:self.workoutToDisplay];
+    [self getWorkoutAnalysisContent];
+    SHDataHandler *dataHandler = [SHDataHandler getInstance];
+    
+    //Save or Update the workout information.
+    if ([dataHandler workoutHasBeenSaved:self.workoutToDisplay.workoutIdentifier]) {
+        self.workoutToDisplay.lastViewed = [NSDate date];
+        [dataHandler updateWorkoutRecord:self.workoutToDisplay];
+    }
+    else {
+        self.workoutToDisplay.lastViewed = [NSDate date];
+        [dataHandler saveWorkoutRecord:self.workoutToDisplay];
+    }
+    
+    if ([self.workoutToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        [self.likeButton setImage:[UIImage imageNamed:@"likeSelected.png"]];
+    }
+    else {
+        [self.likeButton setImage:[UIImage imageNamed:@"like.png"]];
+    }
+}
 
 /*******************************************************/
 #pragma mark - TableView Delegate and Datasource Methods
@@ -97,7 +98,7 @@
         return 76.0f;
     }
     else {
-        return 44.0f;
+        return 50.0f;
     }
   
 }
@@ -148,7 +149,7 @@
         if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
             cell.likeExerciseImage.hidden = NO;
             [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-            cell.likeExerciseImage.tintColor = STAYHEALTHY_BLUE;
+            cell.likeExerciseImage.tintColor = BLUE_COLOR;
         }
         else {
             cell.likeExerciseImage.hidden = YES;
@@ -176,8 +177,10 @@
         cell.textLabel.text = [workoutAnalysis objectAtIndex:indexPath.row];
         cell.detailTextLabel.text = [workoutAnalysisContent objectAtIndex:indexPath.row];
         
+         cell.detailTextLabel.textColor = [CommonSetUpOperations determineDifficultyColor:[workoutAnalysisContent objectAtIndex:indexPath.row]];
+        
         cell.textLabel.font = tableViewTitleTextFont;
-        cell.textLabel.textColor = STAYHEALTHY_BLUE;
+        cell.textLabel.textColor = BLUE_COLOR;
         cell.detailTextLabel.font = tableViewDetailTextFont;
         
         [CommonSetUpOperations tableViewSelectionColorSet:cell];
@@ -188,7 +191,6 @@
     }
 }
 
-
 //----------------------------------
 #pragma mark Cell Selection Handling
 //----------------------------------
@@ -197,6 +199,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.exerciseListTableView) {
         [self performSegueWithIdentifier:@"exerciseDetail" sender:nil];
+    }
+    else if (tableView == self.workoutAnalysisTableView && indexPath.row >= 5) {
+        [self performSegueWithIdentifier:@"showList" sender:nil];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -210,9 +215,16 @@
     if ([segue.identifier isEqualToString:@"performWorkout"]) {
         WorkoutViewController *view = [[WorkoutViewController alloc] init];
         view = segue.destinationViewController;
+        if (self.customWorkoutMode) {
+            view.viewTitle = self.customWorkoutToDisplay.workoutName;
+            view.customWorkoutToDisplay = self.customWorkoutToDisplay;
+        }
+        else {
+            view.viewTitle = self.workoutToDisplay.workoutName;
+            view.workoutShown = self.workoutToDisplay;
+        }
         view.workoutExercises = workoutExercises;
-        view.viewTitle = self.workoutToDisplay.workoutName;
-        view.workoutShown = self.workoutToDisplay;
+
     }
     else if ([segue.identifier isEqualToString:@"exerciseDetail"]) {
         NSIndexPath *indexPath = [self.exerciseListTableView indexPathForSelectedRow];
@@ -221,6 +233,34 @@
         destViewController.exerciseToDisplay = exercise;
         destViewController.viewTitle = exercise.exerciseName;
         destViewController.modalView = NO;
+        destViewController.showActionIcon = YES;
+    }
+    else if ([segue.identifier isEqualToString:@"showList"]) {
+        NSIndexPath *indexPath = [self.workoutAnalysisTableView indexPathForSelectedRow];
+        advancedOptionsSelect *attributeSelectionPage = [[advancedOptionsSelect alloc]init];
+        //Set the destination.
+        attributeSelectionPage = segue.destinationViewController;
+        if (indexPath.row == 5) {
+            attributeSelectionPage.titleText = @"Target Sports";
+            attributeSelectionPage.arrayForTableView = [self.workoutToDisplay.workoutTargetSports componentsSeparatedByString:@","];
+        }
+        else if (indexPath.row == 6) {
+            attributeSelectionPage.titleText = @"Target Muscles";
+            attributeSelectionPage.arrayForTableView = [self.workoutToDisplay.workoutTargetMuscles componentsSeparatedByString:@","];
+        }
+        else if (indexPath.row == 7) {
+            attributeSelectionPage.titleText = @"Equipment";
+            attributeSelectionPage.arrayForTableView = [self.workoutToDisplay.workoutEquipment componentsSeparatedByString:@","];
+        }
+        attributeSelectionPage.viewMode = YES;
+    }
+    else if ([segue.identifier isEqualToString:@"editCustomWorkout"]) {
+        UINavigationController *navController = segue.destinationViewController;
+        WorkoutCreateViewController *createWorkoutController = [[WorkoutCreateViewController alloc] init];
+        createWorkoutController = navController.viewControllers[0];
+        createWorkoutController.editMode = YES;
+        createWorkoutController.workoutToEdit = self.customWorkoutToDisplay;
+        createWorkoutController.workoutToEditExercises = [workoutExercises mutableCopy];
     }
 }
 
@@ -279,21 +319,40 @@
     [self changeImage];
     
     if ([self.likeButton.image isEqual:[UIImage imageNamed:@"likeSelected.png"]]) {
-        self.workoutToDisplay.liked = [NSNumber numberWithBool:YES];
+        if (self.customWorkoutToDisplay) {
+            self.customWorkoutToDisplay.liked = [NSNumber numberWithBool:YES];
+        }
+        else {
+            self.workoutToDisplay.liked = [NSNumber numberWithBool:YES];
+        }
+        
     }
     else {
-        self.workoutToDisplay.liked = [NSNumber numberWithBool:NO];
+        if (self.customWorkoutToDisplay) {
+             self.customWorkoutToDisplay.liked = [NSNumber numberWithBool:NO];
+        }
+        else {
+            self.workoutToDisplay.liked = [NSNumber numberWithBool:NO];
+        }
+        
     }
     
     //Save or Update the exercise information.
-    if ([dataHandler workoutHasBeenSaved:self.workoutToDisplay.workoutIdentifier]) {
-        [dataHandler updateWorkoutRecord:self.workoutToDisplay];
+    
+    if (self.customWorkoutToDisplay) {
+        [dataHandler updateCustomWorkoutRecord:self.customWorkoutToDisplay];
     }
     else {
-        [dataHandler saveWorkoutRecord:self.workoutToDisplay];
+        if ([dataHandler workoutHasBeenSaved:self.workoutToDisplay.workoutIdentifier]) {
+            [dataHandler updateWorkoutRecord:self.workoutToDisplay];
+        }
+        else {
+            [dataHandler saveWorkoutRecord:self.workoutToDisplay];
+        }
     }
+   
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:workoutFavNotification object:nil];
+   
     
 }
 
@@ -311,4 +370,55 @@
     
 }
 
+- (void)getWorkoutAnalysisContent {
+    
+    NSUInteger numExercises;
+    NSString *timesCompleted;
+    
+    if (self.customWorkoutMode) {
+        numExercises = [CommonUtilities numExercisesInCustomWorkout:self.customWorkoutToDisplay];
+        if (self.customWorkoutToDisplay.timesCompleted == nil) {
+            timesCompleted = @"0";
+        }
+        else {
+            timesCompleted = [NSString stringWithFormat:@"%@",self.workoutToDisplay.timesCompleted];
+        }
+    
+        
+    }
+    else {
+        numExercises = [CommonUtilities numExercisesInWorkout:self.workoutToDisplay];
+        if (self.workoutToDisplay.timesCompleted == nil) {
+            timesCompleted = @"0";
+        }
+        else {
+            timesCompleted = [NSString stringWithFormat:@"%@",self.workoutToDisplay.timesCompleted];
+        }
+        
+    }
+    
+    NSString *numE = [NSString stringWithFormat:@"%lu",(unsigned long)numExercises];
+    
+    NSMutableArray *likedExercises = [[NSMutableArray alloc] init];
+    for (SHExercise *exercise in workoutExercises) {
+        SHExercise *update = [self updateExerciseWithUserData:exercise];
+        if ([update.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+            [likedExercises addObject:exercise];
+        }
+    }
+    NSString *likeNum = [NSString stringWithFormat:@"%lu",(unsigned long)[likedExercises count]];
+    
+    if (self.customWorkoutMode) {
+          workoutAnalysisContent = @[numE,likeNum,timesCompleted,self.customWorkoutToDisplay.workoutDifficulty,self.customWorkoutToDisplay.workoutType,self.customWorkoutToDisplay.workoutTargetSports,self.customWorkoutToDisplay.workoutTargetMuscles,self.customWorkoutToDisplay.workoutEquipment];
+    }
+    else {
+          workoutAnalysisContent = @[numE,likeNum,timesCompleted,self.workoutToDisplay.workoutDifficulty,self.workoutToDisplay.workoutType,self.workoutToDisplay.workoutTargetSports,self.workoutToDisplay.workoutTargetMuscles,self.workoutToDisplay.workoutEquipment];
+    }
+        
+  
+}
+
+- (IBAction)editButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"editCustomWorkout" sender:nil];
+}
 @end

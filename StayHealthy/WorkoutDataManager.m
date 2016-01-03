@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-08-23.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import "WorkoutDataManager.h"
@@ -38,6 +38,7 @@
                 LogDataError(@"%@, %@", error, error.localizedDescription);
             }
             else {
+                [[NSNotificationCenter defaultCenter] postNotificationName:WORKOUT_SAVE_NOTIFICATION object:nil];
                 LogDataSuccess(@"Workout was saved successfully. --> saveItem @ WorkoutDataManager");
             }
         }
@@ -69,6 +70,7 @@
                 LogDataError(@"%@, %@", error, error.localizedDescription);
             }
             else {
+                [[NSNotificationCenter defaultCenter] postNotificationName:WORKOUT_UPDATE_NOTIFICATION object:nil];
                 LogDataSuccess(@"Workout has been updated successfully. --> updateItem @ WorkoutDataManager");
             }
         }

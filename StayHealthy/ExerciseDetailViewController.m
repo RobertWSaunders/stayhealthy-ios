@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Student on 12/21/2013.
-//  Copyright (c) 2013 Mark Saunders. All rights reserved.
+//  Copyright (c) 2013 Robert Saunders. All rights reserved.
 //
 
 #import "ExerciseDetailViewController.h"
@@ -21,15 +21,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tabBarController.tabBar.hidden=YES;
     
-    
+    if (!self.showActionIcon) {
+        self.navigationItem.rightBarButtonItems = @[self.likeButton];
+    }
+
     if (self.modalView) {
         UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped:)];
         self.navigationItem.leftBarButtonItem = backButton;
     }
     
     //Sets the NSUserDefault and displays the TSMessage when page is loaded for the first time.
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_FIND_EXERCISE_DETAIL  viewController:self message:@"This is a good one, hopefully you will like it! Make sure to scroll down to see more details about the exercise and favorite it by tapping the heart in the top right or by double tapping on the exercise image!"];
+    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_FIND_EXERCISE_DETAIL  viewController:self message:@"This is a good one, hopefully you will like it! Make sure to scroll down to see more details about the exercise and favourite it by tapping the heart in the top right or by double tapping on the exercise image. You can also find some options that are available to you by tapping the sheet icon beside the heart in the top right."];
     
     /*UIBarButtonItem* actionSheet = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"actionSheet.png"] style:UIBarButtonItemStylePlain target:self action:nil];
     self.navigationItem.rightBarButtonItems = @[self.likeButton,actionSheet];
@@ -53,7 +57,6 @@
         [dataHandler saveExerciseRecord:self.exerciseToDisplay];
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:exerciseNotification object:nil];
     
     
     if ([self.exerciseToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
@@ -142,8 +145,6 @@
         [dataHandler saveExerciseRecord:self.exerciseToDisplay];
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:exerciseFavNotification object:nil];
-    
 }
 
 // handle method
@@ -217,8 +218,8 @@
     cell.textLabel.font = tableViewTitleTextFont;
     cell.detailTextLabel.font = tableViewDetailTextFont;
     
-    cell.textLabel.textColor = STAYHEALTHY_BLUE;
-    cell.detailTextLabel.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
+    cell.textLabel.textColor = BLUE_COLOR;
+    cell.detailTextLabel.textColor = LIGHT_GRAY_COLOR;
     
     //Sets
     if (indexPath.row == 0) {
@@ -265,18 +266,6 @@
         return cell;
 }
 
-- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    if (popup.tag == 1) {
-            if (buttonIndex == 0) {
-                LogInfo(@"Add to workout");
-            }
-            else {
-                 LogInfo(@"Share");
-            }
-    }
-}
-
 
 //If the user leaves the page then dismiss the all TSMessages.
 -(void)viewWillDisappear:(BOOL)animated {
@@ -287,11 +276,41 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)actionSheetPressed:(id)sender {
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
-                            @"Add to Workout",
-                            @"Share",
-                            nil];
-    popup.tag = 1;
-    [popup showInView:[UIApplication sharedApplication].keyWindow];
+
+    
+    LGAlertView *alertView = [[LGAlertView alloc] initWithTitle:@"Exercise Options"
+                                                        message:@"Select the option you would like to proceed with."
+                                                          style:LGAlertViewStyleActionSheet
+                                                   buttonTitles:@[@"Add to Workout"]
+                                              cancelButtonTitle:@"Cancel"
+                                         destructiveButtonTitle:nil
+                                                  actionHandler:^(LGAlertView *alertView, NSString *title, NSUInteger index) {
+                                                      
+                                                      [self performSegueWithIdentifier:@"addToWorkout" sender:nil];
+                                                  }
+                                                  cancelHandler:nil
+                                             destructiveHandler:nil];
+    alertView.titleFont = [UIFont fontWithName:regularFontName size:18.0f];
+    alertView.titleTextColor = LIGHT_GRAY_COLOR;
+    alertView.messageFont = [UIFont fontWithName:regularFontName size:16.0f];
+    alertView.messageTextColor = DARK_GRAY_COLOR;
+    alertView.buttonsFont = [UIFont fontWithName:regularFontName size:18.0f];
+    alertView.buttonsTitleColor = BLUE_COLOR;
+    alertView.buttonsBackgroundColorHighlighted = BLUE_COLOR;
+    alertView.cancelButtonFont = [UIFont fontWithName:regularFontName size:18.0f];
+    alertView.cancelButtonTitleColor = BLUE_COLOR;
+    alertView.cancelButtonBackgroundColorHighlighted = BLUE_COLOR;
+    [alertView showAnimated:YES completionHandler:nil];
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"addToWorkout"]) {
+        UINavigationController *navController = [[UINavigationController alloc] init];
+        CustomWorkoutSelectionViewController *customWorkoutSelection = [[CustomWorkoutSelectionViewController alloc] init];
+        navController = segue.destinationViewController;
+        customWorkoutSelection = navController.viewControllers[0];
+        customWorkoutSelection.exerciseToAdd = self.exerciseToDisplay;
+    }
 }
 @end

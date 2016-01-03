@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-03-21.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import "advancedOptionsSelect.h"
@@ -17,6 +17,10 @@
 -(void)viewDidLoad {
     //Sets the navigation buttons in the navigation bar.
     [self setNavigationButtons];
+
+    if (self.viewMode) {
+        self.tableView.allowsSelection = NO;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -35,6 +39,11 @@
 /**************************************/
 #pragma mark TableView Delegate Methods
 /**************************************/
+
+//Returns the height of the cells inside the tableView.
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50.0f;
+}
 
 //Sets the number of rows in the tableview.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -57,10 +66,10 @@
     
     //Set the font and text color of the text label.
     cell.textLabel.font = tableViewTitleTextFont;
-    cell.textLabel.textColor = STAYHEALTHY_BLUE;
+    cell.textLabel.textColor = BLUE_COLOR;
     
     //Set the accessory type dependant on whether it is in selected cells array.
-    if ([self.selectedCells containsObject:[NSString stringWithFormat:@"%@",cell.textLabel.text]]) {
+    if (!self.singleSelectionMode && [self.selectedCells containsObject:[NSString stringWithFormat:@"%@",cell.textLabel.text]]) {
         //Make the checkmark show up.
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
@@ -80,26 +89,36 @@
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-        [self.selectedCells removeObject:[NSString stringWithFormat:@"%@",cell.textLabel.text]];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    } else {
-        [self.selectedCells addObject:[NSString stringWithFormat:@"%@",cell.textLabel.text]];
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    
-    //Tell the user that it's likely to lead to nothing in the search if they choose two different primary or secondary muscles, we only tell them once though, just so we don't be annoying.
-    if (self.selectedCells.count > 1) {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"advancedOptionsSelect-FirstSelection"]) {
-            if (self.typeOfExerciseAttribute == primaryMuscle) {
-                //[CommonSetUpOperations performTSMessage:@"It's very rare for an exercise to have multiple primary muscles, just saying! But give it a try if you want!" message:nil viewController:self canBeDismissedByUser:YES duration:7];
-            }
-            else if (self.typeOfExerciseAttribute ==  secondaryMuscle) {
-               // [CommonSetUpOperations performTSMessage:@"It's very rare for an exercise to have multiple secondary muscle, just saying! But give it a try if you want!" message:nil viewController:self canBeDismissedByUser:YES duration:7];
-            }
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"advancedOptionsSelect-FirstSelection"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+    if (!self.viewMode) {
+    if (!self.singleSelectionMode) {
+        if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
+            [self.selectedCells removeObject:[NSString stringWithFormat:@"%@",cell.textLabel.text]];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        } else {
+            [self.selectedCells addObject:[NSString stringWithFormat:@"%@",cell.textLabel.text]];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
+        
+        //Tell the user that it's likely to lead to nothing in the search if they choose two different primary or secondary muscles, we only tell them once though, just so we don't be annoying.
+        if (self.selectedCells.count > 1) {
+            if (![[NSUserDefaults standardUserDefaults] boolForKey:@"advancedOptionsSelect-FirstSelection"]) {
+                if (self.typeOfExerciseAttribute == primaryMuscle) {
+                    //[CommonSetUpOperations performTSMessage:@"It's very rare for an exercise to have multiple primary muscles, just saying! But give it a try if you want!" message:nil viewController:self canBeDismissedByUser:YES duration:7];
+                }
+                else if (self.typeOfExerciseAttribute ==  secondaryMuscle) {
+                    // [CommonSetUpOperations performTSMessage:@"It's very rare for an exercise to have multiple secondary muscle, just saying! But give it a try if you want!" message:nil viewController:self canBeDismissedByUser:YES duration:7];
+                }
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"advancedOptionsSelect-FirstSelection"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+        }
+    }
+    else {
+        self.selectedCells = [[NSMutableArray alloc] init];
+        [self.selectedCells addObject:[NSString stringWithFormat:@"%@",cell.textLabel.text]];
+        [self.delegate userHasSelected:self.selectedCells indexPath:self.indexPathPassed passedArrayCount:[self.arrayForTableView count]];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -112,8 +131,8 @@
 //Set the navigation buttons making sure that they display in the navigation button.
 - (void)setNavigationButtons {
     //Create dictionary and set font and display the buttons.
-    NSDictionary *attrDict = [NSDictionary dictionaryWithObject:STAYHEALTHY_NAVBARBUTTONFONT forKey:NSFontAttributeName];
-    [[UIBarButtonItem appearance] setTitleTextAttributes: attrDict
+    NSDictionary *attrDict = [NSDictionary dictionaryWithObject:NAVIGATIONBAR_BUTTON_FONT forKey:NSFontAttributeName];
+    [[UIBarButtonItem appearance] setTitleTextAttributes: attrDict  
                                                 forState: UIControlStateDisabled];
     [[UIBarButtonItem appearance] setTitleTextAttributes: attrDict
                                                 forState: UIControlStateNormal];

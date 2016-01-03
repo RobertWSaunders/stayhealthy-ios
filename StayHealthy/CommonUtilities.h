@@ -153,6 +153,8 @@
  */
 + (NSString *)concatenateArrayItems:(NSArray *)arrayItems separator:(NSString *)separator;
 
++ (void)showCustomActivityIndicator:(UIImageView*)spinnerImage;
+
 + (BOOL) dateExistsYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
 
 
@@ -170,7 +172,7 @@
  *  @param muscle Muscle to search for in the table.
  *  @return Query for the StayHealthy database as a string.
  */
-+ (NSString *)createExerciseQuery:(NSString *)table muscle:(NSString *)muscle;
++ (NSString *)createExerciseQuery:(NSUInteger)index muscles:(NSArray *)muscleArray;
 
 + (NSString *)createExerciseQueryFromExerciseIds:(NSMutableArray *)exerciseIDs table:(NSString*)table;
 
@@ -188,4 +190,13 @@
 
 + (NSString *)generateWorkoutExerciseQuery:(exerciseTypes)exerciseType exerciseIdentifier:(NSString*)exerciseIdentifier;
 + (NSString *)createWorkoutQueryFromWorkoutIds:(NSMutableArray *)workoutIDs table:(NSString*)table;
+
++ (NSUInteger)numExercisesInCustomWorkout:(SHCustomWorkout*)workout;
+
++ (NSMutableArray*)getCustomWorkoutExercises:(SHCustomWorkout*)workout;
+
++ (BOOL)exerciseInArray:(NSMutableArray*)exerciseArray exercise:(SHExercise*)exercise;
+
++ (NSMutableArray*)deleteSelectedExercise:(NSMutableArray*)exerciseArray exercise:(SHExercise*)exercise;
+
 @end

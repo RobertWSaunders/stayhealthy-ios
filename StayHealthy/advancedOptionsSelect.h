@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-03-21.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -30,6 +30,8 @@ typedef enum {
 @property (strong, nonatomic) NSString *titleText;
 //The passed exercise attribute, i.e what the user is searching for.
 @property (nonatomic, assign) exerciseAttributes typeOfExerciseAttribute;
+@property (nonatomic, assign) BOOL singleSelectionMode;
+@property (nonatomic, assign) BOOL viewMode;
 
 //Index path of cell pressed to get to this view controller.
 @property (retain,strong) NSIndexPath *indexPathPassed;

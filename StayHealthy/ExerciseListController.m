@@ -38,13 +38,22 @@
     if (exerciseData.count == 0)
         [CommonSetUpOperations performTSMessage:@"No Exercises Were Found" message:nil viewController:self canBeDismissedByUser:YES duration:60];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:exerciseFavNotification object:nil];
+    [self setNotificationObservers];
     
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
-
+//Sets the observers for the notifications that need to be observed for.
+- (void)setNotificationObservers {
+    //Observe for changes. All just reload the recently
+    //iCloud update notification.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:CLOUD_UPDATE_NOTIFICATION object:nil];
+    //Changes in a exercise record, i.e. changes in lastViewed.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:EXERCISE_UPDATE_NOTIFICATION object:nil];
+    //Changes in a exercise favorite.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:EXERCISE_SAVE_NOTIFICATION object:nil];
+}
 
 /***************************************************/
 #pragma mark UITableView Delegate/Datasource Methods
@@ -94,8 +103,15 @@
     
     if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         cell.likeExerciseImage.hidden = NO;
-        [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-        cell.likeExerciseImage.tintColor = STAYHEALTHY_BLUE;
+        /*if (self.exerciseSelectionMode) {
+            [cell.likeExerciseImageSelection setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
+            cell.likeExerciseImageSelection.tintColor = BLUE_COLOR;
+        }
+        else {*/
+            [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
+            cell.likeExerciseImage.tintColor = BLUE_COLOR;
+       // }
+    
     }
     else {
         cell.likeExerciseImage.hidden = YES;
@@ -105,24 +121,53 @@
     //Set the selected cell background.
     [CommonSetUpOperations tableViewSelectionColorSet:cell];
     
-    /*
+    
     //configure right buttons
-    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"workout.png"] backgroundColor:STAYHEALTHY_DARKERBLUE callback:^BOOL(MGSwipeTableCell *sender) {
-        LogInfo(@"Add to workout");
-        //[self performSegueWithIdentifier:@"detailModal" sender:nil];
+    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:nil icon:[UIImage imageNamed:@"AddToWorkout.png"] backgroundColor:BLUE_COLOR callback:^BOOL(MGSwipeTableCell *sender) {
+        selectedIndex = indexPath;
+        [self performSegueWithIdentifier:@"addToWorkout" sender:nil];
         return YES;
     }]];
     cell.rightExpansion.fillOnTrigger = YES;
     cell.rightExpansion.threshold = 2.0f;
     cell.rightExpansion.buttonIndex = 0;
     cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
-*/
 
+
+    if (self.exerciseSelectionMode) {
+        //Set the accessory type dependant on whether it is in selected cells array.
+        if ([CommonUtilities exerciseInArray:self.selectedExercises exercise:exercise]) {
+            //Make the checkmark show up.
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else {
+            //Make no checkmark.
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+    
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"detail" sender:nil];
+    if (self.exerciseSelectionMode) {
+        if (self.exerciseSelectionMode) {
+            ExerciseTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            SHExercise *exercise = [exerciseData objectAtIndex:indexPath.row];
+            if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
+                 self.selectedExercises = [CommonUtilities deleteSelectedExercise:self.selectedExercises exercise:exercise];
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            } else {
+                [self.selectedExercises addObject:exercise];
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+        }
+    }
+    else {
+        [self performSegueWithIdentifier:@"detail" sender:nil];
+    }
+    
     //deselect the cell when you select it, makes selected background view disappear.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -142,9 +187,10 @@
             detailView.exerciseToDisplay = exercise;
             detailView.viewTitle = exercise.exerciseName;
             detailView.modalView = NO;
+            detailView.showActionIcon = YES;
         }
     
-    if ([segue.identifier isEqualToString:@"showQuickFilter"]) {
+    else if ([segue.identifier isEqualToString:@"showQuickFilter"]) {
 
         QuickFilterViewController *destinationViewController = segue.destinationViewController;
         
@@ -152,6 +198,14 @@
         UIPopoverPresentationController *popOverPresentationViewController = destinationViewController.popoverPresentationController;
         
         popOverPresentationViewController.delegate = self;
+    }
+    
+    else if ([segue.identifier isEqualToString:@"addToWorkout"]) {
+        UINavigationController *navController = [[UINavigationController alloc] init];
+        CustomWorkoutSelectionViewController *customWorkoutSelection = [[CustomWorkoutSelectionViewController alloc] init];
+        navController = segue.destinationViewController;
+        customWorkoutSelection = navController.viewControllers[0];
+        customWorkoutSelection.exerciseToAdd = [exerciseData objectAtIndex:selectedIndex.row];
     }
     
     
@@ -178,9 +232,17 @@
 #pragma mark ViewWillDisappear Methods
 /*************************************/
 
-//Dismiss all TSMessages when the view disappears.
--(void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
     [TSMessage dismissActiveNotification];
+    
+    // check if the back button was pressed
+    if (self.isMovingFromParentViewController) {
+        if (self.exerciseSelectionMode) {
+            [self.delegate selectedExercises:self.selectedExercises];
+        }
+    }
 }
 
 @end

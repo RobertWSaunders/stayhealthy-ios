@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-08-23.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -25,5 +25,5 @@
 @property (nonatomic, retain) NSString * workoutTargetSports;
 @property (nonatomic, retain) NSString * workoutType;
 @property (nonatomic, retain) NSString * exerciseTypes;
-
+@property (nonatomic, retain) NSString * workoutEquipment;
 @end

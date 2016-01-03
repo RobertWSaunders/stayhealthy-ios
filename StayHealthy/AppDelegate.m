@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Student on 12/7/2013.
-//  Copyright (c) 2013 Mark Saunders. All rights reserved.
+//  Copyright (c) 2013 Robert Saunders. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -24,33 +24,34 @@
 
 //Called when the application has finished launching.
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    //Set the XcodeColors
     setenv("XcodeColors", "YES", 0);
     
-    
-
-    //Set the appearance of the navigation bar. Set the text color to STAYHEALTHY_BLUE constant.
+    //Set the appearance of the navigation bar. Set the text color to BLUE_COLOR constant.
     //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                                            STAYHEALTHY_BLUE,
+                                                            BLUE_COLOR,
                                                             NSForegroundColorAttributeName,
-                                                            STAYHEALTHY_NAVBARFONT,
+                                                            NAVIGATIONBAR_TITLE_FONT,
                                                             NSFontAttributeName,
                                                            nil]];
     
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{
-                                         NSFontAttributeName: [UIFont fontWithName:@"Avenir" size:18.0],
-                                         NSForegroundColorAttributeName: STAYHEALTHY_BLUE
+                                         NSFontAttributeName:NAVIGATIONBAR_BUTTON_FONT,
+                                         NSForegroundColorAttributeName:BLUE_COLOR
                                          } forState:UIControlStateNormal];
     
     //Set the tint color of all tab bars.
-    [[UITabBar appearance] setTintColor:STAYHEALTHY_BLUE];
+    [[UITabBar appearance] setTintColor:BLUE_COLOR];
     //Set the tint color of all segmented controls.
-    [[UISegmentedControl appearance] setTintColor:STAYHEALTHY_BLUE];
+    [[UISegmentedControl appearance] setTintColor:BLUE_COLOR];
     //Set the tint color for all the navigation bars.
-    [[UINavigationBar appearance] setTintColor:STAYHEALTHY_BLUE];
+    [[UINavigationBar appearance] setTintColor:BLUE_COLOR];
     
-    [Parse setApplicationId:@"WV7lo14mPjcjRmuc4vgdOXuQg6aWihFO7s6oqBNy"
-                  clientKey:@"dYyFOqO28p3WcdiWAVmK7YIna1gVWQOpyEhHZnZq"];
+    //Parse Connection
+    //[Parse setApplicationId:@"WV7lo14mPjcjRmuc4vgdOXuQg6aWihFO7s6oqBNy"
+    //              clientKey:@"dYyFOqO28p3WcdiWAVmK7YIna1gVWQOpyEhHZnZq"];
     
     //iCloud Observers - observes for any changes to the iCloud store.
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(storesWillChange) name:NSPersistentStoreCoordinatorStoresWillChangeNotification object:self.managedObjectContext.persistentStoreCoordinator];
@@ -65,8 +66,6 @@
     
     //Connect to LaunchKit
     [LaunchKit launchWithToken:@"W6MwOqvoV5kdEJzA-Qe1sINeC61khPcPKtEhna_qdRV-"];
-    
-
     
     return YES;
 }
@@ -132,8 +131,6 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [PFPush handlePush:userInfo];
 }
-
-
 
 /*****************************/
 #pragma mark - Core Data Stack
@@ -239,6 +236,7 @@
     }
 }
 
+//Returns the applications stores directory url.
 - (NSURL *)applicationStoresDirectory {
     NSFileManager *fm = [NSFileManager defaultManager];
     NSURL *applicationApplicationSupportDirectory = [[fm URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
@@ -254,10 +252,10 @@
             return nil;
         }
     }
-    
     return URL;
 }
 
+//Returns the application url if stores are incompatible.
 - (NSURL *)applicationIncompatibleStoresDirectory {
     NSFileManager *fm = [NSFileManager defaultManager];
     NSURL *URL = [[self applicationStoresDirectory] URLByAppendingPathComponent:@"Incompatible"];
@@ -276,6 +274,7 @@
     return URL;
 }
 
+//Returns the name of a incompatible store name.
 - (NSString *)nameForIncompatibleStore {
     // Initialize Date Formatter
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -317,7 +316,7 @@
     LogDataSuccess(@"Stores did change...");
     
     //Update the UI by posting the notification for the observers to pick up.
-    [[NSNotificationCenter defaultCenter] postNotificationName:StayHealthyCloudUpdate object:self.managedObjectContext];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CLOUD_UPDATE_NOTIFICATION object:self.managedObjectContext];
 
     LogDataSuccess(@"Updating UI...");
     
@@ -363,7 +362,7 @@
     
     
     // Post notification to trigger UI updates
-    [[NSNotificationCenter defaultCenter] postNotificationName:StayHealthyCloudUpdate object:self.managedObjectContext];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CLOUD_UPDATE_NOTIFICATION object:self.managedObjectContext];
 }
 
 //--------------------------------------------

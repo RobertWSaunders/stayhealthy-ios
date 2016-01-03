@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-22.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import "WorkoutSelectionViewController.h"
@@ -21,11 +21,15 @@
     [self.browseScroller setScrollEnabled:YES];
     [self.browseOptionsTableView setScrollEnabled:NO];
     
-    browseOptions = @[@"Sport Specific",@"Muscle Specific",@"Equipment Specific",@"Type Specific",@"Difficulty Specific"];
-    browseOptionsImages = @[@"Sports.png",@"Muscles.png",@"Equipment.png",@"WorkoutType.png",@"Difficulty.png"];
+    browseOptions = @[@"Sports",@"Muscles",@"Equipment",@"Types",@"Difficulties", @"Recents"];
+    browseOptionsImages = @[@"Sports.png",@"Muscles.png",@"Equipment.png",@"Type.png",@"Difficulty.png", @"Recents.png"];
     
+    [self fetchCustomWorkouts];
+    [self setNotificationObservers];
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,6 +79,63 @@
         WorkoutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:muscleSelectionCellIdentifier];
         [CommonSetUpOperations tableViewSelectionColorSet:cell];
         
+        SHCustomWorkout *workout = [self updateWorkoutWithUserData:[customWorkouts objectAtIndex:indexPath.row]];
+        
+        cell.workoutName.text = workout.workoutName;
+        cell.workoutDifficulty.text = workout.workoutDifficulty;
+        cell.workoutType.text = workout.workoutType;
+        cell.workoutExercises.text = [NSString stringWithFormat:@"%ld",[CommonUtilities numExercisesInCustomWorkout:workout]];
+        
+        cell.workoutDifficulty.textColor = [CommonSetUpOperations determineDifficultyColor:workout.workoutDifficulty];
+        
+        NSMutableArray *workoutExercises = [CommonUtilities getCustomWorkoutExercises:workout];
+        
+        if (workoutExercises.count>0) {
+            SHExercise *imageExercise = [workoutExercises objectAtIndex:[CommonUtilities numExercisesInCustomWorkout:workout]-1];
+            [CommonSetUpOperations loadImageOnBackgroundThread:cell.workoutImage image:[UIImage imageNamed:imageExercise.exerciseImageFile]];
+        }
+        
+        
+        
+        
+        if ([workout.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+            cell.likeWorkoutImage.hidden = NO;
+            [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
+            [cell.customWorkoutImage setImage:[UIImage imageNamed:@"CustomWorkout.png"]];
+            cell.likeWorkoutImage.tintColor = BLUE_COLOR;
+        }
+        else {
+            [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"CustomWorkout.png"]];
+            cell.customWorkoutImage.hidden = YES;
+        }
+        
+        
+        cell.leftButtons = @[[MGSwipeButton buttonWithTitle:nil icon:[UIImage imageNamed:@"EditSwipe.png"] backgroundColor:BLUE_COLOR callback:^BOOL(MGSwipeTableCell *sender){
+            [self performSegueWithIdentifier:@"editWorkout" sender:nil];
+            return YES;
+        }]];
+        cell.leftExpansion.fillOnTrigger = YES;
+        cell.leftExpansion.threshold = 2.0f;
+        cell.leftExpansion.buttonIndex = 0;
+        cell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
+        
+        
+        //configure right buttons
+        cell.rightButtons = @[[MGSwipeButton buttonWithTitle:nil icon:[UIImage imageNamed:@"DeleteSwipe.ong"] backgroundColor:RED_COLOR callback:^BOOL(MGSwipeTableCell *sender) {
+            SHDataHandler *dataHandler = [SHDataHandler getInstance];
+            [dataHandler deleteCustomWorkoutRecord:workout];
+            [self fetchCustomWorkouts];
+           return YES;
+        }]];
+        cell.rightExpansion.fillOnTrigger = YES;
+        cell.rightExpansion.threshold = 2.0f;
+        cell.rightExpansion.buttonIndex = 0;
+        cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
+        
+        //Set the selected cell background.
+        [CommonSetUpOperations tableViewSelectionColorSet:cell];
+        
+    
         //Return the cell.
         return cell;
 
@@ -89,7 +150,7 @@
         cell.textLabel.text = [browseOptions objectAtIndex:indexPath.row];
         cell.imageView.image = [UIImage imageNamed:[browseOptionsImages objectAtIndex:indexPath.row]];
         
-        cell.textLabel.textColor = STAYHEALTHY_BLUE;
+        cell.textLabel.textColor = BLUE_COLOR;
         cell.textLabel.font = tableViewTitleTextFont;
         
         [CommonSetUpOperations tableViewSelectionColorSet:cell];
@@ -109,6 +170,10 @@
     if (tableView == self.browseOptionsTableView) {
         [self performSegueWithIdentifier:@"browseOptions" sender:nil];
     }
+    else if (tableView ==  self.yourWorkoutsTableView) {
+        selectedIndexPath = indexPath;
+        [self performSegueWithIdentifier:@"workoutDetail" sender:nil];
+    }
        [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -126,25 +191,26 @@
         UINavigationController *navController = segue.destinationViewController;
         WorkoutCreateViewController *createWorkoutController = [[WorkoutCreateViewController alloc] init];
         createWorkoutController = navController.viewControllers[0];
+        createWorkoutController.editMode = NO;
     }
     else if ([segue.identifier isEqualToString:@"browseOptions"]) {
         WorkoutBrowseOptionsViewController *browseOptionsView = [[WorkoutBrowseOptionsViewController alloc] init];
-        NSIndexPath *indexPath = [self.browseOptionsTableView indexPathForSelectedRow];
+        
         browseOptionsView = segue.destinationViewController;
         
-        if (indexPath.row == 0) {
+        if (browseIndexPath.row == 0) {
             browseOptionsView.passedOption = targetSports;
             browseOptionsView.viewTitle = @"Target Sport";
         }
-        else if (indexPath.row == 1) {
+        else if (browseIndexPath.row == 1) {
             browseOptionsView.passedOption = targetMuscles;
             browseOptionsView.viewTitle = @"Target Muscle";
         }
-        else if (indexPath.row == 2) {
+        else if (browseIndexPath.row == 2) {
             browseOptionsView.passedOption = workoutEquipment;
             browseOptionsView.viewTitle = @"Workout Equipment";
         }
-        else if (indexPath.row == 3) {
+        else if (browseIndexPath.row == 3) {
             browseOptionsView.passedOption = workoutType;
             browseOptionsView.viewTitle = @"Workout Type";
         }
@@ -153,7 +219,106 @@
             browseOptionsView.viewTitle = @"Workout Difficulty";
         }
     }
+    else if ([segue.identifier isEqualToString:@"workoutDetail"]) {
+        SHCustomWorkout *workout = [customWorkouts objectAtIndex:selectedIndexPath.row];
+        WorkoutDetailViewController *detailView = [[WorkoutDetailViewController alloc] init];
+        detailView = segue.destinationViewController;
+        detailView.customWorkoutToDisplay = workout;
+        detailView.customWorkoutMode = YES;
+    }
+    else if ([segue.identifier isEqualToString:@"editWorkout"]) {
+        NSIndexPath *indexPath = [self.yourWorkoutsTableView indexPathForSelectedRow];
+        UINavigationController *navController = segue.destinationViewController;
+        WorkoutCreateViewController *createWorkoutController = [[WorkoutCreateViewController alloc] init];
+        createWorkoutController = navController.viewControllers[0];
+        SHCustomWorkout *customWorkout = [customWorkouts objectAtIndex:indexPath.row];
+        createWorkoutController.editMode = YES;
+        createWorkoutController.workoutToEdit = customWorkout;
+        createWorkoutController.workoutToEditExercises = [CommonUtilities getCustomWorkoutExercises:customWorkout];
+        }
+    else if ([segue.identifier isEqualToString:@"workoutList"]) {
+        WorkoutListViewController *listView = [[WorkoutListViewController alloc] init];
+        listView = segue.destinationViewController;
+        listView.viewTitle = @"Recently Viewed";
+        listView.workoutDataSent = [self fetchRecentlyViewedWorkouts];
+    }
 }
+
+//Fetches the recently viewed exercises and loads them into the tableView.
+- (NSMutableArray*)fetchRecentlyViewedWorkouts {
+    //Perform task on the background thread.
+        SHDataHandler *dataHandler = [SHDataHandler getInstance];
+        
+        //Fetches the recently viewed exercises, in Exercise object.
+        NSArray *recenltyViewedWorkoutsData = [[SHDataHandler getInstance] getRecentlyViewedWorkouts];
+        
+        NSMutableArray *recenltyViewedWorkouts = [[NSMutableArray alloc] init];
+        
+        //Converts Exercise object to usable SHExercise object.
+        for (int i = 0; i < recenltyViewedWorkoutsData.count; i++) {
+            if (i == 50) {
+                break;
+            }
+            else {
+                [recenltyViewedWorkouts addObject:[dataHandler convertWorkoutToSHWorkout:[recenltyViewedWorkoutsData objectAtIndex:i]]];
+            }
+        }
+    
+    return recenltyViewedWorkouts;
+    
+}
+
+
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    
+    return [browseOptions count];
+}
+
+-(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    BodyViewCollectionViewCell *cell = (BodyViewCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    [CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
+    cell.bodyZoneLabel.text = [browseOptions objectAtIndex:indexPath.row];
+    cell.bodyZoneImage.image = [UIImage imageNamed:[browseOptionsImages objectAtIndex:indexPath.row]];
+    return cell;
+    
+}
+
+- (void)collectionView:(UICollectionView *)collectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    browseIndexPath = indexPath;
+    if (indexPath.item == 5) {
+        [self performSegueWithIdentifier:@"workoutList" sender:nil];
+    }
+    else {
+        [self performSegueWithIdentifier:@"browseOptions" sender:nil];
+    }
+
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (IS_IPHONE_6P) {
+        return CGSizeMake(207.f, 207.f);
+    }
+    else if (IS_IPHONE_6) {
+        return CGSizeMake(187.5f, 187.5f);
+    }
+    else {
+        return CGSizeMake(160.f, 160.f);
+    }
+}
+
+
 
 
 - (IBAction)segmentValueChanged:(UISegmentedControl*)sender {
@@ -167,12 +332,59 @@
     }
 }
 
+- (void)fetchCustomWorkouts {
+    //Perform task on the background thread.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        SHDataHandler *dataHandler = [SHDataHandler getInstance];
+        
+        customWorkouts = [dataHandler fetchAllCustomWorkouts];
+        
+        //Reload the recenltyviewed tableview to display the new exercises.
+        [self.yourWorkoutsTableView reloadData];
+    });
+}
+
+- (id)updateWorkoutWithUserData:(SHCustomWorkout*)workout {
+    SHDataHandler *dataHandler = [SHDataHandler getInstance];
+    
+    Workout *dataWorkout = [dataHandler fetchWorkoutByIdentifier:workout.workoutID];
+    
+    if (dataWorkout != nil) {
+        workout.lastViewed = dataWorkout.lastViewed;
+        workout.liked = dataWorkout.liked;
+    }
+    
+    return workout;
+}
+
 - (IBAction)addCustomWorkout:(id)sender {
     [self performSegueWithIdentifier:@"createWorkout" sender:nil];
 }
 
 - (IBAction)workoutSearch:(id)sender {
     [self performSegueWithIdentifier:@"advancedSearch" sender:nil];
+}
+
+- (void)workoutUpdate
+{
+    [self fetchCustomWorkouts];
+}
+
+//Sets the observers for the notifications that need to be observed for.
+- (void)setNotificationObservers {
+    //Observe for changes. All just reload the recently
+    //iCloud update notification.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workoutUpdate) name:CLOUD_UPDATE_NOTIFICATION object:nil];
+        //Changes in a exercise record, i.e. changes in lastViewed.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workoutUpdate) name:CUSTOM_WORKOUT_DELETE_NOTIFICATION object:nil];
+    //Changes in a exercise favorite.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workoutUpdate) name:CUSTOM_WORKOUT_SAVE_NOTIFICATION object:nil];
+    //Changes in a exercise favorite.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workoutUpdate) name:CUSTOM_WORKOUT_UPDATE_NOTIFICATION object:nil];
+    //Changes in a exercise record, i.e. changes in lastViewed.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workoutUpdate) name:WORKOUT_SAVE_NOTIFICATION object:nil];
+    //Changes in a exercise favorite.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workoutUpdate) name:WORKOUT_UPDATE_NOTIFICATION object:nil];
 }
 
 @end

@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-03-19.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import "HomeTabBarController.h"
@@ -64,11 +64,12 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
-    [[LaunchKit sharedInstance] presentAppReleaseNotesFromViewController:self completion:^(BOOL didPresent) {
+    /*[[LaunchKit sharedInstance] presentAppReleaseNotesFromViewController:self completion:^(BOOL didPresent) {
         if (didPresent) {
             NSLog(@"Woohoo, we showed the release notes card!");
         }
     }];
+     */
     
 }
 

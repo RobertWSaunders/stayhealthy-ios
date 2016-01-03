@@ -3,12 +3,13 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-11-22.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "MGSwipeTableCell.h"
 
-@interface WorkoutTableViewCell : UITableViewCell
+@interface WorkoutTableViewCell : MGSwipeTableCell
 
 //Workout Name
 @property (nonatomic, weak) IBOutlet UILabel *workoutName;
