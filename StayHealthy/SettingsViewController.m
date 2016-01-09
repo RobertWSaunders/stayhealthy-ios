@@ -157,10 +157,10 @@
     if (indexPath.section == 0 && indexPath.row == 0) {
         [self performSegueWithIdentifier:@"about" sender:nil];
     }
-    else if (indexPath.section == 0 && indexPath.row == 1) {
+   /* else if (indexPath.section == 0 && indexPath.row == 1) {
         [self performSegueWithIdentifier:@"database" sender:nil];
-    }
-    else if (indexPath.section == 0 && indexPath.row == 2) {
+    }*/
+    else if (indexPath.section == 0 && indexPath.row == 1) {
         [self performSegueWithIdentifier:@"preferences" sender:nil];
     }
     else if (indexPath.section == 1 && indexPath.row == 0) {
@@ -183,8 +183,8 @@
 
 //Fills the arrays for the sections in the tableView.
 -(void)setTableViewData {
-    generalSettings = [NSArray arrayWithObjects:@"About", @"Database Update", @"Preferences", nil];
-    generalSettingsImages = [NSArray arrayWithObjects:@"About.png", @"DatabaseUpdate.png", @"Preferences.png", nil];
+    generalSettings = [NSArray arrayWithObjects:@"About", @"Preferences", nil];
+    generalSettingsImages = [NSArray arrayWithObjects:@"About.png", @"Preferences.png", nil];
     
     feedbackSettings = [NSArray arrayWithObjects:@"Help Center", @"Feedback Center", nil];
     feedbackSettingsImages = [NSArray arrayWithObjects:@"HelpCenter.png", @"FeedbackCenter.png", nil];

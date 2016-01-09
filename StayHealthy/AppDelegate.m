@@ -60,9 +60,10 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(mergeContent:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:self.managedObjectContext.persistentStoreCoordinator];
     
-    //Auto Database Update
+    /*//Auto Database Update
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     [dataHandler performDatabaseUpdate];
+    */
     
     //Connect to LaunchKit
     [LaunchKit launchWithToken:@"W6MwOqvoV5kdEJzA-Qe1sINeC61khPcPKtEhna_qdRV-"];
@@ -121,15 +122,16 @@
 //Tells app delegate the application has successfully registered for notifications.
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Store the deviceToken in the current installation and save it to Parse.
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+  /*  PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     currentInstallation.channels = @[ @"global" ];
     [currentInstallation saveInBackground];
+   */
 }
 
 //Called when the application has recieved a remote notification.
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
+    //[PFPush handlePush:userInfo];
 }
 
 /*****************************/

@@ -32,6 +32,8 @@
         [self loadForCreateMode];
     }
     
+    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_CREATE_WORKOUTS  viewController:self message:@"Ok, so from here you can select a body zone you would like to work on and find exercises for it, go more in-depth and target a specific muscle from the muscle list or even view your recently viewed exercises. If want a specific exercise based off of equipment and more attributes press the magnifying glass in the top left to perform an advanced search. If you just got to the gym and need to warmup press the icon in the top right to find some warmup exercises. You can navigate to other parts of the app with the menu at the bottom of your screen."];
+    
     //Set the tableView in edit mode for adding and deleting people.
     [self.createWorkoutTableView setEditing:YES animated:YES];
     //Make sure the user can select the cells even when in edit mode.

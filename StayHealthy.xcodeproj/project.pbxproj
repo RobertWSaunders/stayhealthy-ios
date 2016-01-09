@@ -43,8 +43,6 @@
 		EB14B86F1C336314009FF44D /* LGAlertViewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = EB14B8671C336314009FF44D /* LGAlertViewWindow.m */; };
 		EB14B8701C336314009FF44D /* UIWindow+LGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB14B8691C336314009FF44D /* UIWindow+LGAlertView.m */; };
 		EB18FDD91C35712E0057D8B0 /* BodyViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB18FDD81C35712E0057D8B0 /* BodyViewCollectionViewCell.m */; };
-		EB18FDDC1C37025D0057D8B0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB18FDDA1C37025C0057D8B0 /* Bolts.framework */; };
-		EB18FDDD1C37025D0057D8B0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB18FDDB1C37025D0057D8B0 /* Parse.framework */; };
 		EB215A341BD895DB00A0765A /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EB215A311BD895DB00A0765A /* MGSwipeButton.m */; };
 		EB215A351BD895DB00A0765A /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB215A331BD895DB00A0765A /* MGSwipeTableCell.m */; };
 		EB2C4A5B1B89F531005D183A /* CustomWorkout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A5A1B89F531005D183A /* CustomWorkout.m */; };
@@ -226,8 +224,6 @@
 		EB14B8691C336314009FF44D /* UIWindow+LGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+LGAlertView.m"; sourceTree = "<group>"; };
 		EB18FDD71C35712E0057D8B0 /* BodyViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyViewCollectionViewCell.h; sourceTree = "<group>"; };
 		EB18FDD81C35712E0057D8B0 /* BodyViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyViewCollectionViewCell.m; sourceTree = "<group>"; };
-		EB18FDDA1C37025C0057D8B0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Project Resources/Frameworks/Parse/Bolts.framework"; sourceTree = "<group>"; };
-		EB18FDDB1C37025D0057D8B0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Project Resources/Frameworks/Parse/Parse.framework"; sourceTree = "<group>"; };
 		EB215A301BD895DB00A0765A /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
 		EB215A311BD895DB00A0765A /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
 		EB215A321BD895DB00A0765A /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
@@ -437,7 +433,6 @@
 				3F7D77B019A3086200E00065 /* CoreLocation.framework in Frameworks */,
 				3F7D77B219A3086200E00065 /* MobileCoreServices.framework in Frameworks */,
 				3F7D77B319A3086200E00065 /* Security.framework in Frameworks */,
-				EB18FDDD1C37025D0057D8B0 /* Parse.framework in Frameworks */,
 				3F7D77B519A3086200E00065 /* SystemConfiguration.framework in Frameworks */,
 				3FD5E1A31853A8D00063E10C /* CoreGraphics.framework in Frameworks */,
 				3FE100931863CC0100C53D76 /* QuartzCore.framework in Frameworks */,
@@ -447,7 +442,6 @@
 				3FD5E1A71853A8D00063E10C /* CoreData.framework in Frameworks */,
 				3FD5E1A51853A8D00063E10C /* UIKit.framework in Frameworks */,
 				3FD5E1A11853A8D00063E10C /* Foundation.framework in Frameworks */,
-				EB18FDDC1C37025D0057D8B0 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,8 +483,6 @@
 		3F2E5A8E18E11B8600EE4734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EB18FDDA1C37025C0057D8B0 /* Bolts.framework */,
-				EB18FDDB1C37025D0057D8B0 /* Parse.framework */,
 				3F7D77A619A3081300E00065 /* AudioToolbox.framework */,
 				3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */,
 				3F7D77AC19A3086200E00065 /* Security.framework */,
@@ -540,10 +532,10 @@
 		3FC465E21B33A79B0062EBDB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EB701E7C1BE7E827005003B1 /* Welcome Page */,
-				3FF735BB185ABA9900FECDF2 /* Find Exercise */,
+				EB701E7C1BE7E827005003B1 /* Initial Launch */,
+				3FF735BB185ABA9900FECDF2 /* Exercises */,
 				3F18B151187F841A00EC852A /* Workouts */,
-				EBCE12531BD2F632000370CC /* Favorites */,
+				EBCE12531BD2F632000370CC /* Favourites */,
 				3FE95E25187A5DB7005DD13D /* Settings */,
 				3FC465E31B33A7A50062EBDB /* Tab Controller */,
 			);
@@ -742,7 +734,7 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
-		3FF735BB185ABA9900FECDF2 /* Find Exercise */ = {
+		3FF735BB185ABA9900FECDF2 /* Exercises */ = {
 			isa = PBXGroup;
 			children = (
 				EB737F741B8133D400EBBDA4 /* ExerciseSelectionViewController.h */,
@@ -751,7 +743,7 @@
 				3FC465F61B33B2010062EBDB /* Exercise Searched Page */,
 				3FC465F51B33B1E30062EBDB /* Exercise Detail Page */,
 			);
-			name = "Find Exercise";
+			name = Exercises;
 			sourceTree = "<group>";
 		};
 		3FF9DD641853BA610083A499 /* Libraries */ = {
@@ -1003,13 +995,13 @@
 			name = "Custom UITextfield TableViewCell";
 			sourceTree = "<group>";
 		};
-		EB701E7C1BE7E827005003B1 /* Welcome Page */ = {
+		EB701E7C1BE7E827005003B1 /* Initial Launch */ = {
 			isa = PBXGroup;
 			children = (
 				EB701E7D1BE7EA54005003B1 /* WalkThoughOneViewController.h */,
 				EB701E7E1BE7EA54005003B1 /* WalkThoughOneViewController.m */,
 			);
-			name = "Welcome Page";
+			name = "Initial Launch";
 			sourceTree = "<group>";
 		};
 		EB737F541B7F84E100EBBDA4 /* Data Managers */ = {
@@ -1328,13 +1320,13 @@
 			name = "Workout TableView Cell";
 			sourceTree = "<group>";
 		};
-		EBCE12531BD2F632000370CC /* Favorites */ = {
+		EBCE12531BD2F632000370CC /* Favourites */ = {
 			isa = PBXGroup;
 			children = (
 				EBCE12501BD2F62C000370CC /* FavoritesViewController.h */,
 				EBCE12511BD2F62C000370CC /* FavoritesViewController.m */,
 			);
-			name = Favorites;
+			name = Favourites;
 			sourceTree = "<group>";
 		};
 		EBD1EBCA1C2F114F003F005F /* Custom Workout Selection Page */ = {

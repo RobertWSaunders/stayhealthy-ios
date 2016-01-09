@@ -22,16 +22,16 @@
     self.tableView.scrollEnabled = NO;
     
     if (IS_IPHONE_6) {
-        self.topDistanceConstraint.constant = 100;
+        self.topDistanceConstraint.constant = 84;
     }
     else if (IS_IPHONE_6P) {
-        self.topDistanceConstraint.constant = 140;
+        self.topDistanceConstraint.constant = 124;
     }
     else if (IS_IPHONE_5) {
-         self.topDistanceConstraint.constant = 62;
+         self.topDistanceConstraint.constant = 46;
     }
     else {
-        self.topDistanceConstraint.constant = 31;
+        self.topDistanceConstraint.constant = 15;
     }
 }
 
@@ -116,6 +116,7 @@
 
 
 - (IBAction)doneTapped:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_FIRST_VIEW_FIND_EXERICSE];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_FIRST_LAUNCH];
     [[NSUserDefaults standardUserDefaults] synchronize];
     /*

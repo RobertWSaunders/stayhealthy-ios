@@ -18,14 +18,14 @@
 - (void)viewDidLoad {
     
     self.tabBarController.tabBar.hidden=YES;
-          
+    self.preferencesTableView.scrollEnabled = NO;
     //Set the title for the page.
     self.title = @"Preferences";
     
     [self setTableViewData];
     
     //Fill the arrays with the.
-    generalPreferences = @[@"Auto Database Updates",@"Tutorial Messages"];
+    generalPreferences = @[@"Tutorial Messages"];
     findExercisePreferences = @[@""];
     workoutPreferences = @[@""];
     favouritesPreferences = @[@""];
@@ -49,7 +49,7 @@
 
 //Returns the number of sections for the tableView.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 1;
 }
 
 //Returns the number of rows in each section.

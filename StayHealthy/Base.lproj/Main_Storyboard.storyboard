@@ -551,7 +551,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By clicking accept you are agreeing to the Terms of Use and Privacy Policy." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-8l-8AZ">
-                                <rect key="frame" x="154" y="66" width="291" height="79"/>
+                                <rect key="frame" x="154" y="82" width="291" height="79"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="79" id="5m3-XH-8np"/>
                                     <constraint firstAttribute="width" constant="317" id="8Aw-al-qfI"/>
@@ -571,7 +571,7 @@
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love" translatesAutoresizingMaskIntoConstraints="NO" id="Pfd-rM-emx">
-                                <rect key="frame" x="290" y="371" width="20" height="20"/>
+                                <rect key="frame" x="290" y="387" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="BB3-Ip-ehk"/>
                                     <constraint firstAttribute="width" constant="20" id="QHa-wN-3Lo"/>
@@ -586,7 +586,7 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9X-2Q-B2D">
-                                <rect key="frame" x="154" y="255" width="291" height="112"/>
+                                <rect key="frame" x="154" y="271" width="291" height="112"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="317" id="5cg-DT-8XC"/>
                                     <constraint firstAttribute="height" constant="106" id="P2I-Xw-O9T"/>
@@ -607,7 +607,7 @@
                                 </variation>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E9M-kG-fHk">
-                                <rect key="frame" x="35" y="145" width="531" height="116"/>
+                                <rect key="frame" x="35" y="161" width="531" height="116"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="116" id="5pP-lV-xKp"/>
@@ -654,7 +654,7 @@
                             <constraint firstItem="k6f-8l-8AZ" firstAttribute="top" secondItem="XVW-yx-fdc" secondAttribute="bottom" constant="8" id="4Hq-8r-2ZB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="E9M-kG-fHk" secondAttribute="trailing" constant="14" id="5C5-iu-Jom"/>
                             <constraint firstItem="FT0-JX-mpT" firstAttribute="top" secondItem="bQM-og-aff" secondAttribute="bottom" id="6ni-v8-Mr5"/>
-                            <constraint firstItem="k6f-8l-8AZ" firstAttribute="top" secondItem="XVW-yx-fdc" secondAttribute="bottom" constant="-6" id="90a-77-PHz"/>
+                            <constraint firstItem="k6f-8l-8AZ" firstAttribute="top" secondItem="XVW-yx-fdc" secondAttribute="bottom" constant="10" id="90a-77-PHz"/>
                             <constraint firstItem="r9X-2Q-B2D" firstAttribute="top" secondItem="E9M-kG-fHk" secondAttribute="bottom" constant="-6" id="DRi-8M-flJ"/>
                             <constraint firstItem="E9M-kG-fHk" firstAttribute="leading" secondItem="ykb-M5-vbE" secondAttribute="leadingMargin" constant="15" id="QWQ-cp-TiD"/>
                             <constraint firstAttribute="trailing" secondItem="bQM-og-aff" secondAttribute="trailing" id="Tdn-fV-RZg"/>

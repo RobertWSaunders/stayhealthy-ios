@@ -57,10 +57,10 @@
             {
                 [self performTSMessage:message message:nil viewController:view
                   canBeDismissedByUser:YES duration:1000];
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:key];
-                [[NSUserDefaults standardUserDefaults] synchronize];
         }
     }
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 //Styles SIAlertViews.

@@ -23,7 +23,7 @@
 #define TUMBLR_URL                      @"http://stayhealthyapp.tumblr.com"
 #define PRIVACY_URL                     @"http://mail.rsgc.on.ca/~rsaunders/privacy.html"
 #define TERMS_URL                       @"http://mail.rsgc.on.ca/~rsaunders/terms.html"
-#define FAQ_URL                         @"http://mail.rsgc.on.ca/~rsaunders/terms.html"
+#define FAQ_URL                         @"http://mail.rsgc.on.ca/~rsaunders/faq.html"
 #define DATABASE_URL                    @"http://mail.rsgc.on.ca/~rsaunders/StayHealthyDatabase.sqlite"
 #define DATABASE_VERSION_URL            @"http://webservice.stayhealthyapp.com/StayHealthyDatabaseVersion.txt"
 
@@ -31,8 +31,8 @@
 #pragma mark - EMAIL
 /*******************/
 
-#define SUPPORT_EMAIL                   @""
-#define FEEDBACK_EMAIL                  @""
+#define SUPPORT_EMAIL                   @"support@stayhealthyapp.com"
+#define FEEDBACK_EMAIL                  @"feedback@stayhealthyapp.com"
 
 /***************************/
 #pragma mark - NOTIFICATIONS
@@ -140,6 +140,13 @@
 #define USER_FIRST_VIEW_FIND_EXERCISE_ADVANCED_SEARCH   @"userFirstViewFindExerciseAdvancedSearch"
 #define USER_FIRST_VIEW_FIND_EXERCISE_SEARCHED          @"userFirstViewFindExerciseSearchedExercises"
 #define USER_FIRST_VIEW_FIND_EXERCISE_DETAIL            @"userFirstViewFindExerciseDetail"
+#define USER_FIRST_VIEW_WORKOUTS                        @"userFirstViewWorkouts"
+#define USER_FIRST_VIEW_WORKOUTS_ADVANCED_SEARCH        @"userFirstViewWorkoutsAdvancedSearch"
+#define USER_FIRST_VIEW_WORKOUTS_SEARCHED               @"userFirstViewWorkoutsSearchedWorkouts"
+#define USER_FIRST_VIEW_WORKOUTS_DETAIL                 @"userFirstViewWorkoutsDetail"
+#define USER_FIRST_VIEW_WORKOUTS_PERFORM                @"userFirstViewWorkoutsPerform"
+#define USER_FIRST_VIEW_CREATE_WORKOUTS                 @"userFirstViewCreateWorkouts"
+#define USER_FIRST_VIEW_EXERCISE_SELECTION              @"userFirstViewCreateWorkouts"
 
 #define USER_FIRST_VIEW_FAVORITES                       @"userFirstViewFavorites"
 
