@@ -29,7 +29,7 @@
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS viewController:self message:@"Ok, so from here you can select a body zone you would like to work on and find exercises for it, go more in-depth and target a specific muscle from the muscle list or even view your recently viewed exercises. If want a specific exercise based off of equipment and more attributes press the magnifying glass in the top left to perform an advanced search. If you just got to the gym and need to warmup press the icon in the top right to find some warmup exercises. You can navigate to other parts of the app with the menu at the bottom of your screen."];
+    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS viewController:self message:@"Here you can browse the workouts that we provide or create your very own by tapping on the add icon in the top right. You can search for workouts based off of certain sports, muscles, equipment and more! You can also perform an advanced search by tapping on the icon in the top left. Good luck with all of your workouts!"];
     
 }
 
@@ -100,10 +100,10 @@
         
         
         if ([workout.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+            cell.customWorkoutImage.hidden = NO;
             cell.likeWorkoutImage.hidden = NO;
             [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
             [cell.customWorkoutImage setImage:[UIImage imageNamed:@"CustomWorkout.png"]];
-            cell.likeWorkoutImage.tintColor = BLUE_COLOR;
         }
         else {
             [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"CustomWorkout.png"]];

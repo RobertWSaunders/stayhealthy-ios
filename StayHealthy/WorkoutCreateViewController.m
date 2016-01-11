@@ -32,7 +32,7 @@
         [self loadForCreateMode];
     }
     
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_CREATE_WORKOUTS  viewController:self message:@"Ok, so from here you can select a body zone you would like to work on and find exercises for it, go more in-depth and target a specific muscle from the muscle list or even view your recently viewed exercises. If want a specific exercise based off of equipment and more attributes press the magnifying glass in the top left to perform an advanced search. If you just got to the gym and need to warmup press the icon in the top right to find some warmup exercises. You can navigate to other parts of the app with the menu at the bottom of your screen."];
+    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_CREATE_WORKOUTS  viewController:self message:@"Wanna make your own workout? You can do that here! Simply make a name, select some exercises, select the workout attributes, and write a summary and away you go!"];
     
     //Set the tableView in edit mode for adding and deleting people.
     [self.createWorkoutTableView setEditing:YES animated:YES];
@@ -45,12 +45,15 @@
 
 //Loads the view for editing a workout.
 - (void)loadForEditMode {
+    textViewText = self.workoutToEdit.workoutSummary;
+    selectedName = self.workoutToEdit.workoutName;
     self.title = @"Edit Workout";
     [self fetchAndLoadInformationForEditMode];
 }
 
 //Loads the view for creating a workout.
 - (void)loadForCreateMode {
+    textViewText = @"Summary";
     self.title = @"Create Workout";
     
     [self fetchAndLoadInformation];
@@ -127,16 +130,13 @@
         //Set the cell label.
         cell.cellLabel.text = @"Workout Name";
         
-        
-        if (self.editMode) {
-            cell.textField.text = self.workoutToEdit.workoutName;
-        }
+
 
             cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Workout Name" attributes:@{NSForegroundColorAttributeName:LIGHT_GRAY_COLOR}];
-            
+        
+        cell.textField.text = selectedName;
             //Set the textfiled delegate to self.
             cell.textField.delegate = self;
-            
             //Make the cell not selectable by the user. Or appear that way.
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -265,16 +265,17 @@
             
             //Set the reference to the workoutSummaryTextView, used for collecting information and delegate.
             workoutSummaryTextView = cell.textView;
-            
+        
+        
             //Set the delegate of the textView to self.
             cell.textView.delegate = self;
-            
-            //If the view is not in edit mode we need to show the placeholder in the textview.
-            if (!self.editMode || (self.workoutToEdit.workoutSummary == nil)) {
-                cell.textView.text = @"Summary";
-                cell.textView.textColor = [UIColor lightGrayColor];
-            }
-            //If it is in edit mode we need to show the workout that is being editing summary.
+        
+            cell.textView.textColor = [UIColor lightGrayColor];
+        
+        
+            if (!self.editMode) {
+                cell.textView.text = textViewText;
+            }//If it is in edit mode we need to show the workout that is being editing summary.
             else {
                 cell.textView.text = self.workoutToEdit.workoutSummary;
             }
@@ -293,6 +294,7 @@
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Delete";
             cell.textLabel.textColor = RED_COLOR;
+            cell.textLabel.font = tableViewTitleTextFont;
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
         }
         
@@ -320,6 +322,25 @@
         }
     }
     else if (indexPath.section == 4) {
+        
+        //No stretching for bicep, chest, forearms, oblique.
+        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"title" andMessage:nil];
+        [alertView addButtonWithTitle:@"Yes"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:^(SIAlertView *alertView) {
+                                  SHDataHandler *dataHandler = [SHDataHandler getInstance];
+                                  [dataHandler deleteCustomWorkoutRecord:self.workoutToEdit];
+                                  [self dismissViewControllerAnimated:YES completion:^{
+                                      [self.navigationController popToRootViewControllerAnimated:YES];
+                                  }];
+                                  
+                              }];
+        [alertView addButtonWithTitle:@"Cancel"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:nil];
+        alertView.title = @"Are you sure?";
+        [alertView show];
+    /*
         LGAlertView *alertView = [[LGAlertView alloc] initWithTitle:@"Delete Workout"
                                                             message:@"Are you sure you would like to delete this workout?"
                                                               style:LGAlertViewStyleActionSheet
@@ -343,8 +364,9 @@
         alertView.cancelButtonFont = [UIFont fontWithName:regularFontName size:18.0f];
         alertView.cancelButtonTitleColor = BLUE_COLOR;
         alertView.cancelButtonBackgroundColorHighlighted = BLUE_COLOR;
-        
+     
         [alertView showAnimated:YES completionHandler:nil];
+     */
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -499,6 +521,12 @@
     return YES;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    selectedName = textField.text;
+}
+
+
+
 - (void)fetchAndLoadInformation {
     //List of all the primary muscles.
     targetMuscles = [CommonUtilities returnGeneralPlist][@"primaryMuscles"];
@@ -542,12 +570,13 @@
 
 //Asks the delegate if the edition should begin in the specified textView.
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
-    TextViewTableViewCell *cell = (TextViewTableViewCell*)[self.createWorkoutTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
-    if (!self.editMode) {
+   // TextViewTableViewCell *cell = (TextViewTableViewCell*)[self.createWorkoutTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
+   
+    /*if (!self.editMode) {
         cell.textView.text = @"";
         cell.textView.textColor = [UIColor lightGrayColor];
     }
-    
+    */
     [self.createWorkoutTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     
     [UIView beginAnimations:nil context:nil];
@@ -563,13 +592,15 @@
 
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView {
 
-    TextViewTableViewCell *cell = (TextViewTableViewCell*)[self.createWorkoutTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
+   // TextViewTableViewCell *cell = (TextViewTableViewCell*)[self.createWorkoutTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
     
-    if(cell.textView.text.length == 0){
+   /* if(cell.textView.text.length == 0){
         cell.textView.textColor = [UIColor lightGrayColor];
         cell.textView.text = @"Summary";
         [cell.textView resignFirstResponder];
-    }
+    }*/
+    
+    textViewText = textView.text;
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.5];
@@ -584,13 +615,14 @@
 
 //Tells the delegate the the text has been changed in the specified textView.
 -(void)textViewDidChange:(UITextView *)textView {
-    TextViewTableViewCell *cell = (TextViewTableViewCell*)[self.createWorkoutTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
+   // TextViewTableViewCell *cell = (TextViewTableViewCell*)[self.createWorkoutTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
     
-    if(cell.textView.text.length == 0){
+    /*if(cell.textView.text.length == 0){
         cell.textView.textColor = [UIColor lightGrayColor];
         cell.textView.text = @"Summary";
         [textView resignFirstResponder];
     }
+     */
 }
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
@@ -784,27 +816,24 @@
 }
 
 - (void)saveWorkout {
-    if ([self userCanSave]) {
         if (self.editMode) {
+            if ([self userCanSave:YES]) {
             SHDataHandler *handler = [[SHDataHandler alloc] init];
             [handler updateCustomWorkoutRecord:[self updateCustomWorkout:self.workoutToEdit]];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            }
         }
         else {
-            SHDataHandler *handler = [[SHDataHandler alloc] init];
-            [handler saveCustomWorkoutRecord:[self createCustomWorkout]];
-        }
-        [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOM_WORKOUT_UPDATE_NOTIFICATION object:nil];
+            if ([self userCanSave:NO]) {
+                SHDataHandler *handler = [[SHDataHandler alloc] init];
+                [handler saveCustomWorkoutRecord:[self createCustomWorkout]];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
     }
-    else {
-        LogDataError(@"Cannot save!");
-    }
-   [self dismissViewControllerAnimated:YES completion:nil];
+   
 }
 
 - (SHCustomWorkout* )createCustomWorkout {
-    //Workout Name Cell
-    TextFieldTableViewCell *workoutNameCell = [self.createWorkoutTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    TextViewTableViewCell *workoutSummaryCell = [self.createWorkoutTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
     
     //Build Custom Workout
     //Create reference to a new custom workout.
@@ -812,9 +841,14 @@
     //Set a new workout idenitifier.
     customWorkout.workoutID = [CommonUtilities returnUniqueID];
     //Set the name of the new workout.
-    customWorkout.workoutName = workoutNameCell.textField.text;
+    customWorkout.workoutName = selectedName;
     //Set the summary of the new workout.
-    customWorkout.workoutSummary = workoutSummaryCell.textView.text;
+    if ([textViewText isEqualToString:@"Summary"]) {
+        customWorkout.workoutSummary = nil;
+    }
+    else {
+        customWorkout.workoutSummary = textViewText;
+    }
     //Set the workout exercise identifiers.
     customWorkout.workoutExerciseIDs = [self returnWorkoutExerciseIdentifiers:workoutExercises];
     //Set the workout exercise types.
@@ -831,14 +865,17 @@
 }
 
 - (SHCustomWorkout* )updateCustomWorkout:(SHCustomWorkout*)updateWorkout {
-    //Workout Name Cell
-    TextFieldTableViewCell *workoutNameCell = [self.createWorkoutTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    TextViewTableViewCell *workoutSummaryCell = [self.createWorkoutTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
+
     
     //Set the name of the new workout.
-    updateWorkout.workoutName = workoutNameCell.textField.text;
+    updateWorkout.workoutName = selectedName;
     //Set the summary of the new workout.
-    updateWorkout.workoutSummary = workoutSummaryCell.textView.text;
+    if ([textViewText isEqualToString:@"Summary"]) {
+        updateWorkout.workoutSummary = nil;
+    }
+    else {
+         updateWorkout.workoutSummary = textViewText;
+    }
     //Set the workout exercise identifiers.
     updateWorkout.workoutExerciseIDs = [self returnWorkoutExerciseIdentifiers:self.workoutToEditExercises];
     //Set the workout exercise types.
@@ -869,7 +906,43 @@
      return [exerciseTypes componentsJoinedByString:@","];
 }
 
-- (BOOL)userCanSave {
+- (BOOL)userCanSave:(BOOL)update {
+    
+    //Workout Name Cell
+       
+    if ([selectedName isEqualToString:@""] || (selectedName == nil)) {
+        [CommonSetUpOperations performTSMessage:@"Workout Name Required" message:nil viewController:self canBeDismissedByUser:YES duration:6];
+        return NO;
+    }
+    
+    if (update) {
+        if (self.workoutToEditExercises.count < 1) {
+            [CommonSetUpOperations performTSMessage:@"At least two exercises are required." message:nil viewController:self canBeDismissedByUser:YES duration:6];
+            return NO;
+        }
+    }
+    else {
+        if (workoutExercises.count < 1) {
+             [CommonSetUpOperations performTSMessage:@"At least two exercises are required." message:nil viewController:self canBeDismissedByUser:YES duration:6];
+            return NO;
+        }
+    }
+    
+    if ([[workoutAdvancedSearchOptionsSelections objectAtIndex:3] isEqualToString:@"None"]) {
+        [CommonSetUpOperations performTSMessage:@"Workout Difficulty Required" message:nil viewController:self canBeDismissedByUser:YES duration:6];
+        return NO;
+    }
+    else if ([[workoutAdvancedSearchOptionsSelections objectAtIndex:4] isEqualToString:@"None"]) {
+        [CommonSetUpOperations performTSMessage:@"Workout Type Required" message:nil viewController:self canBeDismissedByUser:YES duration:6];
+        return NO;
+    }
+    /*
+    else if ([workoutSummaryCell.textView.text isEqualToString:@"Summary"]) {
+        [CommonSetUpOperations performTSMessage:@"Summary" message:nil viewController:self canBeDismissedByUser:YES duration:6];
+        return NO;
+    }
+     */
+    
     return YES;
 }
 /*****************************/
@@ -881,6 +954,8 @@
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
+     TextFieldTableViewCell *cell = (TextFieldTableViewCell*)[self.createWorkoutTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [cell.textField resignFirstResponder];
     [self saveWorkout];
 }
 

@@ -48,6 +48,7 @@
     
     //The selected workout name.
     NSString *selectedName;
+    NSString *textViewText;
     
     UITextView *workoutSummaryTextView;
 }

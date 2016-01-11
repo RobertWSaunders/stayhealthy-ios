@@ -23,14 +23,10 @@
     
     self.tabBarController.tabBar.hidden=YES;
     
+    [self setNotificationObservers];
+    
     if (self.customWorkoutMode) {
         [self loadViewForCustomWorkout];
-        if ([self.customWorkoutToDisplay.workoutSummary isEqualToString:@""] || self.customWorkoutToDisplay.workoutSummary == nil) {
-            self.segmentTopSpaceConstraint.constant = 0;
-            self.summaryButton.hidden = YES;
-            self.summaryLabel.hidden = YES;
-            self.summaryNameLabel.hidden = YES;
-        }
     }
     else {
         [self loadViewForDefault];
@@ -47,13 +43,21 @@
         self.workoutAnalysisTableView.scrollEnabled = NO;
     }
     
-     [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS_DETAIL viewController:self message:@"Ok, so from here you can select a body zone you would like to work on and find exercises for it, go more in-depth and target a specific muscle from the muscle list or even view your recently viewed exercises. If want a specific exercise based off of equipment and more attributes press the magnifying glass in the top left to perform an advanced search. If you just got to the gym and need to warmup press the icon in the top right to find some warmup exercises. You can navigate to other parts of the app with the menu at the bottom of your screen."];
+     [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS_DETAIL viewController:self message:@"This workout is tough! Here you can view everything you need to know about the workout, including the exercises in the workout, the target sports and muscles, difficulty and more. You can press on the summary text to continue reading it and tap the heart icon in the top right to favorite it! Finally, if you like this workout, you can start it by pressing the button at the bottom of the view."];
 }
 
 - (void)loadViewForCustomWorkout {
     self.title = self.customWorkoutToDisplay.workoutName;
     self.summaryLabel.text = self.customWorkoutToDisplay.workoutSummary;
      workoutExercises = [CommonUtilities getCustomWorkoutExercises:self.customWorkoutToDisplay];
+    
+    if ([self.customWorkoutToDisplay.workoutSummary isEqualToString:@""] || self.customWorkoutToDisplay.workoutSummary == nil) {
+        self.segmentTopSpaceConstraint.constant = 0;
+        self.summaryButton.hidden = YES;
+        self.summaryLabel.hidden = YES;
+        self.summaryNameLabel.hidden = YES;
+    }
+    
     [self getWorkoutAnalysisContent];
  
     if ([self.customWorkoutToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
@@ -73,6 +77,7 @@
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
     //Save or Update the workout information.
+    /*
     if ([dataHandler workoutHasBeenSaved:self.workoutToDisplay.workoutIdentifier]) {
         self.workoutToDisplay.lastViewed = [NSDate date];
         [dataHandler updateWorkoutRecord:self.workoutToDisplay];
@@ -80,7 +85,7 @@
     else {
         self.workoutToDisplay.lastViewed = [NSDate date];
         [dataHandler saveWorkoutRecord:self.workoutToDisplay];
-    }
+    }*/
     
     if ([self.workoutToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         [self.likeButton setImage:[UIImage imageNamed:@"likeSelected.png"]];
@@ -179,6 +184,11 @@
         cell.textLabel.text = [workoutAnalysis objectAtIndex:indexPath.row];
         cell.detailTextLabel.text = [workoutAnalysisContent objectAtIndex:indexPath.row];
         
+        if ([[workoutAnalysisContent objectAtIndex:indexPath.row] isEqualToString:@"None"]) {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        
          cell.detailTextLabel.textColor = [CommonSetUpOperations determineDifficultyColor:[workoutAnalysisContent objectAtIndex:indexPath.row]];
         
         cell.textLabel.font = tableViewTitleTextFont;
@@ -203,7 +213,9 @@
         [self performSegueWithIdentifier:@"exerciseDetail" sender:nil];
     }
     else if (tableView == self.workoutAnalysisTableView && indexPath.row >= 5) {
-        [self performSegueWithIdentifier:@"showList" sender:nil];
+        if (![[workoutAnalysisContent objectAtIndex:indexPath.row] isEqualToString:@"None"]) {
+            [self performSegueWithIdentifier:@"showList" sender:nil];
+        }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -242,19 +254,36 @@
         advancedOptionsSelect *attributeSelectionPage = [[advancedOptionsSelect alloc]init];
         //Set the destination.
         attributeSelectionPage = segue.destinationViewController;
-        if (indexPath.row == 5) {
-            attributeSelectionPage.titleText = @"Target Sports";
-            attributeSelectionPage.arrayForTableView = [self.workoutToDisplay.workoutTargetSports componentsSeparatedByString:@","];
+        if (!self.customWorkoutMode) {
+            if (indexPath.row == 5) {
+                attributeSelectionPage.titleText = @"Target Sports";
+                attributeSelectionPage.arrayForTableView = [self.workoutToDisplay.workoutTargetSports componentsSeparatedByString:@","];
+            }
+            else if (indexPath.row == 6) {
+                attributeSelectionPage.titleText = @"Target Muscles";
+                attributeSelectionPage.arrayForTableView = [self.workoutToDisplay.workoutTargetMuscles componentsSeparatedByString:@","];
+            }
+            else if (indexPath.row == 7) {
+                attributeSelectionPage.titleText = @"Equipment";
+                attributeSelectionPage.arrayForTableView = [self.workoutToDisplay.workoutEquipment componentsSeparatedByString:@","];
+            }
         }
-        else if (indexPath.row == 6) {
-            attributeSelectionPage.titleText = @"Target Muscles";
-            attributeSelectionPage.arrayForTableView = [self.workoutToDisplay.workoutTargetMuscles componentsSeparatedByString:@","];
+        else {
+            if (indexPath.row == 5) {
+                attributeSelectionPage.titleText = @"Target Sports";
+                attributeSelectionPage.arrayForTableView = [self.customWorkoutToDisplay.workoutTargetSports componentsSeparatedByString:@","];
+            }
+            else if (indexPath.row == 6) {
+                attributeSelectionPage.titleText = @"Target Muscles";
+                attributeSelectionPage.arrayForTableView = [self.customWorkoutToDisplay.workoutTargetMuscles componentsSeparatedByString:@","];
+            }
+            else if (indexPath.row == 7) {
+                attributeSelectionPage.titleText = @"Equipment";
+                attributeSelectionPage.arrayForTableView = [self.customWorkoutToDisplay.workoutEquipment componentsSeparatedByString:@","];
+            }
+
         }
-        else if (indexPath.row == 7) {
-            attributeSelectionPage.titleText = @"Equipment";
-            attributeSelectionPage.arrayForTableView = [self.workoutToDisplay.workoutEquipment componentsSeparatedByString:@","];
-        }
-        attributeSelectionPage.viewMode = YES;
+               attributeSelectionPage.viewMode = YES;
     }
     else if ([segue.identifier isEqualToString:@"editCustomWorkout"]) {
         UINavigationController *navController = segue.destinationViewController;
@@ -360,15 +389,29 @@
 
 
 - (IBAction)summaryButtonPressed:(id)sender {
-    //No stretching for bicep, chest, forearms, oblique.
-    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Workout Summary" andMessage:self.workoutToDisplay.workoutSummary];
-    
-    [alertView addButtonWithTitle:@"Close"
-                             type:SIAlertViewButtonTypeCancel
-                          handler:nil];
-    
-    [alertView show];
+    if (self.customWorkoutMode) {
+        //No stretching for bicep, chest, forearms, oblique.
+        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Workout Summary" andMessage:self.customWorkoutToDisplay.workoutSummary];
+        
+        [alertView addButtonWithTitle:@"Close"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:nil];
+        
+        [alertView show];
 
+    }
+    else {
+        //No stretching for bicep, chest, forearms, oblique.
+        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Workout Summary" andMessage:self.workoutToDisplay.workoutSummary];
+        
+        [alertView addButtonWithTitle:@"Close"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:nil];
+        
+        [alertView show];
+
+    }
+    
     
 }
 
@@ -423,4 +466,92 @@
 - (IBAction)editButtonPressed:(id)sender {
     [self performSegueWithIdentifier:@"editCustomWorkout" sender:nil];
 }
+
+- (void)updateViewsCustom {
+    self.title = self.customWorkoutToDisplay.workoutName;
+    self.summaryLabel.text = self.customWorkoutToDisplay.workoutSummary;
+    workoutExercises = [CommonUtilities getCustomWorkoutExercises:self.customWorkoutToDisplay];
+    
+    if ([self.customWorkoutToDisplay.workoutSummary isEqualToString:@""] || self.customWorkoutToDisplay.workoutSummary == nil) {
+        self.segmentTopSpaceConstraint.constant = 0;
+        self.summaryButton.hidden = YES;
+        self.summaryLabel.hidden = YES;
+        self.summaryNameLabel.hidden = YES;
+    }
+    
+    [self getWorkoutAnalysisContent];
+    
+    if ([self.customWorkoutToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        [self.likeButton setImage:[UIImage imageNamed:@"likeSelected.png"]];
+    }
+    else {
+        [self.likeButton setImage:[UIImage imageNamed:@"like.png"]];
+    }
+    [self.exerciseListTableView reloadData];
+    [self.workoutAnalysisTableView reloadData];
+    
+}
+- (void)updateViews {
+    self.title = self.workoutToDisplay.workoutName;
+    self.summaryLabel.text = self.workoutToDisplay.workoutSummary;
+    workoutExercises = [CommonUtilities getWorkoutExercises:self.workoutToDisplay];
+    [self getWorkoutAnalysisContent];
+    SHDataHandler *dataHandler = [SHDataHandler getInstance];
+    
+    //Save or Update the workout information.
+    /*
+    if ([dataHandler workoutHasBeenSaved:self.workoutToDisplay.workoutIdentifier]) {
+        self.workoutToDisplay.lastViewed = [NSDate date];
+        [dataHandler updateWorkoutRecord:self.workoutToDisplay];
+    }
+    else {
+        self.workoutToDisplay.lastViewed = [NSDate date];
+        [dataHandler saveWorkoutRecord:self.workoutToDisplay];
+    }
+    */
+    if ([self.workoutToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        [self.likeButton setImage:[UIImage imageNamed:@"likeSelected.png"]];
+    }
+    else {
+        [self.likeButton setImage:[UIImage imageNamed:@"like.png"]];
+    }
+    [self.exerciseListTableView reloadData];
+    [self.workoutAnalysisTableView reloadData];
+    
+}
+- (void)workoutDeleted {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+//Sets the observers for the notifications that need to be observed for.
+- (void)setNotificationObservers {
+    //Observe for changes. All just reload the recently
+    //iCloud update notification.
+    if (self.customWorkoutMode) {
+        //Changes in a exercise record, i.e. changes in lastViewed.
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViewsCustom) name:EXERCISE_UPDATE_NOTIFICATION object:nil];
+        //Changes in a exercise favorite.
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViewsCustom) name:EXERCISE_SAVE_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViewsCustom) name:CLOUD_UPDATE_NOTIFICATION object:nil];
+        //Changes in a exercise record, i.e. changes in lastViewed.
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workoutDeleted) name:CUSTOM_WORKOUT_DELETE_NOTIFICATION object:nil];
+        //Changes in a exercise favorite.
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViewsCustom) name:CUSTOM_WORKOUT_SAVE_NOTIFICATION object:nil];
+        //Changes in a exercise favorite.
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViewsCustom) name:CUSTOM_WORKOUT_UPDATE_NOTIFICATION object:nil];
+    }
+    else {
+        //Changes in a exercise record, i.e. changes in lastViewed.
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViews) name:EXERCISE_UPDATE_NOTIFICATION object:nil];
+        //Changes in a exercise favorite.
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViews) name:EXERCISE_SAVE_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViews) name:CLOUD_UPDATE_NOTIFICATION object:nil];
+        //Changes in a exercise record, i.e. changes in lastViewed.
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViews) name:WORKOUT_SAVE_NOTIFICATION object:nil];
+        //Changes in a exercise favorite.
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViews) name:WORKOUT_UPDATE_NOTIFICATION object:nil];
+    }
+
+}
+
 @end

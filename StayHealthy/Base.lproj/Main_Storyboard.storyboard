@@ -173,7 +173,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BP5-XL-rf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="502" y="3906"/>
+            <point key="canvasLocation" x="930" y="5001"/>
         </scene>
         <!--Web View View Controller-->
         <scene sceneID="4yY-YB-ndX">
@@ -518,7 +518,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OuC-Jm-aAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-128" y="2221"/>
+            <point key="canvasLocation" x="-66" y="2790"/>
         </scene>
         <!--Walk Though One View Controller-->
         <scene sceneID="ofn-hP-wci">
@@ -687,7 +687,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gR-Cn-QsV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="84" y="3062"/>
+            <point key="canvasLocation" x="-66" y="3560"/>
         </scene>
         <!--Home Tab Bar Controller-->
         <scene sceneID="WC8-mI-ST6">
@@ -2600,7 +2600,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zpp-gK-E2x">
-                                                    <rect key="frame" x="11" y="0.0" width="554" height="86.5"/>
+                                                    <rect key="frame" x="11" y="0.0" width="578" height="86.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -2611,7 +2611,7 @@
                                             <constraints>
                                                 <constraint firstItem="zpp-gK-E2x" firstAttribute="top" secondItem="yuV-sI-jwq" secondAttribute="top" id="0Hi-IG-Ho5"/>
                                                 <constraint firstAttribute="bottom" secondItem="zpp-gK-E2x" secondAttribute="bottom" id="a3t-iD-izb"/>
-                                                <constraint firstAttribute="trailing" secondItem="zpp-gK-E2x" secondAttribute="trailing" constant="35" id="k6X-k6-4Y9"/>
+                                                <constraint firstAttribute="trailing" secondItem="zpp-gK-E2x" secondAttribute="trailing" constant="11" id="k6X-k6-4Y9"/>
                                                 <constraint firstItem="zpp-gK-E2x" firstAttribute="leading" secondItem="yuV-sI-jwq" secondAttribute="leading" constant="11" id="vsd-Sh-pSz"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -3871,17 +3871,17 @@
         <image name="warmup" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="qdY-7U-Neo"/>
+        <segue reference="cd2-Nf-Ibv"/>
+        <segue reference="C1q-WR-V58"/>
         <segue reference="9az-b7-Tz1"/>
-        <segue reference="GOm-sB-wqM"/>
+        <segue reference="lDl-b4-RA6"/>
         <segue reference="Ilo-HI-6Ce"/>
         <segue reference="AJb-Vu-waC"/>
-        <segue reference="lDl-b4-RA6"/>
-        <segue reference="D1d-I3-tV4"/>
-        <segue reference="cd2-Nf-Ibv"/>
+        <segue reference="GOm-sB-wqM"/>
         <segue reference="CIt-wd-UfP"/>
         <segue reference="mAg-1O-wdb"/>
-        <segue reference="roc-FS-pGd"/>
-        <segue reference="C1q-WR-V58"/>
+        <segue reference="kIJ-MG-Hxd"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
 </document>

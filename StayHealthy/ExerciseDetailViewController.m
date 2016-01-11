@@ -57,6 +57,7 @@
         [dataHandler saveExerciseRecord:self.exerciseToDisplay];
     }
     
+    [CommonSetUpOperations styleAlertView];
     
     
     if ([self.exerciseToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
@@ -278,6 +279,39 @@
 - (IBAction)actionSheetPressed:(id)sender {
 
     
+    //No stretching for bicep, chest, forearms, oblique.
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"title" andMessage:nil];
+    [alertView addButtonWithTitle:@"Add to Workout"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alertView) {
+                            [self performSegueWithIdentifier:@"addToWorkout" sender:nil];
+                          }];
+    if (![self.likeButton.image isEqual:[UIImage imageNamed:@"likeSelected.png"]]) {
+        [alertView addButtonWithTitle:@"Favourite"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:^(SIAlertView *alertView) {
+                                  [self favourite];
+                              }];
+
+    }
+    else {
+        [alertView addButtonWithTitle:@"Unfavourite"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:^(SIAlertView *alertView) {
+                                  [self favourite];
+                              }];
+
+    }
+
+        [alertView addButtonWithTitle:@"Cancel"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:nil];
+    alertView.title = @"Exercise Options";
+    [alertView show];
+
+    
+    /*
+    
     LGAlertView *alertView = [[LGAlertView alloc] initWithTitle:@"Exercise Options"
                                                         message:@"Select the option you would like to proceed with."
                                                           style:LGAlertViewStyleActionSheet
@@ -301,6 +335,7 @@
     alertView.cancelButtonTitleColor = BLUE_COLOR;
     alertView.cancelButtonBackgroundColorHighlighted = BLUE_COLOR;
     [alertView showAnimated:YES completionHandler:nil];
+     */
     
 }
 

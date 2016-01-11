@@ -43,7 +43,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS_ADVANCED_SEARCH viewController:self message:@"Ok, so from here you can select a body zone you would like to work on and find exercises for it, go more in-depth and target a specific muscle from the muscle list or even view your recently viewed exercises. If want a specific exercise based off of equipment and more attributes press the magnifying glass in the top left to perform an advanced search. If you just got to the gym and need to warmup press the icon in the top right to find some warmup exercises. You can navigate to other parts of the app with the menu at the bottom of your screen."];
+    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS_ADVANCED_SEARCH viewController:self message:@"Here you can choose the things you want in a workout and I'll try my best to find it for you! Sometimes I can't find anything though, I'm really sorry about that, but I promise I'll look harder next time!"];
 }
 
 /*****************************************************/
@@ -374,7 +374,13 @@
     
     
             //Create the initial SELECT * FROM for the specific table.
-            searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE", WORKOUTS_DB_TABLENAME]];
+            if (selectedColumns.count == 0 && [selectedName isEqualToString:@""]) {
+                searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat:@"SELECT * FROM %@", WORKOUTS_DB_TABLENAME]];
+            }
+            else {
+                searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE", WORKOUTS_DB_TABLENAME]];
+            }
+    
     
             //Now create a for loop for the columns.
                 for (int k=0; k<selectedArrays.count; k++) {

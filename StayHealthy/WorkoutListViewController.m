@@ -39,7 +39,7 @@
     
     [self setNotificationObservers];
     
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS_SEARCHED viewController:self message:@"Ok, so from here you can select a body zone you would like to work on and find exercises for it, go more in-depth and target a specific muscle from the muscle list or even view your recently viewed exercises. If want a specific exercise based off of equipment and more attributes press the magnifying glass in the top left to perform an advanced search. If you just got to the gym and need to warmup press the icon in the top right to find some warmup exercises. You can navigate to other parts of the app with the menu at the bottom of your screen."];
+    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS_SEARCHED viewController:self message:@"I found these workouts for you! Here you can just choose a workout you like the look of and I'll show you more about it and you can perform it!"];
     
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
