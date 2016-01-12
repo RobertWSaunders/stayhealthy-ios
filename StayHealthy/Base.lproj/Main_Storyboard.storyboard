@@ -1139,6 +1139,7 @@
                                                     <outlet property="equipmentStandards" destination="dYJ-FO-w1C" id="R0h-DJ-J4u"/>
                                                     <outlet property="exerciseImage" destination="3PR-zc-rHe" id="oY4-1w-5fl"/>
                                                     <outlet property="exerciseName" destination="7PV-1f-K7b" id="Bem-0v-E2j"/>
+                                                    <outlet property="likeDistanceToEdge" destination="kBu-qc-caU" id="20I-wO-Aj4"/>
                                                     <outlet property="likeExerciseImage" destination="8oQ-C6-vzP" id="YhT-gf-TJ6"/>
                                                 </connections>
                                             </tableViewCell>
@@ -1394,6 +1395,7 @@
                                             <outlet property="equipmentStandards" destination="aRU-lz-9Le" id="5dt-TP-MUC"/>
                                             <outlet property="exerciseImage" destination="W2Y-ac-U9x" id="A5r-0f-G4g"/>
                                             <outlet property="exerciseName" destination="NNr-Ua-RoT" id="ujH-4R-fpZ"/>
+                                            <outlet property="likeDistanceToEdge" destination="iJH-DT-ReG" id="aLi-fe-vLj"/>
                                             <outlet property="likeExerciseImage" destination="xEP-Fl-DHR" id="Ltd-b5-XYe"/>
                                             <outlet property="likeExerciseImageSelection" destination="gtE-a0-ffc" id="p7f-kc-2kq"/>
                                         </connections>
@@ -2109,6 +2111,7 @@
                                             <outlet property="equipmentStandards" destination="aPx-1g-tVJ" id="eTs-ON-Agk"/>
                                             <outlet property="exerciseImage" destination="nEz-Gc-9F9" id="jSi-rJ-rYT"/>
                                             <outlet property="exerciseName" destination="cr3-Gx-rp1" id="AO0-OJ-TeA"/>
+                                            <outlet property="likeDistanceToEdge" destination="irb-ff-3Cb" id="IzE-PN-46m"/>
                                             <outlet property="likeExerciseImage" destination="EmT-2p-D5d" id="FXK-4D-GgE"/>
                                         </connections>
                                     </tableViewCell>
@@ -3226,7 +3229,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bq5-V6-fua">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bq5-V6-fua">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -3834,23 +3837,6 @@
             </objects>
             <point key="canvasLocation" x="3026" y="3115"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="13o-qS-jCK">
-            <objects>
-                <viewController id="CV7-y1-mYP" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TbW-eB-QS7"/>
-                        <viewControllerLayoutGuide type="bottom" id="u92-fM-bup"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zYI-0M-8Cp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ruD-uU-K2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="Back" width="24" height="24"/>
@@ -3871,17 +3857,17 @@
         <image name="warmup" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qdY-7U-Neo"/>
-        <segue reference="cd2-Nf-Ibv"/>
         <segue reference="C1q-WR-V58"/>
         <segue reference="9az-b7-Tz1"/>
-        <segue reference="lDl-b4-RA6"/>
+        <segue reference="GOm-sB-wqM"/>
         <segue reference="Ilo-HI-6Ce"/>
         <segue reference="AJb-Vu-waC"/>
-        <segue reference="GOm-sB-wqM"/>
-        <segue reference="CIt-wd-UfP"/>
-        <segue reference="mAg-1O-wdb"/>
+        <segue reference="g56-R9-7tb"/>
+        <segue reference="piT-WY-GsA"/>
+        <segue reference="x25-zy-r3h"/>
+        <segue reference="QOF-b5-c1X"/>
         <segue reference="kIJ-MG-Hxd"/>
+        <segue reference="mAg-1O-wdb"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
 </document>

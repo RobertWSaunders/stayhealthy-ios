@@ -49,6 +49,7 @@
     NSIndexPath *selectedIndex;
     NSIndexPath *selectedCollectionViewIndex;
 }
+
 - (IBAction)favListPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UICollectionView *bodyZoneCollectionView;
 @property (weak, nonatomic) IBOutlet UIView *bodyZoneView;

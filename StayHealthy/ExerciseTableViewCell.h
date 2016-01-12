@@ -33,4 +33,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *difficultyStandards;
 
 
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *likeDistanceToEdge;
+
 @end

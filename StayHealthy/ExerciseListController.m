@@ -139,10 +139,12 @@
         if ([CommonUtilities exerciseInArray:self.selectedExercises exercise:exercise]) {
             //Make the checkmark show up.
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            cell.likeDistanceToEdge.constant = 0.0f;
         }
         else {
             //Make no checkmark.
             cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.likeDistanceToEdge.constant = 21.0f;
         }
     }
     
@@ -157,9 +159,11 @@
             SHExercise *exercise = [exerciseData objectAtIndex:indexPath.row];
             if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
                  self.selectedExercises = [CommonUtilities deleteSelectedExercise:self.selectedExercises exercise:exercise];
+                cell.likeDistanceToEdge.constant = 21.0f;
                 cell.accessoryType = UITableViewCellAccessoryNone;
             } else {
                 [self.selectedExercises addObject:exercise];
+                cell.likeDistanceToEdge.constant = 0.0f;
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }
         }

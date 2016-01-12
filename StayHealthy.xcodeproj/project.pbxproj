@@ -405,7 +405,6 @@
 		EBC64C5C1C02C3CD00B33ECA /* WorkoutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutTableViewCell.m; sourceTree = "<group>"; };
 		EBCE12501BD2F62C000370CC /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		EBCE12511BD2F62C000370CC /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
-		EBD1EBB81C2C7CFB003F005F /* StayHealthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = StayHealthy.entitlements; sourceTree = "<group>"; };
 		EBD1EBC71C2F062B003F005F /* TextViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewTableViewCell.h; sourceTree = "<group>"; };
 		EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewTableViewCell.m; sourceTree = "<group>"; };
 		EBD1EBCB1C2F1179003F005F /* CustomWorkoutSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWorkoutSelectionViewController.h; sourceTree = "<group>"; };
@@ -420,6 +419,7 @@
 		EBFC03171BFD4A230096178B /* UserDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataManager.m; sourceTree = "<group>"; };
 		EBFC03191BFD4A850096178B /* SHUser+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHUser+User.h"; sourceTree = "<group>"; };
 		EBFC031A1BFD4A850096178B /* SHUser+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHUser+User.m"; sourceTree = "<group>"; };
+		EBFEBF0A1C4427F000F9EA01 /* StayHealthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = StayHealthy.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -690,7 +690,7 @@
 		3FD5E1A91853A8D00063E10C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EBD1EBB81C2C7CFB003F005F /* StayHealthy.entitlements */,
+				EBFEBF0A1C4427F000F9EA01 /* StayHealthy.entitlements */,
 				EB3ABB341BF00244004AF091 /* StayHealthy-Bridging-Header.h */,
 				3FC465EE1B33ACCC0062EBDB /* Prefix File */,
 				3FD5E1AA1853A8D00063E10C /* StayHealthy-Info.plist */,
@@ -1650,7 +1650,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Robert Saunders (9D29V34H8Y)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
@@ -1696,7 +1696,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Robert Saunders (9D29V34H8Y)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
@@ -1727,7 +1727,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = StayHealthy/StayHealthy.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Robert Saunders (9D29V34H8Y)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1913,7 +1913,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "416e5b05-51ce-482a-bcab-ed344911fe8a";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1929,7 +1929,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = StayHealthy/StayHealthy.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Robert Saunders (9D29V34H8Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2114,7 +2114,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "416e5b05-51ce-482a-bcab-ed344911fe8a";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

@@ -403,5 +403,11 @@
     return stringFromFileAtURL;
 }
 
+- (BOOL)customWorkoutHasBeenSaved:(NSString *)workoutIdentifier {
+    CustomWorkout *workout = [customWorkoutManager fetchItemByIdentifier:workoutIdentifier];
+    if (workout != nil)
+        return YES;
+    return NO;
+}
 
 @end

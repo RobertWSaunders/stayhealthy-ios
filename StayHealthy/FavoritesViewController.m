@@ -137,10 +137,12 @@
             if ([CommonUtilities exerciseInArray:self.selectedExercises exercise:exercise]) {
                 //Make the checkmark show up.
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                 cell.likeDistanceToEdge.constant = 0.0f;
             }
             else {
                 //Make no checkmark.
                 cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.likeDistanceToEdge.constant = 21.0f;
             }
         }
     
@@ -174,14 +176,9 @@
             
             [CommonSetUpOperations loadImageOnBackgroundThread:cell.workoutImage image:[UIImage imageNamed:imageExercise.exerciseImageFile]];
             
-            if ([workout.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-                cell.likeWorkoutImage.hidden = NO;
-                [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-                cell.likeWorkoutImage.tintColor = BLUE_COLOR;
-            }
-            else {
-                cell.likeWorkoutImage.hidden = YES;
-            }
+             [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
+            
+            
         }
         else {
             SHCustomWorkout *workout = [self updateWorkoutWithUserData:[favoritesData objectAtIndex:indexPath.row]];
@@ -200,19 +197,9 @@
                 [CommonSetUpOperations loadImageOnBackgroundThread:cell.workoutImage image:[UIImage imageNamed:imageExercise.exerciseImageFile]];
             }
             
+            [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
+            [cell.customWorkoutImage setImage:[UIImage imageNamed:@"CustomWorkout.png"]];
             
-            
-            
-            if ([workout.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-                cell.likeWorkoutImage.hidden = NO;
-                [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-                [cell.customWorkoutImage setImage:[UIImage imageNamed:@"CustomWorkout.png"]];
-                cell.likeWorkoutImage.tintColor = BLUE_COLOR;
-            }
-            else {
-                [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"CustomWorkout.png"]];
-                cell.customWorkoutImage.hidden = YES;
-            }
             
             
             cell.leftButtons = @[[MGSwipeButton buttonWithTitle:nil icon:[UIImage imageNamed:@"EditSwipe.png"] backgroundColor:BLUE_COLOR callback:^BOOL(MGSwipeTableCell *sender){
@@ -263,9 +250,11 @@
             if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
                 self.selectedExercises = [CommonUtilities deleteSelectedExercise:self.selectedExercises exercise:exercise];
                 cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.likeDistanceToEdge.constant = 21.0f;
             } else {
                 [self.selectedExercises addObject:exercise];
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.likeDistanceToEdge.constant = 0.0f;
             }
         }
     }

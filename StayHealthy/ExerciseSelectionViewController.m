@@ -196,18 +196,21 @@
             cell.rightExpansion.threshold = 2.0f;
             cell.rightExpansion.buttonIndex = 0;
             cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
+            
         }
         
         
         if (self.exerciseSelectionMode) {
             //Set the accessory type dependant on whether it is in selected cells array.
-            if ([CommonUtilities exerciseInArray:self.selectedExercises exercise:exercise]) {
+            if ([CommonUtilities exerciseInArray:selectedWorkoutExercises exercise:exercise]) {
                 //Make the checkmark show up.
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.likeDistanceToEdge.constant = 0.0f;
             }
             else {
                 //Make no checkmark.
                 cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.likeDistanceToEdge.constant = 21.0f;
             }
         }
        
@@ -277,9 +280,11 @@
             if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
                 selectedWorkoutExercises = [CommonUtilities deleteSelectedExercise:selectedWorkoutExercises exercise:exercise];
                 cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.likeDistanceToEdge.constant = 21.0f;
             } else {
                [selectedWorkoutExercises addObject:exercise];
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.likeDistanceToEdge.constant = 0.0f;
             }
         }
         else {
@@ -457,7 +462,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                           }];
     
     //To accomodate for muscles that do not have any stretching exercises.
-    if (bodyZonePressed || (!bodyZonePressed && [self setCheck:indexPath])) {
+    if ((bodyZonePressed && indexPath.item != 5) || (!bodyZonePressed && [self setCheck:indexPath])) {
     [alertView addButtonWithTitle:@"Stretching"
                             type:SIAlertViewButtonTypeCancel
                         handler:^(SIAlertView *alertView) {
@@ -636,6 +641,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                 default:
                     break;
             }
+            bodyZonePressed = NO;
         }
         else {
             NSString *muscleSelected = cell.textLabel.text;

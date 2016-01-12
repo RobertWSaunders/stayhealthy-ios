@@ -59,6 +59,21 @@
     }
     
     [self getWorkoutAnalysisContent];
+    
+    SHDataHandler *dataHandler = [SHDataHandler getInstance];
+    
+    //Save or Update the workout information.
+    
+    if ([dataHandler customWorkoutHasBeenSaved:self.customWorkoutToDisplay.workoutID]) {
+        self.workoutToDisplay.lastViewed = [NSDate date];
+        [dataHandler updateCustomWorkoutRecord:self.customWorkoutToDisplay];
+    }
+    else {
+        self.workoutToDisplay.lastViewed = [NSDate date];
+        [dataHandler saveCustomWorkoutRecord:self.customWorkoutToDisplay];
+    }
+    
+
  
     if ([self.customWorkoutToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         [self.likeButton setImage:[UIImage imageNamed:@"likeSelected.png"]];
@@ -77,7 +92,7 @@
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
     //Save or Update the workout information.
-    /*
+    
     if ([dataHandler workoutHasBeenSaved:self.workoutToDisplay.workoutIdentifier]) {
         self.workoutToDisplay.lastViewed = [NSDate date];
         [dataHandler updateWorkoutRecord:self.workoutToDisplay];
@@ -85,7 +100,7 @@
     else {
         self.workoutToDisplay.lastViewed = [NSDate date];
         [dataHandler saveWorkoutRecord:self.workoutToDisplay];
-    }*/
+    }
     
     if ([self.workoutToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         [self.likeButton setImage:[UIImage imageNamed:@"likeSelected.png"]];
@@ -184,7 +199,7 @@
         cell.textLabel.text = [workoutAnalysis objectAtIndex:indexPath.row];
         cell.detailTextLabel.text = [workoutAnalysisContent objectAtIndex:indexPath.row];
         
-        if ([[workoutAnalysisContent objectAtIndex:indexPath.row] isEqualToString:@"None"]) {
+        if ([[workoutAnalysisContent objectAtIndex:indexPath.row] isEqualToString:@"None"] || [[workoutAnalysisContent objectAtIndex:indexPath.row] isEqualToString:@"All"]) {
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
@@ -213,7 +228,7 @@
         [self performSegueWithIdentifier:@"exerciseDetail" sender:nil];
     }
     else if (tableView == self.workoutAnalysisTableView && indexPath.row >= 5) {
-        if (![[workoutAnalysisContent objectAtIndex:indexPath.row] isEqualToString:@"None"]) {
+        if (![[workoutAnalysisContent objectAtIndex:indexPath.row] isEqualToString:@"None"] || [[workoutAnalysisContent objectAtIndex:indexPath.row] isEqualToString:@"All"]) {
             [self performSegueWithIdentifier:@"showList" sender:nil];
         }
     }
