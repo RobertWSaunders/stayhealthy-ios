@@ -29,7 +29,10 @@
 
     
     //Sets the NSUserDefault and displays the TSMessage when page is loaded for the first time.
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_FIND_EXERCISE_SEARCHED  viewController:self message:@"I found these exercises for you! Here you can just choose an exercise you like the look of and I'll show you more about it."];
+    if (!self.exerciseSelectionMode) {
+        [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_FIND_EXERCISE_SEARCHED  viewController:self message:@"I found these exercises for you! Here you can just choose an exercise you like the look of and I'll show you more about it."];
+    }
+    
     
     //Get the exercise data.
     exerciseData = [[SHDataHandler getInstance] performExerciseStatement:self.exerciseQuery];
@@ -192,7 +195,7 @@
             detailView.viewTitle = exercise.exerciseName;
             detailView.modalView = NO;
             detailView.showActionIcon = YES;
-        }
+                   }
     
     else if ([segue.identifier isEqualToString:@"showQuickFilter"]) {
 

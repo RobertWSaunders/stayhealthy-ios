@@ -17,9 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.scrollEnabled = NO;
     self.navigationController.navigationBarHidden = YES;
     tableViewItems = @[@"Terms of Use",@"Privacy Policy"];
-    self.tableView.scrollEnabled = NO;
     
     if (IS_IPHONE_6) {
         self.topDistanceConstraint.constant = 84;
@@ -31,7 +31,7 @@
          self.topDistanceConstraint.constant = 46;
     }
     else {
-        self.topDistanceConstraint.constant = 15;
+        self.topDistanceConstraint.constant = 30;
     }
 }
 

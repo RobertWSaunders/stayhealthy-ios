@@ -13,6 +13,8 @@
 #import "SHExercise.h"
 #import "QuickFilterViewController.h"
 #import "ExerciseTableViewCell.h"
+#import "HomeTabBarController.h"
+
 
 //Exercise Seletion Delegate
 @protocol ExerciseSelectionSearchedDelegate;

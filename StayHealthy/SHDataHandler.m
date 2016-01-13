@@ -267,6 +267,9 @@
 - (void)deleteCustomWorkoutRecord:(SHCustomWorkout *)customWorkout {
     [customWorkoutManager deleteItemById:customWorkout.workoutID];
 }
+- (CustomWorkout*)fetchCustomWorkoutByIdentifier:(NSString *)workoutIdentifier {
+    return [customWorkoutManager fetchItemByIdentifier:workoutIdentifier];
+}
 
 - (void)addExerciseToCustomWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise {
     //if ([self canAddExerciseToWorkout:customWorkout exercise:exercise]) {
@@ -308,6 +311,13 @@
     return [customWorkoutManager fetchAllRecords];
 }
 
+- (SHCustomWorkout *)convertCustomWorkoutToSHCustomWorkout:(CustomWorkout*)workout {
+    SHCustomWorkout *shWorkout = [[SHCustomWorkout alloc] init];
+    
+    [shWorkout map:workout];
+
+    return shWorkout;
+}
 
 #pragma mark - User Data Manager Methods
 
@@ -333,7 +343,7 @@
 
 //Checks to see if the user wants auto database updates then compares current installed database to online database and installs if nescessary.
 - (void)performDatabaseUpdate {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:PREFERENCE_AUTO_DATABASE_UPDATES]) {
+   // if ([[NSUserDefaults standardUserDefaults] boolForKey:PREFERENCE_AUTO_DATABASE_UPDATES]) {
         //Check if a newer database is actually online to download.
         if ([self isDatabaseUpdate]) {
             
@@ -359,7 +369,34 @@
                 }
             }];
         }
+    //}
+}
+
+- (void)updateDatabase:(BOOL)shouldUpdate {
+    if (shouldUpdate) {
+    //Reference the path to the documents directory.
+    NSString *documentDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    //Get the path of the database.
+    NSString *filePath = [documentDir stringByAppendingPathComponent:@"StayHealthyDatabase.sqlite"];
+    
+    //Set the URL request to download from.
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:DATABASE_URL]];
+    
+    //Download file and overwrite the previous database version.
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            //Downloading error.
+            LogDataError(@"Error downloading updated StayHealthy database: %@", error.description);
+        }
+        if (data) {
+            //Overwrite current database.
+            [data writeToFile:filePath atomically:YES];
+            //Download success.
+            LogDataSuccess(@"Successfully downloaded and replaced database. Saved to %@", filePath);
+        }
+    }];
     }
+
 }
 
 //Checks if there is a update that can be made to the database.

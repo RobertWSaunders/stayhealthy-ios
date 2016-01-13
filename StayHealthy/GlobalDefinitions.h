@@ -25,7 +25,7 @@
 #define TERMS_URL                       @"http://mail.rsgc.on.ca/~rsaunders/terms.html"
 #define FAQ_URL                         @"http://mail.rsgc.on.ca/~rsaunders/faq.html"
 #define DATABASE_URL                    @"http://mail.rsgc.on.ca/~rsaunders/StayHealthyDatabase.sqlite"
-#define DATABASE_VERSION_URL            @"http://webservice.stayhealthyapp.com/StayHealthyDatabaseVersion.txt"
+#define DATABASE_VERSION_URL            @"http://mail.rsgc.on.ca/~rsaunders/StayHealthyDatabaseVersion.txt"
 
 /*******************/
 #pragma mark - EMAIL
@@ -146,7 +146,7 @@
 #define USER_FIRST_VIEW_WORKOUTS_DETAIL                 @"userFirstViewWorkoutsDetail"
 #define USER_FIRST_VIEW_WORKOUTS_PERFORM                @"userFirstViewWorkoutsPerform"
 #define USER_FIRST_VIEW_CREATE_WORKOUTS                 @"userFirstViewCreateWorkouts"
-#define USER_FIRST_VIEW_EXERCISE_SELECTION              @"userFirstViewCreateWorkouts"
+#define USER_FIRST_VIEW_EXERCISE_SELECTION              @"userFirstViewExerciseSelection"
 
 #define USER_FIRST_VIEW_FAVORITES                       @"userFirstViewFavorites"
 

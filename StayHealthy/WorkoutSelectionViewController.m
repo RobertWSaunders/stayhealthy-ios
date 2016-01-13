@@ -29,6 +29,8 @@
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    self.navigationController.view.backgroundColor = [UIColor whiteColor];
+    
     [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS viewController:self message:@"Here you can browse the workouts that we provide or create your very own by tapping on the add icon in the top right. You can search for workouts based off of certain sports, muscles, equipment and more! You can also perform an advanced search by tapping on the icon in the top left. Good luck with all of your workouts!"];
     
 }
@@ -92,10 +94,10 @@
         NSMutableArray *workoutExercises = [CommonUtilities getCustomWorkoutExercises:workout];
         
         if (workoutExercises.count>0) {
-            SHExercise *imageExercise = [workoutExercises objectAtIndex:[CommonUtilities numExercisesInCustomWorkout:workout]-1];
+         SHExercise *imageExercise = [workoutExercises objectAtIndex:[workoutExercises count]-1];
             [CommonSetUpOperations loadImageOnBackgroundThread:cell.workoutImage image:[UIImage imageNamed:imageExercise.exerciseImageFile]];
         }
-        
+    
         
         
         
@@ -348,7 +350,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 - (id)updateWorkoutWithUserData:(SHCustomWorkout*)workout {
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
-    Workout *dataWorkout = [dataHandler fetchWorkoutByIdentifier:workout.workoutID];
+    CustomWorkout *dataWorkout = [dataHandler fetchCustomWorkoutByIdentifier:workout.workoutID];
     
     if (dataWorkout != nil) {
         workout.lastViewed = dataWorkout.lastViewed;

@@ -21,8 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tabBarController.tabBar.hidden=YES;
-    
+    self.tabBarController.tabBar.hidden = YES;
+
     if (!self.showActionIcon) {
         self.navigationItem.rightBarButtonItems = @[self.likeButton];
     }
@@ -270,6 +270,7 @@
 
 //If the user leaves the page then dismiss the all TSMessages.
 -(void)viewWillDisappear:(BOOL)animated {
+   // [HomeTabBarController showTabBar:self.tabBarController];
     [TSMessage dismissActiveNotification];
 }
 

@@ -89,6 +89,7 @@
 		EB52EFEF1BCAEFC800F5D7CA /* UIWindow+SIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52EFED1BCAEFC800F5D7CA /* UIWindow+SIUtils.m */; };
 		EB52EFF31BCAEFCF00F5D7CA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52EFF21BCAEFCF00F5D7CA /* Reachability.m */; };
 		EB52EFF51BCAEFDF00F5D7CA /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFF41BCAEFDF00F5D7CA /* SIAlertView.bundle */; };
+		EB54378B1C45E4FD00D48767 /* StayHealthyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EB54378A1C45E4FD00D48767 /* StayHealthyDatabase.sqlite */; };
 		EB575AD51BEC38EC00A1C798 /* VersionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB575AD41BEC38EC00A1C798 /* VersionHistoryViewController.m */; };
 		EB63EF381B4B3FE200EF35A3 /* Main_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB63EF361B4B3FE200EF35A3 /* Main_Storyboard.storyboard */; };
 		EB63EF3B1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF3A1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m */; };
@@ -145,7 +146,6 @@
 		EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCE12511BD2F62C000370CC /* FavoritesViewController.m */; };
 		EBD1EBC91C2F062B003F005F /* TextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */; };
 		EBD1EBCD1C2F1179003F005F /* CustomWorkoutSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */; };
-		EBF7EEEE1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EBF7EEED1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite */; };
 		EBFC030E1BFD42A60096178B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC030C1BFD42A60096178B /* User.m */; };
 		EBFC03151BFD49E20096178B /* SHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC03141BFD49E20096178B /* SHUser.m */; };
 		EBFC03181BFD4A230096178B /* UserDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC03171BFD4A230096178B /* UserDataManager.m */; };
@@ -296,6 +296,7 @@
 		EB52EFF21BCAEFCF00F5D7CA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		EB52EFF41BCAEFDF00F5D7CA /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SIAlertView.bundle; path = "../../Project Resources/StayHealthy/Bundles/SIAlertView.bundle"; sourceTree = "<group>"; };
 		EB52EFF61BCAF05C00F5D7CA /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		EB54378A1C45E4FD00D48767 /* StayHealthyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = StayHealthyDatabase.sqlite; sourceTree = "<group>"; };
 		EB575AD31BEC38EC00A1C798 /* VersionHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionHistoryViewController.h; sourceTree = "<group>"; };
 		EB575AD41BEC38EC00A1C798 /* VersionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionHistoryViewController.m; sourceTree = "<group>"; };
 		EB63EF371B4B3FE200EF35A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_Storyboard.storyboard; sourceTree = "<group>"; };
@@ -409,7 +410,6 @@
 		EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewTableViewCell.m; sourceTree = "<group>"; };
 		EBD1EBCB1C2F1179003F005F /* CustomWorkoutSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWorkoutSelectionViewController.h; sourceTree = "<group>"; };
 		EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWorkoutSelectionViewController.m; sourceTree = "<group>"; };
-		EBF7EEED1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = StayHealthyDatabase.sqlite; sourceTree = "<group>"; };
 		EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StayHealthy2.xcdatamodel; sourceTree = "<group>"; };
 		EBFC030B1BFD42A60096178B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		EBFC030C1BFD42A60096178B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -580,7 +580,7 @@
 		3FC465E61B33A9BD0062EBDB /* StayHealthy Database */ = {
 			isa = PBXGroup;
 			children = (
-				EBF7EEED1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite */,
+				EB54378A1C45E4FD00D48767 /* StayHealthyDatabase.sqlite */,
 			);
 			name = "StayHealthy Database";
 			path = "../../../Project Resources/StayHealthy/Databases";
@@ -1394,7 +1394,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0710;
-				ORGANIZATIONNAME = "Mark Saunders";
+				ORGANIZATIONNAME = "Robert Saunders";
 				TargetAttributes = {
 					3FD5E19C1853A8D00063E10C = {
 						DevelopmentTeam = 4Z75KMV7DK;
@@ -1467,8 +1467,8 @@
 				3F949C1F195A56D800EB4BED /* StayHealthyGeneral.plist in Resources */,
 				EB52EFDE1BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon.png in Resources */,
 				EB52EFE01BCAEFBA00F5D7CA /* NotificationBackgroundWarning.png in Resources */,
-				EBF7EEEE1C0B559D00CC0FB4 /* StayHealthyDatabase.sqlite in Resources */,
 				EBA9B93D1C2C3DB7002C33B0 /* .gitkeep in Resources */,
+				EB54378B1C45E4FD00D48767 /* StayHealthyDatabase.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1727,7 +1727,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = StayHealthy/StayHealthy.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Robert Saunders (9D29V34H8Y)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1913,7 +1913,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "416e5b05-51ce-482a-bcab-ed344911fe8a";
+				PROVISIONING_PROFILE = "c0fd1dd4-8dd4-4f89-84bf-2cf8bdc99926";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1929,7 +1929,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = StayHealthy/StayHealthy.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Robert Saunders (9D29V34H8Y)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2114,7 +2114,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "416e5b05-51ce-482a-bcab-ed344911fe8a";
+				PROVISIONING_PROFILE = "c0fd1dd4-8dd4-4f89-84bf-2cf8bdc99926";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

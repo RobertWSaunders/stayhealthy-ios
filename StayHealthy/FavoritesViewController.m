@@ -172,7 +172,7 @@
             
             NSMutableArray *workoutExercises = [CommonUtilities getWorkoutExercises:workout];
             
-            SHExercise *imageExercise = [workoutExercises objectAtIndex:[CommonUtilities numExercisesInWorkout:workout]-2];
+            SHExercise *imageExercise = [workoutExercises objectAtIndex:[workoutExercises count]-1];
             
             [CommonSetUpOperations loadImageOnBackgroundThread:cell.workoutImage image:[UIImage imageNamed:imageExercise.exerciseImageFile]];
             
@@ -181,6 +181,7 @@
             
         }
         else {
+
             SHCustomWorkout *workout = [self updateWorkoutWithUserData:[favoritesData objectAtIndex:indexPath.row]];
             
             cell.workoutName.text = workout.workoutName;
@@ -193,7 +194,7 @@
             NSMutableArray *workoutExercises = [CommonUtilities getCustomWorkoutExercises:workout];
             
             if (workoutExercises.count>0) {
-                SHExercise *imageExercise = [workoutExercises objectAtIndex:[CommonUtilities numExercisesInCustomWorkout:workout]-1];
+                SHExercise *imageExercise = [workoutExercises objectAtIndex:[workoutExercises count]-1];
                 [CommonSetUpOperations loadImageOnBackgroundThread:cell.workoutImage image:[UIImage imageNamed:imageExercise.exerciseImageFile]];
             }
             
@@ -441,7 +442,7 @@
 - (id)updateWorkoutWithUserData:(SHCustomWorkout*)workout {
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
-    Workout *dataWorkout = [dataHandler fetchWorkoutByIdentifier:workout.workoutID];
+    CustomWorkout *dataWorkout = [dataHandler fetchCustomWorkoutByIdentifier:workout.workoutID];
     
     if (dataWorkout != nil) {
         workout.lastViewed = dataWorkout.lastViewed;

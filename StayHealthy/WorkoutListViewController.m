@@ -90,9 +90,11 @@
    
     NSMutableArray *workoutExercises = [CommonUtilities getWorkoutExercises:workout];
     
-    SHExercise *imageExercise = [workoutExercises objectAtIndex:[CommonUtilities numExercisesInWorkout:workout]-1];
-    
+if (workoutExercises.count>0) {
+    SHExercise *imageExercise = [workoutExercises objectAtIndex:[workoutExercises count]-1];
     [CommonSetUpOperations loadImageOnBackgroundThread:cell.workoutImage image:[UIImage imageNamed:imageExercise.exerciseImageFile]];
+}
+
     
     if ([workout.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         cell.likeWorkoutImage.hidden = NO;

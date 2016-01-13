@@ -65,11 +65,11 @@
     //Save or Update the workout information.
     
     if ([dataHandler customWorkoutHasBeenSaved:self.customWorkoutToDisplay.workoutID]) {
-        self.workoutToDisplay.lastViewed = [NSDate date];
+        self.customWorkoutToDisplay.lastViewed = [NSDate date];
         [dataHandler updateCustomWorkoutRecord:self.customWorkoutToDisplay];
     }
     else {
-        self.workoutToDisplay.lastViewed = [NSDate date];
+        self.customWorkoutToDisplay.lastViewed = [NSDate date];
         [dataHandler saveCustomWorkoutRecord:self.customWorkoutToDisplay];
     }
     
@@ -199,7 +199,7 @@
         cell.textLabel.text = [workoutAnalysis objectAtIndex:indexPath.row];
         cell.detailTextLabel.text = [workoutAnalysisContent objectAtIndex:indexPath.row];
         
-        if ([[workoutAnalysisContent objectAtIndex:indexPath.row] isEqualToString:@"None"] || [[workoutAnalysisContent objectAtIndex:indexPath.row] isEqualToString:@"All"]) {
+        if ([[workoutAnalysisContent objectAtIndex:indexPath.row] isEqualToString:@"None"] || [[workoutAnalysisContent objectAtIndex:indexPath.row] isEqualToString:@"All"] || [[workoutAnalysisContent objectAtIndex:indexPath.row] isEqualToString:@"No Equipment"]) {
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
@@ -247,6 +247,7 @@
         if (self.customWorkoutMode) {
             view.viewTitle = self.customWorkoutToDisplay.workoutName;
             view.customWorkoutToDisplay = self.customWorkoutToDisplay;
+            view.customWorkoutMode = YES;
         }
         else {
             view.viewTitle = self.workoutToDisplay.workoutName;
@@ -441,7 +442,7 @@
             timesCompleted = @"0";
         }
         else {
-            timesCompleted = [NSString stringWithFormat:@"%@",self.workoutToDisplay.timesCompleted];
+            timesCompleted = [NSString stringWithFormat:@"%@",self.customWorkoutToDisplay.timesCompleted];
         }
     
         
@@ -511,19 +512,7 @@
     self.summaryLabel.text = self.workoutToDisplay.workoutSummary;
     workoutExercises = [CommonUtilities getWorkoutExercises:self.workoutToDisplay];
     [self getWorkoutAnalysisContent];
-    SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
-    //Save or Update the workout information.
-    /*
-    if ([dataHandler workoutHasBeenSaved:self.workoutToDisplay.workoutIdentifier]) {
-        self.workoutToDisplay.lastViewed = [NSDate date];
-        [dataHandler updateWorkoutRecord:self.workoutToDisplay];
-    }
-    else {
-        self.workoutToDisplay.lastViewed = [NSDate date];
-        [dataHandler saveWorkoutRecord:self.workoutToDisplay];
-    }
-    */
     if ([self.workoutToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         [self.likeButton setImage:[UIImage imageNamed:@"likeSelected.png"]];
     }

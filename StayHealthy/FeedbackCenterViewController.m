@@ -108,7 +108,7 @@
          return @"Your feedback is what makes StayHealthy better. Get in contact with us to tell us about your experience using our app. Feel free to tell us about problems, features you think would be cool, design thoughts and pretty much anything else. We really love connecting with our users and learning their needs to make the user experience better. Thank you so much in advance and we will be sure to respond back to you as soon as we possibly can!";
     }
     else {
-        return @"Giving us ratings helps us grow and motivates us to be better. We would love for you to take a second to give us a review.";
+        return @"Giving us reviews and ratings helps us grow and motivates us to be better. We would love for you to take a second to give us a review or rating. We love you and we hope you love us.";
     }
     
 }

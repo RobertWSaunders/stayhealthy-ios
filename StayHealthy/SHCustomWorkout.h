@@ -12,7 +12,7 @@
 
 @property (nonatomic, retain) NSDate * dateCreated;
 @property (nonatomic, retain) NSDate * dateModified;
-@property (nonatomic, retain) NSNumber * lastDateCompleted;
+@property (nonatomic, retain) NSDate * lastDateCompleted;
 @property (nonatomic, retain) NSDate * lastViewed;
 @property (nonatomic, retain) NSNumber * liked;
 @property (nonatomic, retain) NSNumber * timesCompleted;

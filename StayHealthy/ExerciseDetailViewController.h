@@ -10,6 +10,7 @@
 #import "SHExercise.h"
 #import "SHDataHandler.h"
 #import "CustomWorkoutSelectionViewController.h"
+#import "HomeTabBarController.h"
 
 
 @interface ExerciseDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,UIGestureRecognizerDelegate> {

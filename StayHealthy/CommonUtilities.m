@@ -23,8 +23,7 @@
 }
 
 + (NSString *)installedDatabaseVersion {
-   // return [[NSUserDefaults standardUserDefaults] valueForKey:USER_INSTALLED_DATABASE_VERSION];
-    return @"1.0.0";
+    return [[NSUserDefaults standardUserDefaults] valueForKey:USER_INSTALLED_DATABASE_VERSION];
 }
 
 + (NSString *)hexBuildNumber {

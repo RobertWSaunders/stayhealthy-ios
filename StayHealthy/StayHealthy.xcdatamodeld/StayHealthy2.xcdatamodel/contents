@@ -4,7 +4,7 @@
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dateModified" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="exerciseTypes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lastDateCompleted" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastDateCompleted" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastViewed" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="liked" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="timesCompleted" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>

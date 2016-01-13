@@ -76,12 +76,17 @@
 
 - (void)addExerciseToCustomWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise;
 
+- (CustomWorkout*)fetchCustomWorkoutByIdentifier:(NSString *)workoutIdentifier;
+
 - (SHCustomWorkout *)returnCustomWorkoutByIdentifier:(NSString*)identifier;
 - (NSMutableArray*)fetchAllCustomWorkouts;
 - (BOOL)canAddExerciseToWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise;
 - (NSMutableArray*)getLikedCustomWorkouts;
 
 - (BOOL)customWorkoutHasBeenSaved:(NSString *)workoutIdentifier;
+
+- (SHCustomWorkout *)convertCustomWorkoutToSHCustomWorkout:(CustomWorkout*)workout;
+- (void)updateDatabase:(BOOL)shouldUpdate;
 
 #pragma mark - User Data Manager Methods
 

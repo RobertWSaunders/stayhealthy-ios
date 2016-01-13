@@ -26,7 +26,9 @@
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
 
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS_PERFORM  viewController:self message:@"Here you can work through all of the exercises at your own pace and finish thw workout when you would like. To finish the workout just tap the button at the bottom of the view."];
+    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS_PERFORM  viewController:self message:@"Here you can work through all of the exercises at your own pace and finish the workout when you would like. To finish the workout just tap the button at the bottom of your screen."];
+    
+    [self setNotificationObservers];
 }
 
 
@@ -165,27 +167,52 @@ if ([segue.identifier isEqualToString:@"exerciseDetail"]) {
                               SHDataHandler *dataHandler = [SHDataHandler getInstance];
                               
                               //Save or Update the exercise information.
-                              if ([dataHandler workoutHasBeenSaved:self.workoutShown.workoutIdentifier]) {
-                                  
-                                  if ([self.workoutShown.timesCompleted isEqualToNumber:[NSNumber numberWithInteger:0]]) {
-                                      self.workoutShown.timesCompleted = [NSNumber numberWithInteger:1];
-                                  }else {
-                                      NSNumber *number;
-                                      if (self.workoutShown.timesCompleted == nil) {
-                                          number = [NSNumber numberWithInteger:0];
+                              if (self.customWorkoutMode) {
+                                  if ([dataHandler customWorkoutHasBeenSaved:self.customWorkoutToDisplay.workoutID]) {
+                                      
+                                      if ([self.customWorkoutToDisplay.timesCompleted isEqualToNumber:[NSNumber numberWithInteger:0]]) {
+                                          self.customWorkoutToDisplay.timesCompleted = [NSNumber numberWithInteger:1];
+                                      }else {
+                                          NSNumber *number;
+                                          if (self.customWorkoutToDisplay.timesCompleted == nil) {
+                                              number = [NSNumber numberWithInteger:0];
+                                          }
+                                          else {
+                                              number = self.customWorkoutToDisplay.timesCompleted;
+                                          }
+                                          int value = [number intValue];
+                                          self.customWorkoutToDisplay.timesCompleted = [NSNumber numberWithInteger:value + 1];
                                       }
-                                      else {
-                                      number = self.workoutShown.timesCompleted;
-                                      }
-                                      int value = [number intValue];
-                                      self.workoutShown.timesCompleted = [NSNumber numberWithInteger:value + 1];
+                                      
+                                      self.customWorkoutToDisplay.lastDateCompleted = [NSDate date];
+                                      
+                                      [dataHandler updateCustomWorkoutRecord:self.customWorkoutToDisplay];
                                   }
-                                  
-                                  [dataHandler updateWorkoutRecord:self.workoutShown];
+                                   [self.navigationController popViewControllerAnimated:YES];
                               }
-                             
-                              
-                              [self.navigationController popViewControllerAnimated:YES];
+                              else {
+                                  if ([dataHandler workoutHasBeenSaved:self.workoutShown.workoutIdentifier]) {
+                                      
+                                      if ([self.workoutShown.timesCompleted isEqualToNumber:[NSNumber numberWithInteger:0]]) {
+                                          self.workoutShown.timesCompleted = [NSNumber numberWithInteger:1];
+                                      }else {
+                                          NSNumber *number;
+                                          if (self.workoutShown.timesCompleted == nil) {
+                                              number = [NSNumber numberWithInteger:0];
+                                          }
+                                          else {
+                                              number = self.workoutShown.timesCompleted;
+                                          }
+                                          int value = [number intValue];
+                                          self.workoutShown.timesCompleted = [NSNumber numberWithInteger:value + 1];
+                                      }
+                                      
+                                      [dataHandler updateWorkoutRecord:self.workoutShown];
+                                  }
+                                   [self.navigationController popViewControllerAnimated:YES];
+                              }
+    
+                
                           }];
     [alertView addButtonWithTitle:@"Done and don't record."
                              type:SIAlertViewButtonTypeCancel
@@ -198,7 +225,7 @@ if ([segue.identifier isEqualToString:@"exerciseDetail"]) {
                               [self.timerLabel start];
                           }];
     [alertView show];
-    alertView.title = @"Are you sure you would like to finish this workout?";
+    alertView.title = @"Are you sure?";
 
 }
 
@@ -210,5 +237,18 @@ if ([segue.identifier isEqualToString:@"exerciseDetail"]) {
 -(void)viewWillDisappear:(BOOL)animated {
     [TSMessage dismissActiveNotification];
 }
+
+//Sets the observers for the notifications that need to be observed for.
+- (void)setNotificationObservers {
+    //Observe for changes. All just reload the recently
+    //iCloud update notification.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:CLOUD_UPDATE_NOTIFICATION object:nil];
+    //Changes in a exercise record, i.e. changes in lastViewed.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:EXERCISE_UPDATE_NOTIFICATION object:nil];
+    //Changes in a exercise favorite.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:EXERCISE_SAVE_NOTIFICATION object:nil];
+}
+
+
 
 @end

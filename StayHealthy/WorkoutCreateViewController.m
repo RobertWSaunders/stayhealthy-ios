@@ -32,7 +32,9 @@
         [self loadForCreateMode];
     }
     
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_CREATE_WORKOUTS  viewController:self message:@"Wanna make your own workout? You can do that here! Simply make a name, select some exercises, select the workout attributes, and write a summary and away you go!"];
+    [self setNotificationObservers];
+    
+    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_CREATE_WORKOUTS  viewController:self message:@"Wanna make your own workout? You can do that here! Simply make a name, select some exercises, select the workout attributes and away you go!"];
     
     //Set the tableView in edit mode for adding and deleting people.
     [self.createWorkoutTableView setEditing:YES animated:YES];
@@ -959,6 +961,19 @@
     [self saveWorkout];
 }
 
+//Sets the observers for the notifications that need to be observed for.
+- (void)setNotificationObservers {
+    //Observe for changes. All just reload the recently
+    //iCloud update notification.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable) name:CLOUD_UPDATE_NOTIFICATION object:nil];
+    //Changes in a exercise record, i.e. changes in lastViewed.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable) name:EXERCISE_UPDATE_NOTIFICATION object:nil];
+    //Changes in a exercise favorite.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable) name:EXERCISE_SAVE_NOTIFICATION object:nil];
+}
 
+-(void)updateTable {
+    [self.createWorkoutTableView reloadData];
+}
 
 @end

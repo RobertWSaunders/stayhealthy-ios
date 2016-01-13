@@ -60,10 +60,9 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(mergeContent:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:self.managedObjectContext.persistentStoreCoordinator];
     
-    /*//Auto Database Update
+    //Auto Database Update
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     [dataHandler performDatabaseUpdate];
-    */
     
     //Connect to LaunchKit
     [LaunchKit launchWithToken:@"W6MwOqvoV5kdEJzA-Qe1sINeC61khPcPKtEhna_qdRV-"];
