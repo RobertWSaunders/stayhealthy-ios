@@ -10,6 +10,7 @@
 
 @implementation SHCustomWorkout (CustomWorkout)
 
+//Creates Custom Workout Record from SHCustomWorkout Record
 - (void)map:(CustomWorkout *)customWorkout {
     SHCustomWorkout *SHcustomWorkout = self;
     [customWorkout setValue:SHcustomWorkout.workoutID forKey:@"workoutID"];
@@ -30,7 +31,7 @@
     [customWorkout setValue:SHcustomWorkout.workoutEquipment forKey:@"workoutEquipment"];
 }
 
-
+//Creates SHCustomWorkout Record from Custom Workout Record
 - (void)bind:(CustomWorkout *)customWorkout {
     SHCustomWorkout *SHcustomWorkout = self;
     SHcustomWorkout.workoutID = customWorkout.workoutID;

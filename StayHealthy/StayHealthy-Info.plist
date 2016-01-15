@@ -25,7 +25,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1863</string>
+	<string>1903</string>
 	<key>FacebookAppID</key>
 	<string>510783249018865</string>
 	<key>FacebookDisplayName</key>
@@ -47,9 +47,9 @@
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>Like3D</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Favorites</string>
+			<string>Favourites</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>favorites</string>
+			<string>favourites</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>
@@ -63,9 +63,9 @@
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>Exercise3D</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Find Exercise</string>
+			<string>Exercises</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>findExercise</string>
+			<string>exercises</string>
 		</dict>
 	</array>
 	<key>UIMainStoryboardFile</key>

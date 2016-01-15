@@ -53,12 +53,7 @@
     //[Parse setApplicationId:@"WV7lo14mPjcjRmuc4vgdOXuQg6aWihFO7s6oqBNy"
     //              clientKey:@"dYyFOqO28p3WcdiWAVmK7YIna1gVWQOpyEhHZnZq"];
     
-    //iCloud Observers - observes for any changes to the iCloud store.
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(storesWillChange) name:NSPersistentStoreCoordinatorStoresWillChangeNotification object:self.managedObjectContext.persistentStoreCoordinator];
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(storesDidChange:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:self.managedObjectContext.persistentStoreCoordinator];
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(mergeContent:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:self.managedObjectContext.persistentStoreCoordinator];
+    [self setiCloudObservers];
     
     //Auto Database Update
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
@@ -97,7 +92,7 @@
 //Called when a user selects a Home screen quick action.
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
     //If the shortcut item is find exercise.
-    if ([shortcutItem.type isEqualToString:@"findExercise"]) {
+    if ([shortcutItem.type isEqualToString:@"exercises"]) {
         UITabBarController *tabBar = (UITabBarController *)self.window.rootViewController;
         tabBar.selectedIndex = 0;
     }
@@ -107,7 +102,7 @@
         tabBar.selectedIndex = 1;
 
     }
-    //If the shortcut item is favorites.
+    //If the shortcut item is favourites.
     else  {
         UITabBarController *tabBar = (UITabBarController *)self.window.rootViewController;
         tabBar.selectedIndex = 2;
@@ -290,6 +285,14 @@
 //-------------------------
 #pragma mark iCloud Methods
 //-------------------------
+
+//iCloud Observers - observes for any changes to the iCloud store.
+- (void)setiCloudObservers {
+    //iCloud Observers - observes for any changes to the iCloud store.
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(storesWillChange) name:NSPersistentStoreCoordinatorStoresWillChangeNotification object:self.managedObjectContext.persistentStoreCoordinator];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(storesDidChange:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:self.managedObjectContext.persistentStoreCoordinator];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(mergeContent:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:self.managedObjectContext.persistentStoreCoordinator];
+}
 
 //Called just before the stores change.
 - (void)storesWillChange {

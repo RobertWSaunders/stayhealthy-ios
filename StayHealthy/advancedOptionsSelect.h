@@ -8,18 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-//Advanced Options Delegate
-@protocol AdvancedOptionsDelegate;
-
-//Specifies the different types of exercise attributes.
-typedef enum {
-    primaryMuscle,
-    secondaryMuscle,
-    equipment,
-    difficulty,
-    exerciseType
-} exerciseAttributes;
-
 @interface advancedOptionsSelect : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 //Array that is passed to the view controller to display.
@@ -36,17 +24,6 @@ typedef enum {
 //Index path of cell pressed to get to this view controller.
 @property (retain,strong) NSIndexPath *indexPathPassed;
 
-
 //Advanced Options Delegate
-@property (assign, nonatomic) id <AdvancedOptionsDelegate>delegate;
-@end
-
-@protocol AdvancedOptionsDelegate<NSObject>
-
-//Optional Methods (not neccesary to be implemented unless needed.
-@optional
-
-//When the user pressed done at the top right.
-- (void)userHasSelected:(NSMutableArray*)selectedValues indexPath:(NSIndexPath*)indexPath passedArrayCount:(NSInteger)passedArrayCount;
-
+@property (assign, nonatomic) id <MultiPurposeListViewDelegate> delegate;
 @end

@@ -7,17 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DataManagerProtocol.h"
 #import "Workout.h"
 #import "SHWorkout.h"
 #import "SHWorkout+Workout.h"
+#import "DataManagerProtocol.h"
 
 @interface WorkoutDataManager : NSObject <DataManagerProtocol>
 
+//Define the app context for the data manager to call to.
 @property (nonatomic, strong) NSManagedObjectContext  *appContext;
 
-- (id) fetchRecentlyViewedWorkouts;
+//Fetches all of the recently viewed workouts.
+- (id)fetchRecentlyViewedWorkouts;
 
-- (id) fetchAllLikedWorkouts;
+//Fetches all of the liked workouts.
+- (id)fetchAllLikedWorkouts;
 
 @end

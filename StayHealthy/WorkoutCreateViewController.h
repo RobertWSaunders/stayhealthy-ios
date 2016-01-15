@@ -13,7 +13,7 @@
 #import "advancedOptionsSelect.h"
 #import "ExerciseSelectionViewController.h"
 
-@interface WorkoutCreateViewController : UIViewController <UITableViewDataSource, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, AdvancedOptionsDelegate, ExerciseSelectionDelegate, UIScrollViewDelegate> {
+@interface WorkoutCreateViewController : UIViewController <UITableViewDataSource, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, MultiPurposeListViewDelegate, ExerciseSelectionDelegate, UIScrollViewDelegate> {
     
     //Array filled with the advanced search options.
     NSArray *workoutOptions;

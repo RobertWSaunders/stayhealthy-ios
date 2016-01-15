@@ -6,8 +6,6 @@
 //  Copyright © 2015 Robert Saunders. All rights reserved.
 //
 
-@protocol FavoritesExerciseSelection;
-
 #import <UIKit/UIKit.h>
 #import "ExerciseDetailViewController.h"
 #import "ExerciseTableViewCell.h"
@@ -31,13 +29,7 @@
 //Array that holds the information regarding which exercises the user selected.
 @property(strong, retain) NSMutableArray *selectedExercises;
 
-@property (assign, nonatomic) id <FavoritesExerciseSelection> delegate;
-
-@end
-
-@protocol FavoritesExerciseSelection <NSObject>
-
-- (void)selectedFavoriteExercises:(NSMutableArray*)selectedExercises;
+@property (assign, nonatomic) id <LikedExercisesExerciseSelectionDelegate> delegate;
 
 @end
 

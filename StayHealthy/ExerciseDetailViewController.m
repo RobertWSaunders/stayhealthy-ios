@@ -131,11 +131,11 @@
     
     [self changeImage];
     
-    if ([self.likeButton.image isEqual:[UIImage imageNamed:@"likeSelected.png"]]) {
-        self.exerciseToDisplay.liked = [NSNumber numberWithBool:YES];
+    if ([self.exerciseToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        self.exerciseToDisplay.liked = [NSNumber numberWithBool:NO];
     }
     else {
-        self.exerciseToDisplay.liked = [NSNumber numberWithBool:NO];
+        self.exerciseToDisplay.liked = [NSNumber numberWithBool:YES];
     }
     
     //Save or Update the exercise information.
@@ -349,4 +349,45 @@
         customWorkoutSelection.exerciseToAdd = self.exerciseToDisplay;
     }
 }
+
+//-----------------------------
+#pragma mark Previewing Actions
+//-----------------------------
+
+//Preview actions for exercise previewing.
+- (NSArray<id> *)previewActionItems {
+    
+    //Exercise to preview.
+    //SHExercise *exercise = [exerciseData objectAtIndex:selectedPreviewingIndex.row];
+    
+    //Add to Workout Preview Action
+    UIPreviewAction *addToWorkoutAction = [UIPreviewAction actionWithTitle:@"Add to Workout" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        [self performSegueWithIdentifier:@"addToWorkout" sender:nil];
+    }];
+    
+    //Fvourite Action
+    UIPreviewAction *favouriteAction;
+    
+    //Set the favourite action to be selected if the exercise is favourited or not.
+    
+    if ([self.exerciseToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        favouriteAction  = [UIPreviewAction actionWithTitle:@"Unfavourite" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+            [self favourite];
+        }];
+    }
+    else {
+        favouriteAction  = [UIPreviewAction actionWithTitle:@"Favourite" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+            [self favourite];
+        }];
+    }
+    
+    
+    //Add to array.
+    NSArray *actions = @[addToWorkoutAction, favouriteAction];
+    
+    //Return the actions.
+    return actions;
+}
+
+
 @end

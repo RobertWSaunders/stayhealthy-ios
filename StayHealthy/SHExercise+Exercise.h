@@ -11,7 +11,10 @@
 
 @interface SHExercise (Exercise)
 
+//Creates Exercise Record from SHExercise Record
 - (void)map:(Exercise *)exercise;
+
+//Creates SHExercise Record from Exercise Record
 - (void)bind:(Exercise *)exercise;
 
 @end

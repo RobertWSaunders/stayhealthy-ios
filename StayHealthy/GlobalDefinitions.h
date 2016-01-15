@@ -170,6 +170,15 @@ typedef enum : NSUInteger {
 
 
 
+//Specifies the different types of exercise attributes.
+typedef enum {
+    primaryMuscle,
+    secondaryMuscle,
+    equipment,
+    difficulty,
+    exerciseType
+} exerciseAttributes;
+
 //------------------------------
 #pragma mark Xcode Colors Set Up
 //------------------------------
@@ -180,6 +189,42 @@ typedef enum : NSUInteger {
 
 #define LogDataOperation(frmt, ...)    NSLog((XCODE_COLORS_ESCAPE @"fg52,152,219;" frmt XCODE_COLORS_RESET), ##__VA_ARGS__)
 #define LogDataSuccess(frmt, ...)      NSLog((XCODE_COLORS_ESCAPE @"fg46,204,113;" frmt XCODE_COLORS_RESET), ##__VA_ARGS__)
+#define LogDataTentativeSuccess(frmt, ...) NSLog((XCODE_COLORS_ESCAPE @"fg39,174,96;" frmt XCODE_COLORS_RESET), ##__VA_ARGS__)
 #define LogDataError(frmt, ...)        NSLog((XCODE_COLORS_ESCAPE @"fg231,76,60;" frmt XCODE_COLORS_RESET), ##__VA_ARGS__)
 #define LogDataWarning(frmt, ...)      NSLog((XCODE_COLORS_ESCAPE @"fg243,156,18;" frmt XCODE_COLORS_RESET), ##__VA_ARGS__)
 #define LogInfo(frmt, ...)             NSLog((XCODE_COLORS_ESCAPE @"fg155,89,182;" frmt XCODE_COLORS_RESET), ##__VA_ARGS__)
+
+/************************/
+#pragma mark - Protocols
+/************************/
+
+@protocol ExerciseSelectionDelegate <NSObject>
+
+- (void)selectedExercises:(NSMutableArray*)selectedExercises;
+
+@end
+
+@protocol AdvancedSearchExerciseSelectionDelegate <NSObject>
+
+- (void)advancedSelectedExercises:(NSMutableArray*)selectedExercises;
+
+@end
+
+@protocol ExerciseListExerciseSelectionDelegate <NSObject>
+
+- (void)selectedExercises:(NSMutableArray*)selectedExercises;
+
+@end
+
+@protocol MultiPurposeListViewDelegate <NSObject>
+
+- (void)userHasSelected:(NSMutableArray*)selectedValues indexPath:(NSIndexPath*)indexPath passedArrayCount:(NSInteger)passedArrayCount;
+
+@end
+
+@protocol LikedExercisesExerciseSelectionDelegate <NSObject>
+
+- (void)selectedFavoriteExercises:(NSMutableArray*)selectedExercises;
+
+@end
+

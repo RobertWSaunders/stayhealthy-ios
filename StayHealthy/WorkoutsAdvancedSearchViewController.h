@@ -11,7 +11,7 @@
 #import "TextFieldTableViewCell.h"
 #import "WorkoutListViewController.h"
 
-@interface WorkoutsAdvancedSearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, AdvancedOptionsDelegate> {
+@interface WorkoutsAdvancedSearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MultiPurposeListViewDelegate> {
     
     //Array filled with the advanced search options.
     NSArray *workoutAdvancedSearchOptions;

@@ -45,6 +45,8 @@
     
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    [self register3DTouch];
 }
 
 //Sets the observers for the notifications that need to be observed for.
@@ -234,6 +236,67 @@
 
     return exercise;
 }
+
+/*************************************************/
+#pragma mark - 3D Touch Peek and Pop Configuration
+/*************************************************/
+
+//-----------------
+#pragma mark Set Up
+//-----------------
+
+//Checks to see if 3D Touch is enabled on device, registers alternative if not.
+- (void)register3DTouch {
+    //Register for 3D Touch (if available)
+    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
+        [self registerForPreviewingWithDelegate:(id)self sourceView:self.view];
+    }
+}
+
+//Called when a user turns the 3D touch feature on or off.
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    //Check to see if 3D touch is enabled.
+    [self register3DTouch];
+}
+
+//---------------
+#pragma mark Peek
+//---------------
+
+//Set up the view controller for peeking.
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
+    
+    // check if we're not already displaying a preview controller
+    if ([self.presentedViewController isKindOfClass:[ExerciseDetailViewController class]]) {
+        return nil;
+    }
+    
+    CGPoint cellPostion = [self.tableView convertPoint:location fromView:self.view];
+    selectedPreviewingIndex = [self.tableView indexPathForRowAtPoint:cellPostion];
+    
+    //Shallow press, return the preview controller here. (peek)
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_Storyboard" bundle:nil];
+    previewingExerciseDetailViewController = [storyboard instantiateViewControllerWithIdentifier:@"ExerciseDetailViewController"];
+
+    //Get the exercise to display in the peek and set the peeks attributes.
+    SHExercise *exercise = [exerciseData objectAtIndex:selectedPreviewingIndex.row];
+    previewingExerciseDetailViewController.exerciseToDisplay = exercise;
+    previewingExerciseDetailViewController.viewTitle = exercise.exerciseName;
+    previewingExerciseDetailViewController.showActionIcon = YES;
+    
+    return previewingExerciseDetailViewController;
+}
+
+//---------------
+#pragma mark Pop
+//---------------
+
+//Show the view controller, pop.
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
+    [self showViewController:previewingExerciseDetailViewController sender:self];
+}
+
+
 
 /*************************************/
 #pragma mark ViewWillDisappear Methods

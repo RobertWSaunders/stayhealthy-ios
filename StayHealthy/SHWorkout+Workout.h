@@ -11,7 +11,10 @@
 
 @interface SHWorkout (Workout)
 
+//Creates Workout Record from SHWorkout Record
 - (void)map:(Workout *)workout;
+
+//Creates SHWorkout Record from Workout Record
 - (void)bind:(Workout *)workout;
 
 @end

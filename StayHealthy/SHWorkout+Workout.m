@@ -10,6 +10,7 @@
 
 @implementation SHWorkout (Workout)
 
+//Creates Workout Record from SHWorkout Record
 - (void)map:(Workout *)workout {
     SHWorkout *SHworkout = self;
     [workout setValue:SHworkout.workoutIdentifier forKey:@"workoutID"];
@@ -20,6 +21,7 @@
     
 }
 
+//Creates SHWorkout Record from Workout Record
 - (void)bind:(Workout *)workout {
     SHWorkout *SHworkout = self;
     SHworkout.workoutIdentifier = workout.workoutID;

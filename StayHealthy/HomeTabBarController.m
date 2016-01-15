@@ -18,23 +18,28 @@
 //Perform any set up for the view once it has loaded.
 - (void)viewDidLoad {
     
+    //The "Journal" tab bar item on the tab bar.
+    UITabBarItem *journalItem = [[self.tabBar items] objectAtIndex:0];
+    //Setting the image for the journal item.
+    [journalItem setSelectedImage:[UIImage imageNamed:@"JournalTabFilled.png"]];
+    
     //The "Find Exercise" tab bar item on the tab bar.
-    UITabBarItem *findExerciseItem = [[self.tabBar items] objectAtIndex:0];
+    UITabBarItem *findExerciseItem = [[self.tabBar items] objectAtIndex:1];
     //Setting the image for the find exercise item.
     [findExerciseItem setSelectedImage:[UIImage imageNamed:@"ExerciseTabFilled.png"]];
     
     //The "Workouts" tab bar item on the tab bar.
-    UITabBarItem *workoutsItem = [[self.tabBar items] objectAtIndex:1];
+    UITabBarItem *workoutsItem = [[self.tabBar items] objectAtIndex:2];
     //Setting the image for the workout item.
     [workoutsItem setSelectedImage:[UIImage imageNamed:@"WorkoutsTabFilled.png"]];
     
     //The "Favorites" tab bar item on the tab bar.
-    UITabBarItem *favoritesItem = [[self.tabBar items] objectAtIndex:2];
+    UITabBarItem *favoritesItem = [[self.tabBar items] objectAtIndex:3];
     //Setting the image for the favorites item.
     [favoritesItem setSelectedImage:[UIImage imageNamed:@"FavoritesTabFilled.png"]];
     
     //The "Settings" tab bar item on the tab bar.
-    UITabBarItem *settingsItem = [[self.tabBar items] objectAtIndex:3];
+    UITabBarItem *settingsItem = [[self.tabBar items] objectAtIndex:4];
     //Setting the image for the settings item.
     [settingsItem setSelectedImage:[UIImage imageNamed:@"SettingsTabFilled.png"]];
     

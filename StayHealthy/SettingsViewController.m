@@ -189,8 +189,8 @@
     feedbackSettings = [NSArray arrayWithObjects:@"Help Center", @"Feedback Center", nil];
     feedbackSettingsImages = [NSArray arrayWithObjects:@"HelpCenter.png", @"FeedbackCenter.png", nil];
     
-    connectSettings = [NSArray arrayWithObjects:@"Facebook",@"Twitter",@"Tumblr", nil];
-    connectSettingsImages = [NSArray arrayWithObjects:@"Facebook.png",@"Twitter.png",@"Tumblr.png", nil];
+    connectSettings = [NSArray arrayWithObjects:@"Facebook",@"Twitter",@"Tumblr",@"StayHealthy Website", nil];
+    connectSettingsImages = [NSArray arrayWithObjects:@"Facebook.png",@"Twitter.png",@"Tumblr.png",@"Website.png", nil];
     
     legalSettings = [NSArray arrayWithObjects:@"Terms of Use", @"Privacy Policy", nil];
     legalSettingsImages = [NSArray arrayWithObjects:@"TermsUse.png", @"PrivacyPolicy.png", nil];
@@ -222,6 +222,11 @@
         else if (selectedIndexPath.row == 2 && selectedIndexPath.section == 2) {
             webViewViewController.titleText = @"Tumblr";
             webViewViewController.url = TUMBLR_URL;
+            webViewViewController.showClose = NO;
+        }
+        else if (selectedIndexPath.row == 3 && selectedIndexPath.section == 2) {
+            webViewViewController.titleText = @"Website";
+            webViewViewController.url = WEBSITE_URL;
             webViewViewController.showClose = NO;
         }
         else if (selectedIndexPath.row == 0 && selectedIndexPath.section == 3) {

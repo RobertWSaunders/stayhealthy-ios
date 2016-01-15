@@ -10,6 +10,7 @@
 
 @implementation SHExercise (Exercise)
 
+//Creates Exercise Record from SHExercise Record
 - (void)map:(Exercise *)exercise {
     SHExercise *SHexercise = self;
     [exercise setValue:SHexercise.exerciseIdentifier forKey:@"exerciseID"];
@@ -19,6 +20,7 @@
     [exercise setValue:SHexercise.timesViewed forKey:@"timesViewed"];
 }
 
+//Creates SHExercise Record from Exercise Record
 - (void)bind:(Exercise *)exercise {
     SHExercise *SHexercise = self;
     SHexercise.exerciseIdentifier = exercise.exerciseID;

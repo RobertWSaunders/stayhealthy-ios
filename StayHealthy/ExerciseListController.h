@@ -15,13 +15,15 @@
 #import "ExerciseTableViewCell.h"
 #import "HomeTabBarController.h"
 
-
-//Exercise Seletion Delegate
-@protocol ExerciseSelectionSearchedDelegate;
-
-@interface ExerciseListController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate> {
+@interface ExerciseListController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, UIViewControllerPreviewingDelegate> {
     NSMutableArray *exerciseData;
     NSIndexPath *selectedIndex;
+    //Set index of peek preview cell.
+    NSIndexPath *selectedPreviewingIndex;
+    
+    //The exercise detail view that is used in the peek preview.
+    ExerciseDetailViewController *previewingExerciseDetailViewController;
+    
 }
 
 
@@ -45,16 +47,7 @@
 @property(strong, retain) NSMutableArray *selectedExercises;
 
 //Exercise Seletion Delegate
-@property (assign, nonatomic) id <ExerciseSelectionSearchedDelegate> delegate;
+@property (assign, nonatomic) id <ExerciseListExerciseSelectionDelegate> delegate;
 
 @end
 
-@protocol ExerciseSelectionSearchedDelegate <NSObject>
-
-- (void)selectedExercises:(NSMutableArray*)selectedExercises;
-
-//Optional Methods (not neccesary to be implemented unless needed.
-@optional
-
-
-@end
