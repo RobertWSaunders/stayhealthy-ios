@@ -514,7 +514,41 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X77-HW-3og" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1698" y="1423"/>
+            <point key="canvasLocation" x="1620" y="849"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YdU-f4-dtR">
+            <objects>
+                <navigationController id="MQJ-hT-krm" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0aV-r0-HL8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9mY-6t-rLr" kind="show" id="DsU-ux-bSa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ym4-sS-9Rx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="905" y="1831"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="jBk-w5-u1d">
+            <objects>
+                <viewController id="9mY-6t-rLr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YZQ-Vf-0Xu"/>
+                        <viewControllerLayoutGuide type="bottom" id="VW0-4C-gL3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IAZ-5j-CCp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dAG-ff-H8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1496" y="1779"/>
         </scene>
         <!--Exercises-->
         <scene sceneID="JGF-fN-mZJ">
@@ -1281,9 +1315,10 @@
                                 <segue destination="tgb-qo-Hkg" kind="presentation" id="AJb-Vu-waC"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="warmup" id="u7x-gI-ggX" userLabel="Warmup Button">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="oi8-ZA-8db">
                             <connections>
-                                <action selector="warmupButtonPressed:" destination="bJ0-2g-dbS" id="Ome-4T-Clr"/>
+                                <action selector="addExerciseButtonPressed:" destination="bJ0-2g-dbS" id="Nmh-AT-SUu"/>
+                                <segue destination="MQJ-hT-krm" kind="presentation" identifier="addExercise" id="TpS-Xc-ddl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1308,7 +1343,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0b-H6-kgZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2335" y="2453"/>
+            <point key="canvasLocation" x="1841" y="2483"/>
         </scene>
         <!--Exercise List Controller-->
         <scene sceneID="4ao-fO-GjL">
@@ -3228,7 +3263,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bq5-V6-fua">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bq5-V6-fua">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -3839,17 +3874,17 @@
         <image name="warmup" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="zPu-lJ-mtn"/>
         <segue reference="9az-b7-Tz1"/>
         <segue reference="GOm-sB-wqM"/>
+        <segue reference="D1d-I3-tV4"/>
+        <segue reference="lDl-b4-RA6"/>
         <segue reference="AJb-Vu-waC"/>
-        <segue reference="mAg-1O-wdb"/>
-        <segue reference="g73-La-IUM"/>
-        <segue reference="g56-R9-7tb"/>
+        <segue reference="Ilo-HI-6Ce"/>
         <segue reference="piT-WY-GsA"/>
-        <segue reference="QOF-b5-c1X"/>
         <segue reference="x25-zy-r3h"/>
         <segue reference="roc-FS-pGd"/>
-        <segue reference="zPu-lJ-mtn"/>
+        <segue reference="mAg-1O-wdb"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
 </document>

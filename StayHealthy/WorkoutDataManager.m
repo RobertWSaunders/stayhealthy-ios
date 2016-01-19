@@ -270,7 +270,7 @@
 //Fetches all of the liked workouts
 - (id)fetchAllLikedWorkouts {
     
-    NSFetchRequest *fetchRequest = [self getLikedFetchRequest:nil];
+    NSFetchRequest *fetchRequest = [self getLikedFetchRequest];
     
     NSError *requestError = nil;
     

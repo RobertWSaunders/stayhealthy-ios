@@ -43,24 +43,24 @@
     
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
-    NSInteger timesViewed = [self.exerciseToDisplay.timesViewed integerValue];
+    NSInteger timesViewed = [self.exerciseToDisplay.exerciseTimesViewed integerValue];
     
     //Save or Update the exercise information.
-    if ([dataHandler exerciseHasBeenSaved:self.exerciseToDisplay.exerciseIdentifier]) {
-        self.exerciseToDisplay.lastViewed = [NSDate date];
-        self.exerciseToDisplay.timesViewed = [NSNumber numberWithInteger:timesViewed+1];
+    if ([SHDataUtilities exerciseHasBeenSaved:self.exerciseToDisplay.exerciseIdentifier exerciseType:self.exerciseToDisplay.exerciseType]) {
+        self.exerciseToDisplay.exerciseLastViewed = [NSDate date];
+        self.exerciseToDisplay.exerciseTimesViewed = [NSNumber numberWithInteger:timesViewed+1];
         [dataHandler updateExerciseRecord:self.exerciseToDisplay];
     }
     else {
-        self.exerciseToDisplay.timesViewed = [NSNumber numberWithInteger:1];
-        self.exerciseToDisplay.lastViewed = [NSDate date];
+        self.exerciseToDisplay.exerciseTimesViewed = [NSNumber numberWithInteger:1];
+        self.exerciseToDisplay.exerciseLastViewed = [NSDate date];
         [dataHandler saveExerciseRecord:self.exerciseToDisplay];
     }
     
     [CommonSetUpOperations styleAlertView];
     
     
-    if ([self.exerciseToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+    if ([self.exerciseToDisplay.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
          [self.likeButton setImage:[UIImage imageNamed:@"likeSelected.png"]];
     }
     else {
@@ -128,18 +128,17 @@
 
 - (void)favourite {
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
-    
     [self changeImage];
     
-    if ([self.exerciseToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-        self.exerciseToDisplay.liked = [NSNumber numberWithBool:NO];
+    if ([self.exerciseToDisplay.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        self.exerciseToDisplay.exerciseLiked = [NSNumber numberWithBool:NO];
     }
     else {
-        self.exerciseToDisplay.liked = [NSNumber numberWithBool:YES];
+        self.exerciseToDisplay.exerciseLiked = [NSNumber numberWithBool:YES];
     }
     
     //Save or Update the exercise information.
-    if ([dataHandler exerciseHasBeenSaved:self.exerciseToDisplay.exerciseIdentifier]) {
+    if ([SHDataUtilities exerciseHasBeenSaved:self.exerciseToDisplay.exerciseIdentifier exerciseType:self.exerciseToDisplay.exerciseType]) {
         [dataHandler updateExerciseRecord:self.exerciseToDisplay];
     }
     else {
@@ -261,7 +260,7 @@
     }
     
     if (indexPath.row == 6) {
-        cell.detailTextLabel.text = [self.exerciseToDisplay.timesViewed stringValue];
+      //  cell.detailTextLabel.text = [self.exerciseToDisplay.timesViewed stringValue];
     }
     
         return cell;
@@ -369,7 +368,7 @@
     UIPreviewAction *favouriteAction;
     
     //Set the favourite action to be selected if the exercise is favourited or not.
-    
+    /*
     if ([self.exerciseToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         favouriteAction  = [UIPreviewAction actionWithTitle:@"Unfavourite" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
             [self favourite];
@@ -380,7 +379,7 @@
             [self favourite];
         }];
     }
-    
+    */
     
     //Add to array.
     NSArray *actions = @[addToWorkoutAction, favouriteAction];

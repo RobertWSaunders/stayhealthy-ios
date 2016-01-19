@@ -12,10 +12,39 @@
 
 @interface Exercise : NSManagedObject
 
-@property (nonatomic, retain) NSString * exerciseID;
-@property (nonatomic, retain) NSString * exerciseType;
-@property (nonatomic, retain) NSNumber * liked;
-@property (nonatomic, retain) NSDate * lastViewed;
-@property (nonatomic, retain) NSNumber *timesViewed;
+//Exercise Identifier
+@property(nonatomic,retain) NSString *exerciseIdentifier;
+//Exercise Name
+@property(nonatomic,retain) NSString *exerciseName;
+//Exercise Muscle
+@property(nonatomic,retain) NSString *exerciseMuscle;
+//Exercise Instructions
+@property(nonatomic,retain) NSString *exerciseInstructions;
+//Exercise Image File
+@property(nonatomic,retain) NSString *exerciseImageFile;
+//Exercise Sets
+@property(nonatomic,retain) NSString *exerciseSets;
+//Exercise Reps
+@property(nonatomic,retain) NSString *exerciseReps;
+//Exercise Equipment
+@property(nonatomic,retain) NSString *exerciseEquipment;
+//Exercise Primary Muscle
+@property(nonatomic,retain) NSString *exercisePrimaryMuscle;
+//Exercise SecondaryMuscle
+@property(nonatomic,retain) NSString *exerciseSecondaryMuscle;
+//Exercise Difficulty
+@property(nonatomic,retain) NSString *exerciseDifficulty;
+//Exercise Type
+@property(nonatomic,retain) NSString *exerciseType;
+//Exercise Liked
+@property (nonatomic, retain) NSNumber *exerciseLiked;
+//Exercise Last Viewed
+@property (nonatomic, retain) NSDate *exerciseLastViewed;
+//Exercise Edited Date
+@property (nonatomic, retain) NSDate *exerciseEditedDate;
+//Exercise Times Viewed
+@property (nonatomic, retain) NSNumber *exerciseTimesViewed;
+//Exercise isEdited
+@property (nonatomic, retain) NSNumber *exerciseIsEdited;
 
 @end

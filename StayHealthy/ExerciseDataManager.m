@@ -49,7 +49,7 @@
                 LogDataError(@"Exercise could not be saved. --> saveItem @ ExerciseDataManager");
             }
             else {
-                LogDataSuccess(@"Exercise was saved successfully. --> saveItem @ ExerciseDataManager");
+                LogDataSuccess(@"Exercise was saved successfully with the identifier: %@ and the exercise type of: %@. --> saveItem @ ExerciseDataManager",exercise.exerciseIdentifier,exercise.exerciseType);
                 //Post a notification to tell the app that a exercise has been saved.
                 [[NSNotificationCenter defaultCenter] postNotificationName:EXERCISE_SAVE_NOTIFICATION object:nil];
             }
@@ -70,7 +70,9 @@
     if (exercise != nil)
     {
         //Set the fetch request.
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat: @"exerciseIdentifier = %@", exercise.exerciseIdentifier]];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"exerciseIdentifier", exercise.exerciseIdentifier,@"exerciseType",exercise.exerciseType];
+        
+        [fetchRequest setPredicate:predicate];
         
         //Returned array of fetched exercises.
         NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
@@ -103,7 +105,10 @@
     
     NSError *requestError = nil;
     
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"exerciseIdentifier = %@", exercise.exerciseIdentifier]];
+    //Set the fetch request.
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"exerciseIdentifier", exercise.exerciseIdentifier,@"exerciseType",exercise.exerciseType];
+    
+    [fetchRequest setPredicate:predicate];
     
     NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
     
@@ -120,6 +125,34 @@
         }
         else {
             LogDataError(@"Exercise could not be deleted. --> deleteItem @ ExerciseDataManager");
+        }
+    }
+}
+
+//Deletes an existing object with a passed object identifier and exercise type in the persistent store.
+- (void)deleteItemByIdentifierAndExerciseType:(NSString *)objectIdentifier exerciseType:(NSString*)exerciseType {
+    //Create a fetch request.
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
+    
+    NSError *requestError = nil;
+    
+    //Set the fetch request.
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"exerciseIdentifier", objectIdentifier,@"exerciseType",exerciseType];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
+    
+    for (Exercise *managedExercise in exercises) {
+        [_appContext deleteObject:managedExercise];
+        
+        NSError *savingError = nil;
+        
+        if ([_appContext save:&savingError]) {
+            LogDataSuccess(@"Exercise with the identifier \"%@\" has been deleted successfully. --> deleteItemByIdentifier @ ExerciseDataManager",objectIdentifier);
+        }
+        else {
+            LogDataError(@"Exercise with the identifier \"%@\" could not be deleted. --> deleteItemByIdentifier @ ExerciseDataManager",objectIdentifier);
         }
     }
 }
@@ -342,6 +375,34 @@
     return exercises;
 }
 
+//Fetches a exercise record given the objects identifier and the exercise type.
+- (id)fetchItemByIdentifierAndExerciseType:(NSString *)objectIdentifier exerciseType:(NSString*)exerciseType {
+    //Check if object identifier is nil.
+    if (objectIdentifier != nil) {
+        //Set the fetch request.
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
+        
+        NSError *requestError = nil;
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"exerciseIdentifier", objectIdentifier,@"exerciseType",exerciseType];
+        
+        [fetchRequest setPredicate:predicate];
+        
+        //Exercises returned from the fetch.
+        NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
+        
+        if (exercises.count > 0) {
+            LogDataSuccess(@"Successfully found a exercise with the identifier: %@  and the exercise type: %@ --> fetchItemByIdentifier @ ExerciseDataManager", objectIdentifier, exerciseType);
+            return [exercises objectAtIndex:0];
+        }
+        else {
+            LogDataError(@"Could not fetch any exercise with the identifier: %@  and the exercise type: %@ --> fetchItemByIdentifier @ ExerciseDataManager", objectIdentifier, exerciseType);
+            return nil;
+        }
+    }
+    return nil;
+}
+
 //-----------------------------
 #define Fetch Requests Creation
 //-----------------------------
@@ -349,7 +410,7 @@
 //Returns the recently viewed fetch request.
 - (NSFetchRequest*)getRecentlyViewedFetchRequest {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
-    NSSortDescriptor *sortByRecentlyViewed = [NSSortDescriptor sortDescriptorWithKey:@"lastViewed" ascending:NO];
+    NSSortDescriptor *sortByRecentlyViewed = [NSSortDescriptor sortDescriptorWithKey:@"exerciseLastViewed" ascending:NO];
     fetchRequest.sortDescriptors = [[NSArray alloc] initWithObjects:sortByRecentlyViewed, nil];
     return fetchRequest;
 }
@@ -359,18 +420,16 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
     
     if (type == nil) {
-         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"liked", [NSNumber numberWithBool:YES]];
+         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"exerciseLiked", [NSNumber numberWithBool:YES]];
          [fetchRequest setPredicate:predicate];
     }
     else {
-         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"liked", [NSNumber numberWithBool:YES],@"exerciseType",type];
+         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"exerciseLiked", [NSNumber numberWithBool:YES],@"exerciseType",type];
          [fetchRequest setPredicate:predicate];
     }
    
     return fetchRequest;
 }
-
-
 
 
 

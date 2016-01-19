@@ -107,7 +107,7 @@
         
         //Load the exercise image on the background thread.
         [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
-        
+        /*
         if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
             cell.likeExerciseImage.hidden = NO;
             [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
@@ -116,7 +116,7 @@
         else {
             cell.likeExerciseImage.hidden = YES;
         }
-        
+        (*/
         
         //Set the selected cell background.
         [CommonSetUpOperations tableViewSelectionColorSet:cell];
@@ -285,7 +285,7 @@
     
         //Fetches the recently viewed exercises, in Exercise object.
         NSArray *favoriteExercise;
-    
+    /*
         if (self.segmentedControl.selectedSegmentIndex == 0) {
             favoriteExercise = [[SHDataHandler getInstance] getStrengthLikedExercises];
         }
@@ -301,7 +301,7 @@
         //Converts Exercise object to usable SHExercise object.
         for (int i = 0; i < favoriteExercise.count; i++) {
             [favoritesData addObject:[dataHandler convertExerciseToSHExercise:[favoriteExercise objectAtIndex:i]]];
-        }
+        }*/
     
         //[self showMessage:exerciseType];
     
@@ -322,7 +322,7 @@
 
         NSArray *favoriteWorkout;
         NSArray *favoriteCustomWorkout;
-        
+        /*
         favoriteWorkout = [[SHDataHandler getInstance] getLikedWorkouts];
         favoriteCustomWorkout = [[SHDataHandler getInstance] getLikedCustomWorkouts];
 
@@ -344,7 +344,7 @@
         //[self showMessage:exerciseType];
         
         workoutData = YES;
-        
+        */
         //Reload the recenltyviewed tableview to display the new exercises.
         [self.favoritesTableView reloadData];
     });

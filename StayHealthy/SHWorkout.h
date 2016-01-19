@@ -10,36 +10,33 @@
 
 @interface SHWorkout : NSObject
 
-//Exercise Identifier
+//Workout Identifier
 @property(nonatomic,copy) NSString *workoutIdentifier;
-//Exercise Name
+//Workout Name
 @property(nonatomic,copy) NSString *workoutName;
-//Exercise Muscle
+//Workout Summary
 @property(nonatomic,copy) NSString *workoutSummary;
-//Exercise Instructions
+//Workout Target Muscles
 @property(nonatomic,copy) NSString *workoutTargetMuscles;
-
+//Workout Target Sports
 @property(nonatomic,copy) NSString *workoutTargetSports;
-//Exercise ImageFile
+//Workout Exercise Identifiers
 @property(nonatomic,copy) NSString *workoutExerciseIdentifiers;
-//Exercise Sets
+//Workout Exercise Types
 @property(nonatomic,copy) NSString *workoutExerciseTypes;
-//Exercise Reps
+//Workout Type
 @property(nonatomic,copy) NSString *workoutType;
-//Exercise Equipment
+//Workout Difficulty
 @property(nonatomic,copy) NSString *workoutDifficulty;
-//Exercise Primary Muscle
+//Workout Equipment
 @property(nonatomic,copy) NSString *workoutEquipment;
-
-
-@property (nonatomic, retain) NSNumber *liked;
-
-@property (nonatomic, retain) NSDate *lastViewed;
-
-@property (nonatomic, retain) NSDate *lastDateCompleted;
-
-@property (nonatomic, retain) NSNumber *timesCompleted;
-
-
+//Workout Liked
+@property (nonatomic, retain) NSNumber *workoutLiked;
+//Workout Last Viewed
+@property (nonatomic, retain) NSDate *workoutLastViewed;
+//Workout Last Date Completed
+@property (nonatomic, retain) NSDate *workoutLastDateCompleted;
+//Workout Times Completed
+@property (nonatomic, retain) NSNumber *workoutTimesCompleted;
 
 @end

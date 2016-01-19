@@ -64,7 +64,7 @@
         //Create reference to the cell.
         ExerciseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:exerciseListCellIdentifier];
         
-        SHExercise *exercise = [self updateExerciseWithUserData:[self.workoutExercises objectAtIndex:indexPath.row]];
+    SHExercise *exercise =nil;// [self updateExerciseWithUserData:[self.workoutExercises objectAtIndex:indexPath.row]];
         
         cell.exerciseName.text = exercise.exerciseName;
         cell.difficulty.text = exercise.exerciseDifficulty;
@@ -81,7 +81,8 @@
         
         //Load the exercise image on the background thread.
         [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
-        
+    
+    /*
         if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
             cell.likeExerciseImage.hidden = NO;
             [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
@@ -90,7 +91,7 @@
         else {
             cell.likeExerciseImage.hidden = YES;
         }
-        
+        */
         
         //Set the selected cell background.
         [CommonSetUpOperations tableViewSelectionColorSet:cell];
@@ -111,6 +112,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+/*
 - (SHExercise *)updateExerciseWithUserData:(SHExercise*)exercise {
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
@@ -122,7 +124,7 @@
     }
     
     return exercise;
-}
+}*/
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -165,7 +167,7 @@ if ([segue.identifier isEqualToString:@"exerciseDetail"]) {
                           handler:^(SIAlertView *alertView) {
                               
                               SHDataHandler *dataHandler = [SHDataHandler getInstance];
-                              
+                              /*
                               //Save or Update the exercise information.
                               if (self.customWorkoutMode) {
                                   if ([dataHandler customWorkoutHasBeenSaved:self.customWorkoutToDisplay.workoutID]) {
@@ -211,7 +213,7 @@ if ([segue.identifier isEqualToString:@"exerciseDetail"]) {
                                   }
                                    [self.navigationController popViewControllerAnimated:YES];
                               }
-    
+    */
                 
                           }];
     [alertView addButtonWithTitle:@"Done and don't record."

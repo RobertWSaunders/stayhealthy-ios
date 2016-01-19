@@ -99,6 +99,8 @@
 - (IBAction)segmentValueChanged:(id)sender;
 //What happens when the user presses the warmup icon.
 - (IBAction)warmupButtonPressed:(id)sender;
+//What happens when the user presses the add exercise icon.
+- (IBAction)addExerciseButtonPressed:(id)sender;
 
 //Exercise Selection Delegate
 @property (assign, nonatomic) id <ExerciseSelectionDelegate> delegate;

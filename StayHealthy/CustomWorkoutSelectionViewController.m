@@ -100,7 +100,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SHDataHandler *handler = [SHDataHandler getInstance];
     SHCustomWorkout *customWorkout = [customWorkouts objectAtIndex:indexPath.row];
-    [handler addExerciseToCustomWorkout:customWorkout exercise:self.exerciseToAdd];
+  //  [handler addExerciseToCustomWorkout:customWorkout exercise:self.exerciseToAdd];
     [self dismissViewControllerAnimated:YES completion:nil];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -111,7 +111,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         SHDataHandler *dataHandler = [SHDataHandler getInstance];
         
-        customWorkouts = [dataHandler fetchAllCustomWorkouts];
+        //customWorkouts = [dataHandler fetchAllCustomWorkouts];
         
         //Reload the recenltyviewed tableview to display the new exercises.
         [self.customWorkoutsTableView reloadData];
@@ -125,12 +125,12 @@
 - (id)updateWorkoutWithUserData:(SHCustomWorkout*)workout {
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
-    CustomWorkout *dataWorkout = [dataHandler fetchCustomWorkoutByIdentifier:workout.workoutID];
-    
+    //CustomWorkout *dataWorkout = [dataHandler fetchCustomWorkoutByIdentifier:workout.workoutID];
+    /*
     if (dataWorkout != nil) {
         workout.lastViewed = dataWorkout.lastViewed;
         workout.liked = dataWorkout.liked;
-    }
+    }*/
     
     return workout;
 }

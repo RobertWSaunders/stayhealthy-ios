@@ -11,11 +11,39 @@
 
 @implementation Exercise
 
-@dynamic exerciseID;
+//Exercise Identifier
+@dynamic exerciseIdentifier;
+//Exercise Type
 @dynamic exerciseType;
-@dynamic liked;
-@dynamic lastViewed;
-@dynamic timesViewed;
-
+//Exercise Primary Muscle
+@dynamic exercisePrimaryMuscle;
+//Exercise Muscle
+@dynamic exerciseMuscle;
+//Exercise Secondary Muscle
+@dynamic exerciseSecondaryMuscle;
+//Exercise Sets
+@dynamic exerciseSets;
+//Exercise Reps
+@dynamic exerciseReps;
+//Exercise Name
+@dynamic exerciseName;
+//Exercise Insrtuctions
+@dynamic exerciseInstructions;
+//Exercise Image File
+@dynamic exerciseImageFile;
+//Exercise Edited Dats
+@dynamic exerciseEditedDate;
+//Exercise Difficulty
+@dynamic exerciseDifficulty;
+//Exercise Equipment
+@dynamic exerciseEquipment;
+//Exercise Liked
+@dynamic exerciseLiked;
+//Exercise Last Viewed
+@dynamic exerciseLastViewed;
+//Exercise Times Viewed
+@dynamic exerciseTimesViewed;
+//Exercise isEdited
+@dynamic exerciseIsEdited;
 
 @end

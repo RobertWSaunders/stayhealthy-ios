@@ -255,21 +255,13 @@
 //Fetches all of the liked custom workout records.
 - (id)fetchAllLikedCustomWorkouts {
     
-    NSFetchRequest *fetchRequest = [self getLikedFetchRequest:nil];
+    NSFetchRequest *fetchRequest = [self getLikedFetchRequest];
     
     NSError *requestError = nil;
     
-    NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
+    NSArray *customWorkouts = [_appContext executeFetchRequest:fetchRequest error:&requestError];
     
-    NSMutableArray *shCustomWorkouts = [[NSMutableArray alloc] init];
-    
-    for (CustomWorkout *customWorkout in exercises) {
-        SHCustomWorkout *customWorkout1 = [[SHCustomWorkout alloc] init];
-        [customWorkout1 bind:customWorkout];
-        [shCustomWorkouts addObject:customWorkout1];
-     }
-    
-    return shCustomWorkouts;
+    return customWorkouts;
     
 }
 

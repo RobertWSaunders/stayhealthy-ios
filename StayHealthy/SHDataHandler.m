@@ -10,21 +10,22 @@
 
 @implementation SHDataHandler
 
-#pragma mark - Initialization
-
--(id)init {
+//Initialize the data handler.
+- (id)init {
     if (self = [super init]) {
-        exerciseManager = [[ExerciseDataManager alloc] init];
-        workoutManager = [[WorkoutDataManager alloc] init];
-        customWorkoutManager = [[CustomWorkoutDataManager alloc] init];
-        userDataManager = [[UserDataManager alloc] init];
+        exerciseDataManager = [[ExerciseDataManager alloc] init];
+        workoutDataManager = [[WorkoutDataManager alloc] init];
+        customWorkoutDataManager = [[CustomWorkoutDataManager alloc] init];
     }
     return self;
 }
 
+/*********************************/
 #pragma mark - Singleton Instance
+/*********************************/
 
-+ (id) getInstance {
+//Get instance of the singleton. Only allow for one instance of the data handler at a time.
++ (id)getInstance {
     static SHDataHandler *_instance = nil;
     static dispatch_once_t onceToken;
     
@@ -35,13 +36,16 @@
     return _instance;
 }
 
-#pragma mark - StayHealthy Database Data Manager Methods
+/******************************************/
+#pragma mark - StayHealthy Database Methods
+/******************************************/
 
-- (void)performQuery:(NSString*)SQLQuery {
+//Performs a passed query in the StayHealthy database, does not return anything.
+- (void)performQuery:(NSString*)query {
     @try {
         if(!(sqlite3_open([[CommonUtilities returnDatabasePath:STAYHEALTHY_DATABASE_NAME] UTF8String], &database) == SQLITE_OK))
             NSLog(@"An error has occured: %s", sqlite3_errmsg(database));
-        const char *sql = [SQLQuery cStringUsingEncoding:NSASCIIStringEncoding];
+        const char *sql = [query cStringUsingEncoding:NSASCIIStringEncoding];
         sqlite3_stmt *sqlStatement;
         if(sqlite3_prepare(database, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
             NSLog(@"Problem with prepare statement:  %s", sqlite3_errmsg(database));
@@ -59,12 +63,13 @@
     }
 }
 
-- (NSMutableArray *)performExerciseStatement:(NSString*)SQLQuery {
+//Performs a passed exercise query and returns SHExercises.
+- (NSMutableArray*)performExerciseStatement:(NSString*)query addUserData:(BOOL)userData {
     NSMutableArray *exerciseData = [[NSMutableArray alloc] init];
     @try {
         if(!(sqlite3_open([[CommonUtilities returnDatabasePath:STAYHEALTHY_DATABASE_NAME] UTF8String], &database) == SQLITE_OK))
             LogDataError(@"An error has occured while fetching SHExercises from StayHealthy database: %s", sqlite3_errmsg(database));
-        const char *sql = [SQLQuery cStringUsingEncoding:NSASCIIStringEncoding];
+        const char *sql = [query cStringUsingEncoding:NSASCIIStringEncoding];
         sqlite3_stmt *sqlStatement;
         if(sqlite3_prepare(database, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
             LogDataError(@"Could not load SHExercises from StayHealthy database, problem with prepare statement:  %s", sqlite3_errmsg(database));
@@ -93,16 +98,36 @@
     }
     @finally {
         sqlite3_close(database);
-        return exerciseData;
+        //If the methods calls for returning user data as well then we do it here.
+        if (userData) {
+            //Now based off of the fetched exercises create new array with same exercises but with the user data included.
+            NSMutableArray *userExerciseData = [[NSMutableArray alloc] init];
+            for (SHExercise *exercise in exerciseData) {
+                if ([SHDataUtilities exerciseHasBeenSaved:exercise.exerciseIdentifier exerciseType:exercise.exerciseType]) {
+                     SHExercise *userExercise = [SHDataUtilities addUserDataToSHExercise:exercise managedExercise:[self fetchManagedExerciseRecordByIdentifierAndExerciseType:exercise.exerciseIdentifier exerciseType:exercise.exerciseType]];
+                    [userExerciseData addObject:userExercise];
+                }
+                else {
+                    [userExerciseData addObject:exercise];
+                }
+            }
+            //Return the user exercise data.
+            return userExerciseData;
+        }
+        else {
+            return exerciseData;
+        }
+        
     }
 }
 
-- (NSMutableArray *)performWorkoutStatement:(NSString*)SQLQuery {
+//Performs a passed workout query and returns SHWorkouts.
+- (NSMutableArray*)performWorkoutStatement:(NSString*)query addUserData:(BOOL)userData {
     NSMutableArray *workoutData = [[NSMutableArray alloc] init];
     @try {
         if(!(sqlite3_open([[CommonUtilities returnDatabasePath:STAYHEALTHY_DATABASE_NAME] UTF8String], &database) == SQLITE_OK))
             NSLog(@"An error has occured: %s", sqlite3_errmsg(database));
-        const char *sql = [SQLQuery cStringUsingEncoding:NSASCIIStringEncoding];
+        const char *sql = [query cStringUsingEncoding:NSASCIIStringEncoding];
         sqlite3_stmt *sqlStatement;
         if(sqlite3_prepare(database, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
             NSLog(@"Problem with prepare statement:  %s", sqlite3_errmsg(database));
@@ -129,247 +154,515 @@
     }
     @finally {
         sqlite3_close(database);
-        return  workoutData ;
+        if (userData) {
+            //Now based off of the fetched workout create new array with same workouts but with the user data included.
+            NSMutableArray *userWorkoutData = [[NSMutableArray alloc] init];
+            for (SHWorkout *workout in workoutData) {
+                if ([SHDataUtilities workoutHasBeenSaved:workout.workoutIdentifier]) {
+                    SHWorkout *userWorkout = [SHDataUtilities addUserDataToSHWorkout:workout managedWorkout:[self fetchManagedWorkoutRecordByIdentifier:workout.workoutIdentifier]];
+                    [userWorkoutData addObject:userWorkout];
+                }
+                else {
+                    [userWorkoutData addObject:workout];
+                }
+            }
+            //Return the user workout data.
+            return userWorkoutData;
+        }
+        else {
+            return workoutData;
+        }
     }
 }
 
-- (SHExercise *)convertExerciseToSHExercise:(Exercise*)exercise {
+/********************************************/
+#pragma mark -  Exercise Data Manager Methods
+/********************************************/
+
+//------------------------
+#define General Operations
+//------------------------
+
+//Saves a exercise record in the persistent store.
+- (void)saveExerciseRecord:(SHExercise *)exercise {
+    //Call the data manager method.
+    [exerciseDataManager saveItem:exercise];
+}
+
+//Updates a exercise record in the persistent store.
+- (void)updateExerciseRecord:(SHExercise *)exercise {
+    //Call the data manager method.
+    [exerciseDataManager updateItem:exercise];
+}
+
+//Deletes a exercise record in the persistent store.
+- (void)deleteExerciseRecord:(SHExercise *)exercise {
+    //Call the data manager method.
+    [exerciseDataManager deleteItem:exercise];
+}
+
+//Deletes a exercise record given the identifier in the persistent store.
+- (void)deleteExerciseRecordByIdentifier:(NSString *)exerciseIdentifier {
+    //Call the data manager method.
+    [exerciseDataManager deleteItemByIdentifier:exerciseIdentifier];
+}
+
+//Deletes a exercise record given the identifier and exercise type in the persistent store.
+- (void)deleteExerciseRecordByIdentifierAndExerciseType:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType {
+    //Call the data manager method.
+    [exerciseDataManager deleteItemByIdentifierAndExerciseType:exerciseIdentifier exerciseType:exerciseType];
+}
+
+//Deletes all of the exercise records in the persistent store.
+- (void)deleteAllExerciseRecords {
+    //Call the data manager method.
+    [exerciseDataManager deleteAllItems];
+}
+
+//-------------------------
+#define Fetching Operations
+//-------------------------
+
+//Fetches the managed exercise record from the persistent store rather then returning a SHExercise.
+- (Exercise*)fetchManagedExerciseRecordByIdentifier:(NSString *)exerciseIdentifier {
+        return [exerciseDataManager fetchItemByIdentifier:exerciseIdentifier];;
+}
+
+//Fetches the managed exercise record from the persistent store given the exercise identifier and exercise type rather then returning a SHExercise.
+- (Exercise*)fetchManagedExerciseRecordByIdentifierAndExerciseType:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType {
+    return [exerciseDataManager fetchItemByIdentifierAndExerciseType:exerciseIdentifier exerciseType:exerciseType];
+}
+
+//Fetches a exercise record given the identifier and exercise type in the persistent store and returns a SHExercise.
+- (SHExercise*)fetchExerciseByIdentifierAndExerciseType:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [exerciseDataManager fetchItemByIdentifierAndExerciseType:exerciseIdentifier exerciseType:exerciseType];
     
-    SHExercise *shExercise = [[SHExercise alloc] init];
+    //Create reference to a new SHExercise.
+    SHExercise *exercise;
     
-    NSMutableArray *exerciseID = [[NSMutableArray alloc] initWithObjects:exercise.exerciseID, nil];
-    
-    NSString*table;
-    
-    if ([exercise.exerciseType isEqualToString:@"strength"]) {
-        table = STRENGTH_DB_TABLENAME;
+    //If there are exercises found.
+    if (fetchedManagedExercises.count > 0 || fetchedManagedExercises != nil) {
+        //Convert the managed exercise to a SHExercise.
+        exercise = [SHDataUtilities convertExerciseToSHExercise:[fetchedManagedExercises firstObject]];
     }
-    else if ([exercise.exerciseType isEqualToString:@"stretching"]) {
-        table = STRETCHING_DB_TABLENAME;
+    //Return the exercise.
+    return exercise;
+}
+
+//Fetches a exercise record given the identifier in the persistent store and returns a SHExercise.
+- (SHExercise*)fetchExerciseByIdentifier:(NSString *)exerciseIdentifier {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [exerciseDataManager fetchItemByIdentifier:exerciseIdentifier];
+    
+    //Create reference to a new SHExercise.
+    SHExercise *exercise;
+    
+    //If there are exercises found.
+    if (fetchedManagedExercises.count > 0 || fetchedManagedExercises != nil) {
+        //Convert the managed exercise to a SHExercise.
+        exercise = [SHDataUtilities convertExerciseToSHExercise:[fetchedManagedExercises firstObject]];
+    }
+    //Return the exercise.
+    return exercise;
+}
+
+//Fetches all of the recently viewed exercise records in the persistent store and returns a mutable array of SHExercises.
+- (NSMutableArray *)fetchRecentlyViewedExercises {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [exerciseDataManager fetchRecentlyViewedExercises];
+    
+    //Create reference to a new SHExercise.
+    SHExercise *exercise;
+    
+    NSMutableArray *recentlyViewedSHExercises = [[NSMutableArray alloc] init];
+    
+    for (Exercise *managedExercise in fetchedManagedExercises) {
+        exercise = [SHDataUtilities convertExerciseToSHExercise:managedExercise];
+        [recentlyViewedSHExercises addObject:exercise];
+    }
+        
+    return recentlyViewedSHExercises;
+}
+
+//Fetches all of the liked exercise records in the persistent store and returns a mutable array of SHExercises.
+- (NSMutableArray *)fetchAllLikedExercises {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [exerciseDataManager fetchAllLikedExercises];
+    
+    //Create reference to a new SHExercise.
+    SHExercise *exercise;
+    
+    NSMutableArray *likedSHExercises = [[NSMutableArray alloc] init];
+    
+    for (Exercise *managedExercise in fetchedManagedExercises) {
+        exercise = [SHDataUtilities convertExerciseToSHExercise:managedExercise];
+        [likedSHExercises addObject:exercise];
+    }
+    return likedSHExercises;
+}
+
+//Fetches all of the liked strength exercise records in the persistent store and returns a mutable array of SHExercises.
+- (NSMutableArray *)fetchStrengthLikedExercises {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [exerciseDataManager fetchLikedStrengthExercises];
+    
+    //Create reference to a new SHExercise.
+    SHExercise *exercise;
+    
+    NSMutableArray *likedStrengthSHExercises = [[NSMutableArray alloc] init];
+    
+    for (Exercise *managedExercise in fetchedManagedExercises) {
+        exercise = [SHDataUtilities convertExerciseToSHExercise:managedExercise];
+        [likedStrengthSHExercises addObject:exercise];
+    }
+    return likedStrengthSHExercises;
+}
+
+//Fetches all of the liked stretching exercise records in the persistent store and returns a mutable array of SHExercises.
+- (NSMutableArray *)fetchStretchLikedExercises {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [exerciseDataManager fetchLikedStretchingExercises];
+    
+    //Create reference to a new SHExercise.
+    SHExercise *exercise;
+    
+    NSMutableArray *likedStretchingSHExercises = [[NSMutableArray alloc] init];
+    
+    for (Exercise *managedExercise in fetchedManagedExercises) {
+        exercise = [SHDataUtilities convertExerciseToSHExercise:managedExercise];
+        [likedStretchingSHExercises addObject:exercise];
+    }
+    return likedStretchingSHExercises;
+}
+
+//Fetches all of the liked warmup exercise records in the persistent store and returns a mutable array of SHExercises.
+- (NSMutableArray *)fetchWarmupLikedExercises {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [exerciseDataManager fetchLikedWarmupExercises];
+    
+    //Create reference to a new SHExercise.
+    SHExercise *exercise;
+    
+    NSMutableArray *likedWarmupSHExercises = [[NSMutableArray alloc] init];
+    
+    for (Exercise *managedExercise in fetchedManagedExercises) {
+        exercise = [SHDataUtilities convertExerciseToSHExercise:managedExercise];
+        [likedWarmupSHExercises addObject:exercise];
+    }
+    return likedWarmupSHExercises;
+}
+
+//Fetches all of the exercise records in the persistent store.
+- (NSMutableArray *)fetchAllExerciseRecords {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [exerciseDataManager fetchAllItems];
+    
+    //Create reference to a new SHExercise.
+    SHExercise *exercise;
+    
+    NSMutableArray *allSHExercises = [[NSMutableArray alloc] init];
+    
+    for (Exercise *managedExercise in fetchedManagedExercises) {
+        exercise = [SHDataUtilities convertExerciseToSHExercise:managedExercise];
+        [allSHExercises addObject:exercise];
+    }
+    return allSHExercises;
+}
+
+/********************************************/
+#pragma mark -  Workout Data Manager Methods
+/********************************************/
+
+//------------------------
+#define General Operations
+//------------------------
+
+//Saves a workout record in the persistent store.
+- (void)saveWorkoutRecord:(SHWorkout *)workout {
+    //Call the data manager method.
+    [workoutDataManager saveItem:workout];
+}
+
+//Updates a workout record in the persistent store.
+- (void)updateWorkoutRecord:(SHWorkout *)workout {
+    //Call the data manager method.
+    [workoutDataManager updateItem:workout];
+}
+
+//Deletes a workout record in the persistent store.
+- (void)deleteWorkoutRecord:(SHWorkout *)workout {
+    //Call the data manager method.
+    [workoutDataManager deleteItem:workout];
+}
+
+//Deletes a workout record given the identifier in the persistent store.
+- (void)deleteWorkoutRecordByIdentifier:(NSString *)workoutIdentifier {
+    //Call the data manager method.
+    [workoutDataManager deleteItemByIdentifier:workoutIdentifier];
+}
+
+//Deletes all of the workout records in the persistent store.
+- (void)deleteAllWorkoutRecords {
+    //Call the data manager method.
+    [workoutDataManager deleteAllItems];
+}
+
+//-------------------------
+#define Fetching Operations
+//-------------------------
+
+//Fetches the managed workout record from the persistent store rather then returning a SHWorkout.
+- (Workout*)fetchManagedWorkoutRecordByIdentifier:(NSString *)workoutIdentifier {
+    //Fetch the managed workout from the persistent store.
+    NSArray *fetchedManagedWorkouts = [workoutDataManager fetchItemByIdentifier:workoutIdentifier];
+    
+    if (fetchedManagedWorkouts.count > 0) {
+        Workout *workout = [fetchedManagedWorkouts objectAtIndex:0];
+        return workout;
     }
     else {
-        table = WARMUP_DB_TABLENAME;
+        return nil;
+    }
+}
+
+//Fetches a workout record given the identifier in the persistent store and returns a SHWorkouts.
+- (SHWorkout*)fetchWorkoutByIdentifier:(NSString *)workoutIdentifier {
+    //Fetch the managed workouts from the persistent store.
+    NSArray *fetchedManagedWorkouts = [workoutDataManager fetchItemByIdentifier:workoutIdentifier];
+    
+    //Create reference to a new SHWorkout.
+    SHWorkout *workout;
+    
+    //If there are workouts found.
+    if (fetchedManagedWorkouts.count > 0 || fetchedManagedWorkouts != nil) {
+        //Convert the managed workout to a SHWorkout.
+        workout = [SHDataUtilities convertWorkoutToSHWorkout:[fetchedManagedWorkouts firstObject]];
+    }
+    //Return the workout.
+    return workout;
+}
+
+//Fetches all of the recently viewed workout records in the persistent store and returns a mutable array of SHWorkouts.
+- (NSMutableArray *)fetchRecentlyViewedWorkouts {
+    //Fetch the managed workouts from the persistent store.
+    NSArray *fetchedManagedWorkouts = [workoutDataManager fetchRecentlyViewedWorkouts];
+    
+    //Create reference to a new SHWorkout.
+    SHWorkout *workout;
+    
+    NSMutableArray *recentlyViewedSHWorkouts = [[NSMutableArray alloc] init];
+    
+    for (Workout *managedWorkout in fetchedManagedWorkouts) {
+        workout = [SHDataUtilities convertWorkoutToSHWorkout:managedWorkout];
+        [recentlyViewedSHWorkouts addObject:workout];
     }
     
-    NSArray *shExerciseData = [[SHDataHandler getInstance] performExerciseStatement:[CommonUtilities createExerciseQueryFromExerciseIds:exerciseID table:table]];
+    return recentlyViewedSHWorkouts;
+}
+
+//Fetches all of the liked workout records in the persistent store and returns a mutable array of SHWorkouts.
+- (NSMutableArray *)fetchAllLikedWorkouts {
+    //Fetch the managed workouts from the persistent store.
+    NSArray *fetchedManagedWorkouts = [workoutDataManager fetchAllLikedWorkouts];
     
-    shExercise = [shExerciseData objectAtIndex:0];
+    //Create reference to a new SHWorkout.
+    SHWorkout *workout;
     
-    shExercise.lastViewed = exercise.lastViewed;
-    shExercise.liked = exercise.liked;
+    NSMutableArray *likedSHWorkouts = [[NSMutableArray alloc] init];
     
-    return shExercise;
+    for (Workout *managedWorkout in fetchedManagedWorkouts) {
+        workout = [SHDataUtilities convertWorkoutToSHWorkout:managedWorkout];
+        [likedSHWorkouts addObject:workout];
+    }
+    return likedSHWorkouts;
 }
 
-#pragma mark - Exercise Data Manager Methods
-
-- (void)saveExerciseRecord:(SHExercise *)exercise {
-    [exerciseManager saveItem:exercise];
+//Fetches all of the workout records in the persistent store.
+- (NSMutableArray *)fetchAllWorkoutRecords {
+    //Fetch the managed workouts from the persistent store.
+    NSArray *fetchedManagedWorkouts = [workoutDataManager fetchAllItems];
     
-}
-
-- (void)updateExerciseRecord:(SHExercise *)exercise {
-    [exerciseManager updateItem:exercise];
+    //Create reference to a new SHWorkout.
+    SHWorkout *workout;
     
-}
-
-- (NSArray*)fetchExerciseByIdentifier:(NSString *)exerciseIdentifier {
-    return [exerciseManager fetchItemByIdentifier:exerciseIdentifier];
-}
-
-- (BOOL)exerciseHasBeenSaved:(NSString *)exerciseIdentifier {
-    Exercise *exercise = [exerciseManager fetchItemByIdentifier:exerciseIdentifier];
-    if (exercise != nil)
-        return YES;
-    return NO;
-}
-
-- (NSMutableArray *)getRecentlyViewedExercises {
-    return [[exerciseManager fetchRecentlyViewedExercises] mutableCopy];
-}
-
-- (NSMutableArray *)getAllLikedExercises {
-    return [[exerciseManager fetchAllLikedExercises] mutableCopy];
-}
-
-- (NSMutableArray *)getStrengthLikedExercises {
-     return [[exerciseManager fetchStrengthLikedExercises] mutableCopy];
-}
-
-- (NSMutableArray *)getStretchLikedExercises {
-     return [[exerciseManager fetchStretchLikedExercises] mutableCopy];
-}
-
-- (NSMutableArray *)getWarmupLikedExercises {
-     return [[exerciseManager fetchWarmupLikedExercises] mutableCopy];
-}
-
-#pragma mark - Workout Data Manager Methods
-
-- (void)saveWorkoutRecord:(SHWorkout *)workout {
-    [workoutManager saveItem:workout];
-}
-
-- (void)updateWorkoutRecord:(SHWorkout *)workout {
-    [workoutManager updateItem:workout];
-}
-
-- (id)fetchWorkoutByIdentifier:(NSString *)workoutIdentifier {
-    return [workoutManager fetchItemByIdentifier:workoutIdentifier];
-}
-
-- (BOOL)workoutHasBeenSaved:(NSString *)workoutIdentifier {
-    Workout *workout = [workoutManager fetchItemByIdentifier:workoutIdentifier];
-    if (workout != nil)
-        return YES;
-    return NO;
-}
-
-- (NSMutableArray*)getLikedWorkouts {
-    return [[workoutManager fetchAllLikedWorkouts] mutableCopy];
-}
-
-- (SHWorkout *)convertWorkoutToSHWorkout:(Workout*)workout {
+    NSMutableArray *allSHWorkouts = [[NSMutableArray alloc] init];
     
-    SHWorkout *shWorkout = [[SHWorkout alloc] init];
+    for (Workout *managedWorkout in fetchedManagedWorkouts) {
+        workout = [SHDataUtilities convertWorkoutToSHWorkout:managedWorkout];
+        [allSHWorkouts addObject:workout];
+    }
     
-    NSMutableArray *workoutID = [[NSMutableArray alloc] initWithObjects:workout.workoutID, nil];
-    
-    NSArray *shWorkoutData = [[SHDataHandler getInstance] performWorkoutStatement:[CommonUtilities createWorkoutQueryFromWorkoutIds:workoutID table:WORKOUTS_DB_TABLENAME]];
-    
-    shWorkout = [shWorkoutData objectAtIndex:0];
-    
-    shWorkout.lastViewed = workout.lastViewed;
-    shWorkout.liked = workout.liked;
-    
-    return shWorkout;
+    return allSHWorkouts;
 }
 
+/**************************************************/
+#pragma mark -  Custom Workout Data Manager Methods
+/**************************************************/
 
-- (NSMutableArray *)getRecentlyViewedWorkouts {
-    return [[workoutManager fetchRecentlyViewedWorkouts] mutableCopy];
-}
+//------------------------
+#define General Operations
+//------------------------
 
-#pragma mark - Custom Workout Data Manager Methods
-
+//Saves a custom workout record in the persistent store.
 - (void)saveCustomWorkoutRecord:(SHCustomWorkout *)customWorkout {
-    [customWorkoutManager saveItem:customWorkout];
+    //Call the data manager method.
+    [customWorkoutDataManager saveItem:customWorkout];
 }
 
+//Updates a custom workout record in the persistent store.
 - (void)updateCustomWorkoutRecord:(SHCustomWorkout *)customWorkout {
-    [customWorkoutManager updateItem:customWorkout];
+    //Call the data manager method.
+    [customWorkoutDataManager updateItem:customWorkout];
 }
 
-- (SHCustomWorkout *)returnCustomWorkoutByIdentifier:(NSString*)identifier {
-    return [customWorkoutManager fetchItemByIdentifier:identifier];
-}
-
+//Deletes a custom workout record in the persistent store.
 - (void)deleteCustomWorkoutRecord:(SHCustomWorkout *)customWorkout {
-    [customWorkoutManager deleteItemById:customWorkout.workoutID];
-}
-- (CustomWorkout*)fetchCustomWorkoutByIdentifier:(NSString *)workoutIdentifier {
-    return [customWorkoutManager fetchItemByIdentifier:workoutIdentifier];
+    //Call the data manager method.
+    [customWorkoutDataManager deleteItem:customWorkout];
 }
 
-- (void)addExerciseToCustomWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise {
+//Deletes a custom workout record given the identifier in the persistent store.
+- (void)deleteCustomWorkoutRecordByIdentifier:(NSString *)customWorkoutIdentifier {
+    //Call the data manager method.
+    [customWorkoutDataManager deleteItemByIdentifier:customWorkoutIdentifier];
+}
+
+//Deletes all of the custom workout records in the persistent store.
+- (void)deleteAllCustomWorkoutRecords {
+    //Call the data manager method.
+    [customWorkoutDataManager deleteAllItems];
+}
+
+//-------------------------
+#define Fetching Operations
+//-------------------------
+
+//Fetches the managed custom workouts records from the persistent store rather then returning a SHCustomWorkouts.
+- (CustomWorkout*)fetchManagedCustomWorkoutRecordByIdentifier:(NSString *)customWorkoutIdentifier {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedCustomWorkouts = [customWorkoutDataManager fetchItemByIdentifier:customWorkoutIdentifier];
+    
+    if (fetchedManagedCustomWorkouts.count > 0) {
+        CustomWorkout *customWorkout = [fetchedManagedCustomWorkouts objectAtIndex:0];
+        return customWorkout;
+    }
+    else {
+        return nil;
+    }
+}
+
+//Fetches a custom workout record given the identifier in the persistent store and returns a SHCustomWorkout.
+- (SHCustomWorkout*)fetchCustomWorkoutByIdentifier:(NSString *)customWorkoutIdentifier {
+    //Fetch the managed custom workouts from the persistent store.
+    NSArray *fetchedManagedCustomWorkouts = [customWorkoutDataManager fetchItemByIdentifier:customWorkoutIdentifier];
+    
+    //Create reference to a new SHCustomWorkout.
+    SHCustomWorkout *customWorkout;
+    
+    //If there are custom workouts found.
+    if (fetchedManagedCustomWorkouts.count > 0 || fetchedManagedCustomWorkouts != nil) {
+        //Convert the managed custom workout to a SHCustomWorkout.
+        customWorkout = [SHDataUtilities convertCustomWorkoutToSHCustomWorkout:[fetchedManagedCustomWorkouts firstObject]];
+    }
+    //Return the custom workout.
+    return customWorkout;
+}
+
+//Fetches all of the liked custom workout records in the persistent store and returns a mutable array of SHCustomWorkouts.
+- (NSMutableArray *)fetchAllLikedCustomWorkouts {
+    //Fetch the managed custom workouts from the persistent store.
+    NSArray *fetchedManagedCustomWorkouts = [customWorkoutDataManager fetchAllLikedCustomWorkouts];
+    
+    //Create reference to a new SHCustomWorkout.
+    SHCustomWorkout *customWorkout;
+    
+    NSMutableArray *likedSHCustomWorkouts = [[NSMutableArray alloc] init];
+    
+    for (CustomWorkout *managedCustomWorkout in fetchedManagedCustomWorkouts) {
+        customWorkout = [SHDataUtilities convertCustomWorkoutToSHCustomWorkout:managedCustomWorkout];
+        [likedSHCustomWorkouts addObject:customWorkout];
+    }
+    return likedSHCustomWorkouts;
+}
+
+//Fetches all of the custom workout records in the persistent store.
+- (NSMutableArray *)fetchAllCustomWorkoutRecords {
+    //Fetches the managed custom workouts from the persistent store.
+    NSArray *fetchedManagedCustomWorkouts = [customWorkoutDataManager fetchAllItems];
+    
+    //Create reference to a new SHCustomWorkout.
+    SHCustomWorkout *customWorkout;
+    
+    NSMutableArray *allSHCustomWorkouts = [[NSMutableArray alloc] init];
+    
+    for (CustomWorkout *managedCustomWorkout in fetchedManagedCustomWorkouts) {
+        customWorkout = [SHDataUtilities convertCustomWorkoutToSHCustomWorkout:managedCustomWorkout];
+        [allSHCustomWorkouts addObject:customWorkout];
+    }
+    
+    return allSHCustomWorkouts;
+}
+
+//---------------------
+#define Misc Operations
+//---------------------
+
+//Adds a SHExercise to a SHCustomWorkout
+- (void)addSHExerciseToCustomWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise {
     //if ([self canAddExerciseToWorkout:customWorkout exercise:exercise]) {
-        NSMutableArray *workoutExerciseIDs = [[customWorkout.workoutExerciseIDs componentsSeparatedByString:@","] mutableCopy];
-        NSMutableArray *workoutExerciseTypes = [[customWorkout.exerciseTypes componentsSeparatedByString:@","]     mutableCopy];
-    
-        [workoutExerciseIDs addObject:exercise.exerciseIdentifier];
-        [workoutExerciseTypes addObject:exercise.exerciseType];
-    
-        NSString *newExerciseIdentifiers = [workoutExerciseIDs componentsJoinedByString:@","];
-        NSString *newExerciseTypes = [workoutExerciseTypes componentsJoinedByString:@","];
-    
-        customWorkout.workoutExerciseIDs = newExerciseIdentifiers;
-        customWorkout.exerciseTypes = newExerciseTypes;
-    
-        [self updateCustomWorkoutRecord:customWorkout];
-   // }
-}
-
-- (BOOL)canAddExerciseToWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise {
     NSMutableArray *workoutExerciseIDs = [[customWorkout.workoutExerciseIDs componentsSeparatedByString:@","] mutableCopy];
     NSMutableArray *workoutExerciseTypes = [[customWorkout.exerciseTypes componentsSeparatedByString:@","]     mutableCopy];
     
-    if ([workoutExerciseIDs containsObject:exercise.exerciseIdentifier] && [workoutExerciseTypes containsObject:exercise.exerciseType]) {
-        return NO;
-    }
-    else {
-      return YES;
-    }
+    [workoutExerciseIDs addObject:exercise.exerciseIdentifier];
+    [workoutExerciseTypes addObject:exercise.exerciseType];
     
+    NSString *newExerciseIdentifiers = [workoutExerciseIDs componentsJoinedByString:@","];
+    NSString *newExerciseTypes = [workoutExerciseTypes componentsJoinedByString:@","];
     
-}
-
-- (NSMutableArray*)getLikedCustomWorkouts {
-    return [[customWorkoutManager fetchAllLikedWorkouts] mutableCopy];
-}
-
-- (NSArray*)fetchAllCustomWorkouts {
-    return [customWorkoutManager fetchAllRecords];
-}
-
-- (SHCustomWorkout *)convertCustomWorkoutToSHCustomWorkout:(CustomWorkout*)workout {
-    SHCustomWorkout *shWorkout = [[SHCustomWorkout alloc] init];
+    customWorkout.workoutExerciseIDs = newExerciseIdentifiers;
+    customWorkout.exerciseTypes = newExerciseTypes;
     
-    [shWorkout map:workout];
-
-    return shWorkout;
+    [self updateCustomWorkoutRecord:customWorkout];
+    // }
 }
 
-#pragma mark - User Data Manager Methods
-
-- (void)saveUser:(SHUser *)user {
-    [userDataManager saveItem:user];
-}
-
-- (void)updateUser:(SHUser*)user {
-    [userDataManager updateItem:user];
-}
-
-- (NSString*)getUserIdentifier {
-    return [userDataManager getUserID];
-}
-
-- (BOOL)userIsCreated {
-    return [userDataManager userIsCreated];
-}
-
-//---------------------------------------
-#pragma mark Auto Database Update Methods
-//---------------------------------------
+/*******************************************/
+#pragma mark -  Auto Database Update Methods
+/*******************************************/
 
 //Checks to see if the user wants auto database updates then compares current installed database to online database and installs if nescessary.
 - (void)performDatabaseUpdate {
-   // if ([[NSUserDefaults standardUserDefaults] boolForKey:PREFERENCE_AUTO_DATABASE_UPDATES]) {
-        //Check if a newer database is actually online to download.
-        if ([self isDatabaseUpdate]) {
+    //Check Internet Connection
+    if ([CommonUtilities isInternetConnection]) {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:PREFERENCE_AUTO_DATABASE_UPDATES]) {
+            //Check if a newer database is actually online to download.
+            if ([self isDatabaseUpdate]) {
             
-            //Reference the path to the documents directory.
-            NSString *documentDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-            //Get the path of the database.
-            NSString *filePath = [documentDir stringByAppendingPathComponent:@"StayHealthyDatabase.sqlite"];
+                //Reference the path to the documents directory.
+                NSString *documentDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+                //Get the path of the database.
+                NSString *filePath = [documentDir stringByAppendingPathComponent:@"StayHealthyDatabase.sqlite"];
             
-            //Set the URL request to download from.
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:DATABASE_URL]];
+                //Set the URL request to download from.
+                NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:DATABASE_URL]];
             
-            //Download file and overwrite the previous database version.
-            [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                if (error) {
-                    //Downloading error.
-                    LogDataError(@"Error downloading updated StayHealthy database: %@", error.description);
-                }
-                if (data) {
-                    //Overwrite current database.
-                    [data writeToFile:filePath atomically:YES];
-                    //Download success.
-                    LogDataSuccess(@"Successfully downloaded and replaced database. Saved to %@", filePath);
-                }
-            }];
+                //Download file and overwrite the previous database version.
+                [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                    if (error) {
+                        //Downloading error.
+                        LogDataError(@"Error downloading updated StayHealthy database: %@", error.description);
+                    }
+                    if (data) {
+                        //Overwrite current database.
+                        [data writeToFile:filePath atomically:YES];
+                        //Download success.
+                        LogDataSuccess(@"Successfully downloaded and replaced database. Saved to %@", filePath);
+                    }
+                }];
+            }
         }
-    //}
+    }
 }
 
 - (void)updateDatabase:(BOOL)shouldUpdate {
@@ -438,13 +731,6 @@
     
     //Return the string.
     return stringFromFileAtURL;
-}
-
-- (BOOL)customWorkoutHasBeenSaved:(NSString *)workoutIdentifier {
-    CustomWorkout *workout = [customWorkoutManager fetchItemByIdentifier:workoutIdentifier];
-    if (workout != nil)
-        return YES;
-    return NO;
 }
 
 @end

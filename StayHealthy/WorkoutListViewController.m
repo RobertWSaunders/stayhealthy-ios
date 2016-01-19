@@ -23,7 +23,7 @@
     self.title = self.viewTitle;
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];
-    
+  /*
     //Get the exercise data.
     if (self.workoutDataSent == nil) {
          workoutData = [[SHDataHandler getInstance] performWorkoutStatement:self.workoutQuery];
@@ -31,7 +31,7 @@
     else {
         workoutData = self.workoutDataSent;
     }
-   
+   */
     
     //If the exercise data is nothing then show the message declaring that.
     if (workoutData.count == 0)
@@ -79,7 +79,7 @@
         cell = [[WorkoutTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    SHWorkout *workout = [self updateWorkoutWithUserData:[workoutData objectAtIndex:indexPath.row]];
+    SHWorkout *workout = nil;//[self updateWorkoutWithUserData:[workoutData objectAtIndex:indexPath.row]];
     
     cell.workoutName.text = workout.workoutName;
     cell.workoutDifficulty.text = workout.workoutDifficulty;
@@ -95,7 +95,7 @@ if (workoutExercises.count>0) {
     [CommonSetUpOperations loadImageOnBackgroundThread:cell.workoutImage image:[UIImage imageNamed:imageExercise.exerciseImageFile]];
 }
 
-    
+    /*
     if ([workout.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         cell.likeWorkoutImage.hidden = NO;
         [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
@@ -104,7 +104,7 @@ if (workoutExercises.count>0) {
     else {
         cell.likeWorkoutImage.hidden = YES;
     }
-    
+    */
     
     //Set the selected cell background.
     [CommonSetUpOperations tableViewSelectionColorSet:cell];
@@ -140,7 +140,7 @@ if (workoutExercises.count>0) {
     //workoutData = [[SHDataHandler getInstance] performWorkoutStatement:self.workoutQuery];
     [self.listTableView reloadData];
 }
-
+/*
 - (SHWorkout *)updateWorkoutWithUserData:(SHWorkout*)workout {
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
@@ -153,7 +153,7 @@ if (workoutExercises.count>0) {
     
     return workout;
 }
-
+*/
 
 /*************************************/
 #pragma mark ViewWillDisappear Methods

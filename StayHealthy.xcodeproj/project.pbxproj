@@ -44,6 +44,7 @@
 		EB2C4A6A1B89F798005D183A /* CustomWorkoutDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A691B89F798005D183A /* CustomWorkoutDataManager.m */; };
 		EB2C4A6D1B89F8DC005D183A /* SHWorkout+Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A6C1B89F8DC005D183A /* SHWorkout+Workout.m */; };
 		EB2C4A701B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A6F1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m */; };
+		EB3B82581C4AEF5300FAAD52 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3B82571C4AEF5300FAAD52 /* Exercise.m */; };
 		EB3B9E251BE8023600BCEF28 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E241BE8023600BCEF28 /* libz.tbd */; };
 		EB3B9E271BE8024300BCEF28 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E261BE8024300BCEF28 /* libsqlite3.tbd */; };
 		EB4702921C063DD800732BC9 /* WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4702911C063DD800732BC9 /* WorkoutListViewController.m */; };
@@ -100,7 +101,6 @@
 		EB77FFC31C485F8600C0DE54 /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB77FFC21C485F8600C0DE54 /* SIAlertView.bundle */; };
 		EB77FFCB1C48614300C0DE54 /* StayHealthyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EB77FFCA1C48614300C0DE54 /* StayHealthyDatabase.sqlite */; };
 		EB89979E1B7C3DE100904984 /* GlobalDefinitions.h in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF981B4B442B00EF35A3 /* GlobalDefinitions.h */; };
-		EB8ACF8A1B76DAD0003E91A6 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8ACF891B76DAD0003E91A6 /* Exercise.m */; };
 		EB8AF5551C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8AF5541C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m */; };
 		EB9CF7011B52AA00006E2984 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9CF7001B52AA00006E2984 /* PreferencesViewController.m */; };
 		EBA9B93C1C2C3DB7002C33B0 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = EBA9B8F01C2C3DB7002C33B0 /* .gitkeep */; };
@@ -140,11 +140,13 @@
 		EBB8C9841BFA856000347B24 /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C9831BFA856000347B24 /* HelpCenterViewController.m */; };
 		EBB8C9871BFA85FF00347B24 /* DatabaseUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C9861BFA85FF00347B24 /* DatabaseUpdateViewController.m */; };
 		EBBD42EB1C00F2670033F226 /* iPad_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */; };
+		EBC034D71C4C10820079332D /* ExerciseCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC034D61C4C10820079332D /* ExerciseCreateViewController.m */; };
 		EBC64C591C02B2C900B33ECA /* WorkoutSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */; };
 		EBC64C5D1C02C3CD00B33ECA /* WorkoutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC64C5C1C02C3CD00B33ECA /* WorkoutTableViewCell.m */; };
 		EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCE12511BD2F62C000370CC /* FavoritesViewController.m */; };
 		EBD1EBC91C2F062B003F005F /* TextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */; };
 		EBD1EBCD1C2F1179003F005F /* CustomWorkoutSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */; };
+		EBF7E74B1C49618400E878E9 /* SHDataUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7E74A1C49618400E878E9 /* SHDataUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -221,6 +223,8 @@
 		EB2C4A6E1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHCustomWorkout+CustomWorkout.h"; sourceTree = "<group>"; };
 		EB2C4A6F1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHCustomWorkout+CustomWorkout.m"; sourceTree = "<group>"; };
 		EB3ABB341BF00244004AF091 /* StayHealthy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StayHealthy-Bridging-Header.h"; sourceTree = "<group>"; };
+		EB3B82561C4AEF5300FAAD52 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
+		EB3B82571C4AEF5300FAAD52 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		EB3B9E241BE8023600BCEF28 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		EB3B9E261BE8024300BCEF28 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		EB4702901C063DD800732BC9 /* WorkoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutListViewController.h; sourceTree = "<group>"; };
@@ -314,8 +318,6 @@
 		EB77FFCA1C48614300C0DE54 /* StayHealthyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = StayHealthyDatabase.sqlite; path = ../Database/StayHealthyDatabase.sqlite; sourceTree = "<group>"; };
 		EB77FFCE1C48854000C0DE54 /* StayHealthy3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StayHealthy3.xcdatamodel; sourceTree = "<group>"; };
 		EB8864B61C305ED600B98050 /* StayHealthy 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StayHealthy 3.xcdatamodel"; sourceTree = "<group>"; };
-		EB8ACF881B76DAD0003E91A6 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
-		EB8ACF891B76DAD0003E91A6 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		EB8AF5531C064B5000F53B90 /* WorkoutBrowseOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutBrowseOptionsViewController.h; sourceTree = "<group>"; };
 		EB8AF5541C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutBrowseOptionsViewController.m; sourceTree = "<group>"; };
 		EB9CF6FF1B52AA00006E2984 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
@@ -394,6 +396,8 @@
 		EBB8C9851BFA85FF00347B24 /* DatabaseUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseUpdateViewController.h; sourceTree = "<group>"; };
 		EBB8C9861BFA85FF00347B24 /* DatabaseUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseUpdateViewController.m; sourceTree = "<group>"; };
 		EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad_Storyboard.storyboard; sourceTree = "<group>"; };
+		EBC034D51C4C10820079332D /* ExerciseCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCreateViewController.h; sourceTree = "<group>"; };
+		EBC034D61C4C10820079332D /* ExerciseCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCreateViewController.m; sourceTree = "<group>"; };
 		EBC64C571C02B2C900B33ECA /* WorkoutSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutSelectionViewController.h; sourceTree = "<group>"; };
 		EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutSelectionViewController.m; sourceTree = "<group>"; };
 		EBC64C5B1C02C3CD00B33ECA /* WorkoutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutTableViewCell.h; sourceTree = "<group>"; };
@@ -404,6 +408,8 @@
 		EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewTableViewCell.m; sourceTree = "<group>"; };
 		EBD1EBCB1C2F1179003F005F /* CustomWorkoutSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWorkoutSelectionViewController.h; sourceTree = "<group>"; };
 		EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWorkoutSelectionViewController.m; sourceTree = "<group>"; };
+		EBF7E7491C49618400E878E9 /* SHDataUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDataUtilities.h; sourceTree = "<group>"; };
+		EBF7E74A1C49618400E878E9 /* SHDataUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDataUtilities.m; sourceTree = "<group>"; };
 		EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StayHealthy2.xcdatamodel; sourceTree = "<group>"; };
 		EBFEBF0A1C4427F000F9EA01 /* StayHealthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = StayHealthy.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -729,6 +735,7 @@
 				3FC465F71B33B2150062EBDB /* Exercise Adanced Search */,
 				3FC465F61B33B2010062EBDB /* Exercise Searched Page */,
 				3FC465F51B33B1E30062EBDB /* Exercise Detail Page */,
+				EBC034D41C4C10400079332D /* Custom Exercises */,
 			);
 			name = Exercises;
 			sourceTree = "<group>";
@@ -871,8 +878,8 @@
 		EB737F591B7F8A6700EBBDA4 /* Core Data Managed Objects */ = {
 			isa = PBXGroup;
 			children = (
-				EB8ACF881B76DAD0003E91A6 /* Exercise.h */,
-				EB8ACF891B76DAD0003E91A6 /* Exercise.m */,
+				EB3B82561C4AEF5300FAAD52 /* Exercise.h */,
+				EB3B82571C4AEF5300FAAD52 /* Exercise.m */,
 				EB2C4A5C1B89F53F005D183A /* Workout.h */,
 				EB2C4A5D1B89F53F005D183A /* Workout.m */,
 				EB2C4A591B89F531005D183A /* CustomWorkout.h */,
@@ -899,6 +906,8 @@
 			children = (
 				EB737F6F1B8015E100EBBDA4 /* SHDataHandler.h */,
 				EB737F701B8015E100EBBDA4 /* SHDataHandler.m */,
+				EBF7E7491C49618400E878E9 /* SHDataUtilities.h */,
+				EBF7E74A1C49618400E878E9 /* SHDataUtilities.m */,
 			);
 			name = "Data Handler";
 			sourceTree = "<group>";
@@ -1286,6 +1295,15 @@
 			name = "Database Update";
 			sourceTree = "<group>";
 		};
+		EBC034D41C4C10400079332D /* Custom Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				EBC034D51C4C10820079332D /* ExerciseCreateViewController.h */,
+				EBC034D61C4C10820079332D /* ExerciseCreateViewController.m */,
+			);
+			name = "Custom Exercises";
+			sourceTree = "<group>";
+		};
 		EBC64C5A1C02C24400B33ECA /* Workout TableView Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1485,6 +1503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBA9B9541C2C3DB7002C33B0 /* LKPushCustomSegue.m in Sources */,
+				EBC034D71C4C10820079332D /* ExerciseCreateViewController.m in Sources */,
 				EBA9B94C1C2C3DB7002C33B0 /* lk_mztools.c in Sources */,
 				EB575AD51BEC38EC00A1C798 /* VersionHistoryViewController.m in Sources */,
 				EB77FFBD1C485F5F00C0DE54 /* LGAlertViewCell.m in Sources */,
@@ -1530,7 +1549,6 @@
 				EBA9B9581C2C3DB7002C33B0 /* LKUIManager.m in Sources */,
 				EBA9B9431C2C3DB7002C33B0 /* LaunchKit.m in Sources */,
 				EBD1EBC91C2F062B003F005F /* TextViewTableViewCell.m in Sources */,
-				EB8ACF8A1B76DAD0003E91A6 /* Exercise.m in Sources */,
 				3FD5E1B31853A8D00063E10C /* AppDelegate.m in Sources */,
 				EB2C4A6D1B89F8DC005D183A /* SHWorkout+Workout.m in Sources */,
 				EB4702921C063DD800732BC9 /* WorkoutListViewController.m in Sources */,
@@ -1545,6 +1563,8 @@
 				EB77FFBE1C485F5F00C0DE54 /* LGAlertViewController.m in Sources */,
 				3F63B1AA1ABB9F24000CDE06 /* HomeTabBarController.m in Sources */,
 				EBA9B9491C2C3DB7002C33B0 /* NSString+LKURLEncoded.m in Sources */,
+				EBF7E74B1C49618400E878E9 /* SHDataUtilities.m in Sources */,
+				EB3B82581C4AEF5300FAAD52 /* Exercise.m in Sources */,
 				EBB8C9841BFA856000347B24 /* HelpCenterViewController.m in Sources */,
 				EBA9B9471C2C3DB7002C33B0 /* LKUtils.m in Sources */,
 				EB2C4A641B89F56A005D183A /* SHCustomWorkout.m in Sources */,
@@ -1883,7 +1903,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b19284ce-1941-49c6-8d63-96eb158f57e4";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2084,7 +2104,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b19284ce-1941-49c6-8d63-96eb158f57e4";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -2123,7 +2143,7 @@
 				EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */,
 				3FD5E1BB1853A8D00063E10C /* StayHealthy.xcdatamodel */,
 			);
-			currentVersion = EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */;
+			currentVersion = EB77FFCE1C48854000C0DE54 /* StayHealthy3.xcdatamodel */;
 			path = StayHealthy.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -9,6 +9,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "Reachability.h"
 
 @interface CommonUtilities : NSObject
 
@@ -199,4 +200,7 @@
 
 + (NSMutableArray*)deleteSelectedExercise:(NSMutableArray*)exerciseArray exercise:(SHExercise*)exercise;
 
++ (SHExercise*)convertExerciseToSHExercise:(Exercise*)exercise;
+
++ (BOOL)isInternetConnection;
 @end

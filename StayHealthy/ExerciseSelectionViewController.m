@@ -45,7 +45,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     //Check to see if 3D touch is enabled.
     [self register3DTouch];
-    //
+    //Sets the tutorial messages.
     [self setTutorialMessages];
 }
 
@@ -83,15 +83,18 @@
 //Returns the height of the cells inside the tableView.
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.muscleSelectionTableView) {
+        //Set the height for the muscle list tableView.
         return 57.0f;
     }
     else {
+        //Set the height for the recently viewed tableView.
         return 76.0f;
     }
 }
 
 //Returns the number of rows in a section that should be displayed in the tableView.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    //Set the number of rows in each section.
     if (tableView == self.muscleSelectionTableView) {
         if (section == 0) {
             return [frontBodyMuscles count];
@@ -117,9 +120,10 @@
 
 //Configures the cells at a specific indexPath.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //Muscle selection tableView.
     if (tableView == self.muscleSelectionTableView) {
         
-        //Define the identifier.
+        //Define the cell identifier.
         static NSString *muscleSelectionCellIdentifier = @"muscleSelectionCellIdentifier";
         
         //Create reference to the cell.
@@ -139,6 +143,7 @@
             cell.detailTextLabel.text = [backBodyMusclesScientificNames objectAtIndex:indexPath.row];
         }
         
+        //Stye the cell with the default styles.
         cell.textLabel.textColor = BLUE_COLOR;
         cell.detailTextLabel.textColor = BLUE_COLOR;
         cell.textLabel.font = tableViewTitleTextFont;
@@ -148,6 +153,7 @@
         //Return the cell.
         return cell;
     }
+    //For the recently viewed tableView.
     else {
         static NSString *recentlyViewedCellIdentifier = @"recentlyViewedCellIdentifier";
         
@@ -177,7 +183,7 @@
         //Load the exercise image on the background thread.
         [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
         
-        if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
             cell.likeExerciseImage.hidden = NO;
             [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
              cell.likeExerciseImage.tintColor = BLUE_COLOR;
@@ -185,9 +191,6 @@
         else {
              cell.likeExerciseImage.hidden = YES;
         }
-        
-        //UILabel *timeLabel = (UILabel*)[cell viewWithTag:14];
-        //timeLabel.text = [CommonUtilities calculateTime:exercise.lastViewed];
         
         //Set the selected cell background.
         [CommonSetUpOperations tableViewSelectionColorSet:cell];
@@ -308,13 +311,11 @@
 
 //Returns the number of sections that should be displayed in the tableView.
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    
     return 1;
 }
 
 //Returns the number of rows in a section that should be displayed in the tableView.
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    
     return [bodyZones count];
 }
 
@@ -472,46 +473,34 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     bodyZones = @[@"Arms",@"Legs",@"Core",@"Back",@"Chest",@"Neck",@"Shoulders",@"Butt"];
     //Fill the body zone images array the body zones images.
     bodyZonesImages = @[@"Arms6.png",@"Legs6.png",@"Core6.png",@"BackMuscles6.png",@"Chest6.png",@"Neck6.png",@"Shoulders6.png",@"Butt6.png"];
-    
-    //Fetch the recently viewed exercises and load that tableView.
+    //Fetch the recentlyViewed exercises.
     [self fetchRecentlyViewedExercises];
+}
+
+//Fetched the recently viewed exercises.
+- (void)fetchRecentlyViewedExercises {
+    
+    //Perform task on the background thread to maintain good user interface transition.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        SHDataHandler *dataHandler = [SHDataHandler getInstance];
+        recenltyViewedExercises = [dataHandler fetchRecentlyViewedExercises];
+        //Reload the recenltyviewed tableview to display the new exercises.
+        [self.recentlyViewedTableView reloadData];
+    });
+     
 }
 
 //Sets the observers for the notifications that need to be observed for.
 - (void)setNotificationObservers {
     //Observe for changes. All just reload the recently
     //iCloud update notification.
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchRecentlyViewedExercises) name:CLOUD_UPDATE_NOTIFICATION object:nil];
     //Changes in a exercise record, i.e. changes in lastViewed.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchRecentlyViewedExercises) name:EXERCISE_UPDATE_NOTIFICATION object:nil];
     //Changes in a exercise favorite.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchRecentlyViewedExercises) name:EXERCISE_SAVE_NOTIFICATION object:nil];
-}
-
-//Fetches the recently viewed exercises and loads them into the tableView.
-- (void)fetchRecentlyViewedExercises {
-    //Perform task on the background thread.
-    dispatch_async(dispatch_get_main_queue(), ^{
-        SHDataHandler *dataHandler = [SHDataHandler getInstance];
-        
-        //Fetches the recently viewed exercises, in Exercise object.
-        NSArray *recenltyViewedExercisesData = [[SHDataHandler getInstance] getRecentlyViewedExercises];
-        
-        recenltyViewedExercises = [[NSMutableArray alloc] init];
-        
-        //Converts Exercise object to usable SHExercise object.
-        for (int i = 0; i < recenltyViewedExercisesData.count; i++) {
-            if (i == 50) {
-                break;
-            }
-            else {
-                [recenltyViewedExercises addObject:[dataHandler convertExerciseToSHExercise:[recenltyViewedExercisesData objectAtIndex:i]]];
-            }
-        }
-        //Reload the recenltyviewed tableview to display the new exercises.
-        [self.recentlyViewedTableView reloadData];
-    });
-    
+     
 }
 
 //Shows the toolbar that needs to be displayed in exercise selection mode.
@@ -612,6 +601,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"viewExercises" sender:nil];
 }
 
+- (IBAction)addExerciseButtonPressed:(id)sender {
+}
+
 //What happens when the user changes segments in the segmented control.
 - (IBAction)segmentValueChanged:(UISegmentedControl *)sender {
     switch (sender.selectedSegmentIndex) {
@@ -671,7 +663,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         ExerciseListController *viewExercisesViewController = [[ExerciseListController alloc] init];
         
         viewExercisesViewController = segue.destinationViewController;
-        
         
         if (self.exerciseSelectionMode) {
             viewExercisesViewController.exerciseSelectionMode = YES;

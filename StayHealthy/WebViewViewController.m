@@ -43,18 +43,27 @@
     //Do this avoid the webview to start way below the navigation bar.
     self.automaticallyAdjustsScrollViewInsets = NO;
  
-    //Create a new NSURL and set the url equal to what is passed to the view controller.
-    NSURL *url = [NSURL URLWithString:self.url];
+        if ([CommonUtilities isInternetConnection]) {
+
+        //Create a new NSURL and set the url equal to what is passed to the view controller.
+        NSURL *url = [NSURL URLWithString:self.url];
     
-    //Create a NSURLRequest with the created NSURL.
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+        //Create a NSURLRequest with the created NSURL.
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     
-    self.webView.delegate = self;
+        self.webView.delegate = self;
     
-    //Load the NSURLRequest in the WebView.
-    [self.webView loadRequest:requestObj];
+        //Load the NSURLRequest in the WebView.
+        [self.webView loadRequest:requestObj];
+            
+        [CommonUtilities showCustomActivityIndicator:self.spinnerImage];
+            
+        }
+        else {
+            [CommonSetUpOperations performTSMessage:@"No Internet Connection" message:nil viewController:self canBeDismissedByUser:YES duration:6];
+        }
     
-    [CommonUtilities showCustomActivityIndicator:self.spinnerImage];
+    
     
 }
 

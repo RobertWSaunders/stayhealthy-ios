@@ -18,7 +18,7 @@
 @property(nonatomic,copy) NSString *exerciseMuscle;
 //Exercise Instructions
 @property(nonatomic,copy) NSString *exerciseInstructions;
-//Exercise ImageFile
+//Exercise Image File
 @property(nonatomic,copy) NSString *exerciseImageFile;
 //Exercise Sets
 @property(nonatomic,copy) NSString *exerciseSets;
@@ -34,11 +34,15 @@
 @property(nonatomic,copy) NSString *exerciseDifficulty;
 //Exercise Type
 @property(nonatomic,copy) NSString *exerciseType;
-
-@property (nonatomic, retain) NSNumber *liked;
-
-@property (nonatomic, retain) NSDate *lastViewed;
-
-@property (nonatomic, retain) NSNumber *timesViewed;
+//Exercise Liked
+@property (nonatomic, retain) NSNumber *exerciseLiked;
+//Exercise Last Viewed
+@property (nonatomic, retain) NSDate *exerciseLastViewed;
+//Exercise Edited Date
+@property (nonatomic, retain) NSDate *exerciseEditedDate;
+//Exercise Times Viewed
+@property (nonatomic, retain) NSNumber *exerciseTimesViewed;
+//Exercise isEdited
+@property (nonatomic, retain) NSNumber *exerciseIsEdited;
 
 @end

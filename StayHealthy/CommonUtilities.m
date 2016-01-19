@@ -546,11 +546,11 @@
         query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exercisePrimaryMuscle LIKE '%@' ORDER BY RANDOM() LIMIT 1",STRETCHING_DB_TABLENAME,muscle];
     }
     
-    NSMutableArray *array = [[SHDataHandler getInstance] performExerciseStatement:query];
-    
+   // NSMutableArray *array = [[SHDataHandler getInstance] performExerciseStatement:query];
+  /*
     if (array.count > 0)
         return [array objectAtIndex:0];
-    
+    */
     return nil;
 }
 
@@ -575,7 +575,7 @@
         //Create a new exercise.
         SHExercise *exercise = [[SHExercise alloc] init];
         NSArray *tempExerciseArray = [[NSArray alloc] init];
-        
+        /*
         if ([[exerciseTypes objectAtIndex:i] isEqualToString:@"stretching"]) {
             tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:stretching exerciseIdentifier:exerciseIdentifiers[i]]];
         }
@@ -584,7 +584,7 @@
         }
         else {
             tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:warmup exerciseIdentifier:exerciseIdentifiers[i]]];
-        }
+        }*/
         
         if (tempExerciseArray.count > 0) {
             //Get the exercise from the searched statement.
@@ -618,7 +618,7 @@
         //Create a new exercise.
         SHExercise *exercise = [[SHExercise alloc] init];
         NSArray *tempExerciseArray = [[NSArray alloc] init];
-        
+        /*
         if ([[exerciseTypes objectAtIndex:i] isEqualToString:@"stretching"]) {
             tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:stretching exerciseIdentifier:exerciseIdentifiers[i]]];
         }
@@ -628,7 +628,7 @@
         else {
             tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:warmup exerciseIdentifier:exerciseIdentifiers[i]]];
         }
-        
+        */
         if (tempExerciseArray.count > 0) {
             //Get the exercise from the searched statement.
             exercise = [tempExerciseArray objectAtIndex:0];
@@ -692,5 +692,17 @@
     }
     return exerciseArray;
 }
+
++ (BOOL)isInternetConnection {
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        return NO;
+    } else {
+       return YES;
+    }
+}
+
+
 
 @end

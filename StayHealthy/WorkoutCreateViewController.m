@@ -190,14 +190,14 @@
             //Load the exercise image on the background thread.
             [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
             
-            if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+            /*if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
                 cell.likeExerciseImage.hidden = NO;
                 [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
                 cell.likeExerciseImage.tintColor = BLUE_COLOR;
             }
             else {
                 cell.likeExerciseImage.hidden = YES;
-            }
+            }*/
             
             cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
@@ -805,7 +805,7 @@
 }
 
 - (SHExercise *)updateExerciseWithUserData:(SHExercise*)exercise {
-    SHDataHandler *dataHandler = [SHDataHandler getInstance];
+  /*  SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
     Exercise *dataExercise = [dataHandler fetchExerciseByIdentifier:exercise.exerciseIdentifier];
     
@@ -813,7 +813,7 @@
         exercise.lastViewed = dataExercise.lastViewed;
         exercise.liked = dataExercise.liked;
     }
-    
+    */
     return exercise;
 }
 

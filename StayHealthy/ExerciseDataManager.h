@@ -32,4 +32,10 @@
 //Fetches all of the liked warmup exercise records.
 - (id)fetchLikedWarmupExercises;
 
+//Fetches a exercise record given the objects identifier and the exercise type.
+- (id)fetchItemByIdentifierAndExerciseType:(NSString *)objectIdentifier exerciseType:(NSString*)exerciseType;
+
+//Deletes an existing object with a passed object identifier and exercise type in the persistent store.
+- (void)deleteItemByIdentifierAndExerciseType:(NSString *)objectIdentifier exerciseType:(NSString*)exerciseType;
+
 @end

@@ -35,11 +35,11 @@
     
     
     //Get the exercise data.
-    exerciseData = [[SHDataHandler getInstance] performExerciseStatement:self.exerciseQuery];
-    
+    exerciseData = [[SHDataHandler getInstance] performExerciseStatement:self.exerciseQuery addUserData:YES];
+
     //If the exercise data is nothing then show the message declaring that.
-    if (exerciseData.count == 0)
-        [CommonSetUpOperations performTSMessage:@"No Exercises Were Found" message:nil viewController:self canBeDismissedByUser:YES duration:60];
+    /*if (exerciseData.count == 0)
+        [CommonSetUpOperations performTSMessage:@"No Exercises Were Found" message:nil viewController:self canBeDismissedByUser:YES duration:60];*/
     
     [self setNotificationObservers];
     
@@ -88,7 +88,7 @@
         cell = [[ExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    SHExercise *exercise = [self updateExerciseWithUserData:[exerciseData objectAtIndex:indexPath.row]];
+    SHExercise *exercise = [exerciseData objectAtIndex:indexPath.row];
     
     cell.exerciseName.text = exercise.exerciseName;
     cell.difficulty.text = exercise.exerciseDifficulty;
@@ -106,16 +106,16 @@
     //Load the exercise image on the background thread.
     [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
     
-    if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+    if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         cell.likeExerciseImage.hidden = NO;
-        /*if (self.exerciseSelectionMode) {
+        if (self.exerciseSelectionMode) {
             [cell.likeExerciseImageSelection setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
             cell.likeExerciseImageSelection.tintColor = BLUE_COLOR;
         }
-        else {*/
+        else {
             [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
             cell.likeExerciseImage.tintColor = BLUE_COLOR;
-       // }
+        }
     
     }
     else {
@@ -222,19 +222,6 @@
 
 - (void)updateTableView {
      [self.tableView reloadData];
-}
-
-- (SHExercise *)updateExerciseWithUserData:(SHExercise*)exercise {
-    SHDataHandler *dataHandler = [SHDataHandler getInstance];
-    
-    Exercise *dataExercise = [dataHandler fetchExerciseByIdentifier:exercise.exerciseIdentifier];
-    
-    if (dataExercise != nil) {
-        exercise.lastViewed = dataExercise.lastViewed;
-        exercise.liked = dataExercise.liked;
-    }
-
-    return exercise;
 }
 
 /*************************************************/

@@ -24,7 +24,7 @@
     browseOptions = @[@"Sports",@"Muscles",@"Equipment",@"Types",@"Difficulties", @"Recents"];
     browseOptionsImages = @[@"Sports.png",@"Muscles.png",@"Equipment.png",@"Type.png",@"Difficulty.png", @"Recents.png"];
     
-    [self fetchCustomWorkouts];
+    //[self fetchCustomWorkouts];
     [self setNotificationObservers];
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -82,7 +82,7 @@
         WorkoutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:muscleSelectionCellIdentifier];
         [CommonSetUpOperations tableViewSelectionColorSet:cell];
         
-        SHCustomWorkout *workout = [self updateWorkoutWithUserData:[customWorkouts objectAtIndex:indexPath.row]];
+        SHCustomWorkout *workout = nil;//[self updateWorkoutWithUserData:[customWorkouts objectAtIndex:indexPath.row]];
         
         cell.workoutName.text = workout.workoutName;
         cell.workoutDifficulty.text = workout.workoutDifficulty;
@@ -127,7 +127,7 @@
         cell.rightButtons = @[[MGSwipeButton buttonWithTitle:nil icon:[UIImage imageNamed:@"DeleteSwipe.ong"] backgroundColor:RED_COLOR callback:^BOOL(MGSwipeTableCell *sender) {
             SHDataHandler *dataHandler = [SHDataHandler getInstance];
             [dataHandler deleteCustomWorkoutRecord:workout];
-            [self fetchCustomWorkouts];
+            //[self fetchCustomWorkouts];
            return YES;
         }]];
         cell.rightExpansion.fillOnTrigger = YES;
@@ -249,10 +249,11 @@
 
 //Fetches the recently viewed exercises and loads them into the tableView.
 - (NSMutableArray*)fetchRecentlyViewedWorkouts {
-    //Perform task on the background thread.
-        SHDataHandler *dataHandler = [SHDataHandler getInstance];
+
         
-        //Fetches the recently viewed exercises, in Exercise object.
+    
+    //Fetches the recently viewed exercises, in Exercise object.
+    /*
         NSArray *recenltyViewedWorkoutsData = [[SHDataHandler getInstance] getRecentlyViewedWorkouts];
         
         NSMutableArray *recenltyViewedWorkouts = [[NSMutableArray alloc] init];
@@ -263,11 +264,11 @@
                 break;
             }
             else {
-                [recenltyViewedWorkouts addObject:[dataHandler convertWorkoutToSHWorkout:[recenltyViewedWorkoutsData objectAtIndex:i]]];
+                [recenltyViewedWorkouts addObject:[SHDataUtilities convertWorkoutToSHWorkout:[recenltyViewedWorkoutsData objectAtIndex:i]]];
             }
         }
-    
-    return recenltyViewedWorkouts;
+    */
+    return nil;
     
 }
 
@@ -335,30 +336,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
-- (void)fetchCustomWorkouts {
-    //Perform task on the background thread.
-    dispatch_async(dispatch_get_main_queue(), ^{
-        SHDataHandler *dataHandler = [SHDataHandler getInstance];
-        
-        customWorkouts = [dataHandler fetchAllCustomWorkouts];
-        
-        //Reload the recenltyviewed tableview to display the new exercises.
-        [self.yourWorkoutsTableView reloadData];
-    });
-}
-
-- (id)updateWorkoutWithUserData:(SHCustomWorkout*)workout {
-    SHDataHandler *dataHandler = [SHDataHandler getInstance];
-    
-    CustomWorkout *dataWorkout = [dataHandler fetchCustomWorkoutByIdentifier:workout.workoutID];
-    
-    if (dataWorkout != nil) {
-        workout.lastViewed = dataWorkout.lastViewed;
-        workout.liked = dataWorkout.liked;
-    }
-    
-    return workout;
-}
 
 - (IBAction)addCustomWorkout:(id)sender {
     [self performSegueWithIdentifier:@"createWorkout" sender:nil];
@@ -370,7 +347,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)workoutUpdate
 {
-    [self fetchCustomWorkouts];
+    //[self fetchCustomWorkouts];
 }
 
 //Sets the observers for the notifications that need to be observed for.

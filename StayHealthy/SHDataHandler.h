@@ -10,95 +10,185 @@
 #import "ExerciseDataManager.h"
 #import "WorkoutDataManager.h"
 #import "CustomWorkoutDataManager.h"
-#import "UserDataManager.h"
+#import "SHDataUtilities.h"
 
 @interface SHDataHandler : NSObject {
-    
+    //Create a sqlite database reference for StayHealthy database operations.
     sqlite3 *database;
-    
-    ExerciseDataManager *exerciseManager;
-    WorkoutDataManager *workoutManager;
-    CustomWorkoutDataManager *customWorkoutManager;
-    UserDataManager *userDataManager;
+    //Create reference to the exercise data manager.
+    ExerciseDataManager *exerciseDataManager;
+    //Create reference to the workout data manager.
+    WorkoutDataManager *workoutDataManager;
+    //Create reference to the custom workout data manager.
+    CustomWorkoutDataManager *customWorkoutDataManager;
 }
 
-+ (id) getInstance;
+//Get instance of the singleton.
++ (id)getInstance;
 
-#pragma mark - StayHealthy Database Data Manager Methods
+/******************************************/
+#pragma mark - StayHealthy Database Methods
+/******************************************/
 
-- (void)performQuery:(NSString*)SQLQuery;
+//Performs a passed query in the StayHealthy database, does not return anything.
+- (void)performQuery:(NSString*)query;
 
-- (NSMutableArray *)performWorkoutStatement:(NSString*)SQLQuery;
+//Performs a passed exercise query and returns SHExercises.
+- (NSMutableArray *)performExerciseStatement:(NSString*)query addUserData:(BOOL)userData;
 
-- (NSMutableArray *)performExerciseStatement:(NSString*)SQLQuery;
+//Performs a passed workout query and returns SHWorkouts.
+- (NSMutableArray *)performWorkoutStatement:(NSString*)query addUserData:(BOOL)userData;
 
-- (SHExercise *)convertExerciseToSHExercise:(Exercise*)exercise;
+/********************************************/
+#pragma mark -  Exercise Data Manager Methods
+/********************************************/
 
-#pragma mark - Exercise Data Manager Methods
+//------------------------
+#define General Operations
+//------------------------
 
+//Saves a exercise record in the persistent store.
 - (void)saveExerciseRecord:(SHExercise *)exercise;
 
+//Updates a exercise record in the persistent store.
 - (void)updateExerciseRecord:(SHExercise *)exercise;
 
-- (Exercise*)fetchExerciseByIdentifier:(NSString *)exerciseIdentifier;
+//Deletes a exercise record in the persistent store.
+- (void)deleteExerciseRecord:(SHExercise *)exercise;
 
-- (BOOL)exerciseHasBeenSaved:(NSString *)workoutIdentifier;
+//Deletes a exercise record given the identifier in the persistent store.
+- (void)deleteExerciseRecordByIdentifier:(NSString *)exerciseIdentifier;
 
-- (NSMutableArray *)getRecentlyViewedExercises;
+//Deletes a exercise record given the identifier and exercise type in the persistent store.
+- (void)deleteExerciseRecordByIdentifierAndExerciseType:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType;
 
-- (NSMutableArray *)getAllLikedExercises;
+//Deletes all of the exercise records in the persistent store.
+- (void)deleteAllExerciseRecords;
 
-- (NSMutableArray *)getStrengthLikedExercises;
-- (NSMutableArray *)getStretchLikedExercises;
-- (NSMutableArray *)getWarmupLikedExercises;
+//-------------------------
+#define Fetching Operations
+//-------------------------
 
+//Fetches the managed exercise record from the persistent store given the exercise identifier and exercise type rather then returning a SHExercise.
+- (Exercise*)fetchManagedExerciseRecordByIdentifierAndExerciseType:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType;
 
-#pragma mark - Workout Data Manager Methods
+//Fetches a exercise record given the identifier and exercise type in the persistent store and returns a SHExercise.
+- (SHExercise*)fetchExerciseByIdentifierAndExerciseType:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType;
 
+//Fetches the managed exercise record from the persistent store rather then returning a SHExercise.
+- (Exercise*)fetchManagedExerciseRecordByIdentifier:(NSString *)exerciseIdentifier;
+
+//Fetches a exercise record given the identifier in the persistent store and returns a SHExercise.
+- (SHExercise*)fetchExerciseByIdentifier:(NSString *)exerciseIdentifier;
+
+//Fetches all of the recently viewed exercise records in the persistent store and returns a mutable array of SHExercises.
+- (NSMutableArray *)fetchRecentlyViewedExercises;
+
+//Fetches all of the liked exercise records in the persistent store and returns a mutable array of SHExercises.
+- (NSMutableArray *)fetchAllLikedExercises;
+
+//Fetches all of the liked strength exercise records in the persistent store and returns a mutable array of SHExercises.
+- (NSMutableArray *)fetchStrengthLikedExercises;
+
+//Fetches all of the liked stretching exercise records in the persistent store and returns a mutable array of SHExercises.
+- (NSMutableArray *)fetchStretchLikedExercises;
+
+//Fetches all of the liked warmup exercise records in the persistent store and returns a mutable array of SHExercises.
+- (NSMutableArray *)fetchWarmupLikedExercises;
+
+//Fetches all of the exercise records in the persistent store.
+- (NSMutableArray *)fetchAllExerciseRecords;
+
+/********************************************/
+#pragma mark -  Workout Data Manager Methods
+/********************************************/
+
+//------------------------
+#define General Operations
+//------------------------
+
+//Saves a workout record in the persistent store.
 - (void)saveWorkoutRecord:(SHWorkout *)workout;
 
+//Updates a workout record in the persistent store.
 - (void)updateWorkoutRecord:(SHWorkout *)workout;
 
-- (BOOL)workoutHasBeenSaved:(NSString *)exerciseIdentifier;
-- (id)fetchWorkoutByIdentifier:(NSString *)workoutIdentifier;
-- (NSMutableArray*)getLikedWorkouts;
-- (SHWorkout *)convertWorkoutToSHWorkout:(Workout*)workout;
+//Deletes a workout record in the persistent store.
+- (void)deleteWorkoutRecord:(SHWorkout *)workout;
 
-- (NSMutableArray *)getRecentlyViewedWorkouts;
+//Deletes a workout record given the identifier in the persistent store.
+- (void)deleteWorkoutRecordByIdentifier:(NSString *)workoutIdentifier;
 
-#pragma mark - Custom Workout Data Manager Methods
+//Deletes all of the workout records in the persistent store.
+- (void)deleteAllWorkoutRecords;
 
+//-------------------------
+#define Fetching Operations
+//-------------------------
+
+//Fetches a workout record given the identifier in the persistent store and returns a SHWorkout.
+- (Workout*)fetchManagedWorkoutRecordByIdentifier:(NSString *)workoutIdentifier;
+
+//Fetches a workout record given the identifier in the persistent store and returns a SHWorkouts.
+- (SHWorkout*)fetchWorkoutByIdentifier:(NSString *)workoutIdentifier;
+
+//Fetches all of the recently viewed workout records in the persistent store and returns a mutable array of SHWorkouts.
+- (NSMutableArray *)fetchRecentlyViewedWorkouts;
+
+//Fetches all of the liked workout records in the persistent store and returns a mutable array of SHWorkouts.
+- (NSMutableArray *)fetchAllLikedWorkouts;
+
+//Fetches all of the workout records in the persistent store.
+- (NSMutableArray *)fetchAllWorkoutRecords;
+
+/**************************************************/
+#pragma mark -  Custom Workout Data Manager Methods
+/**************************************************/
+
+//------------------------
+#define General Operations
+//------------------------
+
+//Saves a custom workout record in the persistent store.
 - (void)saveCustomWorkoutRecord:(SHCustomWorkout *)customWorkout;
 
+//Updates a custom workout record in the persistent store.
 - (void)updateCustomWorkoutRecord:(SHCustomWorkout *)customWorkout;
 
+//Deletes a custom workout record in the persistent store.
 - (void)deleteCustomWorkoutRecord:(SHCustomWorkout *)customWorkout;
 
-- (void)addExerciseToCustomWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise;
+//Deletes a custom workout record given the identifier in the persistent store.
+- (void)deleteCustomWorkoutRecordByIdentifier:(NSString *)customWorkoutIdentifier;
 
-- (CustomWorkout*)fetchCustomWorkoutByIdentifier:(NSString *)workoutIdentifier;
+//Deletes all of the custom workout records in the persistent store.
+- (void)deleteAllCustomWorkoutRecords;
 
-- (SHCustomWorkout *)returnCustomWorkoutByIdentifier:(NSString*)identifier;
-- (NSMutableArray*)fetchAllCustomWorkouts;
-- (BOOL)canAddExerciseToWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise;
-- (NSMutableArray*)getLikedCustomWorkouts;
+//-------------------------
+#define Fetching Operations
+//-------------------------
 
-- (BOOL)customWorkoutHasBeenSaved:(NSString *)workoutIdentifier;
+- (CustomWorkout*)fetchManagedCustomWorkoutRecordByIdentifier:(NSString *)customWorkoutIdentifier;
 
-- (SHCustomWorkout *)convertCustomWorkoutToSHCustomWorkout:(CustomWorkout*)workout;
-- (void)updateDatabase:(BOOL)shouldUpdate;
+//Fetches a custom workout record given the identifier in the persistent store and returns a SHCustomWorkout.
+- (SHCustomWorkout*)fetchCustomWorkoutByIdentifier:(NSString *)customWorkoutIdentifier;
 
-#pragma mark - User Data Manager Methods
+//Fetches all of the liked custom workout records in the persistent store and returns a mutable array of SHCustomWorkouts.
+- (NSMutableArray *)fetchAllLikedCustomWorkouts;
 
-- (void)saveUser:(SHUser *)user;
-- (void)updateUser:(SHUser*)user;
-- (NSString*)getUserIdentifier;
-- (BOOL)userIsCreated;
+//Fetches all of the custom workout records in the persistent store.
+- (NSMutableArray *)fetchAllCustomWorkoutRecords;
 
+//---------------------
+#define Misc Operations
+//---------------------
 
-//---------------------------------------
-#pragma mark Auto Database Update Methods
-//---------------------------------------
+//Adds a SHExercise to a SHCustomWorkout
+- (void)addSHExerciseToCustomWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise;
+
+/*******************************************/
+#pragma mark -  Auto Database Update Methods
+/*******************************************/
 
 //Checks to see if the user wants auto database updates then compares current installed database to online database and installs if nescessary.
 - (void)performDatabaseUpdate;

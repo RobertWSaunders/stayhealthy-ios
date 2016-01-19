@@ -63,7 +63,7 @@
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
     //Save or Update the workout information.
-    
+    /*
     if ([dataHandler customWorkoutHasBeenSaved:self.customWorkoutToDisplay.workoutID]) {
         self.customWorkoutToDisplay.lastViewed = [NSDate date];
         [dataHandler updateCustomWorkoutRecord:self.customWorkoutToDisplay];
@@ -72,8 +72,8 @@
         self.customWorkoutToDisplay.lastViewed = [NSDate date];
         [dataHandler saveCustomWorkoutRecord:self.customWorkoutToDisplay];
     }
-    
-
+    */
+/*
  
     if ([self.customWorkoutToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         [self.likeButton setImage:[UIImage imageNamed:@"likeSelected.png"]];
@@ -81,7 +81,7 @@
     else {
         [self.likeButton setImage:[UIImage imageNamed:@"like.png"]];
     }
-    
+    */
    }
 
 - (void)loadViewForDefault {
@@ -92,7 +92,7 @@
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
     //Save or Update the workout information.
-    
+    /*
     if ([dataHandler workoutHasBeenSaved:self.workoutToDisplay.workoutIdentifier]) {
         self.workoutToDisplay.lastViewed = [NSDate date];
         [dataHandler updateWorkoutRecord:self.workoutToDisplay];
@@ -108,6 +108,7 @@
     else {
         [self.likeButton setImage:[UIImage imageNamed:@"like.png"]];
     }
+     */
 }
 
 /*******************************************************/
@@ -168,6 +169,7 @@
         //Load the exercise image on the background thread.
         [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
         
+        /*
         if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
             cell.likeExerciseImage.hidden = NO;
             [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
@@ -175,7 +177,7 @@
         }
         else {
             cell.likeExerciseImage.hidden = YES;
-        }
+        }*/
         
         
         //Set the selected cell background.
@@ -329,13 +331,13 @@
 
 - (SHExercise *)updateExerciseWithUserData:(SHExercise*)exercise {
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
-    
+    /*
     Exercise *dataExercise = [dataHandler fetchExerciseByIdentifier:exercise.exerciseIdentifier];
     
     if (dataExercise != nil) {
         exercise.lastViewed = dataExercise.lastViewed;
         exercise.liked = dataExercise.liked;
-    }
+    }*/
     
     return exercise;
 }
@@ -364,7 +366,7 @@
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     
     [self changeImage];
-    
+    /*
     if ([self.likeButton.image isEqual:[UIImage imageNamed:@"likeSelected.png"]]) {
         if (self.customWorkoutToDisplay) {
             self.customWorkoutToDisplay.liked = [NSNumber numberWithBool:YES];
@@ -383,19 +385,21 @@
         }
         
     }
-    
+    */
     //Save or Update the exercise information.
     
     if (self.customWorkoutToDisplay) {
         [dataHandler updateCustomWorkoutRecord:self.customWorkoutToDisplay];
     }
     else {
+        /*
         if ([dataHandler workoutHasBeenSaved:self.workoutToDisplay.workoutIdentifier]) {
             [dataHandler updateWorkoutRecord:self.workoutToDisplay];
         }
         else {
             [dataHandler saveWorkoutRecord:self.workoutToDisplay];
         }
+         */
     }
    
     
@@ -448,6 +452,7 @@
         
     }
     else {
+        /*
         numExercises = [CommonUtilities numExercisesInWorkout:self.workoutToDisplay];
         if (self.workoutToDisplay.timesCompleted == nil) {
             timesCompleted = @"0";
@@ -455,6 +460,7 @@
         else {
             timesCompleted = [NSString stringWithFormat:@"%@",self.workoutToDisplay.timesCompleted];
         }
+         */
         
     }
     
@@ -463,9 +469,9 @@
     NSMutableArray *likedExercises = [[NSMutableArray alloc] init];
     for (SHExercise *exercise in workoutExercises) {
         SHExercise *update = [self updateExerciseWithUserData:exercise];
-        if ([update.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        /*if ([update.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
             [likedExercises addObject:exercise];
-        }
+        }*/
     }
     NSString *likeNum = [NSString stringWithFormat:@"%lu",(unsigned long)[likedExercises count]];
     
@@ -513,12 +519,13 @@
     workoutExercises = [CommonUtilities getWorkoutExercises:self.workoutToDisplay];
     [self getWorkoutAnalysisContent];
     
+    /*
     if ([self.workoutToDisplay.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         [self.likeButton setImage:[UIImage imageNamed:@"likeSelected.png"]];
     }
     else {
         [self.likeButton setImage:[UIImage imageNamed:@"like.png"]];
-    }
+    }*/
     [self.exerciseListTableView reloadData];
     [self.workoutAnalysisTableView reloadData];
     
