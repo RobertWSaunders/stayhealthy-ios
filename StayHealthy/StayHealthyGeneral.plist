@@ -195,6 +195,7 @@
 	</array>
 	<key>equipmentList</key>
 	<array>
+		<string>No Equipment</string>
 		<string>Partner</string>
 		<string>Weight Machine</string>
 		<string>Physio Ball</string>
