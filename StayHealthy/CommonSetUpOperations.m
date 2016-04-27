@@ -24,8 +24,8 @@
 
 + (void)styleCollectionViewCellBodyZone:(UICollectionViewCell*)collectionViewCell {
     collectionViewCell.layer.masksToBounds = NO;
-    collectionViewCell.layer.borderColor = LIGHT_GRAY_COLOR.CGColor;
-    collectionViewCell.layer.borderWidth = 0.25f;
+    collectionViewCell.layer.borderColor = LIGHT_GRAY_COLOR_COLLECTION.CGColor;
+    collectionViewCell.layer.borderWidth = 0.50f;
 }
 
 + (void)styleCollectionViewCellBodyZoneSelected:(UICollectionViewCell*)collectionViewCell {

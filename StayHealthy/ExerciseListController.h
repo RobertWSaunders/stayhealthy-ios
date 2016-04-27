@@ -6,23 +6,33 @@
 //  Copyright (c) 2014 Robert Saunders. All rights reserved.
 //
 
+/*
+ REQUIRMENTS
+ -TABBAR
+ -CLOUD,FAVOURITE NOTIFICATIONS
+ -TABLEVIEW/COLLECTIONVIEW PREFERENCES
+ -FOCUS FEATURE
+ -EXERCISE SELECTION DELEGATE
+ -PEEK AND POP 
+ */
+
 #import <UIKit/UIKit.h>
 #import "ExerciseDetailViewController.h"
-#import "ExerciseCollectionCell.h"
 #import "SHDataHandler.h"
 #import "SHExercise.h"
-#import "QuickFilterViewController.h"
 #import "ExerciseTableViewCell.h"
 #import "HomeTabBarController.h"
+#import "ExerciseCollectionViewCell.h"
 
 @interface ExerciseListController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, UIViewControllerPreviewingDelegate> {
     NSMutableArray *exerciseData;
     NSIndexPath *selectedIndex;
+    NSIndexPath *selectedCollectionIndex;
     //Set index of peek preview cell.
     NSIndexPath *selectedPreviewingIndex;
     
     //The exercise detail view that is used in the peek preview.
-    ExerciseDetailViewController *previewingExerciseDetailViewController;
+    //ExerciseDetailViewController *previewingExerciseDetailViewController;
     
 }
 

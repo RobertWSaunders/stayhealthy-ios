@@ -78,6 +78,15 @@
     if (managedExercise.exerciseDifficulty != nil) {
         exercise.exerciseDifficulty = managedExercise.exerciseDifficulty;
     }
+    if (managedExercise.exerciseMechanicsType != nil) {
+        exercise.exerciseMechanicsType = managedExercise.exerciseMechanicsType;
+    }
+    if (managedExercise.exerciseForceType != nil) {
+        exercise.exerciseForceType = managedExercise.exerciseForceType;
+    }
+    if (managedExercise.exerciseDifferentVariationsExerciseIdentifiers != nil) {
+        exercise.exerciseDifferentVariationsExerciseIdentifiers = managedExercise.exerciseDifferentVariationsExerciseIdentifiers;
+    }
     
     exercise.exerciseType = managedExercise.exerciseType;
     exercise.exerciseLiked = managedExercise.exerciseLiked;
@@ -184,5 +193,18 @@
         return YES;
     return NO;
 }
+
+/*-(BOOL)checkColumnExists
+{
+    BOOL columnExists = NO;
+    
+    sqlite3_stmt *selectStmt;
+    
+    const char *sqlStatement = "select yourcolumnname from yourtable";
+    if(sqlite3_prepare_v2(yourDbHandle, sqlStatement, -1, &selectStmt, NULL) == SQLITE_OK)
+        columnExists = YES;
+    
+    return columnExists;
+}*/
 
 @end

@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>forceTypeList</key>
+	<array>
+		<string>Test</string>
+	</array>
+	<key>mechanicsTypeList</key>
+	<array>
+		<string>Test</string>
+	</array>
 	<key>workoutCategoriesImages</key>
 	<array>
 		<string>football-25.png</string>

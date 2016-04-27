@@ -70,8 +70,6 @@
 
 //Loads the view for the default find exercise portal.
 - (void)loadViewForFindExercise {
-    //By default warmup has not been pressed.
-    warmupPressed = NO;
     //Hide the toolbar that is shown in exercise selection mode.
     self.toolbar.hidden = YES;
 }
@@ -316,18 +314,78 @@
 
 //Returns the number of rows in a section that should be displayed in the tableView.
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [bodyZones count];
+    if (collectionView == self.bodyZoneCollectionView) {
+        return [bodyZones count];
+
+    }
+    else if (collectionView ==  self.recentExercisesCollectionView) {
+        return [recenltyViewedExercises count];
+    }
+    return 1;
 }
 
 //Configures the cells at a specific indexPath.
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    BodyViewCollectionViewCell *cell = (BodyViewCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    [CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
-    cell.bodyZoneLabel.text = [bodyZones objectAtIndex:indexPath.row];
-    cell.bodyZoneImage.image = [UIImage imageNamed:[bodyZonesImages objectAtIndex:indexPath.row]];
-    return cell;
-    
+    if (collectionView == self.bodyZoneCollectionView) {
+        //if (indexPath.item > 0) {
+            BodyViewCollectionViewCell *cell = (BodyViewCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+            [CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
+            cell.bodyZoneLabel.text = [bodyZones objectAtIndex:indexPath.row];
+            cell.bodyZoneImage.image = [UIImage imageNamed:[bodyZonesImages objectAtIndex:indexPath.row]];
+            return cell;
+       // }
+       /* else {
+            BodyViewCollectionViewCell *cell = (BodyViewCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"warmupcell" forIndexPath:indexPath];
+            [CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
+            cell.bodyZoneLabel.text = @"Warmup";
+            return cell;
+            
+        }*/
+    }
+    else if (collectionView == self.recentExercisesCollectionView) {
+        ExerciseCollectionViewCell *cell = (ExerciseCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"exercisecell" forIndexPath:indexPath];
+        
+        [CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
+        
+        SHExercise *exercise = [recenltyViewedExercises objectAtIndex:indexPath.item];
+        
+        cell.exerciseName.text = exercise.exerciseName;
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        NSMutableAttributedString *difficultyText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Difficulty: %@",exercise.exerciseDifficulty]];
+        
+        //Red and large
+        [difficultyText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:14.0f], NSForegroundColorAttributeName:[UIColor lightGrayColor]} range:NSMakeRange(0, 11)];
+        
+        //Rest of text -- just futura
+        [difficultyText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:14.0f], NSForegroundColorAttributeName:[CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty]} range:NSMakeRange(11, difficultyText.length - 11)];
+        
+        cell.exerciseDifficultyLabel.attributedText = difficultyText;
+        
+        //Load the exercise image on the background thread.
+        [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
+        
+        if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+            cell.likedImage.hidden = NO;
+            if (self.exerciseSelectionMode) {
+                [cell.likedImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
+                //cell.likeExerciseImageSelection.tintColor = BLUE_COLOR;
+            }
+            else {
+                [cell.likedImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
+                //cell.likedImage.tintColor = BLUE_COLOR;
+            }
+            
+        }
+        else {
+            cell.likedImage.hidden = YES;
+        }
+        
+        return cell;
+
+    }
+    return nil;
 }
 
 //--------------------------------------------------
@@ -337,9 +395,20 @@
 //What happens when the user selects a cell in the tableView.
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    selectedBodyZoneIndex = indexPath;
-    bodyZonePressed = YES;
-    [self presentExerciseTypeAlert:indexPath alertTitle:@"Exercise Type"];
+    if (collectionView == self.bodyZoneCollectionView) {
+            selectedBodyZoneIndex = indexPath;
+            bodyZonePressed = YES;
+            if (indexPath.item == 0) {
+                [self performSegueWithIdentifier:@"viewExercises" sender:nil];
+            }
+            else {
+                [self presentExerciseTypeAlert:indexPath alertTitle:@"Exercise Type"];
+            }
+    }
+    else {
+        selectedRecentCollectionViewIndex = indexPath;
+        [self performSegueWithIdentifier:@"detail" sender:nil];
+    }
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 
@@ -351,14 +420,40 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (IS_IPHONE_6P) {
-        return CGSizeMake(207.f, 207.f);
-    }
-    else if (IS_IPHONE_6) {
-        return CGSizeMake(187.5f, 187.5f);
+    if (collectionView ==  self.bodyZoneCollectionView) {
+      //  if (indexPath.item > 0) {
+            if (IS_IPHONE_6P) {
+                return CGSizeMake(207.f, 207.f);
+            }
+            else if (IS_IPHONE_6) {
+                return CGSizeMake(187.5f, 187.5f);
+            }
+            else {
+                return CGSizeMake(160.f, 160.f);
+            }
+       // }
+       /* else {
+            if (IS_IPHONE_6P) {
+                return CGSizeMake(414.f, 60.f);
+            }
+            else if (IS_IPHONE_6) {
+                return CGSizeMake(375.f, 60.f);
+            }
+            else {
+                return CGSizeMake(320.f, 60.f);
+            }
+        }*/
     }
     else {
-        return CGSizeMake(160.f, 160.f);
+        if (IS_IPHONE_6P) {
+            return CGSizeMake(207.f, 207.f);
+        }
+        else if (IS_IPHONE_6) {
+            return CGSizeMake(187.5f, 240.5f);
+        }
+        else {
+            return CGSizeMake(160.f, 160.f);
+        }
     }
 }
 
@@ -470,22 +565,22 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     //Fill the back body muscles scientific names array.
     backBodyMusclesScientificNames = [CommonUtilities returnGeneralPlist][@"posteriorMusclesScientificNames"];
     //Fill the body zones array with the body zones.
-    bodyZones = @[@"Arms",@"Legs",@"Core",@"Back",@"Chest",@"Neck",@"Shoulders",@"Butt"];
+    bodyZones = @[@"Warmup",@"Arms",@"Legs",@"Core",@"Back",@"Chest",@"Neck",@"Shoulders",@"Butt"];
     //Fill the body zone images array the body zones images.
-    bodyZonesImages = @[@"Arms6.png",@"Legs6.png",@"Core6.png",@"BackMuscles6.png",@"Chest6.png",@"Neck6.png",@"Shoulders6.png",@"Butt6.png"];
+    bodyZonesImages = @[@"Warmup.png",@"Arms6.png",@"Legs6.png",@"Core6.png",@"BackMuscles6.png",@"Chest6.png",@"Neck6.png",@"Shoulders6.png",@"Butt6.png"];
     //Fetch the recentlyViewed exercises.
     [self fetchRecentlyViewedExercises];
 }
 
 //Fetched the recently viewed exercises.
 - (void)fetchRecentlyViewedExercises {
-    
     //Perform task on the background thread to maintain good user interface transition.
     dispatch_async(dispatch_get_main_queue(), ^{
         SHDataHandler *dataHandler = [SHDataHandler getInstance];
         recenltyViewedExercises = [dataHandler fetchRecentlyViewedExercises];
         //Reload the recenltyviewed tableview to display the new exercises.
         [self.recentlyViewedTableView reloadData];
+        [self.recentExercisesCollectionView reloadData];
     });
      
 }
@@ -595,13 +690,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - Actions
 /*********************/
 
-//What happens when the user presses the warmup button in the top right of the navigation bar.
-- (IBAction)warmupButtonPressed:(id)sender {
-    warmupPressed = YES;
-    [self performSegueWithIdentifier:@"viewExercises" sender:nil];
-}
-
 - (IBAction)addExerciseButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"createExercise" sender:nil];
 }
 
 //What happens when the user changes segments in the segmented control.
@@ -671,39 +761,43 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         }
         
         if (bodyZonePressed) {
-            switch (selectedBodyZoneIndex.row) {
+            switch (selectedBodyZoneIndex.item) {
                 case 0:
-                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Bicep",@"Tricep",@"Forearms",@"Wrist"]];
-                    
-                    viewExercisesViewController.viewTitle = @"Arms";
+                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:2 muscles:nil];
+                    viewExercisesViewController.viewTitle = @"Warmup Exercises";
                     break;
                 case 1:
-                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Quadriceps",@"Hamstring",@"Calf"]];
-                    viewExercisesViewController.viewTitle = @"Legs";
+                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Bicep",@"Tricep",@"Forearms",@"Wrist"]];
+                    
+                    viewExercisesViewController.viewTitle = @"Arm Exercises";
                     break;
                 case 2:
-                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Abdominal",@"Oblique"]];
-                    viewExercisesViewController.viewTitle = @"Core";
+                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Quadriceps",@"Hamstring",@"Calf"]];
+                    viewExercisesViewController.viewTitle = @"Leg Exercises";
                     break;
                 case 3:
-                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Lats",@"Lower Back"]];
-                    viewExercisesViewController.viewTitle = @"Back";
+                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Abdominal",@"Oblique"]];
+                    viewExercisesViewController.viewTitle = @"Core Exercises";
                     break;
                 case 4:
-                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Chest"]];
-                    viewExercisesViewController.viewTitle = @"Chest";
+                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Lats",@"Lower Back"]];
+                    viewExercisesViewController.viewTitle = @"Back Exercises";
                     break;
                 case 5:
-                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Neck"]];
-                    viewExercisesViewController.viewTitle = @"Neck";
+                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Chest"]];
+                    viewExercisesViewController.viewTitle = @"Chest Exercises";
                     break;
                 case 6:
-                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Shoulder"]];
-                    viewExercisesViewController.viewTitle = @"Shoulders";
+                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Neck"]];
+                    viewExercisesViewController.viewTitle = @"Neck Exercises";
                     break;
                 case 7:
+                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Shoulder"]];
+                    viewExercisesViewController.viewTitle = @"Shoulder Exercises";
+                    break;
+                case 8:
                     viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[@"Glutes"]];
-                    viewExercisesViewController.viewTitle = @"Butt";
+                    viewExercisesViewController.viewTitle = @"Butt Exercises";
                     break;
                 default:
                     break;
@@ -714,13 +808,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
             NSString *muscleSelected = cell.textLabel.text;
             
             viewExercisesViewController.viewTitle = muscleSelected;
-            if (warmupPressed) {
-                alertButtonIndex = 3;
-                viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:nil];
-                viewExercisesViewController.viewTitle = @"Warmup Exercises";
-                warmupPressed = NO;
-            }
-            else if (alertButtonIndex == 0) {
+         
+            if (alertButtonIndex == 0) {
                 viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:alertButtonIndex muscles:@[muscleSelected]];
             }
             else if (alertButtonIndex == 1) {
@@ -729,12 +818,20 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         }
     }
     else if ([segue.identifier isEqualToString:@"detail"]) {
-        NSIndexPath *indexPath = [self.recentlyViewedTableView indexPathForSelectedRow];
+        /*NSIndexPath *indexPath = [self.recentlyViewedTableView indexPathForSelectedRow];
         SHExercise *exercise = [recenltyViewedExercises objectAtIndex:indexPath.row];
         ExerciseDetailViewController *destViewController = segue.destinationViewController;
         destViewController.exerciseToDisplay = exercise;
         destViewController.viewTitle = exercise.exerciseName;
          destViewController.showActionIcon = YES;
+        */
+        SHExercise *exercise = [recenltyViewedExercises objectAtIndex:selectedRecentCollectionViewIndex.item];
+        ExerciseDetailViewController *detailView = [[ExerciseDetailViewController alloc] init];
+        detailView = segue.destinationViewController;
+        detailView.exerciseToDisplay = exercise;
+        detailView.viewTitle = exercise.exerciseName;
+        detailView.modalView = NO;
+        detailView.showActionIcon = YES;
     }
     else if ([segue.identifier isEqualToString:@"addToWorkout"]) {
         UINavigationController *navController = [[UINavigationController alloc] init];

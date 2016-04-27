@@ -36,6 +36,12 @@
 @property(nonatomic,retain) NSString *exerciseDifficulty;
 //Exercise Type
 @property(nonatomic,retain) NSString *exerciseType;
+//Exercise Mechanics Type
+@property(nonatomic,retain) NSString *exerciseMechanicsType;
+//Exercise Force Type
+@property(nonatomic,retain) NSString *exerciseForceType;
+//Exercise Different Variations Exercise Identifiers
+@property(nonatomic,retain) NSString *exerciseDifferentVariationsExerciseIdentifiers;
 //Exercise Liked
 @property (nonatomic, retain) NSNumber *exerciseLiked;
 //Exercise Last Viewed

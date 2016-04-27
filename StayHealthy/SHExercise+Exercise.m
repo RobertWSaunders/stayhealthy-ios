@@ -15,7 +15,6 @@
     SHExercise *SHexercise = self;
     [exercise setValue:SHexercise.exerciseIdentifier forKey:@"exerciseIdentifier"];
     [exercise setValue:SHexercise.exerciseName forKey:@"exerciseName"];
-    [exercise setValue:SHexercise.exerciseMuscle forKey:@"exerciseMuscle"];
     [exercise setValue:SHexercise.exerciseInstructions forKey:@"exerciseInstructions"];
     [exercise setValue:SHexercise.exerciseImageFile forKey:@"exerciseImageFile"];
     [exercise setValue:SHexercise.exerciseSets forKey:@"exerciseSets"];
@@ -25,6 +24,9 @@
     [exercise setValue:SHexercise.exerciseSecondaryMuscle forKey:@"exerciseSecondaryMuscle"];
     [exercise setValue:SHexercise.exerciseDifficulty forKey:@"exerciseDifficulty"];
     [exercise setValue:SHexercise.exerciseType forKey:@"exerciseType"];
+    [exercise setValue:SHexercise.exerciseMechanicsType forKey:@"exerciseMechanicsType"];
+    [exercise setValue:SHexercise.exerciseForceType forKey:@"exerciseForceType"];
+    [exercise setValue:SHexercise.exerciseDifferentVariationsExerciseIdentifiers forKey:@"exerciseDifferentVariationsExerciseIdentifiers"];
     [exercise setValue:SHexercise.exerciseLiked forKey:@"exerciseLiked"];
     [exercise setValue:SHexercise.exerciseLastViewed forKey:@"exerciseLastViewed"];
     [exercise setValue:SHexercise.exerciseEditedDate forKey:@"exerciseEditedDate"];
@@ -36,7 +38,6 @@
     SHExercise *SHexercise = self;
     SHexercise.exerciseIdentifier = exercise.exerciseIdentifier;
     SHexercise.exerciseName = exercise.exerciseName;
-    SHexercise.exerciseMuscle = exercise.exerciseMuscle;
     SHexercise.exerciseInstructions = exercise.exerciseInstructions;
     SHexercise.exerciseImageFile = exercise.exerciseImageFile;
     SHexercise.exerciseSets = exercise.exerciseSets;
@@ -46,6 +47,9 @@
     SHexercise.exerciseSecondaryMuscle = exercise.exerciseSecondaryMuscle;
     SHexercise.exerciseDifficulty = exercise.exerciseDifficulty;
     SHexercise.exerciseType = exercise.exerciseType;
+    SHexercise.exerciseMechanicsType = exercise.exerciseMechanicsType;
+    SHexercise.exerciseForceType = exercise.exerciseForceType;
+    SHexercise.exerciseDifferentVariationsExerciseIdentifiers = exercise.exerciseDifferentVariationsExerciseIdentifiers;
     SHexercise.exerciseLiked = exercise.exerciseLiked;
     SHexercise.exerciseLastViewed = exercise.exerciseLastViewed;
     SHexercise.exerciseEditedDate = exercise.exerciseEditedDate;

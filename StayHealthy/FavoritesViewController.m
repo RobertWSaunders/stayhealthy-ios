@@ -378,9 +378,11 @@
 //What happens when the segmented control value changes.
 - (IBAction)segmentValueChanged:(UISegmentedControl*)sender {
     if (sender.selectedSegmentIndex != 3) {
+        [self.navigationItem setTitle:@"Liked Exercises"];
         [self fetchLikedExercises];
     }
     else {
+        [self.navigationItem setTitle:@"Liked Workouts"];
         [self fetchLikedWorkouts];
     }
 }

@@ -10,7 +10,7 @@
 #pragma mark - Application Standards
 /***********************************/
 
-#define APPNAME                         @"StayHealthy"
+#define APPNAME                         @"StayHealthy Fitness"
 #define APPDELEGATE                     (AppDelegate *)[[UIApplication sharedApplication] delegate]
 
 /******************/
@@ -85,8 +85,20 @@
 #define GREEN_COLOR                     [UIColor colorWithRed:46.0f/255.2f green:204.0f/255.2f blue:113.0f/255.2f alpha:1]
 #define RED_COLOR                       [UIColor colorWithRed:231.0f/255.2f green:76.0f/255.2f blue:60.0f/255.2f alpha:1]
 #define WHITE_COLOR                     [UIColor colorWithRed:236.0f/255.2f green:240.0f/255.2f blue:241.0f/255.2f alpha:1]
+#define LIGHT_GRAY_COLOR_COLLECTION     [UIColor colorWithRed:230.0f/255.2f green:230.0f/255.2f blue:230.0f/255.2f alpha:1]
+
 #define LIGHT_GRAY_COLOR                [UIColor lightGrayColor]
 #define DARK_GRAY_COLOR                 [UIColor darkGrayColor]
+
+
+#define EXERCISES_COLOR                      [UIColor colorWithRed:52.0f/255.2f green:152.0f/255.2f blue:219.0f/255.2f alpha:1]
+
+
+#define JOURNAL_COLOR                      [UIColor colorWithRed:155.0f/255.2f green:89.0f/255.2f blue:182.0f/255.2f alpha:1]
+
+#define WORKOUTS_COLOR                      [UIColor colorWithRed:52.0f/255.2f green:73.0f/255.2f blue:94.0f/255.2f alpha:1]
+
+#define LIKED_COLOR                      [UIColor colorWithRed:231.0f/255.2f green:76.0f/255.2f blue:60.0f/255.2f alpha:1]
 
 /************************/
 #pragma mark - Font Names
@@ -176,6 +188,8 @@ typedef enum {
     secondaryMuscle,
     equipment,
     difficulty,
+    forceType,
+    mechanicType,
     exerciseType
 } exerciseAttributes;
 

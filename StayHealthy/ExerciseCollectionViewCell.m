@@ -1,23 +1,22 @@
 //
-//  BodyViewCollectionViewCell.m
+//  ExerciseCollectionViewCell.m
 //  StayHealthy
 //
-//  Created by Robert Saunders on 2015-12-31.
-//  Copyright © 2015 Mark Saunders. All rights reserved.
+//  Created by Robert Saunders on 2016-04-17.
+//  Copyright © 2016 Robert Saunders. All rights reserved.
 //
 
-#import "BodyViewCollectionViewCell.h"
+#import "ExerciseCollectionViewCell.h"
 
-@implementation BodyViewCollectionViewCell
+@implementation ExerciseCollectionViewCell
 
 
 -(void)setSelected:(BOOL)selected{
     
     self.layer.masksToBounds = NO;
-   self.backgroundColor = selected?WHITE_COLOR:[UIColor whiteColor];
+    self.backgroundColor = selected?WHITE_COLOR:[UIColor whiteColor];
     [super setSelected:selected];
 }
-
 -(void)setHighlighted:(BOOL)highlighted {
     self.layer.masksToBounds = NO;
     self.backgroundColor = highlighted?WHITE_COLOR:[UIColor whiteColor];

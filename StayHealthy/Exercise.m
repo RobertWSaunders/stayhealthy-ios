@@ -39,6 +39,12 @@
 @dynamic exerciseEquipment;
 //Exercise Liked
 @dynamic exerciseLiked;
+//Exercise Mechanics Type
+@dynamic exerciseMechanicsType;
+//Exercise Force Type
+@dynamic exerciseForceType;
+//Exercise Different Variations Exercise Identifiers
+@dynamic exerciseDifferentVariationsExerciseIdentifiers;
 //Exercise Last Viewed
 @dynamic exerciseLastViewed;
 //Exercise Times Viewed

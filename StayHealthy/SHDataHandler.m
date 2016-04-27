@@ -78,7 +78,7 @@
                 SHExercise * exercise = [[SHExercise alloc] init];
                 exercise.exerciseIdentifier = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,0)];
                 exercise.exerciseName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,1)];
-                exercise.exerciseMuscle = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,2)];
+                exercise.exerciseShortName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,2)];
                 exercise.exerciseInstructions = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 3)];
                 exercise.exerciseImageFile= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 4)];
                 exercise.exerciseSets= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 5)];
@@ -88,6 +88,9 @@
                 exercise.exerciseSecondaryMuscle= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 9)];
                 exercise.exerciseDifficulty= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 10)];
                 exercise.exerciseType= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 11)];
+                 exercise.exerciseMechanicsType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 12)];
+                 exercise.exerciseForceType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 13)];
+                 exercise.exerciseDifferentVariationsExerciseIdentifiers = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 14)];
                 [exerciseData addObject:exercise];
             }
         }

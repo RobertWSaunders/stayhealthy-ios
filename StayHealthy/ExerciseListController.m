@@ -181,6 +181,100 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+/***************************************************/
+#pragma mark UICollectionView Delegate/Datasource Methods
+/***************************************************/
+
+
+//Returns the number of sections that should be displayed in the tableView.
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+//Returns the number of rows in a section that should be displayed in the tableView.
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return [exerciseData count];
+}
+
+//Configures the cells at a specific indexPath.
+-(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    ExerciseCollectionViewCell *cell = (ExerciseCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"exercisecell" forIndexPath:indexPath];
+    
+    [CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
+    
+     SHExercise *exercise = [exerciseData objectAtIndex:indexPath.item];
+    
+    cell.exerciseName.text = exercise.exerciseName;
+    
+    // Do any additional setup after loading the view, typically from a nib.
+    NSMutableAttributedString *difficultyText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Difficulty: %@",exercise.exerciseDifficulty]];
+    
+    //Red and large
+    [difficultyText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:14.0f], NSForegroundColorAttributeName:[UIColor lightGrayColor]} range:NSMakeRange(0, 11)];
+    
+    //Rest of text -- just futura
+    [difficultyText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:14.0f], NSForegroundColorAttributeName:[CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty]} range:NSMakeRange(11, difficultyText.length - 11)];
+
+    cell.exerciseDifficultyLabel.attributedText = difficultyText;
+    
+    //Load the exercise image on the background thread.
+    [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
+    
+    if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        cell.likedImage.hidden = NO;
+        if (self.exerciseSelectionMode) {
+            [cell.likedImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
+            //cell.likeExerciseImageSelection.tintColor = BLUE_COLOR;
+        }
+        else {
+            [cell.likedImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
+            //cell.likedImage.tintColor = BLUE_COLOR;
+        }
+        
+    }
+    else {
+        cell.likedImage.hidden = YES;
+    }
+
+    
+    return cell;
+    
+}
+
+//--------------------------------------------------
+#pragma mark Collection View Cell Selection Handling
+//--------------------------------------------------
+
+//What happens when the user selects a cell in the tableView.
+- (void)collectionView:(UICollectionView *)collectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    selectedCollectionIndex = indexPath;
+    [self performSegueWithIdentifier:@"detail" sender:nil];
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+}
+
+//-------------------------------------------
+#pragma mark Collection Layout Configuration
+//-------------------------------------------
+
+//Controls the size of the collection view cells for different phones.
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+        if (IS_IPHONE_6P) {
+            return CGSizeMake(207.f, 207.f);
+        }
+        else if (IS_IPHONE_6) {
+            return CGSizeMake(187.5f, 240.5f);
+        }
+        else {
+            return CGSizeMake(160.f, 160.f);
+        }
+}
+
+
 /*****************************/
 #pragma mark Prepare For Segue
 /*****************************/
@@ -189,26 +283,15 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
         if ([segue.identifier isEqualToString:@"detail"]) {
-            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-            SHExercise *exercise = [exerciseData objectAtIndex:indexPath.row];
+            SHExercise *exercise = [exerciseData objectAtIndex:selectedCollectionIndex.item];
             ExerciseDetailViewController *detailView = [[ExerciseDetailViewController alloc] init];
             detailView = segue.destinationViewController;
             detailView.exerciseToDisplay = exercise;
             detailView.viewTitle = exercise.exerciseName;
             detailView.modalView = NO;
             detailView.showActionIcon = YES;
-                   }
-    
-    else if ([segue.identifier isEqualToString:@"showQuickFilter"]) {
-
-        QuickFilterViewController *destinationViewController = segue.destinationViewController;
-        
-        // This is the important part
-        UIPopoverPresentationController *popOverPresentationViewController = destinationViewController.popoverPresentationController;
-        
-        popOverPresentationViewController.delegate = self;
     }
-    
+       
     else if ([segue.identifier isEqualToString:@"addToWorkout"]) {
         UINavigationController *navController = [[UINavigationController alloc] init];
         CustomWorkoutSelectionViewController *customWorkoutSelection = [[CustomWorkoutSelectionViewController alloc] init];
@@ -251,7 +334,7 @@
 //---------------
 
 //Set up the view controller for peeking.
-- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
+/*- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
     
     // check if we're not already displaying a preview controller
     if ([self.presentedViewController isKindOfClass:[ExerciseDetailViewController class]]) {
@@ -273,16 +356,16 @@
     
     return previewingExerciseDetailViewController;
 }
-
+*/
 //---------------
 #pragma mark Pop
 //---------------
 
 //Show the view controller, pop.
-- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
+/*- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
     [self showViewController:previewingExerciseDetailViewController sender:self];
 }
-
+*/
 
 
 /*************************************/

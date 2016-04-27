@@ -49,7 +49,83 @@
     //Set tabBar controller background to white.
     self.tabBarController.view.backgroundColor = [UIColor whiteColor];
 }
+/*
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    
+    if ([item.title isEqualToString:@"Journal"]) {
+        
+        //Set the appearance of the navigation bar. Set the text color to BLUE_COLOR constant.
+        //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
+        [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                               JOURNAL_COLOR,
+                                                               NSForegroundColorAttributeName,
+                                                               NAVIGATIONBAR_TITLE_FONT,
+                                                               NSFontAttributeName,
+                                                               nil]];
+        
+        [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+                                                               NSFontAttributeName:NAVIGATIONBAR_BUTTON_FONT,
+                                                               NSForegroundColorAttributeName:JOURNAL_COLOR
+                                                               } forState:UIControlStateNormal];
+    
+        
+        
+        NSLog(@"Timline Pressed");
+    }
+    else if ([item.title isEqualToString:@"Exercises"]) {
+        
+        //Set the appearance of the navigation bar. Set the text color to BLUE_COLOR constant.
+        //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
+        [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                               EXERCISES_COLOR,
+                                                               NSForegroundColorAttributeName,
+                                                               NAVIGATIONBAR_TITLE_FONT,
+                                                               NSFontAttributeName,
+                                                               nil]];
+        
+        [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+                                                               NSFontAttributeName:NAVIGATIONBAR_BUTTON_FONT,
+                                                               NSForegroundColorAttributeName:EXERCISES_COLOR
+                                                               } forState:UIControlStateNormal];
+        
+        NSLog(@"People Manager Pressed");
+    }
+    else if ([item.title isEqualToString:@"Workouts"]) {
+        
+        //Set the appearance of the navigation bar. Set the text color to BLUE_COLOR constant.
+        //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
+        [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                               WORKOUTS_COLOR,
+                                                               NSForegroundColorAttributeName,
+                                                               NAVIGATIONBAR_TITLE_FONT,
+                                                               NSFontAttributeName,
+                                                               nil]];
+        
+        [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+                                                               NSFontAttributeName:NAVIGATIONBAR_BUTTON_FONT,
+                                                               NSForegroundColorAttributeName:WORKOUTS_COLOR
+                                                               } forState:UIControlStateNormal];
 
+        [[UINavigationBar appearance] setTintColor:WORKOUTS_COLOR];
+        //Set the tint color of all tab bars.
+        //[[UITabBar appearance] setBarTintColor:WHITE_COLOR];
+        [[UITabBar appearance] setTintColor:WORKOUTS_COLOR];
+        //Set the tint color of all segmented controls.
+        [[UISegmentedControl appearance] setTintColor:WORKOUTS_COLOR];
+        
+        NSLog(@"Calendar Pressed");
+    }
+    else {
+        
+        [[UINavigationBar appearance] setBarTintColor:LIKED_COLOR];
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        [[UINavigationBar appearance] setTranslucent:NO];
+        
+        NSLog(@"Settings Pressed");
+    }
+    
+}
+*/
 /***************************************/
 #pragma mark - View Terminating Methods
 /***************************************/
@@ -58,7 +134,7 @@
 -(void)viewDidAppear:(BOOL)animated {
 
     //Show the initial walkthrough/legal agreement if the user is launching the app for the first time.
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_FIRST_LAUNCH]) {
+   /* if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_FIRST_LAUNCH]) {
         //Perform the segue to actually go to the view.
         [self performSegueWithIdentifier:@"walkThrough" sender:nil];
         
@@ -70,7 +146,7 @@
         //Save the changes.
         [[NSUserDefaults standardUserDefaults] synchronize];
          
-    }
+    }*/
 }
 
 

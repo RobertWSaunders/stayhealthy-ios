@@ -33,6 +33,10 @@
     NSMutableArray *equipmentList;
     //Array filled with all the different difficulties.
     NSMutableArray *difficultyList;
+    //Array filled with all the different force types.
+    NSMutableArray *forceTypeList;
+    //Array filled with all the different mechanic types.
+    NSMutableArray *mechanicsTypeList;
 
     //Arrays for the advanced search.
     //Array filled with the exercises types the user selected.
@@ -40,6 +44,8 @@
     NSArray *selectedSecondaryMuscles;
     NSArray *selectedEquipment;
     NSArray *selectedDifficulty;
+    NSArray *selectedForceType;
+    NSArray *selectedMechanicsType;
     //The selected exercise types.
     NSMutableArray *selectedExerciseTypes;
     //The selected exercise name.

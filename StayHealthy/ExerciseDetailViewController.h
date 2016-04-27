@@ -11,6 +11,7 @@
 #import "SHDataHandler.h"
 #import "CustomWorkoutSelectionViewController.h"
 #import "HomeTabBarController.h"
+#import "ExerciseListController.h"
 
 
 @interface ExerciseDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,UIGestureRecognizerDelegate> {
@@ -27,13 +28,15 @@
     NSArray *exerciseTypesNames;
     //Array contains titles for exercise tableview information.
     NSArray *tableViewTitles;
-    
+    NSArray *differentVariationsExerciseIDs;
+    IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
     //Stores a temporary exercise type for the update.
     NSString *tempExerciseType;
     
     SHExercise *coreDataExercise;
 
 }
+@property (weak, nonatomic) IBOutlet UITableView *infoTableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *actionSheetIcon;
 
 - (IBAction)actionSheetPressed:(id)sender;

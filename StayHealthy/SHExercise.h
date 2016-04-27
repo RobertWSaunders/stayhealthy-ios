@@ -14,8 +14,8 @@
 @property(nonatomic,copy) NSString *exerciseIdentifier;
 //Exercise Name
 @property(nonatomic,copy) NSString *exerciseName;
-//Exercise Muscle
-@property(nonatomic,copy) NSString *exerciseMuscle;
+//Exercise Short Name
+@property(nonatomic,copy) NSString *exerciseShortName;
 //Exercise Instructions
 @property(nonatomic,copy) NSString *exerciseInstructions;
 //Exercise Image File
@@ -28,12 +28,19 @@
 @property(nonatomic,copy) NSString *exerciseEquipment;
 //Exercise Primary Muscle
 @property(nonatomic,copy) NSString *exercisePrimaryMuscle;
-//Exercise SecondaryMuscle
+//Exercise Secondary Muscle
 @property(nonatomic,copy) NSString *exerciseSecondaryMuscle;
 //Exercise Difficulty
 @property(nonatomic,copy) NSString *exerciseDifficulty;
 //Exercise Type
 @property(nonatomic,copy) NSString *exerciseType;
+//Exercise Mechanics Type
+@property(nonatomic,copy) NSString *exerciseMechanicsType;
+//Exercise Force Type
+@property(nonatomic,copy) NSString *exerciseForceType;
+//Exercise Different Variations Exercise Identifiers
+@property(nonatomic,copy) NSString *exerciseDifferentVariationsExerciseIdentifiers;
+//USER DATA
 //Exercise Liked
 @property (nonatomic, retain) NSNumber *exerciseLiked;
 //Exercise Last Viewed
@@ -42,7 +49,7 @@
 @property (nonatomic, retain) NSDate *exerciseEditedDate;
 //Exercise Times Viewed
 @property (nonatomic, retain) NSNumber *exerciseTimesViewed;
-//Exercise isEdited
+//Exercise Is Edited
 @property (nonatomic, retain) NSNumber *exerciseIsEdited;
 
 @end

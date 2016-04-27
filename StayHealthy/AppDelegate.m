@@ -43,6 +43,7 @@
                                          } forState:UIControlStateNormal];
     
     //Set the tint color of all tab bars.
+    //[[UITabBar appearance] setBarTintColor:WHITE_COLOR];
     [[UITabBar appearance] setTintColor:BLUE_COLOR];
     //Set the tint color of all segmented controls.
     [[UISegmentedControl appearance] setTintColor:BLUE_COLOR];

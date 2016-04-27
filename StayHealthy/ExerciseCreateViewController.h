@@ -10,4 +10,8 @@
 
 @interface ExerciseCreateViewController : UIViewController
 
+
+- (IBAction)doneButtonPressed:(id)sender;
+- (IBAction)cancelButtonPressed:(id)sender;
+
 @end

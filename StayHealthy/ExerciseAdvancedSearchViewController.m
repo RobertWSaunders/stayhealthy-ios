@@ -226,6 +226,14 @@
                 [selectedArrays addObject:selectedDifficulty];
                 [selectedColumns addObject:@"exerciseDifficulty"];
             }
+            if (selectedForceType.count > 0) {
+                [selectedArrays addObject:selectedForceType];
+                [selectedColumns addObject:@"exerciseForceType"];
+            }
+            if (selectedMechanicsType.count > 0) {
+                [selectedArrays addObject:selectedMechanicsType];
+                [selectedColumns addObject:@"exerciseMechanicsType"];
+            }
             //Initial for loops for the creation of the different statements we will bind together because from different tables.
             for (int i=0; i<selectedExerciseTypes.count; i++) {
                 //Create the initial SELECT * FROM for the specific table.
@@ -292,8 +300,12 @@
     UITableViewCell *equipmentCell = [self.exerciseSpecificationTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
     //The cell responsible for the difficulty.
     UITableViewCell *difficultyCell = [self.exerciseSpecificationTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:1]];
+    //The cell responsible for the difficulty.
+    UITableViewCell *forceTypeCell = [self.exerciseSpecificationTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:1]];
+    //The cell responsible for the difficulty.
+    UITableViewCell *mechanicTypeCell = [self.exerciseSpecificationTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:1]];
     //The cell responsible for the exercise type.
-    UITableViewCell *exerciseTypeCell = [self.exerciseSpecificationTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:1]];
+    UITableViewCell *exerciseTypeCell = [self.exerciseSpecificationTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:1]];
     
     //Initialize the selected types array
     selectedExerciseTypes = [[NSMutableArray alloc] init];
@@ -303,6 +315,8 @@
     selectedPrimaryMuscles = nil;
     selectedSecondaryMuscles = nil;
     selectedEquipment =  nil;
+    selectedForceType =  nil;
+    selectedMechanicsType =  nil;
     
     //Put the data into the arrays, only if the user has selected 
     //Selected primary muscles array.
@@ -320,6 +334,14 @@
     //Selected difficulty array.
     if (![difficultyCell.detailTextLabel.text isEqualToString:@"Any"]) {
         selectedDifficulty = [difficultyCell.detailTextLabel.text componentsSeparatedByString:@", "];
+    }
+    //Selected force type array.
+    if (![difficultyCell.detailTextLabel.text isEqualToString:@"Any"]) {
+        selectedForceType = [forceTypeCell.detailTextLabel.text componentsSeparatedByString:@", "];
+    }
+    //Selected difficulty array.
+    if (![difficultyCell.detailTextLabel.text isEqualToString:@"Any"]) {
+        selectedMechanicsType = [mechanicTypeCell.detailTextLabel.text componentsSeparatedByString:@", "];
     }
     //Selected exercise types array.
     if ([exerciseTypeCell.detailTextLabel.text isEqualToString:@"Any"]) {
@@ -399,8 +421,20 @@
                 attributeSelectionPage.titleText = @"Select Difficulties";
                 attributeSelectionPage.typeOfExerciseAttribute = difficulty;
             }
-            //Fith row is exercise type selection.
+            //Fourth row is forceType selection.
             else if (indexPath.row == 4) {
+                attributeSelectionPage.arrayForTableView = forceTypeList;
+                attributeSelectionPage.titleText = @"Select Force Types";
+                attributeSelectionPage.typeOfExerciseAttribute = forceType;
+            }
+            //Fourth row is mechanic type selection.
+            else if (indexPath.row == 5) {
+                attributeSelectionPage.arrayForTableView = mechanicsTypeList;
+                attributeSelectionPage.titleText = @"Select Mechanic Types";
+                attributeSelectionPage.typeOfExerciseAttribute = mechanicType;
+            }
+            //Fith row is exercise type selection.
+            else if (indexPath.row == 6) {
                 NSArray *differentTypesOfExercises = @[@"Strength",@"Stretching",@"Warmup"];
                 attributeSelectionPage.arrayForTableView = differentTypesOfExercises;
                 attributeSelectionPage.titleText = @"Select Exercise Types";
@@ -474,12 +508,14 @@
     equipmentList = [CommonUtilities returnGeneralPlist][@"equipmentList"];
     //List of all the types of difficulty.
     difficultyList = [CommonUtilities returnGeneralPlist][@"difficultyList"];
+    forceTypeList = [CommonUtilities returnGeneralPlist][@"forceTypeList"];
+    mechanicsTypeList = [CommonUtilities returnGeneralPlist][@"mechanicsTypeList"];
     
     //The values of the advanced search titles in the TableView.
-    exerciseAdvancedSearchOptions = @[@"Primary Muscle",@"Secondary Muscle",@"Equipment",@"Difficulty",@"Exercise Type"];
+    exerciseAdvancedSearchOptions = @[@"Primary Muscle",@"Secondary Muscle",@"Equipment",@"Difficulty",@"Force Type",@"Mechanics Type",@"Exercise Type"];
     //The defaults in the advanced search view.
-    exerciseAdvancedSearchOptionsSelections = [[NSMutableArray alloc] initWithObjects:@"Any",@"Any",@"Any",@"Any",@"Any", nil];
-    tableViewAttributeSelectionsUserInterface = [[NSMutableArray alloc] initWithObjects:@"Any",@"Any",@"Any",@"Any",@"Any", nil];
+    exerciseAdvancedSearchOptionsSelections = [[NSMutableArray alloc] initWithObjects:@"Any",@"Any",@"Any",@"Any",@"Any",@"Any",@"Any", nil];
+    tableViewAttributeSelectionsUserInterface = [[NSMutableArray alloc] initWithObjects:@"Any",@"Any",@"Any",@"Any",@"Any",@"Any",@"Any", nil];
     
     //The header text for the TableView section headers.
     tableViewSectionHeaders = @[@"Exercise Attributes",@"Search Exercise Name"];

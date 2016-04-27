@@ -6,6 +6,16 @@
 //  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
+/*
+ REQUIRMENTS 
+ -TABBAR
+ -CLOUD,RECENTLY VIEWED NOTIFICATIONS
+ -RECENTLY TABLEVIEW/COLLECTIONVIEW PREF
+ -ADVANCED SEARCH, DETAIL, CREATE CUSTOM EXERCISE. 
+ -EXERCISE SELECTION DELEGATE
+ -PEEK AND POP (RECENTLY VIEWED)
+ */
+
 #import <UIKit/UIKit.h>
 #import "ExerciseListController.h"
 #import "FavoritesViewController.h"
@@ -13,6 +23,7 @@
 #import "CustomWorkoutSelectionViewController.h"
 #import "BodyViewCollectionViewCell.h"
 #import "ExerciseTableViewCell.h"
+#import "ExerciseCollectionViewCell.h"
 
 @interface ExerciseSelectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIViewControllerPreviewingDelegate, ExerciseListExerciseSelectionDelegate, LikedExercisesExerciseSelectionDelegate, AdvancedSearchExerciseSelectionDelegate, MGSwipeTableCellDelegate> {
 
@@ -36,8 +47,6 @@
     //Array filled with all the recenlty viewed exercises.
     NSMutableArray *recenltyViewedExercises;
     
-    //Track whether the user pressed on the warmup icon or not.
-    BOOL warmupPressed;
     //Track whether the user pressed on a body zone.
     BOOL bodyZonePressed;
     //Set to what button is pressed in SIAlertView, for prepareForSegue.
@@ -50,6 +59,8 @@
     NSIndexPath *selectedPreviewingIndex;
     //Set index to the selected tableView row.
     NSIndexPath *selectedTableViewIndex;
+    //Selected index for the recently viewed collectionview.
+    NSIndexPath *selectedRecentCollectionViewIndex;
     
     //The exercise detail view that is used in the peek preview.
     ExerciseDetailViewController *previewingExerciseDetailViewController;
@@ -61,10 +72,13 @@
 //Body Zone CollectionView
 @property (weak, nonatomic) IBOutlet UICollectionView *bodyZoneCollectionView;
 
+
 //Recently Viewed View
 @property (weak, nonatomic) IBOutlet UIView *recentlyViewedView;
 //Recently Viewed TableView
 @property (weak, nonatomic) IBOutlet UITableView *recentlyViewedTableView;
+//Recent Exercises CollectionView
+@property (weak, nonatomic) IBOutlet UICollectionView *recentExercisesCollectionView;
 
 //Muscle Selection View
 @property (weak, nonatomic) IBOutlet UIView *muscleSelectionView;
@@ -97,8 +111,6 @@
 - (IBAction)advancedSearchExerciseSelectionPressed:(id)sender;
 //What happens when the user changes segments on the segmented control.
 - (IBAction)segmentValueChanged:(id)sender;
-//What happens when the user presses the warmup icon.
-- (IBAction)warmupButtonPressed:(id)sender;
 //What happens when the user presses the add exercise icon.
 - (IBAction)addExerciseButtonPressed:(id)sender;
 
