@@ -16,7 +16,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+
+    
+    self.calendarView.dataSource = self;
+    self.calendarView.delegate = self;
+    
+    self.calendarView.allowPinchZoom = false;
+
+    
+   
+    
+    events = [NSMutableArray new];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *date = [NSDate date];
+    for (int i = 0; i<10; i++) {
+        TKCalendarEvent *event = [TKCalendarEvent new];
+        event.title = @"Sample event";
+        NSDateComponents *components = [calendar components:NSCalendarUnitDay|NSCalendarUnitMonth|NSCalendarUnitYear fromDate:date];
+        NSInteger random = arc4random()%20;
+        components.day += random > 10 ? 20 - random : -random;
+        event.startDate = [calendar dateFromComponents:components];
+        components.hour += 2;
+        event.endDate = [calendar dateFromComponents:components];
+        event.eventColor = [UIColor redColor];
+        [events addObject:event];
+    }
+    
+    
+    self.calendarView = [[TKCalendar alloc] initWithFrame:CGRectMake(self.calendarPlaceholderView.frame.origin.x, 0, self.view.frame.size.width, 310)];
+     [self.calendarPlaceholderView addSubview:self.calendarView];
+}
+
+- (NSArray *)calendar:(TKCalendar *)calendar eventsForDate:(NSDate *)date
+{
+    NSDateComponents *components = [self.calendarView.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:date];
+    components.hour = 23;
+    components.minute = 59;
+    components.second = 59;
+    NSDate *endDate = [self.calendarView.calendar dateFromComponents:components];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(startDate <= %@) AND (endDate >= %@)", endDate, date];
+    return [events filteredArrayUsingPredicate:predicate];
 }
 
 - (void)didReceiveMemoryWarning {

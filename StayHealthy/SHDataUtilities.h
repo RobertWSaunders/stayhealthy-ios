@@ -23,6 +23,14 @@
 //Checks to see if a exercise with the given identifier has been saved in the persistent store.
 + (BOOL)exerciseHasBeenSaved:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType;
 
+/*********************************************/
+#pragma mark - Custom Exercise Utility Methods
+/*********************************************/
+
+/*******************************************/
+#pragma mark - Exercise Log Utility Methods
+/*******************************************/
+
 /**************************************/
 #pragma mark - Workout Utility Methods
 /**************************************/
@@ -48,5 +56,9 @@
 
 //Checks to see if a custom workout with the given identifier has been saved in the persistent store.
 + (BOOL)customWorkoutHasBeenSaved:(NSString *)customWorkoutIdentifier;
+
+/*****************************************/
+#pragma mark - Workout Log Utility Methods
+/*****************************************/
 
 @end

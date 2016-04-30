@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "ExerciseDataManager.h"
+#import "CustomExerciseDataManager.h"
+#import "ExerciseLogDataManager.h"
 #import "WorkoutDataManager.h"
 #import "CustomWorkoutDataManager.h"
+#import "WorkoutLogDataManager.h"
 #import "SHDataUtilities.h"
 
 @interface SHDataHandler : NSObject {
@@ -17,10 +20,16 @@
     sqlite3 *database;
     //Create reference to the exercise data manager.
     ExerciseDataManager *exerciseDataManager;
+    //Create reference to the custom exercise data manager.
+    CustomExerciseDataManager *customExerciseDataManager;
+    //Create reference to the exercise log data manager.
+    ExerciseLogDataManager *exerciseLogDataManager;
     //Create reference to the workout data manager.
     WorkoutDataManager *workoutDataManager;
     //Create reference to the custom workout data manager.
     CustomWorkoutDataManager *customWorkoutDataManager;
+    //Create reference to the workout log data manager.
+    WorkoutLogDataManager *workoutLogDataManager;
 }
 
 //Get instance of the singleton.
@@ -98,6 +107,30 @@
 
 //Fetches all of the exercise records in the persistent store.
 - (NSMutableArray *)fetchAllExerciseRecords;
+
+/***************************************************/
+#pragma mark -  Custom Exercise Data Manager Methods
+/***************************************************/
+
+//------------------------
+#define General Operations
+//------------------------
+
+//-------------------------
+#define Fetching Operations
+//-------------------------
+
+/************************************************/
+#pragma mark - Exercise Log Data Manager Methods
+/************************************************/
+
+//------------------------
+#define General Operations
+//------------------------
+
+//-------------------------
+#define Fetching Operations
+//-------------------------
 
 /********************************************/
 #pragma mark -  Workout Data Manager Methods
@@ -185,6 +218,18 @@
 
 //Adds a SHExercise to a SHCustomWorkout
 - (void)addSHExerciseToCustomWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise;
+
+/************************************************/
+#pragma mark - Workout Log Data Manager Methods
+/************************************************/
+
+//------------------------
+#define General Operations
+//------------------------
+
+//-------------------------
+#define Fetching Operations
+//-------------------------
 
 /*******************************************/
 #pragma mark -  Auto Database Update Methods

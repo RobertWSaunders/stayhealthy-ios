@@ -94,9 +94,8 @@
 #define EXERCISES_COLOR                      [UIColor colorWithRed:52.0f/255.2f green:152.0f/255.2f blue:219.0f/255.2f alpha:1]
 
 
-#define JOURNAL_COLOR                      [UIColor colorWithRed:155.0f/255.2f green:89.0f/255.2f blue:182.0f/255.2f alpha:1]
-
-#define WORKOUTS_COLOR                      [UIColor colorWithRed:52.0f/255.2f green:73.0f/255.2f blue:94.0f/255.2f alpha:1]
+#define JOURNAL_COLOR                      [UIColor colorWithRed:39.0f/255.2f green:174.0f/255.2f blue:96.0f/255.2f alpha:1]
+#define WORKOUTS_COLOR                      [UIColor colorWithRed:155.0f/255.2f green:89.0f/255.2f blue:182.0f/255.2f alpha:1]
 
 #define LIKED_COLOR                      [UIColor colorWithRed:231.0f/255.2f green:76.0f/255.2f blue:60.0f/255.2f alpha:1]
 

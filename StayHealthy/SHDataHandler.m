@@ -373,6 +373,30 @@
     return allSHExercises;
 }
 
+/***************************************************/
+#pragma mark -  Custom Exercise Data Manager Methods
+/***************************************************/
+
+//------------------------
+#define General Operations
+//------------------------
+
+//-------------------------
+#define Fetching Operations
+//-------------------------
+
+/************************************************/
+#pragma mark - Exercise Log Data Manager Methods
+/************************************************/
+
+//------------------------
+#define General Operations
+//------------------------
+
+//-------------------------
+#define Fetching Operations
+//-------------------------
+
 /********************************************/
 #pragma mark -  Workout Data Manager Methods
 /********************************************/
@@ -629,6 +653,18 @@
     [self updateCustomWorkoutRecord:customWorkout];
     // }
 }
+
+/************************************************/
+#pragma mark - Workout Log Data Manager Methods
+/************************************************/
+
+//------------------------
+#define General Operations
+//------------------------
+
+//-------------------------
+#define Fetching Operations
+//-------------------------
 
 /*******************************************/
 #pragma mark -  Auto Database Update Methods

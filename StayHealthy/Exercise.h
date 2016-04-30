@@ -16,8 +16,8 @@
 @property(nonatomic,retain) NSString *exerciseIdentifier;
 //Exercise Name
 @property(nonatomic,retain) NSString *exerciseName;
-//Exercise Muscle
-@property(nonatomic,retain) NSString *exerciseMuscle;
+//Exercise Name
+@property(nonatomic,retain) NSString *exerciseShortName;
 //Exercise Instructions
 @property(nonatomic,retain) NSString *exerciseInstructions;
 //Exercise Image File

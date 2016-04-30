@@ -156,6 +156,8 @@
 
 + (void)showCustomActivityIndicator:(UIImageView*)spinnerImage;
 
++ (void)setTintColor:(UIColor*)color;
+
 + (BOOL) dateExistsYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
 
 

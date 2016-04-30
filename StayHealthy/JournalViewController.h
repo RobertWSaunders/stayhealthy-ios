@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TelerikUI/TelerikUI.h>
 
-@interface JournalViewController : UIViewController
+@interface JournalViewController : UIViewController <TKCalendarDataSource,TKCalendarDelegate> {
+    NSMutableArray *events;
+}
+
+@property (weak, nonatomic) IBOutlet UIView *calendarPlaceholderView;
+
+@property (strong,nonatomic) TKCalendar *calendarView;
 
 @end

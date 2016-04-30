@@ -17,8 +17,6 @@
 @dynamic exerciseType;
 //Exercise Primary Muscle
 @dynamic exercisePrimaryMuscle;
-//Exercise Muscle
-@dynamic exerciseMuscle;
 //Exercise Secondary Muscle
 @dynamic exerciseSecondaryMuscle;
 //Exercise Sets

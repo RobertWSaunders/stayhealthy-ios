@@ -15,6 +15,7 @@
     SHExercise *SHexercise = self;
     [exercise setValue:SHexercise.exerciseIdentifier forKey:@"exerciseIdentifier"];
     [exercise setValue:SHexercise.exerciseName forKey:@"exerciseName"];
+    [exercise setValue:SHexercise.exerciseShortName forKey:@"exerciseShortName"];
     [exercise setValue:SHexercise.exerciseInstructions forKey:@"exerciseInstructions"];
     [exercise setValue:SHexercise.exerciseImageFile forKey:@"exerciseImageFile"];
     [exercise setValue:SHexercise.exerciseSets forKey:@"exerciseSets"];
@@ -38,6 +39,7 @@
     SHExercise *SHexercise = self;
     SHexercise.exerciseIdentifier = exercise.exerciseIdentifier;
     SHexercise.exerciseName = exercise.exerciseName;
+    SHexercise.exerciseShortName = exercise.exerciseShortName;
     SHexercise.exerciseInstructions = exercise.exerciseInstructions;
     SHexercise.exerciseImageFile = exercise.exerciseImageFile;
     SHexercise.exerciseSets = exercise.exerciseSets;

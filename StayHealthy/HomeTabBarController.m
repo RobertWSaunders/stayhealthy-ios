@@ -38,94 +38,30 @@
     //Setting the image for the favorites item.
     [favoritesItem setSelectedImage:[UIImage imageNamed:@"FavoritesTabFilled.png"]];
     
-    //The "Settings" tab bar item on the tab bar.
-    UITabBarItem *settingsItem = [[self.tabBar items] objectAtIndex:4];
-    //Setting the image for the settings item.
-    [settingsItem setSelectedImage:[UIImage imageNamed:@"SettingsTabFilled.png"]];
-    
+        
     //Set the background for both the navigation controller so that we don't get the weird dark tinges sometimes.
     //Set navigation controller background to white.
     self.navigationController.view.backgroundColor = [UIColor whiteColor];
     //Set tabBar controller background to white.
     self.tabBarController.view.backgroundColor = [UIColor whiteColor];
 }
-/*
+
+//Performs tasks when a tabbar item is selected.
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-    
+    //Change the tint color for segmented controls and navigation bar.
     if ([item.title isEqualToString:@"Journal"]) {
-        
-        //Set the appearance of the navigation bar. Set the text color to BLUE_COLOR constant.
-        //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
-        [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                                               JOURNAL_COLOR,
-                                                               NSForegroundColorAttributeName,
-                                                               NAVIGATIONBAR_TITLE_FONT,
-                                                               NSFontAttributeName,
-                                                               nil]];
-        
-        [[UIBarButtonItem appearance] setTitleTextAttributes:@{
-                                                               NSFontAttributeName:NAVIGATIONBAR_BUTTON_FONT,
-                                                               NSForegroundColorAttributeName:JOURNAL_COLOR
-                                                               } forState:UIControlStateNormal];
-    
-        
-        
-        NSLog(@"Timline Pressed");
+        [CommonUtilities setTintColor:JOURNAL_COLOR];
     }
     else if ([item.title isEqualToString:@"Exercises"]) {
-        
-        //Set the appearance of the navigation bar. Set the text color to BLUE_COLOR constant.
-        //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
-        [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                                               EXERCISES_COLOR,
-                                                               NSForegroundColorAttributeName,
-                                                               NAVIGATIONBAR_TITLE_FONT,
-                                                               NSFontAttributeName,
-                                                               nil]];
-        
-        [[UIBarButtonItem appearance] setTitleTextAttributes:@{
-                                                               NSFontAttributeName:NAVIGATIONBAR_BUTTON_FONT,
-                                                               NSForegroundColorAttributeName:EXERCISES_COLOR
-                                                               } forState:UIControlStateNormal];
-        
-        NSLog(@"People Manager Pressed");
+        [CommonUtilities setTintColor:EXERCISES_COLOR];
     }
     else if ([item.title isEqualToString:@"Workouts"]) {
-        
-        //Set the appearance of the navigation bar. Set the text color to BLUE_COLOR constant.
-        //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
-        [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                                               WORKOUTS_COLOR,
-                                                               NSForegroundColorAttributeName,
-                                                               NAVIGATIONBAR_TITLE_FONT,
-                                                               NSFontAttributeName,
-                                                               nil]];
-        
-        [[UIBarButtonItem appearance] setTitleTextAttributes:@{
-                                                               NSFontAttributeName:NAVIGATIONBAR_BUTTON_FONT,
-                                                               NSForegroundColorAttributeName:WORKOUTS_COLOR
-                                                               } forState:UIControlStateNormal];
-
-        [[UINavigationBar appearance] setTintColor:WORKOUTS_COLOR];
-        //Set the tint color of all tab bars.
-        //[[UITabBar appearance] setBarTintColor:WHITE_COLOR];
-        [[UITabBar appearance] setTintColor:WORKOUTS_COLOR];
-        //Set the tint color of all segmented controls.
-        [[UISegmentedControl appearance] setTintColor:WORKOUTS_COLOR];
-        
-        NSLog(@"Calendar Pressed");
+       [CommonUtilities setTintColor:WORKOUTS_COLOR];
     }
     else {
-        
-        [[UINavigationBar appearance] setBarTintColor:LIKED_COLOR];
-        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        [[UINavigationBar appearance] setTranslucent:NO];
-        
-        NSLog(@"Settings Pressed");
+        [CommonUtilities setTintColor:LIKED_COLOR];
     }
-    
 }
-*/
 /***************************************/
 #pragma mark - View Terminating Methods
 /***************************************/

@@ -703,6 +703,25 @@
     }
 }
 
++ (void)setTintColor:(UIColor*)color {
+    //Set the appearance of the navigation bar. Set the text color to BLUE_COLOR constant.
+    //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                           color,
+                                                           NSForegroundColorAttributeName,
+                                                           NAVIGATIONBAR_TITLE_FONT,
+                                                           NSFontAttributeName,
+                                                           nil]];
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+                                                           NSFontAttributeName:NAVIGATIONBAR_BUTTON_FONT,
+                                                           NSForegroundColorAttributeName:color
+                                                           } forState:UIControlStateNormal];
+    
+    [[UINavigationBar appearance] setTintColor:color];
+    //Set the tint color of all segmented controls.
+    [[UISegmentedControl appearance] setTintColor:color];
+}
 
 
 @end
