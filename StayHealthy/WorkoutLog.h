@@ -22,4 +22,4 @@
 @property (nullable, nonatomic, retain) NSString *logWorkoutNotes;
 
 @end
-
+ 

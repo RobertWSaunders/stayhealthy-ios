@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ExerciseLog.h"
+#import "SHExerciseLog.h"
+#import "SHExerciseLog+ExerciseLog.h"
+#import "DataManagerProtocol.h"
 
-@interface ExerciseLogDataManager : NSObject
+@interface ExerciseLogDataManager : NSObject <DataManagerProtocol>
+
+//Define the app context for the data manager to call to.
+@property (nonatomic, strong) NSManagedObjectContext  *appContext;
 
 @end

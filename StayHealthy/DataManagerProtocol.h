@@ -6,14 +6,16 @@
 
 //Exercise Entity Name
 #define EXERCISE_ENTITY_NAME             @"Exercise"
+//Custom Exercise Entity Name
+#define CUSTOM_EXERCISE_ENTITY_NAME      @"CustomExercise"
+//Custom Exercise Entity Name
+#define EXERCISE_LOG_ENTITY_NAME         @"ExerciseLog"
 //Workout Entity Name
 #define WORKOUT_ENTITY_NAME              @"Workout"
-//LOG Entity Name
-#define LOG_ENTITY_NAME                  @"Log"
 //Custom Workout Entity Name
 #define CUSTOM_WORKOUT_ENTITY_NAME       @"CustomWorkout"
 //Custom Exercise Entity Name
-#define CUSTOM_EXERCISE_ENTITY_NAME      @"CustomExercise"
+#define WORKOUT_LOG_ENTITY_NAME          @"WorkoutLog"
 
 
 @protocol DataManagerProtocol <NSObject>
@@ -89,6 +91,6 @@
  Returns the count of all of the items in the table.
  @return Count of all items in the table inside of the database.
  */
-- (NSUInteger) getTableCount;
+- (NSUInteger)getTableCount;
 
 @end
