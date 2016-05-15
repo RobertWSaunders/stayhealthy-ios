@@ -25,12 +25,6 @@
     NSArray *aboutSettings;
     NSArray *aboutSettingsImages;
     
-    //Array with the values for the connect settings. (Section 4 in the tableView)
-    NSArray *connectSettings;
-    
-    //Array with the image names for the connect settings. (Section 4 in the tableView)
-    NSArray *connectSettingsImages;
-    
     //Array with the values for the legal settings. (Section 5 in the tableView)
     NSArray *legalSettings;
     NSArray *legalSettingsImages;
@@ -38,5 +32,8 @@
     //Index path to identify what cell was pressed for the connect section.
     NSIndexPath *selectedIndexPath;
 }
+
+//What happens when a user presses "Close".
+- (IBAction)closePressed:(id)sender;
 
 @end

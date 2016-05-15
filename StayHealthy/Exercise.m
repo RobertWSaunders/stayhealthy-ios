@@ -23,6 +23,8 @@
 @dynamic exerciseSets;
 //Exercise Reps
 @dynamic exerciseReps;
+//Exercise Weight
+@dynamic exerciseWeight;
 //Exercise Name
 @dynamic exerciseName;
 //Exercise Insrtuctions

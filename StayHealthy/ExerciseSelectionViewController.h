@@ -7,12 +7,8 @@
 //
 
 /*
- REQUIRMENTS 
- -TABBAR
- -CLOUD,RECENTLY VIEWED NOTIFICATIONS
- -RECENTLY TABLEVIEW/COLLECTIONVIEW PREF
- -ADVANCED SEARCH, DETAIL, CREATE CUSTOM EXERCISE. 
- -EXERCISE SELECTION DELEGATE
+ REQUIRMENTS
+ CREATE CUSTOM EXERCISE.
  -PEEK AND POP (RECENTLY VIEWED)
  */
 
@@ -25,13 +21,15 @@
 #import "ExerciseTableViewCell.h"
 #import "ExerciseCollectionViewCell.h"
 
-@interface ExerciseSelectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIViewControllerPreviewingDelegate, ExerciseListExerciseSelectionDelegate, LikedExercisesExerciseSelectionDelegate, AdvancedSearchExerciseSelectionDelegate, MGSwipeTableCellDelegate> {
+@interface ExerciseSelectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, ExerciseListExerciseSelectionDelegate, LikedExercisesExerciseSelectionDelegate, AdvancedSearchExerciseSelectionDelegate, MGSwipeTableCellDelegate> {
 
     //Body Zoning
     //Body Zone Strings
     NSArray *bodyZones;
     //Body Zone Images
     NSArray *bodyZonesImages;
+    //Body Zone Images For Exercise Selection Mode
+    NSArray *bodyZonesImagesExerciseSelectionMode;
 
     //Muscle List
     //Array filled with all the front body muscles.
@@ -55,13 +53,12 @@
     NSIndexPath *selectedBodyZoneIndex;
     //Set to index of swiped cell, used for adding exercises to workouts.
     NSIndexPath *selectedIndex;
-    //Set index of peek preview cell.
-    NSIndexPath *selectedPreviewingIndex;
     //Set index to the selected tableView row.
     NSIndexPath *selectedTableViewIndex;
     //Selected index for the recently viewed collectionview.
     NSIndexPath *selectedRecentCollectionViewIndex;
-    
+    //Long Press Gesture For Non 3D Touch Devices
+    UIGestureRecognizer *longPress;
     //The exercise detail view that is used in the peek preview.
     ExerciseDetailViewController *previewingExerciseDetailViewController;
 }
@@ -71,7 +68,6 @@
 @property (weak, nonatomic) IBOutlet UIView *bodyZoneView;
 //Body Zone CollectionView
 @property (weak, nonatomic) IBOutlet UICollectionView *bodyZoneCollectionView;
-
 
 //Recently Viewed View
 @property (weak, nonatomic) IBOutlet UIView *recentlyViewedView;
@@ -105,10 +101,10 @@
 
 
 //Actions
+//What happens when the user selects advanced search.
+- (IBAction)advancedSearchPressed:(id)sender;
 //What happens when the user selects the favourites icon from the toolbar.
 - (IBAction)favouriteExerciseSelectionPressed:(id)sender;
-//What happens whne the user selects the advacned search icon from the toolbar.
-- (IBAction)advancedSearchExerciseSelectionPressed:(id)sender;
 //What happens when the user changes segments on the segmented control.
 - (IBAction)segmentValueChanged:(id)sender;
 //What happens when the user presses the add exercise icon.

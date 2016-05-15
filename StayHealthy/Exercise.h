@@ -26,6 +26,8 @@
 @property(nonatomic,retain) NSString *exerciseSets;
 //Exercise Reps
 @property(nonatomic,retain) NSString *exerciseReps;
+//Exercise Weight
+@property(nonatomic,retain) NSString *exerciseWeight;
 //Exercise Equipment
 @property(nonatomic,retain) NSString *exerciseEquipment;
 //Exercise Primary Muscle
@@ -48,6 +50,8 @@
 @property (nonatomic, retain) NSDate *exerciseLastViewed;
 //Exercise Edited Date
 @property (nonatomic, retain) NSDate *exerciseEditedDate;
+//Exercise Liked Date
+@property (nonatomic, retain) NSDate *exerciseLikedDate;
 //Exercise Times Viewed
 @property (nonatomic, retain) NSNumber *exerciseTimesViewed;
 //Exercise isEdited

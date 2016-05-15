@@ -17,6 +17,7 @@
 @property (nullable, nonatomic, retain) NSString *exerciseSets;
 @property (nullable, nonatomic, retain) NSString *exerciseSecondaryMuscle;
 @property (nullable, nonatomic, retain) NSString *exerciseReps;
+@property (nullable, nonatomic, retain) NSString *exerciseWeight;
 @property (nullable, nonatomic, retain) NSString *exercisePrimaryMuscle;
 @property (nullable, nonatomic, retain) NSString *exerciseName;
 @property (nullable, nonatomic, retain) NSString *exerciseMechanicsType;

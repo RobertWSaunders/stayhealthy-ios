@@ -20,6 +20,7 @@
     [customExercise setValue:SHcustomexercise.exerciseImageFile forKey:@"exerciseImageFile"];
     [customExercise setValue:SHcustomexercise.exerciseSets forKey:@"exerciseSets"];
     [customExercise setValue:SHcustomexercise.exerciseReps forKey:@"exerciseReps"];
+    [customExercise setValue:SHcustomexercise.exerciseWeight forKey:@"exerciseWeight"];
     [customExercise setValue:SHcustomexercise.exerciseEquipment forKey:@"exerciseEquipment"];
     [customExercise setValue:SHcustomexercise.exercisePrimaryMuscle forKey:@"exercisePrimaryMuscle"];
     [customExercise setValue:SHcustomexercise.exerciseSecondaryMuscle forKey:@"exerciseSecondaryMuscle"];
@@ -45,6 +46,7 @@
     SHcustomexercise.exerciseImageFile = customExercise.exerciseImageFile;
     SHcustomexercise.exerciseSets = customExercise.exerciseSets;
     SHcustomexercise.exerciseReps = customExercise.exerciseReps;
+    SHcustomexercise.exerciseWeight = customExercise.exerciseWeight;
     SHcustomexercise.exerciseEquipment = customExercise.exerciseEquipment;
     SHcustomexercise.exercisePrimaryMuscle = customExercise.exercisePrimaryMuscle;
     SHcustomexercise.exerciseSecondaryMuscle = customExercise.exerciseSecondaryMuscle;

@@ -34,6 +34,10 @@
  */
 + (NSString *)installedDatabaseVersion;
 
+/**
+ *  Takes the build number and converts it to hex.
+ *  @return The apps build number in the hex format.
+ */
 + (NSString *)hexBuildNumber;
 
 /** @name Date Formatting Tools/Calculations*/
@@ -205,4 +209,13 @@
 + (SHExercise*)convertExerciseToSHExercise:(Exercise*)exercise;
 
 + (BOOL)isInternetConnection;
+
++ (BOOL)checkUserPreference:(NSString *)key;
+
++ (void)updateBoolForKey:(NSString *)key boolValue:(BOOL)boolValue;
+
++ (BOOL)isUsersFirstLaunch;
+
++ (void)resetUserPreferences;
+
 @end

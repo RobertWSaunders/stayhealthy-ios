@@ -70,19 +70,22 @@
 -(void)viewDidAppear:(BOOL)animated {
 
     //Show the initial walkthrough/legal agreement if the user is launching the app for the first time.
-   /* if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_FIRST_LAUNCH]) {
+    if ([CommonUtilities isUsersFirstLaunch]) {
+        
+        [CommonUtilities updateBoolForKey:USER_FIRST_LAUNCH boolValue:YES];
+        
         //Perform the segue to actually go to the view.
-        [self performSegueWithIdentifier:@"walkThrough" sender:nil];
+        //[self performSegueWithIdentifier:@"walkThrough" sender:nil];
         
         
-        //Set the current installed version on the first launch to be "1"
+       /* //Set the current installed version on the first launch to be "1"
         [[NSUserDefaults standardUserDefaults] setValue:PRELOADED_DATABASE_VERSION forKey:USER_INSTALLED_DATABASE_VERSION];
         //Setting auto database preference.
         [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:PREFERENCE_AUTO_DATABASE_UPDATES];
         //Save the changes.
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSUserDefaults standardUserDefaults] synchronize];*/
          
-    }*/
+    }
 }
 
 

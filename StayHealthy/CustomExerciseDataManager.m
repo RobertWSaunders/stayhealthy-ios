@@ -289,4 +289,60 @@
 #define Fetching Operations
 //-------------------------
 
+//Fetches all of the liked custom exercises records.
+- (id)fetchAllLikedCustomExercises {
+    
+    NSFetchRequest *fetchRequest = [self getLikedFetchRequest];
+    
+    NSError *requestError = nil;
+    
+    NSArray *customExercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
+    
+    return customExercises;
+    
+}
+
+//Fetches a cusotm exercise record given the objects identifier and the exercise type.
+- (id)fetchItemByIdentifierAndExerciseType:(NSString *)objectIdentifier exerciseType:(NSString*)exerciseType {
+    //Check if object identifier is nil.
+    if (objectIdentifier != nil) {
+        //Set the fetch request.
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
+        
+        NSError *requestError = nil;
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"exerciseIdentifier", objectIdentifier,@"exerciseType",exerciseType];
+        
+        [fetchRequest setPredicate:predicate];
+        
+        //Exercises returned from the fetch.
+        NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
+        
+        if (exercises.count > 0) {
+            LogDataSuccess(@"Successfully found a custom exercise with the identifier: %@  and the exercise type: %@ --> fetchItemByIdentifier @ CustomExerciseDataManager", objectIdentifier, exerciseType);
+            return [exercises objectAtIndex:0];
+        }
+        else {
+            LogDataError(@"Could not fetch any custom exercise with the identifier: %@  and the exercise type: %@ --> fetchItemByIdentifier @ CustomExerciseDataManager", objectIdentifier, exerciseType);
+            return nil;
+        }
+    }
+    return nil;
+}
+
+//-----------------------------
+#define Fetch Requests Creation
+//-----------------------------
+
+//Returns the liked fetch request.
+- (NSFetchRequest*)getLikedFetchRequest {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"exerciseLiked", [NSNumber numberWithBool:YES]];
+    [fetchRequest setPredicate:predicate];
+    
+    return fetchRequest;
+}
+
+
 @end

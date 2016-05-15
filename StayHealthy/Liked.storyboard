@@ -20,9 +20,7 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5j7-l8-xqk">
                                 <rect key="frame" x="-6" y="64" width="612" height="29"/>
                                 <segments>
-                                    <segment title="Strength"/>
-                                    <segment title="Stretch"/>
-                                    <segment title="Warmup"/>
+                                    <segment title="Exercises"/>
                                     <segment title="Workouts"/>
                                 </segments>
                                 <connections>
@@ -37,7 +35,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="76"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rk0-Wi-BxZ" id="Fgb-qV-FeU">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="75.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mek-kb-rqu">
@@ -143,7 +141,7 @@
                                         <rect key="frame" x="0.0" y="104" width="600" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6A9-Ei-gZS" id="czt-PA-AI6">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="94.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6px-Vh-Wi9">
@@ -276,16 +274,16 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="QLl-CR-hPO"/>
-                                                    <exclude reference="Pti-9O-nal"/>
                                                     <exclude reference="0ST-Pw-e2b"/>
-                                                    <exclude reference="O9L-Ql-yqW"/>
+                                                    <exclude reference="Pti-9O-nal"/>
+                                                    <exclude reference="QLl-CR-hPO"/>
                                                     <exclude reference="GfO-a2-E3F"/>
+                                                    <exclude reference="O9L-Ql-yqW"/>
                                                     <exclude reference="6hV-4T-JZL"/>
-                                                    <exclude reference="mKu-8a-DZZ"/>
                                                     <exclude reference="Ubt-qZ-Zkn"/>
-                                                    <exclude reference="fmq-Fl-1vk"/>
                                                     <exclude reference="Ydh-sM-G0P"/>
+                                                    <exclude reference="fmq-Fl-1vk"/>
+                                                    <exclude reference="mKu-8a-DZZ"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>

@@ -116,6 +116,24 @@
 #define General Operations
 //------------------------
 
+//Saves a custom exercise record in the persistent store.
+- (void)saveCustomExerciseRecord:(SHCustomExercise *)customExercise;
+
+//Updates a custom exercise record in the persistent store.
+- (void)updateCustomExerciseRecord:(SHCustomExercise *)customExercise;
+
+//Deletes a custom exercise record in the persistent store.
+- (void)deleteCustomExerciseRecord:(SHCustomExercise *)customExercise;
+
+//Deletes a custom exercise record given the identifier in the persistent store.
+- (void)deleteCustomExerciseRecordByIdentifier:(NSString *)customExerciseIdentifier;
+
+//Deletes a custom exercise record given the identifier and exercise type in the persistent store.
+- (void)deleteCustomExerciseRecordByIdentifierAndExerciseType:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType;
+
+//Deletes all of the custom exercise records in the persistent store.
+- (void)deleteAllCustomExerciseRecords;
+
 //-------------------------
 #define Fetching Operations
 //-------------------------

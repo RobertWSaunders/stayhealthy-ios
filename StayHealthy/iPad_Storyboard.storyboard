@@ -1,8 +1,198 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Journal-->
+        <scene sceneID="FDt-FI-Qhj">
+            <objects>
+                <navigationController id="LXC-CF-szE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Journal" image="JournalTab" id="G1s-xJ-1pR">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.1529411765" green="0.68235294120000001" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YQ1-AK-1Ke">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="KvL-zH-3M7" kind="relationship" relationship="rootViewController" id="Cnp-II-AJ7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JGW-p7-5ma" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-494" y="763"/>
+        </scene>
+        <!--Journal_iPad-->
+        <scene sceneID="NLo-hh-uIB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Journal_iPad" referencedIdentifier="Journal_iPad" id="KvL-zH-3M7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jmr-EM-39A"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Yt-5o-w4n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-14" y="771"/>
+        </scene>
+        <!--Exercises_iPad-->
+        <scene sceneID="y2g-ie-ffv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Exercises_iPad" referencedIdentifier="Exercises_iPad" id="s2g-vr-fmt" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QQP-qg-Yzs"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="44w-di-oEH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8" y="1454"/>
+        </scene>
+        <!--Exercises-->
+        <scene sceneID="a82-tA-Hum">
+            <objects>
+                <navigationController id="q2q-0C-5wF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Exercises" image="ExerciseTab" id="TiF-78-uZ4">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ABf-6O-dCJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="s2g-vr-fmt" kind="relationship" relationship="rootViewController" id="wOy-bk-N8f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mEx-hu-O9c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-494" y="1454"/>
+        </scene>
+        <!--Liked-->
+        <scene sceneID="cWi-jI-xlB">
+            <objects>
+                <navigationController id="NQH-X8-9ZP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Liked" image="FavoritesTab" id="5QP-0E-Bh5">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eub-Tv-LeM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xao-cI-PT0" kind="relationship" relationship="rootViewController" id="yvx-42-8bG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L3m-Yr-Qax" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-494" y="2845"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Dp3-za-ICn">
+            <objects>
+                <navigationController id="BPO-Uh-sFa" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OrP-LD-Fsy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="z9l-6h-blV" kind="relationship" relationship="rootViewController" id="vp0-oP-mTx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rEn-VX-3Ra" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1208" y="3322"/>
+        </scene>
+        <!--Walkthrough_iPad-->
+        <scene sceneID="Yx9-yC-cj8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Walkthrough_iPad" referencedIdentifier="Walkthrough_iPad" id="z9l-6h-blV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="VMy-Du-4mY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6mj-hm-4Rz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1208" y="3793"/>
+        </scene>
+        <!--Home Tab Bar Controller-->
+        <scene sceneID="XZv-2u-Ev6">
+            <objects>
+                <tabBarController id="FZR-q4-WQq" customClass="HomeTabBarController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8Us-Hf-MKI"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="7IS-oh-bb7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="LXC-CF-szE" kind="relationship" relationship="viewControllers" id="8sl-07-hPc"/>
+                        <segue destination="q2q-0C-5wF" kind="relationship" relationship="viewControllers" id="6hC-Dc-yBr"/>
+                        <segue destination="0FH-gB-EUh" kind="relationship" relationship="viewControllers" id="UsA-yB-g5u"/>
+                        <segue destination="NQH-X8-9ZP" kind="relationship" relationship="viewControllers" id="PFz-jB-7dX"/>
+                        <segue destination="BPO-Uh-sFa" kind="presentation" id="wuM-BM-WCW"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B1d-wD-ILa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1208" y="2526"/>
+        </scene>
+        <!--Liked_iPad-->
+        <scene sceneID="r67-4C-qpR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Liked_Pad" referencedIdentifier="Liked_iPad" id="xao-cI-PT0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="14l-mJ-ZWe"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XfX-PA-e5U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-20.5" y="2845"/>
+        </scene>
+        <!--Workouts-->
+        <scene sceneID="dru-wl-6X1">
+            <objects>
+                <navigationController id="0FH-gB-EUh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Workouts" image="WorkoutsTab" selectedImage="Barbell Filled-25" id="TC2-Vu-fa9">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.60784313729999995" green="0.34901960780000002" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="cOo-T3-ZOv"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bda-LL-Wp9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bhm-8M-iGY" kind="relationship" relationship="rootViewController" id="z4k-b1-yeU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yWb-VX-RNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-494" y="2146"/>
+        </scene>
+        <!--Workouts_iPad-->
+        <scene sceneID="x6G-da-PbS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Workouts_iPad" referencedIdentifier="Workouts_iPad" id="bhm-8M-iGY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1fB-Ry-jF3"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8cD-qp-71e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8" y="2151"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Barbell Filled-25" width="25" height="25"/>
+        <image name="ExerciseTab" width="25" height="25"/>
+        <image name="FavoritesTab" width="25" height="25"/>
+        <image name="JournalTab" width="25" height="25"/>
+        <image name="WorkoutsTab" width="25" height="25"/>
+    </resources>
 </document>

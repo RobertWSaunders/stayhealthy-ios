@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
-//Import "MessageUI.h" for email.
 
 @interface FeedbackCenterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate> {
     

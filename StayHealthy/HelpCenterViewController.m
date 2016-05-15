@@ -23,8 +23,8 @@
     
      self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];
     
-    helpCenterItems = @[@"FAQ",@"Email Support"];
-    helpCenterItemsImages = @[@"FAQ.png",@"Contact.png"];
+    helpCenterItems = @[@"Email Support"];
+    helpCenterItemsImages = @[@"EmailSupport.png"];
     
     self.helpCenterTableView.scrollEnabled = NO;
     
@@ -53,7 +53,7 @@
 
 //Returns the number of sections that should be displayed in the tableView.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 //Configures the cells at a specific indexPath.
@@ -66,20 +66,15 @@
         //Create reference to the cell.
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:muscleSelectionCellIdentifier];
     
-    if (indexPath.section == 0) {
-        cell.textLabel.text = [helpCenterItems objectAtIndex:indexPath.row];
-        cell.imageView.image = [UIImage imageNamed:[helpCenterItemsImages objectAtIndex:indexPath.row]];
-    }
-    else {
-        cell.textLabel.text = [helpCenterItems objectAtIndex:indexPath.row+1];
-        cell.imageView.image = [UIImage imageNamed:[helpCenterItemsImages objectAtIndex:indexPath.row+1]];
-         cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+
+    cell.textLabel.text = [helpCenterItems objectAtIndex:indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:[helpCenterItemsImages objectAtIndex:indexPath.row]];
+    cell.accessoryType = UITableViewCellAccessoryNone;
     
      [CommonSetUpOperations tableViewSelectionColorSet:cell];
     
     cell.textLabel.font = tableViewTitleTextFont;
-    cell.textLabel.textColor = BLUE_COLOR;
+    cell.textLabel.textColor = JOURNAL_COLOR;
     
         //Return the cell.
         return cell;
@@ -94,24 +89,16 @@
 
 //What happens when the user selects a cell in the tableView.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0 && indexPath.section == 1) {
+
         [self showEmailScreen:@"StayHealthy Support" email:SUPPORT_EMAIL];
-    }
-    else {
-        [self performSegueWithIdentifier:@"helpWeb" sender:nil];
-    }
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 //Returns the title for footers in the tableView.
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     
-    if (section == 0) {
-        return @"First and foremost, we are really sorry you are having problems, but if you think it's a common problem check the frequently asked questions out.";
-    }
-    else {
-      return @"If nothing seems to be working we would love to help you, get in touch with us and we'll try our best to resolve your problem!";
-    }
+      return @"Having problems? Reach out to us and we will respond as soon as we can! Note, sometimes we are out of the office breaking a sweat or enjoying the beautiful weather so we may not get back to you right away, we always get back to you within 24 hours though!";
     
 }
 
@@ -188,5 +175,10 @@
     }
 }
 
+//Handles anything we need to clear or reset when the view is about to disappear.
+-(void)viewWillDisappear:(BOOL)animated {
+    //Dismiss any outstaning notifications.
+    [TSMessage dismissActiveNotification];
+}
 
 @end

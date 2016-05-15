@@ -10,17 +10,6 @@
 
 @implementation CommonSetUpOperations
 
-//Styles a UICollectionViewCell
-+ (void)styleCollectionViewCell:(UICollectionViewCell*)collectionViewCell {
-     collectionViewCell.layer.masksToBounds = NO;
-     collectionViewCell.layer.borderColor = [UIColor blackColor].CGColor;
-     collectionViewCell.layer.borderWidth = 2.0f;
-     collectionViewCell.layer.shadowOpacity = 0.10f;
-     collectionViewCell.layer.shadowRadius = 4.0f;
-     collectionViewCell.layer.shadowOffset = CGSizeZero;
-     collectionViewCell.layer.shadowPath = [UIBezierPath bezierPathWithRect: collectionViewCell.bounds].CGPath;
-     collectionViewCell.layer.cornerRadius = 4.0f;
-}
 
 + (void)styleCollectionViewCellBodyZone:(UICollectionViewCell*)collectionViewCell {
     collectionViewCell.layer.masksToBounds = NO;
@@ -64,17 +53,17 @@
 }
 
 //Styles SIAlertViews.
-+ (void)styleAlertView {
++ (void)styleAlertView:(UIColor*)color {
     //Style the SIAlertView asking what exercise type.
     [[SIAlertView appearance] setTitleFont:alertViewTitleFont];
-    [[SIAlertView appearance] setTitleColor:BLUE_COLOR];
-    [[SIAlertView appearance] setMessageColor:BLUE_COLOR];
+    [[SIAlertView appearance] setTitleColor:color];
+    [[SIAlertView appearance] setMessageColor:color];
     [[SIAlertView appearance] setCornerRadius:4];
     [[SIAlertView appearance] setShadowRadius:0];
-    [[SIAlertView appearance] setViewBackgroundColor:WHITE_COLOR];
-    [[SIAlertView appearance] setButtonColor:BLUE_COLOR];
-    [[SIAlertView appearance] setDestructiveButtonColor:BLUE_COLOR];
-    [[SIAlertView appearance] setCancelButtonColor:BLUE_COLOR];
+    [[SIAlertView appearance] setViewBackgroundColor:WHITE_COLOR_OLD];
+    [[SIAlertView appearance] setButtonColor:color];
+    [[SIAlertView appearance] setDestructiveButtonColor:color];
+    [[SIAlertView appearance] setCancelButtonColor:color];
     [[SIAlertView appearance] setButtonFont:alertViewButtonFont];
     [[SIAlertView appearance] setMessageFont:alertViewMessageFont];
     [[SIAlertView appearance] setMessageColor:LIGHT_GRAY_COLOR];

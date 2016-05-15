@@ -59,7 +59,7 @@
         [dataHandler saveExerciseRecord:self.exerciseToDisplay];
     }
     
-    [CommonSetUpOperations styleAlertView];
+    [CommonSetUpOperations styleAlertView:EXERCISES_COLOR];
     
     
     if ([self.exerciseToDisplay.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {

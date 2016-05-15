@@ -17,6 +17,7 @@
 @dynamic exerciseSets;
 @dynamic exerciseSecondaryMuscle;
 @dynamic exerciseReps;
+@dynamic exerciseWeight;
 @dynamic exercisePrimaryMuscle;
 @dynamic exerciseName;
 @dynamic exerciseMechanicsType;

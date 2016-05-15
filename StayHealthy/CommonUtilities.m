@@ -23,7 +23,7 @@
 }
 
 + (NSString *)installedDatabaseVersion {
-    return [[NSUserDefaults standardUserDefaults] valueForKey:USER_INSTALLED_DATABASE_VERSION];
+    return @"1.0.0";
 }
 
 + (NSString *)hexBuildNumber {
@@ -721,7 +721,65 @@
     [[UINavigationBar appearance] setTintColor:color];
     //Set the tint color of all segmented controls.
     [[UISegmentedControl appearance] setTintColor:color];
+    //Set the tint color for all UIToolbars.
+    [[UIToolbar appearance] setTintColor:color];
 }
 
++ (BOOL)checkUserPreference:(NSString *)key {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:key]) {
+        return YES;
+    }
+    else {
+        return NO;
+     }
+}
+
++ (BOOL)isUsersFirstLaunch {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_FIRST_LAUNCH]) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
++ (void)updateBoolForKey:(NSString *)key boolValue:(BOOL)boolValue {
+    [[NSUserDefaults standardUserDefaults] setBool:boolValue forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PREFERENCE_CHANGE_NOTIFICATION object:nil];
+}
+
++ (void)updateValueForKey:(NSString *)key stringValue:(NSString*)stringValue {
+    [[NSUserDefaults standardUserDefaults] setObject:stringValue forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PREFERENCE_CHANGE_NOTIFICATION object:nil];
+}
+
++ (void)resetUserPreferences {
+    
+    //General Preferences
+    [self updateBoolForKey:PREFERENCE_TUTORIAL_MESSAGES boolValue:YES];
+    [self updateBoolForKey:PREFERENCE_AUTO_DATABASE_UPDATES boolValue:YES];
+    [self updateBoolForKey:PREFERENCE_LIST_VIEW boolValue:NO];
+    [self updateValueForKey:PREFERENCE_DEFAULT_LAUNCH_MODULE stringValue:@"Journal"];
+    
+    
+    [self updateBoolForKey:PREFERENCE_CALENDAR_WEEKS boolValue:NO];
+    [self updateBoolForKey:PREFERENCE_HIGHLIGHT_WEEKENDS boolValue:YES];
+    [self updateBoolForKey:PREFERENCE_SIMPLE_MODE boolValue:NO];
+    [self updateValueForKey:PREFERENCE_CALENDAR_VIEW stringValue:@"Month"];
+    [self updateValueForKey:PREFERENCE_CALENDAR_SELECTED_DATE stringValue:@"Today"];
+    
+    [self updateBoolForKey:PREFERENCE_INTELLIGENT_MODE boolValue:YES];
+    [self updateBoolForKey:PREFERENCE_ALWAYS_FOCUSED boolValue:NO];
+    [self updateBoolForKey:PREFERENCE_SCIENTIFIC_NAMES boolValue:NO];
+    [self updateValueForKey:PREFERENCE_EXERCISES_RECENTS_SHOWN stringValue:@"25"];
+    [self updateValueForKey:PREFERENCE_DEFAULT_EXERCISES_VIEW stringValue:@"Body Zone"];
+
+    [self updateBoolForKey:PREFERENCE_WORKOUT_SECTIONS boolValue:YES];
+    [self updateValueForKey:PREFERENCE_DEFAULT_WORKOUTS_VIEW stringValue:@"Categories"];
+    
+    [self updateValueForKey:PREFERENCE_DEFAULT_LIKED_VIEW stringValue:@"Exercises"];
+}
 
 @end

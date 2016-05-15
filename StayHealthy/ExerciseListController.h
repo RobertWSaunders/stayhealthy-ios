@@ -24,7 +24,7 @@
 #import "HomeTabBarController.h"
 #import "ExerciseCollectionViewCell.h"
 
-@interface ExerciseListController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, UIViewControllerPreviewingDelegate> {
+@interface ExerciseListController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate> {
     NSMutableArray *exerciseData;
     NSIndexPath *selectedIndex;
     NSIndexPath *selectedCollectionIndex;

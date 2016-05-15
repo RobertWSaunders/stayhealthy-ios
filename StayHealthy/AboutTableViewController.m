@@ -30,8 +30,8 @@
     self.tableView.scrollEnabled = NO;
     
     //Fill the arrays to be displayed in the tableView.
-    aboutArray = @[@"App Version",@"App Build",@"Database Version"];
-    aboutArrayDetail = @[[CommonUtilities shortAppVersionNumber], [CommonUtilities hexBuildNumber], [CommonUtilities installedDatabaseVersion]];
+    aboutArray = @[@"Application Version",@"Application Build",@"Database Version",@"Made in Canada"];
+    aboutArrayDetail = @[[CommonUtilities shortAppVersionNumber], [CommonUtilities hexBuildNumber], [CommonUtilities installedDatabaseVersion],@""];
 }
 
 /*******************************************************/
@@ -40,12 +40,17 @@
 
 //Returns the number of sections for the tableView.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 //Returns the number of rows in a section for the tableView.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [aboutArray count];
+    if (section == 0) {
+         return [aboutArray count]-1;
+    }
+    else {
+        return 1;
+    }
 }
 
 //Cell for row at index path for the tableViews.
@@ -62,13 +67,33 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:aboutCell];
     }
 
-    //Set the title label.
-    cell.textLabel.text = [aboutArray objectAtIndex:indexPath.row];
-    //Set the detail text label.
-    cell.detailTextLabel.text = [aboutArrayDetail objectAtIndex:indexPath.row];
-    
+    if (indexPath.section == 0) {
+        //Set the title label.
+        cell.textLabel.text = [aboutArray objectAtIndex:indexPath.row];
+        //Set the detail text label.
+        cell.detailTextLabel.text = [aboutArrayDetail objectAtIndex:indexPath.row];
+    }
+    else {
+        //Set the title label.
+        cell.textLabel.text = [aboutArray objectAtIndex:3];
+        //Set the detail text label.
+        cell.detailTextLabel.text = nil;
+        cell.imageView.image = [UIImage imageNamed:@"Canada.png"];
+    }
+                               
+    //Set the color for the title label.
+    cell.textLabel.textColor = JOURNAL_COLOR;
+    //Set the color for the detail text label.
+    cell.detailTextLabel.textColor = LIGHT_GRAY_COLOR;
+
     //Return the cell.
     return cell;
+}
+
+//Handles anything we need to clear or reset when the view is about to disappear.
+-(void)viewWillDisappear:(BOOL)animated {
+    //Dismiss any outstaning notifications.
+    [TSMessage dismissActiveNotification];
 }
 
 @end

@@ -14,7 +14,6 @@
 
 @implementation ExerciseListController
 
-
 /********************************/
 #pragma mark View Loading Methods
 /********************************/
@@ -27,37 +26,47 @@
     //Set the title for the page to the muscle.
     self.title = self.viewTitle;
 
-    
     //Sets the NSUserDefault and displays the TSMessage when page is loaded for the first time.
     if (!self.exerciseSelectionMode) {
         [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_FIND_EXERCISE_SEARCHED  viewController:self message:@"I found these exercises for you! Here you can just choose an exercise you like the look of and I'll show you more about it."];
     }
     
-    
     //Get the exercise data.
     exerciseData = [[SHDataHandler getInstance] performExerciseStatement:self.exerciseQuery addUserData:YES];
 
-    //If the exercise data is nothing then show the message declaring that.
-    /*if (exerciseData.count == 0)
-        [CommonSetUpOperations performTSMessage:@"No Exercises Were Found" message:nil viewController:self canBeDismissedByUser:YES duration:60];*/
+    //Check the users preferences when loading the view.
+    [self checkPreferences];
     
     [self setNotificationObservers];
     
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    [self register3DTouch];
+    //[self register3DTouch];
+}
+
+//Checks user preferences to do various things in the loading of the view.
+- (void)checkPreferences {
+    //If YES then show collection view.
+    if ([CommonUtilities checkUserPreference:PREFERENCE_LIST_VIEW]) {
+        self.tableView.hidden = NO;
+        self.collectonView.hidden = YES;
+    }
+    else {
+        self.tableView.hidden = YES;
+        self.collectonView.hidden = NO;
+    }
 }
 
 //Sets the observers for the notifications that need to be observed for.
 - (void)setNotificationObservers {
     //Observe for changes. All just reload the recently
     //iCloud update notification.
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:CLOUD_UPDATE_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViews) name:CLOUD_UPDATE_NOTIFICATION object:nil];
     //Changes in a exercise record, i.e. changes in lastViewed.
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:EXERCISE_UPDATE_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViews) name:EXERCISE_UPDATE_NOTIFICATION object:nil];
     //Changes in a exercise favorite.
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:EXERCISE_SAVE_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViews) name:EXERCISE_SAVE_NOTIFICATION object:nil];
 }
 
 /***************************************************/
@@ -90,7 +99,13 @@
     
     SHExercise *exercise = [exerciseData objectAtIndex:indexPath.row];
     
-    cell.exerciseName.text = exercise.exerciseName;
+    cell.exerciseName.text = exercise.exerciseShortName;
+    if (self.exerciseSelectionMode) {
+        cell.exerciseName.textColor = WORKOUTS_COLOR;
+    }
+    else {
+        cell.exerciseName.textColor = EXERCISES_COLOR;
+    }
     cell.difficulty.text = exercise.exerciseDifficulty;
     cell.difficulty.textColor = [CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty];
     
@@ -126,19 +141,7 @@
     //Set the selected cell background.
     [CommonSetUpOperations tableViewSelectionColorSet:cell];
     
-    
-    //configure right buttons
-    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:nil icon:[UIImage imageNamed:@"AddToWorkout.png"] backgroundColor:BLUE_COLOR callback:^BOOL(MGSwipeTableCell *sender) {
-        selectedIndex = indexPath;
-        [self performSegueWithIdentifier:@"addToWorkout" sender:nil];
-        return YES;
-    }]];
-    cell.rightExpansion.fillOnTrigger = YES;
-    cell.rightExpansion.threshold = 2.0f;
-    cell.rightExpansion.buttonIndex = 0;
-    cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
-
-
+  
     if (self.exerciseSelectionMode) {
         //Set the accessory type dependant on whether it is in selected cells array.
         if ([CommonUtilities exerciseInArray:self.selectedExercises exercise:exercise]) {
@@ -157,6 +160,11 @@
     return cell;
 }
 
+//--------------------------------------------
+#pragma mark TableView Cell Selection Handling
+//--------------------------------------------
+
+//Called when a user selects a cell.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.exerciseSelectionMode) {
         if (self.exerciseSelectionMode) {
@@ -204,8 +212,14 @@
     
     [CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
     
-     SHExercise *exercise = [exerciseData objectAtIndex:indexPath.item];
+    SHExercise *exercise = [exerciseData objectAtIndex:indexPath.item];
     
+    if (self.exerciseSelectionMode) {
+        cell.exerciseName.textColor = WORKOUTS_COLOR;
+    }
+    else {
+        cell.exerciseName.textColor = EXERCISES_COLOR;
+    }
     cell.exerciseName.text = exercise.exerciseName;
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -216,28 +230,45 @@
     
     //Rest of text -- just futura
     [difficultyText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:14.0f], NSForegroundColorAttributeName:[CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty]} range:NSMakeRange(11, difficultyText.length - 11)];
-
+    
     cell.exerciseDifficultyLabel.attributedText = difficultyText;
     
     //Load the exercise image on the background thread.
     [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
     
-    if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-        cell.likedImage.hidden = NO;
-        if (self.exerciseSelectionMode) {
-            [cell.likedImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-            //cell.likeExerciseImageSelection.tintColor = BLUE_COLOR;
+    if (self.exerciseSelectionMode) {
+        if ([CommonUtilities exerciseInArray:self.selectedExercises exercise:exercise]) {
+            cell.likedImage.hidden = NO;
+            [cell.likedImage setImage:[UIImage imageNamed:@"Checkmark.png"]];
+            if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+                cell.selectedImage.hidden = NO;
+                [cell.selectedImage setImage:[UIImage imageNamed:@"LikeCollectionViewCell.png"]];
+            }
+            else {
+                cell.selectedImage.hidden = YES;
+            }
         }
         else {
-            [cell.likedImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-            //cell.likedImage.tintColor = BLUE_COLOR;
+            cell.selectedImage.hidden = YES;
+            if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+                cell.likedImage.hidden = NO;
+                [cell.likedImage setImage:[UIImage imageNamed:@"LikeCollectionViewCell.png"]];
+            }
+            else {
+                cell.likedImage.hidden = YES;
+            }
         }
-        
     }
     else {
-        cell.likedImage.hidden = YES;
+        if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+            cell.likedImage.hidden = NO;
+            [cell.likedImage setImage:[UIImage imageNamed:@"LikeCollectionViewCell.png"]];
+        }
+        else {
+            cell.likedImage.hidden = YES;
+        }
     }
-
+    
     
     return cell;
     
@@ -250,8 +281,41 @@
 //What happens when the user selects a cell in the tableView.
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    selectedCollectionIndex = indexPath;
-    [self performSegueWithIdentifier:@"detail" sender:nil];
+    
+    if (self.exerciseSelectionMode) {
+        ExerciseCollectionViewCell *cell = (ExerciseCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        SHExercise *exercise = [exerciseData objectAtIndex:indexPath.row];
+        
+        if ([CommonUtilities exerciseInArray:self.selectedExercises exercise:exercise]) {
+            self.selectedExercises = [CommonUtilities deleteSelectedExercise:self.selectedExercises exercise:exercise];
+            cell.selectedImage.hidden = YES;
+            if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+                cell.likedImage.hidden = NO;
+                [cell.likedImage setImage:[UIImage imageNamed:@"LikeCollectionViewCell.png"]];
+            }
+            else {
+                cell.likedImage.hidden = YES;
+            }
+        }
+        else  {
+            cell.likedImage.hidden = NO;
+            [self.selectedExercises addObject:exercise];
+            if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+                [cell.likedImage setImage:[UIImage imageNamed:@"Checkmark.png"]];
+                [cell.selectedImage setImage:[UIImage imageNamed:@"LikeCollectionViewCell.png"]];
+                cell.selectedImage.hidden = NO;
+            }
+            else {
+                cell.selectedImage.hidden = YES;
+                [cell.likedImage setImage:[UIImage imageNamed:@"Checkmark.png"]];
+            }
+        }
+    }
+    else {
+        selectedCollectionIndex = indexPath;
+        [self performSegueWithIdentifier:@"detail" sender:nil];
+    }
+
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 
@@ -263,15 +327,16 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-        if (IS_IPHONE_6P) {
-            return CGSizeMake(207.f, 207.f);
-        }
-        else if (IS_IPHONE_6) {
-            return CGSizeMake(187.5f, 240.5f);
-        }
-        else {
-            return CGSizeMake(160.f, 160.f);
-        }
+    if (IS_IPHONE_6P) {
+        return CGSizeMake(207.f, 207.f);
+    }
+    else if (IS_IPHONE_6) {
+        return CGSizeMake(187.5f, 240.5f);
+    }
+    else {
+        return CGSizeMake(160.f, 160.f);
+    }
+
 }
 
 
@@ -281,7 +346,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 //What happens just before a segue is performed.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
         if ([segue.identifier isEqualToString:@"detail"]) {
             SHExercise *exercise = [exerciseData objectAtIndex:selectedCollectionIndex.item];
             ExerciseDetailViewController *detailView = [[ExerciseDetailViewController alloc] init];
@@ -291,85 +355,19 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
             detailView.modalView = NO;
             detailView.showActionIcon = YES;
     }
-       
-    else if ([segue.identifier isEqualToString:@"addToWorkout"]) {
-        UINavigationController *navController = [[UINavigationController alloc] init];
-        CustomWorkoutSelectionViewController *customWorkoutSelection = [[CustomWorkoutSelectionViewController alloc] init];
-        navController = segue.destinationViewController;
-        customWorkoutSelection = navController.viewControllers[0];
-        customWorkoutSelection.exerciseToAdd = [exerciseData objectAtIndex:selectedIndex.row];
-    }
-    
-    
-   }
-
-- (void)updateTableView {
-     [self.tableView reloadData];
 }
 
-/*************************************************/
-#pragma mark - 3D Touch Peek and Pop Configuration
-/*************************************************/
+/**************************/
+#pragma mark Helper Methods
+/**************************/
 
-//-----------------
-#pragma mark Set Up
-//-----------------
-
-//Checks to see if 3D Touch is enabled on device, registers alternative if not.
-- (void)register3DTouch {
-    //Register for 3D Touch (if available)
-    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
-        [self registerForPreviewingWithDelegate:(id)self sourceView:self.view];
-    }
+- (void)updateViews {
+    [self.tableView reloadData];
+    [self.collectonView reloadData];
 }
-
-//Called when a user turns the 3D touch feature on or off.
-- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
-    //Check to see if 3D touch is enabled.
-    [self register3DTouch];
-}
-
-//---------------
-#pragma mark Peek
-//---------------
-
-//Set up the view controller for peeking.
-/*- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
-    
-    // check if we're not already displaying a preview controller
-    if ([self.presentedViewController isKindOfClass:[ExerciseDetailViewController class]]) {
-        return nil;
-    }
-    
-    CGPoint cellPostion = [self.tableView convertPoint:location fromView:self.view];
-    selectedPreviewingIndex = [self.tableView indexPathForRowAtPoint:cellPostion];
-    
-    //Shallow press, return the preview controller here. (peek)
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_Storyboard" bundle:nil];
-    previewingExerciseDetailViewController = [storyboard instantiateViewControllerWithIdentifier:@"ExerciseDetailViewController"];
-
-    //Get the exercise to display in the peek and set the peeks attributes.
-    SHExercise *exercise = [exerciseData objectAtIndex:selectedPreviewingIndex.row];
-    previewingExerciseDetailViewController.exerciseToDisplay = exercise;
-    previewingExerciseDetailViewController.viewTitle = exercise.exerciseName;
-    previewingExerciseDetailViewController.showActionIcon = YES;
-    
-    return previewingExerciseDetailViewController;
-}
-*/
-//---------------
-#pragma mark Pop
-//---------------
-
-//Show the view controller, pop.
-/*- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
-    [self showViewController:previewingExerciseDetailViewController sender:self];
-}
-*/
-
 
 /*************************************/
-#pragma mark ViewWillDisappear Methods
+#pragma mark View Will Disappear Methods
 /*************************************/
 
 - (void)viewWillDisappear:(BOOL)animated {

@@ -178,16 +178,16 @@
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="t2K-YV-yEw"/>
                                                             <exclude reference="RGh-GS-Zyf"/>
                                                             <exclude reference="rp3-Id-xnB"/>
+                                                            <exclude reference="t2K-YV-yEw"/>
                                                             <exclude reference="HY7-DL-LAb"/>
                                                             <exclude reference="wWN-If-DMU"/>
                                                             <exclude reference="ZPv-Hf-qLt"/>
-                                                            <exclude reference="mvC-5H-Lfe"/>
-                                                            <exclude reference="lJX-dl-ipd"/>
-                                                            <exclude reference="zP6-4o-F2W"/>
                                                             <exclude reference="Wq3-Pj-hpA"/>
+                                                            <exclude reference="lJX-dl-ipd"/>
+                                                            <exclude reference="mvC-5H-Lfe"/>
+                                                            <exclude reference="zP6-4o-F2W"/>
                                                         </mask>
                                                     </variation>
                                                 </tableViewCellContentView>
@@ -251,7 +251,7 @@
                                                                 <constraint firstAttribute="height" constant="21" id="QA2-6x-qch"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
-                                                            <color key="textColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.60784313725490191" green="0.34901960784313724" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -293,7 +293,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="Categories"/>
-                                    <segment title="Your Workouts"/>
+                                    <segment title="Custom Workouts"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentValueChanged:" destination="u0X-sW-zjx" eventType="valueChanged" id="4P0-dJ-jgX"/>
@@ -325,6 +325,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="58t-u2-p6D">
                             <connections>
                                 <action selector="addCustomWorkout:" destination="u0X-sW-zjx" id="gVJ-Va-1lm"/>
+                                <segue destination="xrl-SE-Flc" kind="presentation" identifier="createWorkout" id="leI-Wn-jU1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -483,7 +484,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5s7-kS-QXf">
-                                                    <rect key="frame" x="137" y="68.5" width="409" height="19.5"/>
+                                                    <rect key="frame" x="137" y="69" width="409" height="19"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -555,19 +556,19 @@
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="AL0-U2-rce"/>
-                                                    <exclude reference="s2u-O5-kS4"/>
                                                     <exclude reference="ZEp-V5-ycA"/>
+                                                    <exclude reference="s2u-O5-kS4"/>
                                                     <exclude reference="SLY-wg-OHc"/>
                                                     <exclude reference="kHt-M5-Y49"/>
                                                     <exclude reference="1oK-Iy-XkS"/>
-                                                    <exclude reference="b4q-c9-GmR"/>
                                                     <exclude reference="RSs-JX-bcc"/>
                                                     <exclude reference="ala-z9-7nE"/>
+                                                    <exclude reference="b4q-c9-GmR"/>
                                                     <exclude reference="mXo-UP-irI"/>
                                                     <exclude reference="FZj-Vc-yxX"/>
                                                     <exclude reference="Ko3-Qa-ndV"/>
-                                                    <exclude reference="zaO-GU-i9G"/>
                                                     <exclude reference="fFY-Pz-Rt2"/>
+                                                    <exclude reference="zaO-GU-i9G"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -627,7 +628,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vb5-E6-Uei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3703" y="3603"/>
+            <point key="canvasLocation" x="1223" y="3481"/>
         </scene>
         <!--Create Workout-->
         <scene sceneID="AZq-j9-rpl">
@@ -692,7 +693,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HU4-cl-JSR">
-                                                    <rect key="frame" x="11" y="0.0" width="578" height="86.5"/>
+                                                    <rect key="frame" x="11" y="0.0" width="578" height="87"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -898,7 +899,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cn-qF-eeU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4335" y="3603"/>
+            <point key="canvasLocation" x="4269" y="2957"/>
         </scene>
         <!--Workout Detail View Controller-->
         <scene sceneID="Yfa-NA-Hy2">
@@ -1108,7 +1109,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0k-8S-YZx">
-                                <rect key="frame" x="6" y="98" width="589" height="49.5"/>
+                                <rect key="frame" x="6" y="98" width="589" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49.5" id="g3c-XE-KfG"/>
                                 </constraints>
@@ -1176,9 +1177,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="6eX-F0-AlK"/>
                                 <exclude reference="8Yy-ta-YEy"/>
                                 <exclude reference="STq-w1-QXw"/>
-                                <exclude reference="6eX-F0-AlK"/>
                                 <exclude reference="bgk-bW-6gN"/>
                             </mask>
                         </variation>
@@ -1230,10 +1231,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="dJK-aY-Nsb" kind="relationship" relationship="rootViewController" id="uN1-Dj-Xpa"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGm-a5-PQo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4990" y="3603"/>
+            <point key="canvasLocation" x="5078" y="3087"/>
+        </scene>
+        <!--Exercises-->
+        <scene sceneID="wjf-3I-ocr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Exercises" referencedIdentifier="Exercises" id="dJK-aY-Nsb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="aSk-s0-T6v"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZZT-nJ-gfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5656.5" y="3107"/>
         </scene>
         <!--Workout View Controller-->
         <scene sceneID="yAD-r4-tlS">
@@ -1696,7 +1710,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HcJ-Vb-5Sx">
-                                                    <rect key="frame" x="137" y="68" width="409" height="19.5"/>
+                                                    <rect key="frame" x="137" y="68" width="409" height="20"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1761,16 +1775,16 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="ojn-L2-Zso"/>
                                                     <exclude reference="f6X-PK-Fcz"/>
+                                                    <exclude reference="ojn-L2-Zso"/>
                                                     <exclude reference="vQb-Po-2dr"/>
                                                     <exclude reference="A5I-Ia-bHm"/>
                                                     <exclude reference="YfM-fm-qoz"/>
                                                     <exclude reference="sg8-2j-XoP"/>
                                                     <exclude reference="6yE-4n-FvZ"/>
-                                                    <exclude reference="bPA-Zh-qZ4"/>
-                                                    <exclude reference="UfL-BD-3IY"/>
                                                     <exclude reference="N8C-ZS-WTP"/>
+                                                    <exclude reference="UfL-BD-3IY"/>
+                                                    <exclude reference="bPA-Zh-qZ4"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -1825,5 +1839,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="h91-sX-lhe"/>
+        <segue reference="leI-Wn-jU1"/>
     </inferredMetricsTieBreakers>
 </document>

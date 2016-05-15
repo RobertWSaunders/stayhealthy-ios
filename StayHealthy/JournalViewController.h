@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TelerikUI/TelerikUI.h>
 
-@interface JournalViewController : UIViewController <TKCalendarDataSource,TKCalendarDelegate> {
-    NSMutableArray *events;
+@interface JournalViewController : UIViewController <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,TKCalendarDelegate,TKCalendarDataSource> {
+    NSMutableArray *fullArrayEvents;
+    NSArray *sortedArrayOfEvents;
 }
+
+@property (retain) NSMutableArray *tableViewSections;
+@property (retain) NSMutableDictionary *tableViewCells;
 
 @property (weak, nonatomic) IBOutlet UIView *calendarPlaceholderView;
 

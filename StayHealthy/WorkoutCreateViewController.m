@@ -131,8 +131,6 @@
         
         //Set the cell label.
         cell.cellLabel.text = @"Workout Name";
-        
-
 
             cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Workout Name" attributes:@{NSForegroundColorAttributeName:LIGHT_GRAY_COLOR}];
         
@@ -144,7 +142,7 @@
             
             //Stlying the cells.
             cell.cellLabel.font = tableViewTitleTextFont;
-            cell.cellLabel.textColor = BLUE_COLOR;
+            cell.cellLabel.textColor = WORKOUTS_COLOR;
             cell.textField.font = tableViewDetailTextFont;
             cell.textField.textColor = LIGHT_GRAY_COLOR;
             
@@ -217,7 +215,7 @@
             }
 
             cell.textLabel.font = tableViewTitleTextFont;
-            cell.textLabel.textColor = BLUE_COLOR;
+            cell.textLabel.textColor = WORKOUTS_COLOR;
             cell.textLabel.text = @"Add Exercises";
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.detailTextLabel.hidden = YES;
@@ -247,7 +245,7 @@
         //Stlying the cells.
         cell.textLabel.font = tableViewTitleTextFont;
         cell.detailTextLabel.font = tableViewDetailTextFont;
-        cell.textLabel.textColor = BLUE_COLOR;
+        cell.textLabel.textColor = WORKOUTS_COLOR;
         //cell.detailTextLabel.textColor = LIGHT_GRAY_COLOR;
         
         //Set the selection cell.

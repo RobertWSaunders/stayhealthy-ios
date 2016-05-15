@@ -13,7 +13,7 @@
 #import "WorkoutBrowseOptionsViewController.h"
 #import "WorkoutDetailViewController.h"
 
-@interface WorkoutSelectionViewController : UIViewController <UITableViewDataSource,UITableViewDelegate> {
+@interface WorkoutSelectionViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource> {
     NSArray *browseOptions;
     NSArray *browseOptionsImages;
     NSMutableArray *customWorkouts;

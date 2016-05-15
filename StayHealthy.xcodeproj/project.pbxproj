@@ -53,7 +53,6 @@
 		EB4702991C063E3100732BC9 /* WorkoutDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4702981C063E3100732BC9 /* WorkoutDetailViewController.m */; };
 		EB47029C1C063E5E00732BC9 /* WorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB47029B1C063E5E00732BC9 /* WorkoutViewController.m */; };
 		EB4702A11C063EBD00732BC9 /* WorkoutCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4702A01C063EBD00732BC9 /* WorkoutCreateViewController.m */; };
-		EB575AD51BEC38EC00A1C798 /* VersionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB575AD41BEC38EC00A1C798 /* VersionHistoryViewController.m */; };
 		EB63EF381B4B3FE200EF35A3 /* iPhone_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB63EF361B4B3FE200EF35A3 /* iPhone_Storyboard.storyboard */; };
 		EB63EF3B1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF3A1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m */; };
 		EB63EF9C1B4B5FA400EF35A3 /* TextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF9B1B4B5FA400EF35A3 /* TextFieldTableViewCell.m */; };
@@ -158,7 +157,6 @@
 		EBB8C97C1BFA827400347B24 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C97B1BFA827400347B24 /* AboutTableViewController.m */; };
 		EBB8C9811BFA855300347B24 /* FeedbackCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C9801BFA855300347B24 /* FeedbackCenterViewController.m */; };
 		EBB8C9841BFA856000347B24 /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C9831BFA856000347B24 /* HelpCenterViewController.m */; };
-		EBB8C9871BFA85FF00347B24 /* DatabaseUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C9861BFA85FF00347B24 /* DatabaseUpdateViewController.m */; };
 		EBBD42EB1C00F2670033F226 /* iPad_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */; };
 		EBC034D71C4C10820079332D /* ExerciseCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC034D61C4C10820079332D /* ExerciseCreateViewController.m */; };
 		EBC64C591C02B2C900B33ECA /* WorkoutSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */; };
@@ -166,8 +164,14 @@
 		EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCE12511BD2F62C000370CC /* FavoritesViewController.m */; };
 		EBD1EBC91C2F062B003F005F /* TextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */; };
 		EBD1EBCD1C2F1179003F005F /* CustomWorkoutSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */; };
-		EBDB53BC1CD458D300809326 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBDB53BB1CD458D300809326 /* TelerikUI.framework */; };
 		EBF7E74B1C49618400E878E9 /* SHDataUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7E74A1C49618400E878E9 /* SHDataUtilities.m */; };
+		EBF7F86A1CD959460086C9E0 /* Journal_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F8691CD959460086C9E0 /* Journal_iPad.storyboard */; };
+		EBF7F86C1CD9595A0086C9E0 /* Exercises_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F86B1CD9595A0086C9E0 /* Exercises_iPad.storyboard */; };
+		EBF7F86E1CD959690086C9E0 /* Workouts_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F86D1CD959690086C9E0 /* Workouts_iPad.storyboard */; };
+		EBF7F8701CD959770086C9E0 /* Liked_Pad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F86F1CD959770086C9E0 /* Liked_Pad.storyboard */; };
+		EBF7F8721CD9599F0086C9E0 /* Walkthrough_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F8711CD9599F0086C9E0 /* Walkthrough_iPad.storyboard */; };
+		EBFE82201CE6B42400EF3066 /* PreferenceSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFE821F1CE6B42400EF3066 /* PreferenceSwitch.m */; };
+		EBFE82241CE8021400EF3066 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBFE82231CE8021400EF3066 /* TelerikUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -261,8 +265,6 @@
 		EB47029F1C063EBD00732BC9 /* WorkoutCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutCreateViewController.h; sourceTree = "<group>"; };
 		EB4702A01C063EBD00732BC9 /* WorkoutCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutCreateViewController.m; sourceTree = "<group>"; };
 		EB52EFF61BCAF05C00F5D7CA /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		EB575AD31BEC38EC00A1C798 /* VersionHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionHistoryViewController.h; sourceTree = "<group>"; };
-		EB575AD41BEC38EC00A1C798 /* VersionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionHistoryViewController.m; sourceTree = "<group>"; };
 		EB63EF371B4B3FE200EF35A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPhone_Storyboard.storyboard; sourceTree = "<group>"; };
 		EB63EF391B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseAdvancedSearchViewController.h; sourceTree = "<group>"; };
 		EB63EF3A1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseAdvancedSearchViewController.m; sourceTree = "<group>"; };
@@ -447,8 +449,6 @@
 		EBB8C9801BFA855300347B24 /* FeedbackCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackCenterViewController.m; sourceTree = "<group>"; };
 		EBB8C9821BFA856000347B24 /* HelpCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCenterViewController.h; sourceTree = "<group>"; };
 		EBB8C9831BFA856000347B24 /* HelpCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpCenterViewController.m; sourceTree = "<group>"; };
-		EBB8C9851BFA85FF00347B24 /* DatabaseUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseUpdateViewController.h; sourceTree = "<group>"; };
-		EBB8C9861BFA85FF00347B24 /* DatabaseUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseUpdateViewController.m; sourceTree = "<group>"; };
 		EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad_Storyboard.storyboard; sourceTree = "<group>"; };
 		EBC034D51C4C10820079332D /* ExerciseCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCreateViewController.h; sourceTree = "<group>"; };
 		EBC034D61C4C10820079332D /* ExerciseCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCreateViewController.m; sourceTree = "<group>"; };
@@ -462,10 +462,17 @@
 		EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewTableViewCell.m; sourceTree = "<group>"; };
 		EBD1EBCB1C2F1179003F005F /* CustomWorkoutSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWorkoutSelectionViewController.h; sourceTree = "<group>"; };
 		EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWorkoutSelectionViewController.m; sourceTree = "<group>"; };
-		EBDB53BB1CD458D300809326 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TelerikUI.framework; path = ../../ProjectResources/StayHealthy/Frameworks/Frameworks/TelerikUI.framework; sourceTree = "<group>"; };
 		EBF7E7491C49618400E878E9 /* SHDataUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDataUtilities.h; sourceTree = "<group>"; };
 		EBF7E74A1C49618400E878E9 /* SHDataUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDataUtilities.m; sourceTree = "<group>"; };
+		EBF7F8691CD959460086C9E0 /* Journal_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Journal_iPad.storyboard; sourceTree = "<group>"; };
+		EBF7F86B1CD9595A0086C9E0 /* Exercises_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exercises_iPad.storyboard; sourceTree = "<group>"; };
+		EBF7F86D1CD959690086C9E0 /* Workouts_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Workouts_iPad.storyboard; sourceTree = "<group>"; };
+		EBF7F86F1CD959770086C9E0 /* Liked_Pad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Liked_Pad.storyboard; sourceTree = "<group>"; };
+		EBF7F8711CD9599F0086C9E0 /* Walkthrough_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough_iPad.storyboard; sourceTree = "<group>"; };
 		EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StayHealthy2.xcdatamodel; sourceTree = "<group>"; };
+		EBFE821E1CE6B42400EF3066 /* PreferenceSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceSwitch.h; sourceTree = "<group>"; };
+		EBFE821F1CE6B42400EF3066 /* PreferenceSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceSwitch.m; sourceTree = "<group>"; };
+		EBFE82231CE8021400EF3066 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TelerikUI.framework; path = ../../ProjectResources/StayHealthy/Frameworks/Frameworks/TelerikUI.framework; sourceTree = "<group>"; };
 		EBFEBF0A1C4427F000F9EA01 /* StayHealthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = StayHealthy.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -475,7 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBAF51381CD441E4005DAE31 /* libicucore.tbd in Frameworks */,
-				EBDB53BC1CD458D300809326 /* TelerikUI.framework in Frameworks */,
+				EBFE82241CE8021400EF3066 /* TelerikUI.framework in Frameworks */,
 				EB3B9E271BE8024300BCEF28 /* libsqlite3.tbd in Frameworks */,
 				EB3B9E251BE8023600BCEF28 /* libz.tbd in Frameworks */,
 				3F7D77AF19A3086200E00065 /* CFNetwork.framework in Frameworks */,
@@ -524,7 +531,7 @@
 		3F2E5A8E18E11B8600EE4734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EBDB53BB1CD458D300809326 /* TelerikUI.framework */,
+				EBFE82231CE8021400EF3066 /* TelerikUI.framework */,
 				3F7D77A619A3081300E00065 /* AudioToolbox.framework */,
 				3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */,
 				3F7D77AC19A3086200E00065 /* Security.framework */,
@@ -769,11 +776,9 @@
 				3FE95E22187A5DB0005DD13D /* SettingsViewController.h */,
 				3FE95E23187A5DB0005DD13D /* SettingsViewController.m */,
 				EBB8C9791BFA826000347B24 /* About */,
-				EBB8C9881BFA860A00347B24 /* Database Update */,
 				EB76703B1B52A96000A188B4 /* Preferences */,
 				EBB8C97E1BFA853A00347B24 /* Feedback Center */,
 				EBB8C97D1BFA853200347B24 /* Help Center */,
-				EB575AD21BEC38AC00A1C798 /* Version History */,
 				3F7D77A019A300C000E00065 /* Web View ViewController */,
 			);
 			name = Settings;
@@ -875,15 +880,6 @@
 				EB4702A01C063EBD00732BC9 /* WorkoutCreateViewController.m */,
 			);
 			name = "Custom Workouts";
-			sourceTree = "<group>";
-		};
-		EB575AD21BEC38AC00A1C798 /* Version History */ = {
-			isa = PBXGroup;
-			children = (
-				EB575AD31BEC38EC00A1C798 /* VersionHistoryViewController.h */,
-				EB575AD41BEC38EC00A1C798 /* VersionHistoryViewController.m */,
-			);
-			name = "Version History";
 			sourceTree = "<group>";
 		};
 		EB63EF991B4B5F6A00EF35A3 /* Custom UITextfield TableViewCell */ = {
@@ -998,6 +994,7 @@
 		EB76703B1B52A96000A188B4 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				EBFE821D1CE6B34A00EF3066 /* Preference UISwitch */,
 				EB9CF6FF1B52AA00006E2984 /* PreferencesViewController.h */,
 				EB9CF7001B52AA00006E2984 /* PreferencesViewController.m */,
 			);
@@ -1380,15 +1377,6 @@
 			name = "Feedback Center";
 			sourceTree = "<group>";
 		};
-		EBB8C9881BFA860A00347B24 /* Database Update */ = {
-			isa = PBXGroup;
-			children = (
-				EBB8C9851BFA85FF00347B24 /* DatabaseUpdateViewController.h */,
-				EBB8C9861BFA85FF00347B24 /* DatabaseUpdateViewController.m */,
-			);
-			name = "Database Update";
-			sourceTree = "<group>";
-		};
 		EBC034D41C4C10400079332D /* Custom Exercises */ = {
 			isa = PBXGroup;
 			children = (
@@ -1452,8 +1440,22 @@
 			isa = PBXGroup;
 			children = (
 				EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */,
+				EBF7F8691CD959460086C9E0 /* Journal_iPad.storyboard */,
+				EBF7F86B1CD9595A0086C9E0 /* Exercises_iPad.storyboard */,
+				EBF7F86D1CD959690086C9E0 /* Workouts_iPad.storyboard */,
+				EBF7F86F1CD959770086C9E0 /* Liked_Pad.storyboard */,
+				EBF7F8711CD9599F0086C9E0 /* Walkthrough_iPad.storyboard */,
 			);
 			name = iPad;
+			sourceTree = "<group>";
+		};
+		EBFE821D1CE6B34A00EF3066 /* Preference UISwitch */ = {
+			isa = PBXGroup;
+			children = (
+				EBFE821E1CE6B42400EF3066 /* PreferenceSwitch.h */,
+				EBFE821F1CE6B42400EF3066 /* PreferenceSwitch.m */,
+			);
+			name = "Preference UISwitch";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1544,9 +1546,12 @@
 				EB77FF991C485EA900C0DE54 /* TSMessagesDefaultDesign.json in Resources */,
 				EB77FF911C485EA900C0DE54 /* NotificationBackgroundSuccessIcon.png in Resources */,
 				EB77FF8B1C485EA900C0DE54 /* NotificationBackgroundErrorIcon.png in Resources */,
+				EBF7F86A1CD959460086C9E0 /* Journal_iPad.storyboard in Resources */,
 				EB77FF961C485EA900C0DE54 /* NotificationBackgroundWarningIcon@2x.png in Resources */,
+				EBF7F86C1CD9595A0086C9E0 /* Exercises_iPad.storyboard in Resources */,
 				EBAF51181CD4266D005DAE31 /* Exercises.storyboard in Resources */,
 				EB77FF901C485EA900C0DE54 /* NotificationBackgroundSuccess@2x.png in Resources */,
+				EBF7F8701CD959770086C9E0 /* Liked_Pad.storyboard in Resources */,
 				EB77FF8E1C485EA900C0DE54 /* NotificationBackgroundMessage@2x.png in Resources */,
 				EB77FF941C485EA900C0DE54 /* NotificationBackgroundWarning@2x.png in Resources */,
 				EB77FF891C485EA900C0DE54 /* NotificationBackgroundError.png in Resources */,
@@ -1554,6 +1559,7 @@
 				3FD5E1AD1853A8D00063E10C /* InfoPlist.strings in Resources */,
 				EB77FF931C485EA900C0DE54 /* NotificationBackgroundWarning.png in Resources */,
 				EB77FF8A1C485EA900C0DE54 /* NotificationBackgroundError@2x.png in Resources */,
+				EBF7F8721CD9599F0086C9E0 /* Walkthrough_iPad.storyboard in Resources */,
 				EBAF51201CD428A8005DAE31 /* Walkthrough.storyboard in Resources */,
 				EB63EF381B4B3FE200EF35A3 /* iPhone_Storyboard.storyboard in Resources */,
 				EBBD42EB1C00F2670033F226 /* iPad_Storyboard.storyboard in Resources */,
@@ -1564,6 +1570,7 @@
 				EB77FF951C485EA900C0DE54 /* NotificationBackgroundWarningIcon.png in Resources */,
 				EB77FF8C1C485EA900C0DE54 /* NotificationBackgroundErrorIcon@2x.png in Resources */,
 				EB77FF8D1C485EA900C0DE54 /* NotificationBackgroundMessage.png in Resources */,
+				EBF7F86E1CD959690086C9E0 /* Workouts_iPad.storyboard in Resources */,
 				EB77FF921C485EA900C0DE54 /* NotificationBackgroundSuccessIcon@2x.png in Resources */,
 				EB77FF8F1C485EA900C0DE54 /* NotificationBackgroundSuccess.png in Resources */,
 				EB8F61D91CAD984B00030F3F /* .gitkeep in Resources */,
@@ -1609,7 +1616,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBC034D71C4C10820079332D /* ExerciseCreateViewController.m in Sources */,
-				EB575AD51BEC38EC00A1C798 /* VersionHistoryViewController.m in Sources */,
 				EB77FFBD1C485F5F00C0DE54 /* LGAlertViewCell.m in Sources */,
 				EB737F5C1B7F8A9F00EBBDA4 /* SHExercise.m in Sources */,
 				EB2C4A701B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m in Sources */,
@@ -1621,7 +1627,6 @@
 				EB4702951C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.m in Sources */,
 				EBC64C591C02B2C900B33ECA /* WorkoutSelectionViewController.m in Sources */,
 				EB63EF3B1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m in Sources */,
-				EBB8C9871BFA85FF00347B24 /* DatabaseUpdateViewController.m in Sources */,
 				EB2C4A671B89F773005D183A /* WorkoutDataManager.m in Sources */,
 				EB8F61DF1CAD984B00030F3F /* LaunchKit.m in Sources */,
 				EB4702A11C063EBD00732BC9 /* WorkoutCreateViewController.m in Sources */,
@@ -1652,6 +1657,7 @@
 				EB4702921C063DD800732BC9 /* WorkoutListViewController.m in Sources */,
 				EB63EF9C1B4B5FA400EF35A3 /* TextFieldTableViewCell.m in Sources */,
 				EB77FF661C485E9200C0DE54 /* SIAlertView.m in Sources */,
+				EBFE82201CE6B42400EF3066 /* PreferenceSwitch.m in Sources */,
 				EBAF514A1CD44789005DAE31 /* CustomExercise.m in Sources */,
 				EB737F691B7F908F00EBBDA4 /* SHExercise+Exercise.m in Sources */,
 				EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */,
@@ -2030,6 +2036,36 @@
 					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
@@ -2248,6 +2284,36 @@
 					Resources/StayHealthy/Frameworks,
 					and,
 					Bundles/Frameworkos,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
 					"$(USER_LIBRARY_DIR)/Mobile",

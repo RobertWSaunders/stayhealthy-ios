@@ -24,6 +24,8 @@
 @property(nonatomic,copy) NSString *exerciseSets;
 //Exercise Reps
 @property(nonatomic,copy) NSString *exerciseReps;
+//Exercise Weight
+@property(nonatomic,copy) NSString *exerciseWeight;
 //Exercise Equipment
 @property(nonatomic,copy) NSString *exerciseEquipment;
 //Exercise Primary Muscle

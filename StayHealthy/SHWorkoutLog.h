@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <TelerikUI/TelerikUI.h>
 
-@interface SHWorkoutLog : NSObject
+@interface SHWorkoutLog : TKCalendarEvent
 
 //Log Workout Identifier
 @property(nonatomic,copy) NSString *logWorkoutIdentifier;

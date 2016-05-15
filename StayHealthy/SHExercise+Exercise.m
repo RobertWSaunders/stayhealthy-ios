@@ -20,6 +20,7 @@
     [exercise setValue:SHexercise.exerciseImageFile forKey:@"exerciseImageFile"];
     [exercise setValue:SHexercise.exerciseSets forKey:@"exerciseSets"];
     [exercise setValue:SHexercise.exerciseReps forKey:@"exerciseReps"];
+    [exercise setValue:SHexercise.exerciseWeight forKey:@"exerciseWeight"];
     [exercise setValue:SHexercise.exerciseEquipment forKey:@"exerciseEquipment"];
     [exercise setValue:SHexercise.exercisePrimaryMuscle forKey:@"exercisePrimaryMuscle"];
     [exercise setValue:SHexercise.exerciseSecondaryMuscle forKey:@"exerciseSecondaryMuscle"];
@@ -32,6 +33,7 @@
     [exercise setValue:SHexercise.exerciseLastViewed forKey:@"exerciseLastViewed"];
     [exercise setValue:SHexercise.exerciseEditedDate forKey:@"exerciseEditedDate"];
     [exercise setValue:SHexercise.exerciseTimesViewed forKey:@"exerciseTimesViewed"];
+    [exercise setValue:SHexercise.exerciseLikedDate forKey:@"exerciseLikedDate"];
 }
 
 //Creates SHExercise Record from Exercise Record
@@ -44,6 +46,7 @@
     SHexercise.exerciseImageFile = exercise.exerciseImageFile;
     SHexercise.exerciseSets = exercise.exerciseSets;
     SHexercise.exerciseReps = exercise.exerciseReps;
+    SHexercise.exerciseWeight = exercise.exerciseWeight;
     SHexercise.exerciseEquipment = exercise.exerciseEquipment;
     SHexercise.exercisePrimaryMuscle = exercise.exercisePrimaryMuscle;
     SHexercise.exerciseSecondaryMuscle = exercise.exerciseSecondaryMuscle;
@@ -56,6 +59,7 @@
     SHexercise.exerciseLastViewed = exercise.exerciseLastViewed;
     SHexercise.exerciseEditedDate = exercise.exerciseEditedDate;
     SHexercise.exerciseTimesViewed = exercise.exerciseTimesViewed;
+    SHexercise.exerciseLikedDate = exercise.exerciseLikedDate;
 }
 
 

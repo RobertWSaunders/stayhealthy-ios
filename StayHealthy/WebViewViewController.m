@@ -19,10 +19,8 @@
 #pragma mark - View Loading Methods
 /**********************************/
 
-
 //What happens right before the view loads.
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.tabBarController.tabBar.hidden=YES;
@@ -62,9 +60,6 @@
         else {
             [CommonSetUpOperations performTSMessage:@"No Internet Connection" message:nil viewController:self canBeDismissedByUser:YES duration:6];
         }
-    
-    
-    
 }
 
 /*****************************************/
@@ -89,7 +84,6 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     self.spinnerImage.hidden = YES;
 }
 
-
 - (void)webView:(UIWebView *)webView
 didFailLoadWithError:(NSError *)error {
     [self.spinnerImage stopAnimating];
@@ -97,10 +91,18 @@ didFailLoadWithError:(NSError *)error {
     [CommonSetUpOperations performTSMessage:@"Oops, there must have been an error!" message:nil viewController:self canBeDismissedByUser:YES duration:6];
 }
 
-
+/**********************/
+#pragma mark - Actions
+/**********************/
 
 - (IBAction)closeButtonTapped:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 
+}
+
+//Handles anything we need to clear or reset when the view is about to disappear.
+-(void)viewWillDisappear:(BOOL)animated {
+    //Dismiss any outstaning notifications.
+    [TSMessage dismissActiveNotification];
 }
 @end

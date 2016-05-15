@@ -14,7 +14,6 @@
 
 @implementation SettingsViewController  
 
-
 /**********************************/
 #pragma mark - View Loading Methods
 /**********************************/
@@ -31,7 +30,6 @@
     self.navigationController.view.backgroundColor = [UIColor whiteColor];
     //Set tabBar controller background to white.
     self.tabBarController.view.backgroundColor = [UIColor whiteColor];
-    
 }
 
 /*******************************************************/
@@ -45,7 +43,7 @@
 
 //Returns the number of sections for the tableView.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 3;
 }
 
 //Returns the number of rows in each section.
@@ -55,9 +53,6 @@
     }
     else if (section == 1) {
         return [feedbackSettings count];
-    }
-    else if (section == 2) {
-        return [connectSettings count];
     }
     else {
         return [legalSettings count];
@@ -89,18 +84,13 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     else if (indexPath.section == 2) {
-        cell.textLabel.text = [connectSettings objectAtIndex:indexPath.row];
-        cell.imageView.image = [UIImage imageNamed:[connectSettingsImages objectAtIndex:indexPath.row]];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    else if (indexPath.section == 3) {
         cell.textLabel.text = [legalSettings objectAtIndex:indexPath.row];
         cell.imageView.image = [UIImage imageNamed:[legalSettingsImages objectAtIndex:indexPath.row]];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     //Set the text color and the font for the cell textLabels.
-    cell.textLabel.textColor = BLUE_COLOR;
+    cell.textLabel.textColor = JOURNAL_COLOR;
     cell.textLabel.font = tableViewTitleTextFont;
     
     //Set the tableView selection color.
@@ -121,7 +111,7 @@
 
 //Returns the height of the footers.
 - (CGFloat)tableView:(UITableView*)tableView heightForFooterInSection:(NSInteger)section {
-    if (section == 3) {
+    if (section == 2) {
         return 20;
     }
         return 5;
@@ -134,9 +124,6 @@
     }
     else if (section == 1) {
         return @"Support";
-    }
-    else if (section == 2) {
-        return @"Connect";
     }
     else {
         return @"Legal";
@@ -157,17 +144,14 @@
     if (indexPath.section == 0 && indexPath.row == 0) {
         [self performSegueWithIdentifier:@"about" sender:nil];
     }
-   /* else if (indexPath.section == 0 && indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"database" sender:nil];
-    }*/
     else if (indexPath.section == 0 && indexPath.row == 1) {
         [self performSegueWithIdentifier:@"preferences" sender:nil];
     }
     else if (indexPath.section == 1 && indexPath.row == 0) {
-        [self performSegueWithIdentifier:@"helpcenter" sender:nil];
+        [self performSegueWithIdentifier:@"helpCenter" sender:nil];
     }
     else if (indexPath.section == 1 && indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"feedbackcenter" sender:nil];
+        [self performSegueWithIdentifier:@"feedbackCenter" sender:nil];
     }
     else if (indexPath.section == 2 || (indexPath.section == 3 && indexPath.row != 2)) {
         [self performSegueWithIdentifier:@"toWebView" sender:nil];
@@ -185,17 +169,21 @@
 -(void)setTableViewData {
     generalSettings = [NSArray arrayWithObjects:@"About", @"Preferences", nil];
     generalSettingsImages = [NSArray arrayWithObjects:@"About.png", @"Preferences.png", nil];
-    
     feedbackSettings = [NSArray arrayWithObjects:@"Help Center", @"Feedback Center", nil];
     feedbackSettingsImages = [NSArray arrayWithObjects:@"HelpCenter.png", @"FeedbackCenter.png", nil];
-    
-    connectSettings = [NSArray arrayWithObjects:@"Facebook",@"Twitter",@"Tumblr",@"StayHealthy Website", nil];
-    connectSettingsImages = [NSArray arrayWithObjects:@"Facebook.png",@"Twitter.png",@"Tumblr.png",@"Website.png", nil];
-    
     legalSettings = [NSArray arrayWithObjects:@"Terms of Use", @"Privacy Policy", nil];
     legalSettingsImages = [NSArray arrayWithObjects:@"TermsUse.png", @"PrivacyPolicy.png", nil];
 }
 
+/**********************/
+#pragma mark - Actions
+/**********************/
+
+//What happens when the user presses close.
+- (IBAction)closePressed:(id)sender {
+    //Dismiss the view controller.
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 /********************************/
 #pragma mark - Prepare For Segue
@@ -203,43 +191,27 @@
 
 //Notifies the view controller that a segue is about to be performed. Do any additional setup before going to the next view.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    //Load specific content onto the webview depending on what button they press on.
     if ([segue.identifier isEqualToString:@"toWebView"]) {
-        
         WebViewViewController *webViewViewController = [[WebViewViewController alloc] init];
         webViewViewController = segue.destinationViewController;
-    
         if (selectedIndexPath.row == 0 && selectedIndexPath.section == 2) {
-            webViewViewController.titleText = @"Facebook";
-            webViewViewController.url = FACEBOOK_URL;
-            webViewViewController.showClose = NO;
-        }
-        else if (selectedIndexPath.row == 1 && selectedIndexPath.section == 2) {
-            webViewViewController.titleText = @"Twitter";
-            webViewViewController.url = TWITTER_URL;
-            webViewViewController.showClose = NO;
-        }
-        else if (selectedIndexPath.row == 2 && selectedIndexPath.section == 2) {
-            webViewViewController.titleText = @"Tumblr";
-            webViewViewController.url = TUMBLR_URL;
-            webViewViewController.showClose = NO;
-        }
-        else if (selectedIndexPath.row == 3 && selectedIndexPath.section == 2) {
-            webViewViewController.titleText = @"Website";
-            webViewViewController.url = WEBSITE_URL;
-            webViewViewController.showClose = NO;
-        }
-        else if (selectedIndexPath.row == 0 && selectedIndexPath.section == 3) {
             webViewViewController.titleText = @"Terms of Use";
             webViewViewController.url = TERMS_URL;
             webViewViewController.showClose = NO;
         }
-        else if (selectedIndexPath.row == 1 && selectedIndexPath.section == 3) {
+        else if (selectedIndexPath.row == 1 && selectedIndexPath.section == 2) {
             webViewViewController.titleText = @"Privacy Policy";
             webViewViewController.url = PRIVACY_URL;
             webViewViewController.showClose = NO;
         }
     }
+}
+
+//Handles anything we need to clear or reset when the view is about to disappear.
+-(void)viewWillDisappear:(BOOL)animated {
+    //Dismiss any outstaning notifications.
+    [TSMessage dismissActiveNotification];
 }
 
 @end

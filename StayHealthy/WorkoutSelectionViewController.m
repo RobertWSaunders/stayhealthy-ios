@@ -22,7 +22,7 @@
     [self.browseOptionsTableView setScrollEnabled:NO];
     
     browseOptions = @[@"Sports",@"Muscles",@"Equipment",@"Types",@"Difficulties", @"Recents"];
-    browseOptionsImages = @[@"Sports.png",@"Muscles.png",@"Equipment.png",@"Type.png",@"Difficulty.png", @"Recents.png"];
+    browseOptionsImages = @[@"Sports.png",@"Muscles.png",@"Equipment.png",@"Types.png",@"Difficulty.png", @"Recents.png"];
     
     //[self fetchCustomWorkouts];
     [self setNotificationObservers];
@@ -288,6 +288,7 @@
     
     BodyViewCollectionViewCell *cell = (BodyViewCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     [CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
+    cell.bodyZoneLabel.textColor = WORKOUTS_COLOR;
     cell.bodyZoneLabel.text = [browseOptions objectAtIndex:indexPath.row];
     cell.bodyZoneImage.image = [UIImage imageNamed:[browseOptionsImages objectAtIndex:indexPath.row]];
     return cell;

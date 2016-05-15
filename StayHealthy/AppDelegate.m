@@ -25,40 +25,24 @@
 //Called when the application has finished launching.
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
     [Heap setAppId:@"3640135477"];
+    
 #ifdef DEBUG
     [Heap enableVisualizer];
-#endif
-    
     //Set the XcodeColors
     setenv("XcodeColors", "YES", 0);
+#endif
     
-    //Set the appearance of the navigation bar. Set the text color to BLUE_COLOR constant.
-    //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
-    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                                            JOURNAL_COLOR,
-                                                            NSForegroundColorAttributeName,
-                                                            NAVIGATIONBAR_TITLE_FONT,
-                                                            NSFontAttributeName,
-                                                           nil]];
+    //If the application is being launched for the first time set the default preferences.
+    if ([CommonUtilities isUsersFirstLaunch]) {
+        [CommonUtilities resetUserPreferences];
+    }
     
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
-                                         NSFontAttributeName:NAVIGATIONBAR_BUTTON_FONT,
-                                         NSForegroundColorAttributeName:JOURNAL_COLOR
-                                         } forState:UIControlStateNormal];
+    //Set the tint color all content throughout the application.
+    [CommonUtilities setTintColor:JOURNAL_COLOR];
     
-    //Set the tint color of all tab bars.
-    //Set the tint color of all segmented controls.
-    [[UISegmentedControl appearance] setTintColor:JOURNAL_COLOR];
-    //Set the tint color for all the navigation bars.
-    [[UINavigationBar appearance] setTintColor:JOURNAL_COLOR];
-    
+    //Set the iCloud Observers.
     [self setiCloudObservers];
-    
-    //Auto Database Update
-    SHDataHandler *dataHandler = [SHDataHandler getInstance];
-    [dataHandler performDatabaseUpdate];
     
     //Connect to LaunchKit
     [LaunchKit launchWithToken:@"W6MwOqvoV5kdEJzA-Qe1sINeC61khPcPKtEhna_qdRV-"];

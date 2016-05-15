@@ -17,12 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tabBarController.tabBar.hidden=YES;
+    self.tabBarController.tabBar.hidden = YES;
     
     self.title = @"Feedback Center";
     
-    feedbackItems = @[@"Email Feedback",@"Rate StayHealthy"];
-    feedbackItemsImages = @[@"EmailFeedback.png",@"Rate.png"];
+    feedbackItems = @[@"Email Feedback",@"Review StayHealthy"];
+    feedbackItemsImages = @[@"EmailFeedback.png",@"Review.png"];
     
     self.feedbackCenterTableView.scrollEnabled = NO;
     
@@ -74,7 +74,7 @@
     }
     
     cell.textLabel.font = tableViewTitleTextFont;
-    cell.textLabel.textColor = BLUE_COLOR;
+    cell.textLabel.textColor = JOURNAL_COLOR;
     
      [CommonSetUpOperations tableViewSelectionColorSet:cell];
     
@@ -155,6 +155,8 @@
     if ([MFMailComposeViewController canSendMail]){
         NSArray *recipient = [[NSArray alloc]initWithObjects:email, nil];
         MFMailComposeViewController* mailViewController = [[MFMailComposeViewController alloc] init];
+        
+       
         [mailViewController setMailComposeDelegate: self];
         [mailViewController setSubject:emailSubject];
         [mailViewController setMessageBody:[NSString stringWithFormat:@"\n\n\n\n StayHealthy Version: %@ (%@)",[CommonUtilities shortAppVersionNumber], [CommonUtilities appBuildNumber]] isHTML:NO];
@@ -181,5 +183,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+//Handles anything we need to clear or reset when the view is about to disappear.
+-(void)viewWillDisappear:(BOOL)animated {
+    //Dismiss any outstaning notifications.
+    [TSMessage dismissActiveNotification];
+}
 
 @end

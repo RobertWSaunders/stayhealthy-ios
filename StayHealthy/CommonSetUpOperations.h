@@ -24,7 +24,7 @@
 + (void)setFirstViewTSMessage:(NSString*)key viewController:(UIViewController*)view message:(NSString*)message;
 
 //Styles SIAlertViews.
-+ (void)styleAlertView;
++ (void)styleAlertView:(UIColor*)color;
 
 //Loads images in the background.
 + (void)loadImageOnBackgroundThread:(UIImageView*)imageView image:(UIImage*)image;
