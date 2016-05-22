@@ -154,7 +154,7 @@
         cell.imageView.image = [UIImage imageNamed:[browseOptionsImages objectAtIndex:indexPath.row]];
         
         cell.textLabel.textColor = BLUE_COLOR;
-        cell.textLabel.font = tableViewTitleTextFont;
+        cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
         
         [CommonSetUpOperations tableViewSelectionColorSet:cell];
         //Return the cell.

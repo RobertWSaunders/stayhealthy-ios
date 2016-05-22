@@ -180,7 +180,7 @@
         }
         
 
-        cell.textLabel.font = tableViewTitleTextFont;
+        cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
         cell.detailTextLabel.font = tableViewUnderTitleTextFont;
 
         

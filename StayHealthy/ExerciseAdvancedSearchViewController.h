@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 //Import the advanced options selection view controller.
-#import "advancedOptionsSelect.h"
+//#import "advancedOptionsSelect.h"
 //Import our custom TableView cell with the text field for the exercise name search.
 #import "TextFieldTableViewCell.h"
 #import "ExerciseListController.h"
 
 //Incorporate the Advanced options delegate and the TableView delegate and data source, UITextField delegate for the custom cell used to search exercise name.
-@interface ExerciseAdvancedSearchViewController : UIViewController <MultiPurposeListViewDelegate,UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate> {
+@interface ExerciseAdvancedSearchViewController : UIViewController <UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate> {
     
     //Array filled with the advanced search options.
     NSArray *exerciseAdvancedSearchOptions;

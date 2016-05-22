@@ -15,11 +15,14 @@
 //Title to be displayed in the navigation bar.
 @property (weak,nonatomic) NSString *titleText;
 @property (nonatomic,assign) BOOL showClose;
+@property (nonatomic,assign) BOOL navigationEnabled;
 //WebView that loads the passed url.
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 //Activity indicator that spins while the webview is loading the url.
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 - (IBAction)closeButtonTapped:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *spinnerImage;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *forwardButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 
 @end

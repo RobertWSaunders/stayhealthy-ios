@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -49,9 +49,9 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="y6T-Zd-tOv"/>
                                         <exclude reference="UGn-uw-sAT"/>
                                         <exclude reference="sMc-hX-v15"/>
+                                        <exclude reference="y6T-Zd-tOv"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -85,8 +85,8 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="mIj-Zd-uCB"/>
                                         <exclude reference="UTL-nO-qyD"/>
+                                        <exclude reference="mIj-Zd-uCB"/>
                                         <exclude reference="uN7-7m-bOQ"/>
                                     </mask>
                                 </variation>

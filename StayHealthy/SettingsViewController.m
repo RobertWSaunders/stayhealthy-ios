@@ -38,7 +38,7 @@
 
 //Returns the height for the tableViews cells.
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 48;
 }
 
 //Returns the number of sections for the tableView.
@@ -91,7 +91,7 @@
     
     //Set the text color and the font for the cell textLabels.
     cell.textLabel.textColor = JOURNAL_COLOR;
-    cell.textLabel.font = tableViewTitleTextFont;
+    cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
     
     //Set the tableView selection color.
     [CommonSetUpOperations tableViewSelectionColorSet:cell];
@@ -120,17 +120,32 @@
 //Returns the title for the header in the tableView.
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"General";
+        return @"GENERAL";
     }
     else if (section == 1) {
-        return @"Support";
+        return @"SUPPORT";
     }
     else {
-        return @"Legal";
+        return @"LEGAL";
     }
 
     return nil;
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UILabel *myLabel = [[UILabel alloc] init];
+    myLabel.frame = CGRectMake(15, 18, self.view.frame.size.width, 20);
+    myLabel.font = TABLE_VIEW_SECTION_TITLE_FONT;
+    myLabel.textColor = DARK_GRAY_COLOR;
+    myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+    
+    UIView *headerView = [[UIView alloc] init];
+    [headerView addSubview:myLabel];
+    
+    return headerView;
+}
+
 
 //----------------------------------
 #pragma mark Cell Selection Handling
@@ -199,11 +214,13 @@
             webViewViewController.titleText = @"Terms of Use";
             webViewViewController.url = TERMS_URL;
             webViewViewController.showClose = NO;
+            webViewViewController.navigationEnabled = NO;
         }
         else if (selectedIndexPath.row == 1 && selectedIndexPath.section == 2) {
             webViewViewController.titleText = @"Privacy Policy";
             webViewViewController.url = PRIVACY_URL;
             webViewViewController.showClose = NO;
+            webViewViewController.navigationEnabled = NO;
         }
     }
 }

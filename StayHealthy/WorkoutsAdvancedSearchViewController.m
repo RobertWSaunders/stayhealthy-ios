@@ -125,7 +125,7 @@
         cell.detailTextLabel.text = [tableViewAttributeSelectionsUserInterface objectAtIndex:indexPath.row];
         
         //Stlying the cells.
-        cell.textLabel.font = tableViewTitleTextFont;
+        cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
         cell.detailTextLabel.font = tableViewDetailTextFont;
         cell.textLabel.textColor = BLUE_COLOR;
         cell.detailTextLabel.textColor = LIGHT_GRAY_COLOR;
@@ -157,7 +157,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         //Stlying the cells.
-        cell.cellLabel.font = tableViewTitleTextFont;
+        cell.cellLabel.font = TABLE_VIEW_TITLE_FONT;
         cell.cellLabel.textColor = BLUE_COLOR;
         cell.textField.font = tableViewDetailTextFont;
         cell.textField.textColor = LIGHT_GRAY_COLOR;
@@ -192,7 +192,7 @@
 //Handles what happens when a user performs a segue.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"searchOptions"]) {
-        //What happens when the user selects a cell in the table view, takes the user to selection page.
+    /*    //What happens when the user selects a cell in the table view, takes the user to selection page.
         //Get the index path for the selected cell the user pressed.
         NSIndexPath *indexPath = [self.workoutSpecificationTableView indexPathForSelectedRow];
         //Create reference to the next view controller.
@@ -242,6 +242,7 @@
                 attributeSelectionPage.titleText = @"Select Workout Types";
             }
         }
+     */
     }
     else if ([segue.identifier isEqualToString:@"search"]) {
         WorkoutListViewController *workoutsSearchViewController = [[WorkoutListViewController alloc] init];

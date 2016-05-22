@@ -782,4 +782,19 @@
     [self updateValueForKey:PREFERENCE_DEFAULT_LIKED_VIEW stringValue:@"Exercises"];
 }
 
++ (UIColor*)returnModuleColor:(modules)module {
+    if (module == journal) {
+        return JOURNAL_COLOR;
+    }
+    else if (module == exercises) {
+        return WORKOUTS_COLOR;
+    }
+    else if (module == workouts) {
+        return WORKOUTS_COLOR;
+    }
+    else {
+        return LIKED_COLOR;
+    }
+}
+
 @end

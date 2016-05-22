@@ -208,7 +208,7 @@
         
          cell.detailTextLabel.textColor = [CommonSetUpOperations determineDifficultyColor:[workoutAnalysisContent objectAtIndex:indexPath.row]];
         
-        cell.textLabel.font = tableViewTitleTextFont;
+        cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
         cell.textLabel.textColor = BLUE_COLOR;
         cell.detailTextLabel.font = tableViewDetailTextFont;
         
@@ -269,7 +269,7 @@
     }
     else if ([segue.identifier isEqualToString:@"showList"]) {
         NSIndexPath *indexPath = [self.workoutAnalysisTableView indexPathForSelectedRow];
-        advancedOptionsSelect *attributeSelectionPage = [[advancedOptionsSelect alloc]init];
+      /*  advancedOptionsSelect *attributeSelectionPage = [[advancedOptionsSelect alloc]init];
         //Set the destination.
         attributeSelectionPage = segue.destinationViewController;
         if (!self.customWorkoutMode) {
@@ -301,7 +301,7 @@
             }
 
         }
-               attributeSelectionPage.viewMode = YES;
+               attributeSelectionPage.viewMode = YES;*/
     }
     else if ([segue.identifier isEqualToString:@"editCustomWorkout"]) {
         UINavigationController *navController = segue.destinationViewController;

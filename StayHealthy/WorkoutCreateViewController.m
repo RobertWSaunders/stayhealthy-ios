@@ -141,7 +141,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             //Stlying the cells.
-            cell.cellLabel.font = tableViewTitleTextFont;
+            cell.cellLabel.font = TABLE_VIEW_TITLE_FONT;
             cell.cellLabel.textColor = WORKOUTS_COLOR;
             cell.textField.font = tableViewDetailTextFont;
             cell.textField.textColor = LIGHT_GRAY_COLOR;
@@ -214,7 +214,7 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:workoutAttributeCell];
             }
 
-            cell.textLabel.font = tableViewTitleTextFont;
+            cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
             cell.textLabel.textColor = WORKOUTS_COLOR;
             cell.textLabel.text = @"Add Exercises";
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -243,7 +243,7 @@
             cell.detailTextLabel.textColor = [CommonSetUpOperations determineDifficultyColor:cell.detailTextLabel.text];
         
         //Stlying the cells.
-        cell.textLabel.font = tableViewTitleTextFont;
+        cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
         cell.detailTextLabel.font = tableViewDetailTextFont;
         cell.textLabel.textColor = WORKOUTS_COLOR;
         //cell.detailTextLabel.textColor = LIGHT_GRAY_COLOR;
@@ -294,7 +294,7 @@
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Delete";
             cell.textLabel.textColor = RED_COLOR;
-            cell.textLabel.font = tableViewTitleTextFont;
+            cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
         }
         
@@ -686,7 +686,7 @@
         //Get the index path for the selected cell the user pressed.
         NSIndexPath *indexPath = [self.createWorkoutTableView indexPathForSelectedRow];
         //Create reference to the next view controller.
-        advancedOptionsSelect *attributeSelectionPage = [[advancedOptionsSelect alloc]init];
+       /* advancedOptionsSelect *attributeSelectionPage = [[advancedOptionsSelect alloc]init];
         //Set the destination.
         attributeSelectionPage = segue.destinationViewController;
         //Set the properities for the next page.
@@ -735,7 +735,7 @@
             attributeSelectionPage.titleText = @"Select Workout Type";
             attributeSelectionPage.singleSelectionMode = YES;
         }
-    }
+    }*/
     }
     else if ([segue.identifier isEqualToString:@"selectExercises"]) {
         UINavigationController *navController  = [[UINavigationController alloc] init];

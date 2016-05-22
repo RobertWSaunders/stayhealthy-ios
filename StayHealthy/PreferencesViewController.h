@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "PreferenceSwitch.h"
+#import "SelectionViewController.h"
 
-@interface PreferencesViewController : UIViewController{
+@interface PreferencesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SelectionDelegate> {
     //Array filled with overall application preferences.
     NSArray *generalPreferences;
     //Array filled with the Exercises module preferences.

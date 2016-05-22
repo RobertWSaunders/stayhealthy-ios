@@ -73,7 +73,7 @@
         cell.imageView.image = [UIImage imageNamed:[feedbackItemsImages objectAtIndex:indexPath.row+1]];
     }
     
-    cell.textLabel.font = tableViewTitleTextFont;
+    cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
     cell.textLabel.textColor = JOURNAL_COLOR;
     
      [CommonSetUpOperations tableViewSelectionColorSet:cell];

@@ -216,6 +216,8 @@
 
 + (BOOL)isUsersFirstLaunch;
 
++ (UIColor*)returnModuleColor:(modules)module;
+
 + (void)resetUserPreferences;
 
 @end

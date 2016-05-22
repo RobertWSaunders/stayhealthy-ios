@@ -10,10 +10,10 @@
 #import "ExerciseTableViewCell.h"
 #import "TextFieldTableViewCell.h"
 #import "TextViewTableViewCell.h"
-#import "advancedOptionsSelect.h"
+//#import "advancedOptionsSelect.h"
 #import "ExerciseSelectionViewController.h"
 
-@interface WorkoutCreateViewController : UIViewController <UITableViewDataSource, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, MultiPurposeListViewDelegate, ExerciseSelectionDelegate, UIScrollViewDelegate> {
+@interface WorkoutCreateViewController : UIViewController <UITableViewDataSource, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, ExerciseSelectionDelegate, UIScrollViewDelegate> {
     
     //Array filled with the advanced search options.
     NSArray *workoutOptions;

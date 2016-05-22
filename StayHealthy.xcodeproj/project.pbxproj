@@ -31,7 +31,6 @@
 		3FDA2D5C19C26699003C2FF4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FDA2D5B19C26699003C2FF4 /* Images.xcassets */; };
 		3FE100931863CC0100C53D76 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE100921863CC0100C53D76 /* QuartzCore.framework */; };
 		3FE103D3186618F200C53D76 /* ExerciseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE103D2186618F200C53D76 /* ExerciseDetailViewController.m */; };
-		3FE41E431ABE0644007522AB /* advancedOptionsSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE41E421ABE0644007522AB /* advancedOptionsSelect.m */; };
 		3FE95E24187A5DB0005DD13D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE95E23187A5DB0005DD13D /* SettingsViewController.m */; };
 		3FF9DDA11853BAEC0083A499 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF9DDA01853BAEC0083A499 /* CoreText.framework */; };
 		EB0853D61CC42288000DEAC0 /* JournalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0853D51CC42288000DEAC0 /* JournalViewController.m */; };
@@ -45,6 +44,13 @@
 		EB2C4A6A1B89F798005D183A /* CustomWorkoutDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A691B89F798005D183A /* CustomWorkoutDataManager.m */; };
 		EB2C4A6D1B89F8DC005D183A /* SHWorkout+Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A6C1B89F8DC005D183A /* SHWorkout+Workout.m */; };
 		EB2C4A701B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A6F1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m */; };
+		EB384AFD1CED48F90073A37B /* SelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384AFC1CED48F90073A37B /* SelectionViewController.m */; };
+		EB384B001CED4C170073A37B /* Utilities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB384AFF1CED4C170073A37B /* Utilities.storyboard */; };
+		EB384B041CED59F70073A37B /* SelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B031CED59F70073A37B /* SelectionTableViewCell.m */; };
+		EB384B0E1CF09D640073A37B /* LoggingPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B0D1CF09D640073A37B /* LoggingPreferencesViewController.m */; };
+		EB384B111CF09D970073A37B /* NotificationPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B101CF09D970073A37B /* NotificationPreferencesViewController.m */; };
+		EB384B151CF0A05D0073A37B /* AddJournalEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B141CF0A05D0073A37B /* AddJournalEntryViewController.m */; };
+		EB384B171CF120150073A37B /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB384B161CF120150073A37B /* TelerikUI.framework */; };
 		EB3B82581C4AEF5300FAAD52 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3B82571C4AEF5300FAAD52 /* Exercise.m */; };
 		EB3B9E251BE8023600BCEF28 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E241BE8023600BCEF28 /* libz.tbd */; };
 		EB3B9E271BE8024300BCEF28 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E261BE8024300BCEF28 /* libsqlite3.tbd */; };
@@ -171,7 +177,6 @@
 		EBF7F8701CD959770086C9E0 /* Liked_Pad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F86F1CD959770086C9E0 /* Liked_Pad.storyboard */; };
 		EBF7F8721CD9599F0086C9E0 /* Walkthrough_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F8711CD9599F0086C9E0 /* Walkthrough_iPad.storyboard */; };
 		EBFE82201CE6B42400EF3066 /* PreferenceSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFE821F1CE6B42400EF3066 /* PreferenceSwitch.m */; };
-		EBFE82241CE8021400EF3066 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBFE82231CE8021400EF3066 /* TelerikUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -222,8 +227,6 @@
 		3FE100921863CC0100C53D76 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3FE103D1186618F200C53D76 /* ExerciseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailViewController.h; sourceTree = "<group>"; };
 		3FE103D2186618F200C53D76 /* ExerciseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailViewController.m; sourceTree = "<group>"; };
-		3FE41E411ABE0644007522AB /* advancedOptionsSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = advancedOptionsSelect.h; sourceTree = "<group>"; };
-		3FE41E421ABE0644007522AB /* advancedOptionsSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = advancedOptionsSelect.m; sourceTree = "<group>"; };
 		3FE95E22187A5DB0005DD13D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		3FE95E23187A5DB0005DD13D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		3FF9DDA01853BAEC0083A499 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -249,6 +252,18 @@
 		EB2C4A6C1B89F8DC005D183A /* SHWorkout+Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHWorkout+Workout.m"; sourceTree = "<group>"; };
 		EB2C4A6E1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHCustomWorkout+CustomWorkout.h"; sourceTree = "<group>"; };
 		EB2C4A6F1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHCustomWorkout+CustomWorkout.m"; sourceTree = "<group>"; };
+		EB384AFB1CED48F90073A37B /* SelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionViewController.h; sourceTree = "<group>"; };
+		EB384AFC1CED48F90073A37B /* SelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionViewController.m; sourceTree = "<group>"; };
+		EB384AFF1CED4C170073A37B /* Utilities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Utilities.storyboard; sourceTree = "<group>"; };
+		EB384B021CED59F70073A37B /* SelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionTableViewCell.h; sourceTree = "<group>"; };
+		EB384B031CED59F70073A37B /* SelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionTableViewCell.m; sourceTree = "<group>"; };
+		EB384B0C1CF09D640073A37B /* LoggingPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingPreferencesViewController.h; sourceTree = "<group>"; };
+		EB384B0D1CF09D640073A37B /* LoggingPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingPreferencesViewController.m; sourceTree = "<group>"; };
+		EB384B0F1CF09D970073A37B /* NotificationPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationPreferencesViewController.h; sourceTree = "<group>"; };
+		EB384B101CF09D970073A37B /* NotificationPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationPreferencesViewController.m; sourceTree = "<group>"; };
+		EB384B131CF0A05D0073A37B /* AddJournalEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddJournalEntryViewController.h; sourceTree = "<group>"; };
+		EB384B141CF0A05D0073A37B /* AddJournalEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddJournalEntryViewController.m; sourceTree = "<group>"; };
+		EB384B161CF120150073A37B /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TelerikUI.framework; path = ../../ProjectResources/StayHealthy/Frameworks/Frameworks/TelerikUI.framework; sourceTree = "<group>"; };
 		EB3ABB341BF00244004AF091 /* StayHealthy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StayHealthy-Bridging-Header.h"; sourceTree = "<group>"; };
 		EB3B82561C4AEF5300FAAD52 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
 		EB3B82571C4AEF5300FAAD52 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
@@ -472,7 +487,6 @@
 		EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StayHealthy2.xcdatamodel; sourceTree = "<group>"; };
 		EBFE821E1CE6B42400EF3066 /* PreferenceSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceSwitch.h; sourceTree = "<group>"; };
 		EBFE821F1CE6B42400EF3066 /* PreferenceSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceSwitch.m; sourceTree = "<group>"; };
-		EBFE82231CE8021400EF3066 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TelerikUI.framework; path = ../../ProjectResources/StayHealthy/Frameworks/Frameworks/TelerikUI.framework; sourceTree = "<group>"; };
 		EBFEBF0A1C4427F000F9EA01 /* StayHealthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = StayHealthy.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -482,7 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBAF51381CD441E4005DAE31 /* libicucore.tbd in Frameworks */,
-				EBFE82241CE8021400EF3066 /* TelerikUI.framework in Frameworks */,
+				EB384B171CF120150073A37B /* TelerikUI.framework in Frameworks */,
 				EB3B9E271BE8024300BCEF28 /* libsqlite3.tbd in Frameworks */,
 				EB3B9E251BE8023600BCEF28 /* libz.tbd in Frameworks */,
 				3F7D77AF19A3086200E00065 /* CFNetwork.framework in Frameworks */,
@@ -531,7 +545,7 @@
 		3F2E5A8E18E11B8600EE4734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EBFE82231CE8021400EF3066 /* TelerikUI.framework */,
+				EB384B161CF120150073A37B /* TelerikUI.framework */,
 				3F7D77A619A3081300E00065 /* AudioToolbox.framework */,
 				3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */,
 				3F7D77AC19A3086200E00065 /* Security.framework */,
@@ -581,6 +595,7 @@
 		3FC465E21B33A79B0062EBDB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EB384AFA1CED486C0073A37B /* Utility Tools */,
 				EB701E7C1BE7E827005003B1 /* Initial Launch */,
 				EB77FFD11C48909B00C0DE54 /* Journal */,
 				3FF735BB185ABA9900FECDF2 /* Exercises */,
@@ -681,8 +696,6 @@
 				EB63EF991B4B5F6A00EF35A3 /* Custom UITextfield TableViewCell */,
 				EB63EF391B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.h */,
 				EB63EF3A1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m */,
-				3FE41E411ABE0644007522AB /* advancedOptionsSelect.h */,
-				3FE41E421ABE0644007522AB /* advancedOptionsSelect.m */,
 			);
 			name = "Exercise Adanced Search";
 			sourceTree = "<group>";
@@ -833,6 +846,51 @@
 				EB18FDD81C35712E0057D8B0 /* BodyViewCollectionViewCell.m */,
 			);
 			name = "Body Zone Collection View Cell";
+			sourceTree = "<group>";
+		};
+		EB384AF81CED47760073A37B /* Logging Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				EB384B0C1CF09D640073A37B /* LoggingPreferencesViewController.h */,
+				EB384B0D1CF09D640073A37B /* LoggingPreferencesViewController.m */,
+			);
+			name = "Logging Preferences";
+			sourceTree = "<group>";
+		};
+		EB384AF91CED47880073A37B /* Notification Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				EB384B0F1CF09D970073A37B /* NotificationPreferencesViewController.h */,
+				EB384B101CF09D970073A37B /* NotificationPreferencesViewController.m */,
+			);
+			name = "Notification Preferences";
+			sourceTree = "<group>";
+		};
+		EB384AFA1CED486C0073A37B /* Utility Tools */ = {
+			isa = PBXGroup;
+			children = (
+				EB384AFE1CED490B0073A37B /* List Selection View */,
+			);
+			name = "Utility Tools";
+			sourceTree = "<group>";
+		};
+		EB384AFE1CED490B0073A37B /* List Selection View */ = {
+			isa = PBXGroup;
+			children = (
+				EB384B011CED590F0073A37B /* Selection Cell */,
+				EB384AFB1CED48F90073A37B /* SelectionViewController.h */,
+				EB384AFC1CED48F90073A37B /* SelectionViewController.m */,
+			);
+			name = "List Selection View";
+			sourceTree = "<group>";
+		};
+		EB384B011CED590F0073A37B /* Selection Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EB384B021CED59F70073A37B /* SelectionTableViewCell.h */,
+				EB384B031CED59F70073A37B /* SelectionTableViewCell.m */,
+			);
+			name = "Selection Cell";
 			sourceTree = "<group>";
 		};
 		EB47028C1C063CEE00732BC9 /* Workouts Advanced Search */ = {
@@ -994,9 +1052,11 @@
 		EB76703B1B52A96000A188B4 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				EBFE821D1CE6B34A00EF3066 /* Preference UISwitch */,
 				EB9CF6FF1B52AA00006E2984 /* PreferencesViewController.h */,
 				EB9CF7001B52AA00006E2984 /* PreferencesViewController.m */,
+				EB384AF81CED47760073A37B /* Logging Preferences */,
+				EB384AF91CED47880073A37B /* Notification Preferences */,
+				EBFE821D1CE6B34A00EF3066 /* Preference UISwitch */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -1146,6 +1206,8 @@
 			children = (
 				EB0853D41CC42288000DEAC0 /* JournalViewController.h */,
 				EB0853D51CC42288000DEAC0 /* JournalViewController.m */,
+				EB384B131CF0A05D0073A37B /* AddJournalEntryViewController.h */,
+				EB384B141CF0A05D0073A37B /* AddJournalEntryViewController.m */,
 			);
 			name = Journal;
 			sourceTree = "<group>";
@@ -1430,8 +1492,9 @@
 				EBAF51171CD4266D005DAE31 /* Exercises.storyboard */,
 				EBAF51191CD42677005DAE31 /* Workouts.storyboard */,
 				EBAF511B1CD42685005DAE31 /* Liked.storyboard */,
-				EBAF511F1CD428A8005DAE31 /* Walkthrough.storyboard */,
 				EBAF51211CD42CC5005DAE31 /* Settings.storyboard */,
+				EB384AFF1CED4C170073A37B /* Utilities.storyboard */,
+				EBAF511F1CD428A8005DAE31 /* Walkthrough.storyboard */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -1575,6 +1638,7 @@
 				EB77FF8F1C485EA900C0DE54 /* NotificationBackgroundSuccess.png in Resources */,
 				EB8F61D91CAD984B00030F3F /* .gitkeep in Resources */,
 				EBAF51101CD04C13005DAE31 /* StayHealthyDatabase.sqlite in Resources */,
+				EB384B001CED4C170073A37B /* Utilities.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1646,6 +1710,7 @@
 				EB8F61EE1CAD984B00030F3F /* LKNavigationController.m in Sources */,
 				EB77FF671C485E9200C0DE54 /* UIWindow+SIUtils.m in Sources */,
 				EB8AF5551C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m in Sources */,
+				EB384AFD1CED48F90073A37B /* SelectionViewController.m in Sources */,
 				EB77FFC11C485F5F00C0DE54 /* UIWindow+LGAlertView.m in Sources */,
 				3F8BB363198D4AF70098E1A7 /* CommonSetUpOperations.m in Sources */,
 				EBAF51411CD44613005DAE31 /* ExerciseLogDataManager.m in Sources */,
@@ -1666,6 +1731,7 @@
 				EB8F61F11CAD984B00030F3F /* LKSimpleStackView.m in Sources */,
 				3F63B1AA1ABB9F24000CDE06 /* HomeTabBarController.m in Sources */,
 				EBF7E74B1C49618400E878E9 /* SHDataUtilities.m in Sources */,
+				EB384B041CED59F70073A37B /* SelectionTableViewCell.m in Sources */,
 				EB8F61EF1CAD984B00030F3F /* LKPopCustomSegue.m in Sources */,
 				EB8F61E01CAD984B00030F3F /* LKAPIClient.m in Sources */,
 				EB8F61E31CAD984B00030F3F /* LKUtils.m in Sources */,
@@ -1680,7 +1746,6 @@
 				EBAF512C1CD43EEE005DAE31 /* SHWorkoutLog.m in Sources */,
 				EBAF51531CD44837005DAE31 /* SHWorkoutLog+WorkoutLog.m in Sources */,
 				EB77FF871C485EA900C0DE54 /* TSMessage.m in Sources */,
-				3FE41E431ABE0644007522AB /* advancedOptionsSelect.m in Sources */,
 				EB2C4A5B1B89F531005D183A /* CustomWorkout.m in Sources */,
 				EB701E7F1BE7EA54005003B1 /* WalkThoughOneViewController.m in Sources */,
 				EB8F61DC1CAD984B00030F3F /* LKBundleInfo.m in Sources */,
@@ -1693,6 +1758,7 @@
 				EB77FF9A1C485EA900C0DE54 /* TSBlurView.m in Sources */,
 				EB77FFA61C485EE000C0DE54 /* Reachability.m in Sources */,
 				EB77FFBB1C485F5F00C0DE54 /* LGAlertView.m in Sources */,
+				EB384B0E1CF09D640073A37B /* LoggingPreferencesViewController.m in Sources */,
 				EB0853DA1CC42E58000DEAC0 /* ExerciseCollectionViewCell.m in Sources */,
 				EB77FFAA1C485F0F00C0DE54 /* MZTimerLabel.m in Sources */,
 				EB77FF881C485EA900C0DE54 /* HexColor.m in Sources */,
@@ -1708,9 +1774,11 @@
 				EB8F61E41CAD984B00030F3F /* NSDictionary+LKFormEncoded.m in Sources */,
 				EB8F61EB1CAD984B00030F3F /* LKButton.m in Sources */,
 				EB4702991C063E3100732BC9 /* WorkoutDetailViewController.m in Sources */,
+				EB384B151CF0A05D0073A37B /* AddJournalEntryViewController.m in Sources */,
 				EB0853D61CC42288000DEAC0 /* JournalViewController.m in Sources */,
 				EB8F61F51CAD984B00030F3F /* LKCardPresentationController.m in Sources */,
 				EBC64C5D1C02C3CD00B33ECA /* WorkoutTableViewCell.m in Sources */,
+				EB384B111CF09D970073A37B /* NotificationPreferencesViewController.m in Sources */,
 				EBB8C9811BFA855300347B24 /* FeedbackCenterViewController.m in Sources */,
 				EB8F61E51CAD984B00030F3F /* NSString+LKURLEncoded.m in Sources */,
 				EBB8C9701BF90ECA00347B24 /* ExerciseSelectionViewController.m in Sources */,
@@ -2066,6 +2134,14 @@
 					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
@@ -2284,6 +2360,14 @@
 					Resources/StayHealthy/Frameworks,
 					and,
 					Bundles/Frameworkos,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
 					"$(USER_LIBRARY_DIR)/Mobile",

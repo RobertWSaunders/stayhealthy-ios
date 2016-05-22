@@ -229,7 +229,7 @@
     cell.textLabel.text = [tableViewTitles objectAtIndex:indexPath.row];
     [cell setUserInteractionEnabled:NO];
     
-    cell.textLabel.font = tableViewTitleTextFont;
+    cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
     cell.detailTextLabel.font = tableViewDetailTextFont;
     
     cell.textLabel.textColor = BLUE_COLOR;
@@ -243,10 +243,10 @@
         NSMutableAttributedString *setsText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Sets  (Recommended)"]];
         
         //Red and large
-        [setsText setAttributes:@{NSFontAttributeName:tableViewTitleTextFont, NSForegroundColorAttributeName:BLUE_COLOR} range:NSMakeRange(0, 6)];
+        [setsText setAttributes:@{NSFontAttributeName:TABLE_VIEW_TITLE_FONT, NSForegroundColorAttributeName:BLUE_COLOR} range:NSMakeRange(0, 6)];
         
         //Rest of text -- just futura
-        [setsText setAttributes:@{NSFontAttributeName:tableViewTitleTextFont, NSForegroundColorAttributeName:[UIColor lightGrayColor]} range:NSMakeRange(5, setsText.length - 5)];
+        [setsText setAttributes:@{NSFontAttributeName:TABLE_VIEW_TITLE_FONT, NSForegroundColorAttributeName:[UIColor lightGrayColor]} range:NSMakeRange(5, setsText.length - 5)];
         
         cell.textLabel.attributedText = setsText;
                                   
@@ -261,10 +261,10 @@
         NSMutableAttributedString *repsText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Reps  (Recommended)"]];
         
         //Red and large
-        [repsText setAttributes:@{NSFontAttributeName:tableViewTitleTextFont, NSForegroundColorAttributeName:BLUE_COLOR} range:NSMakeRange(0, 6)];
+        [repsText setAttributes:@{NSFontAttributeName:TABLE_VIEW_TITLE_FONT, NSForegroundColorAttributeName:BLUE_COLOR} range:NSMakeRange(0, 6)];
         
         //Rest of text -- just futura
-        [repsText setAttributes:@{NSFontAttributeName:tableViewTitleTextFont, NSForegroundColorAttributeName:[UIColor lightGrayColor]} range:NSMakeRange(5, repsText.length - 5)];
+        [repsText setAttributes:@{NSFontAttributeName:TABLE_VIEW_TITLE_FONT, NSForegroundColorAttributeName:[UIColor lightGrayColor]} range:NSMakeRange(5, repsText.length - 5)];
         
         cell.textLabel.attributedText = repsText;
     }

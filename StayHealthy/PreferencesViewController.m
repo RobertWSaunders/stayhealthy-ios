@@ -16,6 +16,7 @@
 
 //What happens right before the view loads.
 - (void)viewDidLoad {
+    
     //Hide the tabbar.
     self.tabBarController.tabBar.hidden = YES;
     
@@ -26,9 +27,9 @@
     [CommonSetUpOperations styleAlertView:JOURNAL_COLOR];
     
     //Fill the arrays with the.
-    generalPreferences = @[@"Tutorial Messages",@"Automatic Database Updates",@"List View",@"Default Launch Module"];
-    journalPreferences = @[@"Show Calendar Weeks",@"Highlight Weekends",@"Simple Mode",@"Default Calendar View",@"Default Selected Date",@"Logging",@"Notifications"];
-    exercisesPreferences = @[@"Intelligent Mode",@"Always Focused Search",@"Scientific Muscle Names",@"Recents Shown",@"Default View"];
+    generalPreferences = @[@"Tutorial Messages",@"Automatic Database Updates",@"List View",@"Default Launch Module",@"Notifications"];
+    journalPreferences = @[@"Show Calendar Weeks",@"Highlight Weekends",@"Simple Mode",@"Default Calendar View",@"Default Selected Date",@"Logging"];
+    exercisesPreferences = @[@"Intelligent Mode",@"Always Focused Search",@"Scientific Muscle Names",@"Recent Exercises Shown",@"Default View"];
     workoutPreferences = @[@"Workout Sectioning",@"Default View"];
     likedPreferences = @[@"Default View"];
     
@@ -42,6 +43,9 @@
     
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+
 }
 
 /*******************************************************/
@@ -50,7 +54,7 @@
 
 //Returns the height for the tableViews cells.
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44.0f;
+    return 48.0f;
 }
 
 //Returns the number of sections for the tableView.
@@ -103,7 +107,7 @@
         //Set the detail text label to nil.
         cell.detailTextLabel.text = @"";
         //Set the font for the text label.
-        cell.textLabel.font = tableViewTitleTextFont;
+        cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
         //Set the detail text label.
         cell.detailTextLabel.font = tableViewDetailTextFont;
         //Set the text color and the font for the cell textLabels.
@@ -140,6 +144,11 @@
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 cell.selectionStyle = UITableViewCellSelectionStyleDefault;
             }
+            //Notifications
+            else if (indexPath.row == 4) {
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+            }
         }
         //Journal Preferences
         else if (indexPath.section == 1) {
@@ -173,11 +182,6 @@
             }
             //Logging
             else if (indexPath.row == 5) {
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-            }
-            //Notifications
-            else if (indexPath.row == 6) {
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 cell.selectionStyle = UITableViewCellSelectionStyleDefault;
             }
@@ -257,7 +261,7 @@
         }
         
         //Set the font for the text label.
-        cell.textLabel.font = tableViewTitleTextFont;
+        cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
         cell.textLabel.text = @"Reset";
         cell.textLabel.textColor = RED_COLOR;
         cell.detailTextLabel.text = nil;
@@ -292,23 +296,37 @@
 //Returns the title for headers in the tableView.
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-         return @"General";
+         return @"GENERAL";
     }
     else if (section == 1) {
-        return @"Journal";
+        return @"JOURNAL";
     }
     else if (section == 2) {
-        return @"Exercises";
+        return @"EXERCISES";
     }
     else if (section == 3) {
-        return @"Workouts";
+        return @"WORKOUTS";
     }
     else if (section == 4) {
-        return @"Liked";
+        return @"LIKED";
     }
     else {
         return nil;
     }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UILabel *myLabel = [[UILabel alloc] init];
+    myLabel.frame = CGRectMake(15, 18, self.view.frame.size.width, 20);
+    myLabel.font = TABLE_VIEW_SECTION_TITLE_FONT;
+    myLabel.textColor = DARK_GRAY_COLOR;
+    myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+    
+    UIView *headerView = [[UIView alloc] init];
+    [headerView addSubview:myLabel];
+    
+    return headerView;
 }
 
 //----------------------------------
@@ -324,8 +342,55 @@
     else if (((indexPath.section == 0) && (indexPath.row == 3)) || ((indexPath.section == 1) && ((indexPath.row == 3) || (indexPath.row == 4))) || ((indexPath.section == 2) && ((indexPath.row == 3) || (indexPath.row == 4))) || ((indexPath.section == 3) && (indexPath.row == 1)) || (indexPath.section == 4)) {
         [self performSegueWithIdentifier:@"showOptions" sender:self];
     }
+    else if (indexPath.row == 4 && indexPath.section == 0){
+        [self performSegueWithIdentifier:@"NotificationPreferences" sender:nil];
+    }
+    else if (indexPath.row == 5 && indexPath.section == 1){
+        [self performSegueWithIdentifier:@"LoggingPreferences" sender:nil];
+    }
+    
     //Deselect the tableView cell once the user has selected.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+/*****************************************/
+#pragma mark - Selection Delegate Methods
+/*****************************************/
+
+- (void)selectedItemsWithCount:(NSMutableArray *)selectedItems indexPath:(NSIndexPath *)indexPath passedArrayCount:(NSInteger)passedArrayCount {
+    
+    UITableViewCell *cell = [self.preferencesTableView cellForRowAtIndexPath:indexPath];
+    
+    if (indexPath.row == 3 && indexPath.section == 0) {
+        cell.detailTextLabel.text = [selectedItems firstObject];
+        [[NSUserDefaults standardUserDefaults] setValue:[selectedItems firstObject] forKeyPath:PREFERENCE_DEFAULT_LAUNCH_MODULE];
+    }
+    else if (indexPath.row == 3 && indexPath.section == 1) {
+        cell.detailTextLabel.text = [selectedItems firstObject];
+        [[NSUserDefaults standardUserDefaults] setValue:[selectedItems firstObject] forKeyPath:PREFERENCE_CALENDAR_VIEW];
+    }
+    else if (indexPath.row == 4 && indexPath.section == 1) {
+        cell.detailTextLabel.text = [selectedItems firstObject];
+        [[NSUserDefaults standardUserDefaults] setValue:[selectedItems firstObject] forKeyPath:PREFERENCE_CALENDAR_SELECTED_DATE];
+    }
+    else if (indexPath.row == 3 && indexPath.section == 2) {
+        cell.detailTextLabel.text = [selectedItems firstObject];
+        [[NSUserDefaults standardUserDefaults] setValue:[selectedItems firstObject] forKeyPath:PREFERENCE_EXERCISES_RECENTS_SHOWN];
+    }
+    else if (indexPath.row == 4 && indexPath.section == 2) {
+        cell.detailTextLabel.text = [selectedItems firstObject];
+        [[NSUserDefaults standardUserDefaults] setValue:[selectedItems firstObject] forKeyPath:PREFERENCE_DEFAULT_EXERCISES_VIEW];
+    }
+    else if (indexPath.row == 1 && indexPath.section == 3) {
+        cell.detailTextLabel.text = [selectedItems firstObject];
+        [[NSUserDefaults standardUserDefaults] setValue:[selectedItems firstObject] forKeyPath:PREFERENCE_DEFAULT_WORKOUTS_VIEW];
+    }
+    else if (indexPath.row == 0 && indexPath.section == 4) {
+        cell.detailTextLabel.text = [selectedItems firstObject];
+        [[NSUserDefaults standardUserDefaults] setValue:[selectedItems firstObject] forKeyPath:PREFERENCE_DEFAULT_LIKED_VIEW];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PREFERENCE_CHANGE_NOTIFICATION object:nil];
 }
 
 /****************************/
@@ -395,6 +460,62 @@
 //Notifies the view controller that a segue is about to be performed. Do any additional setup before going to the next view.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showOptions"]) {
+        NSIndexPath *indexPath = [self.preferencesTableView indexPathForSelectedRow];
+        SelectionViewController *selectionViewController = [[SelectionViewController alloc] init];
+        selectionViewController = segue.destinationViewController;
+        selectionViewController.multipleSelectionMode = NO;
+        selectionViewController.selectedIndexPath = indexPath;
+        selectionViewController.selectionDelegate = self;
+        
+        //Default Launch Module
+        if (indexPath.row == 3 && indexPath.section == 0) {
+            selectionViewController.titleText = @"Launch Module";
+            selectionViewController.selectionArray = launchModules;
+            selectionViewController.selectedItems = [[NSMutableArray alloc] initWithObjects:[[NSUserDefaults standardUserDefaults] valueForKey:PREFERENCE_DEFAULT_LAUNCH_MODULE], nil];
+
+        }
+        //Default Calendar View
+        else if (indexPath.row == 3 && indexPath.section == 1) {
+            selectionViewController.titleText = @"Calendar View";
+            selectionViewController.selectionArray = calendarViews;
+            selectionViewController.selectedItems = [[NSMutableArray alloc] initWithObjects:[[NSUserDefaults standardUserDefaults] valueForKey:PREFERENCE_CALENDAR_VIEW], nil];
+            
+        }
+        //Default Selected Date
+        else if (indexPath.row == 4 && indexPath.section == 1) {
+            selectionViewController.titleText = @"Selected Date";
+            selectionViewController.selectionArray = defaultSelectedDate;
+            selectionViewController.selectedItems = [[NSMutableArray alloc] initWithObjects:[[NSUserDefaults standardUserDefaults] valueForKey:PREFERENCE_CALENDAR_SELECTED_DATE], nil];
+            
+        }
+        //Recent Exercises Shown
+        else if (indexPath.row == 3 && indexPath.section == 2) {
+            selectionViewController.titleText = @"Recents Shown";
+            selectionViewController.selectionArray = recentsShown;
+            selectionViewController.selectedItems = [[NSMutableArray alloc] initWithObjects:[[NSUserDefaults standardUserDefaults] valueForKey:PREFERENCE_EXERCISES_RECENTS_SHOWN], nil];
+            
+        }
+        //Default Exercises View
+        else if (indexPath.row == 4 && indexPath.section == 2) {
+            selectionViewController.titleText = @"Default Exercises View";
+            selectionViewController.selectionArray = defaultExercisesViews;
+            selectionViewController.selectedItems = [[NSMutableArray alloc] initWithObjects:[[NSUserDefaults standardUserDefaults] valueForKey:PREFERENCE_DEFAULT_EXERCISES_VIEW], nil];
+            
+        }
+        //Default Workouts View
+        else if (indexPath.row == 1 && indexPath.section == 3) {
+            selectionViewController.titleText = @"Default Workouts View";
+            selectionViewController.selectionArray = defaultWorkoutsViews;
+            selectionViewController.selectedItems = [[NSMutableArray alloc] initWithObjects:[[NSUserDefaults standardUserDefaults] valueForKey:PREFERENCE_DEFAULT_WORKOUTS_VIEW], nil];
+            
+        }
+        //Default Liked View
+        else if (indexPath.row == 0 && indexPath.section == 4) {
+            selectionViewController.titleText = @"Default Liked View";
+            selectionViewController.selectionArray = defaultLikedViews;
+            selectionViewController.selectedItems = [[NSMutableArray alloc] initWithObjects:[[NSUserDefaults standardUserDefaults] valueForKey:PREFERENCE_DEFAULT_LIKED_VIEW], nil];
+            
+        }
     }
 }
 

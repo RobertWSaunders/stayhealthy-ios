@@ -120,7 +120,11 @@
 #define STAYHEALTHY_FONT                    [UIFont fontWithName:STAYHEALTHY_FONTNAME size:20.0]
 #define NAVIGATIONBAR_TITLE_FONT            [UIFont fontWithName:REGULAR_LIGHT_FONTNAME size:20.0]
 #define NAVIGATIONBAR_BUTTON_FONT           [UIFont fontWithName:REGULAR_FONTNAME size:18.0]
-#define tableViewTitleTextFont              [UIFont fontWithName:REGULAR_FONTNAME size:16]
+
+#define TABLE_VIEW_TITLE_FONT              [UIFont fontWithName:REGULAR_FONTNAME size:16]
+
+#define TABLE_VIEW_SECTION_TITLE_FONT       [UIFont fontWithName:REGULAR_FONTNAME size:12];
+
 #define tableViewUnderTitleTextFont         [UIFont fontWithName:REGULAR_LIGHT_FONTNAME size:14]
 #define tableViewDetailTextFont             [UIFont fontWithName:REGULAR_LIGHT_FONTNAME size:16]
 #define tableViewHeaderFont                 [UIFont fontWithName:REGULAR_LIGHT_FONTNAME size:15]
@@ -136,6 +140,7 @@
 #define STAYHEALTHY_FONTNAME                @"Arista 2.0"
 #define REGULAR_FONTNAME                    @"Avenir"
 #define REGULAR_LIGHT_FONTNAME              @"Avenir-Light"
+#define REGULAR_INTENSE_FONTNAME            @"Avenir-Roman"
 
 /******************************/
 #pragma mark - User Preferences
@@ -294,11 +299,12 @@ typedef enum {
 
 @end
 
-@protocol MultiPurposeListViewDelegate <NSObject>
+@protocol SelectionDelegate <NSObject>
 
-- (void)userHasSelected:(NSMutableArray*)selectedValues indexPath:(NSIndexPath*)indexPath passedArrayCount:(NSInteger)passedArrayCount;
+- (void)selectedItemsWithCount:(NSMutableArray*)selectedItems indexPath:(NSIndexPath*)indexPath passedArrayCount:(NSInteger)passedArrayCount;
 
 @end
+
 
 @protocol LikedExercisesExerciseSelectionDelegate <NSObject>
 

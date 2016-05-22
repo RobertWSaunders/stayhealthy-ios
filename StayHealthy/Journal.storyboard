@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vuu-BV-a4d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vuu-BV-a4d">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="WLz-qq-JXv">
+            <objects>
+                <navigationController id="2JE-zD-1SY" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="m5x-1B-JJI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="UI5-vR-aew" kind="relationship" relationship="rootViewController" id="opX-Ao-Tyi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OUj-my-ExR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1018" y="297"/>
+        </scene>
+        <!--Add Journal Entry View Controller-->
+        <scene sceneID="U3e-eR-o1h">
+            <objects>
+                <viewController id="UI5-vR-aew" customClass="AddJournalEntryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xSb-v7-Z0L"/>
+                        <viewControllerLayoutGuide type="bottom" id="k33-oA-XP9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FxU-3C-Fe8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hIf-z0-QNe">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="h3A-8M-h2k">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="UI5-vR-aew" id="nuE-ge-BWp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rbd-hg-Df2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1691" y="297"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="iIu-kj-pyH">
             <objects>
@@ -12,7 +53,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQY-2h-8u4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="788.5" y="221"/>
+            <point key="canvasLocation" x="1432.5" y="-383"/>
         </scene>
         <!--Journal View Controller-->
         <scene sceneID="Rtj-mo-4b1">
@@ -85,12 +126,18 @@
                                 <segue destination="yjO-4L-dh8" kind="presentation" identifier="presentSettings" id="LUm-iX-IZn"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dQb-aP-7jJ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dQb-aP-7jJ">
+                            <connections>
+                                <action selector="addJournalEntry:" destination="vuu-BV-a4d" id="U15-av-vdW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="calendarPlaceholderView" destination="Llt-TD-b6T" id="6Ym-SP-Yr6"/>
+                        <outlet property="calendarPlaceholderViewHeight" destination="YmN-3f-GqN" id="0OO-Bf-eRv"/>
+                        <segue destination="2JE-zD-1SY" kind="presentation" identifier="addJournalEntry" id="7cF-e2-TWR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wlD-ct-gOB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -111,7 +158,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OnJ-lV-rR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="304" y="221"/>
+            <point key="canvasLocation" x="1018" y="-383"/>
         </scene>
     </scenes>
     <resources>

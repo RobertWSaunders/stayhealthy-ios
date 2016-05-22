@@ -79,7 +79,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:muscleSelectionCellIdentifier];
     
     cell.textLabel.text = [tableViewArray objectAtIndex:indexPath.row];
-    cell.textLabel.font = tableViewTitleTextFont;
+    cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
     cell.textLabel.textColor = BLUE_COLOR;
     
      [CommonSetUpOperations tableViewSelectionColorSet:cell];

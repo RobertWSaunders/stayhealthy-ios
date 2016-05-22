@@ -34,6 +34,11 @@
         UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped:)];
         self.navigationItem.leftBarButtonItems = @[closeButton];
     }
+    
+    if (!self.navigationEnabled) {
+        self.backButton.enabled = NO;
+        self.forwardButton.enabled = NO;
+    }
 
     //Set the title in the navigation bar of the view to the passed title.
     self.title = self.titleText;

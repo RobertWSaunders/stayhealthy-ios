@@ -10,7 +10,7 @@
 #import "WorkoutViewController.h"
 #import "ExerciseDetailViewController.h"
 #import "ExerciseTableViewCell.h"
-#import "advancedOptionsSelect.h"
+//#import "advancedOptionsSelect.h"
 #import "WorkoutCreateViewController.h"
 
 @interface WorkoutDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
