@@ -37,6 +37,16 @@
     //Check the users preferences when loading the view.
     [self checkPreferences];
     
+    //Set the empty set datasource and delegate for every related scrollView.
+    self.recentlyViewedTableView.emptyDataSetSource = self;
+    self.recentlyViewedTableView.emptyDataSetDelegate = self;
+    self.recentExercisesCollectionView.emptyDataSetDelegate = self;
+    self.recentExercisesCollectionView.emptyDataSetSource = self;
+    self.customExercisesTableView.emptyDataSetSource = self;
+    self.customExercisesTableView.emptyDataSetDelegate = self;
+    self.customExercisesCollectionView.emptyDataSetDelegate = self;
+    self.customExercisesCollectionView.emptyDataSetSource = self;
+    
     //Don't adjust scroll view insets, adds weird gap to views.
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
@@ -48,14 +58,13 @@
     //Sets the tutorial messages.
     [self setTutorialMessages];
     
-    //Style alerts.
-    if (self.exerciseSelectionMode) {
-        [CommonSetUpOperations styleAlertView:WORKOUTS_COLOR];
-    }
-    else {
-        [CommonSetUpOperations styleAlertView:EXERCISES_COLOR];
+    //Set the default module.
+    if (self.moduleRender == 0) {
+        self.moduleRender = exercises;
     }
     
+    //Style the module alerts with the color given by the module.
+    [CommonSetUpOperations styleAlertView:[CommonUtilities returnModuleColor:self.moduleRender]];
 }
 
 //-------------------------------------------
@@ -65,7 +74,7 @@
 //Loads the view when it is called for selecting exercises.
 - (void)loadViewForExerciseSelection {
     //Set the title.
-    self.title = @"Exercise Selection";
+    self.title = @"Select Exercises";
     if (self.selectedExercises.count == 0) {
         self.selectedExercises = [[NSMutableArray alloc] init];
     }
@@ -95,11 +104,17 @@
     if ([CommonUtilities checkUserPreference:PREFERENCE_LIST_VIEW]) {
         self.recentlyViewedTableView.hidden = NO;
         self.recentExercisesCollectionView.hidden = YES;
+        self.customExercisesTableView.hidden = NO;
+        self.customExercisesCollectionView.hidden = YES;
     }
     else {
         self.recentlyViewedTableView.hidden = YES;
         self.recentExercisesCollectionView.hidden = NO;
+        self.customExercisesTableView.hidden = YES;
+        self.customExercisesCollectionView.hidden = NO;
     }
+    //Re-fetch the users recently viewed exercises in case they have changed the number of recents shown.
+    [self fetchRecentlyViewedExercises];
 }
 
 /*******************************************************/
@@ -108,36 +123,24 @@
 
 //Returns the height of the cells inside the tableView.
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.muscleSelectionTableView) {
-        //Set the height for the muscle list tableView.
-        return 57.0f;
-    }
-    else {
-        //Set the height for the recently viewed tableView.
-        return 76.0f;
-    }
+    return 76.0f;
 }
 
 //Returns the number of rows in a section that should be displayed in the tableView.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //Set the number of rows in each section.
-    if (tableView == self.muscleSelectionTableView) {
-        if (section == 0) {
-            return [frontBodyMuscles count];
-        }
-        else {
-            return [backBodyMuscles count];
-        }
+    if (tableView == self.customExercisesTableView) {
+        return [customExercises count];
     }
     else {
-        return [recenltyViewedExercises count];
+        return [sortedRecenltyViewedExercises count];
     }
 }
 
 //Returns the number of sections that should be displayed in the tableView.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (tableView == self.muscleSelectionTableView) {
-        return 2;
+    if (tableView == self.customExercisesTableView) {
+        return 1;
     }
     else {
         return 1;
@@ -147,10 +150,10 @@
 //Configures the cells at a specific indexPath.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //Muscle selection tableView.
-    if (tableView == self.muscleSelectionTableView) {
+    if (tableView == self.customExercisesTableView) {
         
         //Define the cell identifier.
-        static NSString *muscleSelectionCellIdentifier = @"muscleSelectionCellIdentifier";
+        static NSString *muscleSelectionCellIdentifier = @"customExerciseTableViewCell";
         
         //Create reference to the cell.
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:muscleSelectionCellIdentifier];
@@ -159,29 +162,6 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:muscleSelectionCellIdentifier];
         }
-        
-        if (indexPath.section == 0) {
-            cell.textLabel.text = [frontBodyMuscles objectAtIndex:indexPath.row];
-            cell.detailTextLabel.text = [frontBodyMusclesScientificNames objectAtIndex:indexPath.row];
-        }
-        else {
-            cell.textLabel.text = [backBodyMuscles objectAtIndex:indexPath.row];
-            cell.detailTextLabel.text = [backBodyMusclesScientificNames objectAtIndex:indexPath.row];
-        }
-        
-        //Stye the cell with the default styles.
-        if (self.exerciseSelectionMode) {
-            cell.textLabel.textColor = WORKOUTS_COLOR;
-                cell.detailTextLabel.textColor = WORKOUTS_COLOR;
-        }
-        else {
-            cell.textLabel.textColor = BLUE_COLOR;
-                cell.detailTextLabel.textColor = BLUE_COLOR;
-        }
-        
-
-        cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
-        cell.detailTextLabel.font = tableViewUnderTitleTextFont;
 
         
         //Return the cell.
@@ -199,15 +179,10 @@
             cell = [[ExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:recentlyViewedCellIdentifier];
         }
         
-        SHExercise *exercise = [recenltyViewedExercises objectAtIndex:indexPath.row];
+        SHExercise *exercise = [sortedRecenltyViewedExercises objectAtIndex:indexPath.row];
         
-        if (self.exerciseSelectionMode) {
-            cell.exerciseName.textColor = WORKOUTS_COLOR;
-        }
-        else {
-            cell.exerciseName.textColor = BLUE_COLOR;
-        }
-
+        cell.exerciseName.textColor = [CommonUtilities returnModuleColor:self.moduleRender];
+       
         
         cell.exerciseName.text = exercise.exerciseShortName;
         cell.difficulty.text = exercise.exerciseDifficulty;
@@ -262,16 +237,16 @@
 
 //Sets the height for the header in the specific section.
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (tableView == self.muscleSelectionTableView) {
+   /* if (tableView == self.muscleSelectionTableView) {
         return 25.0f;
     }
-    else {
+    else {*/
         return 0.01f;
-    }
+    //}
 }
 
 //Sets the view for the header if you would like to configure a custom view.
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+/*- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     //Create the view for the header in the TableView.
     UIView *headerView = [CommonSetUpOperations drawViewForTableViewHeader:tableView];
@@ -302,7 +277,7 @@
     }
     //Finally return the header view.
     return headerView;
-}
+}*/
 
 //--------------------------------------------
 #pragma mark TableView Cell Selection Handling
@@ -312,19 +287,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     bodyZonePressed = NO;
     selectedTableViewIndex = indexPath;
-    if (tableView == self.muscleSelectionTableView) {
-        [self presentExerciseTypeAlert:indexPath alertTitle:@"Exercise Type"];
-    }
-    else {
         if (self.exerciseSelectionMode) {
-             ExerciseTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-            SHExercise *exercise = [recenltyViewedExercises objectAtIndex:indexPath.row];
+            SHExercise *exercise;
+            ExerciseTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            if (tableView == self.recentlyViewedTableView) {
+                exercise = [sortedRecenltyViewedExercises objectAtIndex:indexPath.row];
+            }
+            else {
+                exercise = [customExercises objectAtIndex:indexPath.row];
+            }
             if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
                 self.selectedExercises = [CommonUtilities deleteSelectedExercise:self.selectedExercises exercise:exercise];
                 cell.accessoryType = UITableViewCellAccessoryNone;
                 cell.likeDistanceToEdge.constant = 21.0f;
             } else {
-               [self.selectedExercises addObject:exercise];
+                [self.selectedExercises addObject:exercise];
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 cell.likeDistanceToEdge.constant = 0.0f;
             }
@@ -333,7 +310,6 @@
             //Go to the detail view if the user presses on a recently viewed exercise.
             [self performSegueWithIdentifier:@"detail" sender:nil];
         }
-    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -350,10 +326,12 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (collectionView == self.bodyZoneCollectionView) {
         return [bodyZones count];
-
     }
     else if (collectionView ==  self.recentExercisesCollectionView) {
-        return [recenltyViewedExercises count];
+        return [sortedRecenltyViewedExercises count];
+    }
+    else if (collectionView == self.customExercisesCollectionView) {
+        return [customExercises count];
     }
     return 1;
 }
@@ -382,14 +360,10 @@
         
         [CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
         
-        SHExercise *exercise = [recenltyViewedExercises objectAtIndex:indexPath.item];
+        SHExercise *exercise = [sortedRecenltyViewedExercises objectAtIndex:indexPath.item];
         
-        if (self.exerciseSelectionMode) {
-            cell.exerciseName.textColor = WORKOUTS_COLOR;
-        }
-        else {
-            cell.exerciseName.textColor = EXERCISES_COLOR;
-        }
+        cell.exerciseName.textColor = [CommonUtilities returnModuleColor:self.moduleRender];
+        
         cell.exerciseName.text = exercise.exerciseName;
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -465,7 +439,13 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     else {
         if (self.exerciseSelectionMode) {
             ExerciseCollectionViewCell *cell = (ExerciseCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-            SHExercise *exercise = [recenltyViewedExercises objectAtIndex:indexPath.row];
+            SHExercise *exercise;
+            if (collectionView == self.recentExercisesCollectionView) {
+                exercise = [sortedRecenltyViewedExercises objectAtIndex:indexPath.row];
+            }
+            else {
+                exercise = [customExercises objectAtIndex:indexPath.row];
+            }
             
             if ([CommonUtilities exerciseInArray:self.selectedExercises exercise:exercise]) {
                 self.selectedExercises = [CommonUtilities deleteSelectedExercise:self.selectedExercises exercise:exercise];
@@ -496,11 +476,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
              selectedRecentCollectionViewIndex = indexPath;
             [self performSegueWithIdentifier:@"detail" sender:nil];
         }
-}
-
-
-
-
+    }
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 
@@ -536,6 +512,112 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
+/*******************************************************/
+#pragma mark - Empty Set Delegate and Datasource Methods
+/*******************************************************/
+
+//Sets the title for the empty data set.
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    
+    //Title for the empty data set.
+    NSString *title;
+    
+    //Setting the title for the custom exercises scroll view.
+    if (scrollView == self.customExercisesCollectionView || scrollView == self.customExercisesTableView) {
+        //Set the title.
+        title = @"No Custom Exercises";
+    }
+    else {
+        //Set the title.
+        title = @"No Recently Viewed Exercises";
+    }
+    
+    //Set the attributes for the empty data set title.
+    NSDictionary *attributes = @{NSFontAttributeName: NAVIGATIONBAR_BUTTON_FONT,
+                                 NSForegroundColorAttributeName: LIGHT_GRAY_COLOR};
+    
+    return [[NSAttributedString alloc] initWithString:title attributes:attributes];
+}
+
+//Sets the description text for the empty data set.
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
+{
+    //The description text.
+    NSString *descriptionText;
+    
+    //Setting the title for the custom exercises scroll view.
+    if (scrollView == self.customExercisesCollectionView || scrollView == self.customExercisesTableView) {
+        //Set the description.
+        descriptionText = @"When you create exercises they will show up here. You can create exercises by tapping on the plus button at the top right of this screen or the button below!";
+    }
+    else {
+        //Set the description.
+        descriptionText = @"Looks like you haven't viewed any exercises yet. When you do the exercises you viewed the most recently will show up here.";
+    }
+
+    //Set the paragraph style.
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    //Set the text attributes.
+    NSDictionary *attributes = @{NSFontAttributeName: TABLE_VIEW_TITLE_FONT,
+                                 NSForegroundColorAttributeName: LIGHT_GRAY_COLOR,
+                                 NSParagraphStyleAttributeName: paragraph};
+    
+    return [[NSAttributedString alloc] initWithString:descriptionText attributes:attributes];
+}
+
+//Set the title text on the button in the empty data set.
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
+{
+    //Define the attributes text.
+    NSDictionary *attributes;
+    
+    //Set the appearance for the various different states of the button.
+    if (state == UIControlStateNormal) {
+        attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Avenir-Roman" size:18.0],NSForegroundColorAttributeName: [CommonUtilities returnModuleColor:self.moduleRender]};
+    }
+    else if (state == UIControlStateHighlighted || state == UIControlStateSelected) {
+        attributes = @{NSFontAttributeName: NAVIGATIONBAR_BUTTON_FONT,NSForegroundColorAttributeName: WHITE_COLOR};
+    }
+    
+    //Setting the title for the custom exercises scroll view.
+    if (scrollView == self.customExercisesCollectionView || scrollView == self.customExercisesTableView) {
+        return [[NSAttributedString alloc] initWithString:@"Create Exercise" attributes:attributes];
+    }
+    else {
+        return [[NSAttributedString alloc] initWithString:@"Browse Exercises" attributes:attributes];
+    }
+}
+
+//Set the vertical offset for the empty data set.
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
+    return -(self.customExercisesTableView.tableHeaderView.frame.size.height/2.0f)-25.0f;
+}
+
+//Set the spacing between the items in the empty data set.
+- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView {
+    return 20.0f;
+}
+
+//Set the background color for the empty data set/
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIColor whiteColor];
+}
+
+//Called when the user presses on the empty data set button.
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button {
+    //Setting the title for the custom exercises scroll view.
+    if (scrollView == self.customExercisesCollectionView || scrollView == self.customExercisesTableView) {
+        [self performSegueWithIdentifier:@"createExercise" sender:nil];
+    }
+    else {
+        [self.segmentedControl setSelectedSegmentIndex:1];
+        [self setViewHidden:YES bodyZone:NO recentlyViewed:YES];
+    }
+}
+
 /**********************************************************/
 #pragma mark - Exercise Selection Searched Delegate Methods
 /**********************************************************/
@@ -557,7 +639,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 /************************************************************/
-#pragma mark - Favourites Exercise Selection Delegate Methods
+#pragma mark - Liked Exercise Selection Delegate Methods
 /************************************************************/
 
 //Delegate methods for selected exercises coming from FavouritesViewController
@@ -566,101 +648,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self.recentlyViewedTableView reloadData];
 }
 
-
-/*************************************************/
-#pragma mark - 3D Touch Peek and Pop Configuration
-/*************************************************/
-
-//-----------------
-#pragma mark Set Up
-//-----------------
-/*
-//Checks to see if 3D Touch is enabled on device, registers alternative if not.
-- (void)register3DTouch {
-    //Register for 3D Touch (if available)
-    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
-        [self registerForPreviewingWithDelegate:(id)self sourceView:self.view];
-    }
-    else {
-        longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressHandler:)];
-        [self.recentlyViewedTableView addGestureRecognizer:longPress];
-        [self.recentExercisesCollectionView addGestureRecognizer:longPress];
-    }
-}
-
-//Called when a user turns the 3D touch feature on or off.
-- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
-    //Check to see if 3D touch is enabled.
-    [self register3DTouch];
-}
-
-//---------------
-#pragma mark Peek
-//---------------
-
-//Set up the view controller for peeking.
-- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
-    
-    NSIndexPath *selectedPreviewingIndex;
-    CGPoint cellPosition;
-    SHExercise *exercise;
-
-    // check if we're not already displaying a preview controller
-    if ([self.presentedViewController isKindOfClass:[ExerciseDetailViewController class]]) {
-        return nil;
-    }
-    
-    //For CollectionView
-    if ([CommonUtilities userSelectedCollectionView]) {
-        cellPosition = [self.recentExercisesCollectionView convertPoint:location fromView:self.view];
-        selectedPreviewingIndex = [self.recentExercisesCollectionView indexPathForItemAtPoint:cellPosition];
-        //Get the exercise to display in the peek and set the peeks attributes.
-        exercise = [recenltyViewedExercises objectAtIndex:selectedPreviewingIndex.item];
-    }
-    //For TableView
-    else {
-     cellPosition = [self.recentlyViewedTableView convertPoint:location fromView:self.view];
-       selectedPreviewingIndex = [self.recentlyViewedTableView indexPathForRowAtPoint:cellPosition];
-        //Get the exercise to display in the peek and set the peeks attributes.
-        exercise = [recenltyViewedExercises objectAtIndex:selectedPreviewingIndex.row];
-    }
-    
-    if (IS_IPAD) {
-        //Shallow press, return the preview controller here. (peek)
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Exercises_iPad" bundle:nil];
-        previewingExerciseDetailViewController = [storyboard instantiateViewControllerWithIdentifier:@"ExerciseDetailViewController"];
-    }
-    else {
-        //Shallow press, return the preview controller here. (peek)
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Exercises" bundle:nil];
-        previewingExerciseDetailViewController = [storyboard instantiateViewControllerWithIdentifier:@"ExerciseDetailViewController"];
-    }
-   
-    previewingExerciseDetailViewController.exerciseToDisplay = exercise;
-    previewingExerciseDetailViewController.viewTitle = exercise.exerciseName;
-    previewingExerciseDetailViewController.showActionIcon = YES;
-    
-    return previewingExerciseDetailViewController;
-}
-
-//---------------
-#pragma mark Pop
-//---------------
-
-//Show the view controller, pop.
-- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
-    [self showViewController:previewingExerciseDetailViewController sender:self];
-}
-
-//---------------------------------------
-#pragma mark Action For Gesture 3D Touch
-//---------------------------------------
-
-//What happens when device does not have 3D touch.
-- (IBAction)longPressHandler:(id)sender {
-    //To be included in the future.
-}
-*/
 /*****************************/
 #pragma mark - Helper Methods
 /*****************************/
@@ -671,16 +658,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 //Fetches all array data for default mode.
 - (void)fetchArrayData {
-    //Fill the front body muscles array.
-    frontBodyMuscles = [CommonUtilities returnGeneralPlist][@"anteriorMuscles"];
-    //Fill the back body muscles array.
-    backBodyMuscles = [CommonUtilities returnGeneralPlist][@"posteriorMuscles"];
-    //Fill the front body muscles scientific names array.
-    frontBodyMusclesScientificNames = [CommonUtilities returnGeneralPlist][@"anteriorMusclesScientificNames"];
-    //Fill the back body muscles scientific names array.
-    backBodyMusclesScientificNames = [CommonUtilities returnGeneralPlist][@"posteriorMusclesScientificNames"];
     //Fill the body zones array with the body zones.
     bodyZones = @[@"Arms",@"Legs",@"Core",@"Back",@"Chest",@"Neck",@"Shoulders",@"Butt", @"Warmup", @"Suggested"];
+    
     if (self.exerciseSelectionMode) {
         //Fill the body zone images array the body zones images.
         bodyZonesImagesExerciseSelectionMode = @[@"ArmsW.png",@"LegW.png",@"CoreW.png",@"BackW.png",@"ChestW.png",@"NeckW.png",@"ShouldersW.png",@"ButtW.png",@"WarmupW.png",@"SuggestedW.png"];
@@ -692,6 +672,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     //Fetch the recentlyViewed exercises.
     [self fetchRecentlyViewedExercises];
+    //Fetch the custom exercises.
+    [self fetchCustomExercises];
 }
 
 //Fetched the recently viewed exercises.
@@ -699,10 +681,21 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     //Perform task on the background thread to maintain good user interface transition.
     dispatch_async(dispatch_get_main_queue(), ^{
         SHDataHandler *dataHandler = [SHDataHandler getInstance];
-        recenltyViewedExercises = [dataHandler fetchRecentlyViewedExercises];
+        sortedRecenltyViewedExercises = [dataHandler fetchRecentlyViewedExercises];
         //Reload the recenltyviewed tableview to display the new exercises.
         [self.recentlyViewedTableView reloadData];
         [self.recentExercisesCollectionView reloadData];
+    });
+}
+
+//Fetch custom exercises.
+- (void)fetchCustomExercises {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        SHDataHandler *dataHandler = [SHDataHandler getInstance];
+        customExercises = [[NSMutableArray alloc] init];
+        //Reload the recenltyviewed tableview to display the new exercises.
+        [self.customExercisesTableView reloadData];
+        [self.customExercisesCollectionView reloadData];
     });
 }
 
@@ -720,7 +713,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 //Shows the toolbar that needs to be displayed in exercise selection mode.
 - (void)showExerciseSelectionToolbar {
-    self.toolbarTopMuscleSelection.constant = 0.0f;
+    self.toolbarTopCustomExercises.constant = 0.0f;
     self.toolbarTopRecentlyViewed.constant = 0.0f;
 }
 
@@ -764,7 +757,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                           }];
     
     //To accomodate for muscles that do not have any stretching exercises.
-    if ((bodyZonePressed && indexPath.item != 5) || (!bodyZonePressed && [self exerciseTypeCheck:indexPath])) {
+    if (bodyZonePressed && indexPath.item != 5) {
         [alertView addButtonWithTitle:@"Stretching"
                                  type:SIAlertViewButtonTypeCancel
                               handler:^(SIAlertView *alertView) {
@@ -780,29 +773,10 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [alertView show];
 }
 
-//Checks if a tableView row can be chosen for a stretching exercise, not all muscles have stretches, hardcoded indexPaths.
-- (BOOL)exerciseTypeCheck:(NSIndexPath*)indexPath {
-    if (indexPath.section == 0) {
-        if (indexPath.row == 1) {
-            return NO;
-        }
-        else if (indexPath.row == 2) {
-            return NO;
-        }
-        else if (indexPath.row == 3) {
-            return NO;
-        }
-        else if (indexPath.row == 5) {
-            return NO;
-        }
-    }
-    return YES;
-}
-
 //Sets the views hidden given the paramet
-- (void)setViewHidden:(BOOL)muscleSelection bodyZone:(BOOL)bodyZone recentlyViewed:(BOOL)recentlyViewed {
+- (void)setViewHidden:(BOOL)customExercises bodyZone:(BOOL)bodyZone recentlyViewed:(BOOL)recentlyViewed {
     self.recentlyViewedView.hidden = recentlyViewed;
-    self.muscleSelectionView.hidden = muscleSelection;
+    self.customExercisesView.hidden = customExercises;
     self.bodyZoneView.hidden = bodyZone;
 }
 
@@ -843,7 +817,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 
 //What happens when the favourite button is pressed in the toolbar for
-- (IBAction)favouriteExerciseSelectionPressed:(id)sender {
+- (IBAction)likedExerciseSelectionPressed:(id)sender {
     [self performSegueWithIdentifier:@"selectExercisesFromFavorites" sender:nil];
 }
 
@@ -872,7 +846,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     //For BODY ZONE
     if ([segue.identifier isEqualToString:@"viewExercises"]) {
 
-        UITableViewCell *cell  = [self.muscleSelectionTableView cellForRowAtIndexPath:selectedTableViewIndex];
+        UITableViewCell *cell  = [self.customExercisesTableView cellForRowAtIndexPath:selectedTableViewIndex];
         
         ExerciseListController *viewExercisesViewController = [[ExerciseListController alloc] init];
         
@@ -946,14 +920,14 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     else if ([segue.identifier isEqualToString:@"detail"]) {
         if ([CommonUtilities checkUserPreference:PREFERENCE_LIST_VIEW]) {
             NSIndexPath *indexPath = [self.recentlyViewedTableView indexPathForSelectedRow];
-            SHExercise *exercise = [recenltyViewedExercises objectAtIndex:indexPath.row];
+            SHExercise *exercise = [sortedRecenltyViewedExercises objectAtIndex:indexPath.row];
             ExerciseDetailViewController *destViewController = segue.destinationViewController;
             destViewController.exerciseToDisplay = exercise;
             destViewController.viewTitle = exercise.exerciseName;
             destViewController.showActionIcon = YES;
         }
         else {
-            SHExercise *exercise = [recenltyViewedExercises objectAtIndex:selectedRecentCollectionViewIndex.item];
+            SHExercise *exercise = [sortedRecenltyViewedExercises objectAtIndex:selectedRecentCollectionViewIndex.item];
             ExerciseDetailViewController *detailView = [[ExerciseDetailViewController alloc] init];
             detailView = segue.destinationViewController;
             detailView.exerciseToDisplay = exercise;

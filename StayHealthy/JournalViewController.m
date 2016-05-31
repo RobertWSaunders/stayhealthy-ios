@@ -33,7 +33,7 @@
 }
 
 //Confirgure the view on the initial load. 
-- (void)initialViewConfiguration {
+- (void)initialViewConfiguration{
     
     //Create reference to a calendar.
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -212,7 +212,7 @@
     [formatter setDateFormat:@"MMMM yyyy"];
     NSString *title = [formatter stringFromDate:date];
     //Set the title
-    self.title = title;
+    [self.navigationItem setTitle:title];
     
     
 }

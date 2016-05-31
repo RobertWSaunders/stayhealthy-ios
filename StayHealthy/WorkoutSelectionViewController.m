@@ -18,6 +18,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.yourWorkoutsTableView.emptyDataSetSource = self;
+    self.yourWorkoutsTableView.emptyDataSetDelegate = self;
+    
     [self.browseScroller setScrollEnabled:YES];
     [self.browseOptionsTableView setScrollEnabled:NO];
     
@@ -33,6 +36,66 @@
     
     [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS viewController:self message:@"Here you can browse the workouts that we provide or create your very own by tapping on the add icon in the top right. You can search for workouts based off of certain sports, muscles, equipment and more! You can also perform an advanced search by tapping on the icon in the top left. Good luck with all of your workouts!"];
     
+    // A little trick for removing the cell separators
+    self.yourWorkoutsTableView.tableFooterView = [UIView new];
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"No Custom Workouts";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: NAVIGATIONBAR_BUTTON_FONT,
+                                 NSForegroundColorAttributeName: LIGHT_GRAY_COLOR};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"When you create workouts they will show up here. You can create workouts by tapping on the plus button at the top right of this screen or the button below! ";
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: TABLE_VIEW_TITLE_FONT,
+                                 NSForegroundColorAttributeName: LIGHT_GRAY_COLOR,
+                                 NSParagraphStyleAttributeName: paragraph};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
+{
+    NSDictionary *attributes;
+    if (state == UIControlStateNormal) {
+        attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Avenir-Roman" size:18.0],NSForegroundColorAttributeName: WORKOUTS_COLOR};
+    }
+    else if (state == UIControlStateHighlighted || state == UIControlStateSelected) {
+        attributes = @{NSFontAttributeName: NAVIGATIONBAR_BUTTON_FONT,NSForegroundColorAttributeName: WHITE_COLOR};
+    }
+
+    
+    return [[NSAttributedString alloc] initWithString:@"Create Workout" attributes:attributes];
+}
+
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -(self.yourWorkoutsTableView.tableHeaderView.frame.size.height/2.0f)-25.0f;
+}
+
+- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return 20.0f;
+}
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIColor whiteColor];
+}
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
+{
+    NSLog(@"HELLO");
 }
 
 - (void)didReceiveMemoryWarning {

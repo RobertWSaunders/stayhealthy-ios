@@ -56,6 +56,8 @@
         self.tableView.hidden = YES;
         self.collectonView.hidden = NO;
     }
+    
+    
 }
 
 //Sets the observers for the notifications that need to be observed for.

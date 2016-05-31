@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BodyViewCollectionViewCell.h"
 
-@interface AddJournalEntryViewController : UIViewController
+@interface AddJournalEntryViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource> {
+    NSArray *journalEntryOptions;
+    NSArray *journalEntryOptionsImages;
+    NSIndexPath *selectedIndexPath;
+}
 
-- (IBAction)doneButtonPressed:(id)sender;
-- (IBAction)cancelButtonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UICollectionView *JournalEntryOptionCollectionView;
+
+- (IBAction)closeButtonPressed:(id)sender;
 
 @end

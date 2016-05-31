@@ -30,6 +30,8 @@
     self.navigationController.view.backgroundColor = [UIColor whiteColor];
     //Set tabBar controller background to white.
     self.tabBarController.view.backgroundColor = [UIColor whiteColor];
+    
+    self.tableView.alwaysBounceVertical = NO;
 }
 
 /*******************************************************/

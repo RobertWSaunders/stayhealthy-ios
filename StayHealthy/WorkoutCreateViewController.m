@@ -684,7 +684,7 @@
     if ([segue.identifier isEqualToString:@"selectOptions"]) {
         //What happens when the user selects a cell in the table view, takes the user to selection page.
         //Get the index path for the selected cell the user pressed.
-        NSIndexPath *indexPath = [self.createWorkoutTableView indexPathForSelectedRow];
+        //NSIndexPath *indexPath = [self.createWorkoutTableView indexPathForSelectedRow];
         //Create reference to the next view controller.
        /* advancedOptionsSelect *attributeSelectionPage = [[advancedOptionsSelect alloc]init];
         //Set the destination.

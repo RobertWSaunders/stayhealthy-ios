@@ -289,10 +289,31 @@
 #define Fetching Operations
 //-------------------------
 
-//Fetches all of the liked custom exercises records.
-- (id)fetchAllLikedCustomExercises {
+//Fetches the recently viewed custom exercise records from persistent store.
+- (id)fetchRecentlyViewedExercises {
     
-    NSFetchRequest *fetchRequest = [self getLikedFetchRequest];
+    //Get the fetch request.
+    NSFetchRequest *fetchRequest = [self getRecentlyViewedFetchRequest];
+    
+    NSError *requestError = nil;
+    
+    NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
+    
+    if (exercises.count > 0) {
+        LogDataSuccess(@"Successfully fetched all of the recently viewed custom exercise records. --> fetchRecentlyViewedExercises @ CustomExerciseDataManager");
+    }
+    else {
+        LogDataError(@"Could not fetch any recently viewed custom exercise records. --> fetchRecentlyViewedExercises @ CustomExerciseDataManager");
+    }
+    
+    return exercises;
+
+}
+
+//Fetches all of the liked custom exercises records.
+- (id)fetchAllLikedExercises {
+    
+    NSFetchRequest *fetchRequest = [self getLikedFetchRequest:nil];
     
     NSError *requestError = nil;
     
@@ -300,6 +321,60 @@
     
     return customExercises;
     
+}
+
+//Fetches all of the liked strength custom exercise records.
+- (id)fetchLikedStrengthExercises {
+    NSFetchRequest *fetchRequest = [self getLikedFetchRequest:@"strength"];
+    
+    NSError *requestError = nil;
+    
+    NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
+    
+    if (exercises.count > 0) {
+        LogDataSuccess(@"Successfully fetched all of the liked strength custom exercise records. --> fetchLikedStrengthExercises @ CustomExerciseDataManager");
+    }
+    else {
+        LogDataError(@"Could not fetch any liked strength custom exercise records. --> fetchLikedStrengthExercises @ CustomExerciseDataManager");
+    }
+    
+    return exercises;
+}
+
+//Fetches all of the liked stretching custom exercise records.
+- (id)fetchLikedStretchingExercises {
+    NSFetchRequest *fetchRequest = [self getLikedFetchRequest:@"stretching"];
+    
+    NSError *requestError = nil;
+    
+    NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
+    
+    if (exercises.count > 0) {
+        LogDataSuccess(@"Successfully fetched all of the liked stretching custom exercise records. --> fetchLikedStretchingExercises @ CustomExerciseDataManager");
+    }
+    else {
+        LogDataError(@"Could not fetch any liked stretching custom exercise records. --> fetchLikedStrengthExercises @ CustomStretchingDataManager");
+    }
+    
+    return exercises;
+}
+
+//Fetches all of the liked warmup custom exercise records.
+- (id)fetchLikedWarmupExercises {
+    NSFetchRequest *fetchRequest = [self getLikedFetchRequest:@"warmup"];
+    
+    NSError *requestError = nil;
+    
+    NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
+    
+    if (exercises.count > 0) {
+        LogDataSuccess(@"Successfully fetched all of the liked warmup custom exercise records. --> fetchLikedWarmupExercises @ CustomExerciseDataManager");
+    }
+    else {
+        LogDataError(@"Could not fetch any liked warmup custom exercise records. --> fetchLikedWarmupExercises @ CustomExerciseDataManager");
+    }
+    
+    return exercises;
 }
 
 //Fetches a cusotm exercise record given the objects identifier and the exercise type.
@@ -334,12 +409,26 @@
 #define Fetch Requests Creation
 //-----------------------------
 
-//Returns the liked fetch request.
-- (NSFetchRequest*)getLikedFetchRequest {
+//Returns the recently viewed fetch request.
+- (NSFetchRequest*)getRecentlyViewedFetchRequest {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
+    NSSortDescriptor *sortByRecentlyViewed = [NSSortDescriptor sortDescriptorWithKey:@"exerciseLastViewed" ascending:NO];
+    fetchRequest.sortDescriptors = [[NSArray alloc] initWithObjects:sortByRecentlyViewed, nil];
+    return fetchRequest;
+}
+
+//Returns the liked fetch request, pass a exercise type for specific liked exercise records fetch request.
+- (NSFetchRequest*)getLikedFetchRequest:(NSString*)type {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"exerciseLiked", [NSNumber numberWithBool:YES]];
-    [fetchRequest setPredicate:predicate];
+    if (type == nil) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"exerciseLiked", [NSNumber numberWithBool:YES]];
+        [fetchRequest setPredicate:predicate];
+    }
+    else {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"exerciseLiked", [NSNumber numberWithBool:YES],@"exerciseType",type];
+        [fetchRequest setPredicate:predicate];
+    }
     
     return fetchRequest;
 }

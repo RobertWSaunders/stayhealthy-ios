@@ -6,12 +6,6 @@
 //  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
-/*
- REQUIRMENTS
- CREATE CUSTOM EXERCISE.
- -PEEK AND POP (RECENTLY VIEWED)
- */
-
 #import <UIKit/UIKit.h>
 #import "ExerciseListController.h"
 #import "FavoritesViewController.h"
@@ -20,8 +14,9 @@
 #import "BodyViewCollectionViewCell.h"
 #import "ExerciseTableViewCell.h"
 #import "ExerciseCollectionViewCell.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface ExerciseSelectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, ExerciseListExerciseSelectionDelegate, LikedExercisesExerciseSelectionDelegate, AdvancedSearchExerciseSelectionDelegate, MGSwipeTableCellDelegate> {
+@interface ExerciseSelectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, ExerciseListExerciseSelectionDelegate, LikedExercisesExerciseSelectionDelegate, AdvancedSearchExerciseSelectionDelegate, MGSwipeTableCellDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate> {
 
     //Body Zoning
     //Body Zone Strings
@@ -30,20 +25,14 @@
     NSArray *bodyZonesImages;
     //Body Zone Images For Exercise Selection Mode
     NSArray *bodyZonesImagesExerciseSelectionMode;
-
-    //Muscle List
-    //Array filled with all the front body muscles.
-    NSArray *frontBodyMuscles;
-    //Array filled with all the front body muscle scientific names.
-    NSArray *frontBodyMusclesScientificNames;
-    //Array filled with all the back body muscles.
-    NSArray *backBodyMuscles;
-    //Array filled with all the back body muscle scientific names.
-    NSArray *backBodyMusclesScientificNames;
     
     //Recently Viewed
     //Array filled with all the recenlty viewed exercises.
-    NSMutableArray *recenltyViewedExercises;
+    NSMutableArray *sortedRecenltyViewedExercises;
+    NSMutableArray *recentlyViewedExercisesSections;
+    NSMutableDictionary *recentlyViewedExercises;
+    //Array filled with all of the users custom exercises.
+    NSMutableArray *customExercises;
     
     //Track whether the user pressed on a body zone.
     BOOL bodyZonePressed;
@@ -76,10 +65,12 @@
 //Recent Exercises CollectionView
 @property (weak, nonatomic) IBOutlet UICollectionView *recentExercisesCollectionView;
 
-//Muscle Selection View
-@property (weak, nonatomic) IBOutlet UIView *muscleSelectionView;
-//Muscle Selection TableView
-@property (weak, nonatomic) IBOutlet UITableView *muscleSelectionTableView;
+//Custom Exercises View
+@property (weak, nonatomic) IBOutlet UIView *customExercisesView;
+//Custom Exercises TableView
+@property (weak, nonatomic) IBOutlet UITableView *customExercisesTableView;
+//Custom Exercises CollectionView
+@property (weak, nonatomic) IBOutlet UICollectionView *customExercisesCollectionView;
 
 //Segmented Control
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
@@ -89,8 +80,8 @@
 //Contraints
 //Constraint that controls distance the toolbar is from the recently viewed view.
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarTopRecentlyViewed;
-//Constraint that controls distance the toolbar is from the muscle selection view..
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarTopMuscleSelection;
+//Constraint that controls distance the toolbar is from the custom exercises.
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarTopCustomExercises;
 
 
 //View Controller Properties
@@ -98,13 +89,14 @@
 @property (nonatomic, assign) BOOL exerciseSelectionMode;
 //The selected exercises that the users selects.
 @property(strong, retain) NSMutableArray *selectedExercises;
-
+//The module that the view should be rendered.
+@property (nonatomic, assign) modules moduleRender;
 
 //Actions
 //What happens when the user selects advanced search.
 - (IBAction)advancedSearchPressed:(id)sender;
 //What happens when the user selects the favourites icon from the toolbar.
-- (IBAction)favouriteExerciseSelectionPressed:(id)sender;
+- (IBAction)likedExerciseSelectionPressed:(id)sender;
 //What happens when the user changes segments on the segmented control.
 - (IBAction)segmentValueChanged:(id)sender;
 //What happens when the user presses the add exercise icon.

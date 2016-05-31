@@ -36,6 +36,82 @@
     return _instance;
 }
 
+/******************************/
+#pragma mark - General Methods
+/******************************/
+
+//Deletes all of the users data.
+- (void)deleteAllData {
+    //Delete all of the exercise records.
+    [self deleteAllExerciseRecords];
+    //Delete all of the custom exercise records.
+    [self deleteAllCustomExerciseRecords];
+}
+
+/****************************************/
+#pragma mark - Journal General Methods
+/****************************************/
+
+/****************************************/
+#pragma mark - Exercises General Methods
+/****************************************/
+
+//Returns a complete array of sorted exercises, including both custom and standard exercises.
+- (NSMutableArray *)fetchExercises:(exerciseType)exerciseType muscles:(NSArray *)muscles {
+    //Create query for database fetch.
+    
+    //Fetch custom exercises that are the same type and muscles.
+    
+    //Merge and sort into one array.
+    
+    return nil;
+}
+
+//Returns array filled with all custom exercises sorted.
+- (NSMutableArray *)fetchCustomExercises {
+    //Return all custom exercises.
+    return [self fetchCustomExercises];
+}
+
+//Returns array filled with the recently viewed exercises, array count repects user preference.
+- (NSMutableArray *)fetchRecentlyViewedExercises {
+    
+    //Array that will be filled with all of the recently viewed exercises.
+    NSMutableArray *allRecentlyViewedExercises = [[NSMutableArray alloc] init];
+    
+    
+    //Fetch recently viewed exercises.
+    
+    //Fetch recently viewed custom exercises.
+    
+    //Merge and sort into one array.
+    
+    return nil;
+}
+
+//Returns array filled with the liked exercises for the passed exercise type.
+- (NSMutableArray *)fetchLikedExercises:(exerciseType)exerciseType {
+    
+    //Array that will be filled with all of the liked exercises.
+    NSMutableArray *allLikedExercises = [[NSMutableArray alloc] init];
+    
+    //Fetch liked exercises.
+    
+    //Fetch liked custom exercises.
+    
+    //Merge and sort into one array.
+    
+    return nil;
+}
+
+/****************************************/
+#pragma mark - Workouts General Methods
+/****************************************/
+
+/************************************/
+#pragma mark - Liked General Methods
+/************************************/
+
 /******************************************/
 #pragma mark - StayHealthy Database Methods
 /******************************************/
@@ -106,8 +182,8 @@
             //Now based off of the fetched exercises create new array with same exercises but with the user data included.
             NSMutableArray *userExerciseData = [[NSMutableArray alloc] init];
             for (SHExercise *exercise in exerciseData) {
-                if ([SHDataUtilities exerciseHasBeenSaved:exercise.exerciseIdentifier exerciseType:exercise.exerciseType]) {
-                     SHExercise *userExercise = [SHDataUtilities addUserDataToSHExercise:exercise managedExercise:[self fetchManagedExerciseRecordByIdentifierAndExerciseType:exercise.exerciseIdentifier exerciseType:exercise.exerciseType]];
+                if ([SHDataUtilities exerciseHasBeenSaved:exercise]) {
+                    SHExercise *userExercise = [SHDataUtilities addUserDataToBusinessExercise:exercise managedExercise:[self fetchManagedExerciseRecordByIdentifierAndExerciseType:exercise.exerciseIdentifier exerciseType:exercise.exerciseType]];
                     [userExerciseData addObject:userExercise];
                 }
                 else {
@@ -161,7 +237,7 @@
             //Now based off of the fetched workout create new array with same workouts but with the user data included.
             NSMutableArray *userWorkoutData = [[NSMutableArray alloc] init];
             for (SHWorkout *workout in workoutData) {
-                if ([SHDataUtilities workoutHasBeenSaved:workout.workoutIdentifier]) {
+                if ([SHDataUtilities workoutHasBeenSaved:workout]) {
                     SHWorkout *userWorkout = [SHDataUtilities addUserDataToSHWorkout:workout managedWorkout:[self fetchManagedWorkoutRecordByIdentifier:workout.workoutIdentifier]];
                     [userWorkoutData addObject:userWorkout];
                 }
@@ -228,7 +304,7 @@
 
 //Fetches the managed exercise record from the persistent store rather then returning a SHExercise.
 - (Exercise*)fetchManagedExerciseRecordByIdentifier:(NSString *)exerciseIdentifier {
-        return [exerciseDataManager fetchItemByIdentifier:exerciseIdentifier];;
+        return [exerciseDataManager fetchItemByIdentifier:exerciseIdentifier];
 }
 
 //Fetches the managed exercise record from the persistent store given the exercise identifier and exercise type rather then returning a SHExercise.
@@ -247,7 +323,7 @@
     //If there are exercises found.
     if (fetchedManagedExercises.count > 0 || fetchedManagedExercises != nil) {
         //Convert the managed exercise to a SHExercise.
-        exercise = [SHDataUtilities convertExerciseToSHExercise:[fetchedManagedExercises firstObject]];
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:[fetchedManagedExercises firstObject]];
     }
     //Return the exercise.
     return exercise;
@@ -264,25 +340,40 @@
     //If there are exercises found.
     if (fetchedManagedExercises.count > 0 || fetchedManagedExercises != nil) {
         //Convert the managed exercise to a SHExercise.
-        exercise = [SHDataUtilities convertExerciseToSHExercise:[fetchedManagedExercises firstObject]];
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:[fetchedManagedExercises firstObject]];
     }
     //Return the exercise.
     return exercise;
 }
 
 //Fetches all of the recently viewed exercise records in the persistent store and returns a mutable array of SHExercises.
-- (NSMutableArray *)fetchRecentlyViewedExercises {
+- (NSMutableArray *)fetchRecentlyViewedExerciseRecords {
     //Fetch the managed exercises from the persistent store.
     NSArray *fetchedManagedExercises = [exerciseDataManager fetchRecentlyViewedExercises];
-    
+
+    //Check the number of recents to display using the users preferences.
+    NSInteger recentlyViewedCount = [[[NSUserDefaults standardUserDefaults] valueForKey:PREFERENCE_EXERCISES_RECENTS_SHOWN] intValue];
+
     //Create reference to a new SHExercise.
     SHExercise *exercise;
     
+    //Create a new mutable array for the SHExercises.
     NSMutableArray *recentlyViewedSHExercises = [[NSMutableArray alloc] init];
     
+    NSInteger count = 0;
+    
     for (Exercise *managedExercise in fetchedManagedExercises) {
-        exercise = [SHDataUtilities convertExerciseToSHExercise:managedExercise];
-        [recentlyViewedSHExercises addObject:exercise];
+        if (![[[NSUserDefaults standardUserDefaults] valueForKey:PREFERENCE_EXERCISES_RECENTS_SHOWN] isEqualToString:@"All History"]) {
+            if (count <= recentlyViewedCount) {
+                exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
+                [recentlyViewedSHExercises addObject:exercise];
+            }
+         }
+         else {
+             exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
+             [recentlyViewedSHExercises addObject:exercise];
+         }
+        count++;
     }
         
     return recentlyViewedSHExercises;
@@ -299,7 +390,7 @@
     NSMutableArray *likedSHExercises = [[NSMutableArray alloc] init];
     
     for (Exercise *managedExercise in fetchedManagedExercises) {
-        exercise = [SHDataUtilities convertExerciseToSHExercise:managedExercise];
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
         [likedSHExercises addObject:exercise];
     }
     return likedSHExercises;
@@ -316,7 +407,7 @@
     NSMutableArray *likedStrengthSHExercises = [[NSMutableArray alloc] init];
     
     for (Exercise *managedExercise in fetchedManagedExercises) {
-        exercise = [SHDataUtilities convertExerciseToSHExercise:managedExercise];
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
         [likedStrengthSHExercises addObject:exercise];
     }
     return likedStrengthSHExercises;
@@ -333,7 +424,7 @@
     NSMutableArray *likedStretchingSHExercises = [[NSMutableArray alloc] init];
     
     for (Exercise *managedExercise in fetchedManagedExercises) {
-        exercise = [SHDataUtilities convertExerciseToSHExercise:managedExercise];
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
         [likedStretchingSHExercises addObject:exercise];
     }
     return likedStretchingSHExercises;
@@ -350,7 +441,7 @@
     NSMutableArray *likedWarmupSHExercises = [[NSMutableArray alloc] init];
     
     for (Exercise *managedExercise in fetchedManagedExercises) {
-        exercise = [SHDataUtilities convertExerciseToSHExercise:managedExercise];
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
         [likedWarmupSHExercises addObject:exercise];
     }
     return likedWarmupSHExercises;
@@ -367,7 +458,7 @@
     NSMutableArray *allSHExercises = [[NSMutableArray alloc] init];
     
     for (Exercise *managedExercise in fetchedManagedExercises) {
-        exercise = [SHDataUtilities convertExerciseToSHExercise:managedExercise];
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
         [allSHExercises addObject:exercise];
     }
     return allSHExercises;
@@ -414,6 +505,170 @@
 //-------------------------
 #define Fetching Operations
 //-------------------------
+
+//Fetches the managed custom exercise record from the persistent store rather then returning a SHCustomExercise.
+- (CustomExercise*)fetchManagedCustomExerciseRecordByIdentifier:(NSString *)exerciseIdentifier {
+    return [customExerciseDataManager fetchItemByIdentifier:exerciseIdentifier];
+}
+
+//Fetches the managed custom exercise record from the persistent store given the exercise identifier and exercise type rather then returning a SHCustomExercise.
+- (CustomExercise*)fetchManagedCustomExerciseRecordByIdentifierAndExerciseType:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType {
+     return [customExerciseDataManager fetchItemByIdentifierAndExerciseType:exerciseIdentifier exerciseType:exerciseType];
+}
+
+//Fetches a custom exercise record given the identifier and exercise type in the persistent store and returns a SHCustomExercise.
+- (SHCustomExercise*)fetchCustomExerciseByIdentifierAndExerciseType:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [customExerciseDataManager fetchItemByIdentifierAndExerciseType:exerciseIdentifier exerciseType:exerciseType];
+    
+    //Create reference to a new SHCustomExercise.
+    SHCustomExercise *exercise;
+    
+    //If there are exercises found.
+    if (fetchedManagedExercises.count > 0 || fetchedManagedExercises != nil) {
+        //Convert the managed exercise to a SHExercise.
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:[fetchedManagedExercises firstObject]];
+    }
+    //Return the exercise.
+    return exercise;
+}
+
+//Fetches a custom exercise record given the identifier in the persistent store and returns a SHCustomExercise.
+- (SHCustomExercise*)fetchCustomExerciseByIdentifier:(NSString *)exerciseIdentifier {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [customExerciseDataManager fetchItemByIdentifier:exerciseIdentifier];
+    
+    //Create reference to a new SHCustomExercise.
+    SHCustomExercise *exercise;
+    
+    //If there are exercises found.
+    if (fetchedManagedExercises.count > 0 || fetchedManagedExercises != nil) {
+        //Convert the managed exercise to a SHExercise.
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:[fetchedManagedExercises firstObject]];
+    }
+    //Return the exercise.
+    return exercise;
+}
+
+//Fetches all of the recently viewed custom exercise records in the persistent store and returns a mutable array of SHCustomExercises.
+- (NSMutableArray *)fetchRecentlyViewedCustomExerciseRecords {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [customExerciseDataManager fetchRecentlyViewedExercises];
+    
+    //Check the number of recents to display using the users preferences.
+    NSInteger recentlyViewedCount = [[[NSUserDefaults standardUserDefaults] valueForKey:PREFERENCE_EXERCISES_RECENTS_SHOWN] intValue];
+    
+    //Create reference to a new SHCustomExercise.
+    SHCustomExercise *exercise;
+    
+    //Create a new mutable array for the SHExercises.
+    NSMutableArray *recentlyViewedSHCustomExercises = [[NSMutableArray alloc] init];
+    
+    NSInteger count = 0;
+    
+    for (CustomExercise *managedExercise in fetchedManagedExercises) {
+        if (![[[NSUserDefaults standardUserDefaults] valueForKey:PREFERENCE_EXERCISES_RECENTS_SHOWN] isEqualToString:@"All History"]) {
+            if (count <= recentlyViewedCount) {
+                exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
+                [recentlyViewedSHCustomExercises addObject:exercise];
+            }
+        }
+        else {
+            exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
+            [recentlyViewedSHCustomExercises addObject:exercise];
+        }
+        count++;
+    }
+    
+    return recentlyViewedSHCustomExercises;
+}
+
+//Fetches all of the liked custom exercise records in the persistent store and returns a mutable array of SHCustomExercises.
+- (NSMutableArray *)fetchAllLikedCustomExercises {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [customExerciseDataManager fetchAllLikedExercises];
+    
+    //Create reference to a new SHCustomExercise.
+    SHCustomExercise *exercise;
+    
+    NSMutableArray *likedSHCustomExercises = [[NSMutableArray alloc] init];
+    
+    for (CustomExercise *managedExercise in fetchedManagedExercises) {
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
+        [likedSHCustomExercises addObject:exercise];
+    }
+    return likedSHCustomExercises;
+}
+
+//Fetches all of the liked strength custom exercise records in the persistent store and returns a mutable array of SHCustomExercises.
+- (NSMutableArray *)fetchStrengthLikedCustomExercises {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [customExerciseDataManager fetchLikedStrengthExercises];
+    
+    //Create reference to a new SHCustomExercise.
+    SHCustomExercise *exercise;
+    
+    NSMutableArray *likedStrengthSHExercises = [[NSMutableArray alloc] init];
+    
+    for (CustomExercise *managedExercise in fetchedManagedExercises) {
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
+        [likedStrengthSHExercises addObject:exercise];
+    }
+    return likedStrengthSHExercises;
+}
+
+//Fetches all of the liked stretching custom exercise records in the persistent store and returns a mutable array of SHCustomExercises.
+- (NSMutableArray *)fetchStretchLikedCustomExercises {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [customExerciseDataManager fetchLikedStretchingExercises];
+    
+    //Create reference to a new SHCustomExercise.
+    SHCustomExercise *exercise;
+    
+    NSMutableArray *likedStretchingSHExercises = [[NSMutableArray alloc] init];
+    
+    for (CustomExercise *managedExercise in fetchedManagedExercises) {
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
+        [likedStretchingSHExercises addObject:exercise];
+    }
+    return likedStretchingSHExercises;
+}
+
+//Fetches all of the liked warmup custom exercise records in the persistent store and returns a mutable array of SHCustomExercises.
+- (NSMutableArray *)fetchWarmupLikedCustomExercises {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [customExerciseDataManager fetchLikedWarmupExercises];
+    
+    //Create reference to a new SHExercise.
+    SHCustomExercise *exercise;
+    
+    NSMutableArray *likedWarmupSHExercises = [[NSMutableArray alloc] init];
+    
+    for (CustomExercise *managedExercise in fetchedManagedExercises) {
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
+        [likedWarmupSHExercises addObject:exercise];
+    }
+    return likedWarmupSHExercises;
+
+}
+
+//Fetches all of the custom exercise records in the persistent store.
+- (NSMutableArray *)fetchAllCustomExerciseRecords {
+    //Fetch the managed exercises from the persistent store.
+    NSArray *fetchedManagedExercises = [customExerciseDataManager fetchAllItems];
+    
+    //Create reference to a new SHExercise.
+    SHCustomExercise *exercise;
+    
+    NSMutableArray *allSHExercises = [[NSMutableArray alloc] init];
+    
+    for (CustomExercise *managedExercise in fetchedManagedExercises) {
+        exercise = [SHDataUtilities convertExerciseToBusinessExercise:managedExercise];
+        [allSHExercises addObject:exercise];
+    }
+    return allSHExercises;
+
+}
 
 /************************************************/
 #pragma mark - Exercise Log Data Manager Methods
@@ -800,6 +1055,11 @@
     
     //Return the string.
     return stringFromFileAtURL;
+}
+
++ (NSDictionary *)returnGeneralPlist {
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"StayHealthyGeneral" ofType:@"plist"];
+    return [[NSDictionary alloc] initWithContentsOfFile:plistPath];
 }
 
 @end

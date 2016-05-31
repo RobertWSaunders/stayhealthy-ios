@@ -10,55 +10,61 @@
 
 @interface SHDataUtilities : NSObject
 
+/*************************************/
+#pragma mark - Query Building Methods
+/*************************************/
+
+//Creates a exercise query given the exercise type and the muscles.
++ (NSString *)createExerciseQuery:(exerciseType)exerciseType muscles:(NSArray *)muscleArray;
+
+//Creates a exercise query given the exercise identifiers and exercise type.
++ (NSString *)createExerciseQueryFromExerciseIdentifiers:(exerciseType)exerciseType exerciseIdentifiers:(NSMutableArray *)exerciseIdentifiers;
+
+//Creates a workout query given the workout identifiers.
++ (NSString *)createWorkoutQueryFromWorkoutIdentifiers:(NSMutableArray *)workoutIdentifiers;
+
 /***************************************/
-#pragma mark - Exercise Utility Methods
+#pragma mark - Exercises Utility Methods
 /***************************************/
 
-//Converts a managed exercise object and converts it to a SHExercise.
-+ (SHExercise*)convertExerciseToSHExercise:(Exercise *)managedExercise;
+/*---------------------------*/
+#pragma mark - Shared Methods
+/*---------------------------*/
 
-//Takes a SHExercise and adds the users data to the exercise.
-+ (SHExercise*)addUserDataToSHExercise:(SHExercise *)exercise managedExercise:(Exercise *)managedExercise;
+//Converts a managed exercise object to a business object.
++ (id)convertExerciseToBusinessExercise:(id)managedExercise;
 
-//Checks to see if a exercise with the given identifier has been saved in the persistent store.
-+ (BOOL)exerciseHasBeenSaved:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType;
+//Takes an exercise and adds user data to it.
++ (id)addUserDataToBusinessExercise:(id)exercise managedExercise:(id)managedExercise;
 
-/*********************************************/
-#pragma mark - Custom Exercise Utility Methods
-/*********************************************/
-
-/*******************************************/
-#pragma mark - Exercise Log Utility Methods
-/*******************************************/
+//Checks to see if the passed exercise has been saved to core data before.
++ (BOOL)exerciseHasBeenSaved:(id)exercise;
 
 /**************************************/
-#pragma mark - Workout Utility Methods
+#pragma mark - Workouts Utility Methods
 /**************************************/
+
+/*---------------------------*/
+#pragma mark - Shared Methods
+/*---------------------------*/
 
 //Converts a managed workout object and converts it to a SHWorkout.
-+ (SHWorkout*)convertWorkoutToSHWorkout:(Workout *)workout;
++ (id)convertWorkoutToBusinessWorkout:(id)workout;
 
 //Takes a SHWorkout and adds the users data to the workout.
-+ (SHWorkout*)addUserDataToSHWorkout:(SHWorkout *)workout managedWorkout:(Workout *)managedWorkout;
++ (id)addUserDataToBusinessWorkout:(id)workout managedWorkout:(id)managedWorkout;
 
 //Checks to see if a workout with the given identifier has been saved in the persistent store.
-+ (BOOL)workoutHasBeenSaved:(NSString *)workoutIdentifier;
++ (BOOL)workoutHasBeenSaved:(id)workout;
 
-/********************************************/
-#pragma mark - Custom Workout Utility Methods
-/********************************************/
+//Checks to see if the user can add an exercise to a workout.
++ (BOOL)canAddExerciseToWorkout:(id)workout exercise:(id)exercise;
 
-//Converts a managed custom workout object and converts it to a SHCustomWorkout.
-+ (SHCustomWorkout*)convertCustomWorkoutToSHCustomWorkout:(CustomWorkout*)workout;
+//Returns array of exercises in a workout.
++ (NSMutableArray*)getWorkoutExercises:(id)workout;
 
-//Checks to see if the user can add a exercise to the given custom workout.
-+ (BOOL)canAddExerciseToWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise;
-
-//Checks to see if a custom workout with the given identifier has been saved in the persistent store.
-+ (BOOL)customWorkoutHasBeenSaved:(NSString *)customWorkoutIdentifier;
-
-/*****************************************/
-#pragma mark - Workout Log Utility Methods
-/*****************************************/
+/**************************************/
+#pragma mark - Logging Utility Methods
+/**************************************/
 
 @end

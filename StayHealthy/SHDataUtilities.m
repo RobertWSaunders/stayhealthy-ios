@@ -10,12 +10,82 @@
 
 @implementation SHDataUtilities
 
+/*************************************/
+#pragma mark - Query Building Methods
+/*************************************/
+
+//Creates a exercise query given the exercise type and the muscles.
++ (NSString *)createExerciseQuery:(exerciseType)exerciseType muscles:(NSArray *)muscleArray {
+    NSString *table;
+    NSString *query = @"";
+    if (index == 0) {
+        table = STRENGTH_DB_TABLENAME;
+    }
+    else if (index == 1){
+        table = STRETCHING_DB_TABLENAME;
+    }
+    else {
+        table = WARMUP_DB_TABLENAME;
+    }
+    
+    int i = 0;
+    if (muscleArray == nil) {
+        query = [NSString stringWithFormat:@"SELECT * FROM %@",table];
+    }
+    else {
+        
+        for (NSString *muscle in muscleArray) {
+            NSString *mucleInArray = muscle;
+            mucleInArray = [CommonUtilities convertMuscleNameToDatabaseStandard:muscle];
+            if (mucleInArray != nil) {
+                if (i == 0) {
+                    query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exercisePrimaryMuscle LIKE '%@'",table,mucleInArray];
+                }
+                else {
+                    query = [query stringByAppendingString:[NSString stringWithFormat:@" UNION ALL SELECT * FROM %@ WHERE exercisePrimaryMuscle LIKE '%@'",table,mucleInArray]];
+                }
+                
+            }
+            i++;
+        }
+    }
+    
+    query = [query stringByAppendingString:@" ORDER BY exerciseName COLLATE NOCASE"];
+    NSLog(@"%@",query);
+    
+    return query;
+}
+
+//Creates a exercise query given the exercise identifiers and exercise type.
++ (NSString *)createExerciseQueryFromExerciseIdentifiers:(exerciseType)exerciseType exerciseIdentifiers:(NSMutableArray *)exerciseIdentifiers {
+    
+    NSString *exerciseIdentifiers = [exerciseIDs componentsJoinedByString:@","];
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exerciseIdentifier IN (%@)",table,exerciseIdentifiers];
+    
+    return query;
+}
+
+//Creates a workout query given the workout identifiers.
++ (NSString *)createWorkoutQueryFromWorkoutIdentifiers:(NSMutableArray *)workoutIdentifiers {
+    
+    NSString *workoutIdentifiers = [workoutIDs componentsJoinedByString:@","];
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE workoutIdentifier IN (%@)",table,workoutIdentifiers];
+    
+    return query;
+}
+
 /***************************************/
 #pragma mark - Exercise Utility Methods
 /***************************************/
 
-//Converts a managed exercise object and converts it to a SHExercise.
-+ (SHExercise*)convertExerciseToSHExercise:(Exercise*)managedExercise {
+/*---------------------------*/
+#pragma mark - Shared Methods
+/*---------------------------*/
+
+//Converts a managed exercise object to a business object.
++ (id)convertExerciseToBusinessExercise:(id)managedExercise {
     //Create a new SHExercise.
     SHExercise *exercise = [[SHExercise alloc] init];
     
@@ -51,8 +121,8 @@
     return exercise;
 }
 
-//Takes a SHExercise and adds the users data to the exercise.
-+ (SHExercise*)addUserDataToSHExercise:(SHExercise *)exercise managedExercise:(Exercise *)managedExercise {
+//Takes an exercise and adds user data to it.
++ (id)addUserDataToBusinessExercise:(id)exercise managedExercise:(id)managedExercise {
 
     if (managedExercise.exerciseName != nil) {
         exercise.exerciseName = managedExercise.exerciseName;
@@ -98,9 +168,8 @@
     return exercise;
 }
 
-
-//Checks to see if a exercise with the given identifier has been saved in the persistent store.
-+ (BOOL)exerciseHasBeenSaved:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType {
+//Checks to see if the passed exercise has been saved to core data before.
++ (BOOL)exerciseHasBeenSaved:(id)exercise {
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     Exercise *exercise = [dataHandler fetchManagedExerciseRecordByIdentifierAndExerciseType:exerciseIdentifier exerciseType:exerciseType];
     if (exercise != nil)
@@ -112,8 +181,19 @@
 #pragma mark - Workout Utility Methods
 /**************************************/
 
+/*---------------------------*/
+#pragma mark - Shared Methods
+/*---------------------------*/
+
 //Converts a managed workout object and converts it to a SHWorkout.
-+ (SHWorkout *)convertWorkoutToSHWorkout:(Workout*)managedWorkout {
++ (id)convertWorkoutToBusinessWorkout:(id)workout {
+    
+    SHCustomWorkout *shWorkout = [[SHCustomWorkout alloc] init];
+    
+    [shWorkout bind:workout];
+    
+    return shWorkout;
+
     
     //Create a new SHWorkout.
     SHWorkout *workout = [[SHWorkout alloc] init];
@@ -143,35 +223,28 @@
 }
 
 //Takes a SHWorkout and adds the users data to the workout.
-+ (SHWorkout*)addUserDataToSHWorkout:(SHWorkout *)workout managedWorkout:(Workout *)managedWorkout {
++ (id)addUserDataToBusinessWorkout:(id)workout managedWorkout:(id)managedWorkout {
 
     return workout;
 }
 
 //Checks to see if a workout with the given identifier has been saved in the persistent store.
-+ (BOOL)workoutHasBeenSaved:(NSString *)workoutIdentifier {
++ (BOOL)workoutHasBeenSaved:(id)workout {
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
     Workout *workout = [dataHandler fetchManagedWorkoutRecordByIdentifier:workoutIdentifier];
     if (workout != nil)
         return YES;
     return NO;
+    
+    SHDataHandler *dataHandler = [SHDataHandler getInstance];
+    CustomWorkout *customWorkout = [dataHandler fetchManagedCustomWorkoutRecordByIdentifier:customWorkoutIdentifier];
+    if (customWorkout != nil)
+        return YES;
+    return NO;
 }
 
-/********************************************/
-#pragma mark - Custom Workout Utility Methods
-/********************************************/
-
-//Converts a managed custom workout object and converts it to a SHCustomWorkout.
-+ (SHCustomWorkout *)convertCustomWorkoutToSHCustomWorkout:(CustomWorkout*)workout {
-    SHCustomWorkout *shWorkout = [[SHCustomWorkout alloc] init];
-    
-    [shWorkout bind:workout];
-    
-    return shWorkout;
-}
-
-//Checks to see if the user can add a exercise to the given custom workout.
-+ (BOOL)canAddExerciseToWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise {
+//Checks to see if the user can add an exercise to a workout.
++ (BOOL)canAddExerciseToWorkout:(id)workout exercise:(id)exercise {
     NSMutableArray *workoutExerciseIDs = [[customWorkout.workoutExerciseIDs componentsSeparatedByString:@","] mutableCopy];
     NSMutableArray *workoutExerciseTypes = [[customWorkout.exerciseTypes componentsSeparatedByString:@","]     mutableCopy];
     
@@ -185,26 +258,91 @@
     
 }
 
-//Checks to see if a custom workout with the given identifier has been saved in the persistent store.
-+ (BOOL)customWorkoutHasBeenSaved:(NSString *)customWorkoutIdentifier {
-    SHDataHandler *dataHandler = [SHDataHandler getInstance];
-    CustomWorkout *customWorkout = [dataHandler fetchManagedCustomWorkoutRecordByIdentifier:customWorkoutIdentifier];
-    if (customWorkout != nil)
-        return YES;
-    return NO;
+//Returns array of exercises that are in a workout.
++ (NSMutableArray*)getWorkoutExercises:(id)workout {
+    
+    /* //Get the exercises in the workout identifiers.
+     NSArray *exerciseIdentifiers = [workout.workoutExerciseIdentifiers componentsSeparatedByString:@","];
+     
+     NSString *exerciseTypesWithoutSpaces = [workout.workoutExerciseTypes stringByReplacingOccurrencesOfString:@" " withString:@""];
+     
+     //Get the exercises in the workouts type.
+     //NSArray *exerciseTypes = [exerciseTypesWithoutSpaces componentsSeparatedByString:@","];
+     
+     //Reference the platform.
+     //SHDataHandler *dataHandler = [SHDataHandler getInstance];
+     
+     //Initialize a array that will be retured.
+     NSMutableArray *exercises = [[NSMutableArray alloc] init];
+     
+     for (int i = 0; i < exerciseIdentifiers.count; i++) {
+     //Create a new exercise.
+     SHExercise *exercise = [[SHExercise alloc] init];
+     NSArray *tempExerciseArray = [[NSArray alloc] init];
+     
+     if ([[exerciseTypes objectAtIndex:i] isEqualToString:@"stretching"]) {
+     tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:stretching exerciseIdentifier:exerciseIdentifiers[i]]];
+     }
+     else if ([[exerciseTypes objectAtIndex:i] isEqualToString:@"strength"]) {
+     tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:strength exerciseIdentifier:exerciseIdentifiers[i]]];
+     }
+     else {
+     tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:warmup exerciseIdentifier:exerciseIdentifiers[i]]];
+     }
+     
+     if (tempExerciseArray.count > 0) {
+     //Get the exercise from the searched statement.
+     exercise = [tempExerciseArray objectAtIndex:0];
+     //Add the exercises to the array.
+     [exercises addObject:exercise];
+     }
+     }
+     */
+    return nil;
+    
+    /*
+     //Get the exercises in the workout identifiers.
+     NSArray *exerciseIdentifiers = [workout.workoutExerciseIDs componentsSeparatedByString:@","];
+     
+     NSString *exerciseTypesWithoutSpaces = [workout.exerciseTypes stringByReplacingOccurrencesOfString:@" " withString:@""];
+     
+     //Get the exercises in the workouts type.
+     // NSArray *exerciseTypes = [exerciseTypesWithoutSpaces componentsSeparatedByString:@","];
+     
+     //Reference the platform.
+     //SHDataHandler *dataHandler = [SHDataHandler getInstance];
+     
+     //Initialize a array that will be retured.
+     NSMutableArray *exercises = [[NSMutableArray alloc] init];
+     
+     for (int i = 0; i < exerciseIdentifiers.count; i++) {
+     //Create a new exercise.
+     SHExercise *exercise = [[SHExercise alloc] init];
+     NSArray *tempExerciseArray = [[NSArray alloc] init];
+     
+     if ([[exerciseTypes objectAtIndex:i] isEqualToString:@"stretching"]) {
+     tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:stretching exerciseIdentifier:exerciseIdentifiers[i]]];
+     }
+     else if ([[exerciseTypes objectAtIndex:i] isEqualToString:@"strength"]) {
+     tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:strength exerciseIdentifier:exerciseIdentifiers[i]]];
+     }
+     else {
+     tempExerciseArray = [dataHandler performExerciseStatement:[self generateWorkoutExerciseQuery:warmup exerciseIdentifier:exerciseIdentifiers[i]]];
+     }
+     
+     if (tempExerciseArray.count > 0) {
+     //Get the exercise from the searched statement.
+     exercise = [tempExerciseArray objectAtIndex:0];
+     //Add the exercises to the array.
+     [exercises addObject:exercise];
+     }
+     }
+     */
+    return nil;
 }
 
-/*-(BOOL)checkColumnExists
-{
-    BOOL columnExists = NO;
-    
-    sqlite3_stmt *selectStmt;
-    
-    const char *sqlStatement = "select yourcolumnname from yourtable";
-    if(sqlite3_prepare_v2(yourDbHandle, sqlStatement, -1, &selectStmt, NULL) == SQLITE_OK)
-        columnExists = YES;
-    
-    return columnExists;
-}*/
+/**************************************/
+#pragma mark - Logging Utility Methods
+/**************************************/
 
 @end

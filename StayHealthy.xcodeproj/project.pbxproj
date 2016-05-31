@@ -17,7 +17,6 @@
 		3F7D77B219A3086200E00065 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7D77AB19A3086200E00065 /* MobileCoreServices.framework */; };
 		3F7D77B319A3086200E00065 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7D77AC19A3086200E00065 /* Security.framework */; };
 		3F7D77B519A3086200E00065 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */; };
-		3F8BB363198D4AF70098E1A7 /* CommonSetUpOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BB362198D4AF70098E1A7 /* CommonSetUpOperations.m */; };
 		3F949C1F195A56D800EB4BED /* StayHealthyGeneral.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F949C1E195A56D800EB4BED /* StayHealthyGeneral.plist */; };
 		3FC466B21B3621970062EBDB /* CommonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC466B11B3621970062EBDB /* CommonUtilities.m */; };
 		3FD5E1A11853A8D00063E10C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD5E1A01853A8D00063E10C /* Foundation.framework */; };
@@ -50,7 +49,9 @@
 		EB384B0E1CF09D640073A37B /* LoggingPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B0D1CF09D640073A37B /* LoggingPreferencesViewController.m */; };
 		EB384B111CF09D970073A37B /* NotificationPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B101CF09D970073A37B /* NotificationPreferencesViewController.m */; };
 		EB384B151CF0A05D0073A37B /* AddJournalEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B141CF0A05D0073A37B /* AddJournalEntryViewController.m */; };
-		EB384B171CF120150073A37B /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB384B161CF120150073A37B /* TelerikUI.framework */; };
+		EB384B241CF228120073A37B /* ExerciseLogCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B231CF228120073A37B /* ExerciseLogCreationViewController.m */; };
+		EB384B271CF228220073A37B /* WorkoutLogCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B261CF228220073A37B /* WorkoutLogCreationViewController.m */; };
+		EB384B2B1CF29BEB0073A37B /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B2A1CF29BEB0073A37B /* UIScrollView+EmptyDataSet.m */; };
 		EB3B82581C4AEF5300FAAD52 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3B82571C4AEF5300FAAD52 /* Exercise.m */; };
 		EB3B9E251BE8023600BCEF28 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E241BE8023600BCEF28 /* libz.tbd */; };
 		EB3B9E271BE8024300BCEF28 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E261BE8024300BCEF28 /* libsqlite3.tbd */; };
@@ -64,7 +65,6 @@
 		EB63EF9C1B4B5FA400EF35A3 /* TextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF9B1B4B5FA400EF35A3 /* TextFieldTableViewCell.m */; };
 		EB6492F51CC67CE100FFBB4A /* SHCustomExercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6492F41CC67CE100FFBB4A /* SHCustomExercise.m */; };
 		EB6492F81CC683FE00FFBB4A /* CustomExerciseDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6492F71CC683FE00FFBB4A /* CustomExerciseDataManager.m */; };
-		EB701E7F1BE7EA54005003B1 /* WalkThoughOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB701E7E1BE7EA54005003B1 /* WalkThoughOneViewController.m */; };
 		EB737F5C1B7F8A9F00EBBDA4 /* SHExercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F5B1B7F8A9F00EBBDA4 /* SHExercise.m */; };
 		EB737F5F1B7F8B2200EBBDA4 /* ExerciseDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F5E1B7F8B2200EBBDA4 /* ExerciseDataManager.m */; };
 		EB737F691B7F908F00EBBDA4 /* SHExercise+Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F681B7F908F00EBBDA4 /* SHExercise+Exercise.m */; };
@@ -170,6 +170,7 @@
 		EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCE12511BD2F62C000370CC /* FavoritesViewController.m */; };
 		EBD1EBC91C2F062B003F005F /* TextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */; };
 		EBD1EBCD1C2F1179003F005F /* CustomWorkoutSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */; };
+		EBD495181CF9C45800E7E31C /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD495171CF9C45800E7E31C /* TelerikUI.framework */; };
 		EBF7E74B1C49618400E878E9 /* SHDataUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7E74A1C49618400E878E9 /* SHDataUtilities.m */; };
 		EBF7F86A1CD959460086C9E0 /* Journal_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F8691CD959460086C9E0 /* Journal_iPad.storyboard */; };
 		EBF7F86C1CD9595A0086C9E0 /* Exercises_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F86B1CD9595A0086C9E0 /* Exercises_iPad.storyboard */; };
@@ -206,8 +207,6 @@
 		3F7D77AB19A3086200E00065 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3F7D77AC19A3086200E00065 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		3F8BB361198D4AF70098E1A7 /* CommonSetUpOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonSetUpOperations.h; sourceTree = "<group>"; };
-		3F8BB362198D4AF70098E1A7 /* CommonSetUpOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonSetUpOperations.m; sourceTree = "<group>"; };
 		3F949C1E195A56D800EB4BED /* StayHealthyGeneral.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StayHealthyGeneral.plist; sourceTree = "<group>"; };
 		3FC466B01B3621970062EBDB /* CommonUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtilities.h; sourceTree = "<group>"; };
 		3FC466B11B3621970062EBDB /* CommonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilities.m; sourceTree = "<group>"; };
@@ -263,7 +262,12 @@
 		EB384B101CF09D970073A37B /* NotificationPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationPreferencesViewController.m; sourceTree = "<group>"; };
 		EB384B131CF0A05D0073A37B /* AddJournalEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddJournalEntryViewController.h; sourceTree = "<group>"; };
 		EB384B141CF0A05D0073A37B /* AddJournalEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddJournalEntryViewController.m; sourceTree = "<group>"; };
-		EB384B161CF120150073A37B /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TelerikUI.framework; path = ../../ProjectResources/StayHealthy/Frameworks/Frameworks/TelerikUI.framework; sourceTree = "<group>"; };
+		EB384B221CF228120073A37B /* ExerciseLogCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseLogCreationViewController.h; sourceTree = "<group>"; };
+		EB384B231CF228120073A37B /* ExerciseLogCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseLogCreationViewController.m; sourceTree = "<group>"; };
+		EB384B251CF228220073A37B /* WorkoutLogCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutLogCreationViewController.h; sourceTree = "<group>"; };
+		EB384B261CF228220073A37B /* WorkoutLogCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutLogCreationViewController.m; sourceTree = "<group>"; };
+		EB384B291CF29BEB0073A37B /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
+		EB384B2A1CF29BEB0073A37B /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		EB3ABB341BF00244004AF091 /* StayHealthy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StayHealthy-Bridging-Header.h"; sourceTree = "<group>"; };
 		EB3B82561C4AEF5300FAAD52 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
 		EB3B82571C4AEF5300FAAD52 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
@@ -290,8 +294,6 @@
 		EB6492F41CC67CE100FFBB4A /* SHCustomExercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCustomExercise.m; sourceTree = "<group>"; };
 		EB6492F61CC683FE00FFBB4A /* CustomExerciseDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomExerciseDataManager.h; sourceTree = "<group>"; };
 		EB6492F71CC683FE00FFBB4A /* CustomExerciseDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomExerciseDataManager.m; sourceTree = "<group>"; };
-		EB701E7D1BE7EA54005003B1 /* WalkThoughOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalkThoughOneViewController.h; sourceTree = "<group>"; };
-		EB701E7E1BE7EA54005003B1 /* WalkThoughOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalkThoughOneViewController.m; sourceTree = "<group>"; };
 		EB737F571B7F8A0300EBBDA4 /* DataManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManagerProtocol.h; sourceTree = "<group>"; };
 		EB737F5A1B7F8A9F00EBBDA4 /* SHExercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHExercise.h; sourceTree = "<group>"; };
 		EB737F5B1B7F8A9F00EBBDA4 /* SHExercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHExercise.m; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 		EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewTableViewCell.m; sourceTree = "<group>"; };
 		EBD1EBCB1C2F1179003F005F /* CustomWorkoutSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWorkoutSelectionViewController.h; sourceTree = "<group>"; };
 		EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWorkoutSelectionViewController.m; sourceTree = "<group>"; };
+		EBD495171CF9C45800E7E31C /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TelerikUI.framework; path = ../../ProjectResources/StayHealthy/Frameworks/Frameworks/TelerikUI.framework; sourceTree = "<group>"; };
 		EBF7E7491C49618400E878E9 /* SHDataUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDataUtilities.h; sourceTree = "<group>"; };
 		EBF7E74A1C49618400E878E9 /* SHDataUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDataUtilities.m; sourceTree = "<group>"; };
 		EBF7F8691CD959460086C9E0 /* Journal_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Journal_iPad.storyboard; sourceTree = "<group>"; };
@@ -496,7 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBAF51381CD441E4005DAE31 /* libicucore.tbd in Frameworks */,
-				EB384B171CF120150073A37B /* TelerikUI.framework in Frameworks */,
+				EBD495181CF9C45800E7E31C /* TelerikUI.framework in Frameworks */,
 				EB3B9E271BE8024300BCEF28 /* libsqlite3.tbd in Frameworks */,
 				EB3B9E251BE8023600BCEF28 /* libz.tbd in Frameworks */,
 				3F7D77AF19A3086200E00065 /* CFNetwork.framework in Frameworks */,
@@ -545,7 +548,7 @@
 		3F2E5A8E18E11B8600EE4734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EB384B161CF120150073A37B /* TelerikUI.framework */,
+				EBD495171CF9C45800E7E31C /* TelerikUI.framework */,
 				3F7D77A619A3081300E00065 /* AudioToolbox.framework */,
 				3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */,
 				3F7D77AC19A3086200E00065 /* Security.framework */,
@@ -583,38 +586,27 @@
 			name = "Web View ViewController";
 			sourceTree = "<group>";
 		};
-		3F8BB360198D4AD50098E1A7 /* Common Set Up Operations */ = {
-			isa = PBXGroup;
-			children = (
-				3F8BB361198D4AF70098E1A7 /* CommonSetUpOperations.h */,
-				3F8BB362198D4AF70098E1A7 /* CommonSetUpOperations.m */,
-			);
-			name = "Common Set Up Operations";
-			sourceTree = "<group>";
-		};
 		3FC465E21B33A79B0062EBDB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EB384AFA1CED486C0073A37B /* Utility Tools */,
-				EB701E7C1BE7E827005003B1 /* Initial Launch */,
+				EB701E7C1BE7E827005003B1 /* Initial Onboarding */,
 				EB77FFD11C48909B00C0DE54 /* Journal */,
 				3FF735BB185ABA9900FECDF2 /* Exercises */,
-				EB02E7A41CCBA12E0076040C /* Logging */,
 				3F18B151187F841A00EC852A /* Workouts */,
 				EBCE12531BD2F632000370CC /* Liked */,
 				3FE95E25187A5DB7005DD13D /* Settings */,
-				3FC465E31B33A7A50062EBDB /* Tab Controller */,
+				EB384AFA1CED486C0073A37B /* Utility Tools */,
+				3FC465E31B33A7A50062EBDB /* Navigation */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		3FC465E31B33A7A50062EBDB /* Tab Controller */ = {
+		3FC465E31B33A7A50062EBDB /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				3F63B1A81ABB9F24000CDE06 /* HomeTabBarController.h */,
-				3F63B1A91ABB9F24000CDE06 /* HomeTabBarController.m */,
+				EB384B1F1CF21E680073A37B /* Tab Controller */,
 			);
-			name = "Tab Controller";
+			name = Navigation;
 			sourceTree = "<group>";
 		};
 		3FC465E41B33A7F70062EBDB /* Platform */ = {
@@ -622,12 +614,11 @@
 			children = (
 				EB63EF981B4B442B00EF35A3 /* GlobalDefinitions.h */,
 				3FD5E1BA1853A8D00063E10C /* StayHealthy.xcdatamodeld */,
-				EB737F541B7F84E100EBBDA4 /* Data Managers */,
 				EB737F6E1B80159C00EBBDA4 /* Data Handler */,
+				EB737F541B7F84E100EBBDA4 /* Data Managers */,
 				EB737F581B7F8A1C00EBBDA4 /* Business Objects */,
 				EB737F591B7F8A6700EBBDA4 /* Core Data Managed Objects */,
 				3FC466AF1B3620FF0062EBDB /* Common Utility Methods */,
-				3F8BB360198D4AD50098E1A7 /* Common Set Up Operations */,
 				3FC465E61B33A9BD0062EBDB /* StayHealthy Database */,
 				3F1DE5821B461DAB0052BD64 /* StayHealthy Plist */,
 			);
@@ -813,6 +804,7 @@
 		3FF9DD641853BA610083A499 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				EB384B281CF29BEB0073A37B /* DZNEmptyDataSet */,
 				EB77FFAB1C485F5F00C0DE54 /* LGAlertView */,
 				EB77FF681C485EA900C0DE54 /* TSMessages */,
 				EB77FF9C1C485ED300C0DE54 /* MGSwipeTableCell */,
@@ -826,6 +818,8 @@
 		EB02E7A41CCBA12E0076040C /* Logging */ = {
 			isa = PBXGroup;
 			children = (
+				EB384B201CF227130073A37B /* Exercise Log */,
+				EB384B211CF2271C0073A37B /* Workout Log */,
 			);
 			name = Logging;
 			sourceTree = "<group>";
@@ -893,6 +887,43 @@
 			name = "Selection Cell";
 			sourceTree = "<group>";
 		};
+		EB384B1F1CF21E680073A37B /* Tab Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3F63B1A81ABB9F24000CDE06 /* HomeTabBarController.h */,
+				3F63B1A91ABB9F24000CDE06 /* HomeTabBarController.m */,
+			);
+			name = "Tab Controller";
+			sourceTree = "<group>";
+		};
+		EB384B201CF227130073A37B /* Exercise Log */ = {
+			isa = PBXGroup;
+			children = (
+				EB384B221CF228120073A37B /* ExerciseLogCreationViewController.h */,
+				EB384B231CF228120073A37B /* ExerciseLogCreationViewController.m */,
+			);
+			name = "Exercise Log";
+			sourceTree = "<group>";
+		};
+		EB384B211CF2271C0073A37B /* Workout Log */ = {
+			isa = PBXGroup;
+			children = (
+				EB384B251CF228220073A37B /* WorkoutLogCreationViewController.h */,
+				EB384B261CF228220073A37B /* WorkoutLogCreationViewController.m */,
+			);
+			name = "Workout Log";
+			sourceTree = "<group>";
+		};
+		EB384B281CF29BEB0073A37B /* DZNEmptyDataSet */ = {
+			isa = PBXGroup;
+			children = (
+				EB384B291CF29BEB0073A37B /* UIScrollView+EmptyDataSet.h */,
+				EB384B2A1CF29BEB0073A37B /* UIScrollView+EmptyDataSet.m */,
+			);
+			name = DZNEmptyDataSet;
+			path = "../../../ProjectResources/StayHealthy/Frameworks/Frameworks/DZNEmptyDataSet-master/DZNEmptyDataSet";
+			sourceTree = "<group>";
+		};
 		EB47028C1C063CEE00732BC9 /* Workouts Advanced Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -951,13 +982,11 @@
 			name = "Custom UITextfield TableViewCell";
 			sourceTree = "<group>";
 		};
-		EB701E7C1BE7E827005003B1 /* Initial Launch */ = {
+		EB701E7C1BE7E827005003B1 /* Initial Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				EB701E7D1BE7EA54005003B1 /* WalkThoughOneViewController.h */,
-				EB701E7E1BE7EA54005003B1 /* WalkThoughOneViewController.m */,
 			);
-			name = "Initial Launch";
+			name = "Initial Onboarding";
 			sourceTree = "<group>";
 		};
 		EB737F541B7F84E100EBBDA4 /* Data Managers */ = {
@@ -1208,6 +1237,7 @@
 				EB0853D51CC42288000DEAC0 /* JournalViewController.m */,
 				EB384B131CF0A05D0073A37B /* AddJournalEntryViewController.h */,
 				EB384B141CF0A05D0073A37B /* AddJournalEntryViewController.m */,
+				EB02E7A41CCBA12E0076040C /* Logging */,
 			);
 			name = Journal;
 			sourceTree = "<group>";
@@ -1681,6 +1711,7 @@
 			files = (
 				EBC034D71C4C10820079332D /* ExerciseCreateViewController.m in Sources */,
 				EB77FFBD1C485F5F00C0DE54 /* LGAlertViewCell.m in Sources */,
+				EB384B271CF228220073A37B /* WorkoutLogCreationViewController.m in Sources */,
 				EB737F5C1B7F8A9F00EBBDA4 /* SHExercise.m in Sources */,
 				EB2C4A701B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m in Sources */,
 				EBB432DA1B549FEC001B2D40 /* ExerciseTableViewCell.m in Sources */,
@@ -1712,7 +1743,6 @@
 				EB8AF5551C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m in Sources */,
 				EB384AFD1CED48F90073A37B /* SelectionViewController.m in Sources */,
 				EB77FFC11C485F5F00C0DE54 /* UIWindow+LGAlertView.m in Sources */,
-				3F8BB363198D4AF70098E1A7 /* CommonSetUpOperations.m in Sources */,
 				EBAF51411CD44613005DAE31 /* ExerciseLogDataManager.m in Sources */,
 				EBD1EBC91C2F062B003F005F /* TextViewTableViewCell.m in Sources */,
 				3FD5E1B31853A8D00063E10C /* AppDelegate.m in Sources */,
@@ -1747,7 +1777,6 @@
 				EBAF51531CD44837005DAE31 /* SHWorkoutLog+WorkoutLog.m in Sources */,
 				EB77FF871C485EA900C0DE54 /* TSMessage.m in Sources */,
 				EB2C4A5B1B89F531005D183A /* CustomWorkout.m in Sources */,
-				EB701E7F1BE7EA54005003B1 /* WalkThoughOneViewController.m in Sources */,
 				EB8F61DC1CAD984B00030F3F /* LKBundleInfo.m in Sources */,
 				EB8F61DD1CAD984B00030F3F /* LKBundlesManager.m in Sources */,
 				EB2C4A611B89F556005D183A /* SHWorkout.m in Sources */,
@@ -1761,6 +1790,7 @@
 				EB384B0E1CF09D640073A37B /* LoggingPreferencesViewController.m in Sources */,
 				EB0853DA1CC42E58000DEAC0 /* ExerciseCollectionViewCell.m in Sources */,
 				EB77FFAA1C485F0F00C0DE54 /* MZTimerLabel.m in Sources */,
+				EB384B2B1CF29BEB0073A37B /* UIScrollView+EmptyDataSet.m in Sources */,
 				EB77FF881C485EA900C0DE54 /* HexColor.m in Sources */,
 				EB77FFA11C485ED300C0DE54 /* MGSwipeButton.m in Sources */,
 				EBD1EBCD1C2F1179003F005F /* CustomWorkoutSelectionViewController.m in Sources */,
@@ -1772,6 +1802,7 @@
 				3FD5E1AF1853A8D00063E10C /* main.m in Sources */,
 				EB77FFBF1C485F5F00C0DE54 /* LGAlertViewTextField.m in Sources */,
 				EB8F61E41CAD984B00030F3F /* NSDictionary+LKFormEncoded.m in Sources */,
+				EB384B241CF228120073A37B /* ExerciseLogCreationViewController.m in Sources */,
 				EB8F61EB1CAD984B00030F3F /* LKButton.m in Sources */,
 				EB4702991C063E3100732BC9 /* WorkoutDetailViewController.m in Sources */,
 				EB384B151CF0A05D0073A37B /* AddJournalEntryViewController.m in Sources */,
@@ -2142,6 +2173,16 @@
 					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
@@ -2161,7 +2202,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2406,6 +2447,16 @@
 					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
@@ -2424,7 +2475,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

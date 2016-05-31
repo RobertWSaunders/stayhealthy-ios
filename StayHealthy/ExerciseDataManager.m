@@ -431,6 +431,4 @@
     return fetchRequest;
 }
 
-
-
 @end

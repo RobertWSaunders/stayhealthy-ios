@@ -18,6 +18,7 @@
 @interface SHDataHandler : NSObject {
     //Create a sqlite database reference for StayHealthy database operations.
     sqlite3 *database;
+    
     //Create reference to the exercise data manager.
     ExerciseDataManager *exerciseDataManager;
     //Create reference to the custom exercise data manager.
@@ -34,6 +35,41 @@
 
 //Get instance of the singleton.
 + (id)getInstance;
+
+/******************************/
+#pragma mark - General Methods
+/******************************/
+
+//Deletes all of the users data.
+- (void)deleteAllData;
+ 
+/****************************************/
+#pragma mark - Journal General Methods
+/****************************************/
+
+/****************************************/
+#pragma mark - Exercises General Methods
+/****************************************/
+
+//Returns a complete array of sorted exercises, including both custom and standard exercises.
+- (NSMutableArray *)fetchExercises:(exerciseType)exerciseType muscles:(NSArray *)muscles;
+
+//Returns array filled with all custom exercises sorted.
+- (NSMutableArray *)fetchCustomExercises;
+
+//Returns array filled with the recently viewed exercises, array count repects user preference.
+- (NSMutableArray *)fetchRecentlyViewedExercises;
+
+//Returns array filled with the liked exercises for the passed exercise type.
+- (NSMutableArray *)fetchLikedExercises:(exerciseType)exerciseType;
+
+/****************************************/
+#pragma mark - Workouts General Methods
+/****************************************/
+
+/************************************/
+#pragma mark - Liked General Methods
+/************************************/
 
 /******************************************/
 #pragma mark - StayHealthy Database Methods
@@ -91,7 +127,7 @@
 - (SHExercise*)fetchExerciseByIdentifier:(NSString *)exerciseIdentifier;
 
 //Fetches all of the recently viewed exercise records in the persistent store and returns a mutable array of SHExercises.
-- (NSMutableArray *)fetchRecentlyViewedExercises;
+- (NSMutableArray *)fetchRecentlyViewedExerciseRecords;
 
 //Fetches all of the liked exercise records in the persistent store and returns a mutable array of SHExercises.
 - (NSMutableArray *)fetchAllLikedExercises;
@@ -137,6 +173,36 @@
 //-------------------------
 #define Fetching Operations
 //-------------------------
+
+//Fetches the managed custom exercise record from the persistent store given the exercise identifier and exercise type rather then returning a SHCustomExercise.
+- (CustomExercise*)fetchManagedCustomExerciseRecordByIdentifierAndExerciseType:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType;
+
+//Fetches a custom exercise record given the identifier and exercise type in the persistent store and returns a SHCustomExercise.
+- (SHCustomExercise*)fetchCustomExerciseByIdentifierAndExerciseType:(NSString *)exerciseIdentifier exerciseType:(NSString*)exerciseType;
+
+//Fetches the managed custom exercise record from the persistent store rather then returning a SHCustomExercise.
+- (CustomExercise*)fetchManagedCustomExerciseRecordByIdentifier:(NSString *)exerciseIdentifier;
+
+//Fetches a custom exercise record given the identifier in the persistent store and returns a SHCustomExercise.
+- (SHCustomExercise*)fetchCustomExerciseByIdentifier:(NSString *)exerciseIdentifier;
+
+//Fetches all of the recently viewed custom exercise records in the persistent store and returns a mutable array of SHCustomExercises.
+- (NSMutableArray *)fetchRecentlyViewedCustomExerciseRecords;
+
+//Fetches all of the liked custom exercise records in the persistent store and returns a mutable array of SHCustomExercises.
+- (NSMutableArray *)fetchAllLikedCustomExercises;
+
+//Fetches all of the liked strength custom exercise records in the persistent store and returns a mutable array of SHCustomExercises.
+- (NSMutableArray *)fetchStrengthLikedCustomExercises;
+
+//Fetches all of the liked stretching custom exercise records in the persistent store and returns a mutable array of SHCustomExercises.
+- (NSMutableArray *)fetchStretchLikedCustomExercises;
+
+//Fetches all of the liked warmup custom exercise records in the persistent store and returns a mutable array of SHCustomExercises.
+- (NSMutableArray *)fetchWarmupLikedCustomExercises;
+
+//Fetches all of the custom exercise records in the persistent store.
+- (NSMutableArray *)fetchAllCustomExerciseRecords;
 
 /************************************************/
 #pragma mark - Exercise Log Data Manager Methods
@@ -261,5 +327,9 @@
 
 //Returns the database version that is store on the web.
 - (NSString *)onlineDatabaseVersion;
+
+
+//Returns the general property list.
++ (NSDictionary *)returnGeneralPlist;
 
 @end

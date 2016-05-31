@@ -170,7 +170,7 @@
         WebViewViewController *webViewViewController = [[WebViewViewController alloc] init];
         webViewViewController = segue.destinationViewController;
         webViewViewController.titleText = @"FAQ";
-        webViewViewController.url = FAQ_URL;
+        webViewViewController.url = @"";
         webViewViewController.showClose = NO;
     }
 }

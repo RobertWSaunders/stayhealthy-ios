@@ -17,10 +17,9 @@
 #pragma mark - URLS
 /******************/
 
-#define WEBSITE_URL                         @"http://stayhealthy.io"
+#define WEBSITE_URL                         @"http://www.stayhealthy.io"
 #define PRIVACY_URL                         @"http://mail.rsgc.on.ca/~rsaunders/privacy.html"
 #define TERMS_URL                           @"http://mail.rsgc.on.ca/~rsaunders/terms.html"
-#define FAQ_URL                             @"http://mail.rsgc.on.ca/~rsaunders/faq.html"
 #define DATABASE_URL                        @"http://mail.rsgc.on.ca/~rsaunders/StayHealthyDatabase.sqlite"
 #define DATABASE_VERSION_URL                @"http://mail.rsgc.on.ca/~rsaunders/StayHealthyDatabaseVersion.txt"
 
@@ -141,6 +140,7 @@
 #define REGULAR_FONTNAME                    @"Avenir"
 #define REGULAR_LIGHT_FONTNAME              @"Avenir-Light"
 #define REGULAR_INTENSE_FONTNAME            @"Avenir-Roman"
+#define REGULAR_BOOK_FONTNAME               @"Avenir-Book"
 
 /******************************/
 #pragma mark - User Preferences
@@ -192,6 +192,8 @@
 #pragma mark - User Default Keys
 /********************************/
 
+#define USER_INSTALLED_VERSION                          @"userInstalledVersion"
+
 //--------------------------
 #pragma mark First View Keys
 //--------------------------
@@ -217,7 +219,7 @@ typedef enum : NSUInteger {
     strength,
     stretching,
     warmup,
-} exerciseTypes;
+} exerciseType;
 
 typedef enum : NSUInteger {
     targetSports,
