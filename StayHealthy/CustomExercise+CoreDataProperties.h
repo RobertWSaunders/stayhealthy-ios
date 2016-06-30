@@ -1,14 +1,19 @@
 //
-//  SHCustomExercise.h
+//  CustomExercise+CoreDataProperties.h
 //  StayHealthy
 //
-//  Created by Robert Saunders on 2016-04-19.
+//  Created by Robert Saunders on 2016-06-25.
 //  Copyright © 2016 Robert Saunders. All rights reserved.
 //
+//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
+//  to delete and recreate this implementation file for your updated model.
+//
 
-#import <Foundation/Foundation.h>
+#import "CustomExercise.h"
 
-@interface SHCustomExercise : NSObject
+NS_ASSUME_NONNULL_BEGIN
+
+@interface CustomExercise (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSDate *customExerciseCreatedDate;
 @property (nullable, nonatomic, retain) NSString *customExerciseDifferentVariationsIdentifiers;
@@ -33,3 +38,5 @@
 @property (nullable, nonatomic, retain) NSString *customExerciseType;
 
 @end
+
+NS_ASSUME_NONNULL_END

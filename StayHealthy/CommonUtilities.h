@@ -81,6 +81,46 @@
 //Checks if an email is valid.
 + (BOOL)emailIsValid:(NSString *)email;
 
+/*********************************/
+#pragma mark - Conversion Methods
+/*********************************/
+
+//Converts meters to either km or miles based on user preferences.
++ (void)metersToPreferredDistance(double)meters;
+
+//Converts km or miles to meters based on user preferences.
++ (void)preferredDistanceToMeters(double)distance;
+
+//Converts pounds to pounds/kilograms/stones based on user preferences.
++ (void)poundsToPreferredWeight(float)pounds;
+
+//Converts pounds/kilograms/st to pounds based on user preferences.
++ (void)preferredWeightToPounds(float)weight;
+
+//Converts kph to either mph/kph/ms based on user preferences.
++ (void)kphToPreferredSpeed(float)kph;
+
+//Converts kph/mph/ms to kph based on user preferences.
++ (void)preferredSpeedToKph(float)speed;
+
+//Converts cm to in/m/ft/mm based on user preferences.
++ (void)cmToPreferredHeight(float)cm;
+
+//Converts in/m/ft/mm to cm based on user preferences.
++ (void)preferredHeightToCm(float)height;
+
+//Converts kcal to kj/kcal based on user preferences.
++ (void)kcalToPreferredCalorieUnit(float)kcal;
+
+//Converts kcal/kj to kcal based on user preferences.
++ (void)preferredCalorieUnitToKcal(float)calorieUnit;
+
+//Converts bpm to bpm based on user preferences.
++ (void)bpmToPreferredHeartBeatUnit(float)bpm;
+
+//Converts bpm to bpm based on user preferences.
++ (void)preferredHeartBeatUnitToBpm(float)heartBeatUnit;
+
 /***************************/
 #pragma mark - Useful Tools
 /***************************/
@@ -148,7 +188,6 @@
 /*---------------------------*/
 #pragma mark - Journal Tools
 /*---------------------------*/
-
 
 
 /*---------------------------*/

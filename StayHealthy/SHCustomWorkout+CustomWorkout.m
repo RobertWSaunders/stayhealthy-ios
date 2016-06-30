@@ -13,43 +13,53 @@
 //Creates Custom Workout Record from SHCustomWorkout Record
 - (void)map:(CustomWorkout *)customWorkout {
     SHCustomWorkout *SHcustomWorkout = self;
-    [customWorkout setValue:SHcustomWorkout.workoutID forKey:@"workoutID"];
-    [customWorkout setValue:SHcustomWorkout.workoutName forKey:@"workoutName"];
-    [customWorkout setValue:SHcustomWorkout.workoutSummary forKey:@"workoutSummary"];
-    [customWorkout setValue:SHcustomWorkout.workoutTargetMuscles forKey:@"workoutTargetMuscles"];
-    [customWorkout setValue:SHcustomWorkout.workoutTargetSports forKey:@"workoutTargetSports"];
-    [customWorkout setValue:SHcustomWorkout.workoutType forKey:@"workoutType"];
-    [customWorkout setValue:SHcustomWorkout.workoutDifficulty forKey:@"workoutDifficulty"];
-    [customWorkout setValue:SHcustomWorkout.exerciseTypes forKey:@"exerciseTypes"];
-    [customWorkout setValue:SHcustomWorkout.workoutExerciseIDs forKey:@"workoutExerciseIDs"];
-    [customWorkout setValue:SHcustomWorkout.liked forKey:@"liked"];
-    [customWorkout setValue:SHcustomWorkout.timesCompleted forKey:@"timesCompleted"];
-    [customWorkout setValue:SHcustomWorkout.lastViewed forKey:@"lastViewed"];
-    [customWorkout setValue:SHcustomWorkout.lastDateCompleted forKey:@"lastDateCompleted"];
-    [customWorkout setValue:SHcustomWorkout.dateModified forKey:@"dateModified"];
-    [customWorkout setValue:SHcustomWorkout.dateCreated forKey:@"dateCreated"];
-    [customWorkout setValue:SHcustomWorkout.workoutEquipment forKey:@"workoutEquipment"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutIdentifier forKey:@"customWorkoutIdentifier"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutName forKey:@"customWorkoutName"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutSummary forKey:@"customWorkoutSummary"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutTargetMuscles forKey:@"customWorkoutTargetMuscles"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutTargetSports forKey:@"customWorkoutTargetSports"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutType forKey:@"customWorkoutType"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutDifficulty forKey:@"customWorkoutDifficulty"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutExerciseTypes forKey:@"customWorkoutExerciseTypes"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutExerciseIdentifiers forKey:@"customWorkoutExerciseIdentifiers"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutLiked forKey:@"customWorkoutLiked"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutTimesCompleted forKey:@"customWorkoutTimesCompleted"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutTimesViewed forKey:@"customWorkoutTimesViewed"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutLastViewed forKey:@"customWorkoutLastViewed"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutLastDateCompleted forKey:@"customWorkoutLastDateCompleted"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutEditedDate forKey:@"customWorkoutEditedDate"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutCreatedDate forKey:@"customWorkoutCreatedDate"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutEquipmentNeeded forKey:@"customWorkoutEquipmentNeeded"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutLikedDate forKey:@"customWorkoutLikedDate"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutShortName forKey:@"customWorkoutShortName"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutTargetGender forKey:@"customWorkoutTargetGender"];
+    [customWorkout setValue:SHcustomWorkout.customWorkoutEstimatedDuration forKey:@"customWorkoutEstimatedDuration"];
 }
 
 //Creates SHCustomWorkout Record from Custom Workout Record
 - (void)bind:(CustomWorkout *)customWorkout {
     SHCustomWorkout *SHcustomWorkout = self;
-    SHcustomWorkout.workoutID = customWorkout.workoutID;
-    SHcustomWorkout.liked = customWorkout.liked;
-    SHcustomWorkout.lastDateCompleted = customWorkout.lastDateCompleted;
-    SHcustomWorkout.lastViewed = customWorkout.lastViewed;
-    SHcustomWorkout.timesCompleted = customWorkout.timesCompleted;
-    SHcustomWorkout.workoutName = customWorkout.workoutName;
-    SHcustomWorkout.workoutSummary = customWorkout.workoutSummary;
-    SHcustomWorkout.workoutTargetMuscles = customWorkout.workoutTargetMuscles;
-    SHcustomWorkout.workoutTargetSports = customWorkout.workoutTargetSports;
-    SHcustomWorkout.workoutExerciseIDs = customWorkout.workoutExerciseIDs;
-    SHcustomWorkout.workoutDifficulty = customWorkout.workoutDifficulty;
-    SHcustomWorkout.workoutType = customWorkout.workoutType;
-    SHcustomWorkout.dateCreated = customWorkout.dateCreated;
-    SHcustomWorkout.dateModified = customWorkout.dateModified;
-    SHcustomWorkout.exerciseTypes = customWorkout.exerciseTypes;
-    SHcustomWorkout.workoutEquipment = customWorkout.workoutEquipment;
+    SHcustomWorkout.customWorkoutIdentifier = customWorkout.customWorkoutIdentifier;
+    SHcustomWorkout.customWorkoutLiked = customWorkout.customWorkoutLiked;
+    SHcustomWorkout.customWorkoutLastDateCompleted = customWorkout.customWorkoutLastDateCompleted;
+    SHcustomWorkout.customWorkoutLastViewed = customWorkout.customWorkoutLastViewed;
+    SHcustomWorkout.customWorkoutTimesCompleted = customWorkout.customWorkoutTimesCompleted;
+    SHcustomWorkout.customWorkoutName = customWorkout.customWorkoutName;
+    SHcustomWorkout.customWorkoutSummary= customWorkout.customWorkoutSummary;
+    SHcustomWorkout.customWorkoutTargetMuscles = customWorkout.customWorkoutTargetMuscles;
+    SHcustomWorkout.customWorkoutTargetSports = customWorkout.customWorkoutTargetSports;
+    SHcustomWorkout.customWorkoutExerciseIdentifiers = customWorkout.customWorkoutExerciseIdentifiers;
+    SHcustomWorkout.customWorkoutDifficulty = customWorkout.customWorkoutDifficulty;
+    SHcustomWorkout.customWorkoutType = customWorkout.customWorkoutType;
+    SHcustomWorkout.customWorkoutCreatedDate = customWorkout.customWorkoutCreatedDate;
+    SHcustomWorkout.customWorkoutEditedDate = customWorkout.customWorkoutEditedDate;
+    SHcustomWorkout.customWorkoutExerciseTypes = customWorkout.customWorkoutExerciseTypes;
+    SHcustomWorkout.customWorkoutEquipmentNeeded = customWorkout.customWorkoutEquipmentNeeded;
+    SHcustomWorkout.customWorkoutLikedDate = customWorkout.customWorkoutLikedDate;
+    SHcustomWorkout.customWorkoutShortName = customWorkout.customWorkoutShortName;
+    SHcustomWorkout.customWorkoutTargetGender = customWorkout.customWorkoutTargetGender;
+    SHcustomWorkout.customWorkoutEstimatedDuration = customWorkout.customWorkoutEstimatedDuration;
+    SHcustomWorkout.customWorkoutTimesViewed = customWorkout.customWorkoutTimesViewed;
 }
 
 @end

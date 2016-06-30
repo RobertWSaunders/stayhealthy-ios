@@ -13,29 +13,25 @@
 //Creates ExerciseLog Record from SHExerciseLog Record
 - (void)map:(ExerciseLog *)exerciseLog {
     SHExerciseLog *SHexerciselog = self;
-    [exerciseLog setValue:SHexerciselog.logExerciseIdentifier forKey:@"logExerciseIdentifier"];
-    [exerciseLog setValue:SHexerciselog.logExerciseType forKey:@"logExerciseType"];
-    [exerciseLog setValue:SHexerciselog.logIdentifier forKey:@"logIdentifier"];
-    [exerciseLog setValue:SHexerciselog.logExerciseFeeling forKey:@"logExerciseFeeling"];
-    [exerciseLog setValue:SHexerciselog.logExerciseNotes forKey:@"logExerciseNotes"];
-    [exerciseLog setValue:SHexerciselog.logExerciseReps forKey:@"logExerciseReps"];
-    [exerciseLog setValue:SHexerciselog.logExerciseSets forKey:@"logExerciseSets"];
-    [exerciseLog setValue:SHexerciselog.logExerciseWeight forKey:@"logExerciseWeight"];
-    [exerciseLog setValue:SHexerciselog.logDate forKey:@"logDate"];
+    [exerciseLog setValue:SHexerciselog.exerciseLogNotes forKey:@"exerciseLogNotes"];
+    [exerciseLog setValue:SHexerciselog.exerciseLogIdentifier forKey:@"exerciseLogIdentifier"];
+    [exerciseLog setValue:SHexerciselog.exerciseLogExerciseType forKey:@"exerciseLogExerciseType"];
+    [exerciseLog setValue:SHexerciselog.exerciseLogExerciseSetsIdentifiers forKey:@"exerciseLogExerciseSetsIdentifiers"];
+    [exerciseLog setValue:SHexerciselog.exerciseLogExerciseIdentifier forKey:@"exerciseLogExerciseIdentifier"];
+    [exerciseLog setValue:SHexerciselog.exerciseLogDate forKey:@"exerciseLogDate"];
+    [exerciseLog setValue:SHexerciselog.exerciseLogFeeling forKey:@"exerciseLogFeeling"];
 }
 
 //Creates SHExerciseLog Record from ExerciseLog Record
 - (void)bind:(ExerciseLog *)exerciseLog {
     SHExerciseLog *SHexerciselog = self;
-    SHexerciselog.logExerciseIdentifier = exerciseLog.logExerciseIdentifier;
-    SHexerciselog.logExerciseType = exerciseLog.logExerciseType;
-    SHexerciselog.logIdentifier = exerciseLog.logIdentifier;
-    SHexerciselog.logExerciseFeeling = exerciseLog.logExerciseFeeling;
-    SHexerciselog.logExerciseNotes = exerciseLog.logExerciseNotes;
-    SHexerciselog.logExerciseReps = exerciseLog.logExerciseReps;
-    SHexerciselog.logExerciseSets = exerciseLog.logExerciseSets;
-    SHexerciselog.logExerciseWeight = exerciseLog.logExerciseWeight;
-    SHexerciselog.logDate = exerciseLog.logDate;
+    SHexerciselog.exerciseLogNotes = exerciseLog.exerciseLogNotes;
+    SHexerciselog.exerciseLogExerciseType = exerciseLog.exerciseLogExerciseType;
+    SHexerciselog.exerciseLogIdentifier = exerciseLog.exerciseLogIdentifier;
+    SHexerciselog.exerciseLogExerciseSetsIdentifiers = exerciseLog.exerciseLogExerciseSetsIdentifiers;
+    SHexerciselog.exerciseLogExerciseIdentifier = exerciseLog.exerciseLogExerciseIdentifier;
+    SHexerciselog.exerciseLogDate = exerciseLog.exerciseLogDate;
+    SHexerciselog.exerciseLogFeeling = exerciseLog.exerciseLogFeeling;
 }
 
 

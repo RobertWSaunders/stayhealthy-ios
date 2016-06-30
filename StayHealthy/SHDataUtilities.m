@@ -177,6 +177,11 @@
     return NO;
 }
 
+//Called when a user views an exercise, does the appropriate data sequence.
++ (void)exerciseBeingViewed {
+    
+}
+
 /**************************************/
 #pragma mark - Workout Utility Methods
 /**************************************/
@@ -339,6 +344,31 @@
      }
      */
     return nil;
+}
+
+//Called when a user views a workout, does the appropriate data sequence.
++ (void)workoutBeingViewed {
+    
+}
+
+//Adds a exercise to a workout.
++ (void)addExerciseToWorkout:(id)workout exercise:(id)exercise {
+    //if ([self canAddExerciseToWorkout:customWorkout exercise:exercise]) {
+    NSMutableArray *workoutExerciseIDs = [[customWorkout.workoutExerciseIDs componentsSeparatedByString:@","] mutableCopy];
+    NSMutableArray *workoutExerciseTypes = [[customWorkout.exerciseTypes componentsSeparatedByString:@","]     mutableCopy];
+    
+    [workoutExerciseIDs addObject:exercise.exerciseIdentifier];
+    [workoutExerciseTypes addObject:exercise.exerciseType];
+    
+    NSString *newExerciseIdentifiers = [workoutExerciseIDs componentsJoinedByString:@","];
+    NSString *newExerciseTypes = [workoutExerciseTypes componentsJoinedByString:@","];
+    
+    customWorkout.workoutExerciseIDs = newExerciseIdentifiers;
+    customWorkout.exerciseTypes = newExerciseTypes;
+    
+    [self updateCustomWorkoutRecord:customWorkout];
+    // }
+
 }
 
 /**************************************/

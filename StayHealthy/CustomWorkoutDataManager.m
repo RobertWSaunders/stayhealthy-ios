@@ -68,7 +68,7 @@
     if (customWorkout != nil)
     {
         //Set the fetch request.
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat: @"workoutIdentifier = %@", customWorkout.workoutID]];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat: @"customWorkoutIdentifier = %@", customWorkout.customWorkoutIdentifier]];
         
         //Returned array of fetched exercises.
         NSArray *customWorkouts = [_appContext executeFetchRequest:fetchRequest error:&requestError];
@@ -101,7 +101,7 @@
     
     NSError *requestError = nil;
     
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"workoutIdentifier = %@", customWorkout.workoutID]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"customWorkoutIdentifier = %@", customWorkout.customWorkoutIdentifier]];
     
     NSArray *customWorkouts = [_appContext executeFetchRequest:fetchRequest error:&requestError];
     
@@ -131,7 +131,7 @@
     
     NSError *requestError = nil;
     
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"workoutIdentifier = %@", objectIdentifier]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"customWorkoutIdentifier = %@", objectIdentifier]];
     
     NSArray *customWorkouts = [_appContext executeFetchRequest:fetchRequest error:&requestError];
     
@@ -196,7 +196,7 @@
         
         NSError *requestError = nil;
         
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"workoutIdentifier = %@", objectIdentifier]];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"customWorkoutIdentifier = %@", objectIdentifier]];
         
         //Exercises returned from the fetch.
         NSArray *customWorkouts = [_appContext executeFetchRequest:fetchRequest error:&requestError];
@@ -273,7 +273,7 @@
 - (NSFetchRequest*)getLikedFetchRequest {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"liked", [NSNumber numberWithBool:YES]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"customWorkoutLiked", [NSNumber numberWithBool:YES]];
     [fetchRequest setPredicate:predicate];
     
     return fetchRequest;

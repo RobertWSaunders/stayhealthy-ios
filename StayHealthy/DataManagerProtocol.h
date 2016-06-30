@@ -8,14 +8,16 @@
 #define EXERCISE_ENTITY_NAME             @"Exercise"
 //Custom Exercise Entity Name
 #define CUSTOM_EXERCISE_ENTITY_NAME      @"CustomExercise"
-//Custom Exercise Entity Name
+//Exercise Log Entity Name
 #define EXERCISE_LOG_ENTITY_NAME         @"ExerciseLog"
+//Exercise Set Log Entity Name
+#define EXERCISE_SET_LOG_ENTITY_NAME     @"ExerciseSetLog"
+//Workout Log Entity Name
+#define WORKOUT_LOG_ENTITY_NAME          @"WorkoutLog"
 //Workout Entity Name
 #define WORKOUT_ENTITY_NAME              @"Workout"
 //Custom Workout Entity Name
 #define CUSTOM_WORKOUT_ENTITY_NAME       @"CustomWorkout"
-//Custom Exercise Entity Name
-#define WORKOUT_LOG_ENTITY_NAME          @"WorkoutLog"
 
 
 @protocol DataManagerProtocol <NSObject>

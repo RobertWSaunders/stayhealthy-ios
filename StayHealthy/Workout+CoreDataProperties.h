@@ -1,14 +1,19 @@
 //
-//  SHWorkout.h
+//  Workout+CoreDataProperties.h
 //  StayHealthy
 //
-//  Created by Robert Saunders on 2015-08-23.
-//  Copyright (c) 2015 Robert Saunders. All rights reserved.
+//  Created by Robert Saunders on 2016-06-25.
+//  Copyright © 2016 Robert Saunders. All rights reserved.
+//
+//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
+//  to delete and recreate this implementation file for your updated model.
 //
 
-#import <Foundation/Foundation.h>
+#import "Workout.h"
 
-@interface SHWorkout : NSObject
+NS_ASSUME_NONNULL_BEGIN
+
+@interface Workout (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *workoutDifficulty;
 @property (nullable, nonatomic, retain) NSDate *workoutEditedDate;
@@ -33,3 +38,5 @@
 @property (nullable, nonatomic, retain) NSString *workoutType;
 
 @end
+
+NS_ASSUME_NONNULL_END

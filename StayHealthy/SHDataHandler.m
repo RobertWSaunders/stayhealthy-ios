@@ -14,8 +14,12 @@
 - (id)init {
     if (self = [super init]) {
         exerciseDataManager = [[ExerciseDataManager alloc] init];
+        customExerciseDataManager = [[CustomExerciseDataManager alloc] init];
         workoutDataManager = [[WorkoutDataManager alloc] init];
         customWorkoutDataManager = [[CustomWorkoutDataManager alloc] init];
+        exerciseLogDataManager = [[ExerciseLogDataManager alloc] init];
+        workoutLogDataManager = [[WorkoutLogDataManager alloc] init];
+        exerciseSetLogDataManager = [[ExerciseSetLogDataManager alloc] init];
     }
     return self;
 }
@@ -46,15 +50,25 @@
     [self deleteAllExerciseRecords];
     //Delete all of the custom exercise records.
     [self deleteAllCustomExerciseRecords];
+    //Delete all of the workout records.
+    [self deleteAllWorkoutRecords];
+    //Delete all of the custom workout records.
+    [self deleteAllCustomWorkoutRecords];
+    //Delete all of the exercise log records.
+    [self deleteAllExerciseLogRecords];
+    //Delete all of the exercise set log records.
+    [self deleteAllExerciseSetLogRecords];
+    //Delete all of the workout log records.
+    [self deleteAllWorkoutLogRecords];
 }
 
-/****************************************/
-#pragma mark - Journal General Methods
-/****************************************/
+/*---------------------------------------*/
+#pragma mark Journal General Methods
+/*---------------------------------------*/
 
-/****************************************/
-#pragma mark - Exercises General Methods
-/****************************************/
+/*---------------------------------------*/
+#pragma mark Exercises General Methods
+/*---------------------------------------*/
 
 //Returns a complete array of sorted exercises, including both custom and standard exercises.
 - (NSMutableArray *)fetchExercises:(exerciseType)exerciseType muscles:(NSArray *)muscles {
@@ -104,13 +118,13 @@
     return nil;
 }
 
-/****************************************/
-#pragma mark - Workouts General Methods
-/****************************************/
+/*---------------------------------------*/
+#pragma mark Workouts General Methods
+/*---------------------------------------*/
 
-/************************************/
-#pragma mark - Liked General Methods
-/************************************/
+/*---------------------------------------*/
+#pragma mark Liked General Methods
+/*---------------------------------------*/
 
 /******************************************/
 #pragma mark - StayHealthy Database Methods
@@ -157,16 +171,16 @@
                 exercise.exerciseShortName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,2)];
                 exercise.exerciseInstructions = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 3)];
                 exercise.exerciseImageFile= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 4)];
-                exercise.exerciseSets= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 5)];
-                exercise.exerciseReps= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 6)];
-                exercise.exerciseEquipment= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 7)];
+                exercise.exerciseRecommendedSets= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 5)];
+                exercise.exerciseRecommendedReps= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 6)];
+                exercise.exerciseEquipmentNeeded= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 7)];
                 exercise.exercisePrimaryMuscle= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 8)];
                 exercise.exerciseSecondaryMuscle= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 9)];
                 exercise.exerciseDifficulty= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 10)];
-                exercise.exerciseType= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 11)];
-                 exercise.exerciseMechanicsType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 12)];
-                 exercise.exerciseForceType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 13)];
-                 exercise.exerciseDifferentVariationsExerciseIdentifiers = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 14)];
+                 exercise.exerciseMechanicsType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 11)];
+                 exercise.exerciseForceType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 112)];
+                 exercise.exerciseDifferentVariationsExerciseIdentifiers = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 13)];
+                 exercise.exerciseType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 14)];
                 [exerciseData addObject:exercise];
             }
         }
@@ -215,14 +229,17 @@
                 SHWorkout *workout = [[SHWorkout alloc] init];
                 workout.workoutIdentifier = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,0)];
                 workout.workoutName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,1)];
-                workout.workoutSummary = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,2)];
-                workout.workoutTargetMuscles = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 3)];
-                workout.workoutTargetSports = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 4)];
-                workout.workoutExerciseIdentifiers = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 5)];
-                workout.workoutExerciseTypes = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 6)];
-                workout.workoutType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 7)];
-                workout.workoutDifficulty= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 8)];
-                workout.workoutEquipment= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 9)];
+                workout.workoutShortName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,2)];
+                workout.workoutSummary = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 3)];
+                workout.workoutDifficulty = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 4)];
+                workout.workoutEquipmentNeeded = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 5)];
+                workout.workoutTargetMuscles = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 6)];
+                workout.workoutTargetSports = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 7)];
+                workout.workoutTargetGender= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 8)];
+                workout.workoutEstimatedDuration = [NSNumber numberWithFloat:(float)sqlite3_column_double(sqlStatement, 9)];
+                workout.workoutExerciseIdentifiers= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 10)];
+                workout.workoutExerciseTypes = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 11)];
+                workout.workoutType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 9)];
                 [workoutData  addObject:workout];
             }
         }
@@ -259,7 +276,7 @@
 /********************************************/
 
 //------------------------
-#define General Operations
+#pragma mark General Operations
 //------------------------
 
 //Saves a exercise record in the persistent store.
@@ -299,7 +316,7 @@
 }
 
 //-------------------------
-#define Fetching Operations
+#pragma mark Fetching Operations
 //-------------------------
 
 //Fetches the managed exercise record from the persistent store rather then returning a SHExercise.
@@ -469,7 +486,7 @@
 /***************************************************/
 
 //------------------------
-#define General Operations
+#pragma mark General Operations
 //------------------------
 
 //Saves a custom exercise record in the persistent store.
@@ -503,7 +520,7 @@
 }
 
 //-------------------------
-#define Fetching Operations
+#pragma mark Fetching Operations
 //-------------------------
 
 //Fetches the managed custom exercise record from the persistent store rather then returning a SHCustomExercise.
@@ -675,19 +692,217 @@
 /************************************************/
 
 //------------------------
-#define General Operations
+#pragma mark General Operations
 //------------------------
 
+//Saves a exercise log record in the persistent store.
+- (void)saveExerciseLogRecord:(SHExerciseLog *)exerciseLog {
+    [exerciseLogDataManager saveItem:exerciseLog];
+}
+
+//Updates a exercise log record in the persistent store.
+- (void)updateExerciseLogRecord:(SHExerciseLog *)exerciseLog {
+    [exerciseLogDataManager updateItem:exerciseLog];
+}
+
+//Deletes a exercise log record in the persistent store.
+- (void)deleteExerciseLogRecord:(SHExerciseLog *)exerciseLog {
+    [exerciseLogDataManager deleteItem:exerciseLog];
+}
+
+//Deletes a exercise log record given the identifier in the persistent store.
+- (void)deleteExerciseLogRecordByIdentifier:(NSString *)exerciseLogIdentifier {
+    [exerciseLogDataManager deleteItemByIdentifier:exerciseLogIdentifier];
+}
+
+//Deletes all of the exercise log records in the persistent store.
+- (void)deleteAllExerciseLogRecords {
+    [exerciseLogDataManager deleteAllItems];
+}
+
 //-------------------------
-#define Fetching Operations
+#pragma mark Fetching Operations
 //-------------------------
+
+//Fetches a exercise log record given the identifier in the persistent store and returns a SHExerciseLog.
+- (SHExerciseLog*)fetchExerciseLogByIdentifier:(NSString *)exerciseLogIdentifier {
+    
+    //Fetch the managed exercise logs from the persistent store.
+    NSArray *fetchedManagedExerciselogs = [exerciseLogDataManager fetchItemByIdentifier:exerciseLogIdentifier];
+    
+    SHExerciseLog *exerciseLog;
+    
+    if (fetchedManagedExerciselogs.count > 0 || fetchedManagedExerciselogs != nil) {
+        [exerciseLog map:[fetchedManagedExerciselogs firstObject]];
+    }
+    //Return the exercise log.
+    return exerciseLog;
+
+}
+
+//Fetches all of the exercise log records in the persistent store and returns a mutable array of SHExerciseLog.
+- (NSMutableArray *)fetchAllExerciseLogs {
+    
+    NSArray *fetchedManagedExerciseLogs = [exerciseLogDataManager fetchAllItems];
+    
+    SHExerciseLog *exerciseLog;
+    
+    NSMutableArray *allSHExerciseLogs = [[NSMutableArray alloc] init];
+    
+    for (ExerciseLog *managedExercise in fetchedManagedExerciseLogs) {
+        [exerciseLog map:managedExercise];
+        [allSHExerciseLogs addObject:exerciseLog];
+    }
+    return allSHExerciseLogs;
+
+}
+
+
+/************************************************/
+#pragma mark - Exercise Set Log Data Manager Methods
+/************************************************/
+
+//------------------------
+#pragma mark General Operations
+//------------------------
+
+//Saves a exercise set log record in the persistent store.
+- (void)saveExerciseSetLogRecord:(SHExerciseSetLog *)exerciseLog {
+    [exerciseSetLogDataManager saveItem:exerciseLog];
+}
+
+//Updates a exercise set log record in the persistent store.
+- (void)updateExerciseSetLogRecord:(SHExerciseSetLog *)exerciseLog {
+    [exerciseSetLogDataManager updateItem:exerciseLog];
+}
+
+//Deletes a exercise set log record in the persistent store.
+- (void)deleteExerciseSetLogRecord:(SHExerciseSetLog *)exerciseLog {
+    [exerciseSetLogDataManager deleteItem:exerciseLog];
+}
+
+//Deletes a exercise set log record given the identifier in the persistent store.
+- (void)deleteExerciseSetLogRecordByIdentifier:(NSString *)exerciseSetLogIdentifier {
+    [exerciseSetLogDataManager deleteItemByIdentifier:exerciseSetLogIdentifier];
+}
+
+//Deletes all of the exercise set log records in the persistent store.
+- (void)deleteAllExerciseSetLogRecords {
+    [exerciseSetLogDataManager deleteAllItems];
+}
+
+//-------------------------
+#pragma mark Fetching Operations
+//-------------------------
+
+//Fetches a exercise set log record given the identifier in the persistent store and returns a SHExerciseSetLog.
+- (SHExerciseSetLog*)fetchExerciseSetLogByIdentifier:(NSString *)exerciseSetLogIdentifier {
+    //Fetch the managed exercise logs from the persistent store.
+    NSArray *fetchedManagedExerciseSetlogs = [exerciseSetLogDataManager fetchItemByIdentifier:exerciseSetLogIdentifier];
+    
+    //Create reference to a new SHExerciseSetLog.
+    SHExerciseSetLog *exerciseSetLog;
+    
+    //If there are set logs found.
+    if (fetchedManagedExerciseSetlogs.count > 0 || fetchedManagedExerciseSetlogs != nil) {
+        //Convert the managed exercise set log to a SHExerciseSetLog.
+        [exerciseSetLog map:[fetchedManagedExerciseSetlogs firstObject]];
+    }
+    //Return the exercise log.
+    return exerciseSetLog;
+}
+
+//Fetches all of the exercise set log records in the persistent store and returns a mutable array of SHExerciseSetLog.
+- (NSMutableArray *)fetchAllExerciseSetLogs {
+    
+    NSArray *fetchedManagedExerciseLogs = [exerciseSetLogDataManager fetchAllItems];
+    
+    SHExerciseSetLog *exerciseSetLog;
+    
+    NSMutableArray *allSHExerciseSetLogs = [[NSMutableArray alloc] init];
+    
+    for (ExerciseSetLog *managedExercise in fetchedManagedExerciseLogs) {
+        [exerciseSetLog map:managedExercise];
+        [allSHExerciseSetLogs addObject:exerciseSetLog];
+    }
+    return allSHExerciseSetLogs;
+    
+}
+
+/************************************************/
+#pragma mark - Workout Log Data Manager Methods
+/************************************************/
+
+//------------------------
+#pragma mark General Operations
+//------------------------
+
+//Saves a workout log  record in the persistent store.
+- (void)saveWorkoutLogRecord:(SHWorkoutLog *)workoutLog {
+    [workoutLogDataManager saveItem:workoutLog];
+}
+
+//Updates a workout log  record in the persistent store.
+- (void)updateWorkoutLogRecord:(SHWorkoutLog *)workoutLog {
+    [workoutLogDataManager updateItem:workoutLog];
+}
+
+//Deletes a workout log  record in the persistent store.
+- (void)deleteWorkoutLogRecord:(SHWorkoutLog *)workoutLog {
+    [workoutLogDataManager deleteItem:workoutLog];
+}
+
+//Deletes a workout log record given the identifier in the persistent store.
+- (void)deleteWorkoutLogRecordByIdentifier:(NSString *)workoutLogIdentifier {
+    [workoutLogDataManager deleteItemByIdentifier:workoutLogIdentifier];
+}
+
+//Deletes all of the workout log records in the persistent store.
+- (void)deleteAllWorkoutLogRecords {
+    [workoutLogDataManager deleteAllItems];
+}
+
+//-------------------------
+#pragma mark Fetching Operations
+//-------------------------
+
+//Fetches a workout log record given the identifier in the persistent store and returns a SHWorkoutLog.
+- (SHWorkoutLog*)fetchWorkoutLogByIdentifier:(NSString *)workoutLogIdentifier {
+    //Fetch the managed workout logs from the persistent store.
+    NSArray *fetchedManagedWorkoutLogs = [workoutLogDataManager fetchItemByIdentifier:workoutLogIdentifier];
+    
+    SHWorkoutLog *workoutLog;
+    
+    //If there are set logs found.
+    if (fetchedManagedWorkoutLogs.count > 0 || fetchedManagedWorkoutLogs != nil) {
+        [workoutLog map:[fetchedManagedWorkoutLogs firstObject]];
+    }
+    //Return the workout log.
+    return workoutLog;
+}
+
+//Fetches all of the workout log records in the persistent store and returns a mutable array of SHWorkoutLog.
+- (NSMutableArray *)fetchAllWorkoutLogs {
+    
+    NSArray *fetchedManagedWorkoutLogs = [workoutLogDataManager fetchAllItems];
+    
+     SHWorkoutLog *workoutLog;
+    
+    NSMutableArray *allSHExerciseSetLogs = [[NSMutableArray alloc] init];
+    
+    for (WorkoutLog *managedExercise in fetchedManagedWorkoutLogs) {
+        [workoutLog map:managedExercise];
+        [allSHExerciseSetLogs addObject:workoutLog];
+    }
+    return allSHExerciseSetLogs;
+}
 
 /********************************************/
 #pragma mark -  Workout Data Manager Methods
 /********************************************/
 
 //------------------------
-#define General Operations
+#pragma mark General Operations
 //------------------------
 
 //Saves a workout record in the persistent store.
@@ -721,7 +936,7 @@
 }
 
 //-------------------------
-#define Fetching Operations
+#pragma mark Fetching Operations
 //-------------------------
 
 //Fetches the managed workout record from the persistent store rather then returning a SHWorkout.
@@ -813,7 +1028,7 @@
 /**************************************************/
 
 //------------------------
-#define General Operations
+#pragma mark General Operations
 //------------------------
 
 //Saves a custom workout record in the persistent store.
@@ -847,7 +1062,7 @@
 }
 
 //-------------------------
-#define Fetching Operations
+#pragma mark Fetching Operations
 //-------------------------
 
 //Fetches the managed custom workouts records from the persistent store rather then returning a SHCustomWorkouts.
@@ -916,40 +1131,19 @@
     return allSHCustomWorkouts;
 }
 
-//---------------------
-#define Misc Operations
-//---------------------
 
-//Adds a SHExercise to a SHCustomWorkout
-- (void)addSHExerciseToCustomWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise {
-    //if ([self canAddExerciseToWorkout:customWorkout exercise:exercise]) {
-    NSMutableArray *workoutExerciseIDs = [[customWorkout.workoutExerciseIDs componentsSeparatedByString:@","] mutableCopy];
-    NSMutableArray *workoutExerciseTypes = [[customWorkout.exerciseTypes componentsSeparatedByString:@","]     mutableCopy];
-    
-    [workoutExerciseIDs addObject:exercise.exerciseIdentifier];
-    [workoutExerciseTypes addObject:exercise.exerciseType];
-    
-    NSString *newExerciseIdentifiers = [workoutExerciseIDs componentsJoinedByString:@","];
-    NSString *newExerciseTypes = [workoutExerciseTypes componentsJoinedByString:@","];
-    
-    customWorkout.workoutExerciseIDs = newExerciseIdentifiers;
-    customWorkout.exerciseTypes = newExerciseTypes;
-    
-    [self updateCustomWorkoutRecord:customWorkout];
-    // }
-}
 
-/************************************************/
-#pragma mark - Workout Log Data Manager Methods
-/************************************************/
 
-//------------------------
-#define General Operations
-//------------------------
 
-//-------------------------
-#define Fetching Operations
-//-------------------------
+
+
+
+
+/*******************************************/
+#pragma mark -  Web Service Calling Methods
+/*******************************************/
+
+
 
 /*******************************************/
 #pragma mark -  Auto Database Update Methods

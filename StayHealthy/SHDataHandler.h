@@ -10,9 +10,10 @@
 #import "ExerciseDataManager.h"
 #import "CustomExerciseDataManager.h"
 #import "ExerciseLogDataManager.h"
+#import "ExerciseSetLogDataManager.h"
+#import "WorkoutLogDataManager.h"
 #import "WorkoutDataManager.h"
 #import "CustomWorkoutDataManager.h"
-#import "WorkoutLogDataManager.h"
 #import "SHDataUtilities.h"
 
 @interface SHDataHandler : NSObject {
@@ -25,12 +26,15 @@
     CustomExerciseDataManager *customExerciseDataManager;
     //Create reference to the exercise log data manager.
     ExerciseLogDataManager *exerciseLogDataManager;
-    //Create reference to the workout data manager.
+    //Create reference to the exercise set log data manager.
+    ExerciseSetLogDataManager *exerciseSetLogDataManager;
+    //Create reference to the workout log data manager.
+    WorkoutLogDataManager *workoutLogDataManager;
+     //Create reference to the workout data manager.
     WorkoutDataManager *workoutDataManager;
     //Create reference to the custom workout data manager.
     CustomWorkoutDataManager *customWorkoutDataManager;
-    //Create reference to the workout log data manager.
-    WorkoutLogDataManager *workoutLogDataManager;
+    
 }
 
 //Get instance of the singleton.
@@ -38,6 +42,7 @@
 
 /******************************/
 #pragma mark - General Methods
+//Used as methods that should be able to satisfy all needs of class.
 /******************************/
 
 //Deletes all of the users data.
@@ -47,11 +52,21 @@
 #pragma mark - Journal General Methods
 /****************************************/
 
-/****************************************/
-#pragma mark - Exercises General Methods
-/****************************************/
+//------------------
+#pragma mark Logging
+//------------------
 
-//Returns a complete array of sorted exercises, including both custom and standard exercises.
+//Saves an exercise log given the exercise set logs, will also create the workout log.
+- (void)saveExerciseLog:(NSMutableArray*)exerciseSetLogs exerciseLog:(SHExerciseLog*)exerciseLog;
+
+//Saves or updates a workout log based on exercise log given to it.
+- (void)workoutLogHandler:(SHExerciseLog*)exerciseLog;
+
+/*--------------------------------------*/
+#pragma mark - Exercises General Methods
+/*--------------------------------------*/
+
+//Returns a complete array of sorted exercises, including BOTH custom and standard exercises.
 - (NSMutableArray *)fetchExercises:(exerciseType)exerciseType muscles:(NSArray *)muscles;
 
 //Returns array filled with all custom exercises sorted.
@@ -62,14 +77,6 @@
 
 //Returns array filled with the liked exercises for the passed exercise type.
 - (NSMutableArray *)fetchLikedExercises:(exerciseType)exerciseType;
-
-/****************************************/
-#pragma mark - Workouts General Methods
-/****************************************/
-
-/************************************/
-#pragma mark - Liked General Methods
-/************************************/
 
 /******************************************/
 #pragma mark - StayHealthy Database Methods
@@ -89,7 +96,7 @@
 /********************************************/
 
 //------------------------
-#define General Operations
+#pragma mark General Operations
 //------------------------
 
 //Saves a exercise record in the persistent store.
@@ -111,7 +118,7 @@
 - (void)deleteAllExerciseRecords;
 
 //-------------------------
-#define Fetching Operations
+#pragma mark Fetching Operations
 //-------------------------
 
 //Fetches the managed exercise record from the persistent store given the exercise identifier and exercise type rather then returning a SHExercise.
@@ -149,7 +156,7 @@
 /***************************************************/
 
 //------------------------
-#define General Operations
+#pragma mark General Operations
 //------------------------
 
 //Saves a custom exercise record in the persistent store.
@@ -171,7 +178,7 @@
 - (void)deleteAllCustomExerciseRecords;
 
 //-------------------------
-#define Fetching Operations
+#pragma mark Fetching Operations
 //-------------------------
 
 //Fetches the managed custom exercise record from the persistent store given the exercise identifier and exercise type rather then returning a SHCustomExercise.
@@ -209,19 +216,108 @@
 /************************************************/
 
 //------------------------
-#define General Operations
+#pragma mark General Operations
 //------------------------
 
+//Saves a exercise log record in the persistent store.
+- (void)saveExerciseLogRecord:(SHExerciseLog *)exerciseLog;
+
+//Updates a exercise log record in the persistent store.
+- (void)updateExerciseLogRecord:(SHExerciseLog *)exerciseLog;
+
+//Deletes a exercise log record in the persistent store.
+- (void)deleteExerciseLogRecord:(SHExerciseLog *)exerciseLog;
+
+//Deletes a exercise log record given the identifier in the persistent store.
+- (void)deleteExerciseLogRecordByIdentifier:(NSString *)exerciseLogIdentifier;
+
+//Deletes all of the exercise log records in the persistent store.
+- (void)deleteAllExerciseLogRecords;
+
+
 //-------------------------
-#define Fetching Operations
+#pragma mark Fetching Operations
 //-------------------------
+
+//Fetches a exercise log record given the identifier in the persistent store and returns a SHExerciseLog.
+- (SHExerciseLog*)fetchExerciseLogByIdentifier:(NSString *)exerciseLogIdentifier;
+
+//Fetches all of the exercise log records in the persistent store and returns a mutable array of SHExerciseLog.
+- (NSMutableArray *)fetchAllExerciseLogs;
+
+/****************************************************/
+#pragma mark - Exercise Set Log Data Manager Methods
+/****************************************************/
+
+//------------------------
+#pragma mark General Operations
+//------------------------
+
+//Saves a exercise set log record in the persistent store.
+- (void)saveExerciseSetLogRecord:(SHExerciseSetLog *)exerciseLog;
+
+//Updates a exercise set log record in the persistent store.
+- (void)updateExerciseSetLogRecord:(SHExerciseSetLog *)exerciseLog;
+
+//Deletes a exercise set log record in the persistent store.
+- (void)deleteExerciseSetLogRecord:(SHExerciseSetLog *)exerciseLog;
+
+//Deletes a exercise set log record given the identifier in the persistent store.
+- (void)deleteExerciseSetLogRecordByIdentifier:(NSString *)exerciseSetLogIdentifier;
+
+//Deletes all of the exercise set log records in the persistent store.
+- (void)deleteAllExerciseSetLogRecords;
+
+
+//-------------------------
+#pragma mark Fetching Operations
+//-------------------------
+
+//Fetches a exercise set log record given the identifier in the persistent store and returns a SHExerciseSetLog.
+- (SHExerciseSetLog*)fetchExerciseSetLogByIdentifier:(NSString *)exerciseSetLogIdentifier;
+
+//Fetches all of the exercise set log records in the persistent store and returns a mutable array of SHExerciseSetLog.
+- (NSMutableArray *)fetchAllExerciseSetLogs;
+
+/************************************************/
+#pragma mark - Workout Log Data Manager Methods
+/************************************************/
+
+//------------------------
+#pragma mark General Operations
+//------------------------
+
+//Saves a workout log  record in the persistent store.
+- (void)saveWorkoutLogRecord:(SHWorkoutLog *)workoutLog;
+
+//Updates a workout log  record in the persistent store.
+- (void)updateWorkoutLogRecord:(SHWorkoutLog *)workoutLog;
+
+//Deletes a workout log  record in the persistent store.
+- (void)deleteWorkoutLogRecord:(SHWorkoutLog *)workoutLog;
+
+//Deletes a workout log record given the identifier in the persistent store.
+- (void)deleteWorkoutLogRecordByIdentifier:(NSString *)workoutLogIdentifier;
+
+//Deletes all of the workout log records in the persistent store.
+- (void)deleteAllWorkoutLogRecords;
+
+//-------------------------
+#pragma mark Fetching Operations
+//-------------------------
+
+//Fetches a workout log record given the identifier in the persistent store and returns a SHWorkoutLog.
+- (SHWorkoutLog*)fetchWorkoutLogByIdentifier:(NSString *)workoutLogIdentifier;
+
+//Fetches all of the workout log records in the persistent store and returns a mutable array of SHWorkoutLog.
+- (NSMutableArray *)fetchAllWorkoutLogs;
 
 /********************************************/
 #pragma mark -  Workout Data Manager Methods
 /********************************************/
 
 //------------------------
-#define General Operations
+#pragma mark General Operations
 //------------------------
 
 //Saves a workout record in the persistent store.
@@ -240,7 +336,7 @@
 - (void)deleteAllWorkoutRecords;
 
 //-------------------------
-#define Fetching Operations
+#pragma mark Fetching Operations
 //-------------------------
 
 //Fetches a workout record given the identifier in the persistent store and returns a SHWorkout.
@@ -263,7 +359,7 @@
 /**************************************************/
 
 //------------------------
-#define General Operations
+#pragma mark General Operations
 //------------------------
 
 //Saves a custom workout record in the persistent store.
@@ -282,7 +378,7 @@
 - (void)deleteAllCustomWorkoutRecords;
 
 //-------------------------
-#define Fetching Operations
+#pragma mark Fetching Operations
 //-------------------------
 
 - (CustomWorkout*)fetchManagedCustomWorkoutRecordByIdentifier:(NSString *)customWorkoutIdentifier;
@@ -297,23 +393,11 @@
 - (NSMutableArray *)fetchAllCustomWorkoutRecords;
 
 //---------------------
-#define Misc Operations
+#pragma mark Misc Operations
 //---------------------
 
 //Adds a SHExercise to a SHCustomWorkout
 - (void)addSHExerciseToCustomWorkout:(SHCustomWorkout *)customWorkout exercise:(SHExercise *)exercise;
-
-/************************************************/
-#pragma mark - Workout Log Data Manager Methods
-/************************************************/
-
-//------------------------
-#define General Operations
-//------------------------
-
-//-------------------------
-#define Fetching Operations
-//-------------------------
 
 /*******************************************/
 #pragma mark -  Auto Database Update Methods
@@ -327,7 +411,6 @@
 
 //Returns the database version that is store on the web.
 - (NSString *)onlineDatabaseVersion;
-
 
 //Returns the general property list.
 + (NSDictionary *)returnGeneralPlist;

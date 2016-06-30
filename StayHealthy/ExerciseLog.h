@@ -2,24 +2,21 @@
 //  ExerciseLog.h
 //  StayHealthy
 //
-//  Created by Robert Saunders on 2016-04-29.
+//  Created by Robert Saunders on 2016-06-25.
 //  Copyright © 2016 Robert Saunders. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ExerciseLog : NSManagedObject
 
-@property (nullable, nonatomic, retain) NSDate *logDate;
-@property (nullable, nonatomic, retain) NSNumber *logExerciseWeight;
-@property (nullable, nonatomic, retain) NSNumber *logExerciseSets;
-@property (nullable, nonatomic, retain) NSNumber *logExerciseReps;
-@property (nullable, nonatomic, retain) NSString *logExerciseNotes;
-@property (nullable, nonatomic, retain) NSString *logExerciseFeeling;
-@property (nullable, nonatomic, retain) NSString *logExerciseIdentifier;
-@property (nullable, nonatomic, retain) NSString *logExerciseType;
-@property (nullable, nonatomic, retain) NSString *logIdentifier;
+// Insert code here to declare functionality of your managed object subclass
 
 @end
 
+NS_ASSUME_NONNULL_END
+
+#import "ExerciseLog+CoreDataProperties.h"

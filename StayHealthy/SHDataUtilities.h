@@ -40,6 +40,9 @@
 //Checks to see if the passed exercise has been saved to core data before.
 + (BOOL)exerciseHasBeenSaved:(id)exercise;
 
+//Called when a user views an exercise, does the appropriate data sequence.
++ (void)exerciseBeingViewed;
+
 /**************************************/
 #pragma mark - Workouts Utility Methods
 /**************************************/
@@ -63,8 +66,16 @@
 //Returns array of exercises in a workout.
 + (NSMutableArray*)getWorkoutExercises:(id)workout;
 
+//Called when a user views a workout, does the appropriate data sequence.
++ (void)workoutBeingViewed;
+
+//Adds a exercise to a workout.
++ (void)addExerciseToWorkout:(id)workout exercise:(id)exercise;
+
 /**************************************/
 #pragma mark - Logging Utility Methods
 /**************************************/
+
+
 
 @end

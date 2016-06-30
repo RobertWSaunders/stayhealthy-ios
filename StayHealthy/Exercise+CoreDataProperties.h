@@ -1,14 +1,19 @@
 //
-//  SHExercise.h
+//  Exercise+CoreDataProperties.h
 //  StayHealthy
 //
-//  Created by Robert Saunders on 2015-08-15.
-//  Copyright (c) 2015 Robert Saunders. All rights reserved.
+//  Created by Robert Saunders on 2016-06-25.
+//  Copyright © 2016 Robert Saunders. All rights reserved.
+//
+//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
+//  to delete and recreate this implementation file for your updated model.
 //
 
-#import <Foundation/Foundation.h>
+#import "Exercise.h"
 
-@interface SHExercise : NSObject
+NS_ASSUME_NONNULL_BEGIN
+
+@interface Exercise (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *exerciseDifferentVariationsExerciseIdentifiers;
 @property (nullable, nonatomic, retain) NSString *exerciseDifficulty;
@@ -32,5 +37,6 @@
 @property (nullable, nonatomic, retain) NSNumber *exerciseTimesViewed;
 @property (nullable, nonatomic, retain) NSString *exerciseType;
 
-
 @end
+
+NS_ASSUME_NONNULL_END

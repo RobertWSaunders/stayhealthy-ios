@@ -49,7 +49,7 @@
                 LogDataError(@"Custom Exercise could not be saved. --> saveItem @ CustomExerciseDataManager");
             }
             else {
-                LogDataSuccess(@"Custom Exercise was saved successfully with the identifier: %@ and the exercise type of: %@. --> saveItem @ CustomExerciseDataManager",customExercise.exerciseIdentifier,customExercise.exerciseType);
+                LogDataSuccess(@"Custom Exercise was saved successfully with the identifier: %@ and the exercise type of: %@. --> saveItem @ CustomExerciseDataManager",customExercise.customExerciseIdentifier,customExercise.customExerciseType);
                 //Post a notification to tell the app that a exercise has been saved.
                 [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOM_EXERCISE_SAVE_NOTIFICATION object:nil];
             }
@@ -70,7 +70,7 @@
     if (customExercise != nil)
     {
         //Set the fetch request.
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"exerciseIdentifier", customExercise.exerciseIdentifier,@"exerciseType",customExercise.exerciseType];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"customExerciseIdentifier", customExercise.customExerciseIdentifier,@"customExerciseType",customExercise.customExerciseType];
         
         [fetchRequest setPredicate:predicate];
         
@@ -106,7 +106,7 @@
     NSError *requestError = nil;
     
     //Set the fetch request.
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"exerciseIdentifier", customExercise.exerciseIdentifier,@"exerciseType",customExercise.exerciseType];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"customExerciseIdentifier", customExercise.customExerciseIdentifier,@"customExerciseType",customExercise.customExerciseType];
     
     [fetchRequest setPredicate:predicate];
     
@@ -139,7 +139,7 @@
     NSError *requestError = nil;
     
     //Set the fetch request.
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"exerciseIdentifier", objectIdentifier,@"exerciseType",exerciseType];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"customExerciseIdentifier", objectIdentifier,@"customExerciseType",exerciseType];
     
     [fetchRequest setPredicate:predicate];
     
@@ -168,7 +168,7 @@
     
     NSError *requestError = nil;
     
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"exerciseIdentifier = %@", objectIdentifier]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"customExerciseIdentifier = %@", objectIdentifier]];
     
     NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
     
@@ -233,7 +233,7 @@
         
         NSError *requestError = nil;
         
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"exerciseIdentifier = %@", objectIdentifier]];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"customExerciseIdentifier = %@", objectIdentifier]];
         
         //Exercises returned from the fetch.
         NSArray *exercises = [_appContext executeFetchRequest:fetchRequest error:&requestError];
@@ -386,7 +386,7 @@
         
         NSError *requestError = nil;
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"exerciseIdentifier", objectIdentifier,@"exerciseType",exerciseType];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"customExerciseIdentifier", objectIdentifier,@"customExerciseType",exerciseType];
         
         [fetchRequest setPredicate:predicate];
         
@@ -412,7 +412,7 @@
 //Returns the recently viewed fetch request.
 - (NSFetchRequest*)getRecentlyViewedFetchRequest {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
-    NSSortDescriptor *sortByRecentlyViewed = [NSSortDescriptor sortDescriptorWithKey:@"exerciseLastViewed" ascending:NO];
+    NSSortDescriptor *sortByRecentlyViewed = [NSSortDescriptor sortDescriptorWithKey:@"customExerciseLastViewed" ascending:NO];
     fetchRequest.sortDescriptors = [[NSArray alloc] initWithObjects:sortByRecentlyViewed, nil];
     return fetchRequest;
 }
@@ -422,11 +422,11 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
     
     if (type == nil) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"exerciseLiked", [NSNumber numberWithBool:YES]];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"customExerciseLiked", [NSNumber numberWithBool:YES]];
         [fetchRequest setPredicate:predicate];
     }
     else {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"exerciseLiked", [NSNumber numberWithBool:YES],@"exerciseType",type];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @"customExerciseLiked", [NSNumber numberWithBool:YES],@"customExerciseType",type];
         [fetchRequest setPredicate:predicate];
     }
     

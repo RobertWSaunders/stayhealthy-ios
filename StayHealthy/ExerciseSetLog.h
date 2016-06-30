@@ -1,5 +1,5 @@
 //
-//  WorkoutLog.h
+//  ExerciseSetLog.h
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2016-06-25.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WorkoutLog : NSManagedObject
+@interface ExerciseSetLog : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
 
@@ -19,4 +19,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#import "WorkoutLog+CoreDataProperties.h"
+#import "ExerciseSetLog+CoreDataProperties.h"

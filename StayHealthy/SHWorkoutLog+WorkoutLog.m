@@ -13,30 +13,31 @@
 //Creates WorkoutLog Record from SHWorkoutLog Record
 - (void)map:(WorkoutLog *)workoutLog {
     SHWorkoutLog *SHworkoutlog = self;
-    [workoutLog setValue:SHworkoutlog.logWorkoutIdentifier forKey:@"logWorkoutIdentifier"];
-    [workoutLog setValue:SHworkoutlog.logWorkoutExerciseLogIdentifiers forKey:@"logWorkoutExerciseLogIdentifiers"];
-    [workoutLog setValue:SHworkoutlog.logIdentifier forKey:@"logIdentifier"];
-    [workoutLog setValue:SHworkoutlog.logWorkoutExerciseTypes forKey:@"logWorkoutExerciseTypes"];
-    [workoutLog setValue:SHworkoutlog.logWorkoutNotes forKey:@"logWorkoutNotes"];
-    [workoutLog setValue:SHworkoutlog.logWorkoutFeeling forKey:@"logWorkoutFeeling"];
-    [workoutLog setValue:SHworkoutlog.logDate forKey:@"logDate"];
-    [workoutLog setValue:SHworkoutlog.logWorkoutStartDate forKey:@"logWorkoutStartDate"];
-    [workoutLog setValue:SHworkoutlog.logWorkoutEndDate forKey:@"logWorkoutEndDate"];
-    
+    [workoutLog setValue:SHworkoutlog.workoutLogIdentifier forKey:@"workoutLogIdentifier"];
+    [workoutLog setValue:SHworkoutlog.workoutLogWorkoutRestingTime forKey:@"workoutLogWorkoutRestingTime"];
+    [workoutLog setValue:SHworkoutlog.workoutLogWorkoutDuration forKey:@"workoutLogWorkoutDuration"];
+    [workoutLog setValue:SHworkoutlog.workoutLogStartDate forKey:@"workoutLogStartDate"];
+    [workoutLog setValue:SHworkoutlog.workoutLogEndDate forKey:@"workoutLogEndDate"];
+    [workoutLog setValue:SHworkoutlog.workoutLogNotes forKey:@"workoutLogNotes"];
+    [workoutLog setValue:SHworkoutlog.workoutLogName forKey:@"workoutLogName"];
+    [workoutLog setValue:SHworkoutlog.workoutLogFeeling forKey:@"workoutLogFeeling"];
+    [workoutLog setValue:SHworkoutlog.workoutLogExerciseLogIdentifiers forKey:@"workoutLogExerciseLogIdentifiers"];
+    [workoutLog setValue:SHworkoutlog.workoutLogDate forKey:@"workoutLogDate"];
 }
 
 //Creates SHWorkoutLog Record from WorkoutLog Record
 - (void)bind:(WorkoutLog *)workoutLog {
     SHWorkoutLog *SHworkoutlog = self;
-    SHworkoutlog.logWorkoutIdentifier = workoutLog.logWorkoutIdentifier;
-    SHworkoutlog.logWorkoutExerciseLogIdentifiers = workoutLog.logWorkoutExerciseLogIdentifiers;
-    SHworkoutlog.logIdentifier = workoutLog.logIdentifier;
-    SHworkoutlog.logWorkoutExerciseTypes = workoutLog.logWorkoutExerciseTypes;
-    SHworkoutlog.logWorkoutNotes = workoutLog.logWorkoutNotes;
-    SHworkoutlog.logWorkoutFeeling = workoutLog.logWorkoutFeeling;
-    SHworkoutlog.logDate = workoutLog.logDate;
-    SHworkoutlog.logWorkoutStartDate = workoutLog.logWorkoutStartDate;
-     SHworkoutlog.logWorkoutEndDate = workoutLog.logWorkoutEndDate;
+    SHworkoutlog.workoutLogIdentifier = workoutLog.workoutLogIdentifier;
+    SHworkoutlog.workoutLogWorkoutRestingTime = workoutLog.workoutLogWorkoutRestingTime;
+    SHworkoutlog.workoutLogWorkoutDuration = workoutLog.workoutLogWorkoutDuration;
+    SHworkoutlog.workoutLogStartDate = workoutLog.workoutLogStartDate;
+    SHworkoutlog.workoutLogEndDate = workoutLog.workoutLogEndDate;
+    SHworkoutlog.workoutLogNotes = workoutLog.workoutLogNotes;
+    SHworkoutlog.workoutLogName = workoutLog.workoutLogName;
+    SHworkoutlog.workoutLogFeeling = workoutLog.workoutLogFeeling;
+    SHworkoutlog.workoutLogExerciseLogIdentifiers = workoutLog.workoutLogExerciseLogIdentifiers;
+    SHworkoutlog.workoutLogDate = workoutLog.workoutLogDate;
 }
 
 @end

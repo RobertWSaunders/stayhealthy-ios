@@ -2,7 +2,7 @@
 //  ExerciseLog.m
 //  StayHealthy
 //
-//  Created by Robert Saunders on 2016-04-29.
+//  Created by Robert Saunders on 2016-06-25.
 //  Copyright © 2016 Robert Saunders. All rights reserved.
 //
 
@@ -10,14 +10,6 @@
 
 @implementation ExerciseLog
 
-@dynamic logDate;
-@dynamic logExerciseWeight;
-@dynamic logExerciseSets;
-@dynamic logExerciseReps;
-@dynamic logExerciseNotes;
-@dynamic logExerciseFeeling;
-@dynamic logExerciseIdentifier;
-@dynamic logExerciseType;
-@dynamic logIdentifier;
+// Insert code here to add functionality to your managed object subclass
 
 @end

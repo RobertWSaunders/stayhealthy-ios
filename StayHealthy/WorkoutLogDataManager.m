@@ -70,7 +70,7 @@
     if (workoutLog != nil)
     {
         //Set the fetch request.
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"logIdentifier",workoutLog.logIdentifier];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"workoutLogIdentifier",workoutLog.workoutLogIdentifier];
         
         [fetchRequest setPredicate:predicate];
         
@@ -106,7 +106,7 @@
     NSError *requestError = nil;
     
     //Set the fetch request.
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ ", @"logIdentifier", workoutLog.logIdentifier];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ ", @"workoutLogIdentifier", workoutLog.workoutLogIdentifier];
     
     [fetchRequest setPredicate:predicate];
     
@@ -200,7 +200,7 @@
         
         NSError *requestError = nil;
         
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"logIdentifier = %@", objectIdentifier]];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"workoutLogIdentifier = %@", objectIdentifier]];
         
         //Exercises returned from the fetch.
         NSArray *workoutLogs = [_appContext executeFetchRequest:fetchRequest error:&requestError];

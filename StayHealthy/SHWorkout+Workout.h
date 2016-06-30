@@ -17,7 +17,5 @@
 //Creates SHWorkout Record from Workout Record
 - (void)bind:(Workout *)workout;
 
-//Updates a SHWorkout with the users data.
-- (void)userDataBind:(Workout *)workout;
 
 @end

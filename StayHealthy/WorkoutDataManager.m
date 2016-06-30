@@ -293,7 +293,7 @@
 //Returns the recently viewed fetch request.
 - (NSFetchRequest*)getRecentlyViewedFetchRequest {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
-    NSSortDescriptor *sortByRecentlyViewed = [NSSortDescriptor sortDescriptorWithKey:@"lastViewed" ascending:NO];
+    NSSortDescriptor *sortByRecentlyViewed = [NSSortDescriptor sortDescriptorWithKey:@"workoutLastViewed" ascending:NO];
     fetchRequest.sortDescriptors = [[NSArray alloc] initWithObjects:sortByRecentlyViewed, nil];
     return fetchRequest;
 }
@@ -302,7 +302,7 @@
 - (NSFetchRequest*)getLikedFetchRequest {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[self returnEntityName]];
 
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"liked", [NSNumber numberWithBool:YES]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"workoutLiked", [NSNumber numberWithBool:YES]];
     [fetchRequest setPredicate:predicate];
 
     return fetchRequest;
