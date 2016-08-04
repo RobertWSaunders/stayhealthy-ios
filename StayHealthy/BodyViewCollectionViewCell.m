@@ -14,13 +14,13 @@
 -(void)setSelected:(BOOL)selected{
     
     self.layer.masksToBounds = NO;
-   self.backgroundColor = selected?WHITE_COLOR:[UIColor whiteColor];
+    self.backgroundColor = selected?LIGHT_GRAY_COLOR:[UIColor whiteColor];
     [super setSelected:selected];
 }
 
 -(void)setHighlighted:(BOOL)highlighted {
     self.layer.masksToBounds = NO;
-    self.backgroundColor = highlighted?WHITE_COLOR:[UIColor whiteColor];
+    self.backgroundColor = highlighted?LIGHT_GRAY_COLOR:[UIColor whiteColor];
     [super setHighlighted:highlighted];
     
 }

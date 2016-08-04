@@ -31,15 +31,13 @@
     
     //Style the search button.
     //Set the background color of the button.
-    self.searchButton.backgroundColor = BLUE_COLOR;
+    self.searchButton.backgroundColor = EXERCISES_COLOR;
     //Set the text color for the button.
     self.searchButton.titleLabel.textColor = [UIColor whiteColor];
     //Set the text for the button.
     self.searchButton.titleLabel.text = @"Search";
     
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_FIND_EXERCISE_ADVANCED_SEARCH  viewController:self message:@"Here you can choose the things you want in an exercise and I'll try my best to find it for you! Sometimes I can't find anything though, I'm really sorry about that, but I promise I'll look harder next time!"];
-    
-}
+   }
 
 /*****************************************************/
 #pragma mark - UITableView Delegate/Datasource Methods
@@ -117,11 +115,11 @@
         //Stlying the cells.
         cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
         cell.detailTextLabel.font = tableViewDetailTextFont;
-        cell.textLabel.textColor = BLUE_COLOR;
+        cell.textLabel.textColor = EXERCISES_COLOR;
         cell.detailTextLabel.textColor = LIGHT_GRAY_COLOR;
         
         //Set the selection cell.
-        [CommonSetUpOperations tableViewSelectionColorSet:cell];
+        [CommonUtilities tableViewSelectionColorSet:cell];
         
         //Return the cell.
         return cell;
@@ -148,7 +146,7 @@
         
         //Stlying the cells.
         cell.cellLabel.font = TABLE_VIEW_TITLE_FONT;
-        cell.cellLabel.textColor = BLUE_COLOR;
+        cell.cellLabel.textColor = EXERCISES_COLOR;
         cell.textField.font = tableViewDetailTextFont;
         cell.textField.textColor = LIGHT_GRAY_COLOR;
         

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LaunchKit.h"
 
 @interface HomeTabBarController : UITabBarController
 

@@ -15,7 +15,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *exerciseEquipmentLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *exerciseImage;
 @property (nonatomic, weak) IBOutlet UIImageView *likedImage;
-@property (nonatomic, weak) IBOutlet UIImageView *selectedImage;
+@property (nonatomic, weak) IBOutlet UIView *selectedView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *selectedConstraint;
 
 
 @end

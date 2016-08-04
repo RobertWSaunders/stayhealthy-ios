@@ -26,7 +26,7 @@
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
 
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS_PERFORM  viewController:self message:@"Here you can work through all of the exercises at your own pace and finish the workout when you would like. To finish the workout just tap the button at the bottom of your screen."];
+   // [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS_PERFORM  viewController:self message:@"Here you can work through all of the exercises at your own pace and finish the workout when you would like. To finish the workout just tap the button at the bottom of your screen."];
     
     [self setNotificationObservers];
 }
@@ -68,7 +68,7 @@
         
         cell.exerciseName.text = exercise.exerciseName;
         cell.difficulty.text = exercise.exerciseDifficulty;
-        cell.difficulty.textColor = [CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty];
+  /*      cell.difficulty.textColor = [CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty];
         
         cell.equipment.text = exercise.exerciseEquipment;
         NSString *trimmedString = [exercise.exerciseEquipment stringByTrimmingCharactersInSet:
@@ -81,12 +81,12 @@
         
         //Load the exercise image on the background thread.
         [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
-    
+    */
     /*
         if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
             cell.likeExerciseImage.hidden = NO;
             [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-            cell.likeExerciseImage.tintColor = BLUE_COLOR;
+            cell.likeExerciseImage.tintColor = EXERCISES_COLOR;
         }
         else {
             cell.likeExerciseImage.hidden = YES;
@@ -94,7 +94,7 @@
         */
         
         //Set the selected cell background.
-        [CommonSetUpOperations tableViewSelectionColorSet:cell];
+        
         
         //Return the cell.
         return cell;

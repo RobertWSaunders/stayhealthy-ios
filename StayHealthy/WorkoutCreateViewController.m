@@ -34,7 +34,7 @@
     
     [self setNotificationObservers];
     
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_CREATE_WORKOUTS  viewController:self message:@"Wanna make your own workout? You can do that here! Simply make a name, select some exercises, select the workout attributes and away you go!"];
+    
     
     //Set the tableView in edit mode for adding and deleting people.
     [self.createWorkoutTableView setEditing:YES animated:YES];
@@ -47,8 +47,8 @@
 
 //Loads the view for editing a workout.
 - (void)loadForEditMode {
-    textViewText = self.workoutToEdit.workoutSummary;
-    selectedName = self.workoutToEdit.workoutName;
+    textViewText = self.workoutToEdit.customWorkoutSummary;
+    selectedName = self.workoutToEdit.customWorkoutName;
     self.title = @"Edit Workout";
     [self fetchAndLoadInformationForEditMode];
 }
@@ -174,24 +174,24 @@
     
             cell.exerciseName.text = exercise.exerciseName;
             cell.difficulty.text = exercise.exerciseDifficulty;
-            cell.difficulty.textColor = [CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty];
+           
             
-            cell.equipment.text = exercise.exerciseEquipment;
-            NSString *trimmedString = [exercise.exerciseEquipment stringByTrimmingCharactersInSet:
+            cell.equipment.text = exercise.exerciseEquipmentNeeded;
+            NSString *trimmedString = [exercise.exerciseEquipmentNeeded stringByTrimmingCharactersInSet:
                                        [NSCharacterSet whitespaceCharacterSet]];
             
             if ([trimmedString isEqualToString:@"null"])
                 cell.equipment.text = @"No Equipment";
             else
-                cell.equipment.text = exercise.exerciseEquipment;
+                cell.equipment.text = exercise.exerciseEquipmentNeeded;
             
             //Load the exercise image on the background thread.
-            [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
+           // [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
             
             /*if ([exercise.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
                 cell.likeExerciseImage.hidden = NO;
                 [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-                cell.likeExerciseImage.tintColor = BLUE_COLOR;
+                cell.likeExerciseImage.tintColor = EXERCISES_COLOR;
             }
             else {
                 cell.likeExerciseImage.hidden = YES;
@@ -199,7 +199,7 @@
             
             cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
-            [CommonSetUpOperations tableViewSelectionColorSet:cell];
+            
             
              return cell;
 
@@ -220,7 +220,7 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.detailTextLabel.hidden = YES;
             
-            [CommonSetUpOperations tableViewSelectionColorSet:cell];
+            
             
             return cell;
         }
@@ -240,7 +240,7 @@
         cell.textLabel.text = [workoutOptions objectAtIndex:indexPath.row];
         //Set the detail text.
         cell.detailTextLabel.text = [tableViewAttributeSelectionsUserInterface objectAtIndex:indexPath.row];
-            cell.detailTextLabel.textColor = [CommonSetUpOperations determineDifficultyColor:cell.detailTextLabel.text];
+          //  cell.detailTextLabel.textColor = [CommonSetUpOperations determineDifficultyColor:cell.detailTextLabel.text];
         
         //Stlying the cells.
         cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
@@ -249,7 +249,7 @@
         //cell.detailTextLabel.textColor = LIGHT_GRAY_COLOR;
         
         //Set the selection cell.
-        [CommonSetUpOperations tableViewSelectionColorSet:cell];
+        
         
         //Return the cell.
         return cell;
@@ -277,7 +277,7 @@
                 cell.textView.text = textViewText;
             }//If it is in edit mode we need to show the workout that is being editing summary.
             else {
-                cell.textView.text = self.workoutToEdit.workoutSummary;
+            //    cell.textView.text = self.workoutToEdit.workoutSummary;
             }
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -293,7 +293,7 @@
         
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Delete";
-            cell.textLabel.textColor = RED_COLOR;
+         //   cell.textLabel.textColor = RED_COLOR;
             cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
         }
@@ -362,8 +362,8 @@
         alertView.buttonsTitleColor = RED_COLOR;
         alertView.buttonsBackgroundColorHighlighted = RED_COLOR;
         alertView.cancelButtonFont = [UIFont fontWithName:regularFontName size:18.0f];
-        alertView.cancelButtonTitleColor = BLUE_COLOR;
-        alertView.cancelButtonBackgroundColorHighlighted = BLUE_COLOR;
+        alertView.cancelButtonTitleColor = EXERCISES_COLOR;
+        alertView.cancelButtonBackgroundColorHighlighted = EXERCISES_COLOR;
      
         [alertView showAnimated:YES completionHandler:nil];
      */
@@ -560,8 +560,8 @@
     
     
     //The defaults in the advanced search view.
-    workoutAdvancedSearchOptionsSelections = [[NSMutableArray alloc] initWithObjects:self.workoutToEdit.workoutTargetMuscles,self.workoutToEdit.workoutTargetSports,self.workoutToEdit.workoutEquipment,self.workoutToEdit.workoutDifficulty,self.workoutToEdit.workoutType, nil];
-    tableViewAttributeSelectionsUserInterface = [[NSMutableArray alloc] initWithObjects:self.workoutToEdit.workoutTargetMuscles,self.workoutToEdit.workoutTargetSports,self.workoutToEdit.workoutEquipment,self.workoutToEdit.workoutDifficulty,self.workoutToEdit.workoutType, nil];
+ //   workoutAdvancedSearchOptionsSelections = [[NSMutableArray alloc] initWithObjects:self.workoutToEdit.workoutTargetMuscles,self.workoutToEdit.workoutTargetSports,self.workoutToEdit.workoutEquipment,self.workoutToEdit.workoutDifficulty,self.workoutToEdit.workoutType, nil];
+  //  tableViewAttributeSelectionsUserInterface = [[NSMutableArray alloc] initWithObjects:self.workoutToEdit.workoutTargetMuscles,self.workoutToEdit.workoutTargetSports,self.workoutToEdit.workoutEquipment,self.workoutToEdit.workoutDifficulty,self.workoutToEdit.workoutType, nil];
 }
 
 /*****************************************/
@@ -839,7 +839,7 @@
     //Create reference to a new custom workout.
     SHCustomWorkout *customWorkout = [[SHCustomWorkout alloc] init];
     //Set a new workout idenitifier.
-    customWorkout.workoutID = [CommonUtilities returnUniqueID];
+  /*  customWorkout.workoutID = [CommonUtilities returnUniqueID];
     //Set the name of the new workout.
     customWorkout.workoutName = selectedName;
     //Set the summary of the new workout.
@@ -860,7 +860,7 @@
     customWorkout.workoutTargetSports = [workoutAdvancedSearchOptionsSelections objectAtIndex:1];
     customWorkout.dateCreated = [NSDate date];
     customWorkout.dateModified = [NSDate date];
-    
+    */
     return customWorkout;
 }
 
@@ -868,8 +868,8 @@
 
     
     //Set the name of the new workout.
-    updateWorkout.workoutName = selectedName;
-    //Set the summary of the new workout.
+    //updateWorkout.workoutName = selectedName;
+  /*  //Set the summary of the new workout.
     if ([textViewText isEqualToString:@"Summary"]) {
         updateWorkout.workoutSummary = nil;
     }
@@ -886,7 +886,7 @@
     updateWorkout.workoutTargetMuscles = [workoutAdvancedSearchOptionsSelections objectAtIndex:0];
     updateWorkout.workoutTargetSports = [workoutAdvancedSearchOptionsSelections objectAtIndex:1];
     updateWorkout.dateModified = [NSDate date];
-
+*/
     return updateWorkout;
 }
 
@@ -910,7 +910,7 @@
     
     //Workout Name Cell
        
-    if ([selectedName isEqualToString:@""] || (selectedName == nil)) {
+   /* if ([selectedName isEqualToString:@""] || (selectedName == nil)) {
         [CommonSetUpOperations performTSMessage:@"Workout Name Required" message:nil viewController:self canBeDismissedByUser:YES duration:6];
         return NO;
     }
@@ -936,6 +936,7 @@
         [CommonSetUpOperations performTSMessage:@"Workout Type Required" message:nil viewController:self canBeDismissedByUser:YES duration:6];
         return NO;
     }
+    */
     /*
     else if ([workoutSummaryCell.textView.text isEqualToString:@"Summary"]) {
         [CommonSetUpOperations performTSMessage:@"Summary" message:nil viewController:self canBeDismissedByUser:YES duration:6];

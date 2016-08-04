@@ -21,6 +21,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    /*UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped:)];
+    self.navigationItem.leftBarButtonItem = backButton;
+    */
+    self.navigationController.navigationItem.hidesBackButton = NO;
+    
+    NSArray *segItemsArray = [NSArray arrayWithObjects: @"All", @"Strength", @"Stretching",@"Liked", nil];
+    
+   
+    segmentedControl = [[UISegmentedControl alloc] initWithItems:segItemsArray];
+    segmentedControl.frame = CGRectMake(0, 0, self.view.frame.size.width-20, 30);
+    segmentedControl.selectedSegmentIndex = 0;
+    [segmentedControl addTarget:self action:@selector(segmentValueChanged:) forControlEvents:UIControlEventValueChanged];
+    UIBarButtonItem *segmentedControlButtonItem = [[UIBarButtonItem alloc] initWithCustomView:(UIView *)segmentedControl];
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    NSArray *barArray = [NSArray arrayWithObjects: flexibleSpace, segmentedControlButtonItem, flexibleSpace, nil];
+    
+    
+    [self.segmentedControlToolbar setItems:barArray];
+    
+    for (UIView *subView in [self.navigationController.navigationBar subviews]) {
+        if ([subView isKindOfClass:[UIImageView class]]) {
+            // Hide the hairline border
+            subView.hidden = YES;
+        }
+    }
+    
+    for (UIView *subView in [self.segmentedControlToolbar subviews]) {
+        if ([subView isKindOfClass:[UIImageView class]]) {
+            // Hide the hairline border
+            subView.hidden = YES;
+        }
+    }
+
+    
     self.navigationController.view.backgroundColor = [UIColor whiteColor];
     
     //Set the title for the page to the muscle.
@@ -28,7 +63,7 @@
 
     //Sets the NSUserDefault and displays the TSMessage when page is loaded for the first time.
     if (!self.exerciseSelectionMode) {
-        [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_FIND_EXERCISE_SEARCHED  viewController:self message:@"I found these exercises for you! Here you can just choose an exercise you like the look of and I'll show you more about it."];
+     
     }
     
     //Get the exercise data.
@@ -42,21 +77,11 @@
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    //[self register3DTouch];
 }
 
 //Checks user preferences to do various things in the loading of the view.
 - (void)checkPreferences {
-    //If YES then show collection view.
-    if ([CommonUtilities checkUserPreference:PREFERENCE_LIST_VIEW]) {
-        self.tableView.hidden = NO;
-        self.collectonView.hidden = YES;
-    }
-    else {
-        self.tableView.hidden = YES;
-        self.collectonView.hidden = NO;
-    }
-    
+
     
 }
 
@@ -71,124 +96,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViews) name:EXERCISE_SAVE_NOTIFICATION object:nil];
 }
 
-/***************************************************/
-#pragma mark UITableView Delegate/Datasource Methods
-/***************************************************/
-
-//Returns the height of the cells inside the tableView.
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 76.0f;
-}
-
-//Sets the number of rows in the tableview.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //Equal to the number of exercises for this search.
-    return [exerciseData count];
-}
-
-//determine everything for each cell, at each indexPath
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //write the cell identifier.
-    static NSString *simpleTableIdentifier = @"exerciseTableCell";
-
-    //Create the reference for the cell.
-    ExerciseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    
-    //If the cell can't be found then just create one.
-    if (cell == nil) {
-        cell = [[ExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-    }
-    
-    SHExercise *exercise = [exerciseData objectAtIndex:indexPath.row];
-    
-    cell.exerciseName.text = exercise.exerciseShortName;
-    if (self.exerciseSelectionMode) {
-        cell.exerciseName.textColor = WORKOUTS_COLOR;
-    }
-    else {
-        cell.exerciseName.textColor = EXERCISES_COLOR;
-    }
-    cell.difficulty.text = exercise.exerciseDifficulty;
-    cell.difficulty.textColor = [CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty];
-    
-    cell.equipment.text = exercise.exerciseEquipment;
-    NSString *trimmedString = [exercise.exerciseEquipment stringByTrimmingCharactersInSet:
-                               [NSCharacterSet whitespaceCharacterSet]];
-    
-    if ([trimmedString isEqualToString:@"null"])
-        cell.equipment.text = @"No Equipment";
-    else
-        cell.equipment.text = exercise.exerciseEquipment;
-    
-    //Load the exercise image on the background thread.
-    [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
-    
-    if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-        cell.likeExerciseImage.hidden = NO;
-        if (self.exerciseSelectionMode) {
-            [cell.likeExerciseImageSelection setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-            cell.likeExerciseImageSelection.tintColor = BLUE_COLOR;
-        }
-        else {
-            [cell.likeExerciseImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-            cell.likeExerciseImage.tintColor = BLUE_COLOR;
-        }
-    
-    }
-    else {
-        cell.likeExerciseImage.hidden = YES;
-    }
-    
-    
-    //Set the selected cell background.
-    [CommonSetUpOperations tableViewSelectionColorSet:cell];
-    
-  
-    if (self.exerciseSelectionMode) {
-        //Set the accessory type dependant on whether it is in selected cells array.
-        if ([CommonUtilities exerciseInArray:self.selectedExercises exercise:exercise]) {
-            //Make the checkmark show up.
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            cell.likeDistanceToEdge.constant = 0.0f;
-        }
-        else {
-            //Make no checkmark.
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.likeDistanceToEdge.constant = 21.0f;
-        }
-    }
-    
-    
-    return cell;
-}
-
-//--------------------------------------------
-#pragma mark TableView Cell Selection Handling
-//--------------------------------------------
-
-//Called when a user selects a cell.
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.exerciseSelectionMode) {
-        if (self.exerciseSelectionMode) {
-            ExerciseTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-            SHExercise *exercise = [exerciseData objectAtIndex:indexPath.row];
-            if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-                 self.selectedExercises = [CommonUtilities deleteSelectedExercise:self.selectedExercises exercise:exercise];
-                cell.likeDistanceToEdge.constant = 21.0f;
-                cell.accessoryType = UITableViewCellAccessoryNone;
-            } else {
-                [self.selectedExercises addObject:exercise];
-                cell.likeDistanceToEdge.constant = 0.0f;
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            }
-        }
-    }
-    else {
-        [self performSegueWithIdentifier:@"detail" sender:nil];
-    }
-    
-    //deselect the cell when you select it, makes selected background view disappear.
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+- (void)segmentValueChanged:(UISegmentedControl *)sender {
 }
 
 /***************************************************/
@@ -210,67 +118,35 @@
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    ExerciseCollectionViewCell *cell = (ExerciseCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"exercisecell" forIndexPath:indexPath];
+    ExerciseCollectionViewCell *cell = (ExerciseCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"ExerciseCell" forIndexPath:indexPath];
     
-    [CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
+    //[CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
     
     SHExercise *exercise = [exerciseData objectAtIndex:indexPath.item];
     
-    if (self.exerciseSelectionMode) {
-        cell.exerciseName.textColor = WORKOUTS_COLOR;
-    }
-    else {
-        cell.exerciseName.textColor = EXERCISES_COLOR;
-    }
-    cell.exerciseName.text = exercise.exerciseName;
+    cell.layer.masksToBounds = NO;
     
-    // Do any additional setup after loading the view, typically from a nib.
-    NSMutableAttributedString *difficultyText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Difficulty: %@",exercise.exerciseDifficulty]];
+    cell.layer.borderColor = LIGHT_GRAY_COLOR.CGColor;
+    cell.layer.borderWidth = 0.5f;
+    cell.layer.cornerRadius = 5.0f;
+    cell.layer.shadowRadius = 10.0f;
+    cell.layer.shadowOpacity = 0.75f;
+    cell.layer.shadowOffset = CGSizeMake(0.0, 2.0);
+    cell.layer.shadowColor = SHADOW_COLOR.CGColor;
+
+    cell.selectedView.hidden = YES;
+    cell.exerciseName.font = TABLE_VIEW_TITLE_FONT;
+    cell.exerciseName.textColor = EXERCISES_COLOR;
+    cell.exerciseDifficultyLabel.font = TABLE_VIEW_DETAIL_FONT;
+    cell.exerciseDifficultyLabel.textColor = [CommonUtilities determineDifficultyColor:exercise.exerciseDifficulty];
+    cell.exerciseEquipmentLabel.font = TABLE_VIEW_DETAIL_FONT;
+    cell.exerciseEquipmentLabel.textColor = DARK_GRAY_COLOR;
     
-    //Red and large
-    [difficultyText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:14.0f], NSForegroundColorAttributeName:[UIColor lightGrayColor]} range:NSMakeRange(0, 11)];
+    cell.exerciseName.text = exercise.exerciseShortName;
+    cell.exerciseDifficultyLabel.text =  exercise.exerciseDifficulty;
+    cell.exerciseEquipmentLabel.text = exercise.exerciseEquipmentNeeded;
     
-    //Rest of text -- just futura
-    [difficultyText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:14.0f], NSForegroundColorAttributeName:[CommonSetUpOperations determineDifficultyColor:exercise.exerciseDifficulty]} range:NSMakeRange(11, difficultyText.length - 11)];
-    
-    cell.exerciseDifficultyLabel.attributedText = difficultyText;
-    
-    //Load the exercise image on the background thread.
-    [CommonSetUpOperations loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
-    
-    if (self.exerciseSelectionMode) {
-        if ([CommonUtilities exerciseInArray:self.selectedExercises exercise:exercise]) {
-            cell.likedImage.hidden = NO;
-            [cell.likedImage setImage:[UIImage imageNamed:@"Checkmark.png"]];
-            if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-                cell.selectedImage.hidden = NO;
-                [cell.selectedImage setImage:[UIImage imageNamed:@"LikeCollectionViewCell.png"]];
-            }
-            else {
-                cell.selectedImage.hidden = YES;
-            }
-        }
-        else {
-            cell.selectedImage.hidden = YES;
-            if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-                cell.likedImage.hidden = NO;
-                [cell.likedImage setImage:[UIImage imageNamed:@"LikeCollectionViewCell.png"]];
-            }
-            else {
-                cell.likedImage.hidden = YES;
-            }
-        }
-    }
-    else {
-        if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-            cell.likedImage.hidden = NO;
-            [cell.likedImage setImage:[UIImage imageNamed:@"LikeCollectionViewCell.png"]];
-        }
-        else {
-            cell.likedImage.hidden = YES;
-        }
-    }
-    
+    [CommonUtilities loadImageOnBackgroundThread:cell.exerciseImage image:[UIImage imageNamed:exercise.exerciseImageFile]];
     
     return cell;
     
@@ -288,7 +164,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         ExerciseCollectionViewCell *cell = (ExerciseCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
         SHExercise *exercise = [exerciseData objectAtIndex:indexPath.row];
         
-        if ([CommonUtilities exerciseInArray:self.selectedExercises exercise:exercise]) {
+      /*  if ([CommonUtilities exerciseInArray:self.selectedExercises exercise:exercise]) {
             self.selectedExercises = [CommonUtilities deleteSelectedExercise:self.selectedExercises exercise:exercise];
             cell.selectedImage.hidden = YES;
             if ([exercise.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
@@ -317,9 +193,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         selectedCollectionIndex = indexPath;
         [self performSegueWithIdentifier:@"detail" sender:nil];
     }
-
+*/
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-}
+    }}
 
 //-------------------------------------------
 #pragma mark Collection Layout Configuration
@@ -333,7 +209,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         return CGSizeMake(207.f, 207.f);
     }
     else if (IS_IPHONE_6) {
-        return CGSizeMake(187.5f, 240.5f);
+        return CGSizeMake(172.0f, 222.0f);
     }
     else {
         return CGSizeMake(160.f, 160.f);
@@ -341,6 +217,53 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 }
 
+/*****************************************/
+#pragma mark - UIToolbar Delegate Methods
+/*****************************************/
+
+- (UIBarPosition)positionForBar:(id <UIBarPositioning>)bar {
+    if (bar == self.segmentedControlToolbar) {
+        return UIBarPositionTopAttached;
+        
+    }
+    return UIBarPositionBottom;
+}
+
+/********************************************/
+#pragma mark - UIScrollView Delegate Methods
+/********************************************/
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (scrollView == self.collectonView) {
+        for (UIView *subView in [self.segmentedControlToolbar subviews]) {
+            if ([subView isKindOfClass:[UIImageView class]]) {
+                [UIView transitionWithView:subView
+                                  duration:0.4
+                                   options:UIViewAnimationOptionTransitionCrossDissolve
+                                animations:^{
+                                    subView.hidden = NO;
+                                }
+                                completion:NULL];
+            }
+        }
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if ((scrollView == self.collectonView) && (self.collectonView.contentOffset.y <= 20)) {
+        for (UIView *subView in [self.segmentedControlToolbar subviews]) {
+            if ([subView isKindOfClass:[UIImageView class]]) {
+                [UIView transitionWithView:subView
+                                  duration:0.4
+                                   options:UIViewAnimationOptionTransitionCrossDissolve
+                                animations:^{
+                                    subView.hidden = YES;
+                                }
+                                completion:NULL];
+            }
+        }
+    }
+}
 
 /*****************************/
 #pragma mark Prepare For Segue
@@ -364,7 +287,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 /**************************/
 
 - (void)updateViews {
-    [self.tableView reloadData];
     [self.collectonView reloadData];
 }
 

@@ -6,16 +6,6 @@
 //  Copyright (c) 2014 Robert Saunders. All rights reserved.
 //
 
-/*
- REQUIRMENTS
- -TABBAR
- -CLOUD,FAVOURITE NOTIFICATIONS
- -TABLEVIEW/COLLECTIONVIEW PREFERENCES
- -FOCUS FEATURE
- -EXERCISE SELECTION DELEGATE
- -PEEK AND POP 
- */
-
 #import <UIKit/UIKit.h>
 #import "ExerciseDetailViewController.h"
 #import "SHDataHandler.h"
@@ -24,16 +14,11 @@
 #import "HomeTabBarController.h"
 #import "ExerciseCollectionViewCell.h"
 
-@interface ExerciseListController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate> {
+@interface ExerciseListController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate,UIScrollViewDelegate,UIToolbarDelegate> {
     NSMutableArray *exerciseData;
-    NSIndexPath *selectedIndex;
     NSIndexPath *selectedCollectionIndex;
-    //Set index of peek preview cell.
-    NSIndexPath *selectedPreviewingIndex;
-    
-    //The exercise detail view that is used in the peek preview.
-    //ExerciseDetailViewController *previewingExerciseDetailViewController;
-    
+    //Segmented Control
+    UISegmentedControl *segmentedControl;
 }
 
 
@@ -43,12 +28,12 @@
 //Title which is passed to the view.
 @property (strong, nonatomic) NSString *viewTitle;
 
+//Segmented Control Toolbar
+@property (weak, nonatomic) IBOutlet UIToolbar *segmentedControlToolbar;
 
 //COLLECTION VIEW AND TABLEVIEW
 //Exercise CollectionView
 @property (weak, nonatomic) IBOutlet UICollectionView *collectonView;
-//Exercise TableView
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
 @property (nonatomic, assign) BOOL exerciseSelectionMode;

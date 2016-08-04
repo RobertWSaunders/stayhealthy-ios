@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MGSwipeTableCell.h"
 
-@interface WorkoutTableViewCell : MGSwipeTableCell
+@interface WorkoutTableViewCell : UITableViewCell
 
 //Workout Name
 @property (nonatomic, weak) IBOutlet UILabel *workoutName;

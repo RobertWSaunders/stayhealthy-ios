@@ -24,7 +24,7 @@
     self.title = @"Preferences";
     
     //Style the alert views.
-    [CommonSetUpOperations styleAlertView:JOURNAL_COLOR];
+   // [CommonSetUpOperations styleAlertView:JOURNAL_COLOR];
     
     //Fill the arrays with the.
     generalPreferences = @[@"Tutorial Messages",@"Automatic Database Updates",@"List View",@"Default Launch Module",@"Notifications"];
@@ -248,7 +248,7 @@
         }
         
         //Set the tableView selection color.
-        [CommonSetUpOperations tableViewSelectionColorSet:cell];
+        
         
         //Finally return the cell.
         return cell;
@@ -263,12 +263,12 @@
         //Set the font for the text label.
         cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
         cell.textLabel.text = @"Reset";
-        cell.textLabel.textColor = RED_COLOR;
+        //cell.textLabel.textColor = RED_COLOR;
         cell.detailTextLabel.text = nil;
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         
-        [CommonSetUpOperations tableViewSelectionColorSet:cell];
+        
         
         return cell;
     }

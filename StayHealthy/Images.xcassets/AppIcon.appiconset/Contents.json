@@ -3,13 +3,13 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "29x29.png",
+      "filename" : "58x58.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "58x58.png",
+      "filename" : "87x87.png",
       "scale" : "3x"
     },
     {
@@ -39,7 +39,7 @@
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "29x29-1.png",
+      "filename" : "29x29.png",
       "scale" : "1x"
     },
     {

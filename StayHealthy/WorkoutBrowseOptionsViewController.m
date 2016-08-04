@@ -80,9 +80,8 @@
     
     cell.textLabel.text = [tableViewArray objectAtIndex:indexPath.row];
     cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
-    cell.textLabel.textColor = BLUE_COLOR;
-    
-     [CommonSetUpOperations tableViewSelectionColorSet:cell];
+    cell.textLabel.textColor = EXERCISES_COLOR;
+
     
     //Return the cell.
     return cell;

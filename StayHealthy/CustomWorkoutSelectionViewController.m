@@ -54,38 +54,13 @@
     
     //Create reference to the cell.
     WorkoutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:muscleSelectionCellIdentifier];
-    [CommonSetUpOperations tableViewSelectionColorSet:cell];
+    
     
     SHCustomWorkout *workout = [self updateWorkoutWithUserData:[customWorkouts objectAtIndex:indexPath.row]];
     
-    cell.workoutName.text = workout.workoutName;
-    cell.workoutDifficulty.text = workout.workoutDifficulty;
-    cell.workoutType.text = workout.workoutType;
-    cell.workoutExercises.text = [NSString stringWithFormat:@"%ld",[CommonUtilities numExercisesInCustomWorkout:workout]];
-    
-    cell.workoutDifficulty.textColor = [CommonSetUpOperations determineDifficultyColor:workout.workoutDifficulty];
-    
-    NSMutableArray *workoutExercises = [CommonUtilities getCustomWorkoutExercises:workout];
-    
-    if (workoutExercises.count > 0) {
-        SHExercise *imageExercise = [workoutExercises objectAtIndex:[workoutExercises count]-1];
-        
-        [CommonSetUpOperations loadImageOnBackgroundThread:cell.workoutImage image:[UIImage imageNamed:imageExercise.exerciseImageFile]];
-    }
-  
-    
-    if ([workout.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-        cell.likeWorkoutImage.hidden = NO;
-        [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-        cell.likeWorkoutImage.tintColor = BLUE_COLOR;
-    }
-    else {
-        cell.likeWorkoutImage.hidden = YES;
-    }
-    
     cell.accessoryType = UITableViewCellAccessoryNone;
     //Set the selected cell background.
-    [CommonSetUpOperations tableViewSelectionColorSet:cell];
+    
     
     //Return the cell.
     return cell;
@@ -116,10 +91,7 @@
         //Reload the recenltyviewed tableview to display the new exercises.
         [self.customWorkoutsTableView reloadData];
         
-        if (customWorkouts.count == 0) {
-            [CommonSetUpOperations performTSMessage:@"Looks like you have no workouts you can add this exercise to. If you'd like to create a workout head over to Workouts and press the add button in the top right!" message:nil viewController:self canBeDismissedByUser:YES duration:10];
-        }
-    });
+           });
 }
 
 - (id)updateWorkoutWithUserData:(SHCustomWorkout*)workout {

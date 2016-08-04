@@ -12,9 +12,8 @@
 #import "WorkoutCreateViewController.h"
 #import "WorkoutBrowseOptionsViewController.h"
 #import "WorkoutDetailViewController.h"
-#import "UIScrollView+EmptyDataSet.h"
 
-@interface WorkoutSelectionViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate> {
+@interface WorkoutSelectionViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource> {
     NSArray *browseOptions;
     NSArray *browseOptionsImages;
     NSMutableArray *customWorkouts;

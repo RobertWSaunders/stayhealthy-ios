@@ -97,40 +97,53 @@
 #pragma mark - Colors
 /********************/
 
-#define BLUE_COLOR                          [UIColor colorWithRed:52.0f/255.2f green:152.0f/255.2f blue:219.0f/255.2f alpha:1]
-#define DARK_BLUE_COLOR                     [UIColor colorWithRed:41.0f/255.2f green:128.0f/255.2f blue:185.0f/255.2f alpha:1]
-#define GREEN_COLOR                         [UIColor colorWithRed:46.0f/255.2f green:204.0f/255.2f blue:113.0f/255.2f alpha:1]
-#define RED_COLOR                           [UIColor colorWithRed:231.0f/255.2f green:76.0f/255.2f blue:60.0f/255.2f alpha:1]
-#define WHITE_COLOR_OLD                     [UIColor colorWithRed:236.0f/255.2f green:240.0f/255.2f blue:241.0f/255.2f alpha:1]
-#define WHITE_COLOR                         [UIColor colorWithRed:247.0f/255.2f green:249.0f/255.2f blue:249.0f/255.2f alpha:1]
-#define LIGHT_GRAY_COLOR_COLLECTION         [UIColor colorWithRed:230.0f/255.2f green:230.0f/255.2f blue:230.0f/255.2f alpha:1]
-#define LIGHT_GRAY_COLOR                    [UIColor lightGrayColor]
-#define DARK_GRAY_COLOR                     [UIColor darkGrayColor]
+//-----------------------------
+#pragma mark Difficulty Colors
+//-----------------------------
+
+#define INTERMEDIATE_BLUE_COLOR                  [UIColor colorWithRed:52.0f/255.2f green:152.0f/255.2f blue:219.0f/255.2f alpha:1]
+#define EASY_GREEN_COLOR                         [UIColor colorWithRed:46.0f/255.2f green:204.0f/255.2f blue:113.0f/255.2f alpha:1]
+#define HARD_RED_COLOR                           [UIColor colorWithRed:231.0f/255.2f green:76.0f/255.2f blue:60.0f/255.2f alpha:1]
+
+//-----------------------------
+#pragma mark Grey Scale Colors
+//-----------------------------
+
+#define WHITE_COLOR                         [UIColor colorWithRed:255.0f/255.2f green:255.0f/255.2f blue:255.0f/255.2f alpha:1]
+#define LIGHT_GRAY_COLOR                    [UIColor colorWithRed:216.0f/255.2f green:216.0f/255.2f blue:216.0f/255.2f alpha:1]
+#define DARK_GRAY_COLOR                     [UIColor colorWithRed:168.0f/255.2f green:168.0f/255.2f blue:168.0f/255.2f alpha:1]
+#define SHADOW_COLOR                        [UIColor colorWithRed:237.0f/255.2f green:237.0f/255.2f blue:237.0f/255.2f alpha:1]
 
 //------------------------
 #pragma mark Module Colors
 //------------------------
 
-#define EXERCISES_COLOR                     [UIColor colorWithRed:52.0f/255.2f green:152.0f/255.2f blue:219.0f/255.2f alpha:1]
-#define WORKOUTS_COLOR                      [UIColor colorWithRed:165.0f/255.2f green:94.0f/255.2f blue:193.0f/255.2f alpha:1]
-#define JOURNAL_COLOR                       [UIColor colorWithRed:243.0f/255.2f green:156.0f/255.2f blue:18.0f/255.2f alpha:1]
-#define LIKED_COLOR                         [UIColor colorWithRed:238.0f/255.2f green:66.0f/255.2f blue:106.0f/255.2f alpha:1]
+#define EXERCISES_COLOR                     [UIColor colorWithRed:56.0f/255.2f green:151.0f/255.2f blue:255.0f/255.2f alpha:1]
+#define WORKOUTS_COLOR                      [UIColor colorWithRed:113.0f/255.2f green:90.0f/255.2f blue:255.0f/255.2f alpha:1]
+#define JOURNAL_COLOR                       [UIColor colorWithRed:255.0f/255.2f green:170.0f/255.2f blue:39.0f/255.2f alpha:1]
+#define LIKED_COLOR                         [UIColor colorWithRed:246.0f/255.2f green:36.0f/255.2f blue:89.0f/255.2f alpha:1]
 
 /********************/
 #pragma mark - Fonts
 /********************/
 
 #define STAYHEALTHY_FONT                    [UIFont fontWithName:STAYHEALTHY_FONTNAME size:20.0]
-#define NAVIGATIONBAR_TITLE_FONT            [UIFont fontWithName:REGULAR_LIGHT_FONTNAME size:20.0]
-#define NAVIGATIONBAR_BUTTON_FONT           [UIFont fontWithName:REGULAR_FONTNAME size:18.0]
 
-#define TABLE_VIEW_TITLE_FONT              [UIFont fontWithName:REGULAR_FONTNAME size:16]
+#define NAVIGATIONBAR_TITLE_FONT            [UIFont fontWithName:REGULAR_FONTNAME size:22.0]
+#define NAVIGATIONBAR_BUTTON_FONT           [UIFont fontWithName:REGULAR_FONTNAME size:19.0]
+
+#define TABLE_VIEW_TITLE_FONT               [UIFont fontWithName:REGULAR_FONTNAME size:18.0]
+#define TABLE_VIEW_DETAIL_FONT              [UIFont fontWithName:REGULAR_BOOK_FONTNAME size:16.0]
+
 
 #define TABLE_VIEW_SECTION_TITLE_FONT       [UIFont fontWithName:REGULAR_FONTNAME size:12];
-
 #define tableViewUnderTitleTextFont         [UIFont fontWithName:REGULAR_LIGHT_FONTNAME size:14]
 #define tableViewDetailTextFont             [UIFont fontWithName:REGULAR_LIGHT_FONTNAME size:16]
 #define tableViewHeaderFont                 [UIFont fontWithName:REGULAR_LIGHT_FONTNAME size:15]
+
+
+
+
 #define alertViewTitleFont                  [UIFont fontWithName:REGULAR_LIGHT_FONTNAME size:20]
 #define alertViewButtonFont                 [UIFont fontWithName:REGULAR_LIGHT_FONTNAME size:18]
 #define alertViewMessageFont                [UIFont fontWithName:REGULAR_LIGHT_FONTNAME size:16]
@@ -141,10 +154,13 @@
 //---------------------
 
 #define STAYHEALTHY_FONTNAME                @"Arista 2.0"
-#define REGULAR_FONTNAME                    @"Avenir"
-#define REGULAR_LIGHT_FONTNAME              @"Avenir-Light"
-#define REGULAR_INTENSE_FONTNAME            @"Avenir-Roman"
+
+#define REGULAR_FONTNAME                    @"Avenir-Roman"
 #define REGULAR_BOOK_FONTNAME               @"Avenir-Book"
+#define REGULAR_MEDIUM_FONTNAME             @"Avenir-Medium"
+#define REGULAR_LIGHT_FONTNAME              @"Avenir-Light"
+
+
 
 /******************************/
 #pragma mark - User Preferences
@@ -265,7 +281,7 @@ typedef enum {
     difficulty,
     forceType,
     mechanicType,
-    exerciseType
+    exerciseTypes
 } exerciseAttributes;
 
 //------------------------------

@@ -33,13 +33,7 @@
     }
    */
     
-    //If the exercise data is nothing then show the message declaring that.
-    if (workoutData.count == 0)
-        [CommonSetUpOperations performTSMessage:@"No Workouts Were Found" message:nil viewController:self canBeDismissedByUser:YES duration:60];
     
-    [self setNotificationObservers];
-    
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS_SEARCHED viewController:self message:@"I found these workouts for you! Here you can just choose a workout you like the look of and I'll show you more about it and you can perform it!"];
     
     //Gets rid of the weird fact that the tableview starts 60px down.
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -84,22 +78,12 @@
     cell.workoutName.text = workout.workoutName;
     cell.workoutDifficulty.text = workout.workoutDifficulty;
     cell.workoutType.text = workout.workoutType;
-    cell.workoutExercises.text = [NSString stringWithFormat:@"%ld",[CommonUtilities numExercisesInWorkout:workout]];
-    
-    cell.workoutDifficulty.textColor = [CommonSetUpOperations determineDifficultyColor:workout.workoutDifficulty];
    
-    NSMutableArray *workoutExercises = [CommonUtilities getWorkoutExercises:workout];
-    
-if (workoutExercises.count>0) {
-    SHExercise *imageExercise = [workoutExercises objectAtIndex:[workoutExercises count]-1];
-    [CommonSetUpOperations loadImageOnBackgroundThread:cell.workoutImage image:[UIImage imageNamed:imageExercise.exerciseImageFile]];
-}
-
     /*
     if ([workout.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         cell.likeWorkoutImage.hidden = NO;
         [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
-        cell.likeWorkoutImage.tintColor = BLUE_COLOR;
+        cell.likeWorkoutImage.tintColor = EXERCISES_COLOR;
     }
     else {
         cell.likeWorkoutImage.hidden = YES;
@@ -107,7 +91,7 @@ if (workoutExercises.count>0) {
     */
     
     //Set the selected cell background.
-    [CommonSetUpOperations tableViewSelectionColorSet:cell];
+    
     
     return cell;
 }

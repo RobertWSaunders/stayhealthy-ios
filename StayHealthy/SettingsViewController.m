@@ -96,7 +96,7 @@
     cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
     
     //Set the tableView selection color.
-    [CommonSetUpOperations tableViewSelectionColorSet:cell];
+    [CommonUtilities tableViewSelectionColorSet:cell];
 
     //Finally return the cell.
     return cell;

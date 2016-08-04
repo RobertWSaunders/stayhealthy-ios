@@ -86,40 +86,40 @@
 /*********************************/
 
 //Converts meters to either km or miles based on user preferences.
-+ (void)metersToPreferredDistance(double)meters;
++ (void)metersToPreferredDistance:(double)meters;
 
 //Converts km or miles to meters based on user preferences.
-+ (void)preferredDistanceToMeters(double)distance;
++ (void)preferredDistanceToMeters:(double)distance;
 
 //Converts pounds to pounds/kilograms/stones based on user preferences.
-+ (void)poundsToPreferredWeight(float)pounds;
++ (void)poundsToPreferredWeight:(float)pounds;
 
 //Converts pounds/kilograms/st to pounds based on user preferences.
-+ (void)preferredWeightToPounds(float)weight;
++ (void)preferredWeightToPounds:(float)weight;
 
 //Converts kph to either mph/kph/ms based on user preferences.
-+ (void)kphToPreferredSpeed(float)kph;
++ (void)kphToPreferredSpeed:(float)kph;
 
 //Converts kph/mph/ms to kph based on user preferences.
-+ (void)preferredSpeedToKph(float)speed;
++ (void)preferredSpeedToKph:(float)speed;
 
 //Converts cm to in/m/ft/mm based on user preferences.
-+ (void)cmToPreferredHeight(float)cm;
++ (void)cmToPreferredHeight:(float)cm;
 
 //Converts in/m/ft/mm to cm based on user preferences.
-+ (void)preferredHeightToCm(float)height;
++ (void)preferredHeightToCm:(float)height;
 
 //Converts kcal to kj/kcal based on user preferences.
-+ (void)kcalToPreferredCalorieUnit(float)kcal;
++ (void)kcalToPreferredCalorieUnit:(float)kcal;
 
 //Converts kcal/kj to kcal based on user preferences.
-+ (void)preferredCalorieUnitToKcal(float)calorieUnit;
++ (void)preferredCalorieUnitToKcal:(float)calorieUnit;
 
 //Converts bpm to bpm based on user preferences.
-+ (void)bpmToPreferredHeartBeatUnit(float)bpm;
++ (void)bpmToPreferredHeartBeatUnit:(float)bpm;
 
 //Converts bpm to bpm based on user preferences.
-+ (void)preferredHeartBeatUnitToBpm(float)heartBeatUnit;
++ (void)preferredHeartBeatUnitToBpm:(float)heartBeatUnit;
 
 /***************************/
 #pragma mark - Useful Tools
@@ -232,5 +232,8 @@
 
 //Resets all of the users preferences to our suggested preferences.
 + (void)resetUserPreferences;
+
+//Returns the general property list.
++ (NSDictionary *)returnGeneralPlist;
 
 @end

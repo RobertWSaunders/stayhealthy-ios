@@ -412,7 +412,6 @@
 //Returns the database version that is store on the web.
 - (NSString *)onlineDatabaseVersion;
 
-//Returns the general property list.
-+ (NSDictionary *)returnGeneralPlist;
+
 
 @end

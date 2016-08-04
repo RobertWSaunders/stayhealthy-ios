@@ -50,16 +50,16 @@
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
     //Change the tint color for segmented controls and navigation bar.
     if ([item.title isEqualToString:@"Journal"]) {
-        [CommonUtilities setTintColor:JOURNAL_COLOR];
+        [CommonUtilities setGlobalTintColor:JOURNAL_COLOR];
     }
     else if ([item.title isEqualToString:@"Exercises"]) {
-        [CommonUtilities setTintColor:EXERCISES_COLOR];
+        [CommonUtilities setGlobalTintColor:EXERCISES_COLOR];
     }
     else if ([item.title isEqualToString:@"Workouts"]) {
-       [CommonUtilities setTintColor:WORKOUTS_COLOR];
+       [CommonUtilities setGlobalTintColor:WORKOUTS_COLOR];
     }
     else {
-        [CommonUtilities setTintColor:LIKED_COLOR];
+        [CommonUtilities setGlobalTintColor:LIKED_COLOR];
     }
 }
 /***************************************/

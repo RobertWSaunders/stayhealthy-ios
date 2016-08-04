@@ -24,11 +24,8 @@
 
 //Called when the application has finished launching.
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    [Heap setAppId:@"3640135477"];
-    
+   
 #ifdef DEBUG
-    [Heap enableVisualizer];
     //Set the XcodeColors
     setenv("XcodeColors", "YES", 0);
 #endif
@@ -39,13 +36,10 @@
     }
     
     //Set the tint color all content throughout the application.
-    [CommonUtilities setTintColor:JOURNAL_COLOR];
+    [CommonUtilities setGlobalTintColor:JOURNAL_COLOR];
     
     //Set the iCloud Observers.
     [self setiCloudObservers];
-    
-    //Connect to LaunchKit
-    [LaunchKit launchWithToken:@"W6MwOqvoV5kdEJzA-Qe1sINeC61khPcPKtEhna_qdRV-"];
     
     return YES;
 }

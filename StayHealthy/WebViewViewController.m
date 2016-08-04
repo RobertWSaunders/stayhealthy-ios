@@ -63,7 +63,7 @@
             
         }
         else {
-            [CommonSetUpOperations performTSMessage:@"No Internet Connection" message:nil viewController:self canBeDismissedByUser:YES duration:6];
+          //  [CommonSetUpOperations performTSMessage:@"No Internet Connection" message:nil viewController:self canBeDismissedByUser:YES duration:6];
         }
 }
 
@@ -93,7 +93,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 didFailLoadWithError:(NSError *)error {
     [self.spinnerImage stopAnimating];
     self.spinnerImage.hidden =YES;
-    [CommonSetUpOperations performTSMessage:@"Oops, there must have been an error!" message:nil viewController:self canBeDismissedByUser:YES duration:6];
+   // [CommonSetUpOperations performTSMessage:@"Oops, there must have been an error!" message:nil viewController:self canBeDismissedByUser:YES duration:6];
 }
 
 /**********************/

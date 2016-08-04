@@ -11,7 +11,7 @@
                     <tabBarItem key="tabBarItem" title="Journal" image="JournalTab" id="voz-he-LO0">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="0.95294117647058818" green="0.61176470588235299" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="value" red="1" green="0.66666666666666663" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
@@ -50,11 +50,11 @@
         <!--Exercises-->
         <scene sceneID="JGF-fN-mZJ">
             <objects>
-                <navigationController id="j8y-dZ-qLd" sceneMemberID="viewController">
+                <navigationController autoresizesArchivedViewToFullSize="NO" id="j8y-dZ-qLd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Exercises" image="ExerciseTab" id="15m-6I-M2g">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="value" red="0.2196078431372549" green="0.59215686274509804" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
@@ -62,6 +62,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="4fv-Qr-bXM">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </toolbar>
                     <connections>
                         <segue destination="FRj-oO-ilg" kind="relationship" relationship="rootViewController" id="OWf-g0-old"/>
                     </connections>
@@ -160,7 +165,7 @@
                     <tabBarItem key="tabBarItem" title="Workouts" image="WorkoutsTab" selectedImage="Barbell Filled-25" id="bGK-Xj-t2S">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="0.69019607843137254" green="0.396078431372549" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="value" red="0.44313725490196076" green="0.3529411764705882" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>

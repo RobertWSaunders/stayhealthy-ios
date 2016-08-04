@@ -54,7 +54,7 @@
 
         BodyViewCollectionViewCell *cell = (BodyViewCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-        [CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
+      //  [CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
     
         cell.bodyZoneLabel.text = [journalEntryOptions objectAtIndex:indexPath.row];
     

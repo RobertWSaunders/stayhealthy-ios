@@ -32,10 +32,7 @@
         self.navigationItem.leftBarButtonItem = backButton;
     }
     
-    //Sets the NSUserDefault and displays the TSMessage when page is loaded for the first time.
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_FIND_EXERCISE_DETAIL  viewController:self message:@"This is a good one, hopefully you will like it! Make sure to scroll down to see more details about the exercise and favourite it by tapping the heart in the top right or by double tapping on the exercise image. You can also find some options that are available to you by tapping the sheet icon beside the heart in the top right."];
-    
-    /*UIBarButtonItem* actionSheet = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"actionSheet.png"] style:UIBarButtonItemStylePlain target:self action:nil];
+       /*UIBarButtonItem* actionSheet = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"actionSheet.png"] style:UIBarButtonItemStylePlain target:self action:nil];
     self.navigationItem.rightBarButtonItems = @[self.likeButton,actionSheet];
     */
     
@@ -47,19 +44,7 @@
     
     NSInteger timesViewed = [self.exerciseToDisplay.exerciseTimesViewed integerValue];
     
-    //Save or Update the exercise information.
-    if ([SHDataUtilities exerciseHasBeenSaved:self.exerciseToDisplay.exerciseIdentifier exerciseType:self.exerciseToDisplay.exerciseType]) {
-        self.exerciseToDisplay.exerciseLastViewed = [NSDate date];
-        self.exerciseToDisplay.exerciseTimesViewed = [NSNumber numberWithInteger:timesViewed+1];
-        [dataHandler updateExerciseRecord:self.exerciseToDisplay];
-    }
-    else {
-        self.exerciseToDisplay.exerciseTimesViewed = [NSNumber numberWithInteger:1];
-        self.exerciseToDisplay.exerciseLastViewed = [NSDate date];
-        [dataHandler saveExerciseRecord:self.exerciseToDisplay];
-    }
-    
-    [CommonSetUpOperations styleAlertView:EXERCISES_COLOR];
+   
     
     
     if ([self.exerciseToDisplay.exerciseLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
@@ -141,13 +126,6 @@
         self.exerciseToDisplay.exerciseLiked = [NSNumber numberWithBool:YES];
     }
     
-    //Save or Update the exercise information.
-    if ([SHDataUtilities exerciseHasBeenSaved:self.exerciseToDisplay.exerciseIdentifier exerciseType:self.exerciseToDisplay.exerciseType]) {
-        [dataHandler updateExerciseRecord:self.exerciseToDisplay];
-    }
-    else {
-        [dataHandler saveExerciseRecord:self.exerciseToDisplay];
-    }
     
 }
 
@@ -232,18 +210,17 @@
     cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
     cell.detailTextLabel.font = tableViewDetailTextFont;
     
-    cell.textLabel.textColor = BLUE_COLOR;
+    cell.textLabel.textColor = EXERCISES_COLOR;
     cell.detailTextLabel.textColor = LIGHT_GRAY_COLOR;
     
     //Sets
     if (indexPath.row == 0) {
-        cell.detailTextLabel.text = self.exerciseToDisplay.exerciseSets;
         
         // Do any additional setup after loading the view, typically from a nib.
         NSMutableAttributedString *setsText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Sets  (Recommended)"]];
         
         //Red and large
-        [setsText setAttributes:@{NSFontAttributeName:TABLE_VIEW_TITLE_FONT, NSForegroundColorAttributeName:BLUE_COLOR} range:NSMakeRange(0, 6)];
+        [setsText setAttributes:@{NSFontAttributeName:TABLE_VIEW_TITLE_FONT, NSForegroundColorAttributeName:EXERCISES_COLOR} range:NSMakeRange(0, 6)];
         
         //Rest of text -- just futura
         [setsText setAttributes:@{NSFontAttributeName:TABLE_VIEW_TITLE_FONT, NSForegroundColorAttributeName:[UIColor lightGrayColor]} range:NSMakeRange(5, setsText.length - 5)];
@@ -255,13 +232,11 @@
     
     //Reps
     if (indexPath.row == 1) {
-        cell.detailTextLabel.text = self.exerciseToDisplay.exerciseReps;
-        
-        // Do any additional setup after loading the view, typically from a nib.
+               // Do any additional setup after loading the view, typically from a nib.
         NSMutableAttributedString *repsText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Reps  (Recommended)"]];
         
         //Red and large
-        [repsText setAttributes:@{NSFontAttributeName:TABLE_VIEW_TITLE_FONT, NSForegroundColorAttributeName:BLUE_COLOR} range:NSMakeRange(0, 6)];
+        [repsText setAttributes:@{NSFontAttributeName:TABLE_VIEW_TITLE_FONT, NSForegroundColorAttributeName:EXERCISES_COLOR} range:NSMakeRange(0, 6)];
         
         //Rest of text -- just futura
         [repsText setAttributes:@{NSFontAttributeName:TABLE_VIEW_TITLE_FONT, NSForegroundColorAttributeName:[UIColor lightGrayColor]} range:NSMakeRange(5, repsText.length - 5)];
@@ -284,17 +259,11 @@
     
     //Equipment
     if (indexPath.row == 4) {
-        NSString *trimmedString = [self.exerciseToDisplay.exerciseEquipment stringByTrimmingCharactersInSet:
-                                   [NSCharacterSet whitespaceCharacterSet]];
-        if ([trimmedString isEqualToString:@"null"])
-            self.exerciseToDisplay.exerciseEquipment = @"No Equipment";
-        cell.detailTextLabel.text = self.exerciseToDisplay.exerciseEquipment;
-    }
+           }
     
     //Difficulty
     if (indexPath.row == 5) {
-        cell.detailTextLabel.text = self.exerciseToDisplay.exerciseDifficulty;
-        cell.detailTextLabel.textColor = [CommonSetUpOperations determineDifficultyColor:self.exerciseToDisplay.exerciseDifficulty];
+       
     }
     
     if (indexPath.row == 6) {
@@ -318,8 +287,6 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    //Set the selected cell background.
-    [CommonSetUpOperations tableViewSelectionColorSet:cell];
     
         return cell;
 }
@@ -384,11 +351,11 @@
     alertView.messageFont = [UIFont fontWithName:regularFontName size:16.0f];
     alertView.messageTextColor = DARK_GRAY_COLOR;
     alertView.buttonsFont = [UIFont fontWithName:regularFontName size:18.0f];
-    alertView.buttonsTitleColor = BLUE_COLOR;
-    alertView.buttonsBackgroundColorHighlighted = BLUE_COLOR;
+    alertView.buttonsTitleColor = EXERCISES_COLOR;
+    alertView.buttonsBackgroundColorHighlighted = EXERCISES_COLOR;
     alertView.cancelButtonFont = [UIFont fontWithName:regularFontName size:18.0f];
-    alertView.cancelButtonTitleColor = BLUE_COLOR;
-    alertView.cancelButtonBackgroundColorHighlighted = BLUE_COLOR;
+    alertView.cancelButtonTitleColor = EXERCISES_COLOR;
+    alertView.cancelButtonBackgroundColorHighlighted = EXERCISES_COLOR;
     [alertView showAnimated:YES completionHandler:nil];
      */
     
@@ -409,35 +376,12 @@
         NSIndexPath *indexPath = [self.infoTableView indexPathForSelectedRow];
         
         if (indexPath.row >= 8) {
-            if (indexPath.row == 8) {
-                if ((([self.exerciseToDisplay.exerciseType isEqualToString:@"strength"]) && ([differentVariationsExerciseIDs count] == 0))) {
-                    NSMutableArray *muscles = [[NSMutableArray alloc] initWithObjects:self.exerciseToDisplay.exercisePrimaryMuscle, self.exerciseToDisplay.exerciseSecondaryMuscle, nil];
-                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:1 muscles:muscles];
-                    viewExercisesViewController.viewTitle = @"Related Stretches";
-                }
-                else {
-                    if ([self.exerciseToDisplay.exerciseType isEqualToString:@"strength"]) {
-                          viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQueryFromExerciseIds:[differentVariationsExerciseIDs mutableCopy] table:STRENGTH_DB_TABLENAME];
-                    }
-                    else if ([self.exerciseToDisplay.exerciseType isEqualToString:@"stretching"]) {
-                        viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQueryFromExerciseIds:[differentVariationsExerciseIDs mutableCopy] table:STRETCHING_DB_TABLENAME];
-                    }
-                    else {
-                        viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQueryFromExerciseIds:[differentVariationsExerciseIDs mutableCopy] table:WARMUP_DB_TABLENAME];
-                    }
-                    viewExercisesViewController.viewTitle = @"Different Variations";
-                }
-            }
+                        }
             else if (indexPath.row == 9) {
-                if ((([self.exerciseToDisplay.exerciseType isEqualToString:@"strength"]) && ([differentVariationsExerciseIDs count] > 0))) {
-                    NSMutableArray *muscles = [[NSMutableArray alloc] initWithObjects:self.exerciseToDisplay.exercisePrimaryMuscle, self.exerciseToDisplay.exerciseSecondaryMuscle, nil];
-                    viewExercisesViewController.exerciseQuery = [CommonUtilities createExerciseQuery:1 muscles:muscles];
-                    viewExercisesViewController.viewTitle = @"Related Stretches";
-            }
-            }
+                           }
         }
     }
-}
+
 
 //-----------------------------
 #pragma mark Previewing Actions

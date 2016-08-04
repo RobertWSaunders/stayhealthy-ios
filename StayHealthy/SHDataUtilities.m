@@ -18,10 +18,10 @@
 + (NSString *)createExerciseQuery:(exerciseType)exerciseType muscles:(NSArray *)muscleArray {
     NSString *table;
     NSString *query = @"";
-    if (index == 0) {
+    if (exerciseType == 0) {
         table = STRENGTH_DB_TABLENAME;
     }
-    else if (index == 1){
+    else if (exerciseType == 1){
         table = STRETCHING_DB_TABLENAME;
     }
     else {
@@ -59,21 +59,21 @@
 //Creates a exercise query given the exercise identifiers and exercise type.
 + (NSString *)createExerciseQueryFromExerciseIdentifiers:(exerciseType)exerciseType exerciseIdentifiers:(NSMutableArray *)exerciseIdentifiers {
     
-    NSString *exerciseIdentifiers = [exerciseIDs componentsJoinedByString:@","];
+/*    NSString *exerciseIdentifiers = [exerciseIDs componentsJoinedByString:@","];
     
     NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exerciseIdentifier IN (%@)",table,exerciseIdentifiers];
-    
-    return query;
+    */
+    return nil;
 }
 
 //Creates a workout query given the workout identifiers.
 + (NSString *)createWorkoutQueryFromWorkoutIdentifiers:(NSMutableArray *)workoutIdentifiers {
-    
+    /*
     NSString *workoutIdentifiers = [workoutIDs componentsJoinedByString:@","];
     
     NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE workoutIdentifier IN (%@)",table,workoutIdentifiers];
-    
-    return query;
+    */
+    return nil;
 }
 
 /***************************************/
@@ -90,7 +90,7 @@
     SHExercise *exercise = [[SHExercise alloc] init];
     
     //Put the exercise identifier in a array.
-    NSMutableArray *exerciseIdentifiers = [[NSMutableArray alloc] initWithObjects:managedExercise.exerciseIdentifier, nil];
+  /*  NSMutableArray *exerciseIdentifiers = [[NSMutableArray alloc] initWithObjects:managedExercise.exerciseIdentifier, nil];
     
     //Create a reference to the database table.
     NSString *table;
@@ -116,7 +116,7 @@
     else {
         return nil;
     }
-    
+    */
     //Return the exercise.
     return exercise;
 }
@@ -124,7 +124,7 @@
 //Takes an exercise and adds user data to it.
 + (id)addUserDataToBusinessExercise:(id)exercise managedExercise:(id)managedExercise {
 
-    if (managedExercise.exerciseName != nil) {
+ /*   if (managedExercise.exerciseName != nil) {
         exercise.exerciseName = managedExercise.exerciseName;
     }
     if (managedExercise.exerciseInstructions != nil) {
@@ -164,16 +164,17 @@
     exercise.exerciseEditedDate = managedExercise.exerciseEditedDate;
     exercise.exerciseTimesViewed = managedExercise.exerciseTimesViewed;
     exercise.exerciseIsEdited = managedExercise.exerciseIsEdited;
-
+*/
     return exercise;
 }
 
 //Checks to see if the passed exercise has been saved to core data before.
 + (BOOL)exerciseHasBeenSaved:(id)exercise {
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
-    Exercise *exercise = [dataHandler fetchManagedExerciseRecordByIdentifierAndExerciseType:exerciseIdentifier exerciseType:exerciseType];
+ /*   Exercise *exercise = [dataHandler fetchManagedExerciseRecordByIdentifierAndExerciseType:exerciseIdentifier exerciseType:exerciseType];
     if (exercise != nil)
         return YES;
+  */
     return NO;
 }
 
@@ -200,7 +201,7 @@
     return shWorkout;
 
     
-    //Create a new SHWorkout.
+/*    //Create a new SHWorkout.
     SHWorkout *workout = [[SHWorkout alloc] init];
     
     NSMutableArray *workoutID = [[NSMutableArray alloc] initWithObjects:workout.workoutIdentifier, nil];
@@ -222,7 +223,7 @@
     else {
         return nil;
     }
-    
+    */
     //Return the workout.
     return workout;
 }
@@ -236,7 +237,7 @@
 //Checks to see if a workout with the given identifier has been saved in the persistent store.
 + (BOOL)workoutHasBeenSaved:(id)workout {
     SHDataHandler *dataHandler = [SHDataHandler getInstance];
-    Workout *workout = [dataHandler fetchManagedWorkoutRecordByIdentifier:workoutIdentifier];
+  /*  Workout *workout = [dataHandler fetchManagedWorkoutRecordByIdentifier:workoutIdentifier];
     if (workout != nil)
         return YES;
     return NO;
@@ -245,12 +246,13 @@
     CustomWorkout *customWorkout = [dataHandler fetchManagedCustomWorkoutRecordByIdentifier:customWorkoutIdentifier];
     if (customWorkout != nil)
         return YES;
+   */
     return NO;
 }
 
 //Checks to see if the user can add an exercise to a workout.
 + (BOOL)canAddExerciseToWorkout:(id)workout exercise:(id)exercise {
-    NSMutableArray *workoutExerciseIDs = [[customWorkout.workoutExerciseIDs componentsSeparatedByString:@","] mutableCopy];
+  /*  NSMutableArray *workoutExerciseIDs = [[customWorkout.workoutExerciseIDs componentsSeparatedByString:@","] mutableCopy];
     NSMutableArray *workoutExerciseTypes = [[customWorkout.exerciseTypes componentsSeparatedByString:@","]     mutableCopy];
     
     if ([workoutExerciseIDs containsObject:exercise.exerciseIdentifier] && [workoutExerciseTypes containsObject:exercise.exerciseType]) {
@@ -259,8 +261,8 @@
     else {
         return YES;
     }
-    
-    
+    */
+    return nil;
 }
 
 //Returns array of exercises that are in a workout.
@@ -354,7 +356,7 @@
 //Adds a exercise to a workout.
 + (void)addExerciseToWorkout:(id)workout exercise:(id)exercise {
     //if ([self canAddExerciseToWorkout:customWorkout exercise:exercise]) {
-    NSMutableArray *workoutExerciseIDs = [[customWorkout.workoutExerciseIDs componentsSeparatedByString:@","] mutableCopy];
+  /*  NSMutableArray *workoutExerciseIDs = [[customWorkout.workoutExerciseIDs componentsSeparatedByString:@","] mutableCopy];
     NSMutableArray *workoutExerciseTypes = [[customWorkout.exerciseTypes componentsSeparatedByString:@","]     mutableCopy];
     
     [workoutExerciseIDs addObject:exercise.exerciseIdentifier];
@@ -368,7 +370,7 @@
     
     [self updateCustomWorkoutRecord:customWorkout];
     // }
-
+*/
 }
 
 /**************************************/

@@ -18,8 +18,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.yourWorkoutsTableView.emptyDataSetSource = self;
-    self.yourWorkoutsTableView.emptyDataSetDelegate = self;
     
     [self.browseScroller setScrollEnabled:YES];
     [self.browseOptionsTableView setScrollEnabled:NO];
@@ -33,8 +31,6 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.navigationController.view.backgroundColor = [UIColor whiteColor];
-    
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_WORKOUTS viewController:self message:@"Here you can browse the workouts that we provide or create your very own by tapping on the add icon in the top right. You can search for workouts based off of certain sports, muscles, equipment and more! You can also perform an advanced search by tapping on the icon in the top left. Good luck with all of your workouts!"];
     
     // A little trick for removing the cell separators
     self.yourWorkoutsTableView.tableFooterView = [UIView new];
@@ -143,28 +139,18 @@
         
         //Create reference to the cell.
         WorkoutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:muscleSelectionCellIdentifier];
-        [CommonSetUpOperations tableViewSelectionColorSet:cell];
+        [CommonUtilities tableViewSelectionColorSet:cell];
         
         SHCustomWorkout *workout = nil;//[self updateWorkoutWithUserData:[customWorkouts objectAtIndex:indexPath.row]];
         
-        cell.workoutName.text = workout.workoutName;
-        cell.workoutDifficulty.text = workout.workoutDifficulty;
-        cell.workoutType.text = workout.workoutType;
-        cell.workoutExercises.text = [NSString stringWithFormat:@"%ld",[CommonUtilities numExercisesInCustomWorkout:workout]];
-        
-        cell.workoutDifficulty.textColor = [CommonSetUpOperations determineDifficultyColor:workout.workoutDifficulty];
-        
-        NSMutableArray *workoutExercises = [CommonUtilities getCustomWorkoutExercises:workout];
-        
-        if (workoutExercises.count>0) {
-         SHExercise *imageExercise = [workoutExercises objectAtIndex:[workoutExercises count]-1];
-            [CommonSetUpOperations loadImageOnBackgroundThread:cell.workoutImage image:[UIImage imageNamed:imageExercise.exerciseImageFile]];
-        }
-    
+        cell.workoutName.text = workout.customWorkoutName;
+        cell.workoutDifficulty.text = workout.customWorkoutDifficulty;
+        cell.workoutType.text = workout.customWorkoutType;
+     
         
         
         
-        if ([workout.liked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        if ([workout.customWorkoutLiked isEqualToNumber:[NSNumber numberWithBool:YES]]) {
             cell.customWorkoutImage.hidden = NO;
             cell.likeWorkoutImage.hidden = NO;
             [cell.likeWorkoutImage setImage:[UIImage imageNamed:@"likeSelectedColored.png"]];
@@ -176,32 +162,6 @@
         }
         
         
-        cell.leftButtons = @[[MGSwipeButton buttonWithTitle:nil icon:[UIImage imageNamed:@"EditSwipe.png"] backgroundColor:BLUE_COLOR callback:^BOOL(MGSwipeTableCell *sender){
-            [self performSegueWithIdentifier:@"editWorkout" sender:nil];
-            return YES;
-        }]];
-        cell.leftExpansion.fillOnTrigger = YES;
-        cell.leftExpansion.threshold = 2.0f;
-        cell.leftExpansion.buttonIndex = 0;
-        cell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
-        
-        
-        //configure right buttons
-        cell.rightButtons = @[[MGSwipeButton buttonWithTitle:nil icon:[UIImage imageNamed:@"DeleteSwipe.ong"] backgroundColor:RED_COLOR callback:^BOOL(MGSwipeTableCell *sender) {
-            SHDataHandler *dataHandler = [SHDataHandler getInstance];
-            [dataHandler deleteCustomWorkoutRecord:workout];
-            //[self fetchCustomWorkouts];
-           return YES;
-        }]];
-        cell.rightExpansion.fillOnTrigger = YES;
-        cell.rightExpansion.threshold = 2.0f;
-        cell.rightExpansion.buttonIndex = 0;
-        cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
-        
-        //Set the selected cell background.
-        [CommonSetUpOperations tableViewSelectionColorSet:cell];
-        
-    
         //Return the cell.
         return cell;
 
@@ -216,11 +176,10 @@
         cell.textLabel.text = [browseOptions objectAtIndex:indexPath.row];
         cell.imageView.image = [UIImage imageNamed:[browseOptionsImages objectAtIndex:indexPath.row]];
         
-        cell.textLabel.textColor = BLUE_COLOR;
+        cell.textLabel.textColor = EXERCISES_COLOR;
         cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
         
-        [CommonSetUpOperations tableViewSelectionColorSet:cell];
-        //Return the cell.
+             //Return the cell.
         return cell;
 
     }
@@ -300,7 +259,7 @@
         SHCustomWorkout *customWorkout = [customWorkouts objectAtIndex:indexPath.row];
         createWorkoutController.editMode = YES;
         createWorkoutController.workoutToEdit = customWorkout;
-        createWorkoutController.workoutToEditExercises = [CommonUtilities getCustomWorkoutExercises:customWorkout];
+
         }
     else if ([segue.identifier isEqualToString:@"workoutList"]) {
         WorkoutListViewController *listView = [[WorkoutListViewController alloc] init];
@@ -350,7 +309,7 @@
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     BodyViewCollectionViewCell *cell = (BodyViewCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    [CommonSetUpOperations styleCollectionViewCellBodyZone:cell];
+    
     cell.bodyZoneLabel.textColor = WORKOUTS_COLOR;
     cell.bodyZoneLabel.text = [browseOptions objectAtIndex:indexPath.row];
     cell.bodyZoneImage.image = [UIImage imageNamed:[browseOptionsImages objectAtIndex:indexPath.row]];

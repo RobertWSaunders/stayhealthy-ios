@@ -85,7 +85,7 @@
     }
     
     //Set the selected background color.
-    [CommonSetUpOperations tableViewSelectionColorSet:cell];
+    
     
     return cell;
 }

@@ -177,10 +177,48 @@
                 exercise.exercisePrimaryMuscle= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 8)];
                 exercise.exerciseSecondaryMuscle= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 9)];
                 exercise.exerciseDifficulty= [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 10)];
-                 exercise.exerciseMechanicsType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 11)];
-                 exercise.exerciseForceType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 112)];
-                 exercise.exerciseDifferentVariationsExerciseIdentifiers = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 13)];
-                 exercise.exerciseType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 14)];
+                
+                char *mechanicsType = (char *) sqlite3_column_text(sqlStatement, 11);
+                
+                if (mechanicsType == NULL) {
+                    exercise.exerciseMechanicsType = nil;
+                }
+                else {
+                     exercise.exerciseMechanicsType = [NSString stringWithUTF8String:mechanicsType];
+                }
+                
+                char *exerciseForceType = (char *) sqlite3_column_text(sqlStatement, 12);
+                
+                if (exerciseForceType == NULL) {
+                    exercise.exerciseForceType = nil;
+                }
+                else {
+                    exercise.exerciseForceType = [NSString stringWithUTF8String:exerciseForceType];
+                }
+               
+                
+                char *exerciseDifferentVariationsExerciseIdentifiers = (char *) sqlite3_column_text(sqlStatement, 13);
+                
+                if (exerciseDifferentVariationsExerciseIdentifiers == NULL) {
+                    exercise.exerciseDifferentVariationsExerciseIdentifiers = nil;
+                }
+                else {
+                    exercise.exerciseDifferentVariationsExerciseIdentifiers = [NSString stringWithUTF8String:exerciseDifferentVariationsExerciseIdentifiers];
+                }
+               
+                
+                char *exerciseType = (char *) sqlite3_column_text(sqlStatement, 14);
+                
+                if (exerciseType == NULL) {
+                    exercise.exerciseType = nil;
+                }
+                else {
+                    exercise.exerciseType = [NSString stringWithUTF8String:exerciseType];
+                }
+            
+              //  exercise.exerciseForceType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 12)];
+              //  exercise.exerciseDifferentVariationsExerciseIdentifiers = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 13)];
+              //  exercise.exerciseType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 14)];
                 [exerciseData addObject:exercise];
             }
         }
@@ -255,8 +293,8 @@
             NSMutableArray *userWorkoutData = [[NSMutableArray alloc] init];
             for (SHWorkout *workout in workoutData) {
                 if ([SHDataUtilities workoutHasBeenSaved:workout]) {
-                    SHWorkout *userWorkout = [SHDataUtilities addUserDataToSHWorkout:workout managedWorkout:[self fetchManagedWorkoutRecordByIdentifier:workout.workoutIdentifier]];
-                    [userWorkoutData addObject:userWorkout];
+                   // SHWorkout *userWorkout = [SHDataUtilities addUserDataToSHWorkout:workout managedWorkout:[self fetchManagedWorkoutRecordByIdentifier:workout.workoutIdentifier]];
+                 //   [userWorkoutData addObject:userWorkout];
                 }
                 else {
                     [userWorkoutData addObject:workout];
@@ -964,7 +1002,7 @@
     //If there are workouts found.
     if (fetchedManagedWorkouts.count > 0 || fetchedManagedWorkouts != nil) {
         //Convert the managed workout to a SHWorkout.
-        workout = [SHDataUtilities convertWorkoutToSHWorkout:[fetchedManagedWorkouts firstObject]];
+      //  workout = [SHDataUtilities convertWorkoutToSHWorkout:[fetchedManagedWorkouts firstObject]];
     }
     //Return the workout.
     return workout;
@@ -981,7 +1019,7 @@
     NSMutableArray *recentlyViewedSHWorkouts = [[NSMutableArray alloc] init];
     
     for (Workout *managedWorkout in fetchedManagedWorkouts) {
-        workout = [SHDataUtilities convertWorkoutToSHWorkout:managedWorkout];
+   //     workout = [SHDataUtilities convertWorkoutToSHWorkout:managedWorkout];
         [recentlyViewedSHWorkouts addObject:workout];
     }
     
@@ -999,7 +1037,7 @@
     NSMutableArray *likedSHWorkouts = [[NSMutableArray alloc] init];
     
     for (Workout *managedWorkout in fetchedManagedWorkouts) {
-        workout = [SHDataUtilities convertWorkoutToSHWorkout:managedWorkout];
+    //    workout = [SHDataUtilities convertWorkoutToSHWorkout:managedWorkout];
         [likedSHWorkouts addObject:workout];
     }
     return likedSHWorkouts;
@@ -1016,7 +1054,7 @@
     NSMutableArray *allSHWorkouts = [[NSMutableArray alloc] init];
     
     for (Workout *managedWorkout in fetchedManagedWorkouts) {
-        workout = [SHDataUtilities convertWorkoutToSHWorkout:managedWorkout];
+      //  workout = [SHDataUtilities convertWorkoutToSHWorkout:managedWorkout];
         [allSHWorkouts addObject:workout];
     }
     
@@ -1090,7 +1128,7 @@
     //If there are custom workouts found.
     if (fetchedManagedCustomWorkouts.count > 0 || fetchedManagedCustomWorkouts != nil) {
         //Convert the managed custom workout to a SHCustomWorkout.
-        customWorkout = [SHDataUtilities convertCustomWorkoutToSHCustomWorkout:[fetchedManagedCustomWorkouts firstObject]];
+       // customWorkout = [SHDataUtilities convertCustomWorkoutToSHCustomWorkout:[fetchedManagedCustomWorkouts firstObject]];
     }
     //Return the custom workout.
     return customWorkout;
@@ -1107,7 +1145,7 @@
     NSMutableArray *likedSHCustomWorkouts = [[NSMutableArray alloc] init];
     
     for (CustomWorkout *managedCustomWorkout in fetchedManagedCustomWorkouts) {
-        customWorkout = [SHDataUtilities convertCustomWorkoutToSHCustomWorkout:managedCustomWorkout];
+       // customWorkout = [SHDataUtilities convertCustomWorkoutToSHCustomWorkout:managedCustomWorkout];
         [likedSHCustomWorkouts addObject:customWorkout];
     }
     return likedSHCustomWorkouts;
@@ -1124,7 +1162,7 @@
     NSMutableArray *allSHCustomWorkouts = [[NSMutableArray alloc] init];
     
     for (CustomWorkout *managedCustomWorkout in fetchedManagedCustomWorkouts) {
-        customWorkout = [SHDataUtilities convertCustomWorkoutToSHCustomWorkout:managedCustomWorkout];
+      //  customWorkout = [SHDataUtilities convertCustomWorkoutToSHCustomWorkout:managedCustomWorkout];
         [allSHCustomWorkouts addObject:customWorkout];
     }
     
@@ -1251,9 +1289,5 @@
     return stringFromFileAtURL;
 }
 
-+ (NSDictionary *)returnGeneralPlist {
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"StayHealthyGeneral" ofType:@"plist"];
-    return [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-}
 
 @end

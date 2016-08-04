@@ -354,22 +354,6 @@
 #pragma mark - Validation Tools
 /*******************************/
 
-//Checks if an email is valid.
-+ (BOOL)emailIsValid:(NSString *)email {
-    // first look for an "@" symbol
-    NSRange rangeAt = [email rangeOfString:@"@"];
-    if(rangeAt.location != NSNotFound) {
-        // now make sure there's a "." after the "@" symbol
-        NSString *strAfterAt = [email substringFromIndex:rangeAt.location];
-        NSRange rangeDot = [strAfterAt rangeOfString:@"."];
-        if(rangeDot.location != NSNotFound) {
-            if(![strAfterAt hasSuffix:@"."]) {
-                return YES;
-            }
-        }
-    }
-    return NO;
-}
 
 /***************************/
 #pragma mark - Useful Tools
@@ -424,7 +408,7 @@
 
 //Sets the tint color throughout the application.
 + (void)setGlobalTintColor:(UIColor *)color {
-    //Set the appearance of the navigation bar. Set the text color to BLUE_COLOR constant.
+    //Set the appearance of the navigation bar. Set the text color to EXERCISES_COLOR constant.
     //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            color,
@@ -438,11 +422,21 @@
                                                            NSForegroundColorAttributeName:color
                                                            } forState:UIControlStateNormal];
     
+    [[UINavigationBar appearance] setBarTintColor:WHITE_COLOR];
     [[UINavigationBar appearance] setTintColor:color];
     //Set the tint color of all segmented controls.
     [[UISegmentedControl appearance] setTintColor:color];
     //Set the tint color for all UIToolbars.
     [[UIToolbar appearance] setTintColor:color];
+    [[UIToolbar appearance] setBarTintColor:WHITE_COLOR];
+    [[UITabBar appearance] setBarTintColor:WHITE_COLOR];
+    
+    UIFont *font = [UIFont systemFontOfSize:13.0f weight:UIFontWeightMedium];
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
+                                                           forKey:NSFontAttributeName];
+    
+    [[UISegmentedControl appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
 //Shows the custom activity indicator in the passed image view.
@@ -523,14 +517,14 @@
 //Styles square collection view cells in their normal state.
 + (void)styleSquareCollectionViewCell:(UICollectionViewCell*)collectionViewCell {
     collectionViewCell.layer.masksToBounds = NO;
-    collectionViewCell.layer.borderColor = LIGHT_GRAY_COLOR_COLLECTION.CGColor;
+    collectionViewCell.layer.borderColor = LIGHT_GRAY_COLOR.CGColor;
     collectionViewCell.layer.borderWidth = 0.50f;
 }
 
 //Styles square collection view cells in their selected state.
 + (void)styleSquareCollectionViewCellSelected:(UICollectionViewCell*)collectionViewCell {
     collectionViewCell.layer.masksToBounds = NO;
-    collectionViewCell.layer.borderColor = BLUE_COLOR.CGColor;
+    collectionViewCell.layer.borderColor = EXERCISES_COLOR.CGColor;
     collectionViewCell.layer.borderWidth = 2.0f;
 }
 
@@ -570,7 +564,7 @@
     [[SIAlertView appearance] setMessageColor:color];
     [[SIAlertView appearance] setCornerRadius:4];
     [[SIAlertView appearance] setShadowRadius:0];
-    [[SIAlertView appearance] setViewBackgroundColor:WHITE_COLOR_OLD];
+    [[SIAlertView appearance] setViewBackgroundColor:WHITE_COLOR];
     [[SIAlertView appearance] setButtonColor:color];
     [[SIAlertView appearance] setDestructiveButtonColor:color];
     [[SIAlertView appearance] setCancelButtonColor:color];
@@ -600,11 +594,11 @@
 //Returns the color based off of the difficulty passed to it.
 + (UIColor *)determineDifficultyColor:(NSString *)difficulty {
     if ([difficulty isEqualToString:@"Easy"])
-        return GREEN_COLOR;
+        return EASY_GREEN_COLOR;
     else if ([difficulty isEqualToString:@"Intermediate"])
-        return DARK_BLUE_COLOR;
+        return INTERMEDIATE_BLUE_COLOR;
     else if ([difficulty isEqualToString:@"Hard"])
-        return RED_COLOR;
+        return HARD_RED_COLOR;
     else if ([difficulty isEqualToString:@"Very Hard"])
         return [UIColor blackColor];
     return LIGHT_GRAY_COLOR;
@@ -658,25 +652,14 @@
 }
 
 //Checks if a passed exercises is in the passed array.
-+ (BOOL)exerciseInArray:(NSMutableArray*)exerciseArray exercise:(id *)exercise {
-    for (SHExercise *exerciseInArray in exerciseArray) {
-        if ([exerciseInArray.exerciseType isEqualToString:exercise.exerciseType] && [exerciseInArray.exerciseIdentifier isEqualToString:exercise.exerciseIdentifier]) {
-            return YES;
-        }
-    }
++ (BOOL)exerciseInArray:(NSMutableArray*)exerciseArray {
     return NO;
 }
 
 //Deletes the passed exercises from the passed array.
 + (NSMutableArray*)deleteSelectedExercise:(NSMutableArray*)exerciseArray exercise:(id *)exercise {
-    for (SHExercise *exerciseInArray in exerciseArray) {
-        if ([exerciseInArray.exerciseType isEqualToString:exercise.exerciseType] && [exerciseInArray.exerciseIdentifier isEqualToString:exercise.exerciseIdentifier]) {
-            [exerciseArray removeObject:exerciseInArray];
-            return exerciseArray;
-        }
-    }
-    return exerciseArray;
-}
+    return nil;
+   }
 
 /*---------------------------*/
 #pragma mark - Workout Tools
@@ -684,10 +667,7 @@
 
 //Returns the count of exercises in a workout.
 + (NSUInteger)numExercisesInWorkout:(id *)workout {
-    //Get the exercises in the workout identifiers.
-    NSArray *exerciseIdentifiers = [workout.workoutExerciseIdentifiers componentsSeparatedByString:@","];
-    //Count the list which is equal to the number of exercises.
-    return [exerciseIdentifiers count];
+    return nil;
 }
 
 /*------------------------*/
@@ -758,6 +738,11 @@
     [self updateValueForKey:PREFERENCE_DEFAULT_WORKOUTS_VIEW stringValue:@"Categories"];
     
     [self updateValueForKey:PREFERENCE_DEFAULT_LIKED_VIEW stringValue:@"Exercises"];
+}
+
++ (NSDictionary *)returnGeneralPlist {
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"StayHealthyGeneral" ofType:@"plist"];
+    return [[NSDictionary alloc] initWithContentsOfFile:plistPath];
 }
 
 @end
