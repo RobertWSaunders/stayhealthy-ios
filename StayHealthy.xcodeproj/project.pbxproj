@@ -1391,7 +1391,6 @@
 				3FD5E1991853A8D00063E10C /* Sources */,
 				3FD5E19A1853A8D00063E10C /* Frameworks */,
 				3FD5E19B1853A8D00063E10C /* Resources */,
-				EB5DBC9D1B794B5F00794300 /* Run Documentation Creation Script */,
 				EB575B141BECFC9F00A1C798 /* Embed Watch Content */,
 				EBB8C9921BFAFA3500347B24 /* ShellScript */,
 			);
@@ -1503,20 +1502,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		EB5DBC9D1B794B5F00794300 /* Run Documentation Creation Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Documentation Creation Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#if [ ${CONFIGURATION} == \"Release\" ]; then\nAPPLEDOC_PATH=`which appledoc`\nif [ $APPLEDOC_PATH ]; then\n$APPLEDOC_PATH \\\n--project-name ${PRODUCT_NAME} \\\n--project-company \"Robert Saunders\" \\\n--company-id \"com.redCode\" \\\n--output ${PRODUCT_NAME}Documentation \\\n--keep-intermediate-files \\\n--install-docset \\\n--preprocess-headerdoc \\\n--templates ${PROJECT_DIR}/StayHealthyDocumentationResources/Templates \\\n--index-desc ${PROJECT_DIR}/StayHealthyDocumentationResources/StayHealthyDocumentationIndex.markdown \\\n--no-repeat-first-par \\\n--exit-threshold 2 \\\n${PROJECT_DIR}/${PRODUCT_NAME}\nfi;\n#fi;";
-		};
 		EBB8C9921BFAFA3500347B24 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
