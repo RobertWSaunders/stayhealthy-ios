@@ -8,17 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "ExerciseDetailViewController.h"
-#import "ExerciseCollectionCell.h"
 #import "SHDataHandler.h"
 #import "SHExercise.h"
-#import "QuickFilterViewController.h"
 #import "ExerciseTableViewCell.h"
+#import "HomeTabBarController.h"
+#import "ExerciseCollectionViewCell.h"
 
-
-
-@interface ExerciseListController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate> {
+@interface ExerciseListController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate,UIScrollViewDelegate,UIToolbarDelegate> {
     NSMutableArray *exerciseData;
+    NSIndexPath *selectedCollectionIndex;
+    //Segmented Control
+    UISegmentedControl *segmentedControl;
 }
+
 
 //PASSED PROPERTIES
 //Query which is passed to the view.
@@ -26,11 +28,21 @@
 //Title which is passed to the view.
 @property (strong, nonatomic) NSString *viewTitle;
 
+//Segmented Control Toolbar
+@property (weak, nonatomic) IBOutlet UIToolbar *segmentedControlToolbar;
 
 //COLLECTION VIEW AND TABLEVIEW
 //Exercise CollectionView
 @property (weak, nonatomic) IBOutlet UICollectionView *collectonView;
-//Exercise TableView
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
+@property (nonatomic, assign) BOOL exerciseSelectionMode;
+
+//Array that holds the information regarding which exercises the user selected.
+@property(strong, retain) NSMutableArray *selectedExercises;
+
+//Exercise Seletion Delegate
+@property (assign, nonatomic) id <ExerciseListExerciseSelectionDelegate> delegate;
 
 @end
+

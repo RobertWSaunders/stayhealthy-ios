@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3F2E5A8318DF388300EE4734 /* ExerciseListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E5A8218DF388300EE4734 /* ExerciseListController.m */; };
-		3F2E5A8718DF4E4E00EE4734 /* ExerciseCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E5A8618DF4E4E00EE4734 /* ExerciseCollectionCell.m */; };
-		3F2E5A8B18E0D90900EE4734 /* workoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E5A8A18E0D90900EE4734 /* workoutCell.m */; };
 		3F63B1AA1ABB9F24000CDE06 /* HomeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F63B1A91ABB9F24000CDE06 /* HomeTabBarController.m */; };
 		3F7D779F19A2DFEA00E00065 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7D779E19A2DFEA00E00065 /* MessageUI.framework */; };
 		3F7D77A319A300D600E00065 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7D77A219A300D600E00065 /* WebViewViewController.m */; };
@@ -19,7 +17,6 @@
 		3F7D77B219A3086200E00065 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7D77AB19A3086200E00065 /* MobileCoreServices.framework */; };
 		3F7D77B319A3086200E00065 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7D77AC19A3086200E00065 /* Security.framework */; };
 		3F7D77B519A3086200E00065 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */; };
-		3F8BB363198D4AF70098E1A7 /* CommonSetUpOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BB362198D4AF70098E1A7 /* CommonSetUpOperations.m */; };
 		3F949C1F195A56D800EB4BED /* StayHealthyGeneral.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F949C1E195A56D800EB4BED /* StayHealthyGeneral.plist */; };
 		3FC466B21B3621970062EBDB /* CommonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC466B11B3621970062EBDB /* CommonUtilities.m */; };
 		3FD5E1A11853A8D00063E10C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD5E1A01853A8D00063E10C /* Foundation.framework */; };
@@ -33,73 +30,131 @@
 		3FDA2D5C19C26699003C2FF4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FDA2D5B19C26699003C2FF4 /* Images.xcassets */; };
 		3FE100931863CC0100C53D76 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE100921863CC0100C53D76 /* QuartzCore.framework */; };
 		3FE103D3186618F200C53D76 /* ExerciseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE103D2186618F200C53D76 /* ExerciseDetailViewController.m */; };
-		3FE41E431ABE0644007522AB /* advancedOptionsSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE41E421ABE0644007522AB /* advancedOptionsSelect.m */; };
-		3FE8069F18F24442006A0993 /* WorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE8069E18F24442006A0993 /* WorkoutViewController.m */; };
 		3FE95E24187A5DB0005DD13D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE95E23187A5DB0005DD13D /* SettingsViewController.m */; };
 		3FF9DDA11853BAEC0083A499 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF9DDA01853BAEC0083A499 /* CoreText.framework */; };
-		EB215A341BD895DB00A0765A /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EB215A311BD895DB00A0765A /* MGSwipeButton.m */; };
-		EB215A351BD895DB00A0765A /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB215A331BD895DB00A0765A /* MGSwipeTableCell.m */; };
-		EB2C4A5B1B89F531005D183A /* CustomWorkout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A5A1B89F531005D183A /* CustomWorkout.m */; };
-		EB2C4A5E1B89F53F005D183A /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A5D1B89F53F005D183A /* Workout.m */; };
+		EB0853D61CC42288000DEAC0 /* JournalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0853D51CC42288000DEAC0 /* JournalViewController.m */; };
+		EB0853DA1CC42E58000DEAC0 /* ExerciseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0853D91CC42E58000DEAC0 /* ExerciseCollectionViewCell.m */; };
+		EB18FDD91C35712E0057D8B0 /* BodyViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB18FDD81C35712E0057D8B0 /* BodyViewCollectionViewCell.m */; };
 		EB2C4A611B89F556005D183A /* SHWorkout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A601B89F556005D183A /* SHWorkout.m */; };
 		EB2C4A641B89F56A005D183A /* SHCustomWorkout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A631B89F56A005D183A /* SHCustomWorkout.m */; };
 		EB2C4A671B89F773005D183A /* WorkoutDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A661B89F773005D183A /* WorkoutDataManager.m */; };
 		EB2C4A6A1B89F798005D183A /* CustomWorkoutDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A691B89F798005D183A /* CustomWorkoutDataManager.m */; };
 		EB2C4A6D1B89F8DC005D183A /* SHWorkout+Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A6C1B89F8DC005D183A /* SHWorkout+Workout.m */; };
 		EB2C4A701B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2C4A6F1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m */; };
-		EB3ABB381BF00325004AF091 /* WelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3ABB371BF00325004AF091 /* WelcomePage.swift */; };
-		EB3B9E231BE8022500BCEF28 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E221BE8022500BCEF28 /* StoreKit.framework */; };
+		EB384AFD1CED48F90073A37B /* SelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384AFC1CED48F90073A37B /* SelectionViewController.m */; };
+		EB384B001CED4C170073A37B /* Utilities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB384AFF1CED4C170073A37B /* Utilities.storyboard */; };
+		EB384B041CED59F70073A37B /* SelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B031CED59F70073A37B /* SelectionTableViewCell.m */; };
+		EB384B0E1CF09D640073A37B /* LoggingPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B0D1CF09D640073A37B /* LoggingPreferencesViewController.m */; };
+		EB384B111CF09D970073A37B /* NotificationPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B101CF09D970073A37B /* NotificationPreferencesViewController.m */; };
+		EB384B151CF0A05D0073A37B /* AddJournalEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B141CF0A05D0073A37B /* AddJournalEntryViewController.m */; };
+		EB384B241CF228120073A37B /* ExerciseLogCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B231CF228120073A37B /* ExerciseLogCreationViewController.m */; };
+		EB384B271CF228220073A37B /* WorkoutLogCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB384B261CF228220073A37B /* WorkoutLogCreationViewController.m */; };
 		EB3B9E251BE8023600BCEF28 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E241BE8023600BCEF28 /* libz.tbd */; };
 		EB3B9E271BE8024300BCEF28 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3B9E261BE8024300BCEF28 /* libsqlite3.tbd */; };
-		EB52EF9F1BCAEF0B00F5D7CA /* StayHealthyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EB52EF9E1BCAEF0B00F5D7CA /* StayHealthyDatabase.sqlite */; };
-		EB52EFA41BCAEF5800F5D7CA /* Strength in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFA11BCAEF5800F5D7CA /* Strength */; };
-		EB52EFA51BCAEF5800F5D7CA /* Stretching in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFA21BCAEF5800F5D7CA /* Stretching */; };
-		EB52EFA91BCAEF8900F5D7CA /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52EFA81BCAEF8900F5D7CA /* MZTimerLabel.m */; };
-		EB52EFAD1BCAEF9700F5D7CA /* ALCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52EFAC1BCAEF9700F5D7CA /* ALCustomColoredAccessory.m */; };
-		EB52EFD41BCAEFBA00F5D7CA /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52EFB81BCAEFBA00F5D7CA /* TSMessage.m */; };
-		EB52EFD51BCAEFBA00F5D7CA /* HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52EFBB1BCAEFBA00F5D7CA /* HexColor.m */; };
-		EB52EFD61BCAEFBA00F5D7CA /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFBE1BCAEFBA00F5D7CA /* NotificationBackgroundError.png */; };
-		EB52EFD71BCAEFBA00F5D7CA /* NotificationBackgroundError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFBF1BCAEFBA00F5D7CA /* NotificationBackgroundError@2x.png */; };
-		EB52EFD81BCAEFBA00F5D7CA /* NotificationBackgroundErrorIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFC01BCAEFBA00F5D7CA /* NotificationBackgroundErrorIcon.png */; };
-		EB52EFD91BCAEFBA00F5D7CA /* NotificationBackgroundErrorIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFC11BCAEFBA00F5D7CA /* NotificationBackgroundErrorIcon@2x.png */; };
-		EB52EFDA1BCAEFBA00F5D7CA /* NotificationBackgroundMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFC21BCAEFBA00F5D7CA /* NotificationBackgroundMessage.png */; };
-		EB52EFDB1BCAEFBA00F5D7CA /* NotificationBackgroundMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFC31BCAEFBA00F5D7CA /* NotificationBackgroundMessage@2x.png */; };
-		EB52EFDC1BCAEFBA00F5D7CA /* NotificationBackgroundSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFC41BCAEFBA00F5D7CA /* NotificationBackgroundSuccess.png */; };
-		EB52EFDD1BCAEFBA00F5D7CA /* NotificationBackgroundSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFC51BCAEFBA00F5D7CA /* NotificationBackgroundSuccess@2x.png */; };
-		EB52EFDE1BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFC61BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon.png */; };
-		EB52EFDF1BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFC71BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon@2x.png */; };
-		EB52EFE01BCAEFBA00F5D7CA /* NotificationBackgroundWarning.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFC81BCAEFBA00F5D7CA /* NotificationBackgroundWarning.png */; };
-		EB52EFE11BCAEFBA00F5D7CA /* NotificationBackgroundWarning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFC91BCAEFBA00F5D7CA /* NotificationBackgroundWarning@2x.png */; };
-		EB52EFE21BCAEFBA00F5D7CA /* NotificationBackgroundWarningIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFCA1BCAEFBA00F5D7CA /* NotificationBackgroundWarningIcon.png */; };
-		EB52EFE31BCAEFBA00F5D7CA /* NotificationBackgroundWarningIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFCB1BCAEFBA00F5D7CA /* NotificationBackgroundWarningIcon@2x.png */; };
-		EB52EFE41BCAEFBA00F5D7CA /* NotificationButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFCC1BCAEFBA00F5D7CA /* NotificationButtonBackground.png */; };
-		EB52EFE51BCAEFBA00F5D7CA /* NotificationButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFCD1BCAEFBA00F5D7CA /* NotificationButtonBackground@2x.png */; };
-		EB52EFE61BCAEFBA00F5D7CA /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFCE1BCAEFBA00F5D7CA /* TSMessagesDefaultDesign.json */; };
-		EB52EFE71BCAEFBA00F5D7CA /* TSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52EFD11BCAEFBA00F5D7CA /* TSBlurView.m */; };
-		EB52EFE81BCAEFBA00F5D7CA /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52EFD31BCAEFBA00F5D7CA /* TSMessageView.m */; };
-		EB52EFEE1BCAEFC800F5D7CA /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52EFEB1BCAEFC800F5D7CA /* SIAlertView.m */; };
-		EB52EFEF1BCAEFC800F5D7CA /* UIWindow+SIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52EFED1BCAEFC800F5D7CA /* UIWindow+SIUtils.m */; };
-		EB52EFF31BCAEFCF00F5D7CA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52EFF21BCAEFCF00F5D7CA /* Reachability.m */; };
-		EB52EFF51BCAEFDF00F5D7CA /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB52EFF41BCAEFDF00F5D7CA /* SIAlertView.bundle */; };
-		EB575AD51BEC38EC00A1C798 /* VersionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB575AD41BEC38EC00A1C798 /* VersionHistoryViewController.m */; };
-		EB575AD81BEC391000A1C798 /* AcknowledgmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB575AD71BEC391000A1C798 /* AcknowledgmentsViewController.m */; };
-		EB575B5E1BED47F000A1C798 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB575B5C1BED47F000A1C798 /* Bolts.framework */; };
-		EB575B5F1BED47F000A1C798 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB575B5D1BED47F000A1C798 /* Parse.framework */; };
-		EB63EF381B4B3FE200EF35A3 /* Main_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB63EF361B4B3FE200EF35A3 /* Main_Storyboard.storyboard */; };
+		EB3F49E61D328CF7006371CB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F49E51D328CF7006371CB /* Reachability.m */; };
+		EB3F4A061D328D02006371CB /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F49EC1D328D02006371CB /* MZTimerLabel.m */; };
+		EB3F4A1C1D328D14006371CB /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F4A191D328D14006371CB /* SIAlertView.m */; };
+		EB3F4A1D1D328D14006371CB /* UIWindow+SIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F4A1B1D328D14006371CB /* UIWindow+SIUtils.m */; };
+		EB3F4A3D1D328D32006371CB /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F4A211D328D32006371CB /* TSMessage.m */; };
+		EB3F4A3E1D328D32006371CB /* HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F4A241D328D32006371CB /* HexColor.m */; };
+		EB3F4A3F1D328D32006371CB /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A271D328D32006371CB /* NotificationBackgroundError.png */; };
+		EB3F4A401D328D32006371CB /* NotificationBackgroundError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A281D328D32006371CB /* NotificationBackgroundError@2x.png */; };
+		EB3F4A411D328D32006371CB /* NotificationBackgroundErrorIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A291D328D32006371CB /* NotificationBackgroundErrorIcon.png */; };
+		EB3F4A421D328D32006371CB /* NotificationBackgroundErrorIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A2A1D328D32006371CB /* NotificationBackgroundErrorIcon@2x.png */; };
+		EB3F4A431D328D32006371CB /* NotificationBackgroundMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A2B1D328D32006371CB /* NotificationBackgroundMessage.png */; };
+		EB3F4A441D328D32006371CB /* NotificationBackgroundMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A2C1D328D32006371CB /* NotificationBackgroundMessage@2x.png */; };
+		EB3F4A451D328D32006371CB /* NotificationBackgroundSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A2D1D328D32006371CB /* NotificationBackgroundSuccess.png */; };
+		EB3F4A461D328D32006371CB /* NotificationBackgroundSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A2E1D328D32006371CB /* NotificationBackgroundSuccess@2x.png */; };
+		EB3F4A471D328D32006371CB /* NotificationBackgroundSuccessIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A2F1D328D32006371CB /* NotificationBackgroundSuccessIcon.png */; };
+		EB3F4A481D328D32006371CB /* NotificationBackgroundSuccessIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A301D328D32006371CB /* NotificationBackgroundSuccessIcon@2x.png */; };
+		EB3F4A491D328D32006371CB /* NotificationBackgroundWarning.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A311D328D32006371CB /* NotificationBackgroundWarning.png */; };
+		EB3F4A4A1D328D32006371CB /* NotificationBackgroundWarning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A321D328D32006371CB /* NotificationBackgroundWarning@2x.png */; };
+		EB3F4A4B1D328D32006371CB /* NotificationBackgroundWarningIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A331D328D32006371CB /* NotificationBackgroundWarningIcon.png */; };
+		EB3F4A4C1D328D32006371CB /* NotificationBackgroundWarningIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A341D328D32006371CB /* NotificationBackgroundWarningIcon@2x.png */; };
+		EB3F4A4D1D328D32006371CB /* NotificationButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A351D328D32006371CB /* NotificationButtonBackground.png */; };
+		EB3F4A4E1D328D32006371CB /* NotificationButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A361D328D32006371CB /* NotificationButtonBackground@2x.png */; };
+		EB3F4A4F1D328D32006371CB /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4A371D328D32006371CB /* TSMessagesDefaultDesign.json */; };
+		EB3F4A501D328D32006371CB /* TSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F4A3A1D328D32006371CB /* TSBlurView.m */; };
+		EB3F4A511D328D32006371CB /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F4A3C1D328D32006371CB /* TSMessageView.m */; };
+		EB3F4AB21D328D4B006371CB /* LGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F4AA41D328D4B006371CB /* LGAlertView.m */; };
+		EB3F4AB31D328D4B006371CB /* LGAlertViewButtonProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F4AA61D328D4B006371CB /* LGAlertViewButtonProperties.m */; };
+		EB3F4AB41D328D4B006371CB /* LGAlertViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F4AA81D328D4B006371CB /* LGAlertViewCell.m */; };
+		EB3F4AB51D328D4B006371CB /* LGAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F4AAA1D328D4B006371CB /* LGAlertViewController.m */; };
+		EB3F4AB61D328D4B006371CB /* LGAlertViewTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F4AAD1D328D4B006371CB /* LGAlertViewTextField.m */; };
+		EB3F4AB71D328D4B006371CB /* LGAlertViewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F4AAF1D328D4B006371CB /* LGAlertViewWindow.m */; };
+		EB3F4AB81D328D4B006371CB /* UIWindow+LGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F4AB11D328D4B006371CB /* UIWindow+LGAlertView.m */; };
+		EB3F4AC01D329FD0006371CB /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB3F4ABF1D329FD0006371CB /* SIAlertView.bundle */; };
+		EB4702921C063DD800732BC9 /* WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4702911C063DD800732BC9 /* WorkoutListViewController.m */; };
+		EB4702951C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4702941C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.m */; };
+		EB4702991C063E3100732BC9 /* WorkoutDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4702981C063E3100732BC9 /* WorkoutDetailViewController.m */; };
+		EB47029C1C063E5E00732BC9 /* WorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB47029B1C063E5E00732BC9 /* WorkoutViewController.m */; };
+		EB4702A11C063EBD00732BC9 /* WorkoutCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4702A01C063EBD00732BC9 /* WorkoutCreateViewController.m */; };
+		EB52E8481D1EE5BB00E4C173 /* Workout+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E82D1D1EE5BB00E4C173 /* Workout+CoreDataProperties.m */; };
+		EB52E8491D1EE5BB00E4C173 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E82F1D1EE5BB00E4C173 /* Workout.m */; };
+		EB52E84A1D1EE5BB00E4C173 /* WorkoutLog+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E8311D1EE5BB00E4C173 /* WorkoutLog+CoreDataProperties.m */; };
+		EB52E84B1D1EE5BB00E4C173 /* WorkoutLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E8331D1EE5BB00E4C173 /* WorkoutLog.m */; };
+		EB52E84C1D1EE5BB00E4C173 /* ExerciseSetLog+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E8351D1EE5BB00E4C173 /* ExerciseSetLog+CoreDataProperties.m */; };
+		EB52E84D1D1EE5BB00E4C173 /* ExerciseSetLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E8371D1EE5BB00E4C173 /* ExerciseSetLog.m */; };
+		EB52E84E1D1EE5BB00E4C173 /* Exercise+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E8391D1EE5BB00E4C173 /* Exercise+CoreDataProperties.m */; };
+		EB52E84F1D1EE5BB00E4C173 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E83B1D1EE5BB00E4C173 /* Exercise.m */; };
+		EB52E8501D1EE5BB00E4C173 /* ExerciseLog+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E83D1D1EE5BB00E4C173 /* ExerciseLog+CoreDataProperties.m */; };
+		EB52E8511D1EE5BB00E4C173 /* ExerciseLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E83F1D1EE5BB00E4C173 /* ExerciseLog.m */; };
+		EB52E8521D1EE5BB00E4C173 /* CustomWorkout+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E8411D1EE5BB00E4C173 /* CustomWorkout+CoreDataProperties.m */; };
+		EB52E8531D1EE5BB00E4C173 /* CustomWorkout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E8431D1EE5BB00E4C173 /* CustomWorkout.m */; };
+		EB52E8541D1EE5BB00E4C173 /* CustomExercise+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E8451D1EE5BB00E4C173 /* CustomExercise+CoreDataProperties.m */; };
+		EB52E8551D1EE5BB00E4C173 /* CustomExercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E8471D1EE5BB00E4C173 /* CustomExercise.m */; };
+		EB52E8591D1EF52600E4C173 /* SHExerciseSetLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E8581D1EF52600E4C173 /* SHExerciseSetLog.m */; };
+		EB52E8651D1EF77800E4C173 /* ExerciseSetLogDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E8641D1EF77800E4C173 /* ExerciseSetLogDataManager.m */; };
+		EB52E8681D1EF7C000E4C173 /* SHExerciseSetLog+ExerciseSetLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E8671D1EF7C000E4C173 /* SHExerciseSetLog+ExerciseSetLog.m */; };
+		EB52E86B1D209E3900E4C173 /* SHWebServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52E86A1D209E3900E4C173 /* SHWebServiceHandler.m */; };
+		EB63EF381B4B3FE200EF35A3 /* iPhone_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB63EF361B4B3FE200EF35A3 /* iPhone_Storyboard.storyboard */; };
 		EB63EF3B1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF3A1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m */; };
 		EB63EF9C1B4B5FA400EF35A3 /* TextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF9B1B4B5FA400EF35A3 /* TextFieldTableViewCell.m */; };
-		EB701E7B1BE2DC78005003B1 /* QuickFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB701E7A1BE2DC78005003B1 /* QuickFilterViewController.m */; };
-		EB701E7F1BE7EA54005003B1 /* WalkThoughOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB701E7E1BE7EA54005003B1 /* WalkThoughOneViewController.m */; };
+		EB6492F51CC67CE100FFBB4A /* SHCustomExercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6492F41CC67CE100FFBB4A /* SHCustomExercise.m */; };
+		EB6492F81CC683FE00FFBB4A /* CustomExerciseDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6492F71CC683FE00FFBB4A /* CustomExerciseDataManager.m */; };
+		EB692F831D35DE6C00D91409 /* StayHealthyDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EB692F821D35DE6C00D91409 /* StayHealthyDatabase.sqlite */; };
 		EB737F5C1B7F8A9F00EBBDA4 /* SHExercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F5B1B7F8A9F00EBBDA4 /* SHExercise.m */; };
 		EB737F5F1B7F8B2200EBBDA4 /* ExerciseDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F5E1B7F8B2200EBBDA4 /* ExerciseDataManager.m */; };
 		EB737F691B7F908F00EBBDA4 /* SHExercise+Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F681B7F908F00EBBDA4 /* SHExercise+Exercise.m */; };
 		EB737F711B8015E100EBBDA4 /* SHDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F701B8015E100EBBDA4 /* SHDataHandler.m */; };
-		EB737F761B8133D400EBBDA4 /* ExerciseSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F751B8133D400EBBDA4 /* ExerciseSelectionViewController.m */; };
 		EB89979E1B7C3DE100904984 /* GlobalDefinitions.h in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF981B4B442B00EF35A3 /* GlobalDefinitions.h */; };
-		EB8ACF8A1B76DAD0003E91A6 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8ACF891B76DAD0003E91A6 /* Exercise.m */; };
-		EB9CF7011B52AA00006E2984 /* PreferencesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9CF7001B52AA00006E2984 /* PreferencesTableViewController.m */; };
+		EB8AF5551C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8AF5541C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m */; };
+		EB9CF7011B52AA00006E2984 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9CF7001B52AA00006E2984 /* PreferencesViewController.m */; };
+		EBAF51161CD4265A005DAE31 /* Journal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBAF51151CD4265A005DAE31 /* Journal.storyboard */; };
+		EBAF51181CD4266D005DAE31 /* Exercises.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBAF51171CD4266D005DAE31 /* Exercises.storyboard */; };
+		EBAF511A1CD42677005DAE31 /* Workouts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBAF51191CD42677005DAE31 /* Workouts.storyboard */; };
+		EBAF511C1CD42685005DAE31 /* Liked.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBAF511B1CD42685005DAE31 /* Liked.storyboard */; };
+		EBAF51201CD428A8005DAE31 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBAF511F1CD428A8005DAE31 /* Walkthrough.storyboard */; };
+		EBAF51221CD42CC5005DAE31 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBAF51211CD42CC5005DAE31 /* Settings.storyboard */; };
+		EBAF51291CD43EDF005DAE31 /* SHExerciseLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF51281CD43EDF005DAE31 /* SHExerciseLog.m */; };
+		EBAF512C1CD43EEE005DAE31 /* SHWorkoutLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF512B1CD43EEE005DAE31 /* SHWorkoutLog.m */; };
+		EBAF51411CD44613005DAE31 /* ExerciseLogDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF51401CD44613005DAE31 /* ExerciseLogDataManager.m */; };
+		EBAF51441CD4462A005DAE31 /* WorkoutLogDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF51431CD4462A005DAE31 /* WorkoutLogDataManager.m */; };
+		EBAF514D1CD447FD005DAE31 /* SHCustomExercise+CustomExercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF514C1CD447FD005DAE31 /* SHCustomExercise+CustomExercise.m */; };
+		EBAF51501CD4481A005DAE31 /* SHExerciseLog+ExerciseLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF514F1CD4481A005DAE31 /* SHExerciseLog+ExerciseLog.m */; };
+		EBAF51531CD44837005DAE31 /* SHWorkoutLog+WorkoutLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF51521CD44837005DAE31 /* SHWorkoutLog+WorkoutLog.m */; };
 		EBB432DA1B549FEC001B2D40 /* ExerciseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB432D91B549FEC001B2D40 /* ExerciseTableViewCell.m */; };
+		EBB8C9701BF90ECA00347B24 /* ExerciseSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C96F1BF90ECA00347B24 /* ExerciseSelectionViewController.m */; };
+		EBB8C97C1BFA827400347B24 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C97B1BFA827400347B24 /* AboutTableViewController.m */; };
+		EBB8C9811BFA855300347B24 /* FeedbackCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C9801BFA855300347B24 /* FeedbackCenterViewController.m */; };
+		EBB8C9841BFA856000347B24 /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8C9831BFA856000347B24 /* HelpCenterViewController.m */; };
+		EBBD42EB1C00F2670033F226 /* iPad_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */; };
+		EBC034D71C4C10820079332D /* ExerciseCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC034D61C4C10820079332D /* ExerciseCreateViewController.m */; };
+		EBC561F51D387A3300604F01 /* Strength in Resources */ = {isa = PBXBuildFile; fileRef = EBC561F31D387A3300604F01 /* Strength */; };
+		EBC561F61D387A3300604F01 /* Stretching in Resources */ = {isa = PBXBuildFile; fileRef = EBC561F41D387A3300604F01 /* Stretching */; };
+		EBC561F81D3AF16000604F01 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC561F71D3AF16000604F01 /* TelerikUI.framework */; };
+		EBC64C591C02B2C900B33ECA /* WorkoutSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */; };
+		EBC64C5D1C02C3CD00B33ECA /* WorkoutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC64C5C1C02C3CD00B33ECA /* WorkoutTableViewCell.m */; };
 		EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCE12511BD2F62C000370CC /* FavoritesViewController.m */; };
+		EBD1EBC91C2F062B003F005F /* TextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */; };
+		EBD1EBCD1C2F1179003F005F /* CustomWorkoutSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */; };
+		EBF7E74B1C49618400E878E9 /* SHDataUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7E74A1C49618400E878E9 /* SHDataUtilities.m */; };
+		EBF7F86A1CD959460086C9E0 /* Journal_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F8691CD959460086C9E0 /* Journal_iPad.storyboard */; };
+		EBF7F86C1CD9595A0086C9E0 /* Exercises_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F86B1CD9595A0086C9E0 /* Exercises_iPad.storyboard */; };
+		EBF7F86E1CD959690086C9E0 /* Workouts_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F86D1CD959690086C9E0 /* Workouts_iPad.storyboard */; };
+		EBF7F8701CD959770086C9E0 /* Liked_Pad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F86F1CD959770086C9E0 /* Liked_Pad.storyboard */; };
+		EBF7F8721CD9599F0086C9E0 /* Walkthrough_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF7F8711CD9599F0086C9E0 /* Walkthrough_iPad.storyboard */; };
+		EBFE82201CE6B42400EF3066 /* PreferenceSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFE821F1CE6B42400EF3066 /* PreferenceSwitch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -118,10 +173,6 @@
 /* Begin PBXFileReference section */
 		3F2E5A8118DF388300EE4734 /* ExerciseListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseListController.h; sourceTree = "<group>"; };
 		3F2E5A8218DF388300EE4734 /* ExerciseListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseListController.m; sourceTree = "<group>"; };
-		3F2E5A8518DF4E4E00EE4734 /* ExerciseCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCollectionCell.h; sourceTree = "<group>"; };
-		3F2E5A8618DF4E4E00EE4734 /* ExerciseCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCollectionCell.m; sourceTree = "<group>"; };
-		3F2E5A8918E0D90900EE4734 /* workoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = workoutCell.h; sourceTree = "<group>"; };
-		3F2E5A8A18E0D90900EE4734 /* workoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = workoutCell.m; sourceTree = "<group>"; };
 		3F63B1A81ABB9F24000CDE06 /* HomeTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTabBarController.h; sourceTree = "<group>"; };
 		3F63B1A91ABB9F24000CDE06 /* HomeTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTabBarController.m; sourceTree = "<group>"; };
 		3F7D779E19A2DFEA00E00065 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -133,8 +184,6 @@
 		3F7D77AB19A3086200E00065 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3F7D77AC19A3086200E00065 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		3F8BB361198D4AF70098E1A7 /* CommonSetUpOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonSetUpOperations.h; sourceTree = "<group>"; };
-		3F8BB362198D4AF70098E1A7 /* CommonSetUpOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonSetUpOperations.m; sourceTree = "<group>"; };
 		3F949C1E195A56D800EB4BED /* StayHealthyGeneral.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StayHealthyGeneral.plist; sourceTree = "<group>"; };
 		3FC466B01B3621970062EBDB /* CommonUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtilities.h; sourceTree = "<group>"; };
 		3FC466B11B3621970062EBDB /* CommonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilities.m; sourceTree = "<group>"; };
@@ -154,21 +203,15 @@
 		3FE100921863CC0100C53D76 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3FE103D1186618F200C53D76 /* ExerciseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailViewController.h; sourceTree = "<group>"; };
 		3FE103D2186618F200C53D76 /* ExerciseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailViewController.m; sourceTree = "<group>"; };
-		3FE41E411ABE0644007522AB /* advancedOptionsSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = advancedOptionsSelect.h; sourceTree = "<group>"; };
-		3FE41E421ABE0644007522AB /* advancedOptionsSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = advancedOptionsSelect.m; sourceTree = "<group>"; };
-		3FE8069D18F24442006A0993 /* WorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutViewController.h; sourceTree = "<group>"; };
-		3FE8069E18F24442006A0993 /* WorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutViewController.m; sourceTree = "<group>"; };
 		3FE95E22187A5DB0005DD13D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		3FE95E23187A5DB0005DD13D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		3FF9DDA01853BAEC0083A499 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		EB215A301BD895DB00A0765A /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
-		EB215A311BD895DB00A0765A /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
-		EB215A321BD895DB00A0765A /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
-		EB215A331BD895DB00A0765A /* MGSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeTableCell.m; sourceTree = "<group>"; };
-		EB2C4A591B89F531005D183A /* CustomWorkout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWorkout.h; sourceTree = "<group>"; };
-		EB2C4A5A1B89F531005D183A /* CustomWorkout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWorkout.m; sourceTree = "<group>"; };
-		EB2C4A5C1B89F53F005D183A /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
-		EB2C4A5D1B89F53F005D183A /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
+		EB0853D41CC42288000DEAC0 /* JournalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JournalViewController.h; sourceTree = "<group>"; };
+		EB0853D51CC42288000DEAC0 /* JournalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JournalViewController.m; sourceTree = "<group>"; };
+		EB0853D81CC42E58000DEAC0 /* ExerciseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCollectionViewCell.h; sourceTree = "<group>"; };
+		EB0853D91CC42E58000DEAC0 /* ExerciseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCollectionViewCell.m; sourceTree = "<group>"; };
+		EB18FDD71C35712E0057D8B0 /* BodyViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyViewCollectionViewCell.h; sourceTree = "<group>"; };
+		EB18FDD81C35712E0057D8B0 /* BodyViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyViewCollectionViewCell.m; sourceTree = "<group>"; };
 		EB2C4A5F1B89F556005D183A /* SHWorkout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHWorkout.h; sourceTree = "<group>"; };
 		EB2C4A601B89F556005D183A /* SHWorkout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHWorkout.m; sourceTree = "<group>"; };
 		EB2C4A621B89F56A005D183A /* SHCustomWorkout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCustomWorkout.h; sourceTree = "<group>"; };
@@ -181,67 +224,131 @@
 		EB2C4A6C1B89F8DC005D183A /* SHWorkout+Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHWorkout+Workout.m"; sourceTree = "<group>"; };
 		EB2C4A6E1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHCustomWorkout+CustomWorkout.h"; sourceTree = "<group>"; };
 		EB2C4A6F1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHCustomWorkout+CustomWorkout.m"; sourceTree = "<group>"; };
+		EB384AFB1CED48F90073A37B /* SelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionViewController.h; sourceTree = "<group>"; };
+		EB384AFC1CED48F90073A37B /* SelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionViewController.m; sourceTree = "<group>"; };
+		EB384AFF1CED4C170073A37B /* Utilities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Utilities.storyboard; sourceTree = "<group>"; };
+		EB384B021CED59F70073A37B /* SelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionTableViewCell.h; sourceTree = "<group>"; };
+		EB384B031CED59F70073A37B /* SelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionTableViewCell.m; sourceTree = "<group>"; };
+		EB384B0C1CF09D640073A37B /* LoggingPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingPreferencesViewController.h; sourceTree = "<group>"; };
+		EB384B0D1CF09D640073A37B /* LoggingPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingPreferencesViewController.m; sourceTree = "<group>"; };
+		EB384B0F1CF09D970073A37B /* NotificationPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationPreferencesViewController.h; sourceTree = "<group>"; };
+		EB384B101CF09D970073A37B /* NotificationPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationPreferencesViewController.m; sourceTree = "<group>"; };
+		EB384B131CF0A05D0073A37B /* AddJournalEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddJournalEntryViewController.h; sourceTree = "<group>"; };
+		EB384B141CF0A05D0073A37B /* AddJournalEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddJournalEntryViewController.m; sourceTree = "<group>"; };
+		EB384B221CF228120073A37B /* ExerciseLogCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseLogCreationViewController.h; sourceTree = "<group>"; };
+		EB384B231CF228120073A37B /* ExerciseLogCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseLogCreationViewController.m; sourceTree = "<group>"; };
+		EB384B251CF228220073A37B /* WorkoutLogCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutLogCreationViewController.h; sourceTree = "<group>"; };
+		EB384B261CF228220073A37B /* WorkoutLogCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutLogCreationViewController.m; sourceTree = "<group>"; };
 		EB3ABB341BF00244004AF091 /* StayHealthy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StayHealthy-Bridging-Header.h"; sourceTree = "<group>"; };
-		EB3ABB371BF00325004AF091 /* WelcomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePage.swift; sourceTree = "<group>"; };
-		EB3B9E221BE8022500BCEF28 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		EB3B9E241BE8023600BCEF28 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		EB3B9E261BE8024300BCEF28 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		EB52EF9E1BCAEF0B00F5D7CA /* StayHealthyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = StayHealthyDatabase.sqlite; sourceTree = "<group>"; };
-		EB52EFA11BCAEF5800F5D7CA /* Strength */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Strength; path = "../../../Project Resources/StayHealthy/User Interface/Exercise Images/Strength"; sourceTree = "<group>"; };
-		EB52EFA21BCAEF5800F5D7CA /* Stretching */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Stretching; path = "../../../Project Resources/StayHealthy/User Interface/Exercise Images/Stretching"; sourceTree = "<group>"; };
-		EB52EFA71BCAEF8900F5D7CA /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
-		EB52EFA81BCAEF8900F5D7CA /* MZTimerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTimerLabel.m; sourceTree = "<group>"; };
-		EB52EFAB1BCAEF9700F5D7CA /* ALCustomColoredAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALCustomColoredAccessory.h; sourceTree = "<group>"; };
-		EB52EFAC1BCAEF9700F5D7CA /* ALCustomColoredAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALCustomColoredAccessory.m; sourceTree = "<group>"; };
-		EB52EFB71BCAEFBA00F5D7CA /* TSMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessage.h; sourceTree = "<group>"; };
-		EB52EFB81BCAEFBA00F5D7CA /* TSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessage.m; sourceTree = "<group>"; };
-		EB52EFBA1BCAEFBA00F5D7CA /* HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexColor.h; sourceTree = "<group>"; };
-		EB52EFBB1BCAEFBA00F5D7CA /* HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexColor.m; sourceTree = "<group>"; };
-		EB52EFBE1BCAEFBA00F5D7CA /* NotificationBackgroundError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundError.png; sourceTree = "<group>"; };
-		EB52EFBF1BCAEFBA00F5D7CA /* NotificationBackgroundError@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundError@2x.png"; sourceTree = "<group>"; };
-		EB52EFC01BCAEFBA00F5D7CA /* NotificationBackgroundErrorIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundErrorIcon.png; sourceTree = "<group>"; };
-		EB52EFC11BCAEFBA00F5D7CA /* NotificationBackgroundErrorIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundErrorIcon@2x.png"; sourceTree = "<group>"; };
-		EB52EFC21BCAEFBA00F5D7CA /* NotificationBackgroundMessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundMessage.png; sourceTree = "<group>"; };
-		EB52EFC31BCAEFBA00F5D7CA /* NotificationBackgroundMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundMessage@2x.png"; sourceTree = "<group>"; };
-		EB52EFC41BCAEFBA00F5D7CA /* NotificationBackgroundSuccess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundSuccess.png; sourceTree = "<group>"; };
-		EB52EFC51BCAEFBA00F5D7CA /* NotificationBackgroundSuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundSuccess@2x.png"; sourceTree = "<group>"; };
-		EB52EFC61BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundSuccessIcon.png; sourceTree = "<group>"; };
-		EB52EFC71BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundSuccessIcon@2x.png"; sourceTree = "<group>"; };
-		EB52EFC81BCAEFBA00F5D7CA /* NotificationBackgroundWarning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundWarning.png; sourceTree = "<group>"; };
-		EB52EFC91BCAEFBA00F5D7CA /* NotificationBackgroundWarning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundWarning@2x.png"; sourceTree = "<group>"; };
-		EB52EFCA1BCAEFBA00F5D7CA /* NotificationBackgroundWarningIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundWarningIcon.png; sourceTree = "<group>"; };
-		EB52EFCB1BCAEFBA00F5D7CA /* NotificationBackgroundWarningIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundWarningIcon@2x.png"; sourceTree = "<group>"; };
-		EB52EFCC1BCAEFBA00F5D7CA /* NotificationButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationButtonBackground.png; sourceTree = "<group>"; };
-		EB52EFCD1BCAEFBA00F5D7CA /* NotificationButtonBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationButtonBackground@2x.png"; sourceTree = "<group>"; };
-		EB52EFCE1BCAEFBA00F5D7CA /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesDefaultDesign.json; sourceTree = "<group>"; };
-		EB52EFD01BCAEFBA00F5D7CA /* TSBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSBlurView.h; sourceTree = "<group>"; };
-		EB52EFD11BCAEFBA00F5D7CA /* TSBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSBlurView.m; sourceTree = "<group>"; };
-		EB52EFD21BCAEFBA00F5D7CA /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageView.h; sourceTree = "<group>"; };
-		EB52EFD31BCAEFBA00F5D7CA /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
-		EB52EFEA1BCAEFC800F5D7CA /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
-		EB52EFEB1BCAEFC800F5D7CA /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
-		EB52EFEC1BCAEFC800F5D7CA /* UIWindow+SIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SIUtils.h"; sourceTree = "<group>"; };
-		EB52EFED1BCAEFC800F5D7CA /* UIWindow+SIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SIUtils.m"; sourceTree = "<group>"; };
-		EB52EFF11BCAEFCF00F5D7CA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		EB52EFF21BCAEFCF00F5D7CA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		EB52EFF41BCAEFDF00F5D7CA /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SIAlertView.bundle; path = "../../Project Resources/StayHealthy/Bundles/SIAlertView.bundle"; sourceTree = "<group>"; };
+		EB3F49E41D328CF7006371CB /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		EB3F49E51D328CF7006371CB /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		EB3F49EB1D328D02006371CB /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
+		EB3F49EC1D328D02006371CB /* MZTimerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTimerLabel.m; sourceTree = "<group>"; };
+		EB3F4A181D328D14006371CB /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
+		EB3F4A191D328D14006371CB /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
+		EB3F4A1A1D328D14006371CB /* UIWindow+SIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SIUtils.h"; sourceTree = "<group>"; };
+		EB3F4A1B1D328D14006371CB /* UIWindow+SIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SIUtils.m"; sourceTree = "<group>"; };
+		EB3F4A201D328D32006371CB /* TSMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessage.h; sourceTree = "<group>"; };
+		EB3F4A211D328D32006371CB /* TSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessage.m; sourceTree = "<group>"; };
+		EB3F4A231D328D32006371CB /* HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexColor.h; sourceTree = "<group>"; };
+		EB3F4A241D328D32006371CB /* HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexColor.m; sourceTree = "<group>"; };
+		EB3F4A271D328D32006371CB /* NotificationBackgroundError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundError.png; sourceTree = "<group>"; };
+		EB3F4A281D328D32006371CB /* NotificationBackgroundError@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundError@2x.png"; sourceTree = "<group>"; };
+		EB3F4A291D328D32006371CB /* NotificationBackgroundErrorIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundErrorIcon.png; sourceTree = "<group>"; };
+		EB3F4A2A1D328D32006371CB /* NotificationBackgroundErrorIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundErrorIcon@2x.png"; sourceTree = "<group>"; };
+		EB3F4A2B1D328D32006371CB /* NotificationBackgroundMessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundMessage.png; sourceTree = "<group>"; };
+		EB3F4A2C1D328D32006371CB /* NotificationBackgroundMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundMessage@2x.png"; sourceTree = "<group>"; };
+		EB3F4A2D1D328D32006371CB /* NotificationBackgroundSuccess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundSuccess.png; sourceTree = "<group>"; };
+		EB3F4A2E1D328D32006371CB /* NotificationBackgroundSuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundSuccess@2x.png"; sourceTree = "<group>"; };
+		EB3F4A2F1D328D32006371CB /* NotificationBackgroundSuccessIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundSuccessIcon.png; sourceTree = "<group>"; };
+		EB3F4A301D328D32006371CB /* NotificationBackgroundSuccessIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundSuccessIcon@2x.png"; sourceTree = "<group>"; };
+		EB3F4A311D328D32006371CB /* NotificationBackgroundWarning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundWarning.png; sourceTree = "<group>"; };
+		EB3F4A321D328D32006371CB /* NotificationBackgroundWarning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundWarning@2x.png"; sourceTree = "<group>"; };
+		EB3F4A331D328D32006371CB /* NotificationBackgroundWarningIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationBackgroundWarningIcon.png; sourceTree = "<group>"; };
+		EB3F4A341D328D32006371CB /* NotificationBackgroundWarningIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationBackgroundWarningIcon@2x.png"; sourceTree = "<group>"; };
+		EB3F4A351D328D32006371CB /* NotificationButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationButtonBackground.png; sourceTree = "<group>"; };
+		EB3F4A361D328D32006371CB /* NotificationButtonBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationButtonBackground@2x.png"; sourceTree = "<group>"; };
+		EB3F4A371D328D32006371CB /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesDefaultDesign.json; sourceTree = "<group>"; };
+		EB3F4A391D328D32006371CB /* TSBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSBlurView.h; sourceTree = "<group>"; };
+		EB3F4A3A1D328D32006371CB /* TSBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSBlurView.m; sourceTree = "<group>"; };
+		EB3F4A3B1D328D32006371CB /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageView.h; sourceTree = "<group>"; };
+		EB3F4A3C1D328D32006371CB /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageView.m; sourceTree = "<group>"; };
+		EB3F4AA31D328D4B006371CB /* LGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertView.h; sourceTree = "<group>"; };
+		EB3F4AA41D328D4B006371CB /* LGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertView.m; sourceTree = "<group>"; };
+		EB3F4AA51D328D4B006371CB /* LGAlertViewButtonProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewButtonProperties.h; sourceTree = "<group>"; };
+		EB3F4AA61D328D4B006371CB /* LGAlertViewButtonProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewButtonProperties.m; sourceTree = "<group>"; };
+		EB3F4AA71D328D4B006371CB /* LGAlertViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewCell.h; sourceTree = "<group>"; };
+		EB3F4AA81D328D4B006371CB /* LGAlertViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewCell.m; sourceTree = "<group>"; };
+		EB3F4AA91D328D4B006371CB /* LGAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewController.h; sourceTree = "<group>"; };
+		EB3F4AAA1D328D4B006371CB /* LGAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewController.m; sourceTree = "<group>"; };
+		EB3F4AAB1D328D4B006371CB /* LGAlertViewShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewShared.h; sourceTree = "<group>"; };
+		EB3F4AAC1D328D4B006371CB /* LGAlertViewTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewTextField.h; sourceTree = "<group>"; };
+		EB3F4AAD1D328D4B006371CB /* LGAlertViewTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewTextField.m; sourceTree = "<group>"; };
+		EB3F4AAE1D328D4B006371CB /* LGAlertViewWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewWindow.h; sourceTree = "<group>"; };
+		EB3F4AAF1D328D4B006371CB /* LGAlertViewWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewWindow.m; sourceTree = "<group>"; };
+		EB3F4AB01D328D4B006371CB /* UIWindow+LGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+LGAlertView.h"; sourceTree = "<group>"; };
+		EB3F4AB11D328D4B006371CB /* UIWindow+LGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+LGAlertView.m"; sourceTree = "<group>"; };
+		EB3F4ABF1D329FD0006371CB /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SIAlertView.bundle; path = "../StayHealthy Resources/Frameworks/Bundles/SIAlertView.bundle"; sourceTree = "<group>"; };
+		EB4702901C063DD800732BC9 /* WorkoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutListViewController.h; sourceTree = "<group>"; };
+		EB4702911C063DD800732BC9 /* WorkoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutListViewController.m; sourceTree = "<group>"; };
+		EB4702931C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutsAdvancedSearchViewController.h; sourceTree = "<group>"; };
+		EB4702941C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutsAdvancedSearchViewController.m; sourceTree = "<group>"; };
+		EB4702971C063E3100732BC9 /* WorkoutDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailViewController.h; sourceTree = "<group>"; };
+		EB4702981C063E3100732BC9 /* WorkoutDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailViewController.m; sourceTree = "<group>"; };
+		EB47029A1C063E5E00732BC9 /* WorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutViewController.h; sourceTree = "<group>"; };
+		EB47029B1C063E5E00732BC9 /* WorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutViewController.m; sourceTree = "<group>"; };
+		EB47029F1C063EBD00732BC9 /* WorkoutCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutCreateViewController.h; sourceTree = "<group>"; };
+		EB4702A01C063EBD00732BC9 /* WorkoutCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutCreateViewController.m; sourceTree = "<group>"; };
+		EB52E82C1D1EE5BB00E4C173 /* Workout+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Workout+CoreDataProperties.h"; sourceTree = "<group>"; };
+		EB52E82D1D1EE5BB00E4C173 /* Workout+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Workout+CoreDataProperties.m"; sourceTree = "<group>"; };
+		EB52E82E1D1EE5BB00E4C173 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
+		EB52E82F1D1EE5BB00E4C173 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
+		EB52E8301D1EE5BB00E4C173 /* WorkoutLog+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WorkoutLog+CoreDataProperties.h"; sourceTree = "<group>"; };
+		EB52E8311D1EE5BB00E4C173 /* WorkoutLog+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WorkoutLog+CoreDataProperties.m"; sourceTree = "<group>"; };
+		EB52E8321D1EE5BB00E4C173 /* WorkoutLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutLog.h; sourceTree = "<group>"; };
+		EB52E8331D1EE5BB00E4C173 /* WorkoutLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutLog.m; sourceTree = "<group>"; };
+		EB52E8341D1EE5BB00E4C173 /* ExerciseSetLog+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ExerciseSetLog+CoreDataProperties.h"; sourceTree = "<group>"; };
+		EB52E8351D1EE5BB00E4C173 /* ExerciseSetLog+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ExerciseSetLog+CoreDataProperties.m"; sourceTree = "<group>"; };
+		EB52E8361D1EE5BB00E4C173 /* ExerciseSetLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseSetLog.h; sourceTree = "<group>"; };
+		EB52E8371D1EE5BB00E4C173 /* ExerciseSetLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseSetLog.m; sourceTree = "<group>"; };
+		EB52E8381D1EE5BB00E4C173 /* Exercise+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Exercise+CoreDataProperties.h"; sourceTree = "<group>"; };
+		EB52E8391D1EE5BB00E4C173 /* Exercise+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Exercise+CoreDataProperties.m"; sourceTree = "<group>"; };
+		EB52E83A1D1EE5BB00E4C173 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
+		EB52E83B1D1EE5BB00E4C173 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
+		EB52E83C1D1EE5BB00E4C173 /* ExerciseLog+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ExerciseLog+CoreDataProperties.h"; sourceTree = "<group>"; };
+		EB52E83D1D1EE5BB00E4C173 /* ExerciseLog+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ExerciseLog+CoreDataProperties.m"; sourceTree = "<group>"; };
+		EB52E83E1D1EE5BB00E4C173 /* ExerciseLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseLog.h; sourceTree = "<group>"; };
+		EB52E83F1D1EE5BB00E4C173 /* ExerciseLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseLog.m; sourceTree = "<group>"; };
+		EB52E8401D1EE5BB00E4C173 /* CustomWorkout+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CustomWorkout+CoreDataProperties.h"; sourceTree = "<group>"; };
+		EB52E8411D1EE5BB00E4C173 /* CustomWorkout+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CustomWorkout+CoreDataProperties.m"; sourceTree = "<group>"; };
+		EB52E8421D1EE5BB00E4C173 /* CustomWorkout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWorkout.h; sourceTree = "<group>"; };
+		EB52E8431D1EE5BB00E4C173 /* CustomWorkout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWorkout.m; sourceTree = "<group>"; };
+		EB52E8441D1EE5BB00E4C173 /* CustomExercise+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CustomExercise+CoreDataProperties.h"; sourceTree = "<group>"; };
+		EB52E8451D1EE5BB00E4C173 /* CustomExercise+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CustomExercise+CoreDataProperties.m"; sourceTree = "<group>"; };
+		EB52E8461D1EE5BB00E4C173 /* CustomExercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomExercise.h; sourceTree = "<group>"; };
+		EB52E8471D1EE5BB00E4C173 /* CustomExercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomExercise.m; sourceTree = "<group>"; };
+		EB52E8571D1EF52600E4C173 /* SHExerciseSetLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHExerciseSetLog.h; sourceTree = "<group>"; };
+		EB52E8581D1EF52600E4C173 /* SHExerciseSetLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHExerciseSetLog.m; sourceTree = "<group>"; };
+		EB52E8631D1EF77800E4C173 /* ExerciseSetLogDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseSetLogDataManager.h; sourceTree = "<group>"; };
+		EB52E8641D1EF77800E4C173 /* ExerciseSetLogDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseSetLogDataManager.m; sourceTree = "<group>"; };
+		EB52E8661D1EF7C000E4C173 /* SHExerciseSetLog+ExerciseSetLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHExerciseSetLog+ExerciseSetLog.h"; sourceTree = "<group>"; };
+		EB52E8671D1EF7C000E4C173 /* SHExerciseSetLog+ExerciseSetLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHExerciseSetLog+ExerciseSetLog.m"; sourceTree = "<group>"; };
+		EB52E8691D209E3900E4C173 /* SHWebServiceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHWebServiceHandler.h; sourceTree = "<group>"; };
+		EB52E86A1D209E3900E4C173 /* SHWebServiceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHWebServiceHandler.m; sourceTree = "<group>"; };
 		EB52EFF61BCAF05C00F5D7CA /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		EB575AD31BEC38EC00A1C798 /* VersionHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionHistoryViewController.h; sourceTree = "<group>"; };
-		EB575AD41BEC38EC00A1C798 /* VersionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionHistoryViewController.m; sourceTree = "<group>"; };
-		EB575AD61BEC391000A1C798 /* AcknowledgmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgmentsViewController.h; sourceTree = "<group>"; };
-		EB575AD71BEC391000A1C798 /* AcknowledgmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgmentsViewController.m; sourceTree = "<group>"; };
-		EB575B5C1BED47F000A1C798 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Project Resources/Frameworks/Parse/Bolts.framework"; sourceTree = "<group>"; };
-		EB575B5D1BED47F000A1C798 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Project Resources/Frameworks/Parse/Parse.framework"; sourceTree = "<group>"; };
-		EB63EF371B4B3FE200EF35A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_Storyboard.storyboard; sourceTree = "<group>"; };
+		EB63EF371B4B3FE200EF35A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPhone_Storyboard.storyboard; sourceTree = "<group>"; };
 		EB63EF391B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseAdvancedSearchViewController.h; sourceTree = "<group>"; };
 		EB63EF3A1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseAdvancedSearchViewController.m; sourceTree = "<group>"; };
 		EB63EF981B4B442B00EF35A3 /* GlobalDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalDefinitions.h; sourceTree = "<group>"; };
 		EB63EF9A1B4B5FA400EF35A3 /* TextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldTableViewCell.h; sourceTree = "<group>"; };
 		EB63EF9B1B4B5FA400EF35A3 /* TextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldTableViewCell.m; sourceTree = "<group>"; };
-		EB701E791BE2DC78005003B1 /* QuickFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickFilterViewController.h; sourceTree = "<group>"; };
-		EB701E7A1BE2DC78005003B1 /* QuickFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickFilterViewController.m; sourceTree = "<group>"; };
-		EB701E7D1BE7EA54005003B1 /* WalkThoughOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalkThoughOneViewController.h; sourceTree = "<group>"; };
-		EB701E7E1BE7EA54005003B1 /* WalkThoughOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalkThoughOneViewController.m; sourceTree = "<group>"; };
+		EB6492F31CC67CE100FFBB4A /* SHCustomExercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCustomExercise.h; sourceTree = "<group>"; };
+		EB6492F41CC67CE100FFBB4A /* SHCustomExercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCustomExercise.m; sourceTree = "<group>"; };
+		EB6492F61CC683FE00FFBB4A /* CustomExerciseDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomExerciseDataManager.h; sourceTree = "<group>"; };
+		EB6492F71CC683FE00FFBB4A /* CustomExerciseDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomExerciseDataManager.m; sourceTree = "<group>"; };
+		EB692F821D35DE6C00D91409 /* StayHealthyDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = StayHealthyDatabase.sqlite; path = "../../../iOS/StayHealthy Resources/Database/StayHealthyDatabase.sqlite"; sourceTree = "<group>"; };
 		EB737F571B7F8A0300EBBDA4 /* DataManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManagerProtocol.h; sourceTree = "<group>"; };
 		EB737F5A1B7F8A9F00EBBDA4 /* SHExercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHExercise.h; sourceTree = "<group>"; };
 		EB737F5B1B7F8A9F00EBBDA4 /* SHExercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHExercise.m; sourceTree = "<group>"; };
@@ -252,15 +359,68 @@
 		EB737F6F1B8015E100EBBDA4 /* SHDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDataHandler.h; sourceTree = "<group>"; };
 		EB737F701B8015E100EBBDA4 /* SHDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDataHandler.m; sourceTree = "<group>"; };
 		EB737F741B8133D400EBBDA4 /* ExerciseSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseSelectionViewController.h; sourceTree = "<group>"; };
-		EB737F751B8133D400EBBDA4 /* ExerciseSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseSelectionViewController.m; sourceTree = "<group>"; };
-		EB8ACF881B76DAD0003E91A6 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
-		EB8ACF891B76DAD0003E91A6 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
-		EB9CF6FF1B52AA00006E2984 /* PreferencesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesTableViewController.h; sourceTree = "<group>"; };
-		EB9CF7001B52AA00006E2984 /* PreferencesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesTableViewController.m; sourceTree = "<group>"; };
+		EB77FFCE1C48854000C0DE54 /* StayHealthy3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StayHealthy3.xcdatamodel; sourceTree = "<group>"; };
+		EB8864B61C305ED600B98050 /* StayHealthy 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StayHealthy 3.xcdatamodel"; sourceTree = "<group>"; };
+		EB8AF5531C064B5000F53B90 /* WorkoutBrowseOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutBrowseOptionsViewController.h; sourceTree = "<group>"; };
+		EB8AF5541C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutBrowseOptionsViewController.m; sourceTree = "<group>"; };
+		EB9CF6FF1B52AA00006E2984 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
+		EB9CF7001B52AA00006E2984 /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
+		EBAF51151CD4265A005DAE31 /* Journal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Journal.storyboard; sourceTree = "<group>"; };
+		EBAF51171CD4266D005DAE31 /* Exercises.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exercises.storyboard; sourceTree = "<group>"; };
+		EBAF51191CD42677005DAE31 /* Workouts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Workouts.storyboard; sourceTree = "<group>"; };
+		EBAF511B1CD42685005DAE31 /* Liked.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Liked.storyboard; sourceTree = "<group>"; };
+		EBAF511F1CD428A8005DAE31 /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
+		EBAF51211CD42CC5005DAE31 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		EBAF51271CD43EDF005DAE31 /* SHExerciseLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHExerciseLog.h; sourceTree = "<group>"; };
+		EBAF51281CD43EDF005DAE31 /* SHExerciseLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHExerciseLog.m; sourceTree = "<group>"; };
+		EBAF512A1CD43EEE005DAE31 /* SHWorkoutLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHWorkoutLog.h; sourceTree = "<group>"; };
+		EBAF512B1CD43EEE005DAE31 /* SHWorkoutLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHWorkoutLog.m; sourceTree = "<group>"; };
+		EBAF513F1CD44613005DAE31 /* ExerciseLogDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseLogDataManager.h; sourceTree = "<group>"; };
+		EBAF51401CD44613005DAE31 /* ExerciseLogDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseLogDataManager.m; sourceTree = "<group>"; };
+		EBAF51421CD4462A005DAE31 /* WorkoutLogDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutLogDataManager.h; sourceTree = "<group>"; };
+		EBAF51431CD4462A005DAE31 /* WorkoutLogDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutLogDataManager.m; sourceTree = "<group>"; };
+		EBAF514B1CD447FD005DAE31 /* SHCustomExercise+CustomExercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHCustomExercise+CustomExercise.h"; sourceTree = "<group>"; };
+		EBAF514C1CD447FD005DAE31 /* SHCustomExercise+CustomExercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHCustomExercise+CustomExercise.m"; sourceTree = "<group>"; };
+		EBAF514E1CD4481A005DAE31 /* SHExerciseLog+ExerciseLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHExerciseLog+ExerciseLog.h"; sourceTree = "<group>"; };
+		EBAF514F1CD4481A005DAE31 /* SHExerciseLog+ExerciseLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHExerciseLog+ExerciseLog.m"; sourceTree = "<group>"; };
+		EBAF51511CD44837005DAE31 /* SHWorkoutLog+WorkoutLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHWorkoutLog+WorkoutLog.h"; sourceTree = "<group>"; };
+		EBAF51521CD44837005DAE31 /* SHWorkoutLog+WorkoutLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHWorkoutLog+WorkoutLog.m"; sourceTree = "<group>"; };
 		EBB432D81B549FEC001B2D40 /* ExerciseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseTableViewCell.h; sourceTree = "<group>"; };
 		EBB432D91B549FEC001B2D40 /* ExerciseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseTableViewCell.m; sourceTree = "<group>"; };
+		EBB8C96F1BF90ECA00347B24 /* ExerciseSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseSelectionViewController.m; sourceTree = "<group>"; };
+		EBB8C97A1BFA827400347B24 /* AboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTableViewController.h; sourceTree = "<group>"; };
+		EBB8C97B1BFA827400347B24 /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
+		EBB8C97F1BFA855300347B24 /* FeedbackCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackCenterViewController.h; sourceTree = "<group>"; };
+		EBB8C9801BFA855300347B24 /* FeedbackCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackCenterViewController.m; sourceTree = "<group>"; };
+		EBB8C9821BFA856000347B24 /* HelpCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCenterViewController.h; sourceTree = "<group>"; };
+		EBB8C9831BFA856000347B24 /* HelpCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpCenterViewController.m; sourceTree = "<group>"; };
+		EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad_Storyboard.storyboard; sourceTree = "<group>"; };
+		EBC034D51C4C10820079332D /* ExerciseCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCreateViewController.h; sourceTree = "<group>"; };
+		EBC034D61C4C10820079332D /* ExerciseCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCreateViewController.m; sourceTree = "<group>"; };
+		EBC561F31D387A3300604F01 /* Strength */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Strength; path = "../../StayHealthy Resources/UI/Exercise Images/WorkoutImages/Strength"; sourceTree = "<group>"; };
+		EBC561F41D387A3300604F01 /* Stretching */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Stretching; path = "../../StayHealthy Resources/UI/Exercise Images/WorkoutImages/Stretching"; sourceTree = "<group>"; };
+		EBC561F71D3AF16000604F01 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TelerikUI.framework; path = "../StayHealthy Resources/Frameworks/Frameworks/TelerikUI.framework"; sourceTree = "<group>"; };
+		EBC64C571C02B2C900B33ECA /* WorkoutSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutSelectionViewController.h; sourceTree = "<group>"; };
+		EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutSelectionViewController.m; sourceTree = "<group>"; };
+		EBC64C5B1C02C3CD00B33ECA /* WorkoutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutTableViewCell.h; sourceTree = "<group>"; };
+		EBC64C5C1C02C3CD00B33ECA /* WorkoutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutTableViewCell.m; sourceTree = "<group>"; };
 		EBCE12501BD2F62C000370CC /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		EBCE12511BD2F62C000370CC /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		EBD1EBC71C2F062B003F005F /* TextViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewTableViewCell.h; sourceTree = "<group>"; };
+		EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewTableViewCell.m; sourceTree = "<group>"; };
+		EBD1EBCB1C2F1179003F005F /* CustomWorkoutSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWorkoutSelectionViewController.h; sourceTree = "<group>"; };
+		EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWorkoutSelectionViewController.m; sourceTree = "<group>"; };
+		EBF7E7491C49618400E878E9 /* SHDataUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDataUtilities.h; sourceTree = "<group>"; };
+		EBF7E74A1C49618400E878E9 /* SHDataUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDataUtilities.m; sourceTree = "<group>"; };
+		EBF7F8691CD959460086C9E0 /* Journal_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Journal_iPad.storyboard; sourceTree = "<group>"; };
+		EBF7F86B1CD9595A0086C9E0 /* Exercises_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exercises_iPad.storyboard; sourceTree = "<group>"; };
+		EBF7F86D1CD959690086C9E0 /* Workouts_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Workouts_iPad.storyboard; sourceTree = "<group>"; };
+		EBF7F86F1CD959770086C9E0 /* Liked_Pad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Liked_Pad.storyboard; sourceTree = "<group>"; };
+		EBF7F8711CD9599F0086C9E0 /* Walkthrough_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough_iPad.storyboard; sourceTree = "<group>"; };
+		EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StayHealthy2.xcdatamodel; sourceTree = "<group>"; };
+		EBFE821E1CE6B42400EF3066 /* PreferenceSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceSwitch.h; sourceTree = "<group>"; };
+		EBFE821F1CE6B42400EF3066 /* PreferenceSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceSwitch.m; sourceTree = "<group>"; };
+		EBFEBF0A1C4427F000F9EA01 /* StayHealthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = StayHealthy.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,7 +430,6 @@
 			files = (
 				EB3B9E271BE8024300BCEF28 /* libsqlite3.tbd in Frameworks */,
 				EB3B9E251BE8023600BCEF28 /* libz.tbd in Frameworks */,
-				EB3B9E231BE8022500BCEF28 /* StoreKit.framework in Frameworks */,
 				3F7D77AF19A3086200E00065 /* CFNetwork.framework in Frameworks */,
 				3F7D77B019A3086200E00065 /* CoreLocation.framework in Frameworks */,
 				3F7D77B219A3086200E00065 /* MobileCoreServices.framework in Frameworks */,
@@ -278,12 +437,11 @@
 				3F7D77B519A3086200E00065 /* SystemConfiguration.framework in Frameworks */,
 				3FD5E1A31853A8D00063E10C /* CoreGraphics.framework in Frameworks */,
 				3FE100931863CC0100C53D76 /* QuartzCore.framework in Frameworks */,
-				EB575B5F1BED47F000A1C798 /* Parse.framework in Frameworks */,
 				3F7D77A719A3081300E00065 /* AudioToolbox.framework in Frameworks */,
 				3F7D779F19A2DFEA00E00065 /* MessageUI.framework in Frameworks */,
-				EB575B5E1BED47F000A1C798 /* Bolts.framework in Frameworks */,
 				3FF9DDA11853BAEC0083A499 /* CoreText.framework in Frameworks */,
 				3FD5E1A71853A8D00063E10C /* CoreData.framework in Frameworks */,
+				EBC561F81D3AF16000604F01 /* TelerikUI.framework in Frameworks */,
 				3FD5E1A51853A8D00063E10C /* UIKit.framework in Frameworks */,
 				3FD5E1A11853A8D00063E10C /* Foundation.framework in Frameworks */,
 			);
@@ -295,8 +453,14 @@
 		3F18B151187F841A00EC852A /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
-				3FE8069C18F24262006A0993 /* Workout Page */,
-				3F2E5A8818E0D8BA00EE4734 /* Workout Collection Cell */,
+				EBC64C571C02B2C900B33ECA /* WorkoutSelectionViewController.h */,
+				EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */,
+				EB47028C1C063CEE00732BC9 /* Workouts Advanced Search */,
+				EB8AF5521C064B1E00F53B90 /* Workout Browse Selection Options */,
+				EB47028D1C063D6200732BC9 /* Workouts Searched Page */,
+				EB47028E1C063D7300732BC9 /* Workout Detail Page */,
+				EB47028F1C063D9000732BC9 /* Workout Perform Page */,
+				EB47029D1C063E8B00732BC9 /* Custom Workouts */,
 			);
 			name = Workouts;
 			sourceTree = "<group>";
@@ -309,30 +473,10 @@
 			name = "StayHealthy Plist";
 			sourceTree = "<group>";
 		};
-		3F2E5A8418DF4E1400EE4734 /* Exercise Collection Cell */ = {
-			isa = PBXGroup;
-			children = (
-				3F2E5A8518DF4E4E00EE4734 /* ExerciseCollectionCell.h */,
-				3F2E5A8618DF4E4E00EE4734 /* ExerciseCollectionCell.m */,
-			);
-			name = "Exercise Collection Cell";
-			sourceTree = "<group>";
-		};
-		3F2E5A8818E0D8BA00EE4734 /* Workout Collection Cell */ = {
-			isa = PBXGroup;
-			children = (
-				3F2E5A8918E0D90900EE4734 /* workoutCell.h */,
-				3F2E5A8A18E0D90900EE4734 /* workoutCell.m */,
-			);
-			name = "Workout Collection Cell";
-			sourceTree = "<group>";
-		};
 		3F2E5A8E18E11B8600EE4734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EB575B5C1BED47F000A1C798 /* Bolts.framework */,
-				EB575B5D1BED47F000A1C798 /* Parse.framework */,
-				EB3B9E221BE8022500BCEF28 /* StoreKit.framework */,
+				EBC561F71D3AF16000604F01 /* TelerikUI.framework */,
 				3F7D77A619A3081300E00065 /* AudioToolbox.framework */,
 				3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */,
 				3F7D77AC19A3086200E00065 /* Security.framework */,
@@ -353,52 +497,44 @@
 		3F2E5A8F18E11BB500EE4734 /* Bundles */ = {
 			isa = PBXGroup;
 			children = (
+				EB3F4ABF1D329FD0006371CB /* SIAlertView.bundle */,
 				EB3B9E261BE8024300BCEF28 /* libsqlite3.tbd */,
 				EB3B9E241BE8023600BCEF28 /* libz.tbd */,
 				EB52EFF61BCAF05C00F5D7CA /* libsqlite3.0.tbd */,
-				EB52EFF41BCAEFDF00F5D7CA /* SIAlertView.bundle */,
 			);
 			name = Bundles;
 			sourceTree = "<group>";
 		};
-		3F7D77A019A300C000E00065 /* WebViewViewController */ = {
+		3F7D77A019A300C000E00065 /* Web View ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				3F7D77A119A300D600E00065 /* WebViewViewController.h */,
 				3F7D77A219A300D600E00065 /* WebViewViewController.m */,
 			);
-			name = WebViewViewController;
-			sourceTree = "<group>";
-		};
-		3F8BB360198D4AD50098E1A7 /* Common Set Up Operations */ = {
-			isa = PBXGroup;
-			children = (
-				3F8BB361198D4AF70098E1A7 /* CommonSetUpOperations.h */,
-				3F8BB362198D4AF70098E1A7 /* CommonSetUpOperations.m */,
-			);
-			name = "Common Set Up Operations";
+			name = "Web View ViewController";
 			sourceTree = "<group>";
 		};
 		3FC465E21B33A79B0062EBDB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EB701E7C1BE7E827005003B1 /* Welcome Page */,
-				3FF735BB185ABA9900FECDF2 /* Find Exercise */,
+				EB701E7C1BE7E827005003B1 /* Initial Onboarding */,
+				EB77FFD11C48909B00C0DE54 /* Journal */,
+				3FF735BB185ABA9900FECDF2 /* Exercises */,
 				3F18B151187F841A00EC852A /* Workouts */,
-				EBCE12531BD2F632000370CC /* Favorites */,
+				EBCE12531BD2F632000370CC /* Liked */,
 				3FE95E25187A5DB7005DD13D /* Settings */,
-				3FC465E31B33A7A50062EBDB /* Tab Controller */,
+				EB384AFA1CED486C0073A37B /* Utility Tools */,
+				3FC465E31B33A7A50062EBDB /* Navigation */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		3FC465E31B33A7A50062EBDB /* Tab Controller */ = {
+		3FC465E31B33A7A50062EBDB /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				3F63B1A81ABB9F24000CDE06 /* HomeTabBarController.h */,
-				3F63B1A91ABB9F24000CDE06 /* HomeTabBarController.m */,
+				EB384B1F1CF21E680073A37B /* Tab Controller */,
 			);
-			name = "Tab Controller";
+			name = Navigation;
 			sourceTree = "<group>";
 		};
 		3FC465E41B33A7F70062EBDB /* Platform */ = {
@@ -406,12 +542,11 @@
 			children = (
 				EB63EF981B4B442B00EF35A3 /* GlobalDefinitions.h */,
 				3FD5E1BA1853A8D00063E10C /* StayHealthy.xcdatamodeld */,
-				EB737F541B7F84E100EBBDA4 /* Data Managers */,
 				EB737F6E1B80159C00EBBDA4 /* Data Handler */,
+				EB737F541B7F84E100EBBDA4 /* Data Managers */,
 				EB737F581B7F8A1C00EBBDA4 /* Business Objects */,
 				EB737F591B7F8A6700EBBDA4 /* Core Data Managed Objects */,
 				3FC466AF1B3620FF0062EBDB /* Common Utility Methods */,
-				3F8BB360198D4AD50098E1A7 /* Common Set Up Operations */,
 				3FC465E61B33A9BD0062EBDB /* StayHealthy Database */,
 				3F1DE5821B461DAB0052BD64 /* StayHealthy Plist */,
 			);
@@ -430,7 +565,7 @@
 		3FC465E61B33A9BD0062EBDB /* StayHealthy Database */ = {
 			isa = PBXGroup;
 			children = (
-				EB52EF9E1BCAEF0B00F5D7CA /* StayHealthyDatabase.sqlite */,
+				EB692F821D35DE6C00D91409 /* StayHealthyDatabase.sqlite */,
 			);
 			name = "StayHealthy Database";
 			path = "../../../Project Resources/StayHealthy/Databases";
@@ -465,11 +600,11 @@
 		3FC465F61B33B2010062EBDB /* Exercise Searched Page */ = {
 			isa = PBXGroup;
 			children = (
-				EB215A2D1BD8902600A0765A /* Exercise Quick Filter */,
-				EBDC50E91B549F7400E731FB /* Exercise TableView Cell */,
-				3F2E5A8418DF4E1400EE4734 /* Exercise Collection Cell */,
+				EB0853D71CC42E34000DEAC0 /* Exercise Collection View Cell */,
+				EB18FDD61C3570FC0057D8B0 /* Body Zone Collection View Cell */,
 				3F2E5A8118DF388300EE4734 /* ExerciseListController.h */,
 				3F2E5A8218DF388300EE4734 /* ExerciseListController.m */,
+				EBDC50E91B549F7400E731FB /* Exercise TableView Cell */,
 			);
 			name = "Exercise Searched Page";
 			sourceTree = "<group>";
@@ -480,8 +615,6 @@
 				EB63EF991B4B5F6A00EF35A3 /* Custom UITextfield TableViewCell */,
 				EB63EF391B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.h */,
 				EB63EF3A1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m */,
-				3FE41E411ABE0644007522AB /* advancedOptionsSelect.h */,
-				3FE41E421ABE0644007522AB /* advancedOptionsSelect.m */,
 			);
 			name = "Exercise Adanced Search";
 			sourceTree = "<group>";
@@ -524,6 +657,7 @@
 		3FD5E1A81853A8D00063E10C /* StayHealthy */ = {
 			isa = PBXGroup;
 			children = (
+				3FC465EF1B33ACDA0062EBDB /* App Delegate */,
 				3FC465E41B33A7F70062EBDB /* Platform */,
 				3FC465E21B33A79B0062EBDB /* View Controllers */,
 				3FD5E20A1853AE920063E10C /* Storyboard */,
@@ -537,8 +671,8 @@
 		3FD5E1A91853A8D00063E10C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EBFEBF0A1C4427F000F9EA01 /* StayHealthy.entitlements */,
 				EB3ABB341BF00244004AF091 /* StayHealthy-Bridging-Header.h */,
-				3FC465EF1B33ACDA0062EBDB /* App Delegate */,
 				3FC465EE1B33ACCC0062EBDB /* Prefix File */,
 				3FD5E1AA1853A8D00063E10C /* StayHealthy-Info.plist */,
 				3FD5E1AB1853A8D00063E10C /* InfoPlist.strings */,
@@ -550,8 +684,8 @@
 		3FD5E1E11853A99C0063E10C /* Exercise Images */ = {
 			isa = PBXGroup;
 			children = (
-				EB52EFA11BCAEF5800F5D7CA /* Strength */,
-				EB52EFA21BCAEF5800F5D7CA /* Stretching */,
+				EBC561F31D387A3300604F01 /* Strength */,
+				EBC561F41D387A3300604F01 /* Stretching */,
 			);
 			name = "Exercise Images";
 			sourceTree = "<group>";
@@ -559,234 +693,477 @@
 		3FD5E20A1853AE920063E10C /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				EB63EF361B4B3FE200EF35A3 /* Main_Storyboard.storyboard */,
+				EBFC03271BFF6BDC0096178B /* iPad */,
+				EBFC03261BFF6BCF0096178B /* iPhone */,
 			);
 			name = Storyboard;
-			sourceTree = "<group>";
-		};
-		3FE8069C18F24262006A0993 /* Workout Page */ = {
-			isa = PBXGroup;
-			children = (
-				3FE8069D18F24442006A0993 /* WorkoutViewController.h */,
-				3FE8069E18F24442006A0993 /* WorkoutViewController.m */,
-			);
-			name = "Workout Page";
 			sourceTree = "<group>";
 		};
 		3FE95E25187A5DB7005DD13D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				EB575AD21BEC38AC00A1C798 /* Version History */,
-				EB575AD11BEC389F00A1C798 /* Acknowledgments */,
 				3FE95E22187A5DB0005DD13D /* SettingsViewController.h */,
 				3FE95E23187A5DB0005DD13D /* SettingsViewController.m */,
+				EBB8C9791BFA826000347B24 /* About */,
 				EB76703B1B52A96000A188B4 /* Preferences */,
-				EB215A2A1BD7E88E00A0765A /* Acknowledgements */,
-				EB215A2B1BD7E8A700A0765A /* Version History */,
-				3F7D77A019A300C000E00065 /* WebViewViewController */,
-				EB215A2C1BD7E8BE00A0765A /* Privacy and Terms */,
+				EBB8C97E1BFA853A00347B24 /* Feedback Center */,
+				EBB8C97D1BFA853200347B24 /* Help Center */,
+				3F7D77A019A300C000E00065 /* Web View ViewController */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
 		};
-		3FF735BB185ABA9900FECDF2 /* Find Exercise */ = {
+		3FF735BB185ABA9900FECDF2 /* Exercises */ = {
 			isa = PBXGroup;
 			children = (
 				EB737F741B8133D400EBBDA4 /* ExerciseSelectionViewController.h */,
-				EB737F751B8133D400EBBDA4 /* ExerciseSelectionViewController.m */,
+				EBB8C96F1BF90ECA00347B24 /* ExerciseSelectionViewController.m */,
 				3FC465F71B33B2150062EBDB /* Exercise Adanced Search */,
 				3FC465F61B33B2010062EBDB /* Exercise Searched Page */,
 				3FC465F51B33B1E30062EBDB /* Exercise Detail Page */,
+				EBC034D41C4C10400079332D /* Custom Exercises */,
 			);
-			name = "Find Exercise";
+			name = Exercises;
 			sourceTree = "<group>";
 		};
 		3FF9DD641853BA610083A499 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				EB215A2F1BD895DB00A0765A /* MGSwipeTableCell */,
-				EB52EFA61BCAEF8900F5D7CA /* MZTimerLabel */,
-				EB52EFAA1BCAEF9700F5D7CA /* ALCustomColoredAccessory */,
-				EB52EFB51BCAEFBA00F5D7CA /* TSMessages */,
-				EB52EFF01BCAEFCF00F5D7CA /* Reachability */,
-				EB52EFE91BCAEFC800F5D7CA /* SIAlertView */,
+				EB3F4AA21D328D4B006371CB /* LGAlertView */,
+				EB3F4A1E1D328D32006371CB /* TSMessages */,
+				EB3F4A171D328D14006371CB /* SIAlertView */,
+				EB3F49E31D328CF7006371CB /* Reachability */,
+				EB3F49EA1D328D02006371CB /* MZTimerLabel */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
 		};
-		EB215A2A1BD7E88E00A0765A /* Acknowledgements */ = {
+		EB02E7A41CCBA12E0076040C /* Logging */ = {
 			isa = PBXGroup;
 			children = (
+				EB384B201CF227130073A37B /* Exercise Log */,
+				EB384B211CF2271C0073A37B /* Workout Log */,
 			);
-			name = Acknowledgements;
+			name = Logging;
 			sourceTree = "<group>";
 		};
-		EB215A2B1BD7E8A700A0765A /* Version History */ = {
+		EB0853D71CC42E34000DEAC0 /* Exercise Collection View Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EB0853D81CC42E58000DEAC0 /* ExerciseCollectionViewCell.h */,
+				EB0853D91CC42E58000DEAC0 /* ExerciseCollectionViewCell.m */,
 			);
-			name = "Version History";
+			name = "Exercise Collection View Cell";
 			sourceTree = "<group>";
 		};
-		EB215A2C1BD7E8BE00A0765A /* Privacy and Terms */ = {
+		EB18FDD61C3570FC0057D8B0 /* Body Zone Collection View Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EB18FDD71C35712E0057D8B0 /* BodyViewCollectionViewCell.h */,
+				EB18FDD81C35712E0057D8B0 /* BodyViewCollectionViewCell.m */,
 			);
-			name = "Privacy and Terms";
+			name = "Body Zone Collection View Cell";
 			sourceTree = "<group>";
 		};
-		EB215A2D1BD8902600A0765A /* Exercise Quick Filter */ = {
+		EB384AF81CED47760073A37B /* Logging Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				EB701E791BE2DC78005003B1 /* QuickFilterViewController.h */,
-				EB701E7A1BE2DC78005003B1 /* QuickFilterViewController.m */,
+				EB384B0C1CF09D640073A37B /* LoggingPreferencesViewController.h */,
+				EB384B0D1CF09D640073A37B /* LoggingPreferencesViewController.m */,
 			);
-			name = "Exercise Quick Filter";
+			name = "Logging Preferences";
 			sourceTree = "<group>";
 		};
-		EB215A2F1BD895DB00A0765A /* MGSwipeTableCell */ = {
+		EB384AF91CED47880073A37B /* Notification Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				EB215A301BD895DB00A0765A /* MGSwipeButton.h */,
-				EB215A311BD895DB00A0765A /* MGSwipeButton.m */,
-				EB215A321BD895DB00A0765A /* MGSwipeTableCell.h */,
-				EB215A331BD895DB00A0765A /* MGSwipeTableCell.m */,
+				EB384B0F1CF09D970073A37B /* NotificationPreferencesViewController.h */,
+				EB384B101CF09D970073A37B /* NotificationPreferencesViewController.m */,
 			);
-			name = MGSwipeTableCell;
-			path = "../../../Project Resources/StayHealthy/Frameworks/MGSwipeTableCell";
+			name = "Notification Preferences";
 			sourceTree = "<group>";
 		};
-		EB52EFA61BCAEF8900F5D7CA /* MZTimerLabel */ = {
+		EB384AFA1CED486C0073A37B /* Utility Tools */ = {
 			isa = PBXGroup;
 			children = (
-				EB52EFA71BCAEF8900F5D7CA /* MZTimerLabel.h */,
-				EB52EFA81BCAEF8900F5D7CA /* MZTimerLabel.m */,
+				EB384AFE1CED490B0073A37B /* List Selection View */,
+			);
+			name = "Utility Tools";
+			sourceTree = "<group>";
+		};
+		EB384AFE1CED490B0073A37B /* List Selection View */ = {
+			isa = PBXGroup;
+			children = (
+				EB384B011CED590F0073A37B /* Selection Cell */,
+				EB384AFB1CED48F90073A37B /* SelectionViewController.h */,
+				EB384AFC1CED48F90073A37B /* SelectionViewController.m */,
+			);
+			name = "List Selection View";
+			sourceTree = "<group>";
+		};
+		EB384B011CED590F0073A37B /* Selection Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EB384B021CED59F70073A37B /* SelectionTableViewCell.h */,
+				EB384B031CED59F70073A37B /* SelectionTableViewCell.m */,
+			);
+			name = "Selection Cell";
+			sourceTree = "<group>";
+		};
+		EB384B1F1CF21E680073A37B /* Tab Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3F63B1A81ABB9F24000CDE06 /* HomeTabBarController.h */,
+				3F63B1A91ABB9F24000CDE06 /* HomeTabBarController.m */,
+			);
+			name = "Tab Controller";
+			sourceTree = "<group>";
+		};
+		EB384B201CF227130073A37B /* Exercise Log */ = {
+			isa = PBXGroup;
+			children = (
+				EB384B221CF228120073A37B /* ExerciseLogCreationViewController.h */,
+				EB384B231CF228120073A37B /* ExerciseLogCreationViewController.m */,
+			);
+			name = "Exercise Log";
+			sourceTree = "<group>";
+		};
+		EB384B211CF2271C0073A37B /* Workout Log */ = {
+			isa = PBXGroup;
+			children = (
+				EB384B251CF228220073A37B /* WorkoutLogCreationViewController.h */,
+				EB384B261CF228220073A37B /* WorkoutLogCreationViewController.m */,
+			);
+			name = "Workout Log";
+			sourceTree = "<group>";
+		};
+		EB3F49E31D328CF7006371CB /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				EB3F49E41D328CF7006371CB /* Reachability.h */,
+				EB3F49E51D328CF7006371CB /* Reachability.m */,
+			);
+			name = Reachability;
+			path = "../../StayHealthy Resources/Frameworks/Frameworks/Reachability";
+			sourceTree = "<group>";
+		};
+		EB3F49EA1D328D02006371CB /* MZTimerLabel */ = {
+			isa = PBXGroup;
+			children = (
+				EB3F49EB1D328D02006371CB /* MZTimerLabel.h */,
+				EB3F49EC1D328D02006371CB /* MZTimerLabel.m */,
 			);
 			name = MZTimerLabel;
-			path = "../../../Project Resources/StayHealthy/Frameworks/MZTimerLabel/MZTimerLabel";
+			path = "../../StayHealthy Resources/Frameworks/Frameworks/MZTimerLabel/MZTimerLabel";
 			sourceTree = "<group>";
 		};
-		EB52EFAA1BCAEF9700F5D7CA /* ALCustomColoredAccessory */ = {
+		EB3F4A171D328D14006371CB /* SIAlertView */ = {
 			isa = PBXGroup;
 			children = (
-				EB52EFAB1BCAEF9700F5D7CA /* ALCustomColoredAccessory.h */,
-				EB52EFAC1BCAEF9700F5D7CA /* ALCustomColoredAccessory.m */,
+				EB3F4A181D328D14006371CB /* SIAlertView.h */,
+				EB3F4A191D328D14006371CB /* SIAlertView.m */,
+				EB3F4A1A1D328D14006371CB /* UIWindow+SIUtils.h */,
+				EB3F4A1B1D328D14006371CB /* UIWindow+SIUtils.m */,
 			);
-			name = ALCustomColoredAccessory;
-			path = "../../../Project Resources/StayHealthy/Frameworks/ALCustomColoredAccessory";
+			name = SIAlertView;
+			path = "../../StayHealthy Resources/Frameworks/Frameworks/SIAlertView";
 			sourceTree = "<group>";
 		};
-		EB52EFB51BCAEFBA00F5D7CA /* TSMessages */ = {
+		EB3F4A1E1D328D32006371CB /* TSMessages */ = {
 			isa = PBXGroup;
 			children = (
-				EB52EFB61BCAEFBA00F5D7CA /* Classes */,
-				EB52EFB91BCAEFBA00F5D7CA /* HexColors */,
-				EB52EFBC1BCAEFBA00F5D7CA /* Resources */,
-				EB52EFCF1BCAEFBA00F5D7CA /* Views */,
+				EB3F4A1F1D328D32006371CB /* Classes */,
+				EB3F4A221D328D32006371CB /* HexColors */,
+				EB3F4A251D328D32006371CB /* Resources */,
+				EB3F4A381D328D32006371CB /* Views */,
 			);
 			name = TSMessages;
-			path = "../../../Project Resources/StayHealthy/Frameworks/TSMessages";
+			path = "../../StayHealthy Resources/Frameworks/Frameworks/TSMessages";
 			sourceTree = "<group>";
 		};
-		EB52EFB61BCAEFBA00F5D7CA /* Classes */ = {
+		EB3F4A1F1D328D32006371CB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				EB52EFB71BCAEFBA00F5D7CA /* TSMessage.h */,
-				EB52EFB81BCAEFBA00F5D7CA /* TSMessage.m */,
+				EB3F4A201D328D32006371CB /* TSMessage.h */,
+				EB3F4A211D328D32006371CB /* TSMessage.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		EB52EFB91BCAEFBA00F5D7CA /* HexColors */ = {
+		EB3F4A221D328D32006371CB /* HexColors */ = {
 			isa = PBXGroup;
 			children = (
-				EB52EFBA1BCAEFBA00F5D7CA /* HexColor.h */,
-				EB52EFBB1BCAEFBA00F5D7CA /* HexColor.m */,
+				EB3F4A231D328D32006371CB /* HexColor.h */,
+				EB3F4A241D328D32006371CB /* HexColor.m */,
 			);
 			path = HexColors;
 			sourceTree = "<group>";
 		};
-		EB52EFBC1BCAEFBA00F5D7CA /* Resources */ = {
+		EB3F4A251D328D32006371CB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EB52EFBD1BCAEFBA00F5D7CA /* Images */,
-				EB52EFCE1BCAEFBA00F5D7CA /* TSMessagesDefaultDesign.json */,
+				EB3F4A261D328D32006371CB /* Images */,
+				EB3F4A371D328D32006371CB /* TSMessagesDefaultDesign.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		EB52EFBD1BCAEFBA00F5D7CA /* Images */ = {
+		EB3F4A261D328D32006371CB /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				EB52EFBE1BCAEFBA00F5D7CA /* NotificationBackgroundError.png */,
-				EB52EFBF1BCAEFBA00F5D7CA /* NotificationBackgroundError@2x.png */,
-				EB52EFC01BCAEFBA00F5D7CA /* NotificationBackgroundErrorIcon.png */,
-				EB52EFC11BCAEFBA00F5D7CA /* NotificationBackgroundErrorIcon@2x.png */,
-				EB52EFC21BCAEFBA00F5D7CA /* NotificationBackgroundMessage.png */,
-				EB52EFC31BCAEFBA00F5D7CA /* NotificationBackgroundMessage@2x.png */,
-				EB52EFC41BCAEFBA00F5D7CA /* NotificationBackgroundSuccess.png */,
-				EB52EFC51BCAEFBA00F5D7CA /* NotificationBackgroundSuccess@2x.png */,
-				EB52EFC61BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon.png */,
-				EB52EFC71BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon@2x.png */,
-				EB52EFC81BCAEFBA00F5D7CA /* NotificationBackgroundWarning.png */,
-				EB52EFC91BCAEFBA00F5D7CA /* NotificationBackgroundWarning@2x.png */,
-				EB52EFCA1BCAEFBA00F5D7CA /* NotificationBackgroundWarningIcon.png */,
-				EB52EFCB1BCAEFBA00F5D7CA /* NotificationBackgroundWarningIcon@2x.png */,
-				EB52EFCC1BCAEFBA00F5D7CA /* NotificationButtonBackground.png */,
-				EB52EFCD1BCAEFBA00F5D7CA /* NotificationButtonBackground@2x.png */,
+				EB3F4A271D328D32006371CB /* NotificationBackgroundError.png */,
+				EB3F4A281D328D32006371CB /* NotificationBackgroundError@2x.png */,
+				EB3F4A291D328D32006371CB /* NotificationBackgroundErrorIcon.png */,
+				EB3F4A2A1D328D32006371CB /* NotificationBackgroundErrorIcon@2x.png */,
+				EB3F4A2B1D328D32006371CB /* NotificationBackgroundMessage.png */,
+				EB3F4A2C1D328D32006371CB /* NotificationBackgroundMessage@2x.png */,
+				EB3F4A2D1D328D32006371CB /* NotificationBackgroundSuccess.png */,
+				EB3F4A2E1D328D32006371CB /* NotificationBackgroundSuccess@2x.png */,
+				EB3F4A2F1D328D32006371CB /* NotificationBackgroundSuccessIcon.png */,
+				EB3F4A301D328D32006371CB /* NotificationBackgroundSuccessIcon@2x.png */,
+				EB3F4A311D328D32006371CB /* NotificationBackgroundWarning.png */,
+				EB3F4A321D328D32006371CB /* NotificationBackgroundWarning@2x.png */,
+				EB3F4A331D328D32006371CB /* NotificationBackgroundWarningIcon.png */,
+				EB3F4A341D328D32006371CB /* NotificationBackgroundWarningIcon@2x.png */,
+				EB3F4A351D328D32006371CB /* NotificationButtonBackground.png */,
+				EB3F4A361D328D32006371CB /* NotificationButtonBackground@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
 		};
-		EB52EFCF1BCAEFBA00F5D7CA /* Views */ = {
+		EB3F4A381D328D32006371CB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EB52EFD01BCAEFBA00F5D7CA /* TSBlurView.h */,
-				EB52EFD11BCAEFBA00F5D7CA /* TSBlurView.m */,
-				EB52EFD21BCAEFBA00F5D7CA /* TSMessageView.h */,
-				EB52EFD31BCAEFBA00F5D7CA /* TSMessageView.m */,
+				EB3F4A391D328D32006371CB /* TSBlurView.h */,
+				EB3F4A3A1D328D32006371CB /* TSBlurView.m */,
+				EB3F4A3B1D328D32006371CB /* TSMessageView.h */,
+				EB3F4A3C1D328D32006371CB /* TSMessageView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		EB52EFE91BCAEFC800F5D7CA /* SIAlertView */ = {
+		EB3F4AA21D328D4B006371CB /* LGAlertView */ = {
 			isa = PBXGroup;
 			children = (
-				EB52EFEA1BCAEFC800F5D7CA /* SIAlertView.h */,
-				EB52EFEB1BCAEFC800F5D7CA /* SIAlertView.m */,
-				EB52EFEC1BCAEFC800F5D7CA /* UIWindow+SIUtils.h */,
-				EB52EFED1BCAEFC800F5D7CA /* UIWindow+SIUtils.m */,
+				EB3F4AA31D328D4B006371CB /* LGAlertView.h */,
+				EB3F4AA41D328D4B006371CB /* LGAlertView.m */,
+				EB3F4AA51D328D4B006371CB /* LGAlertViewButtonProperties.h */,
+				EB3F4AA61D328D4B006371CB /* LGAlertViewButtonProperties.m */,
+				EB3F4AA71D328D4B006371CB /* LGAlertViewCell.h */,
+				EB3F4AA81D328D4B006371CB /* LGAlertViewCell.m */,
+				EB3F4AA91D328D4B006371CB /* LGAlertViewController.h */,
+				EB3F4AAA1D328D4B006371CB /* LGAlertViewController.m */,
+				EB3F4AAB1D328D4B006371CB /* LGAlertViewShared.h */,
+				EB3F4AAC1D328D4B006371CB /* LGAlertViewTextField.h */,
+				EB3F4AAD1D328D4B006371CB /* LGAlertViewTextField.m */,
+				EB3F4AAE1D328D4B006371CB /* LGAlertViewWindow.h */,
+				EB3F4AAF1D328D4B006371CB /* LGAlertViewWindow.m */,
+				EB3F4AB01D328D4B006371CB /* UIWindow+LGAlertView.h */,
+				EB3F4AB11D328D4B006371CB /* UIWindow+LGAlertView.m */,
 			);
-			name = SIAlertView;
-			path = "../../../Project Resources/StayHealthy/Frameworks/SIAlertView";
+			name = LGAlertView;
+			path = "../../StayHealthy Resources/Frameworks/Frameworks/LGAlertView/LGAlertView";
 			sourceTree = "<group>";
 		};
-		EB52EFF01BCAEFCF00F5D7CA /* Reachability */ = {
+		EB47028C1C063CEE00732BC9 /* Workouts Advanced Search */ = {
 			isa = PBXGroup;
 			children = (
-				EB52EFF11BCAEFCF00F5D7CA /* Reachability.h */,
-				EB52EFF21BCAEFCF00F5D7CA /* Reachability.m */,
+				EB4702931C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.h */,
+				EB4702941C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.m */,
 			);
-			name = Reachability;
-			path = "../../../Project Resources/StayHealthy/Frameworks/Reachability";
+			name = "Workouts Advanced Search";
 			sourceTree = "<group>";
 		};
-		EB575AD11BEC389F00A1C798 /* Acknowledgments */ = {
+		EB47028D1C063D6200732BC9 /* Workouts Searched Page */ = {
 			isa = PBXGroup;
 			children = (
-				EB575AD61BEC391000A1C798 /* AcknowledgmentsViewController.h */,
-				EB575AD71BEC391000A1C798 /* AcknowledgmentsViewController.m */,
+				EB4702901C063DD800732BC9 /* WorkoutListViewController.h */,
+				EB4702911C063DD800732BC9 /* WorkoutListViewController.m */,
+				EBC64C5A1C02C24400B33ECA /* Workout TableView Cell */,
 			);
-			name = Acknowledgments;
+			name = "Workouts Searched Page";
 			sourceTree = "<group>";
 		};
-		EB575AD21BEC38AC00A1C798 /* Version History */ = {
+		EB47028E1C063D7300732BC9 /* Workout Detail Page */ = {
 			isa = PBXGroup;
 			children = (
-				EB575AD31BEC38EC00A1C798 /* VersionHistoryViewController.h */,
-				EB575AD41BEC38EC00A1C798 /* VersionHistoryViewController.m */,
+				EB4702971C063E3100732BC9 /* WorkoutDetailViewController.h */,
+				EB4702981C063E3100732BC9 /* WorkoutDetailViewController.m */,
 			);
-			name = "Version History";
+			name = "Workout Detail Page";
+			sourceTree = "<group>";
+		};
+		EB47028F1C063D9000732BC9 /* Workout Perform Page */ = {
+			isa = PBXGroup;
+			children = (
+				EB47029A1C063E5E00732BC9 /* WorkoutViewController.h */,
+				EB47029B1C063E5E00732BC9 /* WorkoutViewController.m */,
+			);
+			name = "Workout Perform Page";
+			sourceTree = "<group>";
+		};
+		EB47029D1C063E8B00732BC9 /* Custom Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				EBD1EBCA1C2F114F003F005F /* Custom Workout Selection Page */,
+				EB47029F1C063EBD00732BC9 /* WorkoutCreateViewController.h */,
+				EB4702A01C063EBD00732BC9 /* WorkoutCreateViewController.m */,
+			);
+			name = "Custom Workouts";
+			sourceTree = "<group>";
+		};
+		EB52E8181D1EE54D00E4C173 /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				EB52E8381D1EE5BB00E4C173 /* Exercise+CoreDataProperties.h */,
+				EB52E8391D1EE5BB00E4C173 /* Exercise+CoreDataProperties.m */,
+				EB52E83A1D1EE5BB00E4C173 /* Exercise.h */,
+				EB52E83B1D1EE5BB00E4C173 /* Exercise.m */,
+				EB52E8441D1EE5BB00E4C173 /* CustomExercise+CoreDataProperties.h */,
+				EB52E8451D1EE5BB00E4C173 /* CustomExercise+CoreDataProperties.m */,
+				EB52E8461D1EE5BB00E4C173 /* CustomExercise.h */,
+				EB52E8471D1EE5BB00E4C173 /* CustomExercise.m */,
+			);
+			name = Exercises;
+			sourceTree = "<group>";
+		};
+		EB52E8191D1EE55800E4C173 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				EB52E8301D1EE5BB00E4C173 /* WorkoutLog+CoreDataProperties.h */,
+				EB52E8311D1EE5BB00E4C173 /* WorkoutLog+CoreDataProperties.m */,
+				EB52E8321D1EE5BB00E4C173 /* WorkoutLog.h */,
+				EB52E8331D1EE5BB00E4C173 /* WorkoutLog.m */,
+				EB52E8341D1EE5BB00E4C173 /* ExerciseSetLog+CoreDataProperties.h */,
+				EB52E8351D1EE5BB00E4C173 /* ExerciseSetLog+CoreDataProperties.m */,
+				EB52E8361D1EE5BB00E4C173 /* ExerciseSetLog.h */,
+				EB52E8371D1EE5BB00E4C173 /* ExerciseSetLog.m */,
+				EB52E83C1D1EE5BB00E4C173 /* ExerciseLog+CoreDataProperties.h */,
+				EB52E83D1D1EE5BB00E4C173 /* ExerciseLog+CoreDataProperties.m */,
+				EB52E83E1D1EE5BB00E4C173 /* ExerciseLog.h */,
+				EB52E83F1D1EE5BB00E4C173 /* ExerciseLog.m */,
+			);
+			name = Logging;
+			sourceTree = "<group>";
+		};
+		EB52E8561D1EE5C400E4C173 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				EB52E82C1D1EE5BB00E4C173 /* Workout+CoreDataProperties.h */,
+				EB52E82D1D1EE5BB00E4C173 /* Workout+CoreDataProperties.m */,
+				EB52E82E1D1EE5BB00E4C173 /* Workout.h */,
+				EB52E82F1D1EE5BB00E4C173 /* Workout.m */,
+				EB52E8401D1EE5BB00E4C173 /* CustomWorkout+CoreDataProperties.h */,
+				EB52E8411D1EE5BB00E4C173 /* CustomWorkout+CoreDataProperties.m */,
+				EB52E8421D1EE5BB00E4C173 /* CustomWorkout.h */,
+				EB52E8431D1EE5BB00E4C173 /* CustomWorkout.m */,
+			);
+			name = Workout;
+			sourceTree = "<group>";
+		};
+		EB52E85A1D1EF52D00E4C173 /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				EB737F5A1B7F8A9F00EBBDA4 /* SHExercise.h */,
+				EB737F5B1B7F8A9F00EBBDA4 /* SHExercise.m */,
+				EB6492F31CC67CE100FFBB4A /* SHCustomExercise.h */,
+				EB6492F41CC67CE100FFBB4A /* SHCustomExercise.m */,
+			);
+			name = Exercises;
+			sourceTree = "<group>";
+		};
+		EB52E85B1D1EF53C00E4C173 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				EBAF51271CD43EDF005DAE31 /* SHExerciseLog.h */,
+				EBAF51281CD43EDF005DAE31 /* SHExerciseLog.m */,
+				EB52E8571D1EF52600E4C173 /* SHExerciseSetLog.h */,
+				EB52E8581D1EF52600E4C173 /* SHExerciseSetLog.m */,
+				EBAF512A1CD43EEE005DAE31 /* SHWorkoutLog.h */,
+				EBAF512B1CD43EEE005DAE31 /* SHWorkoutLog.m */,
+			);
+			name = Logging;
+			sourceTree = "<group>";
+		};
+		EB52E85C1D1EF54B00E4C173 /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				EB2C4A5F1B89F556005D183A /* SHWorkout.h */,
+				EB2C4A601B89F556005D183A /* SHWorkout.m */,
+				EB2C4A621B89F56A005D183A /* SHCustomWorkout.h */,
+				EB2C4A631B89F56A005D183A /* SHCustomWorkout.m */,
+			);
+			name = Workouts;
+			sourceTree = "<group>";
+		};
+		EB52E85D1D1EF5FD00E4C173 /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				EB737F5D1B7F8B2200EBBDA4 /* ExerciseDataManager.h */,
+				EB737F5E1B7F8B2200EBBDA4 /* ExerciseDataManager.m */,
+				EB6492F61CC683FE00FFBB4A /* CustomExerciseDataManager.h */,
+				EB6492F71CC683FE00FFBB4A /* CustomExerciseDataManager.m */,
+			);
+			name = Exercises;
+			sourceTree = "<group>";
+		};
+		EB52E85E1D1EF60900E4C173 /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				EB2C4A651B89F773005D183A /* WorkoutDataManager.h */,
+				EB2C4A661B89F773005D183A /* WorkoutDataManager.m */,
+				EB2C4A681B89F798005D183A /* CustomWorkoutDataManager.h */,
+				EB2C4A691B89F798005D183A /* CustomWorkoutDataManager.m */,
+			);
+			name = Workouts;
+			sourceTree = "<group>";
+		};
+		EB52E85F1D1EF61100E4C173 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				EBAF513F1CD44613005DAE31 /* ExerciseLogDataManager.h */,
+				EBAF51401CD44613005DAE31 /* ExerciseLogDataManager.m */,
+				EB52E8631D1EF77800E4C173 /* ExerciseSetLogDataManager.h */,
+				EB52E8641D1EF77800E4C173 /* ExerciseSetLogDataManager.m */,
+				EBAF51421CD4462A005DAE31 /* WorkoutLogDataManager.h */,
+				EBAF51431CD4462A005DAE31 /* WorkoutLogDataManager.m */,
+			);
+			name = Logging;
+			sourceTree = "<group>";
+		};
+		EB52E8601D1EF67700E4C173 /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				EB737F671B7F908F00EBBDA4 /* SHExercise+Exercise.h */,
+				EB737F681B7F908F00EBBDA4 /* SHExercise+Exercise.m */,
+				EBAF514B1CD447FD005DAE31 /* SHCustomExercise+CustomExercise.h */,
+				EBAF514C1CD447FD005DAE31 /* SHCustomExercise+CustomExercise.m */,
+			);
+			name = Exercises;
+			sourceTree = "<group>";
+		};
+		EB52E8611D1EF67E00E4C173 /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				EB2C4A6B1B89F8DC005D183A /* SHWorkout+Workout.h */,
+				EB2C4A6C1B89F8DC005D183A /* SHWorkout+Workout.m */,
+				EB2C4A6E1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.h */,
+				EB2C4A6F1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m */,
+			);
+			name = Workouts;
+			sourceTree = "<group>";
+		};
+		EB52E8621D1EF68400E4C173 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				EBAF514E1CD4481A005DAE31 /* SHExerciseLog+ExerciseLog.h */,
+				EBAF514F1CD4481A005DAE31 /* SHExerciseLog+ExerciseLog.m */,
+				EB52E8661D1EF7C000E4C173 /* SHExerciseSetLog+ExerciseSetLog.h */,
+				EB52E8671D1EF7C000E4C173 /* SHExerciseSetLog+ExerciseSetLog.m */,
+				EBAF51511CD44837005DAE31 /* SHWorkoutLog+WorkoutLog.h */,
+				EBAF51521CD44837005DAE31 /* SHWorkoutLog+WorkoutLog.m */,
+			);
+			name = Logging;
 			sourceTree = "<group>";
 		};
 		EB63EF991B4B5F6A00EF35A3 /* Custom UITextfield TableViewCell */ = {
@@ -794,30 +1171,26 @@
 			children = (
 				EB63EF9A1B4B5FA400EF35A3 /* TextFieldTableViewCell.h */,
 				EB63EF9B1B4B5FA400EF35A3 /* TextFieldTableViewCell.m */,
+				EBD1EBC71C2F062B003F005F /* TextViewTableViewCell.h */,
+				EBD1EBC81C2F062B003F005F /* TextViewTableViewCell.m */,
 			);
 			name = "Custom UITextfield TableViewCell";
 			sourceTree = "<group>";
 		};
-		EB701E7C1BE7E827005003B1 /* Welcome Page */ = {
+		EB701E7C1BE7E827005003B1 /* Initial Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				EB701E7D1BE7EA54005003B1 /* WalkThoughOneViewController.h */,
-				EB701E7E1BE7EA54005003B1 /* WalkThoughOneViewController.m */,
-				EB3ABB371BF00325004AF091 /* WelcomePage.swift */,
 			);
-			name = "Welcome Page";
+			name = "Initial Onboarding";
 			sourceTree = "<group>";
 		};
 		EB737F541B7F84E100EBBDA4 /* Data Managers */ = {
 			isa = PBXGroup;
 			children = (
 				EB737F571B7F8A0300EBBDA4 /* DataManagerProtocol.h */,
-				EB737F5D1B7F8B2200EBBDA4 /* ExerciseDataManager.h */,
-				EB737F5E1B7F8B2200EBBDA4 /* ExerciseDataManager.m */,
-				EB2C4A651B89F773005D183A /* WorkoutDataManager.h */,
-				EB2C4A661B89F773005D183A /* WorkoutDataManager.m */,
-				EB2C4A681B89F798005D183A /* CustomWorkoutDataManager.h */,
-				EB2C4A691B89F798005D183A /* CustomWorkoutDataManager.m */,
+				EB52E85D1D1EF5FD00E4C173 /* Exercises */,
+				EB52E85E1D1EF60900E4C173 /* Workouts */,
+				EB52E85F1D1EF61100E4C173 /* Logging */,
 				EB737F601B7F8D2C00EBBDA4 /* Categories */,
 			);
 			name = "Data Managers";
@@ -826,12 +1199,9 @@
 		EB737F581B7F8A1C00EBBDA4 /* Business Objects */ = {
 			isa = PBXGroup;
 			children = (
-				EB737F5A1B7F8A9F00EBBDA4 /* SHExercise.h */,
-				EB737F5B1B7F8A9F00EBBDA4 /* SHExercise.m */,
-				EB2C4A5F1B89F556005D183A /* SHWorkout.h */,
-				EB2C4A601B89F556005D183A /* SHWorkout.m */,
-				EB2C4A621B89F56A005D183A /* SHCustomWorkout.h */,
-				EB2C4A631B89F56A005D183A /* SHCustomWorkout.m */,
+				EB52E85A1D1EF52D00E4C173 /* Exercises */,
+				EB52E85C1D1EF54B00E4C173 /* Workouts */,
+				EB52E85B1D1EF53C00E4C173 /* Logging */,
 			);
 			name = "Business Objects";
 			sourceTree = "<group>";
@@ -839,12 +1209,9 @@
 		EB737F591B7F8A6700EBBDA4 /* Core Data Managed Objects */ = {
 			isa = PBXGroup;
 			children = (
-				EB8ACF881B76DAD0003E91A6 /* Exercise.h */,
-				EB8ACF891B76DAD0003E91A6 /* Exercise.m */,
-				EB2C4A5C1B89F53F005D183A /* Workout.h */,
-				EB2C4A5D1B89F53F005D183A /* Workout.m */,
-				EB2C4A591B89F531005D183A /* CustomWorkout.h */,
-				EB2C4A5A1B89F531005D183A /* CustomWorkout.m */,
+				EB52E8181D1EE54D00E4C173 /* Exercises */,
+				EB52E8561D1EE5C400E4C173 /* Workout */,
+				EB52E8191D1EE55800E4C173 /* Logging */,
 			);
 			name = "Core Data Managed Objects";
 			sourceTree = "<group>";
@@ -852,12 +1219,9 @@
 		EB737F601B7F8D2C00EBBDA4 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				EB737F671B7F908F00EBBDA4 /* SHExercise+Exercise.h */,
-				EB737F681B7F908F00EBBDA4 /* SHExercise+Exercise.m */,
-				EB2C4A6B1B89F8DC005D183A /* SHWorkout+Workout.h */,
-				EB2C4A6C1B89F8DC005D183A /* SHWorkout+Workout.m */,
-				EB2C4A6E1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.h */,
-				EB2C4A6F1B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m */,
+				EB52E8601D1EF67700E4C173 /* Exercises */,
+				EB52E8611D1EF67E00E4C173 /* Workouts */,
+				EB52E8621D1EF68400E4C173 /* Logging */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -867,6 +1231,10 @@
 			children = (
 				EB737F6F1B8015E100EBBDA4 /* SHDataHandler.h */,
 				EB737F701B8015E100EBBDA4 /* SHDataHandler.m */,
+				EB52E8691D209E3900E4C173 /* SHWebServiceHandler.h */,
+				EB52E86A1D209E3900E4C173 /* SHWebServiceHandler.m */,
+				EBF7E7491C49618400E878E9 /* SHDataUtilities.h */,
+				EBF7E74A1C49618400E878E9 /* SHDataUtilities.m */,
 			);
 			name = "Data Handler";
 			sourceTree = "<group>";
@@ -874,19 +1242,97 @@
 		EB76703B1B52A96000A188B4 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				EB9CF6FF1B52AA00006E2984 /* PreferencesTableViewController.h */,
-				EB9CF7001B52AA00006E2984 /* PreferencesTableViewController.m */,
+				EB9CF6FF1B52AA00006E2984 /* PreferencesViewController.h */,
+				EB9CF7001B52AA00006E2984 /* PreferencesViewController.m */,
+				EB384AF81CED47760073A37B /* Logging Preferences */,
+				EB384AF91CED47880073A37B /* Notification Preferences */,
+				EBFE821D1CE6B34A00EF3066 /* Preference UISwitch */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
 		};
-		EBCE12531BD2F632000370CC /* Favorites */ = {
+		EB77FFD11C48909B00C0DE54 /* Journal */ = {
+			isa = PBXGroup;
+			children = (
+				EB0853D41CC42288000DEAC0 /* JournalViewController.h */,
+				EB0853D51CC42288000DEAC0 /* JournalViewController.m */,
+				EB384B131CF0A05D0073A37B /* AddJournalEntryViewController.h */,
+				EB384B141CF0A05D0073A37B /* AddJournalEntryViewController.m */,
+				EB02E7A41CCBA12E0076040C /* Logging */,
+			);
+			name = Journal;
+			sourceTree = "<group>";
+		};
+		EB8AF5521C064B1E00F53B90 /* Workout Browse Selection Options */ = {
+			isa = PBXGroup;
+			children = (
+				EB8AF5531C064B5000F53B90 /* WorkoutBrowseOptionsViewController.h */,
+				EB8AF5541C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m */,
+			);
+			name = "Workout Browse Selection Options";
+			sourceTree = "<group>";
+		};
+		EBB8C9791BFA826000347B24 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				EBB8C97A1BFA827400347B24 /* AboutTableViewController.h */,
+				EBB8C97B1BFA827400347B24 /* AboutTableViewController.m */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		EBB8C97D1BFA853200347B24 /* Help Center */ = {
+			isa = PBXGroup;
+			children = (
+				EBB8C9821BFA856000347B24 /* HelpCenterViewController.h */,
+				EBB8C9831BFA856000347B24 /* HelpCenterViewController.m */,
+			);
+			name = "Help Center";
+			sourceTree = "<group>";
+		};
+		EBB8C97E1BFA853A00347B24 /* Feedback Center */ = {
+			isa = PBXGroup;
+			children = (
+				EBB8C97F1BFA855300347B24 /* FeedbackCenterViewController.h */,
+				EBB8C9801BFA855300347B24 /* FeedbackCenterViewController.m */,
+			);
+			name = "Feedback Center";
+			sourceTree = "<group>";
+		};
+		EBC034D41C4C10400079332D /* Custom Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				EBC034D51C4C10820079332D /* ExerciseCreateViewController.h */,
+				EBC034D61C4C10820079332D /* ExerciseCreateViewController.m */,
+			);
+			name = "Custom Exercises";
+			sourceTree = "<group>";
+		};
+		EBC64C5A1C02C24400B33ECA /* Workout TableView Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EBC64C5B1C02C3CD00B33ECA /* WorkoutTableViewCell.h */,
+				EBC64C5C1C02C3CD00B33ECA /* WorkoutTableViewCell.m */,
+			);
+			name = "Workout TableView Cell";
+			sourceTree = "<group>";
+		};
+		EBCE12531BD2F632000370CC /* Liked */ = {
 			isa = PBXGroup;
 			children = (
 				EBCE12501BD2F62C000370CC /* FavoritesViewController.h */,
 				EBCE12511BD2F62C000370CC /* FavoritesViewController.m */,
 			);
-			name = Favorites;
+			name = Liked;
+			sourceTree = "<group>";
+		};
+		EBD1EBCA1C2F114F003F005F /* Custom Workout Selection Page */ = {
+			isa = PBXGroup;
+			children = (
+				EBD1EBCB1C2F1179003F005F /* CustomWorkoutSelectionViewController.h */,
+				EBD1EBCC1C2F1179003F005F /* CustomWorkoutSelectionViewController.m */,
+			);
+			name = "Custom Workout Selection Page";
 			sourceTree = "<group>";
 		};
 		EBDC50E91B549F7400E731FB /* Exercise TableView Cell */ = {
@@ -896,6 +1342,43 @@
 				EBB432D91B549FEC001B2D40 /* ExerciseTableViewCell.m */,
 			);
 			name = "Exercise TableView Cell";
+			sourceTree = "<group>";
+		};
+		EBFC03261BFF6BCF0096178B /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				EB63EF361B4B3FE200EF35A3 /* iPhone_Storyboard.storyboard */,
+				EBAF51151CD4265A005DAE31 /* Journal.storyboard */,
+				EBAF51171CD4266D005DAE31 /* Exercises.storyboard */,
+				EBAF51191CD42677005DAE31 /* Workouts.storyboard */,
+				EBAF511B1CD42685005DAE31 /* Liked.storyboard */,
+				EBAF51211CD42CC5005DAE31 /* Settings.storyboard */,
+				EB384AFF1CED4C170073A37B /* Utilities.storyboard */,
+				EBAF511F1CD428A8005DAE31 /* Walkthrough.storyboard */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		EBFC03271BFF6BDC0096178B /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				EBBD42EA1C00F2670033F226 /* iPad_Storyboard.storyboard */,
+				EBF7F8691CD959460086C9E0 /* Journal_iPad.storyboard */,
+				EBF7F86B1CD9595A0086C9E0 /* Exercises_iPad.storyboard */,
+				EBF7F86D1CD959690086C9E0 /* Workouts_iPad.storyboard */,
+				EBF7F86F1CD959770086C9E0 /* Liked_Pad.storyboard */,
+				EBF7F8711CD9599F0086C9E0 /* Walkthrough_iPad.storyboard */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		EBFE821D1CE6B34A00EF3066 /* Preference UISwitch */ = {
+			isa = PBXGroup;
+			children = (
+				EBFE821E1CE6B42400EF3066 /* PreferenceSwitch.h */,
+				EBFE821F1CE6B42400EF3066 /* PreferenceSwitch.m */,
+			);
+			name = "Preference UISwitch";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -910,6 +1393,7 @@
 				3FD5E19B1853A8D00063E10C /* Resources */,
 				EB5DBC9D1B794B5F00794300 /* Run Documentation Creation Script */,
 				EB575B141BECFC9F00A1C798 /* Embed Watch Content */,
+				EBB8C9921BFAFA3500347B24 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -927,14 +1411,26 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0500;
-				ORGANIZATIONNAME = "Mark Saunders";
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Robert Saunders";
 				TargetAttributes = {
 					3FD5E19C1853A8D00063E10C = {
-						DevelopmentTeam = MHRF3243WF;
+						DevelopmentTeam = 4Z75KMV7DK;
 						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 0;
+							};
+							com.apple.HealthKit = {
+								enabled = 0;
+							};
 							com.apple.InAppPurchase = {
 								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
 							};
 						};
 					};
@@ -963,31 +1459,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB52EFD91BCAEFBA00F5D7CA /* NotificationBackgroundErrorIcon@2x.png in Resources */,
-				EB52EFE41BCAEFBA00F5D7CA /* NotificationButtonBackground.png in Resources */,
-				EB52EFE11BCAEFBA00F5D7CA /* NotificationBackgroundWarning@2x.png in Resources */,
-				EB52EFE31BCAEFBA00F5D7CA /* NotificationBackgroundWarningIcon@2x.png in Resources */,
-				EB52EFDC1BCAEFBA00F5D7CA /* NotificationBackgroundSuccess.png in Resources */,
+				EBAF511C1CD42685005DAE31 /* Liked.storyboard in Resources */,
+				EB3F4A461D328D32006371CB /* NotificationBackgroundSuccess@2x.png in Resources */,
+				EBAF511A1CD42677005DAE31 /* Workouts.storyboard in Resources */,
+				EB3F4A401D328D32006371CB /* NotificationBackgroundError@2x.png in Resources */,
 				3FDA2D5C19C26699003C2FF4 /* Images.xcassets in Resources */,
-				EB52EFF51BCAEFDF00F5D7CA /* SIAlertView.bundle in Resources */,
-				EB52EFD71BCAEFBA00F5D7CA /* NotificationBackgroundError@2x.png in Resources */,
+				EBAF51221CD42CC5005DAE31 /* Settings.storyboard in Resources */,
+				EB3F4A4B1D328D32006371CB /* NotificationBackgroundWarningIcon.png in Resources */,
+				EB3F4A411D328D32006371CB /* NotificationBackgroundErrorIcon.png in Resources */,
+				EB3F4A4E1D328D32006371CB /* NotificationButtonBackground@2x.png in Resources */,
+				EB3F4A4F1D328D32006371CB /* TSMessagesDefaultDesign.json in Resources */,
+				EB3F4AC01D329FD0006371CB /* SIAlertView.bundle in Resources */,
+				EB3F4A441D328D32006371CB /* NotificationBackgroundMessage@2x.png in Resources */,
+				EB3F4A3F1D328D32006371CB /* NotificationBackgroundError.png in Resources */,
+				EBF7F86A1CD959460086C9E0 /* Journal_iPad.storyboard in Resources */,
+				EB692F831D35DE6C00D91409 /* StayHealthyDatabase.sqlite in Resources */,
+				EB3F4A471D328D32006371CB /* NotificationBackgroundSuccessIcon.png in Resources */,
+				EB3F4A491D328D32006371CB /* NotificationBackgroundWarning.png in Resources */,
+				EBF7F86C1CD9595A0086C9E0 /* Exercises_iPad.storyboard in Resources */,
+				EBAF51181CD4266D005DAE31 /* Exercises.storyboard in Resources */,
+				EB3F4A4C1D328D32006371CB /* NotificationBackgroundWarningIcon@2x.png in Resources */,
+				EB3F4A4A1D328D32006371CB /* NotificationBackgroundWarning@2x.png in Resources */,
+				EBF7F8701CD959770086C9E0 /* Liked_Pad.storyboard in Resources */,
+				EB3F4A481D328D32006371CB /* NotificationBackgroundSuccessIcon@2x.png in Resources */,
+				EB3F4A431D328D32006371CB /* NotificationBackgroundMessage.png in Resources */,
+				EB3F4A421D328D32006371CB /* NotificationBackgroundErrorIcon@2x.png in Resources */,
+				EBC561F61D387A3300604F01 /* Stretching in Resources */,
 				3FD5E1AD1853A8D00063E10C /* InfoPlist.strings in Resources */,
-				EB52EFD81BCAEFBA00F5D7CA /* NotificationBackgroundErrorIcon.png in Resources */,
-				EB52EFDD1BCAEFBA00F5D7CA /* NotificationBackgroundSuccess@2x.png in Resources */,
-				EB52EFE51BCAEFBA00F5D7CA /* NotificationButtonBackground@2x.png in Resources */,
-				EB52EFE21BCAEFBA00F5D7CA /* NotificationBackgroundWarningIcon.png in Resources */,
-				EB52EFDA1BCAEFBA00F5D7CA /* NotificationBackgroundMessage.png in Resources */,
-				EB52EFE61BCAEFBA00F5D7CA /* TSMessagesDefaultDesign.json in Resources */,
-				EB52EFA41BCAEF5800F5D7CA /* Strength in Resources */,
-				EB63EF381B4B3FE200EF35A3 /* Main_Storyboard.storyboard in Resources */,
-				EB52EFD61BCAEFBA00F5D7CA /* NotificationBackgroundError.png in Resources */,
-				EB52EFDF1BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon@2x.png in Resources */,
-				EB52EFA51BCAEF5800F5D7CA /* Stretching in Resources */,
-				EB52EFDB1BCAEFBA00F5D7CA /* NotificationBackgroundMessage@2x.png in Resources */,
+				EBF7F8721CD9599F0086C9E0 /* Walkthrough_iPad.storyboard in Resources */,
+				EBAF51201CD428A8005DAE31 /* Walkthrough.storyboard in Resources */,
+				EB63EF381B4B3FE200EF35A3 /* iPhone_Storyboard.storyboard in Resources */,
+				EB3F4A4D1D328D32006371CB /* NotificationButtonBackground.png in Resources */,
+				EBBD42EB1C00F2670033F226 /* iPad_Storyboard.storyboard in Resources */,
+				EBAF51161CD4265A005DAE31 /* Journal.storyboard in Resources */,
+				EB3F4A451D328D32006371CB /* NotificationBackgroundSuccess.png in Resources */,
 				3F949C1F195A56D800EB4BED /* StayHealthyGeneral.plist in Resources */,
-				EB52EF9F1BCAEF0B00F5D7CA /* StayHealthyDatabase.sqlite in Resources */,
-				EB52EFDE1BCAEFBA00F5D7CA /* NotificationBackgroundSuccessIcon.png in Resources */,
-				EB52EFE01BCAEFBA00F5D7CA /* NotificationBackgroundWarning.png in Resources */,
+				EBF7F86E1CD959690086C9E0 /* Workouts_iPad.storyboard in Resources */,
+				EBC561F51D387A3300604F01 /* Strength in Resources */,
+				EB384B001CED4C170073A37B /* Utilities.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,6 +1517,19 @@
 			shellPath = /bin/sh;
 			shellScript = "#if [ ${CONFIGURATION} == \"Release\" ]; then\nAPPLEDOC_PATH=`which appledoc`\nif [ $APPLEDOC_PATH ]; then\n$APPLEDOC_PATH \\\n--project-name ${PRODUCT_NAME} \\\n--project-company \"Robert Saunders\" \\\n--company-id \"com.redCode\" \\\n--output ${PRODUCT_NAME}Documentation \\\n--keep-intermediate-files \\\n--install-docset \\\n--preprocess-headerdoc \\\n--templates ${PROJECT_DIR}/StayHealthyDocumentationResources/Templates \\\n--index-desc ${PROJECT_DIR}/StayHealthyDocumentationResources/StayHealthyDocumentationIndex.markdown \\\n--no-repeat-first-par \\\n--exit-threshold 2 \\\n${PROJECT_DIR}/${PRODUCT_NAME}\nfi;\n#fi;";
 		};
+		EBB8C9921BFAFA3500347B24 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1015,56 +1537,100 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB575AD51BEC38EC00A1C798 /* VersionHistoryViewController.m in Sources */,
+				EBC034D71C4C10820079332D /* ExerciseCreateViewController.m in Sources */,
+				EB384B271CF228220073A37B /* WorkoutLogCreationViewController.m in Sources */,
+				EB52E8651D1EF77800E4C173 /* ExerciseSetLogDataManager.m in Sources */,
+				EB3F49E61D328CF7006371CB /* Reachability.m in Sources */,
+				EB3F4A3E1D328D32006371CB /* HexColor.m in Sources */,
 				EB737F5C1B7F8A9F00EBBDA4 /* SHExercise.m in Sources */,
 				EB2C4A701B89F8F0005D183A /* SHCustomWorkout+CustomWorkout.m in Sources */,
-				EB215A341BD895DB00A0765A /* MGSwipeButton.m in Sources */,
 				EBB432DA1B549FEC001B2D40 /* ExerciseTableViewCell.m in Sources */,
-				EB701E7B1BE2DC78005003B1 /* QuickFilterViewController.m in Sources */,
-				3F2E5A8718DF4E4E00EE4734 /* ExerciseCollectionCell.m in Sources */,
-				EB52EFE71BCAEFBA00F5D7CA /* TSBlurView.m in Sources */,
-				3FE8069F18F24442006A0993 /* WorkoutViewController.m in Sources */,
+				EB6492F51CC67CE100FFBB4A /* SHCustomExercise.m in Sources */,
+				EB4702951C063E0300732BC9 /* WorkoutsAdvancedSearchViewController.m in Sources */,
+				EBC64C591C02B2C900B33ECA /* WorkoutSelectionViewController.m in Sources */,
 				EB63EF3B1B4B404F00EF35A3 /* ExerciseAdvancedSearchViewController.m in Sources */,
 				EB2C4A671B89F773005D183A /* WorkoutDataManager.m in Sources */,
-				EB52EFEE1BCAEFC800F5D7CA /* SIAlertView.m in Sources */,
+				EB4702A11C063EBD00732BC9 /* WorkoutCreateViewController.m in Sources */,
 				EB2C4A6A1B89F798005D183A /* CustomWorkoutDataManager.m in Sources */,
+				EB52E8531D1EE5BB00E4C173 /* CustomWorkout.m in Sources */,
 				3FE95E24187A5DB0005DD13D /* SettingsViewController.m in Sources */,
+				EB52E8491D1EE5BB00E4C173 /* Workout.m in Sources */,
 				EB737F5F1B7F8B2200EBBDA4 /* ExerciseDataManager.m in Sources */,
+				EB52E86B1D209E3900E4C173 /* SHWebServiceHandler.m in Sources */,
 				3FE103D3186618F200C53D76 /* ExerciseDetailViewController.m in Sources */,
+				EBAF51441CD4462A005DAE31 /* WorkoutLogDataManager.m in Sources */,
 				3F2E5A8318DF388300EE4734 /* ExerciseListController.m in Sources */,
+				EB3F4A061D328D02006371CB /* MZTimerLabel.m in Sources */,
+				EBB8C97C1BFA827400347B24 /* AboutTableViewController.m in Sources */,
 				3FC466B21B3621970062EBDB /* CommonUtilities.m in Sources */,
-				EB52EFAD1BCAEF9700F5D7CA /* ALCustomColoredAccessory.m in Sources */,
-				3F8BB363198D4AF70098E1A7 /* CommonSetUpOperations.m in Sources */,
-				EB52EFD41BCAEFBA00F5D7CA /* TSMessage.m in Sources */,
-				EB575AD81BEC391000A1C798 /* AcknowledgmentsViewController.m in Sources */,
-				EB8ACF8A1B76DAD0003E91A6 /* Exercise.m in Sources */,
-				EB52EFE81BCAEFBA00F5D7CA /* TSMessageView.m in Sources */,
+				EB8AF5551C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m in Sources */,
+				EB384AFD1CED48F90073A37B /* SelectionViewController.m in Sources */,
+				EBAF51411CD44613005DAE31 /* ExerciseLogDataManager.m in Sources */,
+				EBD1EBC91C2F062B003F005F /* TextViewTableViewCell.m in Sources */,
 				3FD5E1B31853A8D00063E10C /* AppDelegate.m in Sources */,
 				EB2C4A6D1B89F8DC005D183A /* SHWorkout+Workout.m in Sources */,
+				EB4702921C063DD800732BC9 /* WorkoutListViewController.m in Sources */,
 				EB63EF9C1B4B5FA400EF35A3 /* TextFieldTableViewCell.m in Sources */,
+				EB52E84D1D1EE5BB00E4C173 /* ExerciseSetLog.m in Sources */,
+				EBFE82201CE6B42400EF3066 /* PreferenceSwitch.m in Sources */,
 				EB737F691B7F908F00EBBDA4 /* SHExercise+Exercise.m in Sources */,
+				EB3F4AB21D328D4B006371CB /* LGAlertView.m in Sources */,
 				EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */,
-				EB2C4A5E1B89F53F005D183A /* Workout.m in Sources */,
 				3F63B1AA1ABB9F24000CDE06 /* HomeTabBarController.m in Sources */,
-				3F2E5A8B18E0D90900EE4734 /* workoutCell.m in Sources */,
-				EB52EFEF1BCAEFC800F5D7CA /* UIWindow+SIUtils.m in Sources */,
+				EBF7E74B1C49618400E878E9 /* SHDataUtilities.m in Sources */,
+				EB384B041CED59F70073A37B /* SelectionTableViewCell.m in Sources */,
+				EB52E84A1D1EE5BB00E4C173 /* WorkoutLog+CoreDataProperties.m in Sources */,
+				EB52E84E1D1EE5BB00E4C173 /* Exercise+CoreDataProperties.m in Sources */,
+				EBB8C9841BFA856000347B24 /* HelpCenterViewController.m in Sources */,
 				EB2C4A641B89F56A005D183A /* SHCustomWorkout.m in Sources */,
-				3FE41E431ABE0644007522AB /* advancedOptionsSelect.m in Sources */,
-				EB3ABB381BF00325004AF091 /* WelcomePage.swift in Sources */,
-				EB52EFD51BCAEFBA00F5D7CA /* HexColor.m in Sources */,
-				EB2C4A5B1B89F531005D183A /* CustomWorkout.m in Sources */,
-				EB215A351BD895DB00A0765A /* MGSwipeTableCell.m in Sources */,
-				EB701E7F1BE7EA54005003B1 /* WalkThoughOneViewController.m in Sources */,
+				EB52E84F1D1EE5BB00E4C173 /* Exercise.m in Sources */,
+				EB52E8501D1EE5BB00E4C173 /* ExerciseLog+CoreDataProperties.m in Sources */,
+				EBAF512C1CD43EEE005DAE31 /* SHWorkoutLog.m in Sources */,
+				EBAF51531CD44837005DAE31 /* SHWorkoutLog+WorkoutLog.m in Sources */,
+				EB52E8511D1EE5BB00E4C173 /* ExerciseLog.m in Sources */,
+				EB3F4A1C1D328D14006371CB /* SIAlertView.m in Sources */,
 				EB2C4A611B89F556005D183A /* SHWorkout.m in Sources */,
+				EB47029C1C063E5E00732BC9 /* WorkoutViewController.m in Sources */,
+				EB3F4AB81D328D4B006371CB /* UIWindow+LGAlertView.m in Sources */,
 				3FD5E1BC1853A8D00063E10C /* StayHealthy.xcdatamodeld in Sources */,
-				EB9CF7011B52AA00006E2984 /* PreferencesTableViewController.m in Sources */,
-				EB737F761B8133D400EBBDA4 /* ExerciseSelectionViewController.m in Sources */,
+				EB18FDD91C35712E0057D8B0 /* BodyViewCollectionViewCell.m in Sources */,
+				EBAF514D1CD447FD005DAE31 /* SHCustomExercise+CustomExercise.m in Sources */,
+				EB384B0E1CF09D640073A37B /* LoggingPreferencesViewController.m in Sources */,
+				EB52E8481D1EE5BB00E4C173 /* Workout+CoreDataProperties.m in Sources */,
+				EB0853DA1CC42E58000DEAC0 /* ExerciseCollectionViewCell.m in Sources */,
+				EB52E84B1D1EE5BB00E4C173 /* WorkoutLog.m in Sources */,
+				EB52E8521D1EE5BB00E4C173 /* CustomWorkout+CoreDataProperties.m in Sources */,
+				EBD1EBCD1C2F1179003F005F /* CustomWorkoutSelectionViewController.m in Sources */,
+				EB6492F81CC683FE00FFBB4A /* CustomExerciseDataManager.m in Sources */,
+				EB52E8591D1EF52600E4C173 /* SHExerciseSetLog.m in Sources */,
+				EB3F4AB51D328D4B006371CB /* LGAlertViewController.m in Sources */,
+				EB9CF7011B52AA00006E2984 /* PreferencesViewController.m in Sources */,
+				EBAF51291CD43EDF005DAE31 /* SHExerciseLog.m in Sources */,
+				EB52E8551D1EE5BB00E4C173 /* CustomExercise.m in Sources */,
 				3FD5E1AF1853A8D00063E10C /* main.m in Sources */,
-				EB52EFA91BCAEF8900F5D7CA /* MZTimerLabel.m in Sources */,
+				EB384B241CF228120073A37B /* ExerciseLogCreationViewController.m in Sources */,
+				EB4702991C063E3100732BC9 /* WorkoutDetailViewController.m in Sources */,
+				EB384B151CF0A05D0073A37B /* AddJournalEntryViewController.m in Sources */,
+				EB0853D61CC42288000DEAC0 /* JournalViewController.m in Sources */,
+				EBC64C5D1C02C3CD00B33ECA /* WorkoutTableViewCell.m in Sources */,
+				EB3F4AB61D328D4B006371CB /* LGAlertViewTextField.m in Sources */,
+				EB384B111CF09D970073A37B /* NotificationPreferencesViewController.m in Sources */,
+				EB3F4A501D328D32006371CB /* TSBlurView.m in Sources */,
+				EBB8C9811BFA855300347B24 /* FeedbackCenterViewController.m in Sources */,
+				EB52E8541D1EE5BB00E4C173 /* CustomExercise+CoreDataProperties.m in Sources */,
+				EBB8C9701BF90ECA00347B24 /* ExerciseSelectionViewController.m in Sources */,
+				EB3F4A511D328D32006371CB /* TSMessageView.m in Sources */,
 				3F7D77A319A300D600E00065 /* WebViewViewController.m in Sources */,
+				EB52E84C1D1EE5BB00E4C173 /* ExerciseSetLog+CoreDataProperties.m in Sources */,
+				EB3F4AB41D328D4B006371CB /* LGAlertViewCell.m in Sources */,
+				EB3F4AB31D328D4B006371CB /* LGAlertViewButtonProperties.m in Sources */,
+				EBAF51501CD4481A005DAE31 /* SHExerciseLog+ExerciseLog.m in Sources */,
 				EB89979E1B7C3DE100904984 /* GlobalDefinitions.h in Sources */,
+				EB3F4A3D1D328D32006371CB /* TSMessage.m in Sources */,
+				EB3F4AB71D328D4B006371CB /* LGAlertViewWindow.m in Sources */,
 				EB737F711B8015E100EBBDA4 /* SHDataHandler.m in Sources */,
-				EB52EFF31BCAEFCF00F5D7CA /* Reachability.m in Sources */,
+				EB52E8681D1EF7C000E4C173 /* SHExerciseSetLog+ExerciseSetLog.m in Sources */,
+				EB3F4A1D1D328D14006371CB /* UIWindow+SIUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1079,12 +1645,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		EB63EF361B4B3FE200EF35A3 /* Main_Storyboard.storyboard */ = {
+		EB63EF361B4B3FE200EF35A3 /* iPhone_Storyboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EB63EF371B4B3FE200EF35A3 /* Base */,
 			);
-			name = Main_Storyboard.storyboard;
+			name = iPhone_Storyboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1094,7 +1660,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1107,10 +1672,11 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mark Saunders (QXM5Q354M5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1140,7 +1706,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1153,7 +1718,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mark Saunders (QXM5Q354M5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
@@ -1183,7 +1748,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Saunders (MHRF3243WF)";
+				CODE_SIGN_ENTITLEMENTS = StayHealthy/StayHealthy.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1234,15 +1801,226 @@
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/Project",
 					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/StayHealthy/Frameworks,
+					and,
+					Bundles/Frameworkos,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/StayHealthy/Frameworks,
+					and,
+					Bundles/Frameworkos,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(PROJECT_DIR)",
+					Resources/Frameworks/Frameworks,
+					"$(PROJECT_DIR)",
+					Resources/Frameworks/Frameworks,
+					"$(PROJECT_DIR)",
+					Resources/Frameworks/Frameworks,
+					"$(PROJECT_DIR)",
+					Resources/Frameworks/Frameworks,
+					"$(PROJECT_DIR)",
+					Resources/Frameworks/Frameworks,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
 				INFOPLIST_FILE = "StayHealthy/StayHealthy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Heap",
+					"$(PROJECT_DIR)",
+					Resources/Frameworks/Frameworks/Heap,
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6dfb8995-dfcc-4b9a-8b8e-d0f7f9eb2e89";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1257,7 +2035,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Saunders (MHRF3243WF)";
+				CODE_SIGN_ENTITLEMENTS = StayHealthy/StayHealthy.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1308,15 +2087,226 @@
 					"$(USER_LIBRARY_DIR)/Mobile",
 					"Documents/com~apple~CloudDocs/Development/Project",
 					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/iOS/Parse",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/Frameworks/Parse,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/StayHealthy/Frameworks,
+					and,
+					Bundles/Frameworkos,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/Project",
+					Resources/StayHealthy/Frameworks,
+					and,
+					Bundles/Frameworkos,
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Development/ProjectResources/StayHealthy/Frameworks/Frameworks",
+					"$(PROJECT_DIR)",
+					Resources/Frameworks/Frameworks,
+					"$(PROJECT_DIR)",
+					Resources/Frameworks/Frameworks,
+					"$(PROJECT_DIR)",
+					Resources/Frameworks/Frameworks,
+					"$(PROJECT_DIR)",
+					Resources/Frameworks/Frameworks,
+					"$(PROJECT_DIR)",
+					Resources/Frameworks/Frameworks,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
 				INFOPLIST_FILE = "StayHealthy/StayHealthy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Heap",
+					"$(PROJECT_DIR)",
+					Resources/Frameworks/Frameworks/Heap,
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6dfb8995-dfcc-4b9a-8b8e-d0f7f9eb2e89";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1350,9 +2340,12 @@
 		3FD5E1BA1853A8D00063E10C /* StayHealthy.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				EB77FFCE1C48854000C0DE54 /* StayHealthy3.xcdatamodel */,
+				EB8864B61C305ED600B98050 /* StayHealthy 3.xcdatamodel */,
+				EBFC03081BFD41080096178B /* StayHealthy2.xcdatamodel */,
 				3FD5E1BB1853A8D00063E10C /* StayHealthy.xcdatamodel */,
 			);
-			currentVersion = 3FD5E1BB1853A8D00063E10C /* StayHealthy.xcdatamodel */;
+			currentVersion = EB77FFCE1C48854000C0DE54 /* StayHealthy3.xcdatamodel */;
 			path = StayHealthy.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

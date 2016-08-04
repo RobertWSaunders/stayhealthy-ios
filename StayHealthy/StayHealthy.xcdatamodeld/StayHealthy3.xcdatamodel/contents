@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15F34" minimumToolsVersion="Automatic">
+    <entity name="CustomExercise" representedClassName="CustomExercise" syncable="YES">
+        <attribute name="customExerciseCreatedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="customExerciseDifferentVariationsIdentifiers" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExerciseDifficulty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExerciseEditedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="customExerciseEquipmentNeeded" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExerciseForceType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExerciseIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExerciseImageFile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExerciseInstructions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExerciseLastViewed" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="customExerciseLiked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="customExerciseLikedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="customExerciseMechanicsType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExerciseName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExercisePrimaryMuscle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExerciseRecommendedReps" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExerciseRecommendedSets" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExerciseSecondaryMuscle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExerciseShortName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customExerciseTimesViewed" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="customExerciseType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CustomWorkout" representedClassName="CustomWorkout" syncable="YES">
+        <attribute name="customWorkoutCreatedDate" optional="YES" attributeType="Date" elementID="dateCreated" syncable="YES"/>
+        <attribute name="customWorkoutDifficulty" optional="YES" attributeType="String" elementID="workoutDifficulty" syncable="YES"/>
+        <attribute name="customWorkoutEditedDate" optional="YES" attributeType="Date" elementID="dateModified" syncable="YES"/>
+        <attribute name="customWorkoutEquipmentNeeded" optional="YES" attributeType="String" elementID="workoutEquipment" syncable="YES"/>
+        <attribute name="customWorkoutEstimatedDuration" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="customWorkoutExerciseIdentifiers" optional="YES" attributeType="String" elementID="workoutExerciseIdentifiers" syncable="YES"/>
+        <attribute name="customWorkoutExerciseTypes" optional="YES" attributeType="String" elementID="workoutExerciseTypes" syncable="YES"/>
+        <attribute name="customWorkoutIdentifier" optional="YES" attributeType="String" elementID="workoutIdentifier" syncable="YES"/>
+        <attribute name="customWorkoutLastDateCompleted" optional="YES" attributeType="Date" elementID="lastDateCompleted" syncable="YES"/>
+        <attribute name="customWorkoutLastViewed" optional="YES" attributeType="Date" elementID="lastViewed" syncable="YES"/>
+        <attribute name="customWorkoutLiked" optional="YES" attributeType="Boolean" elementID="liked" syncable="YES"/>
+        <attribute name="customWorkoutLikedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="customWorkoutName" optional="YES" attributeType="String" elementID="workoutName" syncable="YES"/>
+        <attribute name="customWorkoutShortName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customWorkoutSummary" optional="YES" attributeType="String" elementID="workoutSummary" syncable="YES"/>
+        <attribute name="customWorkoutTargetGender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customWorkoutTargetMuscles" optional="YES" attributeType="String" elementID="workoutTargetMuscles" syncable="YES"/>
+        <attribute name="customWorkoutTargetSports" optional="YES" attributeType="String" elementID="workoutTargetSports" syncable="YES"/>
+        <attribute name="customWorkoutTimesCompleted" optional="YES" attributeType="Integer 16" defaultValueString="0" elementID="timesCompleted" syncable="YES"/>
+        <attribute name="customWorkoutTimesViewed" optional="YES" attributeType="Integer 16" defaultValueString="0" elementID="timesViewed" syncable="YES"/>
+        <attribute name="customWorkoutType" optional="YES" attributeType="String" elementID="workoutType" syncable="YES"/>
+    </entity>
+    <entity name="Exercise" representedClassName="Exercise" elementID="exerciseSets" syncable="YES">
+        <attribute name="exerciseDifferentVariationsExerciseIdentifiers" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseDifficulty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseEditedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="exerciseEquipmentNeeded" optional="YES" attributeType="String" elementID="exerciseEquipment" syncable="YES"/>
+        <attribute name="exerciseForceType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseIdentifier" optional="YES" attributeType="String" elementID="exerciseID" syncable="YES"/>
+        <attribute name="exerciseImageFile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseInstructions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseIsEdited" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="exerciseLastViewed" optional="YES" attributeType="Date" elementID="lastViewed" syncable="YES"/>
+        <attribute name="exerciseLiked" optional="YES" attributeType="Boolean" defaultValueString="0" elementID="liked" syncable="YES"/>
+        <attribute name="exerciseLikedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="exerciseMechanicsType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exercisePrimaryMuscle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseRecommendedReps" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseRecommendedSets" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseSecondaryMuscle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseShortName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseTimesViewed" optional="YES" attributeType="Integer 16" defaultValueString="0" elementID="timesViewed" syncable="YES"/>
+        <attribute name="exerciseType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ExerciseLog" representedClassName="ExerciseLog" syncable="YES">
+        <attribute name="exerciseLogDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="exerciseLogExerciseIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseLogExerciseSetsIdentifiers" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseLogExerciseType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseLogFeeling" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseLogIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseLogNotes" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ExerciseSetLog" representedClassName="ExerciseSetLog" syncable="YES">
+        <attribute name="exerciseSetAverageHeartRate" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="exerciseSetCalories" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseSetDistance" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseSetDuration" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseSetElevation" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="exerciseSetFeeling" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseSetHeight" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseSetIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseSetJumps" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseSetLaps" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseSetPasses" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseSetPunches" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseSetReps" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseSetResistance" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseSetSpeed" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseSetSteps" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseSetWeight" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Workout" representedClassName="Workout" elementID="workoutEquipment" syncable="YES">
+        <attribute name="workoutDifficulty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutEditedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="workoutEquipmentNeeded" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutEstimatedDuration" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="workoutExerciseIdentifiers" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutExerciseTypes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutIdentifier" optional="YES" attributeType="String" elementID="workoutID" syncable="YES"/>
+        <attribute name="workoutIsEdited" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="workoutLastDateCompleted" optional="YES" attributeType="Date" elementID="lastDateCompleted" syncable="YES"/>
+        <attribute name="workoutLastViewed" optional="YES" attributeType="Date" elementID="lastViewed" syncable="YES"/>
+        <attribute name="workoutLiked" optional="YES" attributeType="Boolean" elementID="liked" syncable="YES"/>
+        <attribute name="workoutLikedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="workoutName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutShortName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutSummary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutTargetGender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutTargetMuscles" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutTargetSports" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutTimesCompleted" optional="YES" attributeType="Integer 16" defaultValueString="0" elementID="timesCompleted" syncable="YES"/>
+        <attribute name="workoutTimesViewed" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="workoutType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="WorkoutLog" representedClassName="WorkoutLog" syncable="YES">
+        <attribute name="workoutLogDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="workoutLogEndDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="workoutLogExerciseLogIdentifiers" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutLogFeeling" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutLogIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutLogName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutLogNotes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workoutLogStartDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="workoutLogWorkoutDuration" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="workoutLogWorkoutRestingTime" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CustomExercise" positionX="-54" positionY="135" width="128" height="360"/>
+        <element name="CustomWorkout" positionX="-63" positionY="9" width="128" height="360"/>
+        <element name="Exercise" positionX="-63" positionY="-18" width="128" height="360"/>
+        <element name="ExerciseLog" positionX="-54" positionY="135" width="128" height="150"/>
+        <element name="ExerciseSetLog" positionX="-54" positionY="135" width="128" height="300"/>
+        <element name="Workout" positionX="-54" positionY="108" width="128" height="360"/>
+        <element name="WorkoutLog" positionX="-45" positionY="144" width="128" height="195"/>
+    </elements>
+</model>

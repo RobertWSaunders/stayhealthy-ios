@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-06-20.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import "CommonUtilities.h"
@@ -14,18 +14,31 @@
 #pragma mark - App Specific Constants Tools/Fetches
 /**************************************************/
 
-+ (NSString *) shortAppVersionNumber {
+//Returns the app version number.
++ (NSString *)shortAppVersionNumber {
     return [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
 }
 
-+ (NSString *) appBuildNumber {
+//Returns the app build number.
++ (NSString *)appBuildNumber {
     return [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+}
+
+//Returns the app build number as a hex.
++ (NSString *)hexBuildNumber {
+    return [NSString stringWithFormat:@"%lX", (unsigned long)[[self appBuildNumber] integerValue]];
+}
+
+//Returns the installed database version.
++ (NSString *)installedDatabaseVersion {
+    return @"1.0.0";
 }
 
 /************************************************/
 #pragma mark - Date Formatting Tools/Calculations
 /************************************************/
 
+//Returns date as a string in the format YYYY-mm-dd
 + (NSString *)returnDateInString:(NSDate *)date {
     NSString *dateString;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -34,73 +47,7 @@
     return dateString;
 }
 
-+ (NSMutableArray*)arrayOfDays:(NSDate *)startDate endDate:(NSDate *)endDate {
-    NSMutableArray *arrayOfDaysFill = [[NSMutableArray alloc] init];
-    [arrayOfDaysFill removeAllObjects];
-    // [arrayOfDays addObject:[self dateWithOutTime:startDate]];
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    
-    NSString *startDateString = [dateFormatter stringFromDate:startDate];
-    
-    [arrayOfDaysFill addObject:startDateString];
-    
-    NSDate *nextDate;
-    nextDate = startDate;
-    
-    for (int i = 0; i < [self numberOfDaysBetweenDates:startDate endDate:endDate]-1; i++) {
-        
-        // start by retrieving day, weekday, month and year components for yourDate
-        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        NSDateComponents *todayComponents = [gregorian components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:nextDate];
-        NSInteger theDay = [todayComponents day];
-        NSInteger theMonth = [todayComponents month];
-        NSInteger theYear = [todayComponents year];
-        
-        NSInteger theHour = [todayComponents hour];
-        NSInteger theMinute = [todayComponents minute];
-        NSInteger theSecond = [todayComponents second];
-        
-        // now build a NSDate object for yourDate using these components
-        NSDateComponents *components = [[NSDateComponents alloc] init];
-        [components setDay:theDay];
-        [components setMonth:theMonth];
-        [components setYear:theYear];
-        [components setHour:theHour];
-        [components setMinute:theMinute];
-        [components setSecond:theSecond];
-        
-        NSDate *thisDate = [gregorian dateFromComponents:components];
-        
-        // now build a NSDate object for the next day
-        NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-        [offsetComponents setDay:1];
-        nextDate = [gregorian dateByAddingComponents:offsetComponents toDate:thisDate options:0];
-        
-        NSString *nextDateString = [dateFormatter stringFromDate:nextDate];
-        
-        [arrayOfDaysFill addObject:nextDateString];
-    }
-    return arrayOfDaysFill;
-}
-
-+ (NSInteger)numberOfDaysBetweenDates:(NSDate *)startDate endDate:(NSDate *)endDate {
-    NSDate *fromDate;
-    NSDate *toDate;
-    
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    
-    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate
-                 interval:NULL forDate:startDate];
-    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate
-                 interval:NULL forDate:endDate];
-    
-    NSDateComponents *difference = [calendar components:NSDayCalendarUnit
-                                               fromDate:fromDate toDate:toDate options:0];
-    return [difference day];
-}
-
+//Returns data as a string in a nice format.
 + (NSString *)returnReadableDate:(NSDate *)date {
     NSString *dateToShow;
     
@@ -153,6 +100,7 @@
     return finalDateString;
 }
 
+//Returns time as a strign in a nice format.
 + (NSString *)returnReadableTime:(NSDate *)date {
     NSString *timeText;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -161,8 +109,8 @@
     return timeText;
 }
 
-+ (NSString *)calculateTime:(NSDate *)createdDate
-{
+//Returns the time from a date and returns a nice string for display.
++ (NSString *)calculateTime:(NSDate *)createdDate {
     NSString *value;
     
     if (createdDate != nil)
@@ -171,11 +119,11 @@
         NSDate *currentDate             = [[NSDate alloc] init];
         currentDate                     = [self resetTime:currentDate];
         NSCalendar *gregorian           = [NSCalendar currentCalendar];
-        NSUInteger unitFlags            = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit;
+        NSUInteger unitFlags            = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekOfYear | NSCalendarUnitDay | NSCalendarUnitHour;
         NSDateComponents *components    = [gregorian components:unitFlags fromDate:createdDate toDate:currentDate options:0];
         
         NSInteger months                = [components month];
-        NSInteger weeks                 = [components week];
+        NSInteger weeks                 = [components weekOfYear];
         NSInteger days                  = [components day];
         NSInteger year                  = [components year];
         
@@ -221,8 +169,8 @@
     return value;
 }
 
-+ (NSDate *) resetTime:(NSDate *)date
-{
+//Resets the time for a date.
++ (NSDate *)resetTime:(NSDate *)date {
     NSCalendar *gregorian           = [NSCalendar currentCalendar];
     NSDateComponents *components    = [gregorian components: NSUIntegerMax fromDate: date];
     
@@ -236,6 +184,7 @@
     return date;
 }
 
+//Adds a number of hours to a date.
 + (NSDate *)addHourToDate:(NSDate *)date hoursToAdd:(NSInteger)numHours {
     NSDate *hourAddedDate;
     
@@ -248,10 +197,11 @@
     return hourAddedDate;
 }
 
+//Rounds a dates minutes to the nearest 5 minutes.
 + (NSDate *)dateWithRoundedMinutes:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
-    NSDateComponents *componentsForCurrentDay = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit| NSYearCalendarUnit) fromDate:date];
+    NSDateComponents *componentsForCurrentDay = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitYear) fromDate:date];
     
     NSInteger hour = [componentsForCurrentDay hour];
     NSInteger day  = [componentsForCurrentDay day];
@@ -260,7 +210,7 @@
     NSInteger year  = [componentsForCurrentDay year];
     
     //Round today's date to the nearest 5 minutes.
-    NSDateComponents *dateTime = [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:date];
+    NSDateComponents *dateTime = [[NSCalendar currentCalendar] components:NSCalendarUnitHour | NSCalendarUnitMinute fromDate:date];
     NSInteger minutes = [dateTime minute];
     float minuteUnit = ceil((float) minutes / 5.0);
     minutes = minuteUnit * 5.0;
@@ -274,19 +224,107 @@
     return [calendar dateFromComponents:dateTime];
 }
 
+//Remove the time aspect from a date.
 + (NSDate *)dateWithOutTime:(NSDate *)dateWithTime {
     if(dateWithTime == nil )
         dateWithTime = [NSDate date];
     
-    NSDateComponents* comps = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:dateWithTime];
+    NSDateComponents* comps = [[NSCalendar currentCalendar] components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:dateWithTime];
     
     return [[NSCalendar currentCalendar] dateFromComponents:comps];
+}
+
+//Returns the number of days between two dates.
++ (NSInteger)numberOfDaysBetweenDates:(NSDate *)startDate endDate:(NSDate *)endDate {
+    NSDate *fromDate;
+    NSDate *toDate;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate
+                 interval:NULL forDate:startDate];
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate
+                 interval:NULL forDate:endDate];
+    
+    NSDateComponents *difference = [calendar components:NSCalendarUnitDay
+                                               fromDate:fromDate toDate:toDate options:0];
+    return [difference day];
+}
+
+//Returns an array of dates between two dates.
++ (NSMutableArray *)arrayOfDays:(NSDate *)startDate endDate:(NSDate *)endDate {
+    NSMutableArray *arrayOfDaysFill = [[NSMutableArray alloc] init];
+    [arrayOfDaysFill removeAllObjects];
+    // [arrayOfDays addObject:[self dateWithOutTime:startDate]];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *startDateString = [dateFormatter stringFromDate:startDate];
+    
+    [arrayOfDaysFill addObject:startDateString];
+    
+    NSDate *nextDate;
+    nextDate = startDate;
+    
+    for (int i = 0; i < [self numberOfDaysBetweenDates:startDate endDate:endDate]-1; i++) {
+        
+        // start by retrieving day, weekday, month and year components for yourDate
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSDateComponents *todayComponents = [gregorian components:(NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:nextDate];
+        NSInteger theDay = [todayComponents day];
+        NSInteger theMonth = [todayComponents month];
+        NSInteger theYear = [todayComponents year];
+        
+        NSInteger theHour = [todayComponents hour];
+        NSInteger theMinute = [todayComponents minute];
+        NSInteger theSecond = [todayComponents second];
+        
+        // now build a NSDate object for yourDate using these components
+        NSDateComponents *components = [[NSDateComponents alloc] init];
+        [components setDay:theDay];
+        [components setMonth:theMonth];
+        [components setYear:theYear];
+        [components setHour:theHour];
+        [components setMinute:theMinute];
+        [components setSecond:theSecond];
+        
+        NSDate *thisDate = [gregorian dateFromComponents:components];
+        
+        // now build a NSDate object for the next day
+        NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+        [offsetComponents setDay:1];
+        nextDate = [gregorian dateByAddingComponents:offsetComponents toDate:thisDate options:0];
+        
+        NSString *nextDateString = [dateFormatter stringFromDate:nextDate];
+        
+        [arrayOfDaysFill addObject:nextDateString];
+    }
+    return arrayOfDaysFill;
+}
+
+//Checks if a date exists given the passed information.
++ (BOOL)dateExistsYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day {
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    
+    [components setYear:year];
+    [components setMonth:month];
+    [components setDay:day];
+    
+    NSDate *date    = [[NSCalendar currentCalendar] dateFromComponents:components];
+    components      = [[NSCalendar currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:date];
+    
+    if([components year] != year || [components month] != month || [components day] != day)
+        return NO;
+    else
+        return YES;
 }
 
 /************************************/
 #pragma mark - User Information Tools
 /************************************/
 
+//Returns the first name from a full name.
 + (NSString *)firstNameFromFullName:(NSString *)name {
     // find the location of the first space
     NSRange r = [name rangeOfString:@" "];
@@ -299,6 +337,7 @@
     return [name substringToIndex:r.location];
 }
 
+//Returns the last name from a full name.
 + (NSString *)lastNameFromFullName:(NSString *)name {
     // find the location of the first space
     NSRange r = [name rangeOfString:@" "];
@@ -315,26 +354,23 @@
 #pragma mark - Validation Tools
 /*******************************/
 
-+ (Boolean)emailIsValid:(NSString *)strEmail {
-    // first look for an "@" symbol
-    NSRange rangeAt = [strEmail rangeOfString:@"@"];
-    if(rangeAt.location != NSNotFound) {
-        // now make sure there's a "." after the "@" symbol
-        NSString *strAfterAt = [strEmail substringFromIndex:rangeAt.location];
-        NSRange rangeDot = [strAfterAt rangeOfString:@"."];
-        if(rangeDot.location != NSNotFound) {
-            if(![strAfterAt hasSuffix:@"."]) {
-                return YES;
-            }
-        }
-    }
-    return NO;
-}
 
 /***************************/
 #pragma mark - Useful Tools
 /***************************/
 
+//Checks if the device has a internet connection.
++ (BOOL)isInternetConnection {
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+//Returns a unique identifier.
 + (NSString *) returnUniqueID {
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
@@ -342,6 +378,7 @@
     return (__bridge NSString *)string;
 }
 
+//Returns a string of concatenated array items given the separator.
 + (NSString *)concatenateArrayItems:(NSArray *)arrayItems separator:(NSString *)separator {
     NSString *keyList;
     
@@ -365,37 +402,220 @@
 #pragma mark - StayHealthy Specific Tools
 /****************************************/
 
-+ (NSDictionary *)returnGeneralPlist {
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"StayHealthyGeneral" ofType:@"plist"];
-    return [[NSDictionary alloc] initWithContentsOfFile:plistPath];;
+/*---------------------------*/
+#pragma mark - General Tools
+/*---------------------------*/
+
+//Sets the tint color throughout the application.
++ (void)setGlobalTintColor:(UIColor *)color {
+    //Set the appearance of the navigation bar. Set the text color to EXERCISES_COLOR constant.
+    //Set the font of the navigation bar to the STAYHEALTHY_NABBARFONT
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                           color,
+                                                           NSForegroundColorAttributeName,
+                                                           NAVIGATIONBAR_TITLE_FONT,
+                                                           NSFontAttributeName,
+                                                           nil]];
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+                                                           NSFontAttributeName:NAVIGATIONBAR_BUTTON_FONT,
+                                                           NSForegroundColorAttributeName:color
+                                                           } forState:UIControlStateNormal];
+    
+    [[UINavigationBar appearance] setBarTintColor:WHITE_COLOR];
+    [[UINavigationBar appearance] setTintColor:color];
+    //Set the tint color of all segmented controls.
+    [[UISegmentedControl appearance] setTintColor:color];
+    //Set the tint color for all UIToolbars.
+    [[UIToolbar appearance] setTintColor:color];
+    [[UIToolbar appearance] setBarTintColor:WHITE_COLOR];
+    [[UITabBar appearance] setBarTintColor:WHITE_COLOR];
+    
+    UIFont *font = [UIFont systemFontOfSize:13.0f weight:UIFontWeightMedium];
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
+                                                           forKey:NSFontAttributeName];
+    
+    [[UISegmentedControl appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
-+ (NSString *)createExerciseQuery:(NSString *)table muscle:(NSString *)muscle {
-
-    muscle = [self convertMuscleNameToDatabaseStandard:muscle];
+//Shows the custom activity indicator in the passed image view.
++ (void)showCustomActivityIndicator:(UIImageView*)spinnerImage {
+    //Create the first status image and the indicator view
+    spinnerImage.image = [UIImage imageNamed:@"Spinner1.png"];
     
-    NSString *query = @"";
-    if (muscle != nil) {
-        query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exercisePrimaryMuscle LIKE '%@' ORDER BY exerciseName COLLATE NOCASE",table,muscle];
+    //Add more images which will be used for the animation
+    spinnerImage.animationImages = [NSArray arrayWithObjects:
+                                    [UIImage imageNamed:@"Spinner1.png"],
+                                    [UIImage imageNamed:@"Spinner2.png"],
+                                    [UIImage imageNamed:@"Spinner3.png"],
+                                    [UIImage imageNamed:@"Spinner4.png"],
+                                    [UIImage imageNamed:@"Spinner5.png"],
+                                    [UIImage imageNamed:@"Spinner6.png"],
+                                    [UIImage imageNamed:@"Spinner7.png"],
+                                    [UIImage imageNamed:@"Spinner8.png"],
+                                    nil];
+    
+    spinnerImage.animationDuration = 0.8;
+    
+    //Start the animation
+    [spinnerImage startAnimating];
+    
+    spinnerImage.hidden = NO;
+}
+
+//Loads an image in the background.
++ (void)loadImageOnBackgroundThread:(UIImageView *)imageView image:(UIImage *)image {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+        dispatch_sync(dispatch_get_main_queue(), ^(void) {
+            imageView.image = image;
+            /*imageView.alpha = 0.0;
+             [UIView animateWithDuration:0.8 animations:^{
+             imageView.alpha = 1.0;
+             }];
+             */
+        });
+    });
+}
+
+//Returns a color given the module.
++ (UIColor *)returnModuleColor:(modules)module {
+    if (module == journal) {
+        return JOURNAL_COLOR;
+    }
+    else if (module == exercises) {
+        return EXERCISES_COLOR;
+    }
+    else if (module == workouts) {
+        return WORKOUTS_COLOR;
     }
     else {
-        query = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY exerciseName COLLATE NOCASE",table];
-        
+        return LIKED_COLOR;
     }
-    return query;
 }
 
-+ (NSString *)createExerciseQueryFromExerciseIds:(NSMutableArray *)exerciseIDs table:(NSString*)table {
+//Returns the path to the database.
++ (NSString *)returnDatabasePath:(NSString*)databaseName {
+    NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString* dbPath = [documentsPath stringByAppendingPathComponent:databaseName];
     
-    NSString *exerciseIdentifiers = [exerciseIDs componentsJoinedByString:@","];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
     
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exerciseIdentifier IN (%@)",table,exerciseIdentifiers];
-    
-    return query;
+    if (!fileExists) {
+        LogDataError(@"Database was not found in documents directory...");
+        NSString *dbSourcePath = [[[NSBundle mainBundle] resourcePath  ]stringByAppendingPathComponent:databaseName];
+        [[NSFileManager defaultManager] copyItemAtPath:dbSourcePath toPath:dbPath error:nil];
+        LogDataSuccess(@"Database was succesfully copied to documents directory...");
+    }
+    return dbPath;
 }
 
+/*------------------------------------------*/
+#pragma mark - View Controller Styling Tools
+/*------------------------------------------*/
 
-+(NSString*)convertMuscleNameToDatabaseStandard:(NSString*)muscle {
+//Styles square collection view cells in their normal state.
++ (void)styleSquareCollectionViewCell:(UICollectionViewCell*)collectionViewCell {
+    collectionViewCell.layer.masksToBounds = NO;
+    collectionViewCell.layer.borderColor = LIGHT_GRAY_COLOR.CGColor;
+    collectionViewCell.layer.borderWidth = 0.50f;
+}
+
+//Styles square collection view cells in their selected state.
++ (void)styleSquareCollectionViewCellSelected:(UICollectionViewCell*)collectionViewCell {
+    collectionViewCell.layer.masksToBounds = NO;
+    collectionViewCell.layer.borderColor = EXERCISES_COLOR.CGColor;
+    collectionViewCell.layer.borderWidth = 2.0f;
+}
+
+//Shows a message on the screen.
++ (void)showMessage:(NSString *)titleText message:(NSString *)message viewController:(UIViewController *)controllerForDisplay canBeDismissedByUser:(BOOL)canDismiss duration:(int)duration {
+    [TSMessage showNotificationInViewController:controllerForDisplay
+                                          title:titleText
+                                       subtitle:message
+                                          image:nil
+                                           type:TSMessageNotificationTypeMessage
+                                       duration:duration
+                                       callback:nil
+                                    buttonTitle:nil
+                                 buttonCallback:nil
+                                     atPosition:TSMessageNotificationPositionTop
+                            canBeDismisedByUser:canDismiss];
+}
+
+//Shows the initial tutorial TSMessage.
++ (void)showFirstViewMessage:(NSString *)key viewController:(UIViewController *)view message:(NSString *)message {
+    //If the user has allowed tutorial messages from the settings page, perform the tutorial message. By default the key is NO, which is actually YES.
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:PREFERENCE_TUTORIAL_MESSAGES]) {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:key])
+        {
+            [self showMessage:nil message:message viewController:view canBeDismissedByUser:YES duration:1000];
+        }
+    }
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+//Styles alert views.
++ (void)styleAlertView:(UIColor*)color {
+    //Style the SIAlertView asking what exercise type.
+    [[SIAlertView appearance] setTitleFont:alertViewTitleFont];
+    [[SIAlertView appearance] setTitleColor:color];
+    [[SIAlertView appearance] setMessageColor:color];
+    [[SIAlertView appearance] setCornerRadius:4];
+    [[SIAlertView appearance] setShadowRadius:0];
+    [[SIAlertView appearance] setViewBackgroundColor:WHITE_COLOR];
+    [[SIAlertView appearance] setButtonColor:color];
+    [[SIAlertView appearance] setDestructiveButtonColor:color];
+    [[SIAlertView appearance] setCancelButtonColor:color];
+    [[SIAlertView appearance] setButtonFont:alertViewButtonFont];
+    [[SIAlertView appearance] setMessageFont:alertViewMessageFont];
+    [[SIAlertView appearance] setMessageColor:LIGHT_GRAY_COLOR];
+}
+
+//Sets the selected background color for UITableViews.
++ (UIView *)tableViewSelectionColorSet:(UITableViewCell *)cell {
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = WHITE_COLOR;
+    bgColorView.layer.masksToBounds = YES;
+    [cell setSelectedBackgroundView:bgColorView];
+    return bgColorView;
+}
+
+//Draws the view for the TableView header.
++ (UIView *)drawViewForTableViewHeader:(UITableView*)tableView {
+    //Create a view for the header.
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
+    [view setBackgroundColor:WHITE_COLOR];
+    return view;
+}
+
+//Returns the color based off of the difficulty passed to it.
++ (UIColor *)determineDifficultyColor:(NSString *)difficulty {
+    if ([difficulty isEqualToString:@"Easy"])
+        return EASY_GREEN_COLOR;
+    else if ([difficulty isEqualToString:@"Intermediate"])
+        return INTERMEDIATE_BLUE_COLOR;
+    else if ([difficulty isEqualToString:@"Hard"])
+        return HARD_RED_COLOR;
+    else if ([difficulty isEqualToString:@"Very Hard"])
+        return [UIColor blackColor];
+    return LIGHT_GRAY_COLOR;
+}
+
+/*---------------------------*/
+#pragma mark - Journal Tools
+/*---------------------------*/
+
+
+
+/*---------------------------*/
+#pragma mark - Exercises Tools
+/*---------------------------*/
+
+//Converts a muscle string to the muscle name in the database.
++ (NSString *)convertMuscleNameToDatabaseStandard:(NSString*)muscle {
     if ([muscle isEqualToString:@"Abdominal"]) {
         muscle = @"Abdominals";
     }
@@ -431,58 +651,98 @@
     return muscle;
 }
 
-+(BOOL) dateExistsYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day
-{
-    NSDateComponents *components = [[NSDateComponents alloc] init];
-    
-    [components setYear:year];
-    [components setMonth:month];
-    [components setDay:day];
-    
-    NSDate *date    = [[NSCalendar currentCalendar] dateFromComponents:components];
-    components      = [[NSCalendar currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:date];
-    
-    if([components year] != year || [components month] != month || [components day] != day)
-        return NO;
-    else
-        return YES;
+//Checks if a passed exercises is in the passed array.
++ (BOOL)exerciseInArray:(NSMutableArray*)exerciseArray {
+    return NO;
 }
 
-//Returns the path to the database.
-+(NSString *)returnDatabasePath:(NSString*)databaseName {
-    NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString* dbPath = [documentsPath stringByAppendingPathComponent:databaseName];
-    
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
-    
-    if (!fileExists) {
-        NSString *dbSourcePath = [[[NSBundle mainBundle] resourcePath  ]stringByAppendingPathComponent:databaseName];
-        [[NSFileManager defaultManager] copyItemAtPath:dbSourcePath toPath:dbPath error:nil];
-        NSLog(@"Couldn't Not Find Database!");
-    }
-    return dbPath;
-}
-
-+ (SHExercise *)getRandomExercise:(exerciseTypes)exerciseType muscle:(NSString*)muscle {
-    
-    NSString *query;
-    
-    muscle = [self convertMuscleNameToDatabaseStandard:muscle];
-    
-    if (exerciseType == strength) {
-        query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exercisePrimaryMuscle LIKE '%@' ORDER BY RANDOM() LIMIT 1",STRENGTH_DB_TABLENAME,muscle];
-    }
-    
-    else {
-        query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE exercisePrimaryMuscle LIKE '%@' ORDER BY RANDOM() LIMIT 1",STRETCHING_DB_TABLENAME,muscle];
-    }
-    
-    NSMutableArray *array = [[SHDataHandler getInstance] performExerciseStatement:query];
-    
-    if (array.count > 0)
-        return [array objectAtIndex:0];
-    
+//Deletes the passed exercises from the passed array.
++ (NSMutableArray*)deleteSelectedExercise:(NSMutableArray*)exerciseArray exercise:(id *)exercise {
     return nil;
+   }
+
+/*---------------------------*/
+#pragma mark - Workout Tools
+/*---------------------------*/
+
+//Returns the count of exercises in a workout.
++ (NSUInteger)numExercisesInWorkout:(id *)workout {
+    return nil;
+}
+
+/*------------------------*/
+#pragma mark - Liked Tools
+/*------------------------*/
+
+/*-----------------------------------*/
+#pragma mark - User Preferences Tools
+/*-----------------------------------*/
+
+//Checks if it is the users first launch.
++ (BOOL)isUsersFirstLaunch {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_FIRST_LAUNCH]) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
+//Checks a users preference, bool preferences only.
++ (BOOL)checkUserPreference:(NSString *)key {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:key]) {
+        return YES;
+    }
+    else {
+        return NO;
+     }
+}
+
+//Updates a users preference key with their selection.
++ (void)updateBoolForKey:(NSString *)key boolValue:(BOOL)boolValue {
+    [[NSUserDefaults standardUserDefaults] setBool:boolValue forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PREFERENCE_CHANGE_NOTIFICATION object:nil];
+}
+
+//Updates a users preference key string value.
++ (void)updateValueForKey:(NSString *)key stringValue:(NSString*)stringValue {
+    [[NSUserDefaults standardUserDefaults] setObject:stringValue forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PREFERENCE_CHANGE_NOTIFICATION object:nil];
+}
+
+//Resets all of the users preferences to our suggested preferences.
++ (void)resetUserPreferences {
+    
+    //General Preferences
+    [self updateBoolForKey:PREFERENCE_TUTORIAL_MESSAGES boolValue:YES];
+    [self updateBoolForKey:PREFERENCE_AUTO_DATABASE_UPDATES boolValue:YES];
+    [self updateBoolForKey:PREFERENCE_LIST_VIEW boolValue:NO];
+    [self updateValueForKey:PREFERENCE_DEFAULT_LAUNCH_MODULE stringValue:@"Journal"];
+    
+    
+    [self updateBoolForKey:PREFERENCE_CALENDAR_WEEKS boolValue:NO];
+    [self updateBoolForKey:PREFERENCE_HIGHLIGHT_WEEKENDS boolValue:YES];
+    [self updateBoolForKey:PREFERENCE_SIMPLE_MODE boolValue:NO];
+    [self updateValueForKey:PREFERENCE_CALENDAR_VIEW stringValue:@"Month"];
+    [self updateValueForKey:PREFERENCE_CALENDAR_SELECTED_DATE stringValue:@"Today"];
+    
+    [self updateBoolForKey:PREFERENCE_INTELLIGENT_MODE boolValue:YES];
+    [self updateBoolForKey:PREFERENCE_ALWAYS_FOCUSED boolValue:NO];
+    [self updateBoolForKey:PREFERENCE_SCIENTIFIC_NAMES boolValue:NO];
+    [self updateValueForKey:PREFERENCE_EXERCISES_RECENTS_SHOWN stringValue:@"25"];
+    [self updateValueForKey:PREFERENCE_DEFAULT_EXERCISES_VIEW stringValue:@"Body Zone"];
+
+    [self updateBoolForKey:PREFERENCE_WORKOUT_SECTIONS boolValue:YES];
+    [self updateValueForKey:PREFERENCE_DEFAULT_WORKOUTS_VIEW stringValue:@"Categories"];
+    
+    [self updateValueForKey:PREFERENCE_DEFAULT_LIKED_VIEW stringValue:@"Exercises"];
+}
+
++ (NSDictionary *)returnGeneralPlist {
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"StayHealthyGeneral" ofType:@"plist"];
+    return [[NSDictionary alloc] initWithContentsOfFile:plistPath];
 }
 
 @end

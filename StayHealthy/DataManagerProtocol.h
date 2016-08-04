@@ -6,12 +6,25 @@
 
 //Exercise Entity Name
 #define EXERCISE_ENTITY_NAME             @"Exercise"
+//Custom Exercise Entity Name
+#define CUSTOM_EXERCISE_ENTITY_NAME      @"CustomExercise"
+//Exercise Log Entity Name
+#define EXERCISE_LOG_ENTITY_NAME         @"ExerciseLog"
+//Exercise Set Log Entity Name
+#define EXERCISE_SET_LOG_ENTITY_NAME     @"ExerciseSetLog"
+//Workout Log Entity Name
+#define WORKOUT_LOG_ENTITY_NAME          @"WorkoutLog"
 //Workout Entity Name
 #define WORKOUT_ENTITY_NAME              @"Workout"
 //Custom Workout Entity Name
 #define CUSTOM_WORKOUT_ENTITY_NAME       @"CustomWorkout"
 
+
 @protocol DataManagerProtocol <NSObject>
+
+//------------------------
+#define General Operations
+//------------------------
 
 /**
  Saves a business object to the Core Data persistent store. Handles the mapping from business object to Core Data object.
@@ -35,12 +48,16 @@
  Deletes a object from the Core Data persistent store by its identifier. Handles the mapping from business object to Core Data object.
  @param objectIdentifier Business object to be deleted in the Core Data persistent store.
  */
-- (void)deleteItemById:(NSString *)objectIdentifier;
+- (void)deleteItemByIdentifier:(NSString *)objectIdentifier;
 
 /**
- Deletes all items in the Core Data persistent store.
+ Deletes all items in the Core Data persistent store for the entity.
  */
 - (void)deleteAllItems;
+
+//-------------------------
+#define Fetching Operations
+//-------------------------
 
 /**
  Fetches a business object from the Core Data persistent store by it's identifier.
@@ -54,7 +71,11 @@
  Fetches all of the records in the table.
  @return All records in the table.
  */
-- (NSArray *)fetchAllRecords;
+- (NSArray *)fetchAllItems;
+
+//------------------
+#define Useful Tools
+//------------------
 
 /**
  Returns the entity name for the given data manager.
@@ -62,10 +83,16 @@
  */
 - (NSString *)returnEntityName;
 
+@optional
+
+//----------------------
+#define Tools (Optional)
+//----------------------
+
 /**
  Returns the count of all of the items in the table.
  @return Count of all items in the table inside of the database.
  */
-- (NSUInteger) getTableCount;
+- (NSUInteger)getTableCount;
 
 @end

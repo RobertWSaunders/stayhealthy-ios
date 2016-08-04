@@ -8,8 +8,12 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
-	<string>com.OptimusApps.Stay-Healthy</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -17,11 +21,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>1.2.0.B</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.4</string>
+	<string>2682</string>
 	<key>FacebookAppID</key>
 	<string>510783249018865</string>
 	<key>FacebookDisplayName</key>
@@ -43,27 +47,34 @@
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>Like3D</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Favorites</string>
+			<string>Favourites</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>favorites</string>
+			<string>favourites</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>Barbell3D</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Workouts</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>workouts</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>Exercise3D</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Find Exercise</string>
+			<string>Exercises</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>findExercise</string>
+			<string>exercises</string>
 		</dict>
 	</array>
 	<key>UIMainStoryboardFile</key>
-	<string>Main_Storyboard</string>
+	<string>iPhone_Storyboard</string>
 	<key>UIMainStoryboardFile~ipad</key>
-	<string>Main_Storyboard</string>
+	<string>iPad_Storyboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
-		<string>healthkit</string>
 	</array>
 	<key>UIStatusBarTintParameters</key>
 	<dict>
@@ -78,10 +89,12 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>

@@ -1,174 +1,239 @@
-/** This class demonstrates AppleDoc.
- 
- A second paragraph comes after an empty line.
- 
-	int i=0;
-	i++;
- 
- And some sample code can also be in a block, but indented with a TAB.
- */
+//
+//  CommonUtilities.h
+//  StayHealthy
+//
+//  Created by Robert Saunders on 2015-07-05.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
+//
 
 #import <Foundation/Foundation.h>
+#import "Reachability.h"
 
 @interface CommonUtilities : NSObject
 
+/**************************************************/
+#pragma mark - App Specific Constants Tools/Fetches
+/**************************************************/
 
-/** @name App Specific Constants Tools/Fetches*/
-
-/**
-* @warning h
-*/
+//Returns the app version number.
 + (NSString *)shortAppVersionNumber;
 
-/**
- *  To access the apps global build number as string.
- *  @return The apps build number in the format (1.0).
- */
+//Returns the app build number.
 + (NSString *)appBuildNumber;
 
-/** @name Date Formatting Tools/Calculations*/
+//Returns the app build number as a hex.
++ (NSString *)hexBuildNumber;
 
-/*!
- *  Converts the date as a string.
- *  @param date The date that is returned as a string.
- *  @return A date as a string in the format (2015-08-09).
- */
+//Returns the installed database version.
++ (NSString *)installedDatabaseVersion;
+
+/************************************************/
+#pragma mark - Date Formatting Tools/Calculations
+/************************************************/
+
+//Returns date as a string in the format YYYY-mm-dd
 + (NSString *)returnDateInString:(NSDate *)date;
 
-/*!
- *  Returns array of dates that lie between two dates.
- *  @param startDate First day in the array.
- *  @param endDate   Last day in the array.
- *  @return Array of dates between two days.
- */
-+ (NSMutableArray *)arrayOfDays:(NSDate*)startDate endDate:(NSDate*)endDate;
-
-/*!
- *  Returns number of days that lie between two dates.
- *  @param startDate First day in the count, date that the count starts on.
- *  @param endDate   Last day in the count, date that the count ends on.
- *  @return Number of days between two days, inclusive.
- */
-+ (NSInteger)numberOfDaysBetweenDates:(NSDate*)startDate endDate:(NSDate*)endDate;
-
-/*!
- *  Converts date into a more readable format, such as, 'Today, August 26th, 2015'.
- *  @param date Date that gets converted into readable format.
- *  @return Date in a readable format, such as, 'Today, August 26th, 2015' as a string.
- */
+//Returns data as a string in a nice format.
 + (NSString *)returnReadableDate:(NSDate*)date;
 
-/*!
- *  Converts dates time into a more readable format, such as, '12:32 AM'.
- *  @param date Date that gets converted into readable time format.
- *  @return Date in a readable time format, such as, '12:32 AM' as a string.
- */
+//Returns time as a strign in a nice format.
 + (NSString *)returnReadableTime:(NSDate*)date;
 
-/*!
- *  Calculates the time from a passed date, in format 'just now'.
- *  @param createdDate Date that calculated time gets calculated from.
- *  @return String saying the time from the passed date, in format 'just now'.
- */
+//Returns the time from a date and returns a nice string for display.
 + (NSString *)calculateTime:(NSDate *)createdDate;
 
-/*!
- *  Resets date to midnight.
- *  @param date Date that gets reset.
- *  @return New date which is equal to passed date set to midnight.
- */
+//Resets the time for a date.
 + (NSDate *)resetTime:(NSDate*)date;
 
-/*!
- *  Adds any number of hours to a date.
- *  @param date     Date to add the hours to.
- *  @param numHours Number of hours required to add to the date.
- *  @return A new date based off of the past date with the amount of hours added to it.
- */
+//Adds a number of hours to a date.
 + (NSDate *)addHourToDate:(NSDate*)date hoursToAdd:(NSInteger)numHours;
 
-/*!
- *  Rounds date to the nearest five minutes.
- *  @param date Date to round.
- *  @return New date which is equal to the passed date rounded to the nearest five minutes.
- */
+//Rounds a dates minutes to the nearest 5 minutes.
 + (NSDate *)dateWithRoundedMinutes:(NSDate *)date;
 
-/*!
- *  Creates a date without time.
- *  @param dateWithTime Date to remove time component from.
- *  @return Date without time component.
- */
+//Remove the time aspect from a date.
 + (NSDate *)dateWithOutTime:(NSDate *)dateWithTime;
 
+//Returns the number of days between two dates.
++ (NSInteger)numberOfDaysBetweenDates:(NSDate*)startDate endDate:(NSDate*)endDate;
 
-/** @name User Information Tools*/
+//Returns an array of dates between two dates.
++ (NSMutableArray *)arrayOfDays:(NSDate*)startDate endDate:(NSDate*)endDate;
 
-/*!
- *  Gets firstname from a fullname string.
- *  @param name Full name string.
- *  @return Firstname string from the fullname.
- */
+//Checks if a date exists given the passed information.
++ (BOOL)dateExistsYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
+
+/************************************/
+#pragma mark - User Information Tools
+/************************************/
+
+//Returns the first name from a full name.
 + (NSString *)firstNameFromFullName:(NSString *)name;
 
-/*!
- *  Gets lastname from a fullname string.
- *  @param name Full name string.
- *  @return Lastname string from the fullname.
- */
+//Returns the last name from a full name.
 + (NSString *)lastNameFromFullName:(NSString *)name;
 
+/*******************************/
+#pragma mark - Validation Tools
+/*******************************/
 
-/** @name Validation Tools*/
+//Checks if an email is valid.
++ (BOOL)emailIsValid:(NSString *)email;
 
-/*!
- *  Checks if email is a valid email.
- *  @param strEmail Email to check.
- *  @return YES if email is valid, else NO.
- */
-+ (Boolean)emailIsValid:(NSString *)strEmail;
+/*********************************/
+#pragma mark - Conversion Methods
+/*********************************/
 
-/** @name Useful Tools */
+//Converts meters to either km or miles based on user preferences.
++ (void)metersToPreferredDistance:(double)meters;
 
-/*!
- *  To return a unique identifier.
- *  @return A unique string.
- */
+//Converts km or miles to meters based on user preferences.
++ (void)preferredDistanceToMeters:(double)distance;
+
+//Converts pounds to pounds/kilograms/stones based on user preferences.
++ (void)poundsToPreferredWeight:(float)pounds;
+
+//Converts pounds/kilograms/st to pounds based on user preferences.
++ (void)preferredWeightToPounds:(float)weight;
+
+//Converts kph to either mph/kph/ms based on user preferences.
++ (void)kphToPreferredSpeed:(float)kph;
+
+//Converts kph/mph/ms to kph based on user preferences.
++ (void)preferredSpeedToKph:(float)speed;
+
+//Converts cm to in/m/ft/mm based on user preferences.
++ (void)cmToPreferredHeight:(float)cm;
+
+//Converts in/m/ft/mm to cm based on user preferences.
++ (void)preferredHeightToCm:(float)height;
+
+//Converts kcal to kj/kcal based on user preferences.
++ (void)kcalToPreferredCalorieUnit:(float)kcal;
+
+//Converts kcal/kj to kcal based on user preferences.
++ (void)preferredCalorieUnitToKcal:(float)calorieUnit;
+
+//Converts bpm to bpm based on user preferences.
++ (void)bpmToPreferredHeartBeatUnit:(float)bpm;
+
+//Converts bpm to bpm based on user preferences.
++ (void)preferredHeartBeatUnitToBpm:(float)heartBeatUnit;
+
+/***************************/
+#pragma mark - Useful Tools
+/***************************/
+
+//Checks if the device has a internet connection.
++ (BOOL)isInternetConnection;
+
+//Returns a unique identifier.
 + (NSString *)returnUniqueID;
 
-/*!
- *  Takes items in an array and creates a string seperating the items by the specified separator.
- *  @param arrayItems Array that holds the items to be separated.
- *  @param separator  String to separate the array items.
- *  @return A string containing the array items seperated by the separator.
- */
+//Returns a string of concatenated array items given the separator.
 + (NSString *)concatenateArrayItems:(NSArray *)arrayItems separator:(NSString *)separator;
 
-+ (BOOL) dateExistsYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
+/****************************************/
+#pragma mark - StayHealthy Specific Tools
+/****************************************/
 
+/*---------------------------*/
+#pragma mark - General Tools
+/*---------------------------*/
 
-/** @name StayHealthy Specific Tools */
+//Sets the tint color throughout the application.
++ (void)setGlobalTintColor:(UIColor*)color;
 
-/*!
- *  Gives access to the StayHealthy plist as a dictionary.
- *  @return The StayHealthy general plist as a dictionary.
- */
-+ (NSDictionary *)returnGeneralPlist;
+//Shows the custom activity indicator in the passed image view.
++ (void)showCustomActivityIndicator:(UIImageView*)spinnerImage;
 
-/*!
- *  Creates a query for the StayHealthy database based off of parameters, used for find exercise by muscle.
- *  @param table  Table in the StayHealthy database.
- *  @param muscle Muscle to search for in the table.
- *  @return Query for the StayHealthy database as a string.
- */
-+ (NSString *)createExerciseQuery:(NSString *)table muscle:(NSString *)muscle;
+//Loads an image in the background.
++ (void)loadImageOnBackgroundThread:(UIImageView*)imageView image:(UIImage*)image;
 
-+ (NSString *)createExerciseQueryFromExerciseIds:(NSMutableArray *)exerciseIDs table:(NSString*)table;
+//Returns a color given the module.
++ (UIColor*)returnModuleColor:(modules)module;
 
-+ (NSString *)convertMuscleNameToDatabaseStandard:(NSString*)muscle;
-
+//Returns the path to the database.
 + (NSString *)returnDatabasePath:(NSString*)databaseName;
 
-+ (SHExercise *)getRandomExercise:(exerciseTypes)exerciseType muscle:(NSString*)muscle;
+/*------------------------------------------*/
+#pragma mark - View Controller Styling Tools
+/*------------------------------------------*/
+
+//Styles square collection view cells in their normal state.
++ (void)styleSquareCollectionViewCell:(UICollectionViewCell*)collectionViewCell;
+
+//Styles square collection view cells in their selected state.
++ (void)styleSquareCollectionViewCellSelected:(UICollectionViewCell*)collectionViewCell;
+
+//Shows a message on the screen.
++ (void)showMessage:(NSString*)titleText message:(NSString*)message viewController:(UIViewController*)controllerForDisplay canBeDismissedByUser:(BOOL)canDismiss duration:(int)duration;
+
+//Shows the initial tutorial TSMessage.
++ (void)showFirstViewMessage:(NSString*)key viewController:(UIViewController*)view message:(NSString*)message;
+
+//Styles alert views.
++ (void)styleAlertView:(UIColor*)color;
+
+//Sets the selected background color for UITableViews.
++ (UIView *)tableViewSelectionColorSet:(UITableViewCell*)cell;
+
+//Draws the view for the TableView header.
++ (UIView *)drawViewForTableViewHeader:(UITableView*)tableView;
+
+//Returns the color based off of the difficulty passed to it.
++ (UIColor*)determineDifficultyColor:(NSString*)difficulty;
+
+/*---------------------------*/
+#pragma mark - Journal Tools
+/*---------------------------*/
+
+
+/*---------------------------*/
+#pragma mark - Exercises Tools
+/*---------------------------*/
+
+//Converts a muscle string to the muscle name in the database.
++ (NSString *)convertMuscleNameToDatabaseStandard:(NSString*)muscle;
+
+//Checks if a passed exercises is in the passed array.
++ (BOOL)exerciseInArray:(NSMutableArray*)exerciseArray exercise:(id *)exercise;
+
+//Deletes the passed exercises from the passed array.
++ (NSMutableArray *)deleteSelectedExercise:(NSMutableArray*)exerciseArray exercise:(id *)exercise;
+
+/*---------------------------*/
+#pragma mark - Workout Tools
+/*---------------------------*/
+
+//Returns the count of exercises in a workout.
++ (NSUInteger)numExercisesInWorkout:(id *)workout;
+
+/*------------------------*/
+#pragma mark - Liked Tools
+/*------------------------*/
+
+/*-----------------------------------*/
+#pragma mark - User Preferences Tools
+/*-----------------------------------*/
+
+//Checks if it is the users first launch.
++ (BOOL)isUsersFirstLaunch;
+
+//Checks a users preference, bool preferences only.
++ (BOOL)checkUserPreference:(NSString *)key;
+
+//Updates a users preference key with their selection.
++ (void)updateBoolForKey:(NSString *)key boolValue:(BOOL)boolValue;
+
+//Updates a users preference key string value.
++ (void)updateValueForKey:(NSString *)key stringValue:(NSString*)stringValue;
+
+//Resets all of the users preferences to our suggested preferences.
++ (void)resetUserPreferences;
+
+//Returns the general property list.
++ (NSDictionary *)returnGeneralPlist;
 
 @end

@@ -1,85 +1,79 @@
-/**
- `ExerciseSelectionViewController` is responsible for allowing the user to find exercises. Users are able to select exercises by specific muscles, recently viewed, or they can be directed to the advanced search view controller to perform an advanced search. Users can select exercises of three types, warmup, strength or stretching.
- */
-
-// Robert Saunders
-// 23/08/15
-// 1.0.0
+//
+//  ExerciseSelectionViewController.h
+//  StayHealthy
+//
+//  Created by Robert Saunders on 2015-07-05.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
+//
 
 #import <UIKit/UIKit.h>
 #import "ExerciseListController.h"
-#import "MGSwipeButton.h"
-#import "ExerciseTableViewCell.h"
+#import "FavoritesViewController.h"
+#import "ExerciseAdvancedSearchViewController.h"
+#import "CustomWorkoutSelectionViewController.h"
+#import "BodyViewCollectionViewCell.h"
+#import "ExerciseCollectionViewCell.h"
 
-@interface ExerciseSelectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MGSwipeTableCellDelegate> {
+@interface ExerciseSelectionViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIToolbarDelegate, ExerciseListExerciseSelectionDelegate, LikedExercisesExerciseSelectionDelegate, AdvancedSearchExerciseSelectionDelegate,UIScrollViewDelegate> {
+
+    //Segmented Control
+    UISegmentedControl *segmentedControl;
     
-    __weak IBOutlet UISegmentedControl *segmentedControl;
-    //Array filled with all the front body muscles.
-    NSArray *frontBodyMuscles;
-    //Array filled with all the front body muscle scientific names.
-    NSArray *frontBodyMusclesScientificNames;
-    //Array filled with all the back body muscles.
-    NSArray *backBodyMuscles;
-    //Array filled with all the back body muscle scientific names.
-    NSArray *backBodyMusclesScientificNames;
+    //Body Zoning
+    //Body Zone Strings
+    NSArray *bodyZones;
+    //Body Zone Images
+    NSArray *bodyZonesImages;
+    //Body Zone Images For Exercise Selection Mode
+    NSArray *bodyZonesImagesExerciseSelectionMode;
     
-    //Array filled with all the recenlty viewed exercises.
-    NSMutableArray *recenltyViewedExercises;
+    //Array filled with all of the users custom exercises.
+    NSMutableArray *customExercises;
     
-    //Keeps track of the index the user selected in the alert.
-    NSUInteger alertIndex;
-    //Keeps track of the indexPath of the cell the user selected in the muscleSelectionTableView.
-   // NSIndexPath *selectedTableViewIndex;
-    
-    //Boolean to track whether the user pressed on the warmup icon or not.
-    BOOL warmupPressed;
-    
-    BOOL checkIndex;
-    
-    exerciseTypes typeSwiped;
+    //Track whether the user pressed on a body zone.
+    BOOL bodyZonePressed;
+    //Set to the index of the selected collection view cell for body zone.
+    NSIndexPath *selectedBodyZoneIndex;
+    //Set to index of swiped cell, used for adding exercises to workouts.
+    NSIndexPath *selectedIndex;
 }
 
-/**
- -------------
- @name Properties
- -------------
- */
+//User Interface Elements
+//Body Zone View
+@property (weak, nonatomic) IBOutlet UIView *bodyZoneView;
+//Body Zone CollectionView
+@property (weak, nonatomic) IBOutlet UICollectionView *bodyZoneCollectionView;
 
-@property (strong, nonatomic) NSIndexPath *selectedTableViewIndex;
+//Categories Viewed View
+@property (weak, nonatomic) IBOutlet UIView *categoriesView;
+//Categories Exercises CollectionView
+@property (weak, nonatomic) IBOutlet UICollectionView *categoriesCollectionView;
 
-/**
- View that holds `recentlyViewedTableView`.
- */
-@property (weak, nonatomic) IBOutlet UIView *recentlyViewedView;
-/**
- View that holds `muscleSelectionTableView`.
- */
-@property (weak, nonatomic) IBOutlet UIView *muscleSelectionView;
-/**
- TableView that holds the recenlty viewed exercises.
- */
-@property (weak, nonatomic) IBOutlet UITableView *recentlyViewedTableView;
-/**
- TableView that holds the muscles the user can choose from to find exercises.
- */
-@property (weak, nonatomic) IBOutlet UITableView *muscleSelectionTableView;
+//Custom Exercises View
+@property (weak, nonatomic) IBOutlet UIView *customExercisesView;
+//Custom Exercises CollectionView
+@property (weak, nonatomic) IBOutlet UICollectionView *customExercisesCollectionView;
 
-/**
- ----------
-@name Actions
- ----------
- */
+//Segmented Control Toolbar
+@property (weak, nonatomic) IBOutlet UIToolbar *segmentedControlToolbar;
 
-/**
- Gets called when the user changes the selected segement in the segemented control. This segmented control hides the `muscleSelectionView` and `recentlyViewedView`.
- @param sender Object which sent the message to that selector.
- */
-- (IBAction)segmentValueChanged:(id)sender;
 
-/**
- Gets called when the user presses the warmup icon in the navigation bar.
- @param sender Object which sent the message to that selector.
- */
-- (IBAction)warmupButtonPressed:(id)sender;
+//View Controller Properties
+//Set to YES for view to load as exercise selection mode.
+@property (nonatomic, assign) BOOL exerciseSelectionMode;
+//The selected exercises that the users selects.
+@property(strong, retain) NSMutableArray *selectedExercises;
+//The module that the view should be rendered.
+@property (nonatomic, assign) modules moduleRender;
+
+//Actions
+//What happens when the user selects advanced search.
+- (IBAction)advancedSearchPressed:(id)sender;
+//What happens when the user presses the add exercise icon.
+- (IBAction)addExerciseButtonPressed:(id)sender;
+
+//Exercise Selection Delegate
+@property (assign, nonatomic) id <ExerciseSelectionDelegate> delegate;
 
 @end
+

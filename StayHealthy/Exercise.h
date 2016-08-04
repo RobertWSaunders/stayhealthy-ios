@@ -2,20 +2,21 @@
 //  Exercise.h
 //  StayHealthy
 //
-//  Created by Robert Saunders on 2015-08-08.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Created by Robert Saunders on 2016-06-25.
+//  Copyright © 2016 Robert Saunders. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface Exercise : NSManagedObject
 
-@property (nonatomic, retain) NSString * exerciseID;
-@property (nonatomic, retain) NSString * exerciseType;
-@property (nonatomic, retain) NSNumber * liked;
-@property (nonatomic, retain) NSDate * lastViewed;
-@property (nonatomic, retain) NSNumber *timesViewed;
+// Insert code here to declare functionality of your managed object subclass
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "Exercise+CoreDataProperties.h"

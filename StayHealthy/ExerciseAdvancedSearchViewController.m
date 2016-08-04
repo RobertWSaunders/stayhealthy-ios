@@ -3,7 +3,7 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-07-05.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import "ExerciseAdvancedSearchViewController.h"
@@ -31,15 +31,13 @@
     
     //Style the search button.
     //Set the background color of the button.
-    self.searchButton.backgroundColor = STAYHEALTHY_BLUE;
+    self.searchButton.backgroundColor = EXERCISES_COLOR;
     //Set the text color for the button.
     self.searchButton.titleLabel.textColor = [UIColor whiteColor];
     //Set the text for the button.
     self.searchButton.titleLabel.text = @"Search";
     
-    [CommonSetUpOperations setFirstViewTSMessage:USER_FIRST_VIEW_ADVANCED_SEARCH  viewController:self message:@"Here you can choose the things you want in an exercise and I'll try my best to find it for you! Sometimes I can't find anything though, I'm really sorry about that, but I promise I'll look harder next time!"];
-    
-}
+   }
 
 /*****************************************************/
 #pragma mark - UITableView Delegate/Datasource Methods
@@ -115,13 +113,13 @@
         cell.detailTextLabel.text = [tableViewAttributeSelectionsUserInterface objectAtIndex:indexPath.row];
         
         //Stlying the cells.
-        cell.textLabel.font = tableViewTitleTextFont;
+        cell.textLabel.font = TABLE_VIEW_TITLE_FONT;
         cell.detailTextLabel.font = tableViewDetailTextFont;
-        cell.textLabel.textColor = STAYHEALTHY_BLUE;
-        cell.detailTextLabel.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
+        cell.textLabel.textColor = EXERCISES_COLOR;
+        cell.detailTextLabel.textColor = LIGHT_GRAY_COLOR;
         
         //Set the selection cell.
-        [CommonSetUpOperations tableViewSelectionColorSet:cell];
+        [CommonUtilities tableViewSelectionColorSet:cell];
         
         //Return the cell.
         return cell;
@@ -141,15 +139,16 @@
         
         //Set the cell label.
         cell.cellLabel.text = @"Exercise Name";
-        cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:STAYHEALTHY_LIGHTGRAYCOLOR}];
+        cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:LIGHT_GRAY_COLOR}];
         //Set the textfiled delegate to self.
         cell.textField.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         //Stlying the cells.
-        cell.cellLabel.font = tableViewTitleTextFont;
-        cell.cellLabel.textColor = STAYHEALTHY_BLUE;
+        cell.cellLabel.font = TABLE_VIEW_TITLE_FONT;
+        cell.cellLabel.textColor = EXERCISES_COLOR;
         cell.textField.font = tableViewDetailTextFont;
-        cell.textField.textColor = STAYHEALTHY_LIGHTGRAYCOLOR;
+        cell.textField.textColor = LIGHT_GRAY_COLOR;
         
         //Return the cell.
         return cell;
@@ -225,6 +224,14 @@
                 [selectedArrays addObject:selectedDifficulty];
                 [selectedColumns addObject:@"exerciseDifficulty"];
             }
+            if (selectedForceType.count > 0) {
+                [selectedArrays addObject:selectedForceType];
+                [selectedColumns addObject:@"exerciseForceType"];
+            }
+            if (selectedMechanicsType.count > 0) {
+                [selectedArrays addObject:selectedMechanicsType];
+                [selectedColumns addObject:@"exerciseMechanicsType"];
+            }
             //Initial for loops for the creation of the different statements we will bind together because from different tables.
             for (int i=0; i<selectedExerciseTypes.count; i++) {
                 //Create the initial SELECT * FROM for the specific table.
@@ -240,22 +247,28 @@
                         //Now create a for loop for the values in the columns.
                         for (int m=0; m<arrayForSelection.count; m++) {
                             //Now input the column and the value for the column into the query.
-                            searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"%@ LIKE '%@'",selectedColumns[k],arrayForSelection[m]]];
+                            searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"%@ LIKE '%%%@%%'",selectedColumns[k],arrayForSelection[m]]];
                             if (m != arrayForSelection.count-1) {
                                 searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat:@"OR"]];
                             }
                         }
                     }
                 //Now we have completed the SELECT statment from this table, add a UNION ALL for the next table.
-                if (i != selectedExerciseTypes.count-1) {
-                    searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:@"UNION ALL"];
-                }
-                //Or if it is the last table then just order the resulting exercises by name.
-                else if (![selectedName isEqualToString:@""]) {
-                    searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"AND exerciseName LIKE '%%%@%%' ORDER BY exerciseName COLLATE NOCASE",selectedName]];
-                }
-                else {
-                    searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:@"ORDER BY exerciseName COLLATE NOCASE"];
+                if (i != selectedExerciseTypes.count) {
+                    if (![selectedName isEqualToString:@""]) {
+                        if (selectedColumns.count > 0) {
+                            searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@"AND exerciseName LIKE '%%%@%%'",selectedName]];
+                        }
+                        else {
+                            searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:[NSString stringWithFormat:@" exerciseName LIKE '%%%@%%'",selectedName]];
+                        }
+                    }
+                    if (i != selectedExerciseTypes.count-1) {
+                        searchQuery = [[searchQuery stringByAppendingString:@" "] stringByAppendingString:@"UNION ALL"];
+                    }
+                    else {
+                        searchQuery = [[searchQuery stringByAppendingString:@" "]stringByAppendingString:@"ORDER BY exerciseName COLLATE NOCASE"];
+                    }
                 }
             }
                 NSLog(@"*****************************************");
@@ -285,8 +298,12 @@
     UITableViewCell *equipmentCell = [self.exerciseSpecificationTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
     //The cell responsible for the difficulty.
     UITableViewCell *difficultyCell = [self.exerciseSpecificationTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:1]];
+    //The cell responsible for the difficulty.
+    UITableViewCell *forceTypeCell = [self.exerciseSpecificationTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:1]];
+    //The cell responsible for the difficulty.
+    UITableViewCell *mechanicTypeCell = [self.exerciseSpecificationTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:1]];
     //The cell responsible for the exercise type.
-    UITableViewCell *exerciseTypeCell = [self.exerciseSpecificationTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:1]];
+    UITableViewCell *exerciseTypeCell = [self.exerciseSpecificationTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:1]];
     
     //Initialize the selected types array
     selectedExerciseTypes = [[NSMutableArray alloc] init];
@@ -296,6 +313,8 @@
     selectedPrimaryMuscles = nil;
     selectedSecondaryMuscles = nil;
     selectedEquipment =  nil;
+    selectedForceType =  nil;
+    selectedMechanicsType =  nil;
     
     //Put the data into the arrays, only if the user has selected 
     //Selected primary muscles array.
@@ -314,9 +333,17 @@
     if (![difficultyCell.detailTextLabel.text isEqualToString:@"Any"]) {
         selectedDifficulty = [difficultyCell.detailTextLabel.text componentsSeparatedByString:@", "];
     }
+    //Selected force type array.
+    if (![difficultyCell.detailTextLabel.text isEqualToString:@"Any"]) {
+        selectedForceType = [forceTypeCell.detailTextLabel.text componentsSeparatedByString:@", "];
+    }
+    //Selected difficulty array.
+    if (![difficultyCell.detailTextLabel.text isEqualToString:@"Any"]) {
+        selectedMechanicsType = [mechanicTypeCell.detailTextLabel.text componentsSeparatedByString:@", "];
+    }
     //Selected exercise types array.
     if ([exerciseTypeCell.detailTextLabel.text isEqualToString:@"Any"]) {
-        NSArray *allTableNames = @[STRENGTH_EXERCISES_TABLE_NAME,STRETCHING_EXERCISES_TABLE_NAME,WARMUP_EXERCISES_TABLE_NAME];
+        NSArray *allTableNames = @[STRENGTH_DB_TABLENAME,STRETCHING_DB_TABLENAME,WARMUP_DB_TABLENAME];
         [selectedExerciseTypes addObjectsFromArray:allTableNames];
     }
     else {
@@ -324,13 +351,13 @@
         convertExerciseTypesToTableNames = [exerciseTypeCell.detailTextLabel.text componentsSeparatedByString:@", "];
         for (int i = 0; i < convertExerciseTypesToTableNames.count; i++) {
             if ([[convertExerciseTypesToTableNames objectAtIndex:i] isEqualToString:@"Strength"]) {
-                [selectedExerciseTypes addObject:STRENGTH_EXERCISES_TABLE_NAME];
+                [selectedExerciseTypes addObject:STRENGTH_DB_TABLENAME];
             }
             else if ([[convertExerciseTypesToTableNames objectAtIndex:i] isEqualToString:@"Stretching"]) {
-                [selectedExerciseTypes addObject:STRETCHING_EXERCISES_TABLE_NAME];
+                [selectedExerciseTypes addObject:STRETCHING_DB_TABLENAME];
             }
             else {
-                [selectedExerciseTypes addObject:WARMUP_EXERCISES_TABLE_NAME];
+                [selectedExerciseTypes addObject:WARMUP_DB_TABLENAME];
             }
         }
     }
@@ -346,7 +373,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ExerciseSelection"]) {
         //What happens when the user selects a cell in the table view, takes the user to selection page.
-        //Get the index path for the selected cell the user pressed.
+       /* //Get the index path for the selected cell the user pressed.
         NSIndexPath *indexPath = [self.exerciseSpecificationTableView indexPathForSelectedRow];
         //Create reference to the next view controller.
         advancedOptionsSelect *attributeSelectionPage = [[advancedOptionsSelect alloc]init];
@@ -392,20 +419,36 @@
                 attributeSelectionPage.titleText = @"Select Difficulties";
                 attributeSelectionPage.typeOfExerciseAttribute = difficulty;
             }
-            //Fith row is exercise type selection.
+            //Fourth row is forceType selection.
             else if (indexPath.row == 4) {
+                attributeSelectionPage.arrayForTableView = forceTypeList;
+                attributeSelectionPage.titleText = @"Select Force Types";
+                attributeSelectionPage.typeOfExerciseAttribute = forceType;
+            }
+            //Fourth row is mechanic type selection.
+            else if (indexPath.row == 5) {
+                attributeSelectionPage.arrayForTableView = mechanicsTypeList;
+                attributeSelectionPage.titleText = @"Select Mechanic Types";
+                attributeSelectionPage.typeOfExerciseAttribute = mechanicType;
+            }
+            //Fith row is exercise type selection.
+            else if (indexPath.row == 6) {
                 NSArray *differentTypesOfExercises = @[@"Strength",@"Stretching",@"Warmup"];
                 attributeSelectionPage.arrayForTableView = differentTypesOfExercises;
                 attributeSelectionPage.titleText = @"Select Exercise Types";
                 attributeSelectionPage.typeOfExerciseAttribute = exerciseType;
             }
-        }
+        }*/
     }
     else if ([segue.identifier isEqualToString:@"search"]) {
         ExerciseListController *exerciseSearchViewController = [[ExerciseListController alloc] init];
         exerciseSearchViewController = segue.destinationViewController;
         exerciseSearchViewController.exerciseQuery = searchQuery;
         exerciseSearchViewController.viewTitle =  @"Custom Search";
+        if (self.exerciseSelectionMode) {
+            exerciseSearchViewController.exerciseSelectionMode = YES;
+            exerciseSearchViewController.selectedExercises = self.selectedExercises;
+        }
     }
 }
 
@@ -442,6 +485,9 @@
 
 //Dismiss the view controller.
 - (IBAction)dismissButtonPressed:(id)sender {
+    if (self.exerciseSelectionMode) {
+        [self.delegate advancedSelectedExercises:self.selectedExercises];
+    }
     //Dismiss the modal popup with an animation.
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -460,12 +506,14 @@
     equipmentList = [CommonUtilities returnGeneralPlist][@"equipmentList"];
     //List of all the types of difficulty.
     difficultyList = [CommonUtilities returnGeneralPlist][@"difficultyList"];
+    forceTypeList = [CommonUtilities returnGeneralPlist][@"forceTypeList"];
+    mechanicsTypeList = [CommonUtilities returnGeneralPlist][@"mechanicsTypeList"];
     
     //The values of the advanced search titles in the TableView.
-    exerciseAdvancedSearchOptions = @[@"Primary Muscle",@"Secondary Muscle",@"Equipment",@"Difficulty",@"Exercise Type"];
+    exerciseAdvancedSearchOptions = @[@"Primary Muscle",@"Secondary Muscle",@"Equipment",@"Difficulty",@"Force Type",@"Mechanics Type",@"Exercise Type"];
     //The defaults in the advanced search view.
-    exerciseAdvancedSearchOptionsSelections = [[NSMutableArray alloc] initWithObjects:@"Any",@"Any",@"Any",@"Any",@"Any", nil];
-    tableViewAttributeSelectionsUserInterface = [[NSMutableArray alloc] initWithObjects:@"Any",@"Any",@"Any",@"Any",@"Any", nil];
+    exerciseAdvancedSearchOptionsSelections = [[NSMutableArray alloc] initWithObjects:@"Any",@"Any",@"Any",@"Any",@"Any",@"Any",@"Any", nil];
+    tableViewAttributeSelectionsUserInterface = [[NSMutableArray alloc] initWithObjects:@"Any",@"Any",@"Any",@"Any",@"Any",@"Any",@"Any", nil];
     
     //The header text for the TableView section headers.
     tableViewSectionHeaders = @[@"Exercise Attributes",@"Search Exercise Name"];
@@ -495,6 +543,10 @@
 - (NSString*)convertSelectionsToStringWithSpace:(NSMutableArray*)convertSelectionsToString {
     //Creates a string with the objects of the array seperated by a comma.
     return [convertSelectionsToString componentsJoinedByString:@", "];
+}
+
+- (void)selectedExercises:(NSMutableArray*)selectedExercises {
+    self.selectedExercises = selectedExercises;
 }
 
 @end

@@ -3,42 +3,34 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-08-15.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 @interface SHExercise : NSObject
 
-//Exercise Identifier
-@property(nonatomic,copy) NSString *exerciseIdentifier;
-//Exercise Name
-@property(nonatomic,copy) NSString *exerciseName;
-//Exercise Muscle
-@property(nonatomic,copy) NSString *exerciseMuscle;
-//Exercise Instructions
-@property(nonatomic,copy) NSString *exerciseInstructions;
-//Exercise ImageFile
-@property(nonatomic,copy) NSString *exerciseImageFile;
-//Exercise Sets
-@property(nonatomic,copy) NSString *exerciseSets;
-//Exercise Reps
-@property(nonatomic,copy) NSString *exerciseReps;
-//Exercise Equipment
-@property(nonatomic,copy) NSString *exerciseEquipment;
-//Exercise Primary Muscle
-@property(nonatomic,copy) NSString *exercisePrimaryMuscle;
-//Exercise SecondaryMuscle
-@property(nonatomic,copy) NSString *exerciseSecondaryMuscle;
-//Exercise Difficulty
-@property(nonatomic,copy) NSString *exerciseDifficulty;
-//Exercise Type
-@property(nonatomic,copy) NSString *exerciseType;
+@property (nullable, nonatomic, retain) NSString *exerciseDifferentVariationsExerciseIdentifiers;
+@property (nullable, nonatomic, retain) NSString *exerciseDifficulty;
+@property (nullable, nonatomic, retain) NSDate *exerciseEditedDate;
+@property (nullable, nonatomic, retain) NSString *exerciseEquipmentNeeded;
+@property (nullable, nonatomic, retain) NSString *exerciseForceType;
+@property (nullable, nonatomic, retain) NSString *exerciseIdentifier;
+@property (nullable, nonatomic, retain) NSString *exerciseImageFile;
+@property (nullable, nonatomic, retain) NSString *exerciseInstructions;
+@property (nullable, nonatomic, retain) NSNumber *exerciseIsEdited;
+@property (nullable, nonatomic, retain) NSDate *exerciseLastViewed;
+@property (nullable, nonatomic, retain) NSNumber *exerciseLiked;
+@property (nullable, nonatomic, retain) NSDate *exerciseLikedDate;
+@property (nullable, nonatomic, retain) NSString *exerciseMechanicsType;
+@property (nullable, nonatomic, retain) NSString *exerciseName;
+@property (nullable, nonatomic, retain) NSString *exercisePrimaryMuscle;
+@property (nullable, nonatomic, retain) NSString *exerciseRecommendedReps;
+@property (nullable, nonatomic, retain) NSString *exerciseRecommendedSets;
+@property (nullable, nonatomic, retain) NSString *exerciseSecondaryMuscle;
+@property (nullable, nonatomic, retain) NSString *exerciseShortName;
+@property (nullable, nonatomic, retain) NSNumber *exerciseTimesViewed;
+@property (nullable, nonatomic, retain) NSString *exerciseType;
 
-@property (nonatomic, retain) NSNumber *liked;
-
-@property (nonatomic, retain) NSDate *lastViewed;
-
-@property (nonatomic, retain) NSNumber *timesViewed;
 
 @end

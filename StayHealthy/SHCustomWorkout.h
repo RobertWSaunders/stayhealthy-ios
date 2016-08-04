@@ -3,27 +3,33 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-08-23.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 @interface SHCustomWorkout : NSObject
 
-@property (nonatomic, retain) NSDate * dateCreated;
-@property (nonatomic, retain) NSDate * dateModified;
-@property (nonatomic, retain) NSNumber * lastDateCompleted;
-@property (nonatomic, retain) NSDate * lastViewed;
-@property (nonatomic, retain) NSNumber * liked;
-@property (nonatomic, retain) NSNumber * timesCompleted;
-@property (nonatomic, retain) NSString * workoutDifficulty;
-@property (nonatomic, retain) NSString * workoutExerciseIDs;
-@property (nonatomic, retain) NSString * workoutID;
-@property (nonatomic, retain) NSString * workoutName;
-@property (nonatomic, retain) NSString * workoutSummary;
-@property (nonatomic, retain) NSString * workoutTargetMuscles;
-@property (nonatomic, retain) NSString * workoutTargetSports;
-@property (nonatomic, retain) NSString * workoutType;
-@property (nonatomic, retain) NSString * exerciseTypes;
+@property (nullable, nonatomic, retain) NSDate *customWorkoutCreatedDate;
+@property (nullable, nonatomic, retain) NSString *customWorkoutDifficulty;
+@property (nullable, nonatomic, retain) NSDate *customWorkoutEditedDate;
+@property (nullable, nonatomic, retain) NSString *customWorkoutEquipmentNeeded;
+@property (nullable, nonatomic, retain) NSNumber *customWorkoutEstimatedDuration;
+@property (nullable, nonatomic, retain) NSString *customWorkoutExerciseIdentifiers;
+@property (nullable, nonatomic, retain) NSString *customWorkoutExerciseTypes;
+@property (nullable, nonatomic, retain) NSString *customWorkoutIdentifier;
+@property (nullable, nonatomic, retain) NSDate *customWorkoutLastDateCompleted;
+@property (nullable, nonatomic, retain) NSDate *customWorkoutLastViewed;
+@property (nullable, nonatomic, retain) NSDate *customWorkoutLikedDate;
+@property (nullable, nonatomic, retain) NSNumber *customWorkoutLiked;
+@property (nullable, nonatomic, retain) NSString *customWorkoutName;
+@property (nullable, nonatomic, retain) NSString *customWorkoutShortName;
+@property (nullable, nonatomic, retain) NSString *customWorkoutSummary;
+@property (nullable, nonatomic, retain) NSString *customWorkoutTargetGender;
+@property (nullable, nonatomic, retain) NSString *customWorkoutTargetMuscles;
+@property (nullable, nonatomic, retain) NSString *customWorkoutTargetSports;
+@property (nullable, nonatomic, retain) NSNumber *customWorkoutTimesCompleted;
+@property (nullable, nonatomic, retain) NSNumber *customWorkoutTimesViewed;
+@property (nullable, nonatomic, retain) NSString *customWorkoutType;
 
 @end

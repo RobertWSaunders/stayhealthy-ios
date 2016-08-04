@@ -3,29 +3,39 @@
 //  StayHealthy
 //
 //  Created by Robert Saunders on 2015-08-15.
-//  Copyright (c) 2015 Mark Saunders. All rights reserved.
+//  Copyright (c) 2015 Robert Saunders. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "DataManagerProtocol.h"
 #import "Exercise.h"
 #import "SHExercise.h"
 #import "SHExercise+Exercise.h"
+#import "DataManagerProtocol.h"
 
 @interface ExerciseDataManager : NSObject <DataManagerProtocol>
 
+//Define the app context for the data manager to call to.
 @property (nonatomic, strong) NSManagedObjectContext  *appContext;
 
-- (NSFetchRequest *) getFetchRequest;
+//Fetches the recently viewed exercise records from persistent store.
+- (id)fetchRecentlyViewedExercises;
 
-- (id) fetchRecentlyViewedExercises;
+//Fetches all of the liked exercise records.
+- (id)fetchAllLikedExercises;
 
-- (id) fetchAllLikedExercises;
+//Fetches all of the liked strength exercise records.
+- (id)fetchLikedStrengthExercises;
 
-- (id) fetchStretchLikedExercises;
+//Fetches all of the liked stretching exercise records.
+- (id)fetchLikedStretchingExercises;
 
-- (id) fetchStrengthLikedExercises;
+//Fetches all of the liked warmup exercise records.
+- (id)fetchLikedWarmupExercises;
 
-- (id) fetchWarmupLikedExercises;
+//Fetches a exercise record given the objects identifier and the exercise type.
+- (id)fetchItemByIdentifierAndExerciseType:(NSString *)objectIdentifier exerciseType:(NSString*)exerciseType;
+
+//Deletes an existing object with a passed object identifier and exercise type in the persistent store.
+- (void)deleteItemByIdentifierAndExerciseType:(NSString *)objectIdentifier exerciseType:(NSString*)exerciseType;
 
 @end

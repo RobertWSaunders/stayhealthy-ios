@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MGSwipeTableCell.h"
-#import "MGSwipeButton.h"
 
-@interface ExerciseTableViewCell : MGSwipeTableCell
+@interface ExerciseTableViewCell : UITableViewCell
 
 
 //Exercise Name
@@ -23,6 +21,8 @@
 @property (nonatomic, weak) IBOutlet UIImageView *exerciseImage;
 //Like Exercise ImageView
 @property (nonatomic, weak) IBOutlet UIImageView *likeExerciseImage;
+//Like Exercise ImageView
+@property (nonatomic, weak) IBOutlet UIImageView *likeExerciseImageSelection;
 
 //Constant Labels
 //Equipment Label
@@ -30,5 +30,7 @@
 //Difficulty Label
 @property (nonatomic, weak) IBOutlet UILabel *difficultyStandards;
 
+
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *likeDistanceToEdge;
 
 @end

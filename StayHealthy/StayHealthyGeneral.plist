@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>forceTypeList</key>
+	<array>
+		<string>Test</string>
+	</array>
+	<key>mechanicsTypeList</key>
+	<array>
+		<string>Test</string>
+	</array>
 	<key>workoutCategoriesImages</key>
 	<array>
 		<string>football-25.png</string>
@@ -60,7 +68,7 @@
 		<string>Latissimus Dorsi</string>
 		<string>Oblique</string>
 		<string>Pectoralis Major</string>
-		<string>Quadricep</string>
+		<string>Quadriceps</string>
 		<string>Trapezius</string>
 		<string>Tricep</string>
 	</array>
@@ -195,6 +203,7 @@
 	</array>
 	<key>equipmentList</key>
 	<array>
+		<string>No Equipment</string>
 		<string>Partner</string>
 		<string>Weight Machine</string>
 		<string>Physio Ball</string>
@@ -235,7 +244,7 @@
 		<string>Calf</string>
 		<string>Deltoid</string>
 		<string>Erector Spinae</string>
-		<string>Forarm</string>
+		<string>Forearm</string>
 		<string>Gluteus</string>
 		<string>Groin</string>
 		<string>Hamstring</string>
@@ -244,7 +253,7 @@
 		<string>Latissimus Dorsi</string>
 		<string>Oblique</string>
 		<string>Pectoralis Major</string>
-		<string>Quadricep</string>
+		<string>Quadriceps</string>
 		<string>Trapezius</string>
 		<string>Tricep</string>
 	</array>
@@ -256,7 +265,7 @@
 		<string>Calf</string>
 		<string>Deltoid</string>
 		<string>Erector Spinae</string>
-		<string>Forarm</string>
+		<string>Forearm</string>
 		<string>Gluteus</string>
 		<string>Groin</string>
 		<string>Hamstring</string>
@@ -265,7 +274,7 @@
 		<string>Latissimus Dorsi</string>
 		<string>Oblique</string>
 		<string>Pectoralis Major</string>
-		<string>Quadricep</string>
+		<string>Quadriceps</string>
 		<string>Trapezius</string>
 		<string>Tricep</string>
 	</array>
