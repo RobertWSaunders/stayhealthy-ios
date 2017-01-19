@@ -117,6 +117,7 @@
 		EB737F5F1B7F8B2200EBBDA4 /* ExerciseDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F5E1B7F8B2200EBBDA4 /* ExerciseDataManager.m */; };
 		EB737F691B7F908F00EBBDA4 /* SHExercise+Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F681B7F908F00EBBDA4 /* SHExercise+Exercise.m */; };
 		EB737F711B8015E100EBBDA4 /* SHDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EB737F701B8015E100EBBDA4 /* SHDataHandler.m */; };
+		EB89865B1D8DF53D00773937 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB89865A1D8DF53D00773937 /* TelerikUI.framework */; };
 		EB89979E1B7C3DE100904984 /* GlobalDefinitions.h in Sources */ = {isa = PBXBuildFile; fileRef = EB63EF981B4B442B00EF35A3 /* GlobalDefinitions.h */; };
 		EB8AF5551C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8AF5541C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m */; };
 		EB9CF7011B52AA00006E2984 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9CF7001B52AA00006E2984 /* PreferencesViewController.m */; };
@@ -142,7 +143,6 @@
 		EBC034D71C4C10820079332D /* ExerciseCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC034D61C4C10820079332D /* ExerciseCreateViewController.m */; };
 		EBC561F51D387A3300604F01 /* Strength in Resources */ = {isa = PBXBuildFile; fileRef = EBC561F31D387A3300604F01 /* Strength */; };
 		EBC561F61D387A3300604F01 /* Stretching in Resources */ = {isa = PBXBuildFile; fileRef = EBC561F41D387A3300604F01 /* Stretching */; };
-		EBC561F81D3AF16000604F01 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC561F71D3AF16000604F01 /* TelerikUI.framework */; };
 		EBC64C591C02B2C900B33ECA /* WorkoutSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */; };
 		EBC64C5D1C02C3CD00B33ECA /* WorkoutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC64C5C1C02C3CD00B33ECA /* WorkoutTableViewCell.m */; };
 		EBCE12521BD2F62C000370CC /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCE12511BD2F62C000370CC /* FavoritesViewController.m */; };
@@ -361,6 +361,7 @@
 		EB737F741B8133D400EBBDA4 /* ExerciseSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseSelectionViewController.h; sourceTree = "<group>"; };
 		EB77FFCE1C48854000C0DE54 /* StayHealthy3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StayHealthy3.xcdatamodel; sourceTree = "<group>"; };
 		EB8864B61C305ED600B98050 /* StayHealthy 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StayHealthy 3.xcdatamodel"; sourceTree = "<group>"; };
+		EB89865A1D8DF53D00773937 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TelerikUI.framework; sourceTree = "<group>"; };
 		EB8AF5531C064B5000F53B90 /* WorkoutBrowseOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutBrowseOptionsViewController.h; sourceTree = "<group>"; };
 		EB8AF5541C064B5000F53B90 /* WorkoutBrowseOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutBrowseOptionsViewController.m; sourceTree = "<group>"; };
 		EB9CF6FF1B52AA00006E2984 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
@@ -399,7 +400,6 @@
 		EBC034D61C4C10820079332D /* ExerciseCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCreateViewController.m; sourceTree = "<group>"; };
 		EBC561F31D387A3300604F01 /* Strength */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Strength; path = "../../StayHealthy Resources/UI/Exercise Images/WorkoutImages/Strength"; sourceTree = "<group>"; };
 		EBC561F41D387A3300604F01 /* Stretching */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Stretching; path = "../../StayHealthy Resources/UI/Exercise Images/WorkoutImages/Stretching"; sourceTree = "<group>"; };
-		EBC561F71D3AF16000604F01 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TelerikUI.framework; path = "../StayHealthy Resources/Frameworks/Frameworks/TelerikUI.framework"; sourceTree = "<group>"; };
 		EBC64C571C02B2C900B33ECA /* WorkoutSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutSelectionViewController.h; sourceTree = "<group>"; };
 		EBC64C581C02B2C900B33ECA /* WorkoutSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutSelectionViewController.m; sourceTree = "<group>"; };
 		EBC64C5B1C02C3CD00B33ECA /* WorkoutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutTableViewCell.h; sourceTree = "<group>"; };
@@ -441,7 +441,7 @@
 				3F7D779F19A2DFEA00E00065 /* MessageUI.framework in Frameworks */,
 				3FF9DDA11853BAEC0083A499 /* CoreText.framework in Frameworks */,
 				3FD5E1A71853A8D00063E10C /* CoreData.framework in Frameworks */,
-				EBC561F81D3AF16000604F01 /* TelerikUI.framework in Frameworks */,
+				EB89865B1D8DF53D00773937 /* TelerikUI.framework in Frameworks */,
 				3FD5E1A51853A8D00063E10C /* UIKit.framework in Frameworks */,
 				3FD5E1A11853A8D00063E10C /* Foundation.framework in Frameworks */,
 			);
@@ -476,7 +476,7 @@
 		3F2E5A8E18E11B8600EE4734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EBC561F71D3AF16000604F01 /* TelerikUI.framework */,
+				EB89865A1D8DF53D00773937 /* TelerikUI.framework */,
 				3F7D77A619A3081300E00065 /* AudioToolbox.framework */,
 				3F7D77AE19A3086200E00065 /* SystemConfiguration.framework */,
 				3F7D77AC19A3086200E00065 /* Security.framework */,
@@ -1391,7 +1391,6 @@
 				3FD5E1991853A8D00063E10C /* Sources */,
 				3FD5E19A1853A8D00063E10C /* Frameworks */,
 				3FD5E19B1853A8D00063E10C /* Resources */,
-				EB5DBC9D1B794B5F00794300 /* Run Documentation Creation Script */,
 				EB575B141BECFC9F00A1C798 /* Embed Watch Content */,
 				EBB8C9921BFAFA3500347B24 /* ShellScript */,
 			);
@@ -1503,20 +1502,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		EB5DBC9D1B794B5F00794300 /* Run Documentation Creation Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Documentation Creation Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#if [ ${CONFIGURATION} == \"Release\" ]; then\nAPPLEDOC_PATH=`which appledoc`\nif [ $APPLEDOC_PATH ]; then\n$APPLEDOC_PATH \\\n--project-name ${PRODUCT_NAME} \\\n--project-company \"Robert Saunders\" \\\n--company-id \"com.redCode\" \\\n--output ${PRODUCT_NAME}Documentation \\\n--keep-intermediate-files \\\n--install-docset \\\n--preprocess-headerdoc \\\n--templates ${PROJECT_DIR}/StayHealthyDocumentationResources/Templates \\\n--index-desc ${PROJECT_DIR}/StayHealthyDocumentationResources/StayHealthyDocumentationIndex.markdown \\\n--no-repeat-first-par \\\n--exit-threshold 2 \\\n${PROJECT_DIR}/${PRODUCT_NAME}\nfi;\n#fi;";
-		};
 		EBB8C9921BFAFA3500347B24 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1752,6 +1737,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4Z75KMV7DK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/student/Documents/App,
@@ -2002,6 +1988,8 @@
 					Resources/Frameworks/Frameworks,
 					"$(PROJECT_DIR)",
 					Resources/Frameworks/Frameworks,
+					"$(PROJECT_DIR)\\ Resources/Frameworks/Frameworks",
+					"$(PROJECT_DIR)\\ Resources/Frameworks/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
@@ -2018,7 +2006,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
@@ -2038,6 +2026,7 @@
 				CODE_SIGN_ENTITLEMENTS = StayHealthy/StayHealthy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4Z75KMV7DK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/student/Documents/App,
@@ -2288,6 +2277,8 @@
 					Resources/Frameworks/Frameworks,
 					"$(PROJECT_DIR)",
 					Resources/Frameworks/Frameworks,
+					"$(PROJECT_DIR)\\ Resources/Frameworks/Frameworks",
+					"$(PROJECT_DIR)\\ Resources/Frameworks/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StayHealthy/StayHealthy-Prefix.pch";
@@ -2304,7 +2295,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.OptimusApps.Stay-Healthy1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "StayHealthy/StayHealthy-Bridging-Header.h";
