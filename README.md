@@ -6,6 +6,7 @@ StayHealthy is an easy to use fitness aid for both iOS devices. It puts hundreds
 <img src="/img/Screenshot1.png" height="390">
 <img src="/img/Screenshot2.png" height="390">
 <img src="/img/Screenshot3.png" height="390">
+<img src="/img/Screenshot4.png" height="390">
 
 ## Personal
 
