@@ -1,5 +1,7 @@
-# StayHealthy Fitness
-Website: [http://www.stayhealthy.io/](http://www.stayhealthy.io/)
+StayHealthy Fitness
+==============================
+
+###### Website: [http://www.stayhealthy.io/](http://www.stayhealthy.io/)
 
 StayHealthy is an easy to use fitness aid for both iOS devices. It puts hundreds of workouts and exercises right in the palm of your hand. Create your own workouts, or search for premade workouts specific to sports. Recover faster and stay injury free with a large catalog of stretching and warmup exercises. You can even favourite the exercises and workouts you love! For easy access, users have the ability to sync their data across all of their devices. Never be without your workout routine again!
 
