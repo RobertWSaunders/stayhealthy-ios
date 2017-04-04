@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2F373774FCD18D67AA275D984CE757EA375F5229",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2F373774FCD18D67AA275D984CE757EA375F5229" : 0,
+    "C8D21C65B90C0960A80AC8D54407E70B2FB95E60" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "341CD695-5D0A-4760-BB7A-9D7DB4DAFD70",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2F373774FCD18D67AA275D984CE757EA375F5229" : "stayhealthy-ios\/",
+    "C8D21C65B90C0960A80AC8D54407E70B2FB95E60" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "StayHealthy",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "StayHealthy.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/robertsaunders\/stayhealthy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2F373774FCD18D67AA275D984CE757EA375F5229"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/RobertWSaunders\/devise-saml-sso-poc.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C8D21C65B90C0960A80AC8D54407E70B2FB95E60"
+    }
+  ]
+}

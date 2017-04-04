@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 
-
 @implementation AppDelegate
 
 //Our managed object context, manages our managed objects (objects in our object graph)
